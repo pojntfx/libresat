@@ -120,12 +120,12 @@
               v-bind:search="historyItems.search"
               class="permaDrawer-table"
             >
-              <template slot="items" scope="props">
+              <template slot="items" slot-scope="props">
                     <td>{{ props.item.date }}</td>
                     <td>{{ props.item.change }}</td>
                     <td>{{ props.item.user }}</td>
                   </template>
-              <template slot="pageText" scope="{ pageStart, pageStop }">
+              <template slot="pageText" slot-scope="{ pageStart, pageStop }">
                     From {{ pageStart }} to {{ pageStop }}
                   </template>
             </v-data-table>
@@ -796,12 +796,12 @@
                   v-bind:items="historyItems.items"
                   v-bind:search="historyItems.search"
                 >
-                  <template slot="items" scope="props">
+                  <template slot="items" slot-scope="props">
                         <td>{{ props.item.date }}</td>
                         <td>{{ props.item.change }}</td>
                         <td>{{ props.item.user }}</td>
                       </template>
-                  <template slot="pageText" scope="{ pageStart, pageStop }">
+                  <template slot="pageText" slot-scope="{ pageStart, pageStop }">
                         From {{ pageStart }} to {{ pageStop }}
                       </template>
                 </v-data-table>
@@ -824,14 +824,14 @@
             v-bind:items="historyItems.items"
             v-bind:search="historyItems.search"
           >
-            <template slot="items" scope="props">
+            <template slot="items" slot-scope="props">
                 <td>{{ props.item.date }}</td>
                 <td>{{ props.item.change }}</td>
                 <td>{{ props.item.user }}</td>
               </template>
             <template
               slot="pageText"
-              scope="{ pageStart, pageStop }"
+              slot-scope="{ pageStart, pageStop }"
             >
                 From {{ pageStart }} to {{ pageStop }}
               </template>
