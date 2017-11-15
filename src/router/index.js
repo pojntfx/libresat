@@ -89,7 +89,6 @@ export default new Router({
     // Dashboard Module Registrations
     {
       path: '/',
-      name: 'Start',
       component: Dash,
       children: [
         {
