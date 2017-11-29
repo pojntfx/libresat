@@ -11,8 +11,8 @@ import Donate from '@/components/Misc/Donate'
 import SettingsIndex from '@/components/Settings/SettingsIndex'
 import SettingsProfile from '@/components/Settings/SettingsProfile'
 // Vendor Module Imports
-import AlphaHorizonInfo from '@/components/Vendors/AlphaHorizon/Info'
-import AlphaHorizonReactionWheelInfo from '@/components/Vendors/AlphaHorizon/ReactionWheel/Info'
+// import AlphaHorizonInfo from '@/components/Vendors/AlphaHorizon/Info'
+// import AlphaHorizonReactionWheelInfo from '@/components/Vendors/AlphaHorizon/ReactionWheel/Info'
 import AlphaHorizonReactionWheelDashboardView from '@/components/Vendors/AlphaHorizon/ReactionWheel/DashboardView'
 import DashboardModulePlaceholder from '@/components/Grid/DashboardModulePlaceholder'
 
@@ -20,11 +20,6 @@ Vue.use(Router)
 
 export default new Router({
   routes: [
-    {
-      path: '/comms',
-      name: 'Communications',
-      component: Comms
-    },
     {
       path: '/navigation',
       name: 'Navigation',
@@ -67,25 +62,25 @@ export default new Router({
     },
     // Vendor Section
     // Alpha Horizon Modules Section
-    {
-      path: '/alphahorizon',
-      name: 'Alpha Horizon',
-      component: AlphaHorizonInfo,
-      children: [
-        {
-          path: 'reactionwheel',
-          name: 'Reaction Wheel Info',
-          component: AlphaHorizonReactionWheelInfo,
-          children: [
-            {
-              path: 'dashboard/view',
-              name: 'Reaction Wheel Dashboard View',
-              component: AlphaHorizonReactionWheelDashboardView
-            }
-          ]
-        }
-      ]
-    },
+    // {
+    //   path: '/alphahorizon',
+    //   name: 'Alpha Horizon',
+    //   component: AlphaHorizonInfo,
+    //   children: [
+    //     {
+    //       path: 'reactionwheel',
+    //       name: 'Reaction Wheel Info',
+    //       component: AlphaHorizonReactionWheelInfo,
+    //       children: [
+    //         {
+    //           path: 'dashboard/view',
+    //           name: 'Reaction Wheel Dashboard View',
+    //           component: AlphaHorizonReactionWheelDashboardView
+    //         }
+    //       ]
+    //     }
+    //   ]
+    // },
     // Dashboard Module Registrations
     {
       path: '/',
@@ -103,6 +98,21 @@ export default new Router({
           }
         }
       ]
+    },
+    {
+      path: '/comms',
+      component: Comms,
+      children: [{
+        path: '/comms',
+        name: 'Communications',
+        components: {
+          /* Register dashboard module here after importing it above
+          * then register the dashboard module in the store (var.groups.dashboardname)
+          or import with the UI */
+          default: DashboardModulePlaceholder,
+          alphaHorizonReactionWheelModule: AlphaHorizonReactionWheelDashboardView
+        }
+      }]
     }
   ]
 })
