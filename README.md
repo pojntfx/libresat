@@ -8,12 +8,8 @@
 # install dependencies
 npm install
 
-# serve with hot reload at 192.168.178.59:8080
+# serve with hot reload at localhost:8080
 npm run dev
-
-# build for production with minification
-npm run build
-```
 
 ## Documentation
 The documentation has not been created yet. This will be done with the first alpha release of the program. Until then, the comments in the code can be used.
