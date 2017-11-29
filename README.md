@@ -10,6 +10,7 @@ npm install
 
 # serve with hot reload at localhost:8080
 npm run dev
+```
 
 ## Documentation
 The documentation has not been created yet. This will be done with the first alpha release of the program. Until then, the comments in the code can be used.
