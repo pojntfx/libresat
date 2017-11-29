@@ -158,9 +158,9 @@ const state = {
           layout: [{
             'x': 0,
             'y': 0,
-            'w': 2,
-            'h': 2,
-            'i': '0'
+            'w': 12,
+            'h': 6,
+            'i': 'alphaHorizonReactionWheelModule'
           }]
         },
         {
