@@ -156,16 +156,16 @@
   :margin="[10, 10]"
   :use-css-transforms="true"
   >
-  <opensnet-grid-item v-for="item in currentDashboardMode"
-   :x="item.x"
-   :y="item.y"
-   :w="item.w"
-   :h="item.h"
-   :i="item.i"
-   :key="item.i">
-   <!-- Module view -->
-   <router-view :name="item.i"></router-view>
-  </opensnet-grid-item>
+    <opensnet-grid-item v-for="item in currentDashboardMode"
+    :x="item.x"
+    :y="item.y"
+    :w="item.w"
+    :h="item.h"
+    :i="item.i"
+    :key="item.i">
+      <!-- Module view -->
+      <router-view :name="item.i"></router-view>
+    </opensnet-grid-item>
   </opensnet-grid-layout>
   </div>
 </template>
