@@ -1,4 +1,4 @@
-<!-- OpenSNET Bridge Client User Interface (c) Felix Pojtinger-->
+<!-- OpenSNET Bridge Client User Interface (c) 2017 Felix Pojtinger-->
 <template>
 <v-app
   toolbar
