@@ -5,11 +5,15 @@
 ## Build Setup
 
 ``` bash
-# install dependencies
+# install dependencies with npm:
 npm install
+# OR with yarn:
+yarn install
 
-# serve with hot reload at localhost:8080
+# serve with hot reload at localhost:8080 using npm:
 npm run dev
+# OR with yarn:
+yarn run dev
 ```
 
 ## Documentation
