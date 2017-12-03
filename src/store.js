@@ -63,7 +63,7 @@ const state = {
               'w': 6,
               'h': 7,
               'readView': 'alphaHorizonReactionWheelDashboardReadView',
-              'hybridView': 'alphaHorizonReactionWheelDashboardReadView'
+              'hybridView': 'alphaHorizonReactionWheelDashboardHybridView'
             },
             {
               'x': 6,
@@ -173,7 +173,7 @@ const state = {
             'w': 12,
             'h': 6,
             'readView': 'alphaHorizonReactionWheelDashboardReadView',
-            'hybridView': 'alphaHorizonReactionWheelDashboardReadView'
+            'hybridView': 'alphaHorizonReactionWheelDashboardHybridView'
           }]
         },
         {
