@@ -116,7 +116,8 @@
           <v-layout row v-show="alert" class="mb-3 resizable-card-wrapper-section-main">
             <v-flex>
               <v-alert info dismissible v-model="alert">
-                Info section
+                <!-- TODO: Card Info Component Integration -->
+                Info section here
               </v-alert>
             </v-flex>
           </v-layout>
@@ -126,7 +127,10 @@
 
             <!-- Card XTerm Section -->
             <v-layout row class="mb-3">
-              <v-flex>XTerm here</v-flex>
+              <v-flex>
+                <!-- TODO: Card XTerm Component Integration -->
+                XTerm here
+              </v-flex>
             </v-layout>
 
             <!-- Card Controls Section -->
@@ -140,6 +144,7 @@
                     <v-card>
                       <v-card-text class="px-4">
                         Read-only UI here
+                        <router-view :name="readView"></router-view>
                       </v-card-text>
                     </v-card>
                   </v-expansion-panel-content>
@@ -282,6 +287,9 @@ export default {
       }
 
       return this.writeCardClassValue
+    },
+    readView () {
+      return this.item.readView
     }
   },
   methods: {

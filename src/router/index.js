@@ -13,7 +13,7 @@ import SettingsProfile from '@/components/Settings/SettingsProfile'
 // Vendor Module Imports
 // import AlphaHorizonInfo from '@/components/Vendors/AlphaHorizon/Info'
 // import AlphaHorizonReactionWheelInfo from '@/components/Vendors/AlphaHorizon/ReactionWheel/Info'
-import AlphaHorizonReactionWheelDashboardView from '@/components/Vendors/AlphaHorizon/ReactionWheel/DashboardView'
+import AlphaHorizonReactionWheelDashboardReadView from '@/components/Vendors/AlphaHorizon/ReactionWheel/DashboardReadView'
 import DashboardModulePlaceholder from '@/components/Grid/DashboardModulePlaceholder'
 
 Vue.use(Router)
@@ -75,7 +75,7 @@ export default new Router({
     //         {
     //           path: 'dashboard/view',
     //           name: 'Reaction Wheel Dashboard View',
-    //           component: AlphaHorizonReactionWheelDashboardView
+    //           component: AlphaHorizonReactionWheelDashboardReadView
     //         }
     //       ]
     //     }
@@ -94,7 +94,7 @@ export default new Router({
             * then register the dashboard module in the store (var.groups.dashboardname)
             or import with the UI */
             default: DashboardModulePlaceholder,
-            alphaHorizonReactionWheelModule: AlphaHorizonReactionWheelDashboardView
+            alphaHorizonReactionWheelModule: AlphaHorizonReactionWheelDashboardReadView
           }
         }
       ]
@@ -110,7 +110,7 @@ export default new Router({
           * then register the dashboard module in the store (var.groups.dashboardname)
           or import with the UI */
           default: DashboardModulePlaceholder,
-          alphaHorizonReactionWheelModule: AlphaHorizonReactionWheelDashboardView
+          alphaHorizonReactionWheelModule: AlphaHorizonReactionWheelDashboardReadView
         }
       }]
     }

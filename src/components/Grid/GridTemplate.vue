@@ -164,7 +164,10 @@
     :i="item.i"
     :key="item.i">
       <!-- Module view -->
-      <router-view :name="item.i"></router-view>
+      <!-- <router-view :name="item.i"></router-view> -->
+      <opensnet-grid-item-default-template :item="item">
+        
+      </opensnet-grid-item-default-template>
     </opensnet-grid-item>
   </opensnet-grid-layout>
   </div>
@@ -173,6 +176,7 @@
 <script>
 // Load the module
 import VueGridLayout from 'vue-grid-layout'
+import GridItemDefaultTemplate from '@/components/Grid/Templates/DefaultTemplate'
 // Assign the submodules
 const GridLayout = VueGridLayout.GridLayout
 const GridItem = VueGridLayout.GridItem
@@ -189,7 +193,8 @@ export default {
   },
   components: {
     'opensnet-grid-layout': GridLayout,
-    'opensnet-grid-item': GridItem
+    'opensnet-grid-item': GridItem,
+    'opensnet-grid-item-default-template': GridItemDefaultTemplate
   },
   watch: {
     '$mq.resize': 'makeEditDashboardControlsResponsive'
