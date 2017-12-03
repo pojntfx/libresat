@@ -171,7 +171,7 @@
                     <div slot="header">Write</div>
                     <v-card>
                       <v-card-text class="px-4">
-                        Write-only UI here
+                        <router-view :name="writeView"></router-view>
                       </v-card-text>
                     </v-card>
                   </v-expansion-panel-content>
@@ -292,6 +292,9 @@ export default {
     },
     hybridView () {
       return this.item.hybridView
+    },
+    writeView () {
+      return this.item.writeView
     }
   },
   methods: {

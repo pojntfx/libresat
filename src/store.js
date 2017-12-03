@@ -31,7 +31,8 @@ const state = {
               'w': 2,
               'h': 2,
               'readView': '0',
-              'hybridView': '0'
+              'hybridView': '0',
+              'writeView': '0'
             },
             {
               'x': 2,
@@ -39,7 +40,8 @@ const state = {
               'w': 2,
               'h': 4,
               'readView': '1',
-              'hybridView': '1'
+              'hybridView': '1',
+              'writeView': '1'
             },
             {
               'x': 4,
@@ -47,7 +49,8 @@ const state = {
               'w': 2,
               'h': 5,
               'readView': '2',
-              'hybridView': '2'
+              'hybridView': '2',
+              'writeView': '2'
             }
             ]
           }]
@@ -63,7 +66,8 @@ const state = {
               'w': 6,
               'h': 7,
               'readView': 'alphaHorizonReactionWheelDashboardReadView',
-              'hybridView': 'alphaHorizonReactionWheelDashboardHybridView'
+              'hybridView': 'alphaHorizonReactionWheelDashboardHybridView',
+              'writeView': 'alphaHorizonReactionWheelDashboardWriteView'
             },
             {
               'x': 6,
@@ -71,7 +75,8 @@ const state = {
               'w': 6,
               'h': 5,
               'readView': 'default',
-              'hybridView': 'default'
+              'hybridView': 'default',
+              'writeView': 'default'
             }]
           },
           {
@@ -83,7 +88,8 @@ const state = {
               'w': 2,
               'h': 2,
               'readView': 'default',
-              'hybridView': 'default'
+              'hybridView': 'default',
+              'writeView': 'default'
             }]
           }
           ]
@@ -99,7 +105,8 @@ const state = {
               'w': 2,
               'h': 2,
               'readView': 'default',
-              'hybridView': 'default'
+              'hybridView': 'default',
+              'writeView': 'default'
             }]
           },
           {
@@ -111,7 +118,8 @@ const state = {
               'w': 2,
               'h': 2,
               'readView': 'default',
-              'hybridView': 'default'
+              'hybridView': 'default',
+              'writeView': 'default'
             }]
           },
           {
@@ -123,7 +131,8 @@ const state = {
               'w': 2,
               'h': 2,
               'readView': 'default',
-              'hybridView': 'default'
+              'hybridView': 'default',
+              'writeView': 'default'
             }]
           }
           ]
@@ -141,7 +150,8 @@ const state = {
             'w': 2,
             'h': 2,
             'readView': 'default',
-            'hybridView': 'default'
+            'hybridView': 'default',
+            'writeView': 'default'
           },
           {
             'x': 2,
@@ -149,7 +159,8 @@ const state = {
             'w': 2,
             'h': 4,
             'readView': 'default',
-            'hybridView': 'default'
+            'hybridView': 'default',
+            'writeView': 'default'
           },
           {
             'x': 4,
@@ -157,7 +168,8 @@ const state = {
             'w': 2,
             'h': 5,
             'readView': 'default',
-            'hybridView': 'default'
+            'hybridView': 'default',
+            'writeView': 'default'
           }
           ]
         }]
@@ -173,7 +185,8 @@ const state = {
             'w': 12,
             'h': 6,
             'readView': 'alphaHorizonReactionWheelDashboardReadView',
-            'hybridView': 'alphaHorizonReactionWheelDashboardHybridView'
+            'hybridView': 'alphaHorizonReactionWheelDashboardHybridView',
+            'writeView': 'alphaHorizonReactionWheelDashboardWriteView'
           }]
         },
         {
@@ -185,7 +198,8 @@ const state = {
             'w': 2,
             'h': 2,
             'readView': 'default',
-            'hybridView': 'default'
+            'hybridView': 'default',
+            'writeView': 'default'
           }]
         }
         ]
@@ -201,7 +215,8 @@ const state = {
             'w': 2,
             'h': 2,
             'readView': 'default',
-            'hybridView': 'default'
+            'hybridView': 'default',
+            'writeView': 'default'
           }]
         },
         {
@@ -213,7 +228,8 @@ const state = {
             'w': 2,
             'h': 2,
             'readView': 'default',
-            'hybridView': 'default'
+            'hybridView': 'default',
+            'writeView': 'default'
           }]
         },
         {
@@ -225,7 +241,8 @@ const state = {
             'w': 2,
             'h': 2,
             'readView': 'default',
-            'hybridView': 'default'
+            'hybridView': 'default',
+            'writeView': 'default'
           }]
         }
         ]
@@ -242,7 +259,8 @@ const state = {
             'w': 2,
             'h': 2,
             'readView': 'default',
-            'hybridView': 'default'
+            'hybridView': 'default',
+            'writeView': 'default'
           },
           {
             'x': 2,
@@ -250,7 +268,8 @@ const state = {
             'w': 2,
             'h': 4,
             'readView': 'default',
-            'hybridView': 'default'
+            'hybridView': 'default',
+            'writeView': 'default'
           },
           {
             'x': 4,
@@ -258,7 +277,8 @@ const state = {
             'w': 2,
             'h': 5,
             'readView': 'default',
-            'hybridView': 'default'
+            'hybridView': 'default',
+            'writeView': 'default'
           }
           ]
         }]
@@ -274,7 +294,8 @@ const state = {
             'w': 2,
             'h': 2,
             'readView': 'default',
-            'hybridView': 'default'
+            'hybridView': 'default',
+            'writeView': 'default'
           }]
         },
         {
@@ -286,7 +307,8 @@ const state = {
             'w': 2,
             'h': 2,
             'readView': 'default',
-            'hybridView': 'default'
+            'hybridView': 'default',
+            'writeView': 'default'
           }]
         }
         ]
@@ -302,7 +324,8 @@ const state = {
             'w': 2,
             'h': 2,
             'readView': 'default',
-            'hybridView': 'default'
+            'hybridView': 'default',
+            'writeView': 'default'
           }]
         },
         {
@@ -314,7 +337,8 @@ const state = {
             'w': 2,
             'h': 2,
             'readView': 'default',
-            'hybridView': 'default'
+            'hybridView': 'default',
+            'writeView': 'default'
           }]
         },
         {
@@ -326,7 +350,8 @@ const state = {
             'w': 2,
             'h': 2,
             'readView': 'default',
-            'hybridView': 'default'
+            'hybridView': 'default',
+            'writeView': 'default'
           }]
         }
         ]
@@ -343,7 +368,8 @@ const state = {
             'w': 2,
             'h': 2,
             'readView': 'default',
-            'hybridView': 'default'
+            'hybridView': 'default',
+            'writeView': 'default'
           },
           {
             'x': 2,
@@ -351,7 +377,8 @@ const state = {
             'w': 2,
             'h': 4,
             'readView': 'default',
-            'hybridView': 'default'
+            'hybridView': 'default',
+            'writeView': 'default'
           },
           {
             'x': 4,
@@ -359,7 +386,8 @@ const state = {
             'w': 2,
             'h': 5,
             'readView': 'default',
-            'hybridView': 'default'
+            'hybridView': 'default',
+            'writeView': 'default'
           }
           ]
         }]
@@ -375,7 +403,8 @@ const state = {
             'w': 2,
             'h': 2,
             'readView': 'default',
-            'hybridView': 'default'
+            'hybridView': 'default',
+            'writeView': 'default'
           }]
         },
         {
@@ -387,7 +416,8 @@ const state = {
             'w': 2,
             'h': 2,
             'readView': 'default',
-            'hybridView': 'default'
+            'hybridView': 'default',
+            'writeView': 'default'
           }]
         }
         ]
@@ -403,7 +433,8 @@ const state = {
             'w': 2,
             'h': 2,
             'readView': 'default',
-            'hybridView': 'default'
+            'hybridView': 'default',
+            'writeView': 'default'
           }]
         },
         {
@@ -415,7 +446,8 @@ const state = {
             'w': 2,
             'h': 2,
             'readView': 'default',
-            'hybridView': 'default'
+            'hybridView': 'default',
+            'writeView': 'default'
           }]
         },
         {
@@ -427,7 +459,8 @@ const state = {
             'w': 2,
             'h': 2,
             'readView': 'default',
-            'hybridView': 'default'
+            'hybridView': 'default',
+            'writeView': 'default'
           }]
         }
         ]
@@ -444,7 +477,8 @@ const state = {
             'w': 2,
             'h': 2,
             'readView': 'default',
-            'hybridView': 'default'
+            'hybridView': 'default',
+            'writeView': 'default'
           },
           {
             'x': 2,
@@ -452,7 +486,8 @@ const state = {
             'w': 2,
             'h': 4,
             'readView': 'default',
-            'hybridView': 'default'
+            'hybridView': 'default',
+            'writeView': 'default'
           },
           {
             'x': 4,
@@ -460,7 +495,8 @@ const state = {
             'w': 2,
             'h': 5,
             'readView': 'default',
-            'hybridView': 'default'
+            'hybridView': 'default',
+            'writeView': 'default'
           }
           ]
         }]
@@ -476,7 +512,8 @@ const state = {
             'w': 2,
             'h': 2,
             'readView': 'default',
-            'hybridView': 'default'
+            'hybridView': 'default',
+            'writeView': 'default'
           },
           {
             'x': 4,
@@ -484,7 +521,8 @@ const state = {
             'w': 2,
             'h': 2,
             'readView': 'default',
-            'hybridView': 'default'
+            'hybridView': 'default',
+            'writeView': 'default'
           }]
 
         },
@@ -497,7 +535,8 @@ const state = {
             'w': 2,
             'h': 2,
             'readView': 'default',
-            'hybridView': 'default'
+            'hybridView': 'default',
+            'writeView': 'default'
           }]
         }
         ]
@@ -513,7 +552,8 @@ const state = {
             'w': 2,
             'h': 2,
             'readView': 'default',
-            'hybridView': 'default'
+            'hybridView': 'default',
+            'writeView': 'default'
           }]
         },
         {
@@ -525,7 +565,8 @@ const state = {
             'w': 2,
             'h': 2,
             'readView': 'default',
-            'hybridView': 'default'
+            'hybridView': 'default',
+            'writeView': 'default'
           }]
         },
         {
@@ -537,7 +578,8 @@ const state = {
             'w': 2,
             'h': 2,
             'readView': 'default',
-            'hybridView': 'default'
+            'hybridView': 'default',
+            'writeView': 'default'
           }]
         }
         ]
