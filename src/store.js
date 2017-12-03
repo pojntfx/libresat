@@ -30,27 +30,33 @@ const state = {
               'y': 0,
               'w': 2,
               'h': 2,
-              'readView': '0',
-              'hybridView': '0',
-              'writeView': '0'
+              'readView': 'default',
+              'hybridView': 'default',
+              'writeView': 'default',
+              'template': 'none',
+              'customView': 'default'
             },
             {
               'x': 2,
               'y': 0,
               'w': 2,
               'h': 4,
-              'readView': '1',
-              'hybridView': '1',
-              'writeView': '1'
+              'readView': 'default',
+              'hybridView': 'default',
+              'writeView': 'default',
+              'template': 'none',
+              'customView': 'default'
             },
             {
               'x': 4,
               'y': 0,
               'w': 2,
               'h': 5,
-              'readView': '2',
-              'hybridView': '2',
-              'writeView': '2'
+              'readView': 'default',
+              'hybridView': 'default',
+              'writeView': 'default',
+              'template': 'none',
+              'customView': 'default'
             }
             ]
           }]
@@ -67,7 +73,9 @@ const state = {
               'h': 7,
               'readView': 'alphaHorizonReactionWheelDashboardReadView',
               'hybridView': 'alphaHorizonReactionWheelDashboardHybridView',
-              'writeView': 'alphaHorizonReactionWheelDashboardWriteView'
+              'writeView': 'alphaHorizonReactionWheelDashboardWriteView',
+              'template': 'defaultTemplate',
+              'customView': 'default'
             },
             {
               'x': 6,
@@ -76,7 +84,9 @@ const state = {
               'h': 5,
               'readView': 'default',
               'hybridView': 'default',
-              'writeView': 'default'
+              'writeView': 'default',
+              'template': 'none',
+              'customView': 'default'
             }]
           },
           {
@@ -89,7 +99,9 @@ const state = {
               'h': 2,
               'readView': 'default',
               'hybridView': 'default',
-              'writeView': 'default'
+              'writeView': 'default',
+              'template': 'none',
+              'customView': 'default'
             }]
           }
           ]
@@ -106,7 +118,9 @@ const state = {
               'h': 2,
               'readView': 'default',
               'hybridView': 'default',
-              'writeView': 'default'
+              'writeView': 'default',
+              'template': 'none',
+              'customView': 'default'
             }]
           },
           {
@@ -119,7 +133,9 @@ const state = {
               'h': 2,
               'readView': 'default',
               'hybridView': 'default',
-              'writeView': 'default'
+              'writeView': 'default',
+              'template': 'none',
+              'customView': 'default'
             }]
           },
           {
@@ -132,7 +148,9 @@ const state = {
               'h': 2,
               'readView': 'default',
               'hybridView': 'default',
-              'writeView': 'default'
+              'writeView': 'default',
+              'template': 'none',
+              'customView': 'default'
             }]
           }
           ]
@@ -151,7 +169,9 @@ const state = {
             'h': 2,
             'readView': 'default',
             'hybridView': 'default',
-            'writeView': 'default'
+            'writeView': 'default',
+            'template': 'none',
+            'customView': 'default'
           },
           {
             'x': 2,
@@ -160,7 +180,9 @@ const state = {
             'h': 4,
             'readView': 'default',
             'hybridView': 'default',
-            'writeView': 'default'
+            'writeView': 'default',
+            'template': 'none',
+            'customView': 'default'
           },
           {
             'x': 4,
@@ -169,7 +191,9 @@ const state = {
             'h': 5,
             'readView': 'default',
             'hybridView': 'default',
-            'writeView': 'default'
+            'writeView': 'default',
+            'template': 'none',
+            'customView': 'default'
           }
           ]
         }]
@@ -186,7 +210,9 @@ const state = {
             'h': 6,
             'readView': 'alphaHorizonReactionWheelDashboardReadView',
             'hybridView': 'alphaHorizonReactionWheelDashboardHybridView',
-            'writeView': 'alphaHorizonReactionWheelDashboardWriteView'
+            'writeView': 'alphaHorizonReactionWheelDashboardWriteView',
+            'template': 'defaultTemplate',
+            'customView': 'default'
           }]
         },
         {
@@ -199,7 +225,9 @@ const state = {
             'h': 2,
             'readView': 'default',
             'hybridView': 'default',
-            'writeView': 'default'
+            'writeView': 'default',
+            'template': 'none',
+            'customView': 'default'
           }]
         }
         ]
@@ -216,7 +244,9 @@ const state = {
             'h': 2,
             'readView': 'default',
             'hybridView': 'default',
-            'writeView': 'default'
+            'writeView': 'default',
+            'template': 'none',
+            'customView': 'default'
           }]
         },
         {
@@ -229,7 +259,9 @@ const state = {
             'h': 2,
             'readView': 'default',
             'hybridView': 'default',
-            'writeView': 'default'
+            'writeView': 'default',
+            'template': 'none',
+            'customView': 'default'
           }]
         },
         {
@@ -242,7 +274,9 @@ const state = {
             'h': 2,
             'readView': 'default',
             'hybridView': 'default',
-            'writeView': 'default'
+            'writeView': 'default',
+            'template': 'none',
+            'customView': 'default'
           }]
         }
         ]
@@ -260,7 +294,9 @@ const state = {
             'h': 2,
             'readView': 'default',
             'hybridView': 'default',
-            'writeView': 'default'
+            'writeView': 'default',
+            'template': 'none',
+            'customView': 'default'
           },
           {
             'x': 2,
@@ -269,7 +305,9 @@ const state = {
             'h': 4,
             'readView': 'default',
             'hybridView': 'default',
-            'writeView': 'default'
+            'writeView': 'default',
+            'template': 'none',
+            'customView': 'default'
           },
           {
             'x': 4,
@@ -278,7 +316,9 @@ const state = {
             'h': 5,
             'readView': 'default',
             'hybridView': 'default',
-            'writeView': 'default'
+            'writeView': 'default',
+            'template': 'none',
+            'customView': 'default'
           }
           ]
         }]
@@ -295,7 +335,9 @@ const state = {
             'h': 2,
             'readView': 'default',
             'hybridView': 'default',
-            'writeView': 'default'
+            'writeView': 'default',
+            'template': 'none',
+            'customView': 'default'
           }]
         },
         {
@@ -308,7 +350,9 @@ const state = {
             'h': 2,
             'readView': 'default',
             'hybridView': 'default',
-            'writeView': 'default'
+            'writeView': 'default',
+            'template': 'none',
+            'customView': 'default'
           }]
         }
         ]
@@ -325,7 +369,9 @@ const state = {
             'h': 2,
             'readView': 'default',
             'hybridView': 'default',
-            'writeView': 'default'
+            'writeView': 'default',
+            'template': 'none',
+            'customView': 'default'
           }]
         },
         {
@@ -338,7 +384,9 @@ const state = {
             'h': 2,
             'readView': 'default',
             'hybridView': 'default',
-            'writeView': 'default'
+            'writeView': 'default',
+            'template': 'none',
+            'customView': 'default'
           }]
         },
         {
@@ -351,7 +399,9 @@ const state = {
             'h': 2,
             'readView': 'default',
             'hybridView': 'default',
-            'writeView': 'default'
+            'writeView': 'default',
+            'template': 'none',
+            'customView': 'default'
           }]
         }
         ]
@@ -369,7 +419,9 @@ const state = {
             'h': 2,
             'readView': 'default',
             'hybridView': 'default',
-            'writeView': 'default'
+            'writeView': 'default',
+            'template': 'none',
+            'customView': 'default'
           },
           {
             'x': 2,
@@ -378,7 +430,9 @@ const state = {
             'h': 4,
             'readView': 'default',
             'hybridView': 'default',
-            'writeView': 'default'
+            'writeView': 'default',
+            'template': 'none',
+            'customView': 'default'
           },
           {
             'x': 4,
@@ -387,7 +441,9 @@ const state = {
             'h': 5,
             'readView': 'default',
             'hybridView': 'default',
-            'writeView': 'default'
+            'writeView': 'default',
+            'template': 'none',
+            'customView': 'default'
           }
           ]
         }]
@@ -404,7 +460,9 @@ const state = {
             'h': 2,
             'readView': 'default',
             'hybridView': 'default',
-            'writeView': 'default'
+            'writeView': 'default',
+            'template': 'none',
+            'customView': 'default'
           }]
         },
         {
@@ -417,7 +475,9 @@ const state = {
             'h': 2,
             'readView': 'default',
             'hybridView': 'default',
-            'writeView': 'default'
+            'writeView': 'default',
+            'template': 'none',
+            'customView': 'default'
           }]
         }
         ]
@@ -434,7 +494,9 @@ const state = {
             'h': 2,
             'readView': 'default',
             'hybridView': 'default',
-            'writeView': 'default'
+            'writeView': 'default',
+            'template': 'none',
+            'customView': 'default'
           }]
         },
         {
@@ -447,7 +509,9 @@ const state = {
             'h': 2,
             'readView': 'default',
             'hybridView': 'default',
-            'writeView': 'default'
+            'writeView': 'default',
+            'template': 'none',
+            'customView': 'default'
           }]
         },
         {
@@ -460,7 +524,9 @@ const state = {
             'h': 2,
             'readView': 'default',
             'hybridView': 'default',
-            'writeView': 'default'
+            'writeView': 'default',
+            'template': 'none',
+            'customView': 'default'
           }]
         }
         ]
@@ -478,7 +544,9 @@ const state = {
             'h': 2,
             'readView': 'default',
             'hybridView': 'default',
-            'writeView': 'default'
+            'writeView': 'default',
+            'template': 'none',
+            'customView': 'default'
           },
           {
             'x': 2,
@@ -487,7 +555,9 @@ const state = {
             'h': 4,
             'readView': 'default',
             'hybridView': 'default',
-            'writeView': 'default'
+            'writeView': 'default',
+            'template': 'none',
+            'customView': 'default'
           },
           {
             'x': 4,
@@ -496,7 +566,9 @@ const state = {
             'h': 5,
             'readView': 'default',
             'hybridView': 'default',
-            'writeView': 'default'
+            'writeView': 'default',
+            'template': 'none',
+            'customView': 'default'
           }
           ]
         }]
@@ -513,7 +585,9 @@ const state = {
             'h': 2,
             'readView': 'default',
             'hybridView': 'default',
-            'writeView': 'default'
+            'writeView': 'default',
+            'template': 'none',
+            'customView': 'default'
           },
           {
             'x': 4,
@@ -522,7 +596,9 @@ const state = {
             'h': 2,
             'readView': 'default',
             'hybridView': 'default',
-            'writeView': 'default'
+            'writeView': 'default',
+            'template': 'none',
+            'customView': 'default'
           }]
 
         },
@@ -536,7 +612,9 @@ const state = {
             'h': 2,
             'readView': 'default',
             'hybridView': 'default',
-            'writeView': 'default'
+            'writeView': 'default',
+            'template': 'none',
+            'customView': 'default'
           }]
         }
         ]
@@ -553,7 +631,9 @@ const state = {
             'h': 2,
             'readView': 'default',
             'hybridView': 'default',
-            'writeView': 'default'
+            'writeView': 'default',
+            'template': 'none',
+            'customView': 'default'
           }]
         },
         {
@@ -566,7 +646,9 @@ const state = {
             'h': 2,
             'readView': 'default',
             'hybridView': 'default',
-            'writeView': 'default'
+            'writeView': 'default',
+            'template': 'none',
+            'customView': 'default'
           }]
         },
         {
@@ -579,7 +661,9 @@ const state = {
             'h': 2,
             'readView': 'default',
             'hybridView': 'default',
-            'writeView': 'default'
+            'writeView': 'default',
+            'template': 'none',
+            'customView': 'default'
           }]
         }
         ]
