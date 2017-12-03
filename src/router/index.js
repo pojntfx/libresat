@@ -75,7 +75,7 @@ export default new Router({
     //         {
     //           path: 'dashboard/view',
     //           name: 'Reaction Wheel Dashboard View',
-    //           component: AlphaHorizonReactionWheelDashboardReadView
+    //           component: alphaHorizonReactionWheelDashboardReadView
     //         }
     //       ]
     //     }
@@ -94,7 +94,7 @@ export default new Router({
             * then register the dashboard module in the store (var.groups.dashboardname)
             or import with the UI */
             default: DashboardModulePlaceholder,
-            alphaHorizonReactionWheelModule: AlphaHorizonReactionWheelDashboardReadView
+            alphaHorizonReactionWheelDashboardReadView: AlphaHorizonReactionWheelDashboardReadView
           }
         }
       ]
@@ -110,7 +110,7 @@ export default new Router({
           * then register the dashboard module in the store (var.groups.dashboardname)
           or import with the UI */
           default: DashboardModulePlaceholder,
-          alphaHorizonReactionWheelModule: AlphaHorizonReactionWheelDashboardReadView
+          alphaHorizonReactionWheelDashboardReadView: AlphaHorizonReactionWheelDashboardReadView
         }
       }]
     }
