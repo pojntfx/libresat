@@ -30,21 +30,21 @@ const state = {
               'y': 0,
               'w': 2,
               'h': 2,
-              'i': '0'
+              'readView': '0'
             },
             {
               'x': 2,
               'y': 0,
               'w': 2,
               'h': 4,
-              'i': '1'
+              'readView': '1'
             },
             {
               'x': 4,
               'y': 0,
               'w': 2,
               'h': 5,
-              'i': '2'
+              'readView': '2'
             }
             ]
           }]
@@ -59,14 +59,14 @@ const state = {
               'y': 0,
               'w': 6,
               'h': 7,
-              'i': 'alphaHorizonReactionWheelModule'
+              'readView': 'alphaHorizonReactionWheelModule'
             },
             {
               'x': 6,
               'y': 0,
               'w': 6,
               'h': 5,
-              'i': 'default'
+              'readView': 'default'
             }]
           },
           {
@@ -77,7 +77,7 @@ const state = {
               'y': 0,
               'w': 2,
               'h': 2,
-              'i': 'default'
+              'readView': 'default'
             }]
           }
           ]
@@ -92,7 +92,7 @@ const state = {
               'y': 0,
               'w': 2,
               'h': 2,
-              'i': '0'
+              'readView': '0'
             }]
           },
           {
@@ -103,7 +103,7 @@ const state = {
               'y': 0,
               'w': 2,
               'h': 2,
-              'i': '0'
+              'readView': '0'
             }]
           },
           {
@@ -114,7 +114,7 @@ const state = {
               'y': 0,
               'w': 2,
               'h': 2,
-              'i': '0'
+              'readView': '0'
             }]
           }
           ]
@@ -131,21 +131,21 @@ const state = {
             'y': 0,
             'w': 2,
             'h': 2,
-            'i': '0'
+            'readView': '0'
           },
           {
             'x': 2,
             'y': 0,
             'w': 2,
             'h': 4,
-            'i': '1'
+            'readView': '1'
           },
           {
             'x': 4,
             'y': 0,
             'w': 2,
             'h': 5,
-            'i': '2'
+            'readView': '2'
           }
           ]
         }]
@@ -160,7 +160,7 @@ const state = {
             'y': 0,
             'w': 12,
             'h': 6,
-            'i': 'alphaHorizonReactionWheelModule'
+            'readView': 'alphaHorizonReactionWheelModule'
           }]
         },
         {
@@ -171,7 +171,7 @@ const state = {
             'y': 0,
             'w': 2,
             'h': 2,
-            'i': '0'
+            'readView': '0'
           }]
         }
         ]
@@ -186,7 +186,7 @@ const state = {
             'y': 0,
             'w': 2,
             'h': 2,
-            'i': '0'
+            'readView': '0'
           }]
         },
         {
@@ -197,7 +197,7 @@ const state = {
             'y': 0,
             'w': 2,
             'h': 2,
-            'i': '0'
+            'readView': '0'
           }]
         },
         {
@@ -208,7 +208,7 @@ const state = {
             'y': 0,
             'w': 2,
             'h': 2,
-            'i': '0'
+            'readView': '0'
           }]
         }
         ]
@@ -224,21 +224,21 @@ const state = {
             'y': 0,
             'w': 2,
             'h': 2,
-            'i': '0'
+            'readView': '0'
           },
           {
             'x': 2,
             'y': 0,
             'w': 2,
             'h': 4,
-            'i': '1'
+            'readView': '1'
           },
           {
             'x': 4,
             'y': 0,
             'w': 2,
             'h': 5,
-            'i': '2'
+            'readView': '2'
           }
           ]
         }]
@@ -253,7 +253,7 @@ const state = {
             'y': 0,
             'w': 2,
             'h': 2,
-            'i': '0'
+            'readView': '0'
           }]
         },
         {
@@ -264,7 +264,7 @@ const state = {
             'y': 0,
             'w': 2,
             'h': 2,
-            'i': '0'
+            'readView': '0'
           }]
         }
         ]
@@ -279,7 +279,7 @@ const state = {
             'y': 0,
             'w': 2,
             'h': 2,
-            'i': '0'
+            'readView': '0'
           }]
         },
         {
@@ -290,7 +290,7 @@ const state = {
             'y': 0,
             'w': 2,
             'h': 2,
-            'i': '0'
+            'readView': '0'
           }]
         },
         {
@@ -301,7 +301,7 @@ const state = {
             'y': 0,
             'w': 2,
             'h': 2,
-            'i': '0'
+            'readView': '0'
           }]
         }
         ]
@@ -317,21 +317,21 @@ const state = {
             'y': 0,
             'w': 2,
             'h': 2,
-            'i': '0'
+            'readView': '0'
           },
           {
             'x': 2,
             'y': 0,
             'w': 2,
             'h': 4,
-            'i': '1'
+            'readView': '1'
           },
           {
             'x': 4,
             'y': 0,
             'w': 2,
             'h': 5,
-            'i': '2'
+            'readView': '2'
           }
           ]
         }]
@@ -346,7 +346,7 @@ const state = {
             'y': 0,
             'w': 2,
             'h': 2,
-            'i': '0'
+            'readView': '0'
           }]
         },
         {
@@ -357,7 +357,7 @@ const state = {
             'y': 0,
             'w': 2,
             'h': 2,
-            'i': '0'
+            'readView': '0'
           }]
         }
         ]
@@ -372,7 +372,7 @@ const state = {
             'y': 0,
             'w': 2,
             'h': 2,
-            'i': '0'
+            'readView': '0'
           }]
         },
         {
@@ -383,7 +383,7 @@ const state = {
             'y': 0,
             'w': 2,
             'h': 2,
-            'i': '0'
+            'readView': '0'
           }]
         },
         {
@@ -394,7 +394,7 @@ const state = {
             'y': 0,
             'w': 2,
             'h': 2,
-            'i': '0'
+            'readView': '0'
           }]
         }
         ]
@@ -410,21 +410,21 @@ const state = {
             'y': 0,
             'w': 2,
             'h': 2,
-            'i': '0'
+            'readView': '0'
           },
           {
             'x': 2,
             'y': 0,
             'w': 2,
             'h': 4,
-            'i': '1'
+            'readView': '1'
           },
           {
             'x': 4,
             'y': 0,
             'w': 2,
             'h': 5,
-            'i': '2'
+            'readView': '2'
           }
           ]
         }]
@@ -439,14 +439,14 @@ const state = {
             'y': 0,
             'w': 2,
             'h': 2,
-            'i': '0'
+            'readView': '0'
           },
           {
             'x': 4,
             'y': 0,
             'w': 2,
             'h': 2,
-            'i': '1'
+            'readView': '1'
           }]
 
         },
@@ -458,7 +458,7 @@ const state = {
             'y': 0,
             'w': 2,
             'h': 2,
-            'i': '0'
+            'readView': '0'
           }]
         }
         ]
@@ -473,7 +473,7 @@ const state = {
             'y': 0,
             'w': 2,
             'h': 2,
-            'i': '0'
+            'readView': '0'
           }]
         },
         {
@@ -484,7 +484,7 @@ const state = {
             'y': 0,
             'w': 2,
             'h': 2,
-            'i': '0'
+            'readView': '0'
           }]
         },
         {
@@ -495,7 +495,7 @@ const state = {
             'y': 0,
             'w': 2,
             'h': 2,
-            'i': '0'
+            'readView': '0'
           }]
         }
         ]
