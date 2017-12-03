@@ -165,9 +165,8 @@
     :i="item.i"
     :key="item.readView">
       <!-- Module view -->
-      <!-- <router-view :name="item.i"></router-view> -->
-      <opensnet-grid-item-default-template :item="item">
-        
+      <router-view :name="item.customView" v-if="item.template == 'none'"></router-view>
+      <opensnet-grid-item-default-template :item="item" v-if="item.template == 'defaultTemplate'">
       </opensnet-grid-item-default-template>
     </opensnet-grid-item>
   </opensnet-grid-layout>
@@ -336,12 +335,12 @@ export default {
       let newMobileDashboardLayoutMode = {}
       newMobileDashboardLayoutMode.name = 1
       newMobileDashboardLayoutMode.displayName = 'Mobile'
-      newMobileDashboardLayoutMode.layout = [{'x': 0, 'y': 0, 'w': 2, 'h': 2, 'readView': 'default', 'hybridView': 'default', 'writeView': 'default'}]
+      newMobileDashboardLayoutMode.layout = [{'x': 0, 'y': 0, 'w': 2, 'h': 2, 'readView': 'default', 'hybridView': 'default', 'writeView': 'default', 'template': 'none', 'customView': 'default'}]
       newDashboardLayout.layout.push(newMobileDashboardLayoutMode)
       let newDesktopDashboardLayoutMode = {}
       newDesktopDashboardLayoutMode.name = 2
       newDesktopDashboardLayoutMode.displayName = 'Desktop'
-      newDesktopDashboardLayoutMode.layout = [{'x': 0, 'y': 0, 'w': 2, 'h': 2, 'readView': 'default', 'hybridView': 'default', 'writeView': 'default'}]
+      newDesktopDashboardLayoutMode.layout = [{'x': 0, 'y': 0, 'w': 2, 'h': 2, 'readView': 'default', 'hybridView': 'default', 'writeView': 'default', 'template': 'none', 'customView': 'default'}]
       // Push the newly created mode into the newDashboardLayout
       newDashboardLayout.layout.push(newDesktopDashboardLayoutMode)
       // Push the newDashboardLayout into the array containing all this.layouts
@@ -482,7 +481,7 @@ export default {
         newDashboardLayoutMode.displayName = newDashboardLayoutDisplayName
       }
       // Create the standard, needed modes
-      newDashboardLayoutMode.layout = [{'x': 0, 'y': 0, 'w': 2, 'h': 2, 'readView': 'default', 'hybridView': 'default', 'writeView': 'default'}]
+      newDashboardLayoutMode.layout = [{'x': 0, 'y': 0, 'w': 2, 'h': 2, 'readView': 'default', 'hybridView': 'default', 'writeView': 'default', 'template': 'none', 'customView': 'default'}]
 
       // Push the newly created mode into the newDashboardLayoutMode
       layoutToAddModeTo.layout.push(newDashboardLayoutMode)
