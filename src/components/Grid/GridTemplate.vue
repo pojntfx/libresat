@@ -336,12 +336,12 @@ export default {
       let newMobileDashboardLayoutMode = {}
       newMobileDashboardLayoutMode.name = 1
       newMobileDashboardLayoutMode.displayName = 'Mobile'
-      newMobileDashboardLayoutMode.layout = [{'x': 0, 'y': 0, 'w': 2, 'h': 2, 'readView': 'default', 'hybridView': 'default'}]
+      newMobileDashboardLayoutMode.layout = [{'x': 0, 'y': 0, 'w': 2, 'h': 2, 'readView': 'default', 'hybridView': 'default', 'writeView': 'default'}]
       newDashboardLayout.layout.push(newMobileDashboardLayoutMode)
       let newDesktopDashboardLayoutMode = {}
       newDesktopDashboardLayoutMode.name = 2
       newDesktopDashboardLayoutMode.displayName = 'Desktop'
-      newDesktopDashboardLayoutMode.layout = [{'x': 0, 'y': 0, 'w': 2, 'h': 2, 'readView': 'default', 'hybridView': 'default'}]
+      newDesktopDashboardLayoutMode.layout = [{'x': 0, 'y': 0, 'w': 2, 'h': 2, 'readView': 'default', 'hybridView': 'default', 'writeView': 'default'}]
       // Push the newly created mode into the newDashboardLayout
       newDashboardLayout.layout.push(newDesktopDashboardLayoutMode)
       // Push the newDashboardLayout into the array containing all this.layouts
@@ -482,7 +482,7 @@ export default {
         newDashboardLayoutMode.displayName = newDashboardLayoutDisplayName
       }
       // Create the standard, needed modes
-      newDashboardLayoutMode.layout = [{'x': 0, 'y': 0, 'w': 2, 'h': 2, 'readView': 'default', 'hybridView': 'default'}]
+      newDashboardLayoutMode.layout = [{'x': 0, 'y': 0, 'w': 2, 'h': 2, 'readView': 'default', 'hybridView': 'default', 'writeView': 'default'}]
 
       // Push the newly created mode into the newDashboardLayoutMode
       layoutToAddModeTo.layout.push(newDashboardLayoutMode)

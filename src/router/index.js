@@ -11,11 +11,12 @@ import Donate from '@/components/Misc/Donate'
 import SettingsIndex from '@/components/Settings/SettingsIndex'
 import SettingsProfile from '@/components/Settings/SettingsProfile'
 import DashboardModulePlaceholder from '@/components/Grid/DashboardModulePlaceholder'
-// Vendor Module Imports
+// Vendor Module Dummy Imports
 // import AlphaHorizonInfo from '@/components/Vendors/AlphaHorizon/Info'
 // import AlphaHorizonReactionWheelInfo from '@/components/Vendors/AlphaHorizon/ReactionWheel/Info'
 import AlphaHorizonReactionWheelDashboardReadView from '@/components/Vendors/AlphaHorizon/ReactionWheel/DashboardReadView'
 import AlphaHorizonReactionWheelDashboardHybridView from '@/components/Vendors/AlphaHorizon/ReactionWheel/DashboardHybridView'
+import AlphaHorizonReactionWheelDashboardWriteView from '@/components/Vendors/AlphaHorizon/ReactionWheel/DashboardWriteView'
 
 Vue.use(Router)
 
@@ -96,7 +97,8 @@ export default new Router({
             or import with the UI */
             default: DashboardModulePlaceholder,
             alphaHorizonReactionWheelDashboardReadView: AlphaHorizonReactionWheelDashboardReadView,
-            alphaHorizonReactionWheelDashboardHybridView: AlphaHorizonReactionWheelDashboardHybridView
+            alphaHorizonReactionWheelDashboardHybridView: AlphaHorizonReactionWheelDashboardHybridView,
+            alphaHorizonReactionWheelDashboardWriteView: AlphaHorizonReactionWheelDashboardWriteView
           }
         }
       ]
@@ -113,7 +115,8 @@ export default new Router({
           or import with the UI */
           default: DashboardModulePlaceholder,
           alphaHorizonReactionWheelDashboardReadView: AlphaHorizonReactionWheelDashboardReadView,
-          alphaHorizonReactionWheelDashboardHybridView: AlphaHorizonReactionWheelDashboardHybridView
+          alphaHorizonReactionWheelDashboardHybridView: AlphaHorizonReactionWheelDashboardHybridView,
+          alphaHorizonReactionWheelDashboardWriteView: AlphaHorizonReactionWheelDashboardWriteView
         }
       }]
     }
