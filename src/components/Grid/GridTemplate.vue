@@ -156,13 +156,14 @@
   :margin="[10, 10]"
   :use-css-transforms="true"
   >
+    <!-- item.i may be undefined as it is required to use vue-grid-layout without forking it -->
     <opensnet-grid-item v-for="item in currentDashboardMode"
     :x="item.x"
     :y="item.y"
     :w="item.w"
     :h="item.h"
     :i="item.i"
-    :key="item.i">
+    :key="item.readView">
       <!-- Module view -->
       <!-- <router-view :name="item.i"></router-view> -->
       <opensnet-grid-item-default-template :item="item">
@@ -335,12 +336,12 @@ export default {
       let newMobileDashboardLayoutMode = {}
       newMobileDashboardLayoutMode.name = 1
       newMobileDashboardLayoutMode.displayName = 'Mobile'
-      newMobileDashboardLayoutMode.layout = [{'x': 0, 'y': 0, 'w': 2, 'h': 2, 'i': '0'}]
+      newMobileDashboardLayoutMode.layout = [{'x': 0, 'y': 0, 'w': 2, 'h': 2, 'readView': 'default', 'hybridView': 'default'}]
       newDashboardLayout.layout.push(newMobileDashboardLayoutMode)
       let newDesktopDashboardLayoutMode = {}
       newDesktopDashboardLayoutMode.name = 2
       newDesktopDashboardLayoutMode.displayName = 'Desktop'
-      newDesktopDashboardLayoutMode.layout = [{'x': 0, 'y': 0, 'w': 2, 'h': 2, 'i': '0'}]
+      newDesktopDashboardLayoutMode.layout = [{'x': 0, 'y': 0, 'w': 2, 'h': 2, 'readView': 'default', 'hybridView': 'default'}]
       // Push the newly created mode into the newDashboardLayout
       newDashboardLayout.layout.push(newDesktopDashboardLayoutMode)
       // Push the newDashboardLayout into the array containing all this.layouts
@@ -481,7 +482,7 @@ export default {
         newDashboardLayoutMode.displayName = newDashboardLayoutDisplayName
       }
       // Create the standard, needed modes
-      newDashboardLayoutMode.layout = [{'x': 0, 'y': 0, 'w': 2, 'h': 2, 'i': '0'}]
+      newDashboardLayoutMode.layout = [{'x': 0, 'y': 0, 'w': 2, 'h': 2, 'readView': 'default', 'hybridView': 'default'}]
 
       // Push the newly created mode into the newDashboardLayoutMode
       layoutToAddModeTo.layout.push(newDashboardLayoutMode)

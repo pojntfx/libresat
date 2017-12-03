@@ -143,7 +143,6 @@
                     <div slot="header">Read</div>
                     <v-card>
                       <v-card-text class="px-4">
-                        Read-only UI here
                         <router-view :name="readView"></router-view>
                       </v-card-text>
                     </v-card>
@@ -158,7 +157,7 @@
                     <div slot="header">Hybrid</div>
                     <v-card>
                       <v-card-text class="px-4">
-                        Read-Write (Hybrid) UI here
+                        <router-view :name="hybridView"></router-view>
                       </v-card-text>
                     </v-card>
                   </v-expansion-panel-content>
@@ -290,6 +289,9 @@ export default {
     },
     readView () {
       return this.item.readView
+    },
+    hybridView () {
+      return this.item.hybridView
     }
   },
   methods: {
