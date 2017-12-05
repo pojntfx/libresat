@@ -1,2 +1,2 @@
 baseurl: ""
-exclude: ["README.md", "LICENSE", "Gemfile", "Gemfile.lock"]
+exclude: ["README.md", "LICENSE", "Gemfile", "Gemfile.lock", "node_modules"]

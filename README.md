@@ -16,6 +16,7 @@ PATH=/home/yourusernamehere/.gem/ruby/yourrubyversion/bin:$PATH
 
 # Install dependencies:
 bundle install
+npm install
 
 # Build the site on the preview server:
 bundle exec jekyll serve
