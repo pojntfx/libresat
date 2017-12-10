@@ -243,6 +243,12 @@ export default {
       } else {
         this.outerWrapperLayout = 'row'
       }
+      // Change to the mobile mode if below breakpoint
+      if (this.$mq.below(1280)) {
+        this.changeCurrentDashboardModeTo(1)
+      } else {
+        this.changeCurrentDashboardModeTo(2)
+      }
       if (this.$mq.below(455)) {
         this.innerWrapperLayout = 'column'
       } else {

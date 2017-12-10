@@ -252,7 +252,9 @@ export default {
     column () {
       var column = {}
 
-      if (this.item.w > 5 && (this.$mq.resize && this.$mq.above('1270px'))) {
+      // Make the card mobile when either the card has been made smaller or
+      // if the screen resolution is to small
+      if (this.item.w > 7 && (this.$mq.resize && this.$mq.above('1360px'))) {
         column.row = true
         this.cardMobileMode = false
       } else {
@@ -263,7 +265,7 @@ export default {
       return column
     },
     readCardClass () {
-      if (this.item.w > 5 && (this.$mq.resize && this.$mq.above('1270px'))) {
+      if (this.item.w > 7 && (this.$mq.resize && this.$mq.above('1360px'))) {
         this.readCardClassValue = 'read-card-spacing'
       } else {
         this.readCardClassValue = ''
@@ -272,7 +274,7 @@ export default {
       return this.readCardClassValue
     },
     hybridCardClass () {
-      if (this.item.w > 5 && (this.$mq.resize && this.$mq.above('1270px'))) {
+      if (this.item.w > 7 && (this.$mq.resize && this.$mq.above('1360px'))) {
         this.hybridCardClassValue = 'hybrid-card-spacing'
       } else {
         this.hybridCardClassValue = ''
@@ -281,7 +283,7 @@ export default {
       return this.hybridCardClassValue
     },
     writeCardClass () {
-      if (this.item.w > 5 && (this.$mq.resize && this.$mq.above('1270px'))) {
+      if (this.item.w > 7 && (this.$mq.resize && this.$mq.above('1360px'))) {
         this.writeCardClassValue = 'write-card-spacing'
       } else {
         this.writeCardClassValue = ''
