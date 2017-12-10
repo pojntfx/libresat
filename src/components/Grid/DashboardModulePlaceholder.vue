@@ -21,3 +21,11 @@
     </v-card-text>
   </v-card>
 </template>
+
+<style scoped>
+  /* Make the card fill the vue-grid-layout */
+  .card {
+    height: 100%!important;
+  }
+</style>
+
