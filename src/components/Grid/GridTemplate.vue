@@ -730,6 +730,7 @@ export default {
 
 <style lang="css">
 /* Hide the first button (reserved layout) in the layout switching section */
+/* Ugly solution but I've not been able to fix this in any other way even after days of debugging */
 .layout-load-button:first-of-type, .layout-delete-button:first-of-type {
   display: none;
 }

@@ -113,25 +113,25 @@
           </v-card-title>
 
           <!-- Card Message Section -->
-          <v-layout row v-show="alert" class="mb-3 resizable-card-wrapper-section-main">
-            <v-flex>
-              <v-alert info dismissible v-model="alert">
+          <!-- <v-layout row v-show="alert" class="mb-3 resizable-card-wrapper-section-main"> -->
+            <!-- <v-flex>
+              <v-alert info dismissible v-model="alert"> -->
                 <!-- TODO: Card Info Component Integration -->
-                Info section here
+                <!-- Info section here
               </v-alert>
             </v-flex>
-          </v-layout>
+          </v-layout> -->
 
           <!-- Card Main Section -->
           <v-card-text class="pt-0">
 
             <!-- Card XTerm Section -->
-            <v-layout row class="mb-3">
-              <v-flex>
+            <!-- <v-layout row class="mb-3">
+              <v-flex> -->
                 <!-- TODO: Card XTerm Component Integration -->
-                XTerm here
+                <!-- XTerm here
               </v-flex>
-            </v-layout>
+            </v-layout> -->
 
             <!-- Card Controls Section -->
             <v-layout v-bind="column">
@@ -360,5 +360,9 @@ export default {
   padding-bottom: 0 !important;
   padding-left: 0 !important;
   padding-right: 2px !important;
+}
+/* Make the height of the item fit the wrapper */
+.vue-grid-item {
+  height: 100%;
 }
 </style>
