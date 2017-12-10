@@ -79,14 +79,16 @@
               <!-- Movement Section -->
               <v-card class="ml-2">
                 <v-layout row class="top-toolbar-group top-toolbar-group-upload">
-                  <v-flex xs4 v-if="draggable">
-                    <v-btn
-                           icon
-                           v-tooltip:bottom="{ html: 'Move/drag the module', visible: topToolbar.tooltips.active }"
-                           class="top-toolbar-item top-toolbar-item-upload-1"
-                           >
-                        <v-icon ref="dragHandle" class="vue-draggable-handle">open_with</v-icon>
-                    </v-btn>
+                  <v-flex xs4 v-if="draggable" class="top-toolbar-item-move-wrapper">
+                     <v-flex
+                       icon
+                       v-tooltip:bottom="{ html: 'Move/drag the module', visible: topToolbar.tooltips.active }"
+                       class="top-toolbar-item top-toolbar-item-move"
+                       >
+                       <v-icon
+                         ref="handle"
+                       >open_with</v-icon>
+                    </v-flex>
                   </v-flex>
                   <v-flex :xs4="draggable" :xs6="!draggable">
                     <v-btn
@@ -203,7 +205,7 @@
               </v-flex>
               <v-spacer></v-spacer>
               <!-- Resize Section -->
-              <v-flex class="text-xs-right">
+              <!-- <v-flex class="text-xs-right">
                 <v-flex
                        icon
                        v-tooltip:bottom="{ html: 'Move/drag the module', visible: topToolbar.tooltips.active }"
@@ -214,7 +216,7 @@
                          ref="handle"
                        >transform</v-icon>
                 </v-flex>
-              </v-flex>
+              </v-flex> -->
             </v-layout>
           </v-card-actions>
         </v-card>
@@ -364,5 +366,17 @@ export default {
 /* Make the height of the item fit the wrapper */
 .vue-grid-item {
   height: 100%;
+}
+/* Make the cards move button uniform with rest of the UI */
+.top-toolbar-item-move {
+    margin-top: 4px;
+    margin-left: 6px;
+    margin-right: 6px;
+}
+/* Fix the margin to left to make uniform with the rest and make the cursor look right */
+.top-toolbar-item-move-wrapper {
+  margin-left: 6px;
+  cursor: move;
+  user-select: none;
 }
 </style>
