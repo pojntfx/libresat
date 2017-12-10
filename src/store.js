@@ -667,15 +667,22 @@ const getters = {
 const mutations = {
   toggleDashboardLayoutEditingMode (state) {
     state.currentDashboardlayout.editable = !state.currentDashboardlayout.editable
+  },
+  // Delete an module in the grid array
+  deleteDashboardLayoutModeModule (state, {group, layout, mode, module}) {
+    Vue.delete(state.var.groups[group][layout]['layout'][mode]['layout'], [module])
   }
 }
 
 const actions = {
   toggleDashboardLayoutEditingMode: ({ commit }) => commit('toggleDashboardLayoutEditingMode'),
-  incrementIfOdd: ({ commit, state }) => {
-    if ((state.count + 1) % 2 === 0) {
-      commit('increment')
-    }
+  deleteDashboardLayoutModeModule ({commit}, {group, layout, mode, module}) {
+    commit('deleteDashboardLayoutModeModule', {
+      group: group,
+      layout: layout,
+      mode: mode,
+      module: module
+    })
   }
 }
 
