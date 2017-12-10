@@ -1627,7 +1627,7 @@ export default {
       // Initial definitions for the floating action button
       floatingActionButton: {
         active: false,
-        visible: this.$store.state.currentDashboardlayout.editable
+        visible: this.currentDashboardlayoutEditable
       },
 
       // Initial defintions for the dashboard element dialogs
@@ -2146,7 +2146,11 @@ export default {
     showOuterUI () {
       this.showToolbar()
       this.showBottomBar()
-      this.showFloatingActionButton()
+      if (this.currentDashboardlayoutEditable) {
+        this.showFloatingActionButton()
+      } else {
+        this.hideFloatingActionButton()
+      }
     },
     // Initialize scroll direction checking if it has not been done before with these values
     checkScrollValues () {
@@ -2188,7 +2192,12 @@ export default {
       // If on md and up: hide the bottom bar
       if (this.permaDrawer.active && this.mainApp.autoHide.enabled) {
         this.hideBottomBar()
-        this.showFloatingActionButton()
+        // Check whether the FAB should be visible (that is, if the layout editing mode is activated)
+        if (this.currentDashboardlayoutEditable) {
+          this.showFloatingActionButton()
+        } else {
+          this.hideFloatingActionButton()
+        }
         this.showToolbar()
       } else {
         // If not overwritten, check whether to hide the toolbar
@@ -2213,6 +2222,9 @@ export default {
     // Set all vmodels to their actual values
     this.getAllCurrentVModels('userMenuItems')
     this.getAllCurrentVModels('vcsMenuItems')
+
+    // Assign dashboard layout editing mode activiation state to v-model of the FAB
+    this.floatingActionButton.visible = this.currentDashboardlayoutEditable
   },
   destroyed () {
     window.removeEventListener('scroll', this.handleScroll)
