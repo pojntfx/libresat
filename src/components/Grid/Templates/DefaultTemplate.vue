@@ -9,7 +9,7 @@
             <v-layout row align-center>
 
               <v-breadcrumbs divider="/" class="pa-0">
-                <v-breadcrumbs-item class="first-breadcrumb-item" v-show="!cardMobileMode">
+                <v-breadcrumbs-item class="first-breadcrumb-item" v-show="!cardMobileMode1">
                   Group
                 </v-breadcrumbs-item>
                 <v-breadcrumbs-item>
@@ -20,7 +20,7 @@
               <v-spacer></v-spacer>
 
               <!-- VCS Section -->
-              <v-card class="mr-2">
+              <v-card class="mr-2" v-if="!cardMobileMode2">
                 <v-layout row class="top-toolbar-group top-toolbar-group-upload">
                   <v-flex xs6>
                     <v-btn
@@ -44,7 +44,7 @@
               </v-card>
 
               <!-- Options Section -->
-              <v-card class="mx-2" v-if="!cardMobileMode">
+              <v-card class="mx-2" v-if="!cardMobileMode1">
                 <v-layout row class="top-toolbar-group top-toolbar-group-upload">
                   <v-flex xs4>
                     <v-btn
@@ -79,6 +79,45 @@
               <!-- Movement Section -->
               <v-card class="ml-2">
                 <v-layout row class="top-toolbar-group top-toolbar-group-upload">
+                  <v-flex v-if="cardMobileMode2 || cardMobileMode1">
+                    <v-menu
+                      offset-y
+                      :close-on-content-click="true"
+                      >
+                      <v-btn
+                        icon
+                        v-tooltip:bottom="{ html: 'Pin, edit, ...', visible: topToolbar.tooltips.active }"
+                        class="top-toolbar-item top-toolbar-group-item-options"
+                        slot="activator"
+                      >
+                        <v-icon>more_vert</v-icon>
+                      </v-btn>
+                      <v-card>
+                        <v-list>
+
+                          <v-list-tile @click="" v-if="cardMobileMode2">
+                            <v-list-tile-title>Undo</v-list-tile-title>
+                          </v-list-tile>
+                          <v-list-tile @click="" v-if="cardMobileMode2">
+                            <v-list-tile-title>Redo</v-list-tile-title>
+                          </v-list-tile>
+                          <v-list-tile @click="">
+                            <v-list-tile-title>Pin to top</v-list-tile-title>
+                          </v-list-tile>
+                          <v-list-tile @click="">
+                            <v-list-tile-title>Edit source code</v-list-tile-title>
+                          </v-list-tile>
+                          <v-list-tile @click="">
+                            <v-list-tile-title>Module's blog</v-list-tile-title>
+                          </v-list-tile>
+                          <v-list-tile @click="">
+                            <v-list-tile-title>Module's description</v-list-tile-title>
+                          </v-list-tile>
+
+                        </v-list>
+                      </v-card>
+                    </v-menu>
+                  </v-flex>
                   <v-flex xs4 v-if="draggable" class="top-toolbar-item-move-wrapper">
                      <v-flex
                        icon
@@ -243,7 +282,8 @@ export default {
           active: true
         }
       },
-      cardMobileMode: true,
+      cardMobileMode1: true,
+      cardMobileMode2: false,
       draggable: true,
       resizable: true
     }
@@ -256,10 +296,15 @@ export default {
       // if the screen resolution is to small
       if (this.item.w > 7 && (this.$mq.resize && this.$mq.above('1360px'))) {
         column.row = true
-        this.cardMobileMode = false
+        this.cardMobileMode1 = false
       } else {
         column.column = true
-        this.cardMobileMode = true
+        this.cardMobileMode1 = true
+      }
+      if (this.item.w < 7 || (this.$mq.resize && this.$mq.below('415px'))) {
+        this.cardMobileMode2 = true
+      } else {
+        this.cardMobileMode2 = false
       }
 
       return column
@@ -377,7 +422,6 @@ export default {
 }
 /* Fix the margin to left to make uniform with the rest and make the cursor look right */
 .top-toolbar-item-move-wrapper {
-  margin-left: 6px;
   cursor: move;
   user-select: none;
 }
