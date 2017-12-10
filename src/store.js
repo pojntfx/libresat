@@ -25,40 +25,7 @@ const state = {
           layout: [{
             name: 1,
             displayName: 'Reserved',
-            layout: [{
-              'x': 0,
-              'y': 0,
-              'w': 2,
-              'h': 2,
-              'readView': 'default',
-              'hybridView': 'default',
-              'writeView': 'default',
-              'template': 'none',
-              'customView': 'default'
-            },
-            {
-              'x': 2,
-              'y': 0,
-              'w': 2,
-              'h': 4,
-              'readView': 'default',
-              'hybridView': 'default',
-              'writeView': 'default',
-              'template': 'none',
-              'customView': 'default'
-            },
-            {
-              'x': 4,
-              'y': 0,
-              'w': 2,
-              'h': 5,
-              'readView': 'default',
-              'hybridView': 'default',
-              'writeView': 'default',
-              'template': 'none',
-              'customView': 'default'
-            }
-            ]
+            layout: []
           }]
         }, {
           name: 2,
@@ -69,8 +36,9 @@ const state = {
             layout: [{
               'x': 0,
               'y': 0,
-              'w': 6,
+              'w': 8,
               'h': 7,
+              'i': '0',
               'readView': 'alphaHorizonReactionWheelDashboardReadView',
               'hybridView': 'alphaHorizonReactionWheelDashboardHybridView',
               'writeView': 'alphaHorizonReactionWheelDashboardWriteView',
@@ -78,10 +46,11 @@ const state = {
               'customView': 'default'
             },
             {
-              'x': 6,
+              'x': 8,
               'y': 0,
-              'w': 6,
+              'w': 4,
               'h': 5,
+              'i': '1',
               'readView': 'default',
               'hybridView': 'default',
               'writeView': 'default',
