@@ -1,7 +1,12 @@
 <template lang="html">
   <div>
     <!-- <b>From the parent: </b>{{ dashboardLayoutStart }} -->
-    <opensnet-grid-template :layouts="dashboardLayoutStart" :editable="currentDashboardlayoutEditable"></opensnet-grid-template>
+    <opensnet-grid-template 
+      :layouts="dashboardLayoutStart" 
+      :editable="currentDashboardlayoutEditable" 
+      :draggable="currentDashboardlayoutDraggable" 
+      :resizable="currentDashboardlayoutResizable"
+    ></opensnet-grid-template>
     <v-btn @click="
     deleteDashboardLayoutModeModule({group: 'start', layout: 1, /* mobile mode */ mode: 0, module: 0});
     deleteDashboardLayoutModeModule({group: 'start', layout: 1, /* desktop mode */ mode: 1, module: 0})
@@ -24,6 +29,8 @@ export default {
   computed: {
     ...mapGetters([
       'currentDashboardlayoutEditable',
+      'currentDashboardlayoutDraggable',
+      'currentDashboardlayoutResizable',
       'dashboardLayoutStart'
     ])
   },

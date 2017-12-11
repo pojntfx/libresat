@@ -5,7 +5,9 @@ Vue.use(Vuex)
 
 const state = {
   currentDashboardlayout: {
-    editable: false
+    editable: false,
+    draggable: false,
+    resizable: false
   },
   conf: {
     testValue: null
@@ -657,6 +659,8 @@ const state = {
 
 const getters = {
   currentDashboardlayoutEditable: state => state.currentDashboardlayout.editable,
+  currentDashboardlayoutDraggable: state => state.currentDashboardlayout.draggable,
+  currentDashboardlayoutResizable: state => state.currentDashboardlayout.resizable,
   dashboardLayoutStart: state => state.var.groups.start,
   dashboardLayoutComms: state => state.var.groups.comms,
   dashboardLayoutNav: state => state.var.groups.nav,
@@ -665,8 +669,15 @@ const getters = {
 }
 
 const mutations = {
+  // Toggle the dashboard layout modification modes
   toggleDashboardLayoutEditingMode (state) {
     state.currentDashboardlayout.editable = !state.currentDashboardlayout.editable
+  },
+  toggleDashboardLayoutDraggable (state) {
+    state.currentDashboardlayout.draggable = !state.currentDashboardlayout.draggable
+  },
+  toggleDashboardLayoutResizable (state) {
+    state.currentDashboardlayout.resizable = !state.currentDashboardlayout.resizable
   },
   // Delete an module in the grid array
   deleteDashboardLayoutModeModule (state, {group, layout, mode, module}) {
@@ -676,6 +687,8 @@ const mutations = {
 
 const actions = {
   toggleDashboardLayoutEditingMode: ({ commit }) => commit('toggleDashboardLayoutEditingMode'),
+  toggleDashboardLayoutDraggable: ({ commit }) => commit('toggleDashboardLayoutDraggable'),
+  toggleDashboardLayoutResizable: ({ commit }) => commit('toggleDashboardLayoutResizable'),
   deleteDashboardLayoutModeModule ({commit}, {group, layout, mode, module}) {
     commit('deleteDashboardLayoutModeModule', {
       group: group,

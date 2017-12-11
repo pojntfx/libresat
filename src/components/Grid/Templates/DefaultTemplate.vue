@@ -269,6 +269,11 @@ export default {
     item: {
       type: [Object, String],
       default: 'x'
+    },
+    // Check whether the module is draggable: Show the drag handle or not
+    draggable: {
+      type: Boolean,
+      default: false
     }
   },
   data: function () {
@@ -283,9 +288,9 @@ export default {
         }
       },
       cardMobileMode1: true,
-      cardMobileMode2: false,
-      draggable: true,
-      resizable: true
+      cardMobileMode2: false
+      // Old property: Has been used back when a template-local resize handle was used before the recode
+      // resizable: true
     }
   },
   computed: {

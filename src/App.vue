@@ -1826,6 +1826,16 @@ export default {
             action: 'toggleFloatingActionButton(), this.toggleDashboardLayoutEditingMode()'
           },
           {
+            title: 'Dashboard modules resizable',
+            vModel: 'this.currentDashboardlayoutResizable',
+            action: 'toggleDashboardLayoutResizable()'
+          },
+          {
+            title: 'Dashboard modules draggable',
+            vModel: 'this.currentDashboardlayoutDraggable',
+            action: 'toggleDashboardLayoutDraggable()'
+          },
+          {
             title: 'Responsive auto-ui-hiding',
             vModel: 'this.mainApp.autoHide.enabled',
             action: 'toggleAutomaticOuterUIHidingOnMobile()'
@@ -1944,7 +1954,9 @@ export default {
   },
   computed: {
     ...mapGetters([
-      'currentDashboardlayoutEditable'
+      'currentDashboardlayoutEditable',
+      'currentDashboardlayoutDraggable',
+      'currentDashboardlayoutResizable'
     ]),
     // Determine whether it is day or night in order to switch night modes
     isItDay: function () {
@@ -1962,7 +1974,9 @@ export default {
   },
   methods: {
     ...mapActions([
-      'toggleDashboardLayoutEditingMode' // Enable the toggling of the dashboard layout editing mode
+      'toggleDashboardLayoutEditingMode', // Enable the toggling of the dashboard layout editing mode
+      'toggleDashboardLayoutResizable',
+      'toggleDashboardLayoutDraggable'
     ]),
     drawerOptimizer () {
       // On xs and down: do everything like on sm to xs but shift (minify) the bottom navigation to fit the screen
