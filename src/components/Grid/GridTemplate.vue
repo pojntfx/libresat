@@ -150,8 +150,8 @@
   :layout="currentDashboardMode"
   :col-num="12"
   :row-height="30"
-  :is-draggable="true"
-  :is-resizable="true"
+  :is-draggable="draggable"
+  :is-resizable="resizable"
   :vertical-compact="true"
   :margin="[10, 10]"
   :use-css-transforms="true"
@@ -168,7 +168,10 @@
     :minW="5">
       <!-- Module view -->
       <router-view :name="item.customView" v-if="item.template == 'none'"></router-view>
-      <opensnet-grid-item-default-template :item="item" v-if="item.template == 'defaultTemplate'">
+      <opensnet-grid-item-default-template 
+        :item="item" 
+        :draggable="draggable"
+        v-if="item.template == 'defaultTemplate'">
       </opensnet-grid-item-default-template>
     </opensnet-grid-item>
   </opensnet-grid-layout>
@@ -189,6 +192,14 @@ export default {
       required: true
     },
     editable: {
+      type: Boolean,
+      required: true
+    },
+    draggable: {
+      type: Boolean,
+      required: true
+    },
+    resizable: {
       type: Boolean,
       required: true
     }
