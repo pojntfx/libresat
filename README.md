@@ -5,18 +5,23 @@
 ## Build Setup
 
 ``` bash
-# Install the ruby package:
-pacman -S ruby (Arch Linux) OR apt install ruby (Debian/Ubuntu) OR brew install ruby (macOS)
+# Install Ruby:
+apt install ruby (Debian/Ubuntu) 
+OR
+pacman -S ruby (Arch Linux) 
+OR
+brew install ruby (macOS)
+OR
+choco install ruby (Windows) (As administrator, not tested)
 
 # Install Jekyll and Bundler gems through RubyGems:
 gem install jekyll bundler
 
-# Add them to your PATH if needed:
-PATH=/home/yourusernamehere/.gem/ruby/yourrubyversion/bin:$PATH
+# Add them to your PATH:
+PATH=/home/yourusername/.gem/ruby/yourrubyversion/bin:$PATH
 
 # Install dependencies:
 bundle install
-npm install
 
 # Build the site on the preview server:
 bundle exec jekyll serve
