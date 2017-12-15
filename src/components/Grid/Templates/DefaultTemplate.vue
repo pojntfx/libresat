@@ -143,7 +143,7 @@
                            icon
                            v-tooltip:left="{ html: 'Remove module from dashboard layout', visible: topToolbar.tooltips.active }"
                            class="top-toolbar-item top-toolbar-item-upload-1"
-                           @click="removeItem(item)"
+                           @click="removeItem(item.i)"
                            >
                       <v-icon>close</v-icon>
                     </v-btn>
@@ -263,6 +263,8 @@
 </template>
 
 <script>
+// Import the helper getters and actions for the editable dashboard layout mode from vuex
+import { mapActions } from 'vuex'
 export default {
   name: 'GridItem',
   props: {
@@ -274,6 +276,19 @@ export default {
     draggable: {
       type: Boolean,
       default: false
+    },
+    groupName: {
+      type: String,
+      default: 'x'
+    },
+    layoutName: {
+      type: Number,
+      default: 1
+    },
+    modeName: {
+      type: Number,
+      // Mobile mode
+      default: 0
     }
   },
   data: function () {
@@ -352,8 +367,13 @@ export default {
     }
   },
   methods: {
-    removeItem: function (item) {
-      this.layout.splice(this.layout.indexOf(item), 1)
+    // Actions from vuex for removing the current module from the grid
+    ...mapActions([
+      'deleteDashboardLayoutModeModule'
+    ]),
+    removeItem: function (itemId) {
+      // console.log('Deleting module', itemId)
+      this.deleteDashboardLayoutModeModule({group: this.groupName, layout: this.layoutName, /* mobile mode */ mode: this.modeName, module: itemId})
     }
   }
 }

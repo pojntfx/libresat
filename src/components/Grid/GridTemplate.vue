@@ -171,8 +171,14 @@
       <opensnet-grid-item-default-template 
         :item="item" 
         :draggable="draggable"
+        :groupName="groupName"
+        :layoutName="layoutName"
+        :modeName="modeNameMobileOrDesktop"
         v-if="item.template == 'defaultTemplate'">
       </opensnet-grid-item-default-template>
+      <!-- {{ groupName }}
+      {{ layoutName }}
+      {{ modeNameMobileOrDesktop }} -->
     </opensnet-grid-item>
   </opensnet-grid-layout>
   </div>
@@ -182,6 +188,8 @@
 // Load the module
 import VueGridLayout from 'vue-grid-layout'
 import GridItemDefaultTemplate from '@/components/Grid/Templates/DefaultTemplate'
+// Import the helper getters and actions for the editable dashboard layout mode from vuex
+import { mapActions, mapGetters } from 'vuex'
 // Assign the submodules
 const GridLayout = VueGridLayout.GridLayout
 const GridItem = VueGridLayout.GridItem
@@ -202,6 +210,14 @@ export default {
     resizable: {
       type: Boolean,
       required: true
+    },
+    groupName: {
+      type: String,
+      default: 'x'
+    },
+    layoutName: {
+      type: Number,
+      default: 1
     }
   },
   components: {
@@ -244,9 +260,23 @@ export default {
   computed: {
     currentRouteName () {
       return this.$route.name
+    },
+    ...mapGetters([
+      'currentDashboardlayoutinMobileMode'
+    ]),
+    modeNameMobileOrDesktop () {
+      if (this.currentDashboardlayoutinMobileMode) {
+        return 0
+      } else {
+        return 1
+      }
     }
   },
   methods: {
+    ...mapActions([
+      'enableDashboardLayoutMobileModeStatus',
+      'disableDashboardLayoutMobileModeStatus'
+    ]),
     // Make the controls responsive
     makeEditDashboardControlsResponsive () {
       if (this.$mq.below(1550)) {
@@ -256,9 +286,13 @@ export default {
       }
       // Change to the mobile mode if below breakpoint
       if (this.$mq.below(1280)) {
+        // Mobile mode
         this.changeCurrentDashboardModeTo(1)
+        this.enableDashboardLayoutMobileModeStatus()
       } else {
+        // Desktop mode
         this.changeCurrentDashboardModeTo(2)
+        this.disableDashboardLayoutMobileModeStatus()
       }
       if (this.$mq.below(455)) {
         this.innerWrapperLayout = 'column'
