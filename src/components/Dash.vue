@@ -6,6 +6,8 @@
       :editable="currentDashboardlayoutEditable" 
       :draggable="currentDashboardlayoutDraggable" 
       :resizable="currentDashboardlayoutResizable"
+      :groupName="'start'"
+      :layoutName="1"
     ></opensnet-grid-template>
     <v-btn @click="
     deleteDashboardLayoutModeModule({group: 'start', layout: 1, /* mobile mode */ mode: 0, module: 0});

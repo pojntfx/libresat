@@ -7,7 +7,8 @@ const state = {
   currentDashboardlayout: {
     editable: false,
     draggable: false,
-    resizable: false
+    resizable: false,
+    mobileMode: true
   },
   conf: {
     testValue: null
@@ -41,7 +42,7 @@ const state = {
               'w': 12,
               'h': 8,
               'i': '0',
-              'readView': 'alphaHorizonReactionWheelDashboardReadView',
+              'readView': 'default',
               'hybridView': 'alphaHorizonReactionWheelDashboardHybridView',
               'writeView': 'alphaHorizonReactionWheelDashboardWriteView',
               'template': 'defaultTemplate',
@@ -53,11 +54,11 @@ const state = {
               'w': 12,
               'h': 8,
               'i': '1',
-              'readView': 'default',
-              'hybridView': 'default',
-              'writeView': 'default',
-              'template': 'none',
-              'customView': 'default'
+              'readView': 'alphaHorizonReactionWheelDashboardReadView',
+              'hybridView': 'alphaHorizonReactionWheelDashboardReadView',
+              'writeView': 'alphaHorizonReactionWheelDashboardReadView',
+              'template': 'defaultTemplate',
+              'customView': 'alphaHorizonReactionWheelDashboardReadView'
             }]
           },
           {
@@ -661,6 +662,7 @@ const getters = {
   currentDashboardlayoutEditable: state => state.currentDashboardlayout.editable,
   currentDashboardlayoutDraggable: state => state.currentDashboardlayout.draggable,
   currentDashboardlayoutResizable: state => state.currentDashboardlayout.resizable,
+  currentDashboardlayoutinMobileMode: state => state.currentDashboardlayout.mobileMode,
   dashboardLayoutStart: state => state.var.groups.start,
   dashboardLayoutComms: state => state.var.groups.comms,
   dashboardLayoutNav: state => state.var.groups.nav,
@@ -679,7 +681,13 @@ const mutations = {
   toggleDashboardLayoutResizable (state) {
     state.currentDashboardlayout.resizable = !state.currentDashboardlayout.resizable
   },
-  // Delete an module in the grid array
+  enableDashboardLayoutMobileModeStatus (state) {
+    state.currentDashboardlayout.mobileMode = true
+  },
+  disableDashboardLayoutMobileModeStatus (state) {
+    state.currentDashboardlayout.mobileMode = false
+  },
+  // Delete a module in the grid array, identify module by it's i property.
   deleteDashboardLayoutModeModule (state, {group, layout, mode, module}) {
     Vue.delete(state.var.groups[group][layout]['layout'][mode]['layout'], [module])
   }
@@ -689,6 +697,8 @@ const actions = {
   toggleDashboardLayoutEditingMode: ({ commit }) => commit('toggleDashboardLayoutEditingMode'),
   toggleDashboardLayoutDraggable: ({ commit }) => commit('toggleDashboardLayoutDraggable'),
   toggleDashboardLayoutResizable: ({ commit }) => commit('toggleDashboardLayoutResizable'),
+  enableDashboardLayoutMobileModeStatus: ({ commit }) => commit('enableDashboardLayoutMobileModeStatus'),
+  disableDashboardLayoutMobileModeStatus: ({ commit }) => commit('disableDashboardLayoutMobileModeStatus'),
   deleteDashboardLayoutModeModule ({commit}, {group, layout, mode, module}) {
     commit('deleteDashboardLayoutModeModule', {
       group: group,
