@@ -8,7 +8,8 @@ const state = {
     editable: false,
     draggable: false,
     resizable: false,
-    mobileMode: true
+    mobileMode: true,
+    currentMode: 1
   },
   conf: {
     testValue: null
@@ -663,6 +664,7 @@ const getters = {
   currentDashboardlayoutDraggable: state => state.currentDashboardlayout.draggable,
   currentDashboardlayoutResizable: state => state.currentDashboardlayout.resizable,
   currentDashboardlayoutinMobileMode: state => state.currentDashboardlayout.mobileMode,
+  currentDashboardlayoutMode: state => state.currentDashboardlayout.currentMode,
   dashboardLayoutStart: state => state.var.groups.start,
   dashboardLayoutComms: state => state.var.groups.comms,
   dashboardLayoutNav: state => state.var.groups.nav,
@@ -690,6 +692,9 @@ const mutations = {
   // Delete a module in the grid array, identify module by it's i property.
   deleteDashboardLayoutModeModule (state, {group, layout, mode, module}) {
     Vue.delete(state.var.groups[group][layout]['layout'][mode]['layout'], [module])
+  },
+  setCurrentDashboardLayoutModeTo (state, mode) {
+    state.currentDashboardlayout.currentMode = mode
   }
 }
 
@@ -706,7 +711,8 @@ const actions = {
       mode: mode,
       module: module
     })
-  }
+  },
+  setCurrentDashboardLayoutModeTo: ({ commit }, mode) => commit('setCurrentDashboardLayoutModeTo', mode)
 }
 
 export default new Vuex.Store({

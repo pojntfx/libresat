@@ -262,20 +262,19 @@ export default {
       return this.$route.name
     },
     ...mapGetters([
-      'currentDashboardlayoutinMobileMode'
+      'currentDashboardlayoutinMobileMode',
+      'currentDashboardlayoutMode'
     ]),
     modeNameMobileOrDesktop () {
-      if (this.currentDashboardlayoutinMobileMode) {
-        return 0
-      } else {
-        return 1
-      }
+      // Return the name (not displayName) of the current dashboard layout
+      return parseInt(this.currentDashboardlayoutMode) - 1
     }
   },
   methods: {
     ...mapActions([
       'enableDashboardLayoutMobileModeStatus',
-      'disableDashboardLayoutMobileModeStatus'
+      'disableDashboardLayoutMobileModeStatus',
+      'setCurrentDashboardLayoutModeTo'
     ]),
     // Make the controls responsive
     makeEditDashboardControlsResponsive () {
@@ -712,6 +711,7 @@ export default {
         // Load the desired mode by it's index
         this.updateDashboardModeData(mode)
         this.currentDashboardMode = this.loadedDashboardLayoutMode.layout[this.availableDashboardLayoutModesNames.indexOf(mode)].layout
+        this.setCurrentDashboardLayoutModeTo(this.getCurrentDashboardModeData(mode, true, false, false))
         this.currentDashboardModeName = this.getCurrentDashboardModeData(mode, true, false, false)
         this.currentDashboardModeDisplayName = this.getCurrentDashboardModeData(mode, false, true, false)
       } else {
