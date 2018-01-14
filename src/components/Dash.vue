@@ -16,7 +16,7 @@
 // Import the grid template to display the gridLayout
 import GridTemplate from './Grid/GridTemplate'
 // Import the helper getters and actions for the editable dashboard layout mode from vuex
-import { mapGetters, mapActions } from 'vuex'
+import { mapGetters } from 'vuex'
 export default {
   // Register the grid template component to be able to load it
   components: {
@@ -28,11 +28,6 @@ export default {
       'currentDashboardlayoutDraggable',
       'currentDashboardlayoutResizable',
       'dashboardLayoutStart'
-    ])
-  },
-  methods: {
-    ...mapActions([
-      'deleteDashboardLayoutModeModule'
     ])
   }
 }
