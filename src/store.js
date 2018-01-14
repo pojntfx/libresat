@@ -94,7 +94,60 @@ const state = {
               'y': 9,
               'w': 12,
               'h': 8,
+              'i': '2',
+              'readView': 'default',
+              'hybridView': 'default',
+              'writeView': 'default',
+              'template': 'defaultTemplate',
+              'customView': 'default'
+            }
+            ]
+          },
+          {
+            name: 3,
+            displayName: 'yetAnotherLayout',
+            layout: [{
+              'x': 0,
+              'y': 0,
+              'w': 7,
+              'h': 8,
+              'i': '0',
+              'readView': 'alphaHorizonReactionWheelDashboardReadView',
+              'hybridView': 'alphaHorizonReactionWheelDashboardHybridView',
+              'writeView': 'alphaHorizonReactionWheelDashboardWriteView',
+              'template': 'defaultTemplate',
+              'customView': 'default'
+            },
+            {
+              'x': 7,
+              'y': 0,
+              'w': 5,
+              'h': 8,
               'i': '1',
+              'readView': 'default',
+              'hybridView': 'default',
+              'writeView': 'default',
+              'template': 'defaultTemplate',
+              'customView': 'default'
+            },
+            {
+              'x': 0,
+              'y': 9,
+              'w': 12,
+              'h': 8,
+              'i': '2',
+              'readView': 'default',
+              'hybridView': 'default',
+              'writeView': 'default',
+              'template': 'defaultTemplate',
+              'customView': 'default'
+            },
+            {
+              'x': 0,
+              'y': 18,
+              'w': 12,
+              'h': 8,
+              'i': '2',
               'readView': 'default',
               'hybridView': 'default',
               'writeView': 'default',
@@ -206,10 +259,11 @@ const state = {
             'x': 0,
             'y': 0,
             'w': 12,
-            'h': 6,
-            'readView': 'alphaHorizonReactionWheelDashboardReadView',
-            'hybridView': 'alphaHorizonReactionWheelDashboardHybridView',
-            'writeView': 'alphaHorizonReactionWheelDashboardWriteView',
+            'h': 15,
+            'i': '0',
+            'readView': 'default',
+            'hybridView': 'default',
+            'writeView': 'default',
             'template': 'defaultTemplate',
             'customView': 'default'
           }]
@@ -220,8 +274,9 @@ const state = {
           layout: [{
             'x': 0,
             'y': 0,
-            'w': 2,
-            'h': 2,
+            'w': 12,
+            'h': 8,
+            'i': '0',
             'readView': 'default',
             'hybridView': 'default',
             'writeView': 'default',
@@ -235,42 +290,29 @@ const state = {
         displayName: 'Second',
         layout: [{
           name: 1,
-          displayName: 'Mobileyi',
+          displayName: 'Mobileya',
           layout: [{
             'x': 0,
             'y': 0,
-            'w': 2,
-            'h': 2,
+            'w': 12,
+            'h': 15,
+            'i': '0',
             'readView': 'default',
             'hybridView': 'default',
             'writeView': 'default',
-            'template': 'none',
+            'template': 'defaultTemplate',
             'customView': 'default'
           }]
         },
         {
           name: 2,
-          displayName: 'Desktopyi',
+          displayName: 'Desktopya',
           layout: [{
             'x': 0,
             'y': 0,
-            'w': 2,
-            'h': 2,
-            'readView': 'default',
-            'hybridView': 'default',
-            'writeView': 'default',
-            'template': 'none',
-            'customView': 'default'
-          }]
-        },
-        {
-          name: 3,
-          displayName: 'Godyi',
-          layout: [{
-            'x': 0,
-            'y': 0,
-            'w': 2,
-            'h': 2,
+            'w': 12,
+            'h': 8,
+            'i': '0',
             'readView': 'default',
             'hybridView': 'default',
             'writeView': 'default',
@@ -330,12 +372,13 @@ const state = {
           layout: [{
             'x': 0,
             'y': 0,
-            'w': 2,
-            'h': 2,
+            'w': 12,
+            'h': 15,
+            'i': '0',
             'readView': 'default',
             'hybridView': 'default',
             'writeView': 'default',
-            'template': 'none',
+            'template': 'defaultTemplate',
             'customView': 'default'
           }]
         },
@@ -345,8 +388,9 @@ const state = {
           layout: [{
             'x': 0,
             'y': 0,
-            'w': 2,
-            'h': 2,
+            'w': 12,
+            'h': 8,
+            'i': '0',
             'readView': 'default',
             'hybridView': 'default',
             'writeView': 'default',
@@ -360,42 +404,29 @@ const state = {
         displayName: 'Second',
         layout: [{
           name: 1,
-          displayName: 'Mobileyi',
+          displayName: 'Mobileya',
           layout: [{
             'x': 0,
             'y': 0,
-            'w': 2,
-            'h': 2,
+            'w': 12,
+            'h': 15,
+            'i': '0',
             'readView': 'default',
             'hybridView': 'default',
             'writeView': 'default',
-            'template': 'none',
+            'template': 'defaultTemplate',
             'customView': 'default'
           }]
         },
         {
           name: 2,
-          displayName: 'Desktopyi',
+          displayName: 'Desktopya',
           layout: [{
             'x': 0,
             'y': 0,
-            'w': 2,
-            'h': 2,
-            'readView': 'default',
-            'hybridView': 'default',
-            'writeView': 'default',
-            'template': 'none',
-            'customView': 'default'
-          }]
-        },
-        {
-          name: 3,
-          displayName: 'Godyi',
-          layout: [{
-            'x': 0,
-            'y': 0,
-            'w': 2,
-            'h': 2,
+            'w': 12,
+            'h': 8,
+            'i': '0',
             'readView': 'default',
             'hybridView': 'default',
             'writeView': 'default',
@@ -455,12 +486,13 @@ const state = {
           layout: [{
             'x': 0,
             'y': 0,
-            'w': 2,
-            'h': 2,
+            'w': 12,
+            'h': 15,
+            'i': '0',
             'readView': 'default',
             'hybridView': 'default',
             'writeView': 'default',
-            'template': 'none',
+            'template': 'defaultTemplate',
             'customView': 'default'
           }]
         },
@@ -470,8 +502,9 @@ const state = {
           layout: [{
             'x': 0,
             'y': 0,
-            'w': 2,
-            'h': 2,
+            'w': 12,
+            'h': 8,
+            'i': '0',
             'readView': 'default',
             'hybridView': 'default',
             'writeView': 'default',
@@ -485,42 +518,29 @@ const state = {
         displayName: 'Second',
         layout: [{
           name: 1,
-          displayName: 'Mobileyi',
+          displayName: 'Mobileya',
           layout: [{
             'x': 0,
             'y': 0,
-            'w': 2,
-            'h': 2,
+            'w': 12,
+            'h': 15,
+            'i': '0',
             'readView': 'default',
             'hybridView': 'default',
             'writeView': 'default',
-            'template': 'none',
+            'template': 'defaultTemplate',
             'customView': 'default'
           }]
         },
         {
           name: 2,
-          displayName: 'Desktopyi',
+          displayName: 'Desktopya',
           layout: [{
             'x': 0,
             'y': 0,
-            'w': 2,
-            'h': 2,
-            'readView': 'default',
-            'hybridView': 'default',
-            'writeView': 'default',
-            'template': 'none',
-            'customView': 'default'
-          }]
-        },
-        {
-          name: 3,
-          displayName: 'Godyi',
-          layout: [{
-            'x': 0,
-            'y': 0,
-            'w': 2,
-            'h': 2,
+            'w': 12,
+            'h': 8,
+            'i': '0',
             'readView': 'default',
             'hybridView': 'default',
             'writeView': 'default',
@@ -580,26 +600,15 @@ const state = {
           layout: [{
             'x': 0,
             'y': 0,
-            'w': 2,
-            'h': 2,
+            'w': 12,
+            'h': 15,
+            'i': '0',
             'readView': 'default',
             'hybridView': 'default',
             'writeView': 'default',
-            'template': 'none',
-            'customView': 'default'
-          },
-          {
-            'x': 4,
-            'y': 0,
-            'w': 2,
-            'h': 2,
-            'readView': 'default',
-            'hybridView': 'default',
-            'writeView': 'default',
-            'template': 'none',
+            'template': 'defaultTemplate',
             'customView': 'default'
           }]
-
         },
         {
           name: 2,
@@ -607,8 +616,9 @@ const state = {
           layout: [{
             'x': 0,
             'y': 0,
-            'w': 2,
-            'h': 2,
+            'w': 12,
+            'h': 8,
+            'i': '0',
             'readView': 'default',
             'hybridView': 'default',
             'writeView': 'default',
@@ -622,42 +632,29 @@ const state = {
         displayName: 'Second',
         layout: [{
           name: 1,
-          displayName: 'Mobileyi',
+          displayName: 'Mobileya',
           layout: [{
             'x': 0,
             'y': 0,
-            'w': 2,
-            'h': 2,
+            'w': 12,
+            'h': 15,
+            'i': '0',
             'readView': 'default',
             'hybridView': 'default',
             'writeView': 'default',
-            'template': 'none',
+            'template': 'defaultTemplate',
             'customView': 'default'
           }]
         },
         {
           name: 2,
-          displayName: 'Desktopyi',
+          displayName: 'Desktopya',
           layout: [{
             'x': 0,
             'y': 0,
-            'w': 2,
-            'h': 2,
-            'readView': 'default',
-            'hybridView': 'default',
-            'writeView': 'default',
-            'template': 'none',
-            'customView': 'default'
-          }]
-        },
-        {
-          name: 3,
-          displayName: 'Godyi',
-          layout: [{
-            'x': 0,
-            'y': 0,
-            'w': 2,
-            'h': 2,
+            'w': 12,
+            'h': 8,
+            'i': '0',
             'readView': 'default',
             'hybridView': 'default',
             'writeView': 'default',
@@ -667,7 +664,6 @@ const state = {
         }
         ]
       }]
-
     },
     logs: [
       {
@@ -714,8 +710,14 @@ const mutations = {
   },
   // Delete a module in the grid array, identify module by it's i property.
   deleteDashboardLayoutModeModule (state, {group, layout, mode, module}) {
-    console.log('Deleting', group, layout, mode, module)
-    Vue.delete(state.var.groups[group][layout]['layout'][mode]['layout'], [module])
+    // Create a copy of the array with the layouts to get the correct index
+    let layoutList = state.var.groups[group][layout]['layout'][mode]['layout']
+    // Find the index of the object in the array that has the module's id
+    let indexOfModuleId = layoutList.findIndex(item => item.i === module)
+    // Log the index to the console
+    // console.log('Index of module with ID:', indexOfModuleId)
+    // Delete the module from the layout
+    Vue.delete(state.var.groups[group][layout]['layout'][mode]['layout'], [indexOfModuleId])
   },
   setCurrentDashboardLayoutModeTo (state, mode) {
     state.currentDashboardlayout.currentMode = mode

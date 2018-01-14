@@ -787,4 +787,8 @@ export default {
 .layout-load-button:first-of-type, .layout-delete-button:first-of-type {
   display: none;
 }
+/* Make the vue-grid-layout background blue instead of red */
+.vue-grid-item.vue-grid-placeholder {
+  background: #03A9F4;
+}
 </style>

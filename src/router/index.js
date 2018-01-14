@@ -23,21 +23,6 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
-      path: '/navigation',
-      name: 'Navigation',
-      component: Navigation
-    },
-    {
-      path: '/energy',
-      name: 'Energy',
-      component: Energy
-    },
-    {
-      path: '/payload',
-      name: 'Payload',
-      component: Payload
-    },
-    {
       path: '/settings',
       name: 'Settings',
       component: SettingsIndex
@@ -109,6 +94,57 @@ export default new Router({
       children: [{
         path: '/comms',
         name: 'Communications',
+        components: {
+          /* Register dashboard module here after importing it above
+          * then register the dashboard module in the store (var.groups.dashboardname)
+          or import with the UI */
+          default: DashboardModulePlaceholder,
+          alphaHorizonReactionWheelDashboardReadView: AlphaHorizonReactionWheelDashboardReadView,
+          alphaHorizonReactionWheelDashboardHybridView: AlphaHorizonReactionWheelDashboardHybridView,
+          alphaHorizonReactionWheelDashboardWriteView: AlphaHorizonReactionWheelDashboardWriteView
+        }
+      }]
+    },
+    {
+      path: '/navigation',
+      component: Navigation,
+      children: [{
+        path: '/navigation',
+        name: 'Navigation',
+        components: {
+          /* Register dashboard module here after importing it above
+          * then register the dashboard module in the store (var.groups.dashboardname)
+          or import with the UI */
+          default: DashboardModulePlaceholder,
+          alphaHorizonReactionWheelDashboardReadView: AlphaHorizonReactionWheelDashboardReadView,
+          alphaHorizonReactionWheelDashboardHybridView: AlphaHorizonReactionWheelDashboardHybridView,
+          alphaHorizonReactionWheelDashboardWriteView: AlphaHorizonReactionWheelDashboardWriteView
+        }
+      }]
+    },
+    {
+      path: '/energy',
+      component: Energy,
+      children: [{
+        path: '/energy',
+        name: 'Energy',
+        components: {
+          /* Register dashboard module here after importing it above
+          * then register the dashboard module in the store (var.groups.dashboardname)
+          or import with the UI */
+          default: DashboardModulePlaceholder,
+          alphaHorizonReactionWheelDashboardReadView: AlphaHorizonReactionWheelDashboardReadView,
+          alphaHorizonReactionWheelDashboardHybridView: AlphaHorizonReactionWheelDashboardHybridView,
+          alphaHorizonReactionWheelDashboardWriteView: AlphaHorizonReactionWheelDashboardWriteView
+        }
+      }]
+    },
+    {
+      path: '/payload',
+      component: Payload,
+      children: [{
+        path: '/payload',
+        name: 'Payload',
         components: {
           /* Register dashboard module here after importing it above
           * then register the dashboard module in the store (var.groups.dashboardname)
