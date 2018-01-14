@@ -12,7 +12,11 @@ const state = {
     currentMode: 1
   },
   conf: {
-    testValue: null
+    messages: {
+      debug: true,
+      warning: true,
+      error: true
+    }
   },
   opt: {
     testValue: null
@@ -672,23 +676,32 @@ const state = {
         message: 'A short, helpful example error message',
         code: 'YOUR_ERROR_CODE_IN_CAPS',
         infoUrl: 'https://www.opensdcp.org',
-        dismissible: true
+        dismissible: true,
+        epoch: 1515949387600,
+        user: 'pojntfx'
       }
     ]
   }
 }
 
 const getters = {
+  // Return the properties of the current dashboard layout
   currentDashboardlayoutEditable: state => state.currentDashboardlayout.editable,
   currentDashboardlayoutDraggable: state => state.currentDashboardlayout.draggable,
   currentDashboardlayoutResizable: state => state.currentDashboardlayout.resizable,
   currentDashboardlayoutinMobileMode: state => state.currentDashboardlayout.mobileMode,
   currentDashboardlayoutMode: state => state.currentDashboardlayout.currentMode,
+  // Return the dashboard layouts
   dashboardLayoutStart: state => state.var.groups.start,
   dashboardLayoutComms: state => state.var.groups.comms,
   dashboardLayoutNav: state => state.var.groups.nav,
   dashboardLayoutEnergy: state => state.var.groups.energy,
-  dashboardLayoutPayload: state => state.var.groups.payload
+  dashboardLayoutPayload: state => state.var.groups.payload,
+  // Return the status of debug/warning/error messages
+  debugMessagesEnabled: state => state.conf.messages.debug,
+  warningMessagesEnabled: state => state.conf.messages.warning,
+  errorMessagesEnabled: state => state.conf.messages.error,
+  logs: state => state.var.logs
 }
 
 const mutations = {
@@ -721,6 +734,26 @@ const mutations = {
   },
   setCurrentDashboardLayoutModeTo (state, mode) {
     state.currentDashboardlayout.currentMode = mode
+  },
+  logMessage (state, {type, origin, message, code, infoUrl, dismissible}) {
+    let messageToLog = {}
+    // Create a timestamp using the UNIX Epoch
+    // eslint-disable-next-line new-parens
+    let currentUnixTime = (new Date).getTime()
+    messageToLog.type = 'debug'
+    messageToLog.origin = origin
+    messageToLog.message = message
+    messageToLog.code = code
+    messageToLog.infoUrl = infoUrl
+    messageToLog.dismissible = dismissible
+    messageToLog.epoch = currentUnixTime
+    // The actual username will be used below once implemented
+    messageToLog.user = 'pojntfx'
+    // Log the message to the console if debugging messages are enabled
+    if (state.conf.messages.debug) {
+      console.log('New', type, 'message:', messageToLog)
+    }
+    state.var.logs.push(messageToLog)
   }
 }
 
@@ -736,6 +769,16 @@ const actions = {
       layout: layout,
       mode: mode,
       module: module
+    })
+  },
+  logDebugMessage ({commit}, {origin, message, code, infoUrl, dismissible}) {
+    commit('logMessage', {
+      type: 'debug',
+      origin: origin,
+      message: message,
+      code: code,
+      infoUrl: infoUrl,
+      dismissible: dismissible
     })
   },
   setCurrentDashboardLayoutModeTo: ({ commit }, mode) => commit('setCurrentDashboardLayoutModeTo', mode)

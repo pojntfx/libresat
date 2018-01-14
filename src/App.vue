@@ -115,15 +115,14 @@
              ></v-text-field>
             </v-card-title>
             <v-data-table
-              v-bind:headers="historyItems.headers"
-              v-bind:items="historyItems.items"
+              v-bind:headers="historyItems.headersInDrawer"
+              v-bind:items="logs"
               v-bind:search="historyItems.search"
               class="permaDrawer-table"
             >
               <template slot="items" slot-scope="props">
-                    <td>{{ props.item.date }}</td>
-                    <td>{{ props.item.change }}</td>
-                    <td>{{ props.item.user }}</td>
+                    <td>{{ props.item.message }}</td>
+                    <td>{{ props.item.origin }}</td>
                   </template>
               <template slot="pageText" slot-scope="{ pageStart, pageStop }">
                     From {{ pageStart }} to {{ pageStop }}
@@ -792,13 +791,17 @@
                  ></v-text-field>
                 </v-card-title>
                 <v-data-table
-                  v-bind:headers="historyItems.headers"
-                  v-bind:items="historyItems.items"
+                  v-bind:headers="historyItems.headersInFullscreen"
+                  v-bind:items="logs"
                   v-bind:search="historyItems.search"
                 >
                   <template slot="items" slot-scope="props">
-                        <td>{{ props.item.date }}</td>
-                        <td>{{ props.item.change }}</td>
+                        <td>{{ props.item.epoch }}</td>
+                        <td>{{ props.item.type }}</td>
+                        <td>{{ props.item.origin }}</td>
+                        <td>{{ props.item.message }}</td>
+                        <td>{{ props.item.code }}</td>
+                        <td>{{ props.item.infoUrl }}</td>
                         <td>{{ props.item.user }}</td>
                       </template>
                   <template slot="pageText" slot-scope="{ pageStart, pageStop }">
@@ -820,14 +823,13 @@
             v-model="historyItems.search"
           ></v-text-field>
           <v-data-table
-            v-bind:headers="historyItems.headers"
-            v-bind:items="historyItems.items"
+            v-bind:headers="historyItems.headersInDrawer"
+            v-bind:items="logs"
             v-bind:search="historyItems.search"
           >
             <template slot="items" slot-scope="props">
-                <td>{{ props.item.date }}</td>
-                <td>{{ props.item.change }}</td>
-                <td>{{ props.item.user }}</td>
+                <td>{{ props.item.message }}</td>
+                <td>{{ props.item.origin }}</td>
               </template>
             <template
               slot="pageText"
@@ -1897,23 +1899,63 @@ export default {
       historyItems: {
         search: '',
         pagination: {},
-        headers: [{
-          text: 'Date',
-          value: 'date',
-          align: 'left'
-        },
-        {
-          text: 'Change',
-          value: 'change',
-          sortable: false,
-          align: 'left'
-        },
-        {
-          text: 'User',
-          sortable: false,
-          value: 'user',
-          align: 'left'
-        }
+        headersInDrawer: [
+          {
+            text: 'Message',
+            value: 'message',
+            sortable: false,
+            align: 'left'
+          },
+          {
+            text: 'Origin',
+            sortable: false,
+            value: 'origin',
+            align: 'left'
+          }
+        ],
+        headersInFullscreen: [
+          {
+            text: 'UNIX Time',
+            value: 'epoch',
+            sortable: true,
+            align: 'left'
+          },
+          {
+            text: 'Type',
+            value: 'type',
+            sortable: false,
+            align: 'left'
+          },
+          {
+            text: 'Origin',
+            sortable: false,
+            value: 'origin',
+            align: 'left'
+          },
+          {
+            text: 'Message',
+            sortable: false,
+            value: 'message',
+            align: 'left'
+          },
+          {
+            text: 'Code',
+            sortable: false,
+            value: 'code',
+            align: 'left'
+          },
+          {
+            text: 'Info URL',
+            sortable: false,
+            value: 'infoUrl',
+            align: 'left'
+          },
+          {
+            text: 'User',
+            sortable: false,
+            value: 'user',
+            align: 'left'
+          }
         ],
         items: [{
           date: '2017-04-12',
@@ -1956,7 +1998,8 @@ export default {
     ...mapGetters([
       'currentDashboardlayoutEditable',
       'currentDashboardlayoutDraggable',
-      'currentDashboardlayoutResizable'
+      'currentDashboardlayoutResizable',
+      'logs'
     ]),
     // Determine whether it is day or night in order to switch night modes
     isItDay: function () {
