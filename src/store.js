@@ -68,7 +68,7 @@ const state = {
             layout: [{
               'x': 0,
               'y': 0,
-              'w': 8,
+              'w': 7,
               'h': 8,
               'i': '0',
               'readView': 'alphaHorizonReactionWheelDashboardReadView',
@@ -78,17 +78,30 @@ const state = {
               'customView': 'default'
             },
             {
-              'x': 8,
+              'x': 7,
               'y': 0,
-              'w': 4,
+              'w': 5,
               'h': 8,
               'i': '1',
               'readView': 'default',
               'hybridView': 'default',
               'writeView': 'default',
-              'template': 'none',
+              'template': 'defaultTemplate',
               'customView': 'default'
-            }]
+            },
+            {
+              'x': 0,
+              'y': 9,
+              'w': 12,
+              'h': 8,
+              'i': '1',
+              'readView': 'default',
+              'hybridView': 'default',
+              'writeView': 'default',
+              'template': 'defaultTemplate',
+              'customView': 'default'
+            }
+            ]
           }
           ]
         }, {
@@ -655,7 +668,17 @@ const state = {
         ]
       }]
 
-    }
+    },
+    logs: [
+      {
+        type: 'error',
+        origin: 'alphaHorizonReactionWheel',
+        message: 'A short, helpful example error message',
+        code: 'YOUR_ERROR_CODE_IN_CAPS',
+        infoUrl: 'https://www.opensdcp.org',
+        dismissible: true
+      }
+    ]
   }
 }
 
@@ -691,6 +714,7 @@ const mutations = {
   },
   // Delete a module in the grid array, identify module by it's i property.
   deleteDashboardLayoutModeModule (state, {group, layout, mode, module}) {
+    console.log('Deleting', group, layout, mode, module)
     Vue.delete(state.var.groups[group][layout]['layout'][mode]['layout'], [module])
   },
   setCurrentDashboardLayoutModeTo (state, mode) {
