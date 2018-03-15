@@ -2,10 +2,10 @@
 import styled from "styled-components";
 
 // Styling constants
-import { cardInnerRadius, cardHeaderFontWeight } from "../constants";
+import { cardInnerPadding, cardHeaderFontWeight } from "../constants";
 
 const CardHeader = styled.div`
-  padding: ${cardInnerRadius};
+  padding: ${cardInnerPadding};
   font-weight: ${cardHeaderFontWeight};
 `;
 
