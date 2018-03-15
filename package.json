@@ -1,7 +1,6 @@
 {
   "name": "opensnet-bridge-client",
-  "description":
-    "Fast and minimal React frontend for an OpenSNET Bridge Server",
+  "description": "Fast and minimal React frontend for an OpenSNET Bridge Server",
   "version": "0.0.1-alpha",
   "author": "Felix Pojtinger",
   "license": "GPL-3.0",
@@ -11,6 +10,7 @@
     "prop-types": "^15.6.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
+    "react-router-dom": "^4.2.2",
     "react-scripts": "1.1.1",
     "styled-components": "^3.2.3"
   },
