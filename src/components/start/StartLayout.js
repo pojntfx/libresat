@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 
+// Eluseum
+import { Card } from "../../lib/eluseum-framework";
+
 // Components
 import ResizableGridLayout from "./ResizableGridLayout";
 
@@ -21,26 +24,28 @@ export default class StartLayout extends Component {
 
     return (
       <ResizableGridLayout layouts={layouts} onLayoutChange={onLayoutChange}>
-        <div data-grid={{ w: 2, h: 6, x: 0, y: 0, minW: 2, minH: 2 }}>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Rem ex
-          aperiam id officiis voluptate voluptatibus? Maxime laborum dolor
-          exercitationem eligendi!
+        <div
+          data-grid={{
+            w: 12,
+            h: 2,
+            x: 0,
+            y: 0,
+            minW: 2,
+            minH: 2,
+            static: true
+          }}
+        >
+          Navbar
         </div>
-        <div>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad, odit
-          minima sunt voluptas sed voluptatem mollitia quam! Perspiciatis quo
-          eligendi est dolorem doloribus aliquam facilis a, quibusdam tempore,
-          nulla obcaecati.
-        </div>
-        <div>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem quia
-          eligendi ab, omnis error quis enim nemo optio eius doloribus
-          voluptates vitae velit. Id, consectetur. Modi ipsa non repellendus
-          veritatis iusto ab commodi cupiditate nemo excepturi adipisci nulla in
-          eveniet ad eum delectus aliquid deserunt asperiores, provident magnam
-          minus error.
-        </div>
+        <div>StatusPane</div>
+        <InteractionPane />
+        <div>CommPane</div>
       </ResizableGridLayout>
     );
   }
 }
+
+// StartLayout components
+const InteractionPane = () => (
+  <Card header="Header" body="Body" footer="Footer" />
+);
