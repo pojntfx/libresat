@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 // Eluseum
-import { Card } from "../../lib/eluseum-framework";
+import { Card, Button } from "../../lib/eluseum-framework";
 
 // Components
 import ResizableGridLayout from "./ResizableGridLayout";
@@ -40,6 +40,15 @@ export default class StartLayout extends Component {
         <div>StatusPane</div>
         <InteractionPane />
         <div>CommPane</div>
+        <div>
+          <Button
+            value="Cancel"
+            color="red"
+            icon="ion-android-close"
+            // eslint-disable-next-line no-console
+            onClick={() => console.log("Cancelled ...")}
+          />
+        </div>
       </ResizableGridLayout>
     );
   }
