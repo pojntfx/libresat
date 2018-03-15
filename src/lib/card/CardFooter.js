@@ -2,10 +2,10 @@
 import styled from "styled-components";
 
 // Styling constants
-import { cardInnerRadius } from "../constants";
+import { cardInnerPadding } from "../constants";
 
 const CardFooter = styled.div`
-  padding: ${cardInnerRadius};
+  padding: ${cardInnerPadding};
 `;
 
 export default CardFooter;

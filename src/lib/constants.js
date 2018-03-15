@@ -1,9 +1,13 @@
+// Wrapper style
 export const borderRadius = "8px";
-export const cardColor = "#f8f9fa";
-export const cardInnerRadius = "1rem";
+
+export const cardInnerPadding = "1rem";
 export const cardHeaderFontWeight = "bold";
 
+export const dialogInnerPadding = "1.5rem";
+
 // Colors
+export const light = "#f8f9fa";
 export const black = `0, 0, 0`;
 export const blackHover = `20, 20, 20`;
 export const white = `255, 255, 255`;
