@@ -1,10 +1,13 @@
 // Wrapper style
 export const borderRadius = "8px";
 
-export const cardInnerPadding = "1rem";
+export const cardInnerPadding = "1.5rem";
 export const cardHeaderFontWeight = "bold";
 
-export const dialogInnerPadding = "1.5rem";
+export const dialogInnerPadding = cardInnerPadding;
+
+export const navbarInnerPadding = cardInnerPadding;
+export const navigationSpacerPadding = cardInnerPadding;
 
 // Colors
 export const light = "#f8f9fa";
@@ -28,3 +31,7 @@ export const purple = `88,86,214`;
 export const purpleHover = `100,106,230`;
 export const pink = `255,45,85`;
 export const pinkHover = `255,70,105`;
+
+// Z-Indexes
+export const navbarZIndex = "1000";
+export const dialogZIndex = "2000";
