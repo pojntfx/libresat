@@ -48,8 +48,6 @@ const DialogHeader = ({
 // Header bar
 const DialogHeaderBar = styled.menu`
   padding-left: 0;
-  margin-top: 0;
-  margin-bottom: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -62,6 +60,11 @@ const LeftButtonWrapper = styled.div`
   justify-content: flex-start;
   align-items: center;
   flex-grow: 1;
+  & > button > span {
+    padding-left: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
 `;
 
 // Title wrapper
@@ -80,6 +83,11 @@ const RightButtonWrapper = styled.div`
   justify-content: flex-end;
   align-items: center;
   flex-grow: 1;
+  & > button > span {
+    padding-left: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
 `;
 
 DialogHeader.propTypes = {

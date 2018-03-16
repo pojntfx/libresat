@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 // Eluseum
-import { Card, Dialog } from "../../lib/eluseum-framework";
+import { Card, Dialog, Navigation, Button } from "../../lib/eluseum-framework";
 
 // Components
 import ResizableGridLayout from "./ResizableGridLayout";
@@ -24,8 +24,9 @@ export default class StartLayout extends Component {
 
     return (
       <div>
+        <NavigationView />
         <ResizableGridLayout layouts={layouts} onLayoutChange={onLayoutChange}>
-          <div
+          {/* <div
             data-grid={{
               w: 12,
               h: 2,
@@ -36,8 +37,8 @@ export default class StartLayout extends Component {
               static: true
             }}
           >
-            Navbar
-          </div>
+            Navigation
+          </div> */}
           <div>StatusPane</div>
           <InteractionPane />
         </ResizableGridLayout>
@@ -59,13 +60,13 @@ const CommPane = () => (
     fullscreen={true}
     leftButtonValue="Cancel"
     leftButtonColor="red"
-    leftButtonIcon="ion-ios-close-outline"
+    // leftButtonIcon="ion-ios-close-outline"
     // eslint-disable-next-line no-console
     onLeftButtonClick={() => console.log("Cancelled.")}
     title="License agreement"
     rightButtonValue="Accept"
     rightButtonColor="green"
-    rightButtonIcon="ion-ios-checkmark-empty"
+    // rightButtonIcon="ion-ios-checkmark-empty"
     // eslint-disable-next-line no-console
     onRightButtonClick={() => console.log("Accepted.")}
   >
@@ -83,4 +84,20 @@ const CommPane = () => (
     <br />
     This is obviously just a test of the {"<Dialog/>"} component.
   </Dialog>
+);
+
+// Navigation components
+const NavigationView = () => (
+  <Navigation
+    title="OpenSDCP"
+    leftMenu="Home    Docs    News"
+    rightMenu={<RightNavigationView />}
+    sticky
+  />
+);
+
+// Right Navigation
+const RightNavigationView = () => (
+  // eslint-disable-next-line no-console
+  <Button value="Login" primary onClick={() => console.log("Logged in.")} />
 );

@@ -42,34 +42,14 @@ Icon.propTypes = {
 };
 
 // Actual button component
-export const Button = styled((props, { className }) => (
-  <button className={className} {...props} onClick={props.onClick}>
+export const Button = props => (
+  <ButtonWrapper {...props} onClick={props.onClick}>
     {props.icon ? <Icon {...props} /> : null}
     {props.value}
-  </button>
-)).attrs({
-  color: props =>
-    props.primary
-      ? props.color === "white" ||
-        props.color === "orange" ||
-        props.color === "blueTeal" ||
-        props.color === "yellow"
-        ? `rgb(${black})`
-        : `rgb(${white})`
-      : `rgb(${buttonColor(props.color)})`,
-  opacity: props => (props.disabled ? "0.5" : "1"),
-  background: props =>
-    props.primary ? `rgb(${buttonColor(props.color)})` : "transparent",
-  hoverbackground: props =>
-    props.primary
-      ? `rgb(${buttonColor(`${props.color}Hover`)})`
-      : props.color === "white" ||
-        props.color === "orange" ||
-        props.color === "blueTeal" ||
-        props.color === "yellow"
-        ? "#9eadba"
-        : "#f8f9fa"
-})`
+  </ButtonWrapper>
+);
+
+const ButtonWrapper = styled.button`
   /* Static styles */
   text-decoration: none;
   padding: 0.75rem 1.5rem;
@@ -78,14 +58,37 @@ export const Button = styled((props, { className }) => (
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   border-radius: ${borderRadius};
   /* Dynamic styles */
-  color: ${props => props.color};
-  opacity: ${props => props.opacity};
-  background-color: ${props => props.background};
+  color: ${props =>
+    props.primary
+      ? props.color === "white" ||
+        props.color === "orange" ||
+        props.color === "blueTeal" ||
+        props.color === "yellow"
+        ? `rgb(${black})`
+        : `rgb(${white})`
+      : `rgb(${buttonColor(props.color)})`};
+  opacity: ${props => (props.disabled ? "0.5" : "1")};
+  background-color: ${props =>
+    props.primary ? `rgb(${buttonColor(props.color)})` : "transparent"};
   &:hover,
   &:active {
-    background: ${props => props.hoverbackground};
+    background: ${props =>
+      props.primary
+        ? props.color
+          ? `rgb(${buttonColor(`${props.color}Hover`)})`
+          : `rgb(${buttonColor(`blueHover`)})`
+        : props.color === "white" ||
+          props.color === "orange" ||
+          props.color === "blueTeal" ||
+          props.color === "yellow"
+          ? "#9eadba"
+          : "#f8f9fa"};
   }
 `;
+
+ButtonWrapper.propTypes = {
+  onClick: PropTypes.func
+};
 
 const buttonColor = color => {
   switch (color) {
