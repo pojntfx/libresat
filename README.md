@@ -25,10 +25,12 @@ yarn docs
 ## Deployment
 
 ```bash
-# Build and serve production ready version on http://localhost:3002/
-yarn start
-# Only build a production ready version
+# Build a production ready version in the build/ folder
 yarn build
+# Serve production ready version on http://localhost:5000/
+yarn start
+# Deploy to Now
+yarn deploy
 ```
 
 ## License

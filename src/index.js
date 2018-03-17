@@ -1,8 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
-import App from "./App";
 import registerServiceWorker from "./registerServiceWorker";
 
-ReactDOM.render(<App />, document.getElementById("osnet-bc"));
+// Normalize
+import "./assets/normalize.css";
+
+// Routes
+import Routes from "./routes/Routes";
+
+ReactDOM.render(<Routes />, document.getElementById("osnet-bc"));
 registerServiceWorker();
