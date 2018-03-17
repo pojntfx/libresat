@@ -6,24 +6,26 @@
     "prop-types": "^15.6.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
+    "react-router-dom": "^4.2.2",
     "react-scripts": "1.1.1",
-    "styled-components": "^3.2.3",
-    "serve": "^6.5.3"
+    "serve": "^6.5.3",
+    "styled-components": "^3.2.3"
   },
   "scripts": {
-    "start": "react-scripts build && serve build/ --port=3002",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
+    "dev": "react-scripts start",
     "docs": "esdoc && serve docs/ --port=3001",
-    "dev": "react-scripts start"
+    "build": "react-scripts build",
+    "start": "serve build/",
+    "deploy": "npm run build && ns build"
   },
   "devDependencies": {
     "esdoc": "^1.0.4",
     "esdoc-ecmascript-proposal-plugin": "^1.0.0",
     "esdoc-jsx-plugin": "^1.0.0",
     "esdoc-standard-plugin": "^1.0.0",
-    "eslint-plugin-react": "^7.7.0"
+    "eslint-plugin-react": "^7.7.0",
+    "now": "^10.2.1",
+    "now-serve": "^0.5.1"
   },
   "description":
     "Fast and minimal React frontend for an OpenSNET Bridge Server.",
