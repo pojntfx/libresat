@@ -1,7 +1,5 @@
 import React from "react";
 
-const Start = () => {
+export const Start = () => {
   return <div>Start</div>;
 };
-
-export default Start;

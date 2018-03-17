@@ -4,10 +4,10 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 // Routes
-import Start from "./Start";
-import PageNotFound from "./PageNotFound";
+import { Start } from "./Start";
+import { PageNotFound } from "./PageNotFound";
 
-const Routes = () => {
+export const Routes = () => {
   return (
     <Router>
       <Switch>
@@ -17,5 +17,3 @@ const Routes = () => {
     </Router>
   );
 };
-
-export default Routes;
