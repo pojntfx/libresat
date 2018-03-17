@@ -2,8 +2,9 @@ import React from "react";
 import ReactDOM from "react-dom";
 import registerServiceWorker from "./registerServiceWorker";
 
-// Normalize
+// Normalize and global css
 import "./assets/normalize.css";
+import "./assets/global.css";
 
 // Routes
 import Routes from "./routes/Routes";
