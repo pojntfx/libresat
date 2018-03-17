@@ -7,7 +7,7 @@ import "./assets/normalize.css";
 import "./assets/global.css";
 
 // Routes
-import Routes from "./routes/Routes";
+import { Routes } from "./routes/Routes";
 
 ReactDOM.render(<Routes />, document.getElementById("osnet-bc"));
 registerServiceWorker();
