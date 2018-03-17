@@ -7,15 +7,29 @@ Fast and minimal React frontend for an OpenSNET Bridge Server.
 ```bash
 # Install dependencies
 yarn install
-# Serve on http://localhost:3000/
-yarn start
-# Build a production ready version
-yarn build
+# Build and serve development version on http://localhost:3000/
+yarn dev
 ```
 
 ## Screenshots
 
-![Screenshot of the start page](screenshots/start.png)
+> TODO: Add screenshots
+
+## Documentation
+
+```bash
+# Generate and serve documentation on http://localhost:3001/
+yarn docs
+```
+
+## Deployment
+
+```bash
+# Build and serve production ready version on http://localhost:3002/
+yarn start
+# Only build a production ready version
+yarn build
+```
 
 ## License
 
