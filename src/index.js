@@ -1,10 +1,8 @@
-import React from "react";
-import { render } from "react-dom";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import App from './App';
+import registerServiceWorker from './registerServiceWorker';
 
-// CSS reset
-import "./styles/reset.css";
-
-// Components
-import Routes from "./routes/Routes";
-
-render(<Routes />, document.getElementById("osnet-bc"));
+ReactDOM.render(<App />, document.getElementById('root'));
+registerServiceWorker();
