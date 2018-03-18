@@ -1,4 +1,6 @@
+/* System Fonts as used by Medium and WordPress */
+
 body {
-    /* Use sans-serif font */
-    font-family: sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Oxygen-Sans,
+    Ubuntu, Cantarell, Roboto, "Helvetica Neue", sans-serif;
 }
