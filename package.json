@@ -15,7 +15,7 @@
     "dev": "react-scripts start",
     "docs": "esdoc && serve docs/ --port=3001",
     "build": "react-scripts build",
-    "start": "serve build/",
+    "start": "serve --single build/",
     "deploy": "npm run build && now --public"
   },
   "devDependencies": {
