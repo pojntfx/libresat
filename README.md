@@ -18,8 +18,10 @@ yarn dev
 ## Documentation
 
 ```bash
-# Generate and serve documentation on http://localhost:3001/
+# Generate and serve jsdoc documentation on http://localhost:3001/
 yarn docs
+# Generate and serve annnotated source documentation on http://localhost:3002/
+yarn annotated-source
 ```
 
 ## Deployment

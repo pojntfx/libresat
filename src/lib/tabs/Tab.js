@@ -10,7 +10,15 @@ import PropTypes from "prop-types";
 import { Button } from "../button/Button";
 import { Pane } from "./Pane";
 
-export const Tab = ({ links, panes, activePane, onChange, ...rest }) => (
+/**
+ * A tab.
+ * @param {links} links Tab titles
+ * @param {panes} panes Tab content
+ * @param {activePane} activePane Active pane (the one that is currently visible)
+ * @param {onChange} onChange Event handler (gets fired when a tab title has been clicked)
+ * @param {...otherProps} ...otherProps Other (HTML5) properties that should be applied to the title headers
+ */
+export const Tab = ({ links, panes, activePane, onChange, ...otherProps }) => (
   <TabWrapper>
     {links.map((link, index) => (
       <ButtonWrapper
@@ -19,7 +27,7 @@ export const Tab = ({ links, panes, activePane, onChange, ...rest }) => (
         onClick={event => onChange(parseInt(event.target.id, 10))}
         key={index}
         active={activePane === index ? true : false}
-        {...rest}
+        {...otherProps}
       />
     ))}
     {panes.map((pane, index) => (

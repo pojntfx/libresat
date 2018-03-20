@@ -13,16 +13,17 @@
   },
   "scripts": {
     "dev": "react-scripts start",
-    "docs": "esdoc && serve docs/ --port=3001",
+    "docs":
+      "documentation build src/** -f html -o docs/ -g && serve docs/ --port=3001",
+    "annotated-source":
+      "docco --layout=parallel src/* src/components/*/* src/lib/*/* src/routes/* -o annotated-source/ && serve annotated-source/ --port=3002",
     "build": "react-scripts build",
     "start": "serve --single build/",
     "deploy": "npm run build && now --public"
   },
   "devDependencies": {
-    "esdoc": "^1.0.4",
-    "esdoc-ecmascript-proposal-plugin": "^1.0.0",
-    "esdoc-jsx-plugin": "^1.0.0",
-    "esdoc-standard-plugin": "^1.0.0",
+    "docco": "^0.8.0",
+    "documentation": "^6.1.0",
     "eslint-plugin-react": "^7.7.0",
     "now": "^10.2.1"
   },
