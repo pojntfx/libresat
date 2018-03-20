@@ -6,6 +6,13 @@ import styled from "styled-components";
 // PropTypes
 import PropTypes from "prop-types";
 
+/**
+ * A text area (HTML5 textarea).
+ * @param {label} label Label for the TextArea
+ * @param {value} value Content of the TextArea
+ * @param {name} name Unique identifier for the TextArea
+ * @param {..otherProps} ..otherProps Other HTML5 props
+ */
 export const TextArea = ({ label, value, name, onInput, ...otherProps }) => (
   <InputWrapper>
     <label htmlFor={name}>{label}</label>

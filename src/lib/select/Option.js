@@ -6,15 +6,20 @@ import styled from "styled-components";
 // PropTypes
 import PropTypes from "prop-types";
 
-export const Option = ({ value, onClick, text, ...otherProps }) => (
-  <OptionWrapper value={value} onChange={onClick} {...otherProps}>
+/**
+ * A select's option.
+ * @param {value} value The value that the select should return when this option has been selected
+ * @param {text} text The option's text that will be displayed
+ * @param {...otherProps} ...otherProps Other (HTML5) props that should be passed to the option
+ */
+export const Option = ({ value, text, ...otherProps }) => (
+  <OptionWrapper value={value} {...otherProps}>
     {text}
   </OptionWrapper>
 );
 
 Option.propTypes = {
   value: PropTypes.string.isRequired,
-  onClick: PropTypes.func.isRequired,
   text: PropTypes.string.isRequired
 };
 

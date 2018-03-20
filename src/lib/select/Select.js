@@ -6,11 +6,20 @@ import styled from "styled-components";
 // PropTypes
 import PropTypes from "prop-types";
 
+/**
+ * A select ("dropdown")
+ * @param {name} name Unique identifier
+ * @param {label} label A description of the selection is being used for
+ * @param {onSelect} onSelect Event handler (gets fired when an option has been selected)
+ * @param {options} options The options that may be selected
+ * @param {value} value The currently selected option
+ * @param {...otherProps} ...otherProps Other (HTML5) props that should be passed to the select
+ */
 export const Select = ({
   name,
   label,
-  onInput,
-  children,
+  onSelect,
+  options,
   value,
   ...otherProps
 }) => (
@@ -19,11 +28,11 @@ export const Select = ({
     <select
       name={name}
       id={name}
-      onChange={onInput}
-      defaultValue={value}
+      onChange={onSelect}
+      value={value}
       {...otherProps}
     >
-      {children}
+      {options}
     </select>
   </InputWrapper>
 );
@@ -31,11 +40,8 @@ export const Select = ({
 Select.propTypes = {
   label: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  onInput: PropTypes.func.isRequired,
-  children: PropTypes.oneOfType([
-    PropTypes.node,
-    PropTypes.arrayOf(PropTypes.node)
-  ]).isRequired,
+  onSelect: PropTypes.func.isRequired,
+  options: PropTypes.arrayOf(PropTypes.node).isRequired,
   value: PropTypes.string.isRequired
 };
 
