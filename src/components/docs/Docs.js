@@ -17,7 +17,8 @@ import {
   SelectDocs,
   ButtonDocs,
   NavBarDocs,
-  ToolBarDocs
+  ToolBarDocs,
+  TabBarDocs
 } from "../../lib/framework";
 
 export class Docs extends Component {
@@ -64,6 +65,9 @@ export class Docs extends Component {
               <li>
                 <a href="#toolbar">ToolBar</a>
               </li>
+              <li>
+                <a href="#tabbar">TabBar</a>
+              </li>
             </NavWrapper>
           </nav>
         </header>
@@ -86,7 +90,7 @@ export class Docs extends Component {
               <li>Maintainability</li>
             </ul>
             <p>
-              If you have new ideas or find any issues, feel free to let us know
+              If you have new ideas or spot any issues, feel free to let us know
               on{" "}
               <a href="https://github.com/opensdcp/opensnet-bridge-client">
                 GitHub
@@ -105,6 +109,7 @@ export class Docs extends Component {
           <TabsDocs />
           <NavBarDocs />
           <ToolBarDocs />
+          <TabBarDocs />
         </main>
       </DocsWrapper>
     );

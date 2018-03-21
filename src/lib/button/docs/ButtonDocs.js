@@ -21,6 +21,11 @@ export const ButtonDocs = () => (
           "Event handler (gets fired when the button has been clicked)."
       },
       {
+        title: "equal (bool)",
+        description:
+          "Whether all nearby buttons should have an equal width (used with tabs)."
+      },
+      {
         title: "...otherProps",
         description: "Other (HTML5) props that should be passed to the button."
       }
