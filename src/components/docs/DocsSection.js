@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Component, Fragment } from "react";
 
 // PropTypes
 import PropTypes from "prop-types";
@@ -6,32 +6,75 @@ import PropTypes from "prop-types";
 // Styled components
 import styled from "styled-components";
 
-export const DocsSection = ({ title, id, demos, code, api }) => (
-  <section id={id}>
-    <h2>{title}</h2>
-    <details open>
-      <summary>Demo</summary>
-      <DemoWrapper>{demos}</DemoWrapper>
-    </details>
-    <details>
-      <summary>Code</summary>
-      <CodeWrapper>
-        <code>{`${code}`}</code>
-      </CodeWrapper>
-    </details>
-    <details>
-      <summary>Props</summary>
-      <dl>
-        {api.map(({ title, description }) => (
-          <Fragment key={title}>
-            <DescriptionListHeader>{title}</DescriptionListHeader>
-            <dd>{description}</dd>
-          </Fragment>
-        ))}
-      </dl>
-    </details>
-  </section>
-);
+export class DocsSection extends Component {
+  state = {
+    demoOpen: true,
+    codeOpen: false,
+    propsOpen: false
+  };
+
+  // This is repetetive for now, but there will be features that require this
+  // kind of control in the docs in the future (live code editing).
+  toggleDemo = event => {
+    // Don't use native open/close
+    event.preventDefault();
+    // Toggle it manually
+    this.setState({
+      demoOpen: !this.state.demoOpen
+    });
+  };
+
+  toggleCode = event => {
+    // Don't use native open/close
+    event.preventDefault();
+    // Toggle it manually
+    this.setState({
+      codeOpen: !this.state.codeOpen
+    });
+  };
+
+  toggleProps = event => {
+    // Don't use native open/close
+    event.preventDefault();
+    // Toggle it manually
+    this.setState({
+      propsOpen: !this.state.propsOpen
+    });
+  };
+
+  render() {
+    const { title, id, demos, code, api } = this.props;
+    const { demoOpen, codeOpen, propsOpen } = this.state;
+    const { toggleDemo, toggleCode, toggleProps } = this;
+
+    return (
+      <section id={id}>
+        <h2>{title}</h2>
+        <details open={demoOpen}>
+          <summary onClick={event => toggleDemo(event)}>Demo</summary>
+          <DemoWrapper>{demos}</DemoWrapper>
+        </details>
+        <details open={codeOpen}>
+          <summary onClick={event => toggleCode(event)}>Code</summary>
+          <CodeWrapper>
+            <code>{`${code}`}</code>
+          </CodeWrapper>
+        </details>
+        <details open={propsOpen}>
+          <summary onClick={event => toggleProps(event)}>Props</summary>
+          <dl>
+            {api.map(({ title, description }) => (
+              <Fragment key={title}>
+                <DescriptionListHeader>{title}</DescriptionListHeader>
+                <dd>{description}</dd>
+              </Fragment>
+            ))}
+          </dl>
+        </details>
+      </section>
+    );
+  }
+}
 
 const apiShape = {
   title: PropTypes.string.isRequired,
