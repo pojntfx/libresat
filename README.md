@@ -1,15 +1,19 @@
 # OpenSNET Bridge Client
 
-Fast and minimal React frontend for an OpenSNET Bridge Server.
+This fast and minimal copyleft program enables you to manage a satellite with a graphical user interface. If used together with an [OpenSNET Bridge Server](https://opensdcp.github.io/network/bridge/server) it forms an access point ("[OpenSNET Bridge](https://opensdcp.github.io/network/bridge/)") to the [Open Satellite Network (OpenSNET)](https://opensdcp.github.io/network).
 
 ## Usage
 
+First [download](https://github.com/opensdcp/opensnet-bridge-client/releases) or [clone](https://help.github.com/articles/cloning-a-repository/) this program. Then, run the following commands in your terminal to install and start it:
+
 ```bash
 # Install dependencies
-yarn install
+npm install
 # Build and serve development version on http://localhost:3000/
-yarn dev
+npm run dev
 ```
+
+> If you want to use this program in production, see [Deployment](#deployment).
 
 ## Screenshots
 
@@ -17,22 +21,24 @@ yarn dev
 
 ## Documentation
 
+You may either view the docs by running the commands below or by visiting [the OpenSDCP documentation](https://opensdcp.github.io/network/docs).
+
 ```bash
 # Generate and serve jsdoc documentation on http://localhost:3001/
-yarn docs
+npm run docs
 # Generate and serve annnotated source documentation on http://localhost:3002/
-yarn annotated-source
+npm run annotated-source
 ```
 
 ## Deployment
 
 ```bash
 # Build a production ready version in the build/ folder
-yarn build
+npm run build
 # Serve production ready version on http://localhost:5000/
-yarn start
-# Deploy to Now
-yarn deploy
+npm run start
+# If you want to share it with the world, deploy to Zeit Now
+npm run deploy
 ```
 
 ## License

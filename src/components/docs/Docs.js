@@ -15,7 +15,8 @@ import {
   SliderDocs,
   CheckBoxDocs,
   SelectDocs,
-  ButtonDocs
+  ButtonDocs,
+  NavBarDocs
 } from "../../lib/framework";
 
 export class Docs extends Component {
@@ -56,6 +57,9 @@ export class Docs extends Component {
               <li>
                 <a href="#tabs">Tabs</a>
               </li>
+              <li>
+                <a href="#navbar">NavBar</a>
+              </li>
             </NavWrapper>
           </nav>
         </header>
@@ -95,6 +99,7 @@ export class Docs extends Component {
           <SelectDocs />
           <SliderDocs />
           <TabsDocs />
+          <NavBarDocs />
         </main>
       </DocsWrapper>
     );
