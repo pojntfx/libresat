@@ -20,16 +20,18 @@ import { Pane } from "./Pane";
  */
 export const Tab = ({ links, panes, activePane, onChange, ...otherProps }) => (
   <TabWrapper>
-    {links.map((link, index) => (
-      <ButtonWrapper
-        value={link}
-        id={index}
-        onClick={event => onChange(parseInt(event.target.id, 10))}
-        key={index}
-        active={activePane === index ? true : false}
-        {...otherProps}
-      />
-    ))}
+    <TabControlsWrapper>
+      {links.map((link, index) => (
+        <ButtonWrapper
+          value={link}
+          id={index}
+          onClick={event => onChange(parseInt(event.target.id, 10))}
+          key={index}
+          active={activePane === index ? true : false}
+          {...otherProps}
+        />
+      ))}
+    </TabControlsWrapper>
     {panes.map((pane, index) => (
       <Pane active={activePane === index ? true : false} key={index}>
         {pane}
@@ -45,7 +47,16 @@ Tab.propTypes = {
   activePane: PropTypes.number.isRequired
 };
 
-const TabWrapper = styled.div``;
+const TabControlsWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  overflow-x: auto;
+`;
+
+const TabWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
 
 const ButtonWrapper = styled(Button)`
   font-weight: ${({ active }) => (active ? "bolder" : "inherit")};
