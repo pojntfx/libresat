@@ -9,6 +9,7 @@ import { Slider } from "./slider/Slider";
 import { TextArea } from "./textarea/TextArea";
 import { Tab } from "./tabs/Tab";
 import { NavBar } from "./navbar/NavBar";
+import { ToolBar } from "./toolbar/ToolBar";
 
 // Docs imports
 import { TextAreaDocs } from "./textarea/docs/TextAreaDocs";
@@ -20,6 +21,7 @@ import { CheckBoxDocs } from "./checkbox/docs/CheckBoxDocs";
 import { SelectDocs } from "./select/docs/SelectDocs";
 import { ButtonDocs } from "./button/docs/ButtonDocs";
 import { NavBarDocs } from "./navbar/docs/NavBarDocs";
+import { ToolBarDocs } from "./toolbar/docs/ToolBarDocs";
 
 // Exports
 export {
@@ -33,6 +35,7 @@ export {
   TextArea,
   Tab,
   NavBar,
+  ToolBar,
   TextAreaDocs,
   TextFieldDocs,
   TabsDocs,
@@ -41,5 +44,6 @@ export {
   CheckBoxDocs,
   SelectDocs,
   ButtonDocs,
-  NavBarDocs
+  NavBarDocs,
+  ToolBarDocs
 };

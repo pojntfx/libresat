@@ -24,7 +24,7 @@ export const DocsSection = ({ title, id, demos, code, api }) => (
       <dl>
         {api.map(({ title, description }) => (
           <Fragment key={title}>
-            <dt>{title}</dt>
+            <DescriptionListHeader>{title}</DescriptionListHeader>
             <dd>{description}</dd>
           </Fragment>
         ))}
@@ -61,4 +61,8 @@ const DemoWrapper = styled.div`
 
 const CodeWrapper = styled.pre`
   overflow-x: auto;
+`;
+
+const DescriptionListHeader = styled.dt`
+  font-weight: bold;
 `;
