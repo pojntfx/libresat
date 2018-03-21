@@ -7,7 +7,7 @@ import styled from "styled-components";
 import PropTypes from "prop-types";
 
 /**
- *
+ * Main navigation at the top of the page.
  * @param {title} title Title/brand of the page
  * @param {links} links Links on the left side of the NavBar
  * @param {items} items Items on the right side of the NavBar
