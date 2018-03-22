@@ -11,6 +11,7 @@ import { Tab } from "./tabs/Tab";
 import { NavBar } from "./navbar/NavBar";
 import { ToolBar } from "./toolbar/ToolBar";
 import { TabBar } from "./tabbar/TabBar";
+import { List } from "./list/List";
 
 // Docs imports
 import { TextAreaDocs } from "./textarea/docs/TextAreaDocs";
@@ -24,6 +25,7 @@ import { ButtonDocs } from "./button/docs/ButtonDocs";
 import { NavBarDocs } from "./navbar/docs/NavBarDocs";
 import { ToolBarDocs } from "./toolbar/docs/ToolBarDocs";
 import { TabBarDocs } from "./tabbar/docs/TabBarDocs";
+import { ListDocs } from "./list/docs/ListDocs";
 
 // Exports
 export {
@@ -39,6 +41,7 @@ export {
   NavBar,
   ToolBar,
   TabBar,
+  List,
   TextAreaDocs,
   TextFieldDocs,
   TabsDocs,
@@ -49,5 +52,6 @@ export {
   ButtonDocs,
   NavBarDocs,
   ToolBarDocs,
-  TabBarDocs
+  TabBarDocs,
+  ListDocs
 };

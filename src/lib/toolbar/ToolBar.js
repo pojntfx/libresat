@@ -42,7 +42,7 @@ export const ToolBar = ({ leftItems, equalItems, title, rightItems }) =>
     </DividedNavWrapper>
   );
 
-const DividedNavWrapper = styled.div`
+const DividedNavWrapper = styled.menu`
   display: flex;
   overflow-x: auto;
   justify-content: space-between;
@@ -50,14 +50,14 @@ const DividedNavWrapper = styled.div`
   padding: 1rem 0;
 `;
 
-const LeftItemList = styled.ul`
+const LeftItemList = styled.menu`
   display: flex;
   padding: 0;
   margin: 0;
   padding-left: 1rem;
 `;
 
-const LeftItem = styled.li`
+const LeftItem = styled.div`
   margin-right: 1rem;
   list-style-type: none;
   white-space: nowrap;
@@ -73,7 +73,7 @@ const NavTitleWrapper = styled.div`
 `;
 
 // Equal items
-const EqualItemList = styled.ul`
+const EqualItemList = styled.menu`
   display: flex;
   overflow-x: auto;
   justify-content: space-between;
@@ -96,7 +96,7 @@ const EqualItem = styled.li`
 
 // Right items
 
-const RightItemList = styled.ul`
+const RightItemList = styled.menu`
   display: flex;
   padding: 0;
   margin: 0;

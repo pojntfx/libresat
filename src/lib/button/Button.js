@@ -28,4 +28,5 @@ Button.propTypes = {
 const ButtonWrapper = styled.button`
   white-space: nowrap;
   ${({ equal }) => (equal ? "flex-grow: 1" : null)};
+  padding: 0.5rem 0.75rem;
 `;

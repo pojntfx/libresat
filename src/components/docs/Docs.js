@@ -18,7 +18,8 @@ import {
   ButtonDocs,
   NavBarDocs,
   ToolBarDocs,
-  TabBarDocs
+  TabBarDocs,
+  ListDocs
 } from "../../lib/framework";
 
 export class Docs extends Component {
@@ -32,42 +33,23 @@ export class Docs extends Component {
               <li>
                 <Link to="/">Back to Start</Link>
               </li>
-              <li>
-                <a href="#philosophy">Philosophy</a>
-              </li>
-              <li>
-                <a href="#button">Button</a>
-              </li>
-              <li>
-                <a href="#switch">Switch</a>
-              </li>
-              <li>
-                <a href="#checkbox">CheckBox</a>
-              </li>
-              <li>
-                <a href="#textfield">TextField</a>
-              </li>
-              <li>
-                <a href="#textarea">TextArea</a>
-              </li>
-              <li>
-                <a href="#select">Select</a>
-              </li>
-              <li>
-                <a href="#slider">Slider</a>
-              </li>
-              <li>
-                <a href="#tabs">Tabs</a>
-              </li>
-              <li>
-                <a href="#navbar">NavBar</a>
-              </li>
-              <li>
-                <a href="#toolbar">ToolBar</a>
-              </li>
-              <li>
-                <a href="#tabbar">TabBar</a>
-              </li>
+              <LinkList
+                links={[
+                  "Philosophy",
+                  "Button",
+                  "Switch",
+                  "Checkbox",
+                  "TextField",
+                  "TextArea",
+                  "Select",
+                  "Slider",
+                  "Tabs",
+                  "NavBar",
+                  "ToolBar",
+                  "TabBar",
+                  "List"
+                ]}
+              />
             </NavWrapper>
           </nav>
         </header>
@@ -110,16 +92,26 @@ export class Docs extends Component {
           <NavBarDocs />
           <ToolBarDocs />
           <TabBarDocs />
+          <ListDocs />
         </main>
       </DocsWrapper>
     );
   }
 }
+
+const LinkList = ({ links }) =>
+  links.map(linkTitle => (
+    <li key={linkTitle}>
+      <a href={`#${linkTitle.toLowerCase()}`}>{linkTitle}</a>
+    </li>
+  ));
+
 const DocsWrapper = styled.article`
   margin: 0 auto;
   padding: 1rem;
   max-width: 1600px;
 `;
+
 const NavWrapper = styled.menu`
   display: flex;
   overflow-x: auto;
