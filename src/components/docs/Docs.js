@@ -19,7 +19,8 @@ import {
   NavBarDocs,
   ToolBarDocs,
   TabBarDocs,
-  ListDocs
+  ListDocs,
+  MenuDocs
 } from "../../lib/framework";
 
 export class Docs extends Component {
@@ -47,7 +48,8 @@ export class Docs extends Component {
                   "NavBar",
                   "ToolBar",
                   "TabBar",
-                  "List"
+                  "List",
+                  "Menu"
                 ]}
               />
             </NavWrapper>
@@ -93,6 +95,7 @@ export class Docs extends Component {
           <ToolBarDocs />
           <TabBarDocs />
           <ListDocs />
+          <MenuDocs />
         </main>
       </DocsWrapper>
     );
