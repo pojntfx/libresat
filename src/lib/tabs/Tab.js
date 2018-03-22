@@ -47,10 +47,12 @@ Tab.propTypes = {
   activePane: PropTypes.number.isRequired
 };
 
-const TabControlsWrapper = styled.div`
+const TabControlsWrapper = styled.menu`
   display: flex;
   flex-direction: row;
   overflow-x: auto;
+  margin: 0;
+  padding: 0;
 `;
 
 const TabWrapper = styled.div`
