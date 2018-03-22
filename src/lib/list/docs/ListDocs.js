@@ -19,11 +19,11 @@ export const ListDocs = () => (
     api={[
       {
         title: "title (optional) (string)",
-        description: "Title of the List"
+        description: "Title of the List."
       },
       {
         title: "items (node[])",
-        description: "Items in the List"
+        description: "Items in the List."
       }
     ]}
   />
@@ -31,72 +31,72 @@ export const ListDocs = () => (
 
 const code = `
 class ListDemo extends Component {
-    PersonComponent = styled.div\`
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    \`;
-  
-    PersonActions = styled.div\`
-      margin-left: 1rem;
-    \`;
-  
-    onAddPerson = () => {
-      console.log("Adding person.");
-    };
-  
-    onRemovePerson = () => {
-      console.log("Removing person.");
-    };
-  
-    onShareDetails = () => {
-      console.log("Sharing details.");
-    };
-  
-    render() {
-      const {
-        PersonComponent,
-        PersonActions,
-        onAddPerson,
-        onRemovePerson,
-        onShareDetails
-      } = this;
-  
-      return (
-        <List
-          title="Manage users"
-          items={[
-            <Fragment key="instanceControl">
-              <PersonComponent>
-                First person
-                <PersonActions>
-                  <Button value="+ Add person" onClick={onAddPerson} />
-                  <Button value="- Remove person" onClick={onRemovePerson} />
-                  <Button value="> Share details" onClick={onShareDetails} />
-                </PersonActions>
-              </PersonComponent>
-              <PersonComponent>
-                Second person
-                <PersonActions>
-                  <Button value="+ Add person" onClick={onAddPerson} />
-                  <Button value="- Remove person" onClick={onRemovePerson} />
-                  <Button value="> Share details" onClick={onShareDetails} />
-                </PersonActions>
-              </PersonComponent>
-              <PersonComponent>
-                Third person
-                <PersonActions>
-                  <Button value="+ Add person" onClick={onAddPerson} />
-                  <Button value="- Remove person" onClick={onRemovePerson} />
-                  <Button value="> Share details" onClick={onShareDetails} />
-                </PersonActions>
-              </PersonComponent>
-            </Fragment>
-          ]}
-        />
-      );
-    }
+  PersonComponent = styled.div\`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  \`;
+
+  PersonActions = styled.div\`
+    margin-left: 1rem;
+  \`;
+
+  onAddPerson = () => {
+    console.log("Adding person.");
+  };
+
+  onRemovePerson = () => {
+    console.log("Removing person.");
+  };
+
+  onShareDetails = () => {
+    console.log("Sharing details.");
+  };
+
+  render() {
+    const {
+      PersonComponent,
+      PersonActions,
+      onAddPerson,
+      onRemovePerson,
+      onShareDetails
+    } = this;
+
+    return (
+      <List
+        title="Manage users"
+        items={[
+          <Fragment key="managePerson">
+            <PersonComponent>
+              First person
+              <PersonActions>
+                <Button value="+ Add person" onClick={onAddPerson} />
+                <Button value="- Remove person" onClick={onRemovePerson} />
+                <Button value="> Share details" onClick={onShareDetails} />
+              </PersonActions>
+            </PersonComponent>
+            <PersonComponent>
+              Second person
+              <PersonActions>
+                <Button value="+ Add person" onClick={onAddPerson} />
+                <Button value="- Remove person" onClick={onRemovePerson} />
+                <Button value="> Share details" onClick={onShareDetails} />
+              </PersonActions>
+            </PersonComponent>
+            <PersonComponent>
+              Third person
+              <PersonActions>
+                <Button value="+ Add person" onClick={onAddPerson} />
+                <Button value="- Remove person" onClick={onRemovePerson} />
+                <Button value="> Share details" onClick={onShareDetails} />
+              </PersonActions>
+            </PersonComponent>
+          </Fragment>
+        ]}
+      />
+    );
   }
+}
 `;
 
 class ListDemo extends Component {
@@ -135,7 +135,7 @@ class ListDemo extends Component {
       <List
         title="Manage users"
         items={[
-          <Fragment key="instanceControl">
+          <Fragment key="managePerson">
             <PersonComponent>
               First person
               <PersonActions>
