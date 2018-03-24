@@ -1,3 +1,5 @@
-import React from "react";
+import Document, { Head, Main, NextScript } from "next/document";
+import { Button } from "reactstrap";
+import "../styles/common.scss";
 
-export default () => <div>Hello, world!</div>;
+export default () => <Button>Hello, world!</Button>;
