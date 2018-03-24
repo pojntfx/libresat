@@ -16,7 +16,7 @@ All design files and mockups for the OpenSDCP repos.
 
 OpenSDCP Design Mockup Media (C) 2018 Felicitas Pojtinger
 
-All the media files (images, videos etc.) are licensed Creative Commons Attribution 4.0 (CC-BY-4.0).
+<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
 
 OpenSDCP Design Mockup Code (C) 2018 Felicitas Pojtinger
 
