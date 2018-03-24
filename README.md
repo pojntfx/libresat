@@ -4,7 +4,7 @@ All design files and mockups for the OpenSDCP repos.
 
 ## Examples
 
-![OpenSNET Bridge Client Concept](opensnet-bridge-client/concepts/dashboard-layout.png)
+![OpenSNET Bridge Client Concept](opensnet-bridge-client/dashboard-layout-concept-2017.png)
 
 ![OpenSDCP Landing Page](opensdcp-website/landing-page/landing-page.png)
 
