@@ -12,7 +12,7 @@ All design files and mockups for the OpenSDCP repos.
 
 ## License
 
-OpenSNET Bridge Client Copyright (C) 2018 Felicitas Pojtinger
+OpenSDCP Design (C) 2018 Felicitas Pojtinger
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
