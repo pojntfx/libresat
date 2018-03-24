@@ -4,11 +4,16 @@ Main website for all the OpenSDCP projects.
 
 ## Usage
 
-> TODO: Add usage
+```bash
+# Install dependencies
+npm install
+# Build and serve development version on http://localhost:3000/
+npm run dev
+```
 
 ## Screenshots
 
-> TODO: Add screenshots
+![Mockup of the landing page](/screenshots/landing-page.png)
 
 ## Documentation
 
@@ -16,7 +21,14 @@ Main website for all the OpenSDCP projects.
 
 ## Deployment
 
-> TODO: Add deployment
+```bash
+# Build a production ready version in the build/ folder
+npm run build
+# Serve production ready version on http://localhost:5000/
+npm run start
+# If you want to share it with the world, deploy to Zeit Now
+npm run deploy
+```
 
 ## License
 
