@@ -4,15 +4,21 @@ All design files and mockups for the OpenSDCP repos.
 
 ## Examples
 
-![OpenSDCP Landing Page](opensdcp.github.io/landing-page/landing-page.png)
+![OpenSNET Bridge Client Concept](opensnet-bridge-client/concepts/dashboard-layout.png)
 
-![OpenSNET Bridge Client Wallpaper](opensnet-bridge-client/concepts/dashboard-layout.png)
+![OpenSDCP Landing Page](opensdcp-website/landing-page/landing-page.png)
 
-![OpenSDCP Wallpaper](opensdcp-wallpapers/sunrise-wallpaper.png)
+![OpenSDCP Legacy Landing Page](opensdcp-website/landing-page/landing-page-2017-2.png)
+
+![OpenSDCP OS Concept](opensdcp-os/os-tropical.png)
 
 ## License
 
-OpenSDCP Design (C) 2018 Felix Pojtinger
+OpenSDCP Design Mockup Media (C) 2018 Felix Pojtinger
+
+All the media files (images, videos etc.) are licensed Creative Commons Attribution 4.0 (CC-BY-4.0).
+
+OpenSDCP Design Mockup Code (C) 2018 Felix Pojtinger
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
