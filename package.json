@@ -1,0 +1,43 @@
+{
+  "name": "opensdcp-website",
+  "version": "0.0.1-alpha",
+  "description": "Main website for all the OpenSDCP projects.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next",
+    "build": "next build && next export -o build/",
+    "start": "serve build/",
+    "deploy": "npm run build && now --public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/opensdcp/opensdcp-website.git"
+  },
+  "keywords": [
+    "opensdcp",
+    "opensnet-bridge-client",
+    "satellite",
+    "space",
+    "nextjs",
+    "react",
+    "reactjs",
+    "frontend"
+  ],
+  "author": "Felix Pojtinger",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/opensdcp/opensdcp-website/issues"
+  },
+  "homepage": "https://github.com/opensdcp/opensdcp-website#readme",
+  "dependencies": {
+    "next": "^5.0.0",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "serve": "^6.5.3",
+    "styled-components": "^3.2.3"
+  },
+  "devDependencies": {
+    "eslint-plugin-react": "^7.7.0",
+    "now": "^10.2.1"
+  }
+}
