@@ -8,7 +8,8 @@
     "build":
       "next build && next export -o build/ && ncp .next/static build/_next/static",
     "start": "serve build/",
-    "deploy": "npm run build && now --public"
+    "deploy": "npm run build && now --public",
+    "deploy-demo": "now alias $(now --public) opensdcp.now.sh"
   },
   "repository": {
     "type": "git",
