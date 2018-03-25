@@ -26,11 +26,15 @@ class MainNavigation extends React.Component {
 
     return (
       <div
-        className={`d-flex py-2 bg-dark align-items-center justify-content-between sticky-top ${className}`}
+        className={`d-flex py-3 bg-dark align-items-center justify-content-between sticky-top ${className}`}
       >
         <div>
-          <nav className="nav flex-nowrap">
-            <MainNavigationLink to="/" text="OpenSDCP" className="pr-0" />
+          <nav className="nav flex-nowrap ">
+            <MainNavigationLink
+              to="/"
+              text="OpenSDCP"
+              className="pr-1 pr-sm-3"
+            />
           </nav>
         </div>
         <div className="container align-items-center d-flex">
@@ -41,12 +45,16 @@ class MainNavigation extends React.Component {
               className="pl-md-0"
             />
             <MainNavigationLink to="/hardware" text="Hardware" />
-            <MainNavigationLink to="/network" text="Network" className="mr-3" />
+            <MainNavigationLink
+              to="/network"
+              text="Network"
+              className="mr-0 mr-xl-5"
+            />
             <MainNavigationLink to="/docs" text="Docs" />
             <MainNavigationLink to="/blog" text="Blog" />
             <MainNavigationLink to="/forum" text="Forum" />
           </nav>
-          <nav className="nav flex-nowrap ml-auto">
+          <nav className="nav flex-nowrap ml-lg-auto">
             <form className="ml-3 form-inline">
               <input
                 className="form-control form-control--search"
@@ -138,7 +146,9 @@ export default styled(MainNavigation)`
 
 const MainNavigationLink = ({ className, to, text }) => (
   <Link href={to}>
-    <a className={`nav-link text-light ${className}`}>{text}</a>
+    <a className={`nav-link text-light${className ? " " + className : ""}`}>
+      {text}
+    </a>
   </Link>
 );
 

@@ -1,5 +1,14 @@
 // Variable overrides here
+// GLOBAL
+$border-radius: 8px;
+$border-width: 0;
+// INPUTS
+// Make the inputs semi-transparent
+$input-bg: rgba(255, 255, 255, 0.45);
+$input-color: #ffffff;
+$input-placeholder-color: #ffffff;
+$input-btn-padding-y: 0.5rem;
 // Variable access
 @import "node_modules/bootstrap/scss/bootstrap";
 // Make the dark color actually dark
-$theme-colors: ( "dark": #000000);
+$theme-colors: ("dark": rgba(0, 0, 0, 0.45));
