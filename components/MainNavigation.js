@@ -28,15 +28,12 @@ class MainNavigation extends React.Component {
       <div
         className={`d-flex py-3 bg-dark align-items-center justify-content-between sticky-top ${className}`}
       >
-        <div>
-          <nav className="nav flex-nowrap ">
-            <MainNavigationLink
-              to="/"
-              text="OpenSDCP"
-              className="pr-1 pr-sm-3"
-            />
-          </nav>
-        </div>
+        <Brand
+          to="/"
+          alt="OpenSDCP Logo"
+          img="/static/logo-navbar.png"
+          className="pl-3 pr-1 pr-sm-3 navbar__brand--logo"
+        />
         <div className="container align-items-center d-flex">
           <nav className="nav flex-nowrap">
             <MainNavigationLink
@@ -98,6 +95,7 @@ class MainNavigation extends React.Component {
             <MainNavigationLink
               to="https://github.com/opensdcp"
               text="GitHub"
+              className="pr-3"
             />
           </nav>
         </div>
@@ -149,6 +147,12 @@ const MainNavigationLink = ({ className, to, text }) => (
     <a className={`nav-link text-light${className ? " " + className : ""}`}>
       {text}
     </a>
+  </Link>
+);
+
+const Brand = ({ className, to, alt, img }) => (
+  <Link href={to}>
+    <img className={className} alt={alt} src={img} />
   </Link>
 );
 

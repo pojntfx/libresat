@@ -8,6 +8,13 @@ $input-bg: rgba(255, 255, 255, 0.45);
 $input-color: #ffffff;
 $input-placeholder-color: #ffffff;
 $input-btn-padding-y: 0.5rem;
+// NAVBAR
+// Not styled component because of SSR
+.navbar__brand--logo {
+    max-width: 130px;
+    cursor: pointer;
+}
+
 // Variable access
 @import "node_modules/bootstrap/scss/bootstrap";
 // Make the dark color actually dark
