@@ -2,6 +2,10 @@
 
 Main website for all the OpenSDCP projects.
 
+## Demo
+
+Try out an [up-to-date instance](https://opensdcp.now.sh/) hosted on Zeit Now.
+
 ## Usage
 
 ```bash
@@ -28,6 +32,8 @@ npm run build
 npm run start
 # If you want to share it with the world, deploy to Zeit Now
 npm run deploy
+# Deploy a demo instance on https://opensdcp.now.sh (if alias is not already taken)
+npm run deploy-demo
 ```
 
 ## License
