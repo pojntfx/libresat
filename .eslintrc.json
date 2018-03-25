@@ -20,7 +20,9 @@
       "no-unused-vars": "warn",
       "constructor-super": "warn",
       "valid-typeof": "warn",
-      "no-console": "off"
+      "no-console": "off",
+      "react/display-name": "off",
+      "react/prop-types": "off"
     },
     "globals": {
       "React": true
