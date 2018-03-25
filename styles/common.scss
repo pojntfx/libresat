@@ -2,3 +2,11 @@
 @import "custom";
 // Bootstrap SCSS
 @import "~bootstrap/scss/bootstrap";
+// Landing page background image
+body {
+    background-image: url(/static/bg-landing-page.jpg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: cover;
+}
