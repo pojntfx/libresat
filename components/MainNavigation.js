@@ -150,11 +150,14 @@ const MainNavigationLink = ({ className, to, text }) => (
   </Link>
 );
 
-const Brand = ({ className, to, alt, img }) => (
+const Brand = styled(({ className, to, alt, img }) => (
   <Link href={to}>
     <img className={className} alt={alt} src={img} />
   </Link>
-);
+))`
+  max-width: 130px;
+  cursor: pointer;
+`;
 
 const DropdownListGroup = styled(ListGroup)`
   min-width: 200px;
