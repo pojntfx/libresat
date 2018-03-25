@@ -4,9 +4,10 @@
 @import "~bootstrap/scss/bootstrap";
 // Landing page background image
 body {
-    background-image: url(/static/bg-landing-page.jpg);
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-attachment: fixed;
+    // Center the background and make it full height
+    background: url(/static/bg-landing-page.jpg) no-repeat center center fixed;
     background-size: cover;
+    height: 100vh; // Fix navigation bar glitches when scrolling with dynamic address bar (Chromium on mobile)
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
 }

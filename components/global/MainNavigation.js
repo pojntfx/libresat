@@ -8,7 +8,7 @@ import {
 import styled from "styled-components";
 import Link from "next/link";
 
-class MainNavigation extends React.Component {
+export class MainNavigationTemplate extends React.Component {
   state = {
     versionInfoIsOpen: false
   };
@@ -26,14 +26,16 @@ class MainNavigation extends React.Component {
 
     return (
       <div
-        className={`d-flex py-3 bg-dark align-items-center justify-content-between sticky-top ${className}`}
+        className={`d-flex py-3 align-items-center justify-content-between sticky-top ${className}`}
       >
-        <Brand
-          to="/"
-          alt="OpenSDCP Logo"
-          img="/static/logo-navbar.png"
-          className="pl-3 pr-1 pr-sm-3 navbar__brand--logo"
-        />
+        <div>
+          <Brand
+            to="/"
+            alt="OpenSDCP Logo"
+            img="/static/logo-navbar.png"
+            className="pl-3 pr-1 pr-sm-3 navbar__brand--logo"
+          />
+        </div>
         <div className="container align-items-center d-flex">
           <nav className="nav flex-nowrap">
             <MainNavigationLink
@@ -104,7 +106,7 @@ class MainNavigation extends React.Component {
   }
 }
 
-export default styled(MainNavigation)`
+export const MainNavigation = styled(MainNavigationTemplate)`
   // Make navbar responsive
   overflow-x: auto;
 
