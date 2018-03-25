@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "next",
-    "build": "next build && next export -o build/ && ncp .next/static build/_next/static",
+    "build":
+      "next build && next export -o build/ && ncp .next/static build/_next/static",
     "start": "serve build/",
     "deploy": "npm run build && now --public"
   },

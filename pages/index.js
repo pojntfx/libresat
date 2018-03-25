@@ -1,5 +1,5 @@
-import "../styles/common.scss";
 import HomeLayout from "../layouts/HomeLayout";
+import "../styles/common.scss";
 
 export default () => (
   <HomeLayout>
