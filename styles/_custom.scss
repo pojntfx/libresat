@@ -4,11 +4,29 @@ $border-radius: 8px;
 $border-width: 0;
 // INPUTS
 // Make the inputs semi-transparent
-$input-bg: rgba(255, 255, 255, 0.45);
+$input-bg: rgba(150, 150, 150, 0.65);
 $input-color: #ffffff;
 $input-placeholder-color: #ffffff;
 $input-btn-padding-y: 0.5rem;
+// BUTTONS
+$btn-padding-y: 0.6rem;
+$primary: rgba(0, 0, 0, 0.65);
+$secondary: rgba(150, 150, 150, 0.65);
 // Variable access
 @import "node_modules/bootstrap/scss/bootstrap";
 // Make the dark color actually dark
-$theme-colors: ("dark": rgba(0, 0, 0, 0.45));
+$theme-colors: ("dark": rgba(0, 0, 0, 0.65));
+// Use css backdrop filter
+.bg-blur {
+  backdrop-filter: blur(10px);
+}
+
+// Make all normally transparent black elements blurry
+.bg-dark {
+  @extend .bg-blur;
+}
+
+// Make secondary buttons have a light text
+.btn-secondary {
+  @extend .text-light;
+}
