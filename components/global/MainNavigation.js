@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { withRouter } from "next/router";
+import { Children } from "react";
 
 export const MainNavigation = ({ links }) => (
   <nav>
@@ -10,9 +12,9 @@ export const MainNavigation = ({ links }) => (
 
 const NamedNavLink = ({ name, link, internal }) =>
   internal ? (
-    <Link href={`/${link.toLowerCase()}`} key={link}>
+    <ActiveLink href={`/${link.toLowerCase()}`} key={link}>
       <a>{name}</a>
-    </Link>
+    </ActiveLink>
   ) : (
     <a href={link} key={link}>
       {name}
@@ -20,7 +22,16 @@ const NamedNavLink = ({ name, link, internal }) =>
   );
 
 const InternalNavLink = ({ link }) => (
-  <Link href={`/${link.toLowerCase()}`} key={link}>
+  <ActiveLink href={`/${link.toLowerCase()}`} key={link}>
     <a>{link}</a>
-  </Link>
+  </ActiveLink>
 );
+
+const ActiveLink = withRouter(({ router, children, ...props }) => (
+  <Link {...props}>
+    {React.cloneElement(Children.only(children), {
+      className:
+        `/${router.pathname.split("/")[1]}` === props.href ? `active` : null
+    })}
+  </Link>
+));
