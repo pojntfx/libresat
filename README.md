@@ -1,4 +1,4 @@
-# OpenSNET Bridge Client
+# OpenSNET Bridge Client Web
 
 This fast and minimal copyleft program enables you to manage a satellite with a graphical user interface. If used together with an [OpenSNET Bridge Server](https://opensdcp.github.io/network/bridge/server) it forms an access point ("[OpenSNET Bridge](https://opensdcp.github.io/network/bridge/)") to the [Open Satellite Network (OpenSNET)](https://opensdcp.github.io/network).
 
