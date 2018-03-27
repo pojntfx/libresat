@@ -1,3 +1,4 @@
+import "../styles/common.scss";
 import { Fragment } from "react";
 import { MainHeader } from "../components/global/MainHeader";
 import { CommonNavigation } from "../components/global/CommonNavigation";

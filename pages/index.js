@@ -1,4 +1,3 @@
-import "../styles/common.scss";
 import { DefaultLayout } from "../layouts/DefaultLayout";
 
 export default () => (
