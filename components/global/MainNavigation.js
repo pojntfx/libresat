@@ -4,6 +4,7 @@ export const MainNavigation = ({ links }) => (
   <nav>
     <NamedNavLink name="Logo" link="" internal />
     {links.map(link => <InternalNavLink key={link} link={link} />)}
+    <NamedNavLink name="Source Code" link="https://github.com/opensdcp" />
   </nav>
 );
 
