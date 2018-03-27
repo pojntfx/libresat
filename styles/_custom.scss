@@ -1,3 +1,5 @@
 // Variable overrides BEFORE import
+@import "node_modules/react-grid-layout/css/styles";
+@import "node_modules/react-resizable/css/styles";
 @import "node_modules/bootstrap/scss/bootstrap";
 // Variable access AFTER import
