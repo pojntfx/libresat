@@ -13,6 +13,10 @@ module.exports = withSass({
       "/docs": { page: "/docs" },
       "/docs/getting-started/five-minute-guide": {
         page: "/docs/getting-started/five-minute-guide"
+      },
+      "/blog": { page: "/blog" },
+      "/blog/status/website-2018-march": {
+        page: "/blog/status/website-2018-march"
       }
     };
   }
