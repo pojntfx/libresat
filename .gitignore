@@ -1,0 +1,6 @@
+# env variables for auth
+.env
+
+# docker volumes
+gitea/
+postgres/
