@@ -1,5 +1,5 @@
 {
-  "name": "opensdcp-gitea",
+  "name": "opensdcp-git",
   "version": "0.0.1-alpha",
   "description": "Gitea instance for the OpenSDCP project",
   "main": "docker-compose.yml",
@@ -11,12 +11,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/opensdcp/opensdcp-gitea.git"
+    "url": "git+https://github.com/opensdcp/opensdcp-git.git"
   },
   "author": "Felix Pojtinger",
   "license": "GPL-3.0",
   "bugs": {
-    "url": "https://github.com/opensdcp/opensdcp-gitea/issues"
+    "url": "https://github.com/opensdcp/opensdcp-git/issues"
   },
-  "homepage": "https://github.com/opensdcp/opensdcp-gitea#readme"
+  "homepage": "https://github.com/opensdcp/opensdcp-git#readme"
 }

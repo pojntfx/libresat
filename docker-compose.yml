@@ -5,7 +5,7 @@ networks:
     external: false
 
 services:
-  server:
+  gitea:
     image: gitea/gitea:latest
     environment:
       - USER_UID=1000

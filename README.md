@@ -1,4 +1,4 @@
-# OpenSDCP Gitea
+# OpenSDCP Git
 
 Gitea instance for the OpenSDCP project.
 
