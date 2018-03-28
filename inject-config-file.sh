@@ -1,0 +1,1 @@
+sudo sed -i 's/# - ./- ./g' docker-compose.yml
