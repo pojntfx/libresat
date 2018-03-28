@@ -1,0 +1,22 @@
+{
+  "name": "opensdcp-gitea",
+  "version": "0.0.1-alpha",
+  "description": "Gitea instance for the OpenSDCP project",
+  "main": "docker-compose.yml",
+  "scripts": {
+    "apt-install": "sudo apt install docker.io docker-compose",
+    "start": "bash ./start.sh",
+    "set-domain": "bash ./set-domain.sh $1",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/opensdcp/opensdcp-gitea.git"
+  },
+  "author": "Felicitas Pojtinger",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/opensdcp/opensdcp-gitea/issues"
+  },
+  "homepage": "https://github.com/opensdcp/opensdcp-gitea#readme"
+}
