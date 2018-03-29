@@ -3,6 +3,8 @@ version: '2'
 services:
   postgresql:
     image: library/postgres:latest
+    labels:
+      kompose.volume.size: 1Gi
     volumes:
       - ./postgresql:/var/lib/postgresql/data
     environment: 
@@ -10,12 +12,16 @@ services:
       - POSTGRES_DB=openscp_forum
   redis:
     image: frodenas/redis:latest
+    labels:
+      kompose.volume.size: 1Gi
     environment:
       - REDIS_PASSWORD=${REDIS_PW}
     volumes:
       - ./redis:/data
   discourse:
     image: bitnami/discourse:latest
+    labels:
+      kompose.volume.size: 1Gi
     ports:
       - 3000:3000
     volumes:
@@ -40,6 +46,8 @@ services:
       - REDIS_PASSWORD=${REDIS_PW}
   sidekiq:
     image: bitnami/discourse:latest
+    labels:
+      kompose.volume.size: 1Gi
     depends_on:
       - discourse
     volumes:
