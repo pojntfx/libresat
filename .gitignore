@@ -1,0 +1,8 @@
+# environment variables
+.env
+
+# docker volumes
+discourse/
+postgresql/
+redis/
+sidekiq/
