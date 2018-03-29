@@ -12,11 +12,9 @@ First, create a `.env` file in this directory with the following content (or, if
 
 ```bash
 # Database setup
-POSTGRES_PW=opensdcp_forum_postgres_password
-REDIS_PW=opensdcp_forum_redis_password
+POSTGRES_PW=forum_postgres_password
+REDIS_PW=forum_redis_password
 # Discourse admin credentials
-DISCOURSE_USERNAME=opensdcp_forum_admin_username
-DISCOURSE_PASSWORD=opensdcp_forum_admin_password
 DISCOURSE_EMAIL=admin@opensdcp.org
 # Discourse preferences
 DISCOURSE_SITENAME=OpenSDCP
@@ -24,7 +22,7 @@ DISCOURSE_SITENAME=OpenSDCP
 SMTP_HOST=smtp.opensdcp.org
 SMTP_PORT=587
 SMTP_USERNAME=forum@opensdcp.org
-SMTP_PASSWORD=opensdcp_forum_smtp_password
+SMTP_PASSWORD=forum_smtp_password
 ```
 
 Now, source the environment variables:
@@ -39,7 +37,14 @@ After that, start the server (make sure you have the `docker.io` and `docker-com
 docker-compose up
 ```
 
-This may take quite some time, especially when connecting to the Postgresql server. When it has been finished, open up `localhost:3000` and continue the setup there! If you need OpenSDCP branding etc., be sure to check out the [OpenSDCP design repository](https://github.com/opensdcp/opensdcp-design).
+This may take quite some time, especially when connecting to the Postgresql server. When it has been finished, open up `localhost:3000` and continue the setup there!
+The admin user has the following credentials:
+
+* DISCOURSE_USERNAME=admin
+* DISCOURSE_PASSWORD=discourse_admin_password
+
+Be sure to change that!
+If you need OpenSDCP branding etc., be sure to check out the [OpenSDCP design repository](https://github.com/opensdcp/opensdcp-design).
 
 All the data will be saved in `discourse/`, `postgresql/`, `redis` and `sidekiq` in case you want to create backups. If your hosting provider supports it, those will be `persistentVolumeClaims` that you can download.
 

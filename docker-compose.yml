@@ -24,8 +24,8 @@ services:
       - postgresql
       - redis
     environment: 
-      - DISCOURSE_USERNAME=${DISCOURSE_USERNAME}
-      - DISCOURSE_PASSWORD=${DISCOURSE_PASSWORD}
+      - DISCOURSE_USERNAME=admin
+      - DISCOURSE_PASSWORD=discourse_admin_password
       - DISCOURSE_EMAIL=${DISCOURSE_EMAIL}
       - DISCOURSE_SITENAME=${DISCOURSE_SITENAME}
       - POSTGRESQL_ROOT_USER=postgres
@@ -38,10 +38,6 @@ services:
       - REDIS_HOST=redis
       - REDIS_PORT_NUMBER=6379
       - REDIS_PASSWORD=${REDIS_PW}
-      - SMTP_HOST=${SMTP_HOST}
-      - SMTP_PORT=${SMTP_PORT}
-      - SMTP_USER=${SMTP_USERNAME}
-      - SMTP_PASSWORD=${SMTP_PASSWORD}
   sidekiq:
     image: bitnami/discourse:latest
     depends_on:
@@ -50,12 +46,12 @@ services:
       - ./sidekiq:/bitnami
     command: nami start --foreground discourse-sidekiq
     environment: 
-      - DISCOURSE_USERNAME=${DISCOURSE_USERNAME}
-      - DISCOURSE_PASSWORD=${DISCOURSE_PASSWORD}
+      - DISCOURSE_USERNAME=admin
+      - DISCOURSE_PASSWORD=discourse_admin_password
       - DISCOURSE_EMAIL=${DISCOURSE_EMAIL}
       - DISCOURSE_SITENAME=${DISCOURSE_SITENAME}
       - POSTGRESQL_ROOT_USER=postgres
-      - ${POSTGRES_PW}=${POSTGRES_PW}
+      - POSTGRESQL_ROOT_PASSWORD=${POSTGRES_PW}
       - POSTGRESQL_HOST=postgresql
       - POSTGRESQL_PORT_NUMBER=5432
       - DISCOURSE_POSTGRESQL_USERNAME=postgres
