@@ -27,7 +27,7 @@ npm start
 Now open up your browser at `http://localhost:3000/` and continue with the installation. Select the following:
 
 * `PostgreSQL` as the database type
-* `db:5432` as the database host
+* `database:5432` as the database host
 * `YOUR_USERNAME_HERE` as the database user
 * `YOUR_PASSWORD_HERE` as the database password
 * `My OpenSDCP Gitea` as the application name (use whatever you want here)
