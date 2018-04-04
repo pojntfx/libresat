@@ -1,3 +1,4 @@
+import "../styles/common.scss";
 import { DefaultLayout } from "./DefaultLayout";
 
 export const BlogPostLayout = ({ title, date, authors, children }) => (
