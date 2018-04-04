@@ -38,7 +38,7 @@ npm run start-docker
 npm run deploy
 # Deploy a demo instance on https://opensdcp.now.sh (if alias is not already taken)
 npm run deploy-demo
-# Deploy a demo instance on your docker swarm
+# Deploy an instance on your docker swarm
 npm run deploy-docker
 ```
 
