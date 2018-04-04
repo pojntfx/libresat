@@ -2,13 +2,12 @@ import "../styles/common.scss";
 import { Fragment } from "react";
 import { MainHeader } from "../components/global/MainHeader";
 import { CommonNavigation } from "../components/global/CommonNavigation";
-import { SubNavigation } from "../components/global/SubNavigation";
 
-export const DefaultLayout = ({ title, sublinks, children }) => (
+export const LightLayout = ({ title, children }) => (
   <Fragment>
     <MainHeader>
       <CommonNavigation />
-      {sublinks ? <SubNavigation title={title} links={sublinks} /> : null}
+      <h1>{title}</h1>
     </MainHeader>
     {children}
   </Fragment>

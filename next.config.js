@@ -17,7 +17,8 @@ module.exports = withSass({
       "/blog": { page: "/blog" },
       "/blog/status/website-2018-march": {
         page: "/blog/status/website-2018-march"
-      }
+      },
+      "/demo": { page: "/demo" }
     };
   }
 });
