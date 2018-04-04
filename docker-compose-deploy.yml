@@ -1,0 +1,41 @@
+version: "3"
+
+services: 
+  web:
+    image: gitea/gitea:latest
+    networks:
+      - gitea
+    ports:
+      - 1000:3000
+      - 222:3001
+    volumes:
+      - gitea-web-data:/data
+    deploy:
+      replicas: 5
+      update_config:
+        parallelism: 2
+      restart_policy:
+        condition: on-failure
+  database:
+    image: postgres:9.6
+    environment: 
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=gitea
+    networks:
+      - gitea
+    volumes:
+      - gitea-db-data:/var/lib/postgresql/data
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+      placement:
+        constraints: [node.role == manager]
+
+networks: 
+  gitea:
+
+volumes: 
+  gitea-web-data:
+  gitea-db-data:
