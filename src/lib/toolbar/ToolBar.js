@@ -25,19 +25,25 @@ export const ToolBar = ({ leftItems, equalItems, title, rightItems }) =>
   ) : (
     <DividedNavWrapper>
       <LeftItemList>
-        {leftItems.map(leftItem =>
-          leftItem.props.children.map((item, index) => (
-            <LeftItem key={index}>{item}</LeftItem>
-          ))
-        )}
+        {/* If there is only one button, don't map the array */}
+        {leftItems[1]
+          ? leftItems.map(leftItem =>
+              leftItem.props.children.map((item, index) => (
+                <LeftItem key={index}>{item}</LeftItem>
+              ))
+            )
+          : leftItems}
       </LeftItemList>
       {title ? <NavTitleWrapper>{title}</NavTitleWrapper> : null}
       <RightItemList>
-        {rightItems.map(rightItem =>
-          rightItem.props.children.map((item, index) => (
-            <RightItem key={index}>{item}</RightItem>
-          ))
-        )}
+        {/* If there is only one button, don't map the array */}
+        {rightItems[1]
+          ? rightItems.map(rightItem =>
+              rightItem.props.children.map((item, index) => (
+                <RightItem key={index}>{item}</RightItem>
+              ))
+            )
+          : rightItems}
       </RightItemList>
     </DividedNavWrapper>
   );

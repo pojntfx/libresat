@@ -14,6 +14,7 @@ import { TabBar } from "./tabbar/TabBar";
 import { List } from "./list/List";
 import { Menu } from "./menu/Menu";
 import { Card } from "./card/Card";
+import { Dialog } from "./dialog/Dialog";
 
 // Docs imports
 import { TextAreaDocs } from "./textarea/docs/TextAreaDocs";
@@ -30,6 +31,7 @@ import { TabBarDocs } from "./tabbar/docs/TabBarDocs";
 import { ListDocs } from "./list/docs/ListDocs";
 import { MenuDocs } from "./menu/docs/MenuDocs";
 import { CardDocs } from "./card/docs/CardDocs";
+import { DialogDocs } from "./dialog/docs/DialogDocs";
 
 // Exports
 export {
@@ -48,6 +50,7 @@ export {
   List,
   Menu,
   Card,
+  Dialog,
   TextAreaDocs,
   TextFieldDocs,
   TabsDocs,
@@ -61,5 +64,6 @@ export {
   TabBarDocs,
   ListDocs,
   MenuDocs,
-  CardDocs
+  CardDocs,
+  DialogDocs
 };
