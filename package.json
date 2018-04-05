@@ -13,10 +13,8 @@
   },
   "scripts": {
     "dev": "react-scripts start",
-    "docs":
-      "documentation build src/** -f html -o docs/ -g && serve docs/ --port=3001",
-    "annotated-source":
-      "docco --layout=parallel src/* src/components/*/* src/lib/*/* src/routes/* -o annotated-source/ && serve annotated-source/ --port=3002",
+    "docs": "documentation build src/** -f html -o docs/ -g && serve docs/ --port=3001",
+    "annotated-source": "docco --layout=parallel src/* src/components/*/* src/lib/*/* src/routes/* -o annotated-source/ && serve annotated-source/ --port=3002",
     "build": "react-scripts build",
     "start": "serve --single build/",
     "deploy": "npm run build && now --public"
@@ -27,8 +25,7 @@
     "eslint-plugin-react": "^7.7.0",
     "now": "^10.2.1"
   },
-  "description":
-    "Fast and minimal React frontend for an OpenSNET Bridge Server.",
+  "description": "Fast and minimal React frontend for an OpenSNET Bridge Server.",
   "main": "src/index.js",
   "repository": {
     "type": "git",

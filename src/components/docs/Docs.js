@@ -21,7 +21,8 @@ import {
   TabBarDocs,
   ListDocs,
   MenuDocs,
-  CardDocs
+  CardDocs,
+  DialogDocs
 } from "../../lib/framework";
 
 export class Docs extends Component {
@@ -51,7 +52,8 @@ export class Docs extends Component {
                   "TabBar",
                   "List",
                   "Menu",
-                  "Card"
+                  "Card",
+                  "Dialog"
                 ]}
               />
             </NavWrapper>
@@ -99,6 +101,7 @@ export class Docs extends Component {
           <ListDocs />
           <MenuDocs />
           <CardDocs />
+          <DialogDocs />
         </main>
       </DocsWrapper>
     );
