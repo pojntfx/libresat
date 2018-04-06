@@ -17,6 +17,7 @@ import { Card } from "./card/Card";
 import { Dialog } from "./dialog/Dialog";
 import { Container } from "./container/Container";
 import { Loading } from "./loading/Loading";
+import { GridLayout } from "./gridlayout/GridLayout";
 
 // Docs imports
 import { TextAreaDocs } from "./textarea/docs/TextAreaDocs";
@@ -36,6 +37,7 @@ import { CardDocs } from "./card/docs/CardDocs";
 import { DialogDocs } from "./dialog/docs/DialogDocs";
 import { ContainerDocs } from "./container/docs/ContainerDocs";
 import { LoadingDocs } from "./loading/docs/LoadingDocs";
+import { GridLayoutDocs } from "./gridlayout/docs/GridLayoutDocs";
 
 // Exports
 export {
@@ -57,6 +59,7 @@ export {
   Dialog,
   Container,
   Loading,
+  GridLayout,
   TextAreaDocs,
   TextFieldDocs,
   TabsDocs,
@@ -73,5 +76,6 @@ export {
   CardDocs,
   DialogDocs,
   ContainerDocs,
-  LoadingDocs
+  LoadingDocs,
+  GridLayoutDocs
 };

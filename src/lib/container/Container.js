@@ -22,8 +22,8 @@ const ContainerWrapper = styled.div`
 
 Container.propTypes = {
   children: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.node,
-    PropTypes.arrayOf(PropTypes.node)
+    PropTypes.string.isRequired,
+    PropTypes.node.isRequired,
+    PropTypes.arrayOf(PropTypes.node).isRequired
   ])
 };

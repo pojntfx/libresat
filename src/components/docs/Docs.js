@@ -24,7 +24,8 @@ import {
   CardDocs,
   DialogDocs,
   ContainerDocs,
-  LoadingDocs
+  LoadingDocs,
+  GridLayoutDocs
 } from "../../lib/framework";
 
 export class Docs extends Component {
@@ -57,7 +58,8 @@ export class Docs extends Component {
                   "Card",
                   "Dialog",
                   "Container",
-                  "Loading"
+                  "Loading",
+                  "GridLayout"
                 ]}
               />
             </NavWrapper>
@@ -108,6 +110,7 @@ export class Docs extends Component {
           <DialogDocs />
           <ContainerDocs />
           <LoadingDocs />
+          <GridLayoutDocs />
         </main>
       </DocsWrapper>
     );
