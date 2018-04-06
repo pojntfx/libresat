@@ -50,18 +50,18 @@ export class DocsSection extends Component {
     return (
       <section id={id}>
         <h2>{title}</h2>
-        <details open={demoOpen}>
-          <summary onClick={event => toggleDemo(event)}>Demo</summary>
+        <Details open={demoOpen}>
+          <Summary onClick={event => toggleDemo(event)}>Demo</Summary>
           <DemoWrapper>{demos}</DemoWrapper>
-        </details>
-        <details open={codeOpen}>
-          <summary onClick={event => toggleCode(event)}>Code</summary>
+        </Details>
+        <Details open={codeOpen}>
+          <Summary onClick={event => toggleCode(event)}>Code</Summary>
           <CodeWrapper>
             <code>{`${code}`}</code>
           </CodeWrapper>
-        </details>
-        <details open={propsOpen}>
-          <summary onClick={event => toggleProps(event)}>Props</summary>
+        </Details>
+        <Details open={propsOpen}>
+          <Summary onClick={event => toggleProps(event)}>Props</Summary>
           <dl>
             {api.map(({ title, description }) => (
               <Fragment key={title}>
@@ -70,7 +70,7 @@ export class DocsSection extends Component {
               </Fragment>
             ))}
           </dl>
-        </details>
+        </Details>
       </section>
     );
   }
@@ -100,6 +100,12 @@ const DemoWrapper = styled.div`
       margin-bottom: 0;
     }
   }
+`;
+
+const Details = styled.details``;
+
+const Summary = styled.summary`
+  padding: 0.5rem 0.75rem;
 `;
 
 const CodeWrapper = styled.pre`
