@@ -40,6 +40,7 @@ const NavHeaderWrapper = styled.header`
   justify-content: space-between;
   align-items: center;
   padding: 1rem 0;
+  border: 1px solid #000000;
 `;
 
 // Left items

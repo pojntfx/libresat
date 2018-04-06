@@ -151,7 +151,7 @@ class DialogDemo extends Component {
           onRightLabelClick={onUpload}
           body="Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab voluptatibus possimus optio, porro culpa voluptatum deleniti ipsum ipsa est quis maiores nisi accusantium fugiat vero qui commodi. Autem libero quas maxime consequatur tempora consequuntur cumque repudiandae at mollitia tempore, quaerat id dolorem exercitationem nihil accusantium rerum sunt assumenda enim sapiente?"
           active={dialogIsActive}
-          fullscreen={true}
+          fullscreen={false}
         />
       </Fragment>
     );
