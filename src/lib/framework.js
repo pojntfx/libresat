@@ -16,6 +16,7 @@ import { Menu } from "./menu/Menu";
 import { Card } from "./card/Card";
 import { Dialog } from "./dialog/Dialog";
 import { Container } from "./container/Container";
+import { Loading } from "./loading/Loading";
 
 // Docs imports
 import { TextAreaDocs } from "./textarea/docs/TextAreaDocs";
@@ -34,6 +35,7 @@ import { MenuDocs } from "./menu/docs/MenuDocs";
 import { CardDocs } from "./card/docs/CardDocs";
 import { DialogDocs } from "./dialog/docs/DialogDocs";
 import { ContainerDocs } from "./container/docs/ContainerDocs";
+import { LoadingDocs } from "./loading/docs/LoadingDocs";
 
 // Exports
 export {
@@ -54,6 +56,7 @@ export {
   Card,
   Dialog,
   Container,
+  Loading,
   TextAreaDocs,
   TextFieldDocs,
   TabsDocs,
@@ -69,5 +72,6 @@ export {
   MenuDocs,
   CardDocs,
   DialogDocs,
-  ContainerDocs
+  ContainerDocs,
+  LoadingDocs
 };
