@@ -7,7 +7,6 @@ import styled from "styled-components";
 import PropTypes from "prop-types";
 
 // Components
-import { Card } from "../card/Card";
 import { ToolBar } from "../toolbar/ToolBar";
 import { Button } from "../button/Button";
 
@@ -35,29 +34,21 @@ export const Dialog = ({
   ...otherProps
 }) => (
   <DialogWrapper open={active} fullscreen={fullscreen} {...otherProps}>
-    <DialogBodyWrapper
-      header={
-        <DialogHeader
-          title={title}
-          leftItems={[
-            <Button
-              value={leftLabel}
-              onClick={onLeftLabelClick}
-              key="leftLabel"
-            />
-          ]}
-          rightItems={[
-            <Button
-              value={rightLabel}
-              onClick={onRightLabelClick}
-              type="submit"
-              key="rightLabel"
-            />
-          ]}
+    <DialogHeader
+      title={title}
+      leftItems={[
+        <Button value={leftLabel} onClick={onLeftLabelClick} key="leftLabel" />
+      ]}
+      rightItems={[
+        <Button
+          value={rightLabel}
+          onClick={onRightLabelClick}
+          type="submit"
+          key="rightLabel"
         />
-      }
-      body={body}
+      ]}
     />
+    <DialogBodyWrapper>{body}</DialogBodyWrapper>
   </DialogWrapper>
 );
 
@@ -65,21 +56,23 @@ const DialogWrapper = styled.dialog`
   ${({ fullscreen }) =>
     fullscreen
       ? "position: fixed; top: 0; left: 0;height: 100%; width: 100%; overflow-y: auto"
-      : "height: auto; width: auto"};
+      : "position: relative; height: auto; width: auto"};
   padding: 0;
   border: 0;
-  & > div {
-    margin: 1rem;
-  }
-  & > div > div:first-child > menu > menu:first-child {
-    padding-left: 0;
-  }
-  & > div > div:first-child > menu > menu:last-child {
-    padding-right: 0;
+  box-sizing: border-box;
+  border: 1px solid #000000;
+  & > menu {
+    margin-top: 0;
+    border-left: 0;
+    border-top: 0;
+    border-right: 0;
   }
 `;
 
-const DialogBodyWrapper = styled(Card)``;
+const DialogBodyWrapper = styled.div`
+  padding: 1rem;
+  padding-top: 0;
+`;
 const DialogHeader = styled(ToolBar)``;
 
 Dialog.propTypes = {

@@ -30,7 +30,15 @@ export const TabBar = ({ links, panes, onChange, activePane }) => (
 );
 
 const TabBarWrapper = styled.div`
-  padding: 0 1rem;
+  & > div > menu {
+    padding: 1rem;
+    border: 1px solid #000000;
+    border-bottom: 0;
+  }
+  & > div > div {
+    padding: 1rem;
+    border: 1px solid #000000;
+  }
 `;
 
 const TabsWrapper = styled(Tab)``;

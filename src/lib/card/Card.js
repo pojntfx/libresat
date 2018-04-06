@@ -22,11 +22,21 @@ export const Card = ({ header, media, body, footer }) => (
   </CardWrapper>
 );
 
-const CardWrapper = styled.div``;
-const CardHeaderWrapper = styled.div``;
+const CardWrapper = styled.div`
+  border: 1px solid #000000;
+`;
+const CardHeaderWrapper = styled.div`
+  padding: 1rem;
+`;
 const CardMediaWrapper = styled.div``;
-const CardBodyWrapper = styled.div``;
-const CardFooterWrapper = styled.div``;
+const CardBodyWrapper = styled.div`
+  padding: 1rem;
+`;
+const CardFooterWrapper = styled.div`
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-bottom: 1rem;
+`;
 
 Card.propTypes = {
   header: PropTypes.oneOfType([

@@ -54,6 +54,7 @@ const DividedNavWrapper = styled.menu`
   justify-content: space-between;
   align-items: center;
   padding: 1rem 0;
+  border: 1px solid #000000;
 `;
 
 const LeftItemList = styled.menu`
@@ -85,6 +86,7 @@ const EqualItemList = styled.menu`
   justify-content: space-between;
   align-items: center;
   padding: 1rem 0;
+  border: 1px solid #000000;
 `;
 
 const EqualItem = styled.li`
