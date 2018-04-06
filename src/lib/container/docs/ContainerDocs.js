@@ -12,7 +12,7 @@ export const ContainerDocs = () => (
     code={code}
     api={[
       {
-        title: "children (optional) (node[])",
+        title: "children (node[])",
         description: "Items inside the container."
       }
     ]}
