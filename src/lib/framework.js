@@ -39,6 +39,9 @@ import { ContainerDocs } from "./container/docs/ContainerDocs";
 import { LoadingDocs } from "./loading/docs/LoadingDocs";
 import { GridLayoutDocs } from "./gridlayout/docs/GridLayoutDocs";
 
+// Style imports
+import { colors, margins, paddings, radiuses } from "./constants";
+
 // Exports
 export {
   Button,
@@ -77,5 +80,9 @@ export {
   DialogDocs,
   ContainerDocs,
   LoadingDocs,
-  GridLayoutDocs
+  GridLayoutDocs,
+  colors,
+  margins,
+  paddings,
+  radiuses
 };
