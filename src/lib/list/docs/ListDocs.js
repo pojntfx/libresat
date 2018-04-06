@@ -139,24 +139,48 @@ class ListDemo extends Component {
             <PersonComponent>
               First person
               <PersonActions>
-                <Button value="+ Add person" onClick={onAddPerson} />
-                <Button value="- Remove person" onClick={onRemovePerson} />
+                <Button
+                  context="positive"
+                  value="+ Add person"
+                  onClick={onAddPerson}
+                />
+                <Button
+                  context="negative"
+                  value="- Remove person"
+                  onClick={onRemovePerson}
+                />
                 <Button value="> Share details" onClick={onShareDetails} />
               </PersonActions>
             </PersonComponent>
             <PersonComponent>
               Second person
               <PersonActions>
-                <Button value="+ Add person" onClick={onAddPerson} />
-                <Button value="- Remove person" onClick={onRemovePerson} />
+                <Button
+                  context="positive"
+                  value="+ Add person"
+                  onClick={onAddPerson}
+                />
+                <Button
+                  context="negative"
+                  value="- Remove person"
+                  onClick={onRemovePerson}
+                />
                 <Button value="> Share details" onClick={onShareDetails} />
               </PersonActions>
             </PersonComponent>
             <PersonComponent>
               Third person
               <PersonActions>
-                <Button value="+ Add person" onClick={onAddPerson} />
-                <Button value="- Remove person" onClick={onRemovePerson} />
+                <Button
+                  context="positive"
+                  value="+ Add person"
+                  onClick={onAddPerson}
+                />
+                <Button
+                  context="negative"
+                  value="- Remove person"
+                  onClick={onRemovePerson}
+                />
                 <Button value="> Share details" onClick={onShareDetails} />
               </PersonActions>
             </PersonComponent>
