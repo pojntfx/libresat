@@ -70,18 +70,27 @@ const ButtonWrapper = styled.button`
   border-radius: ${radiuses.default};
   padding: ${paddings.button};
   ${({ equal }) => (equal ? "flex-grow: 1" : null)};
+  &:focus {
+    background: ${({ context, primary, active }) =>
+      primary || active
+        ? context ? backgrounds[context] : backgrounds.primary
+        : colors.darkgrey}!important;
+    box-shadow: ${shadows.defaultInset};
+  }
+  &:not(:hover) {
+    &:focus {
+      background: ${({ context, primary, active }) =>
+        primary || active
+          ? context ? backgrounds[context] : backgrounds.primary
+          : backgrounds.default}!important;
+    }
+  }
   &:hover {
     background: ${({ context, primary, active }) =>
       primary || active
         ? context ? backgrounds[context] : backgrounds.primary
         : colors.lightgrey};
   }
-  &:focus {
-    background: ${({ context, primary, active }) =>
-      primary || active
-        ? context ? backgrounds[context] : backgrounds.primary
-        : colors.darkgrey};
-    box-shadow: ${shadows.defaultInset};
-  }
+
   transition: background ${transitions.defaultDuration};
 `;

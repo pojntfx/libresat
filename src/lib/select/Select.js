@@ -58,6 +58,7 @@ Select.propTypes = {
 const InputWrapper = styled.div`
   display: flex;
   justify-content: space-around;
+  align-items: center;
 `;
 
 const SelectWrapper = styled.select`
@@ -70,12 +71,17 @@ const SelectWrapper = styled.select`
   background: ${backgrounds.default};
   border-radius: ${radiuses.default};
   padding: ${paddings.select};
+  &:focus {
+    background: ${colors.darkgrey}!important;
+    box-shadow: ${shadows.defaultInset};
+  }
+  &:not(:hover) {
+    &:focus {
+      background: ${backgrounds.default}!important;
+    }
+  }
   &:hover {
     background: ${colors.lightgrey};
-  }
-  &:focus {
-    background: ${colors.darkgrey};
-    box-shadow: ${shadows.defaultInset};
   }
   transition: background ${transitions.defaultDuration};
 `;

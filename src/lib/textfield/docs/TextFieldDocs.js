@@ -43,30 +43,30 @@ export const TextFieldDocs = () => (
 
 const code = `
 class TextFieldDemo extends Component {
-    state = {
-      text: "Lorem ipsum"
-    };
-  
-    handleInput = ({ target: { value } }) => {
-      this.setState({
-        text: value
-      });
-    };
-  
-    render() {
-      const { text } = this.state;
-      const { handleInput } = this;
-      return (
-        <TextField
-          type="text"
-          label="Some text:"
-          name="TextFieldDemo1"
-          value={text}
-          onInput={handleInput}
-        />
-      );
-    }
+  state = {
+    text: "Lorem ipsum"
+  };
+
+  handleInput = ({ target: { value } }) => {
+    this.setState({
+      text: value
+    });
+  };
+
+  render() {
+    const { text } = this.state;
+    const { handleInput } = this;
+    return (
+      <TextField
+        type="text"
+        label="Your name"
+        name="TextFieldDemo1"
+        value={text}
+        onInput={handleInput}
+      />
+    );
   }
+}
 `;
 
 class TextFieldDemo extends Component {
@@ -86,7 +86,7 @@ class TextFieldDemo extends Component {
     return (
       <TextField
         type="text"
-        label="Some text:"
+        label="Your name"
         name="TextFieldDemo1"
         value={text}
         onInput={handleInput}

@@ -68,7 +68,7 @@ export const transitions = {
 // Shadows
 export const shadows = {
   default: "0 1px 4px rgba(32, 33, 36, 0.28)",
-  defaultInset: "inset 0 0px 4px rgba(68, 145, 255, 0.4)"
+  defaultInset: "inset 0 0px 4px rgba(32, 33, 36, 0.28)"
 };
 
 // Z-Indexes
