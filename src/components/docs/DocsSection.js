@@ -12,6 +12,7 @@ import {
   transitions,
   radiuses,
   colors,
+  backgrounds,
   margins,
   shadows
 } from "../../lib/constants";
@@ -120,12 +121,17 @@ const Summary = styled.summary`
   outline: none;
   transition: background ${transitions.defaultDuration};
   border-radius: ${radiuses.default};
+  &:focus {
+    background: ${colors.darkgrey}!important;
+    box-shadow: ${shadows.defaultInset};
+  }
+  &:not(:hover) {
+    &:focus {
+      background: ${backgrounds.default}!important;
+    }
+  }
   &:hover {
     background: ${colors.lightgrey};
-  }
-  &:focus {
-    background: ${colors.darkgrey};
-    box-shadow: ${shadows.defaultInset};
   }
   &:not(:last-child) {
     margin-bottom: ${margins.expand};

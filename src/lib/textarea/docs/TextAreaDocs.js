@@ -39,29 +39,30 @@ export const TextAreaDocs = () => (
 
 const code = `
 class TextAreaDemo extends Component {
-    state = {
-      text: "Lorem ipsum"
-    };
-  
-    handleInput = ({ target: { value } }) => {
-      this.setState({
-        text: value
-      });
-    };
-  
-    render() {
-      const { text } = this.state;
-      const { handleInput } = this;
-      return (
-        <TextArea
-          label="Some text:"
-          name="textAreaDemo1"
-          value={text}
-          onInput={handleInput}
-        />
-      );
-    }
+  state = {
+    text: "Lorem ipsum"
+  };
+
+  handleInput = ({ target: { value } }) => {
+    this.setState({
+      text: value
+    });
+  };
+
+  render() {
+    const { text } = this.state;
+    const { handleInput } = this;
+    return (
+      <TextArea
+        label="Your bio"
+        name="textAreaDemo1"
+        type="text"
+        value={text}
+        onInput={handleInput}
+      />
+    );
   }
+}
 `;
 
 class TextAreaDemo extends Component {
@@ -80,8 +81,9 @@ class TextAreaDemo extends Component {
     const { handleInput } = this;
     return (
       <TextArea
-        label="Some text:"
+        label="Your bio"
         name="textAreaDemo1"
+        type="text"
         value={text}
         onInput={handleInput}
       />
