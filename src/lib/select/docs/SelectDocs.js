@@ -43,35 +43,35 @@ export const SelectDocs = () => (
 
 const code = `
 class SelectDemo extends Component {
-    state = {
-      currrentlySelected: "CET"
-    };
-  
-    handleSelect = ({ target: { value } }) => {
-      this.setState({
-        currrentlySelected: value
-      });
-    };
-  
-    render() {
-      const { currrentlySelected } = this.state;
-      const { handleSelect } = this;
-      return (
-        <Select
-          label="Your timezone:"
-          name="selectDemo1"
-          value={currrentlySelected}
-          onSelect={handleSelect}
-          options={[
-            <Fragment key="timezones">
-              <Option value="CET" text="CET" />
-              <Option value="UTC" text="UTC" />
-            </Fragment>
-          ]}
-        />
-      );
-    }
+  state = {
+    currrentlySelected: "CET"
+  };
+
+  handleSelect = ({ target: { value } }) => {
+    this.setState({
+      currrentlySelected: value
+    });
+  };
+
+  render() {
+    const { currrentlySelected } = this.state;
+    const { handleSelect } = this;
+    return (
+      <Select
+        label="Your timezone"
+        name="selectDemo1"
+        value={currrentlySelected}
+        onSelect={handleSelect}
+        options={[
+          <Fragment key="timezones">
+            <Option value="CET" text="CET" />
+            <Option value="UTC" text="UTC" />
+          </Fragment>
+        ]}
+      />
+    );
   }
+}
 `;
 
 class SelectDemo extends Component {
@@ -90,7 +90,7 @@ class SelectDemo extends Component {
     const { handleSelect } = this;
     return (
       <Select
-        label="Your timezone:"
+        label="Your timezone"
         name="selectDemo1"
         value={currrentlySelected}
         onSelect={handleSelect}

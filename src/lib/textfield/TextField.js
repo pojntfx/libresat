@@ -43,4 +43,7 @@ TextField.propTypes = {
   onInput: PropTypes.func.isRequired
 };
 
-const InputWrapper = styled.div``;
+const InputWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;

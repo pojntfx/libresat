@@ -6,6 +6,16 @@ import styled from "styled-components";
 // PropTypes
 import PropTypes from "prop-types";
 
+// Style constants
+import {
+  backgrounds,
+  colors,
+  paddings,
+  radiuses,
+  shadows,
+  transitions
+} from "../constants";
+
 /**
  * A select ("dropdown")
  * @param {name} name Unique identifier
@@ -25,7 +35,7 @@ export const Select = ({
 }) => (
   <InputWrapper>
     <label htmlFor={name}>{label}</label>
-    <select
+    <SelectWrapper
       name={name}
       id={name}
       onChange={onSelect}
@@ -33,7 +43,7 @@ export const Select = ({
       {...otherProps}
     >
       {options}
-    </select>
+    </SelectWrapper>
   </InputWrapper>
 );
 
@@ -45,4 +55,27 @@ Select.propTypes = {
   value: PropTypes.string.isRequired
 };
 
-const InputWrapper = styled.div``;
+const InputWrapper = styled.div`
+  display: flex;
+  justify-content: space-around;
+`;
+
+const SelectWrapper = styled.select`
+  margin-left: auto;
+  white-space: nowrap;
+  cursor: pointer;
+  border: 0;
+  outline: 0;
+  color: ${colors.buttons.default};
+  background: ${backgrounds.default};
+  border-radius: ${radiuses.default};
+  padding: ${paddings.select};
+  &:hover {
+    background: ${colors.lightgrey};
+  }
+  &:focus {
+    background: ${colors.darkgrey};
+    box-shadow: ${shadows.defaultInset};
+  }
+  transition: background ${transitions.defaultDuration};
+`;

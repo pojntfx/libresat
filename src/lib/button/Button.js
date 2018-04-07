@@ -7,7 +7,14 @@ import styled from "styled-components";
 import PropTypes from "prop-types";
 
 // Style constants
-import { backgrounds, colors, paddings, radiuses } from "../constants";
+import {
+  backgrounds,
+  colors,
+  paddings,
+  radiuses,
+  shadows,
+  transitions
+} from "../constants";
 
 /**
  * A button.
@@ -47,16 +54,34 @@ Button.propTypes = {
 
 const ButtonWrapper = styled.button`
   white-space: nowrap;
+  cursor: pointer;
   border: 0;
-  color: ${({ context, primary }) =>
-    primary
+  outline: 0;
+  color: ${({ context, primary, active }) =>
+    primary || active
       ? context ? colors.buttons[context] : colors.buttons.primary
       : context ? colors.text[context] : colors.buttons.default};
-  background: ${({ context, primary }) =>
+  background: ${({ context, primary, active }) =>
     primary
       ? context ? backgrounds[context] : backgrounds.primary
-      : backgrounds.default};
+      : active
+        ? context ? backgrounds[context] : backgrounds.primary
+        : backgrounds.default};
   border-radius: ${radiuses.default};
   padding: ${paddings.button};
   ${({ equal }) => (equal ? "flex-grow: 1" : null)};
+  &:hover {
+    background: ${({ context, primary, active }) =>
+      primary || active
+        ? context ? backgrounds[context] : backgrounds.primary
+        : colors.lightgrey};
+  }
+  &:focus {
+    background: ${({ context, primary, active }) =>
+      primary || active
+        ? context ? backgrounds[context] : backgrounds.primary
+        : colors.darkgrey};
+    box-shadow: ${shadows.defaultInset};
+  }
+  transition: background ${transitions.defaultDuration};
 `;
