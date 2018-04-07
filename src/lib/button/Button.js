@@ -56,7 +56,7 @@ const ButtonWrapper = styled.button`
     primary
       ? context ? backgrounds[context] : backgrounds.primary
       : backgrounds.default};
-  border-radius: ${radiuses.primary};
+  border-radius: ${radiuses.default};
   padding: ${paddings.button};
   ${({ equal }) => (equal ? "flex-grow: 1" : null)};
 `;

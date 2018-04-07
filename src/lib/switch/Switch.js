@@ -6,6 +6,9 @@ import styled from "styled-components";
 // PropTypes
 import PropTypes from "prop-types";
 
+// Style constants
+import { colors, transitions, margins, radiuses } from "../constants";
+
 /**
  * A switch (styled HTML5 checkbox).
  * @param {on} on Whether the switch is on or off
@@ -15,9 +18,9 @@ import PropTypes from "prop-types";
  * @param {...otherProps} ...otherProps Other (HTML5) props that should be passed to the switch
  */
 export const Switch = ({ on, label, name, onClick, ...otherProps }) => (
-  <InputWrapper>
-    <label htmlFor={name}>{label}</label>
-    <input
+  <SwitchWrapper>
+    <Label>{label}</Label>
+    <InputWrapper
       type="checkbox"
       name={name}
       id={name}
@@ -25,7 +28,8 @@ export const Switch = ({ on, label, name, onClick, ...otherProps }) => (
       onChange={onClick}
       {...otherProps}
     />
-  </InputWrapper>
+    <Toggle htmlFor={name}>Toggle</Toggle>
+  </SwitchWrapper>
 );
 
 Switch.propTypes = {
@@ -35,4 +39,64 @@ Switch.propTypes = {
   onClick: PropTypes.func.isRequired
 };
 
-const InputWrapper = styled.div``;
+const SwitchWrapper = styled.div`
+  display: flex;
+  justify-content: start;
+  align-items: center;
+`;
+const Label = styled.span`
+  margin-right: ${margins.default};
+`;
+const Toggle = styled.label`
+  background: ${colors.darkgrey};
+  border-radius: ${radiuses.default};
+  width: 4rem;
+  height: 2.2rem;
+  cursor: pointer;
+  text-indent: -9999px;
+  display: inline-block;
+  position: relative;
+  margin-left: auto;
+  transition: background-color ${transitions.defaultDuration} ease-out;
+  &:after {
+    content: "";
+    position: absolute;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+    margin: 0.1rem;
+    top: 0;
+    left: 0;
+    width: 2rem;
+    height: 2rem;
+    background: ${colors.white};
+    border-radius: calc(${radiuses.default} - 0.1rem);
+    transition: ${transitions.defaultDuration};
+  }
+  &:hover {
+    &: after {
+      background: ${colors.lightgrey};
+    }
+  }
+  input:disabled ~ & {
+    background: ${colors.lightgrey};
+  }
+`;
+const InputWrapper = styled.input`
+  height: 0;
+  width: 0;
+  visibility: hidden;
+  &:checked + label {
+    background: #4cd964;
+    &:active:after {
+      width: 2.5rem;
+    }
+  }
+  & + label {
+    &:active:after {
+      width: 2.5rem;
+    }
+  }
+  &:checked + label:after {
+    left: calc(100% - 0.2rem);
+    transform: translateX(-100%);
+  }
+`;
