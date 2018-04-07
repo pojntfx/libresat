@@ -40,7 +40,16 @@ import { LoadingDocs } from "./loading/docs/LoadingDocs";
 import { GridLayoutDocs } from "./gridlayout/docs/GridLayoutDocs";
 
 // Style imports
-import { colors, margins, paddings, radiuses } from "./constants";
+import {
+  colors,
+  backgrounds,
+  margins,
+  paddings,
+  radiuses,
+  transitions,
+  shadows,
+  zIndexes
+} from "./constants";
 
 // Exports
 export {
@@ -82,7 +91,11 @@ export {
   LoadingDocs,
   GridLayoutDocs,
   colors,
+  backgrounds,
   margins,
   paddings,
-  radiuses
+  radiuses,
+  transitions,
+  shadows,
+  zIndexes
 };

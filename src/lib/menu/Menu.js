@@ -6,6 +6,9 @@ import styled from "styled-components";
 // PropTypes
 import PropTypes from "prop-types";
 
+// Style constants
+import { paddings, colors, radiuses, shadows } from "../constants";
+
 // Components
 import { Button } from "../button/Button";
 
@@ -54,27 +57,22 @@ const MenuWrapper = styled.div`
 const MenuItemWrapper = styled.ul`
   display: flex;
   flex-direction: column;
-  padding: 0.5rem;
   margin: 0;
-  background: #ffffff;
-  border: 1px solid #000000;
+  background: ${colors.white};
+  border-radius: ${radiuses.default};
+  box-shadow: ${shadows.default};
+  padding: ${paddings.default};
   position: absolute;
   ${({ left }) => (left ? `right: 0` : `left: 0`)};
   ${({ bottom }) => (bottom ? `top: 100%;` : `bottom: 100%;`)};
 `;
 
 const MenuItem = styled.li`
-  padding: 1rem 0;
-  border-bottom: 1px solid #000000;
   list-style-type: none;
   white-space: nowrap;
-  overflow-x: auto;}
-  &:first-child {
-    padding-top: 0;
-  }
-  &:last-child {
-    padding-bottom: 0;
-    border-bottom: solid 0;
+  overflow-x: auto;
+  &:not(:last-child) {
+    margin-bottom: 1rem;
   }
 `;
 

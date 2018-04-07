@@ -1,8 +1,9 @@
 // Colors
 export const colors = {
   transparent: "transparent",
-  lightgrey: "#f7f7f6",
-  darkgrey: "#e1e1e1",
+  bargrey: "#F5F5F5",
+  lightgrey: "#DCDCDC",
+  darkgrey: "#D3D3D3",
   white: "#ffffff",
   black: "#000000",
   red: "#ff3b30",
@@ -26,6 +27,9 @@ export const colors = {
     positive: () => colors.white,
     warning: () => colors.black,
     negative: () => colors.white
+  },
+  bars: {
+    default: () => colors.bargrey
   }
 };
 
@@ -40,12 +44,15 @@ export const backgrounds = {
 
 // Margins and Paddings
 export const margins = {
-  default: "1rem"
+  default: "1rem",
+  expand: "0.5rem"
 };
 
 export const paddings = {
   default: "1rem",
-  button: "1rem 1.25rem"
+  button: "1rem 1.25rem",
+  expand: "0.5rem 0.75rem",
+  select: "0.5rem 0.75rem"
 };
 
 // Border Radiuses
@@ -56,4 +63,15 @@ export const radiuses = {
 // Transitions
 export const transitions = {
   defaultDuration: "0.25s"
+};
+
+// Shadows
+export const shadows = {
+  default: "0 1px 4px rgba(32, 33, 36, 0.28)",
+  defaultInset: "inset 0 0px 4px rgba(68, 145, 255, 0.4)"
+};
+
+// Z-Indexes
+export const zIndexes = {
+  dialog: "1000"
 };

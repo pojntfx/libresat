@@ -60,6 +60,4 @@ const TabWrapper = styled.div`
   flex-direction: column;
 `;
 
-const ButtonWrapper = styled(Button)`
-  font-weight: ${({ active }) => (active ? "bolder" : "inherit")};
-`;
+const ButtonWrapper = styled(Button)``;

@@ -7,7 +7,7 @@ import styled from "styled-components";
 import PropTypes from "prop-types";
 
 // Style constants
-import { colors, transitions, margins, radiuses } from "../constants";
+import { colors, transitions, margins, radiuses, shadows } from "../constants";
 
 /**
  * A switch (styled HTML5 checkbox).
@@ -41,7 +41,7 @@ Switch.propTypes = {
 
 const SwitchWrapper = styled.div`
   display: flex;
-  justify-content: start;
+  justify-content: space-between;
   align-items: center;
 `;
 const Label = styled.span`
@@ -56,12 +56,11 @@ const Toggle = styled.label`
   text-indent: -9999px;
   display: inline-block;
   position: relative;
-  margin-left: auto;
   transition: background-color ${transitions.defaultDuration} ease-out;
   &:after {
     content: "";
     position: absolute;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+    box-shadow: ${shadows.default};
     margin: 0.1rem;
     top: 0;
     left: 0;
@@ -73,7 +72,7 @@ const Toggle = styled.label`
   }
   &:hover {
     &: after {
-      background: ${colors.lightgrey};
+      background: ${colors.bargrey};
     }
   }
   input:disabled ~ & {

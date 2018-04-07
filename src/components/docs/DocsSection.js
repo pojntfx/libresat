@@ -6,6 +6,16 @@ import PropTypes from "prop-types";
 // Styled components
 import styled from "styled-components";
 
+// Style constants
+import {
+  paddings,
+  transitions,
+  radiuses,
+  colors,
+  margins,
+  shadows
+} from "../../lib/constants";
+
 export class DocsSection extends Component {
   state = {
     demoOpen: true,
@@ -105,7 +115,21 @@ const DemoWrapper = styled.div`
 const Details = styled.details``;
 
 const Summary = styled.summary`
-  padding: 0.5rem 0.75rem;
+  padding: ${paddings.expand};
+  cursor: pointer;
+  outline: none;
+  transition: background ${transitions.defaultDuration};
+  border-radius: ${radiuses.default};
+  &:hover {
+    background: ${colors.lightgrey};
+  }
+  &:focus {
+    background: ${colors.darkgrey};
+    box-shadow: ${shadows.defaultInset};
+  }
+  &:not(:last-child) {
+    margin-bottom: ${margins.expand};
+  }
 `;
 
 const CodeWrapper = styled.pre`

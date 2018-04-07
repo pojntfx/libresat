@@ -6,6 +6,9 @@ import styled from "styled-components";
 // PropTypes
 import PropTypes from "prop-types";
 
+// Style constants
+import { paddings, colors, shadows, zIndexes } from "../constants";
+
 // Components
 import { ToolBar } from "../toolbar/ToolBar";
 import { Button } from "../button/Button";
@@ -59,21 +62,26 @@ const DialogWrapper = styled.dialog`
       : "position: relative; height: auto; width: auto"};
   padding: 0;
   border: 0;
-  box-sizing: border-box;
-  border: 1px solid #000000;
+  background: ${colors.white};
   & > menu {
-    margin-top: 0;
-    border-left: 0;
-    border-top: 0;
-    border-right: 0;
+    border: 0;
+    margin: 0;
+    background: ${colors.bars.default};
   }
+  z-index: ${zIndexes.dialog};
+  display: ${({ open }) => (open ? "flex" : "none")};
+  flex-direction: column;
+`;
+
+const DialogHeader = styled(ToolBar)`
+  flex: 0 1 auto;
 `;
 
 const DialogBodyWrapper = styled.div`
-  padding: 1rem;
-  padding-top: 0;
+  padding: ${paddings.default};
+  box-shadow: ${shadows.default};
+  flex: 1 1 auto;
 `;
-const DialogHeader = styled(ToolBar)``;
 
 Dialog.propTypes = {
   title: PropTypes.string,
