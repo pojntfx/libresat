@@ -1,6 +1,8 @@
 // Colors
 export const colors = {
   transparent: "transparent",
+  lightgrey: "#f7f7f6",
+  darkgrey: "#e1e1e1",
   white: "#ffffff",
   black: "#000000",
   red: "#ff3b30",
@@ -38,15 +40,20 @@ export const backgrounds = {
 
 // Margins and Paddings
 export const margins = {
-  margin: "1rem"
+  default: "1rem"
 };
 
 export const paddings = {
-  primary: "1rem",
+  default: "1rem",
   button: "1rem 1.25rem"
 };
 
 // Border Radiuses
 export const radiuses = {
-  primary: "8px"
+  default: "8px"
+};
+
+// Transitions
+export const transitions = {
+  defaultDuration: "0.25s"
 };

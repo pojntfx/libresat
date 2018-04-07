@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { Switch } from "../Switch";
 
 // Docs
@@ -38,52 +38,72 @@ export const SwitchDocs = () => (
 
 const code = `
 class SwitchDemo extends Component {
-    state = {
-      switchIsOn: false
-    };
-  
-    handleClick = () => {
-      this.setState({
-        switchIsOn: !this.state.switchIsOn
-      });
-    };
-  
-    render() {
-      const { switchIsOn } = this.state;
-      const { handleClick } = this;
-      return (
-        <Switch
-        label="Stay awesome?:"
-        name="stayAwesome3"
-        on={switchIsOn}
-        onClick={handleClick}
-        />
-      );
-    }
-  }
-`;
-
-class SwitchDemo extends Component {
   state = {
-    switchIsOn: false
+    wifiIsOn: true,
+    bluetoothIsOn: false
   };
 
-  handleClick = () => {
+  toggleWifi = () => {
     this.setState({
-      switchIsOn: !this.state.switchIsOn
+      wifiIsOn: !this.state.wifiIsOn
+    });
+  };
+
+  toggleBluetooth = () => {
+    this.setState({
+      bluetoothIsOn: !this.state.bluetoothIsOn
     });
   };
 
   render() {
-    const { switchIsOn } = this.state;
-    const { handleClick } = this;
+    const { wifiIsOn, bluetoothIsOn } = this.state;
+    const { toggleWifi, toggleBluetooth } = this;
     return (
-      <Switch
-        label="Stay awesome?:"
-        name="stayAwesome3"
-        on={switchIsOn}
-        onClick={handleClick}
-      />
+      <Fragment>
+        <Switch label="Wi-Fi" name="wifi" on={wifiIsOn} onClick={toggleWifi} />
+        <Switch
+          label="Bluetooth"
+          name="bluetooth"
+          on={bluetoothIsOn}
+          onClick={toggleBluetooth}
+        />
+      </Fragment>
+    );
+  }
+}
+`;
+
+class SwitchDemo extends Component {
+  state = {
+    wifiIsOn: true,
+    bluetoothIsOn: false
+  };
+
+  toggleWifi = () => {
+    this.setState({
+      wifiIsOn: !this.state.wifiIsOn
+    });
+  };
+
+  toggleBluetooth = () => {
+    this.setState({
+      bluetoothIsOn: !this.state.bluetoothIsOn
+    });
+  };
+
+  render() {
+    const { wifiIsOn, bluetoothIsOn } = this.state;
+    const { toggleWifi, toggleBluetooth } = this;
+    return (
+      <Fragment>
+        <Switch label="Wi-Fi" name="wifi" on={wifiIsOn} onClick={toggleWifi} />
+        <Switch
+          label="Bluetooth"
+          name="bluetooth"
+          on={bluetoothIsOn}
+          onClick={toggleBluetooth}
+        />
+      </Fragment>
     );
   }
 }
