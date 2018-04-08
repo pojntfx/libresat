@@ -71,17 +71,20 @@ const SelectWrapper = styled.select`
   background: ${backgrounds.default};
   border-radius: ${radiuses.default};
   padding: ${paddings.select};
-  &:focus {
+  &:focus,
+  &:active {
     background: ${colors.darkgrey}!important;
     box-shadow: ${shadows.defaultInset};
   }
   &:not(:hover) {
-    &:focus {
+    &:focus,
+    &:active {
       background: ${backgrounds.default}!important;
     }
   }
   &:hover {
     background: ${colors.lightgrey};
   }
-  transition: background ${transitions.defaultDuration};
+  transition: background ${transitions.defaultDuration},
+    box-shadow ${transitions.defaultDuration};
 `;

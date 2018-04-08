@@ -70,7 +70,8 @@ const ButtonWrapper = styled.button`
   border-radius: ${radiuses.default};
   padding: ${paddings.button};
   ${({ equal }) => (equal ? "flex-grow: 1" : null)};
-  &:focus {
+  &:focus,
+  &:active {
     background: ${({ context, primary, active }) =>
       primary || active
         ? context ? backgrounds[context] : backgrounds.primary
@@ -78,7 +79,8 @@ const ButtonWrapper = styled.button`
     box-shadow: ${shadows.defaultInset};
   }
   &:not(:hover) {
-    &:focus {
+    &:focus,
+    &:active {
       background: ${({ context, primary, active }) =>
         primary || active
           ? context ? backgrounds[context] : backgrounds.primary
@@ -91,6 +93,6 @@ const ButtonWrapper = styled.button`
         ? context ? backgrounds[context] : backgrounds.primary
         : colors.lightgrey};
   }
-
-  transition: background ${transitions.defaultDuration};
+  transition: background ${transitions.defaultDuration},
+    box-shadow ${transitions.defaultDuration};
 `;
