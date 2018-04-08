@@ -6,17 +6,6 @@ import PropTypes from "prop-types";
 // Styled components
 import styled from "styled-components";
 
-// Style constants
-import {
-  paddings,
-  transitions,
-  radiuses,
-  colors,
-  backgrounds,
-  margins,
-  shadows
-} from "../../lib/constants";
-
 export class DocsSection extends Component {
   state = {
     demoOpen: true,
@@ -104,9 +93,9 @@ DocsSection.propTypes = {
 };
 
 const DemoWrapper = styled.div`
-  padding: 1rem 0;
+  padding: ${({ theme: { paddings } }) => paddings.default} 0;
   & > * {
-    margin-bottom: 1rem;
+    margin-bottom: ${({ theme: { paddings } }) => paddings.default};
     &:last-child {
       margin-bottom: 0;
     }
@@ -116,29 +105,31 @@ const DemoWrapper = styled.div`
 const Details = styled.details``;
 
 const Summary = styled.summary`
-  padding: ${paddings.expand};
-  cursor: pointer;
-  outline: none;
-  border-radius: ${radiuses.default};
+  padding: ${({ theme: { paddings } }) => paddings.expand};
+  border-radius: ${({ theme: { radiuses } }) => radiuses.default};
   &:focus,
   &:active {
-    background: ${colors.darkgrey}!important;
-    box-shadow: ${shadows.defaultInset};
+    background: ${({ theme: { colors } }) => colors.darkgrey}!important;
+    box-shadow: ${({ theme: { shadows } }) => shadows.defaultInset};
   }
   &:not(:hover) {
     &:focus,
     &:active {
-      background: ${backgrounds.default}!important;
+      background: ${({ theme: { backgrounds } }) =>
+        backgrounds.default}!important;
     }
   }
   &:hover {
-    background: ${colors.lightgrey};
+    background: ${({ theme: { colors } }) => colors.lightgrey};
   }
   &:not(:last-child) {
-    margin-bottom: ${margins.expand};
+    margin-bottom: ${({ theme: { margins } }) => margins.expand};
   }
-  transition: background ${transitions.defaultDuration},
-    box-shadow ${transitions.defaultDuration};
+  transition: background
+      ${({ theme: { transitions } }) => transitions.defaultDuration},
+    box-shadow ${({ theme: { transitions } }) => transitions.defaultDuration};
+  outline: none;
+  cursor: pointer;
 `;
 
 const CodeWrapper = styled.pre`

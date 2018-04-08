@@ -6,16 +6,6 @@ import styled from "styled-components";
 // PropTypes
 import PropTypes from "prop-types";
 
-// Style constants
-import {
-  backgrounds,
-  colors,
-  paddings,
-  radiuses,
-  shadows,
-  transitions
-} from "../constants";
-
 /**
  * A button.
  * @param {value} value The text in the button
@@ -53,46 +43,59 @@ Button.propTypes = {
 };
 
 const ButtonWrapper = styled.button`
-  white-space: nowrap;
-  cursor: pointer;
-  border: 0;
-  outline: 0;
-  color: ${({ context, primary, active }) =>
+  color: ${({ context, primary, active, theme: { colors } }) =>
     primary || active
       ? context ? colors.buttons[context] : colors.buttons.primary
       : context ? colors.text[context] : colors.buttons.default};
-  background: ${({ context, primary, active }) =>
+  background: ${({ context, primary, active, theme: { backgrounds } }) =>
     primary
       ? context ? backgrounds[context] : backgrounds.primary
       : active
         ? context ? backgrounds[context] : backgrounds.primary
         : backgrounds.default};
-  border-radius: ${radiuses.default};
-  padding: ${paddings.button};
+  border-radius: ${({ theme: { radiuses } }) => radiuses.default};
+  padding: ${({ theme: { paddings } }) => paddings.button};
   ${({ equal }) => (equal ? "flex-grow: 1" : null)};
   &:focus,
   &:active {
-    background: ${({ context, primary, active }) =>
+    background: ${({
+      context,
+      primary,
+      active,
+      theme: { backgrounds, colors }
+    }) =>
       primary || active
         ? context ? backgrounds[context] : backgrounds.primary
         : colors.darkgrey}!important;
-    box-shadow: ${shadows.defaultInset};
+    box-shadow: ${({ theme: { shadows } }) => shadows.defaultInset};
   }
   &:not(:hover) {
     &:focus,
     &:active {
-      background: ${({ context, primary, active }) =>
+      background: ${({ context, primary, active, theme: { backgrounds } }) =>
         primary || active
           ? context ? backgrounds[context] : backgrounds.primary
           : backgrounds.default}!important;
     }
   }
   &:hover {
-    background: ${({ context, primary, active }) =>
+    background: ${({
+      context,
+      primary,
+      active,
+      theme: { backgrounds, colors }
+    }) =>
       primary || active
         ? context ? backgrounds[context] : backgrounds.primary
         : colors.lightgrey};
   }
-  transition: background ${transitions.defaultDuration},
-    box-shadow ${transitions.defaultDuration};
+  transition: background
+    ${({ theme: { transitions } }) =>
+      transitions.defaultDuration +
+      ", box-shadow " +
+      transitions.defaultDuration};
+  white-space: nowrap;
+  cursor: pointer;
+  border: 0;
+  outline: 0;
 `;
