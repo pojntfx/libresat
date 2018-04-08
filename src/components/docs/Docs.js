@@ -127,7 +127,7 @@ const LinkList = ({ links }) =>
 const DocsWrapper = styled.article`
   margin: 0 auto;
   padding: 1rem;
-  max-width: 1600px;
+  max-width: 1280px;
 `;
 
 const NavWrapper = styled.menu`

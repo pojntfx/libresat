@@ -6,9 +6,6 @@ import styled from "styled-components";
 // PropTypes
 import PropTypes from "prop-types";
 
-// Style constants
-import { paddings, colors, shadows, zIndexes } from "../constants";
-
 // Components
 import { ToolBar } from "../toolbar/ToolBar";
 import { Button } from "../button/Button";
@@ -56,21 +53,21 @@ export const Dialog = ({
 );
 
 const DialogWrapper = styled.dialog`
+  z-index: ${({ theme: { zIndexes } }) => zIndexes.dialog};
+  display: ${({ open }) => (open ? "flex" : "none")};
+  padding: 0;
+  border: 0;
+  flex-direction: column;
   ${({ fullscreen }) =>
     fullscreen
       ? "position: fixed; top: 0; left: 0;height: 100%; width: 100%; overflow-y: auto"
       : "position: relative; height: auto; width: auto"};
-  padding: 0;
-  border: 0;
-  background: ${colors.white};
+  background: ${({ theme: { colors } }) => colors.white};
   & > menu {
     border: 0;
     margin: 0;
-    background: ${colors.bars.default};
+    background: ${({ theme: { colors } }) => colors.bars.default};
   }
-  z-index: ${zIndexes.dialog};
-  display: ${({ open }) => (open ? "flex" : "none")};
-  flex-direction: column;
 `;
 
 const DialogHeader = styled(ToolBar)`
@@ -78,8 +75,8 @@ const DialogHeader = styled(ToolBar)`
 `;
 
 const DialogBodyWrapper = styled.div`
-  padding: ${paddings.default};
-  box-shadow: ${shadows.default};
+  padding: ${({ theme: { paddings } }) => paddings.default};
+  box-shadow: ${({ theme: { shadows } }) => shadows.default};
   flex: 1 1 auto;
 `;
 

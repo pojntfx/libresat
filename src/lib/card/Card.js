@@ -6,9 +6,6 @@ import styled from "styled-components";
 // PropTypes
 import PropTypes from "prop-types";
 
-// Style constants
-import { paddings, colors, radiuses, shadows } from "../constants";
-
 /**
  * A Card with actions.
  * @param {header} header Items in the header of the card
@@ -26,19 +23,19 @@ export const Card = ({ header, media, body, footer }) => (
 );
 
 const CardWrapper = styled.div`
-  border-radius: ${radiuses.default};
-  background: ${colors.white};
-  box-shadow: ${shadows.default};
+  border-radius: ${({ theme: { radiuses } }) => radiuses.default};
+  background: ${({ theme: { colors } }) => colors.white};
+  box-shadow: ${({ theme: { shadows } }) => shadows.default};
 `;
 const CardHeaderWrapper = styled.div`
-  padding: ${paddings.default};
+  padding: ${({ theme: { paddings } }) => paddings.default};
 `;
 const CardMediaWrapper = styled.div``;
 const CardBodyWrapper = styled.div`
-  padding: ${paddings.default};
+  padding: ${({ theme: { paddings } }) => paddings.default};
 `;
 const CardFooterWrapper = styled.div`
-  padding: ${paddings.default};
+  padding: ${({ theme: { paddings } }) => paddings.default};
 `;
 
 Card.propTypes = {

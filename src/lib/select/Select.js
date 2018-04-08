@@ -6,16 +6,6 @@ import styled from "styled-components";
 // PropTypes
 import PropTypes from "prop-types";
 
-// Style constants
-import {
-  backgrounds,
-  colors,
-  paddings,
-  radiuses,
-  shadows,
-  transitions
-} from "../constants";
-
 /**
  * A select ("dropdown")
  * @param {name} name Unique identifier
@@ -62,29 +52,31 @@ const InputWrapper = styled.div`
 `;
 
 const SelectWrapper = styled.select`
+  color: ${({ theme: { colors } }) => colors.buttons.default};
+  background: ${({ theme: { backgrounds } }) => backgrounds.default};
+  border-radius: ${({ theme: { radiuses } }) => radiuses.default};
+  padding: ${({ theme: { paddings } }) => paddings.select};
+  transition: background
+      ${({ theme: { transitions } }) => transitions.defaultDuration},
+    box-shadow ${({ theme: { transitions } }) => transitions.defaultDuration};
   margin-left: auto;
   white-space: nowrap;
   cursor: pointer;
   border: 0;
   outline: 0;
-  color: ${colors.buttons.default};
-  background: ${backgrounds.default};
-  border-radius: ${radiuses.default};
-  padding: ${paddings.select};
   &:focus,
   &:active {
-    background: ${colors.darkgrey}!important;
-    box-shadow: ${shadows.defaultInset};
+    background: ${({ theme: { colors } }) => colors.darkgrey}!important;
+    box-shadow: ${({ theme: { shadows } }) => shadows.defaultInset};
   }
   &:not(:hover) {
     &:focus,
     &:active {
-      background: ${backgrounds.default}!important;
+      background: ${({ theme: { backgrounds } }) =>
+        backgrounds.default}!important;
     }
   }
   &:hover {
-    background: ${colors.lightgrey};
+    background: ${({ theme: { colors } }) => colors.lightgrey};
   }
-  transition: background ${transitions.defaultDuration},
-    box-shadow ${transitions.defaultDuration};
 `;

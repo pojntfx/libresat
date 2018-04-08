@@ -56,6 +56,15 @@ const ButtonWrapper = styled.button`
   border-radius: ${({ theme: { radiuses } }) => radiuses.default};
   padding: ${({ theme: { paddings } }) => paddings.button};
   ${({ equal }) => (equal ? "flex-grow: 1" : null)};
+  transition: ${({ theme: { transitions } }) =>
+    "background " +
+    transitions.defaultDuration +
+    ", box-shadow " +
+    transitions.defaultDuration};
+  white-space: nowrap;
+  cursor: pointer;
+  border: 0;
+  outline: 0;
   &:focus,
   &:active {
     background: ${({
@@ -89,13 +98,4 @@ const ButtonWrapper = styled.button`
         ? context ? backgrounds[context] : backgrounds.primary
         : colors.lightgrey};
   }
-  transition: background
-    ${({ theme: { transitions } }) =>
-      transitions.defaultDuration +
-      ", box-shadow " +
-      transitions.defaultDuration};
-  white-space: nowrap;
-  cursor: pointer;
-  border: 0;
-  outline: 0;
 `;

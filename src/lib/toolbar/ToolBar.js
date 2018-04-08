@@ -49,23 +49,23 @@ export const ToolBar = ({ leftItems, equalItems, title, rightItems }) =>
   );
 
 const DividedNavWrapper = styled.menu`
+  padding: ${({ theme: { paddings } }) => paddings.default} 0;
+  border: 1px solid ${({ theme: { colors } }) => colors.black};
   display: flex;
   overflow-x: auto;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 0;
-  border: 1px solid #000000;
 `;
 
 const LeftItemList = styled.menu`
-  display: flex;
   padding: 0;
+  padding-left: ${({ theme: { paddings } }) => paddings.default};
+  display: flex;
   margin: 0;
-  padding-left: 1rem;
 `;
 
 const LeftItem = styled.div`
-  margin-right: 1rem;
+  margin-right: ${({ theme: { margins } }) => margins.default};
   list-style-type: none;
   white-space: nowrap;
   &:last-child {
@@ -75,44 +75,44 @@ const LeftItem = styled.div`
 
 // Title
 const NavTitleWrapper = styled.div`
+  margin: 0 ${({ theme: { margins } }) => margins.default};
   white-space: nowrap;
-  margin: 0 1rem;
 `;
 
 // Equal items
 const EqualItemList = styled.menu`
+  padding: ${({ theme: { paddings } }) => paddings.default} 0;
+  border: 1px solid ${({ theme: { colors } }) => colors.black};
   display: flex;
   overflow-x: auto;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 0;
-  border: 1px solid #000000;
 `;
 
 const EqualItem = styled.li`
-  margin-right: 1rem;
+  margin-right: ${({ theme: { margins } }) => margins.default};
   list-style-type: none;
   white-space: nowrap;
   &:first-child {
-    padding-left: 1rem;
+    padding-left: ${({ theme: { paddings } }) => paddings.default};
   }
   &:last-child {
+    padding-right: ${({ theme: { paddings } }) => paddings.default};
     margin-right: 0;
-    padding-right: 1rem;
   }
 `;
 
 // Right items
 
 const RightItemList = styled.menu`
-  display: flex;
   padding: 0;
+  padding-right: ${({ theme: { paddings } }) => paddings.default};
+  display: flex;
   margin: 0;
-  padding-right: 1rem;
 `;
 
 const RightItem = styled.li`
-  margin-right: 1rem;
+  margin-right: ${({ theme: { margins } }) => margins.default};
   list-style-type: none;
   white-space: nowrap;
   &:last-child {

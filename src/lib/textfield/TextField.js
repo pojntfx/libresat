@@ -6,16 +6,6 @@ import styled from "styled-components";
 // PropTypes
 import PropTypes from "prop-types";
 
-// Style constants
-import {
-  paddings,
-  margins,
-  radiuses,
-  colors,
-  shadows,
-  transitions
-} from "../constants";
-
 /**
  * A text field (HTML5 input)
  * @param {label} label Label for the TextField
@@ -54,20 +44,21 @@ TextField.propTypes = {
 };
 
 const TextFieldWrapper = styled.input`
-  padding: ${paddings.default};
+  padding: ${({ theme: { paddings } }) => paddings.default};
+  margin-left: ${({ theme: { margins } }) => margins.default};
+  border-radius: ${({ theme: { radiuses } }) => radiuses.default};
+  border: 1px solid ${({ theme: { colors } }) => colors.darkgrey};
+  transition: background
+      ${({ theme: { transitions } }) => transitions.defaultDuration},
+    box-shadow ${({ theme: { transitions } }) => transitions.defaultDuration};
   flex-grow: 1;
-  margin-left: ${margins.default};
-  border-radius: ${radiuses.default};
   outline: 0;
-  border: 1px solid ${colors.darkgrey};
   &:hover:not(:focus) {
-    background: ${colors.lightgrey};
+    background: ${({ theme: { colors } }) => colors.lightgrey};
   }
   &:focus {
-    box-shadow: ${shadows.defaultInset};
+    box-shadow: ${({ theme: { shadows } }) => shadows.defaultInset};
   }
-  transition: background ${transitions.defaultDuration},
-    box-shadow ${transitions.defaultDuration};
 `;
 
 const InputWrapper = styled.div`
