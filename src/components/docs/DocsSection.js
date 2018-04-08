@@ -119,14 +119,15 @@ const Summary = styled.summary`
   padding: ${paddings.expand};
   cursor: pointer;
   outline: none;
-  transition: background ${transitions.defaultDuration};
   border-radius: ${radiuses.default};
-  &:focus {
+  &:focus,
+  &:active {
     background: ${colors.darkgrey}!important;
     box-shadow: ${shadows.defaultInset};
   }
   &:not(:hover) {
-    &:focus {
+    &:focus,
+    &:active {
       background: ${backgrounds.default}!important;
     }
   }
@@ -136,6 +137,8 @@ const Summary = styled.summary`
   &:not(:last-child) {
     margin-bottom: ${margins.expand};
   }
+  transition: background ${transitions.defaultDuration},
+    box-shadow ${transitions.defaultDuration};
 `;
 
 const CodeWrapper = styled.pre`
