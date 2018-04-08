@@ -39,18 +39,6 @@ import { ContainerDocs } from "./container/docs/ContainerDocs";
 import { LoadingDocs } from "./loading/docs/LoadingDocs";
 import { GridLayoutDocs } from "./gridlayout/docs/GridLayoutDocs";
 
-// Style imports
-import {
-  colors,
-  backgrounds,
-  margins,
-  paddings,
-  radiuses,
-  transitions,
-  shadows,
-  zIndexes
-} from "./constants";
-
 // Exports
 export {
   Button,
@@ -89,13 +77,5 @@ export {
   DialogDocs,
   ContainerDocs,
   LoadingDocs,
-  GridLayoutDocs,
-  colors,
-  backgrounds,
-  margins,
-  paddings,
-  radiuses,
-  transitions,
-  shadows,
-  zIndexes
+  GridLayoutDocs
 };

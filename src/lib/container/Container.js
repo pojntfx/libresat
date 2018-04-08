@@ -15,9 +15,9 @@ export const Container = ({ children }) => (
 );
 
 const ContainerWrapper = styled.div`
+  padding: ${({ theme: { paddings } }) => paddings.default};
   margin: 0 auto;
-  padding: 1rem;
-  max-width: 1600px;
+  max-width: 1280px;
 `;
 
 Container.propTypes = {

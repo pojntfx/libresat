@@ -6,9 +6,6 @@ import styled from "styled-components";
 // PropTypes
 import PropTypes from "prop-types";
 
-// Style constants
-import { colors, transitions, margins, radiuses, shadows } from "../constants";
-
 /**
  * A switch (styled HTML5 checkbox).
  * @param {on} on Whether the switch is on or off
@@ -45,38 +42,41 @@ const SwitchWrapper = styled.div`
   align-items: center;
 `;
 const Label = styled.span`
-  margin-right: ${margins.default};
+  margin-right: ${({ theme: { margins } }) => margins.default};
 `;
 const Toggle = styled.label`
-  background: ${colors.darkgrey};
-  border-radius: ${radiuses.default};
+  background: ${({ theme: { colors } }) => colors.darkgrey};
+  border-radius: ${({ theme: { radiuses } }) => radiuses.default};
+  transition: background-color
+    ${({ theme: { transitions } }) => transitions.defaultDuration} ease-out;
   width: 4rem;
   height: 2.2rem;
   cursor: pointer;
   text-indent: -9999px;
   display: inline-block;
   position: relative;
-  transition: background-color ${transitions.defaultDuration} ease-out;
   &:after {
+    box-shadow: ${({ theme: { shadows } }) => shadows.default};
+    background: ${({ theme: { colors } }) => colors.white};
+    border-radius: calc(
+      ${({ theme: { radiuses } }) => radiuses.default} - 0.1rem
+    );
+    transition: ${({ theme: { transitions } }) => transitions.defaultDuration};
     content: "";
     position: absolute;
-    box-shadow: ${shadows.default};
     margin: 0.1rem;
     top: 0;
     left: 0;
     width: 2rem;
     height: 2rem;
-    background: ${colors.white};
-    border-radius: calc(${radiuses.default} - 0.1rem);
-    transition: ${transitions.defaultDuration};
   }
   &:hover {
     &: after {
-      background: ${colors.bargrey};
+      background: ${({ theme: { colors } }) => colors.bargrey};
     }
   }
   input:disabled ~ & {
-    background: ${colors.lightgrey};
+    background: ${({ theme: { colors } }) => colors.lightgrey};
   }
 `;
 const InputWrapper = styled.input`
