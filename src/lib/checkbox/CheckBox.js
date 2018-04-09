@@ -7,17 +7,17 @@ import styled from "styled-components";
 import PropTypes from "prop-types";
 
 /**
- * A CheckBox (styled HTML5 checkbox).
- * @param {on} on Whether the CheckBox is on or off
- * @param {label} label A description of what the CheckBox toggles
+ * A CheckBox.
+ * @param {on} on Whether the CheckBox is checked or not
+ * @param {label} label A description of what the CheckBox checks
  * @param {name} name Unique identifier
  * @param {onClick} onClick Event handler (gets fired when the user clicks the CheckBox)
  * @param {...otherProps} ...otherProps Other (HTML5) props that should be passed to the CheckBox
  */
 export const CheckBox = ({ on, label, name, onClick, ...otherProps }) => (
-  <InputWrapper>
-    <label htmlFor={name}>{label}</label>
-    <input
+  <CheckBoxWrapper>
+    <Label>{label}</Label>
+    <InputWrapper
       type="checkbox"
       name={name}
       id={name}
@@ -25,7 +25,8 @@ export const CheckBox = ({ on, label, name, onClick, ...otherProps }) => (
       onChange={onClick}
       {...otherProps}
     />
-  </InputWrapper>
+    <Toggle htmlFor={name}>Toggle</Toggle>
+  </CheckBoxWrapper>
 );
 
 CheckBox.propTypes = {
@@ -35,4 +36,71 @@ CheckBox.propTypes = {
   onClick: PropTypes.func.isRequired
 };
 
-const InputWrapper = styled.div``;
+const CheckBoxWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+const Label = styled.span`
+  margin-right: ${({ theme: { margins } }) => margins.default};
+`;
+const Toggle = styled.label`
+  background: ${({ theme: { colors } }) => colors.darkgrey};
+  border-radius: ${({ theme: { radiuses } }) => radiuses.default};
+  transition: background-color
+    ${({ theme: { transitions } }) => transitions.defaultDuration} ease-out;
+  width: 2.2rem;
+  height: 2.2rem;
+  cursor: pointer;
+  text-indent: -9999px;
+  display: inline-block;
+  position: relative;
+  &:after {
+    box-shadow: ${({ theme: { shadows } }) => shadows.default};
+    background: ${({ theme: { colors } }) => colors.white};
+    border-radius: calc(
+      ${({ theme: { radiuses } }) => radiuses.default} - 0.1rem
+    );
+    transition: ${({ theme: { transitions } }) => transitions.defaultDuration};
+    content: "";
+    position: absolute;
+    margin: 0.1rem;
+    top: 0;
+    left: 0;
+    width: 2rem;
+    height: 2rem;
+  }
+  &:hover {
+    &: after {
+      background: ${({ theme: { colors } }) => colors.lightgrey};
+    }
+  }
+  input:disabled ~ & {
+    background: ${({ theme: { colors } }) => colors.lightgrey};
+  }
+`;
+const InputWrapper = styled.input`
+  height: 0;
+  width: 0;
+  visibility: hidden;
+  &:checked + label {
+    background: ${({ theme: { backgrounds } }) => backgrounds.positive};
+    &:after {
+      margin: 0.35rem;
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+    &:active:after {
+      margin: 0.35rem;
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+  }
+  & + label {
+    &:active:after {
+      margin: 0.35rem;
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+  }
+`;

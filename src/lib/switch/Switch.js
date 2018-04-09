@@ -84,7 +84,7 @@ const InputWrapper = styled.input`
   width: 0;
   visibility: hidden;
   &:checked + label {
-    background: #4cd964;
+    background: ${({ theme: { backgrounds } }) => backgrounds.positive};
     &:active:after {
       width: 2.5rem;
     }

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { CheckBox } from "../CheckBox";
 
 // Docs
@@ -13,11 +13,11 @@ export const CheckBoxDocs = () => (
     api={[
       {
         title: "on (boolean)",
-        description: "Whether the checkbox is on or off."
+        description: "Whether the CheckBox is checked or not."
       },
       {
         title: "label (string)",
-        description: "A description of what the checkbox toggles."
+        description: "A description of what the CheckBox checks."
       },
       {
         title: "name (string)",
@@ -26,12 +26,12 @@ export const CheckBoxDocs = () => (
       {
         title: "onClick (func)",
         description:
-          "Event handler (gets fired when the user clicks the checkbox). Returns the checkbox's name."
+          "Event handler (gets fired when the user clicks the CheckBox). Returns the CheckBox's name."
       },
       {
         title: "...otherProps",
         description:
-          "Other (HTML5) props that should be passed to the checkbox."
+          "Other (HTML5) props that should be passed to the CheckBox."
       }
     ]}
   />
@@ -39,52 +39,82 @@ export const CheckBoxDocs = () => (
 
 const code = `
 class CheckBoxDemo extends Component {
-    state = {
-      CheckBoxIsOn: false
-    };
-  
-    handleClick = () => {
-      this.setState({
-        CheckBoxIsOn: !this.state.CheckBoxIsOn
-      });
-    };
-  
-    render() {
-      const { CheckBoxIsOn } = this.state;
-      const { handleClick } = this;
-      return (
-        <CheckBox
-        label="Stay awesome?:"
-        name="stayAwesome4"
-        on={CheckBoxIsOn}
-        onClick={handleClick}
-        />
-      );
-    }
-  }
-`;
-
-class CheckBoxDemo extends Component {
   state = {
-    CheckBoxIsOn: false
+    warnOnPageReloadIsOn: false,
+    reportBugsIsOn: true
   };
 
-  handleClick = () => {
+  toggleOnPageReloadWarning = () => {
     this.setState({
-      CheckBoxIsOn: !this.state.CheckBoxIsOn
+      warnOnPageReloadIsOn: !this.state.warnOnPageReloadIsOn
+    });
+  };
+
+  toggleReportBugs = () => {
+    this.setState({
+      reportBugsIsOn: !this.state.reportBugsIsOn
     });
   };
 
   render() {
-    const { CheckBoxIsOn } = this.state;
-    const { handleClick } = this;
+    const { warnOnPageReloadIsOn, reportBugsIsOn } = this.state;
+    const { toggleOnPageReloadWarning, toggleReportBugs } = this;
     return (
-      <CheckBox
-        label="Stay awesome?:"
-        name="stayAwesome4"
-        on={CheckBoxIsOn}
-        onClick={handleClick}
-      />
+      <Fragment>
+        <CheckBox
+          label="Warn on page reload"
+          name="warn-on-page-reload"
+          on={warnOnPageReloadIsOn}
+          onClick={toggleOnPageReloadWarning}
+        />
+        <CheckBox
+          label="Report bugs"
+          name="report-bugs"
+          on={reportBugsIsOn}
+          onClick={toggleReportBugs}
+        />
+      </Fragment>
+    );
+  }
+}
+`;
+
+class CheckBoxDemo extends Component {
+  state = {
+    warnOnPageReloadIsOn: false,
+    reportBugsIsOn: true
+  };
+
+  toggleOnPageReloadWarning = () => {
+    this.setState({
+      warnOnPageReloadIsOn: !this.state.warnOnPageReloadIsOn
+    });
+  };
+
+  toggleReportBugs = () => {
+    this.setState({
+      reportBugsIsOn: !this.state.reportBugsIsOn
+    });
+  };
+
+  render() {
+    const { warnOnPageReloadIsOn, reportBugsIsOn } = this.state;
+    const { toggleOnPageReloadWarning, toggleReportBugs } = this;
+    return (
+      <Fragment>
+        <CheckBox
+          label="Warn on page reload"
+          name="warn-on-page-reload"
+          on={warnOnPageReloadIsOn}
+          onClick={toggleOnPageReloadWarning}
+        />
+        <CheckBox
+          label="Report bugs"
+          name="report-bugs"
+          on={reportBugsIsOn}
+          onClick={toggleReportBugs}
+        />
+      </Fragment>
     );
   }
 }
