@@ -35,18 +35,18 @@ export const NavBar = ({ title, links, items }) => (
 );
 
 const NavHeaderWrapper = styled.header`
+  padding: ${({ theme: { paddings } }) => paddings.default} 0;
+  background: ${({ theme: { colors } }) => colors.bargrey};
   display: flex;
   overflow-x: auto;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 0;
-  border: 1px solid #000000;
 `;
 
 // Left items
 const LeftNavWrapper = styled.nav`
+  padding: 0 ${({ theme: { paddings } }) => paddings.default};
   display: flex;
-  padding: 0 1rem;
   justify-content: flex-start;
   align-items: center;
   margin: 0;
@@ -55,7 +55,7 @@ const LeftNavWrapper = styled.nav`
 const NavTitleWrapper = styled.div`
   white-space: nowrap;
   margin: 0;
-  margin-right: 1rem;
+  margin-right: ${({ theme: { margins } }) => margins.default};
 `;
 
 const LeftLinkList = styled.ul`
@@ -65,28 +65,26 @@ const LeftLinkList = styled.ul`
 `;
 
 const LeftLink = styled.li`
-  margin-right: 1rem;
   list-style-type: none;
   white-space: nowrap;
-  &:last-child {
-    margin-right: 0;
+  &:not(:last-child) {
+    margin-right: ${({ theme: { margins } }) => margins.default};
   }
 `;
 
 // Right items
 const RightItemList = styled.ul`
-  display: flex;
   padding: 0;
-  padding-right: 1rem;
+  padding-right: ${({ theme: { margins } }) => margins.default};
+  display: flex;
   margin: 0;
 `;
 
 const RightItem = styled.li`
-  margin-right: 1rem;
   list-style-type: none;
   white-space: nowrap;
-  &:last-child {
-    margin-right: 0;
+  &:not(:last-child) {
+    margin-right: ${({ theme: { margins } }) => margins.default};
   }
 `;
 

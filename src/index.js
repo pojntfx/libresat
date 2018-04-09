@@ -20,6 +20,32 @@ body {
   font-family: Roboto, -apple-system, BlinkMacSystemFont, "Segoe UI", Oxygen-Sans,
     Cantarell, Ubuntu, "Helvetica Neue", sans-serif;
 }
+
+// Make links consistent with the rest of the active elements
+a {
+  text-decoration: none;
+  color: ${theme.colors.blue};
+  padding: ${theme.paddings.link};
+border-radius: ${theme.radiuses.default};
+transition: ${"background " +
+  theme.transitions.defaultDuration +
+  ", box-shadow " +
+  theme.transitions.defaultDuration};
+&:focus,
+  &:active {
+    background: ${theme.colors.darkgrey}!important;
+    box-shadow: ${theme.shadows.defaultInset};
+  }
+  &:not(:hover) {
+    &:focus,
+    &:active {
+      background: transparent!important;
+    }
+  }
+  &:hover {
+    background: ${theme.colors.lightgrey};
+  }
+}
 `;
 
 ReactDOM.render(
