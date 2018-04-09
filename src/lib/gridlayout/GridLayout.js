@@ -66,7 +66,8 @@ const GridItem = styled.div`
 const GridLayoutWrapper = styled(ResponsiveReactGridLayout)`
   /* This will be blue for now */
   & > .react-grid-placeholder {
-    background: lightblue !important;
+    background: ${({ theme: { backgrounds } }) =>
+      backgrounds.primary}!important;
   }
 `;
 

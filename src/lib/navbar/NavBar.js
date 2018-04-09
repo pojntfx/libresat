@@ -11,26 +11,27 @@ import PropTypes from "prop-types";
  * @param {title} title Title/brand of the page
  * @param {links} links Links on the left side of the NavBar
  * @param {items} items Items on the right side of the NavBar
+ * @param {...otherProps} ...otherProps Other (HTML5) props that should be passed to the button
  */
-export const NavBar = ({ title, links, items }) => (
-  <NavHeaderWrapper>
+export const NavBar = ({ title, links, items, ...otherProps }) => (
+  <NavHeaderWrapper {...otherProps}>
     <LeftNavWrapper>
       {title ? <NavTitleWrapper>{title}</NavTitleWrapper> : null}
-      <LeftLinkList>
-        {links.map(link =>
-          link.props.children.map((linkItem, index) => (
+      {links ? (
+        <LeftLinkList>
+          {links.map((linkItem, index) => (
             <LeftLink key={index}>{linkItem}</LeftLink>
-          ))
-        )}
-      </LeftLinkList>
+          ))}
+        </LeftLinkList>
+      ) : null}
     </LeftNavWrapper>
-    <RightItemList>
-      {items.map(item =>
-        item.props.children.map((controlItem, index) => (
+    {items ? (
+      <RightItemList>
+        {items.map((controlItem, index) => (
           <RightItem key={index}>{controlItem}</RightItem>
-        ))
-      )}
-    </RightItemList>
+        ))}
+      </RightItemList>
+    ) : null}
   </NavHeaderWrapper>
 );
 
@@ -50,6 +51,7 @@ const LeftNavWrapper = styled.nav`
   justify-content: flex-start;
   align-items: center;
   margin: 0;
+  min-height: 50px;
 `;
 
 const NavTitleWrapper = styled.div`
@@ -90,6 +92,6 @@ const RightItem = styled.li`
 
 NavBar.propTypes = {
   title: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-  links: PropTypes.arrayOf(PropTypes.node).isRequired,
-  items: PropTypes.arrayOf(PropTypes.node).isRequired
+  links: PropTypes.arrayOf(PropTypes.node),
+  items: PropTypes.arrayOf(PropTypes.node)
 };
