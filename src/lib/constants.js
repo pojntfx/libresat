@@ -52,7 +52,8 @@ export const paddings = {
   default: "1rem",
   button: "1rem 1.25rem",
   expand: "0.5rem 0.75rem",
-  select: "0.5rem 0.75rem"
+  select: "0.5rem 0.75rem",
+  link: "0.2rem"
 };
 
 // Border Radiuses
