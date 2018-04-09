@@ -21,16 +21,17 @@ body {
     Cantarell, Ubuntu, "Helvetica Neue", sans-serif;
 }
 
-// Make links consistent with the rest of the active elements
+// Make links consistent with the rest of the interactive elements
 a {
-  text-decoration: none;
   color: ${theme.colors.blue};
-  padding: ${theme.paddings.link};
-border-radius: ${theme.radiuses.default};
-transition: ${"background " +
-  theme.transitions.defaultDuration +
-  ", box-shadow " +
-  theme.transitions.defaultDuration};
+  padding: 0 ${theme.paddings.link};
+  border-radius: ${theme.radiuses.default};
+  transition: ${"background " +
+    theme.transitions.defaultDuration +
+    ", box-shadow " +
+    theme.transitions.defaultDuration};
+  text-decoration: none;
+  outline: 0;
 &:focus,
   &:active {
     background: ${theme.colors.darkgrey}!important;

@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import { NavBar } from "../NavBar";
 import { Button } from "../../button/Button";
 
@@ -13,16 +13,20 @@ export const NavBarDocs = () => (
     code={code}
     api={[
       {
-        title: "title (string || node)",
+        title: "title (optional) (string || node)",
         description: "Title/brand of the page."
       },
       {
-        title: "links (node[])",
+        title: "links (optional) (node[])",
         description: "Links on the left side of the NavBar."
       },
       {
-        title: "items (node[])",
+        title: "items (optional) (node[])",
         description: "Items on the right side of the NavBar."
+      },
+      {
+        title: "...otherProps",
+        description: "Other (HTML5) props that should be passed to the button."
       }
     ]}
   />
@@ -45,17 +49,19 @@ class NavBarDemo extends Component {
       <NavBar
         title="Title"
         links={[
-          <Fragment key="mainNavigation">
-            <a href="/software">Software</a>
-            <a href="/hardware">Hardware</a>
-            <a href="/network">Network</a>
-          </Fragment>
+          <a key="1" href="/software">
+            Software
+          </a>,
+          <a key="2" href="/hardware">
+            Hardware
+          </a>,
+          <a key="3" href="/network">
+            Network
+          </a>
         ]}
         items={[
-          <Fragment key="instanceControl">
-            <Button value="Sign up" onClick={onSignIn} />
-            <Button value="Sign in" onClick={onSignUp} />
-          </Fragment>
+          <Button key="1" value="Sign up" onClick={onSignIn} />,
+          <Button key="2" value="Sign in" onClick={onSignUp} />
         ]}
       />
     );
@@ -79,17 +85,19 @@ class NavBarDemo extends Component {
       <NavBar
         title="Title"
         links={[
-          <Fragment key="mainNavigation">
-            <a href="/software">Software</a>
-            <a href="/hardware">Hardware</a>
-            <a href="/network">Network</a>
-          </Fragment>
+          <a key="1" href="/software">
+            Software
+          </a>,
+          <a key="2" href="/hardware">
+            Hardware
+          </a>,
+          <a key="3" href="/network">
+            Network
+          </a>
         ]}
         items={[
-          <Fragment key="instanceControl">
-            <Button value="Sign up" onClick={onSignIn} />
-            <Button value="Sign in" onClick={onSignUp} />
-          </Fragment>
+          <Button key="1" value="Sign up" onClick={onSignIn} />,
+          <Button key="2" value="Sign in" onClick={onSignUp} />
         ]}
       />
     );
