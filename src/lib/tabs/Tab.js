@@ -60,4 +60,8 @@ const TabWrapper = styled.div`
   flex-direction: column;
 `;
 
-const ButtonWrapper = styled(Button)``;
+const ButtonWrapper = styled(Button)`
+  &:not(:last-child) {
+    margin-right: ${({ theme: { margins } }) => margins.default};
+  }
+`;

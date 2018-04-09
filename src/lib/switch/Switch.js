@@ -72,7 +72,7 @@ const Toggle = styled.label`
   }
   &:hover {
     &: after {
-      background: ${({ theme: { colors } }) => colors.bargrey};
+      background: ${({ theme: { colors } }) => colors.lightgrey};
     }
   }
   input:disabled ~ & {

@@ -30,14 +30,19 @@ export const TabBar = ({ links, panes, onChange, activePane }) => (
 );
 
 const TabBarWrapper = styled.div`
-  & > div > menu {
-    padding: ${({ theme: { paddings } }) => paddings.default};
-    border: 1px solid #000000;
-    border-bottom: 0;
-  }
-  & > div > div {
-    padding: ${({ theme: { paddings } }) => paddings.default};
-    border: 1px solid #000000;
+  & > div {
+    & > menu {
+      background: ${({ theme: { colors } }) => colors.bargrey};
+      padding: ${({ theme: { paddings } }) => paddings.default};
+      border-bottom: 0;
+      &::after {
+        content: "";
+        flex: 0 0 ${({ theme: { margins } }) => margins.default};
+      }
+    }
+    & > div {
+      padding: ${({ theme: { paddings } }) => paddings.default};
+    }
   }
 `;
 

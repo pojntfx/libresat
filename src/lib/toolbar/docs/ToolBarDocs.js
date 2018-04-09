@@ -85,16 +85,12 @@ class ToolBarDemo extends Component {
         <ToolBar
           title="Edit project"
           leftItems={[
-            <Fragment key="leftItems">
-              <Button value="Open file" onClick={onOpenFile} />
-              <Button value="Open folder" onClick={onOpenFolder} />
-            </Fragment>
+            <Button value="Open file" onClick={onOpenFile} key="1" />,
+            <Button value="Open folder" onClick={onOpenFolder} key="2" />
           ]}
           rightItems={[
-            <Fragment key="rightItems">
-              <Button value="Save file" onClick={onSaveFile} />
-              <Button value="Stage folder" onClick={onStageFolder} />
-            </Fragment>
+            <Button value="Save file" onClick={onSaveFile} key="1" />,
+            <Button value="Stage folder" onClick={onStageFolder} key="2" />
           ]}
         />
         {/* Equal layout */}
@@ -165,16 +161,12 @@ class ToolBarDemo extends Component {
         <ToolBar
           title="Edit project"
           leftItems={[
-            <Fragment key="leftItems">
-              <Button value="Open file" onClick={onOpenFile} />
-              <Button value="Open folder" onClick={onOpenFolder} />
-            </Fragment>
+            <Button value="Open file" onClick={onOpenFile} key="1" />,
+            <Button value="Open folder" onClick={onOpenFolder} key="2" />
           ]}
           rightItems={[
-            <Fragment key="rightItems">
-              <Button value="Save file" onClick={onSaveFile} />
-              <Button value="Stage folder" onClick={onStageFolder} />
-            </Fragment>
+            <Button value="Save file" onClick={onSaveFile} key="1" />,
+            <Button value="Stage folder" onClick={onStageFolder} key="2" />
           ]}
         />
         {/* Equal layout */}

@@ -25,32 +25,22 @@ export const ToolBar = ({ leftItems, equalItems, title, rightItems }) =>
   ) : (
     <DividedNavWrapper>
       <LeftItemList>
-        {/* If there is only one button, don't map the array */}
-        {leftItems[1]
-          ? leftItems.map(leftItem =>
-              leftItem.props.children.map((item, index) => (
-                <LeftItem key={index}>{item}</LeftItem>
-              ))
-            )
-          : leftItems}
+        {leftItems.map((leftItem, index) => (
+          <LeftItem key={index}>{leftItem}</LeftItem>
+        ))}
       </LeftItemList>
       {title ? <NavTitleWrapper>{title}</NavTitleWrapper> : null}
       <RightItemList>
-        {/* If there is only one button, don't map the array */}
-        {rightItems[1]
-          ? rightItems.map(rightItem =>
-              rightItem.props.children.map((item, index) => (
-                <RightItem key={index}>{item}</RightItem>
-              ))
-            )
-          : rightItems}
+        {rightItems.map((rightItem, index) => (
+          <RightItem key={index}>{rightItem}</RightItem>
+        ))}
       </RightItemList>
     </DividedNavWrapper>
   );
 
 const DividedNavWrapper = styled.menu`
   padding: ${({ theme: { paddings } }) => paddings.default} 0;
-  border: 1px solid ${({ theme: { colors } }) => colors.black};
+  background: ${({ theme: { colors } }) => colors.bargrey};
   display: flex;
   overflow-x: auto;
   justify-content: space-between;
@@ -65,11 +55,10 @@ const LeftItemList = styled.menu`
 `;
 
 const LeftItem = styled.div`
-  margin-right: ${({ theme: { margins } }) => margins.default};
   list-style-type: none;
   white-space: nowrap;
-  &:last-child {
-    margin-right: 0;
+  &:not(:last-child) {
+    margin-right: ${({ theme: { margins } }) => margins.default};
   }
 `;
 
@@ -82,7 +71,7 @@ const NavTitleWrapper = styled.div`
 // Equal items
 const EqualItemList = styled.menu`
   padding: ${({ theme: { paddings } }) => paddings.default} 0;
-  border: 1px solid ${({ theme: { colors } }) => colors.black};
+  background: ${({ theme: { colors } }) => colors.bargrey};
   display: flex;
   overflow-x: auto;
   justify-content: space-between;
@@ -112,11 +101,10 @@ const RightItemList = styled.menu`
 `;
 
 const RightItem = styled.li`
-  margin-right: ${({ theme: { margins } }) => margins.default};
   list-style-type: none;
   white-space: nowrap;
-  &:last-child {
-    margin-right: 0;
+  &:not(:last-child) {
+    margin-right: ${({ theme: { margins } }) => margins.default};
   }
 `;
 
