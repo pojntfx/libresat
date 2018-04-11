@@ -50,20 +50,23 @@ export const colors2 = {
   // Shades
   light: "#ffffff",
   basegrey: "#f5f5f5",
-  lightgrey: "#dcdcdc",
-  darkgrey: "#d3d3d3",
+  lightgrey: "lightgrey",
+  darkgrey: "darkgrey",
   dark: "#000000",
   // Context
   primary: () => colors2.blue,
   primaryLighter: "#47a0ff",
   primaryLight: "#72b6ff",
   positive: () => colors2.green,
+  positiveDark: "#287d36",
   positiveLighter: "#75d885",
   positiveLight: "#9ddba8",
   warning: () => colors2.orange,
+  warningDark: "#bc6e01",
   warningLighter: "#fcbb5f",
   warningLight: "#fcd092",
   negative: () => colors2.red,
+  negativeDark: "#c5261d",
   negativeLighter: "#ff7770",
   negativeLight: "#ea7d77",
   // States
@@ -86,22 +89,22 @@ export const colors2 = {
       light: {
         default: () => colors2.positive,
         hover: () => colors2.positive,
-        active: () => colors2.positive,
-        focus: () => colors2.positive
+        active: () => colors2.positiveDark,
+        focus: () => colors2.positiveDark
       },
       primary: {
         default: () => colors2.light,
-        hover: () => colors2.dark,
-        active: () => colors2.dark,
-        focus: () => colors2.dark
+        hover: () => colors2.light,
+        active: () => colors2.light,
+        focus: () => colors2.light
       }
     },
     warning: {
       light: {
         default: () => colors2.warning,
-        hover: () => colors2.warning,
+        hover: () => colors2.warningDark,
         active: () => colors2.warning,
-        focus: () => colors2.warning
+        focus: () => colors2.warningLight
       },
       primary: {
         default: () => colors2.dark,
@@ -113,7 +116,7 @@ export const colors2 = {
     negative: {
       light: {
         default: () => colors2.negative,
-        hover: () => colors2.negative,
+        hover: () => colors2.negativeDark,
         active: () => colors2.negative,
         focus: () => colors2.negative
       },
@@ -133,9 +136,9 @@ export const backgrounds2 = {
     default: {
       light: {
         default: () => colors2.transparent,
-        hover: () => colors2.transparent,
-        active: () => colors2.transparent,
-        focus: () => colors2.transparent
+        hover: () => colors2.lightgrey,
+        active: () => colors2.darkgrey,
+        focus: () => colors2.darkgrey
       },
       primary: {
         default: () => colors2.primary,
@@ -147,9 +150,9 @@ export const backgrounds2 = {
     positive: {
       light: {
         default: () => colors2.transparent,
-        hover: () => colors2.transparent,
-        active: () => colors2.transparent,
-        focus: () => colors2.transparent
+        hover: () => colors2.lightgrey,
+        active: () => colors2.darkgrey,
+        focus: () => colors2.darkgrey
       },
       primary: {
         default: () => colors2.positive,
@@ -161,9 +164,9 @@ export const backgrounds2 = {
     warning: {
       light: {
         default: () => colors2.transparent,
-        hover: () => colors2.transparent,
-        active: () => colors2.transparent,
-        focus: () => colors2.transparent
+        hover: () => colors2.lightgrey,
+        active: () => colors2.darkgrey,
+        focus: () => colors2.darkgrey
       },
       primary: {
         default: () => colors2.warning,
@@ -175,9 +178,9 @@ export const backgrounds2 = {
     negative: {
       light: {
         default: () => colors2.transparent,
-        hover: () => colors2.transparent,
-        active: () => colors2.transparent,
-        focus: () => colors2.transparent
+        hover: () => colors2.lightgrey,
+        active: () => colors2.darkgrey,
+        focus: () => colors2.darkgrey
       },
       primary: {
         default: () => colors2.negative,
@@ -206,6 +209,7 @@ export const margins = {
 
 export const paddings = {
   default: "1rem",
+  buttons: "1rem 1.25rem",
   button: "1rem 1.25rem",
   expand: "0.5rem 0.75rem",
   select: "0.5rem 0.75rem",
@@ -214,12 +218,14 @@ export const paddings = {
 
 // Border Radiuses
 export const radiuses = {
-  default: "8px"
+  default: "8px",
+  buttons: "8px"
 };
 
 // Transitions
 export const transitions = {
-  defaultDuration: "0.25s"
+  defaultDuration: "0.25s",
+  buttons: () => transitions.defaultDuration
 };
 
 // Shadows

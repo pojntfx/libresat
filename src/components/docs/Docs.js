@@ -89,7 +89,7 @@ export class Docs extends Component {
               <p>
                 If you have new ideas or spot any issues, feel free to let us
                 know on{" "}
-                <a href="https://github.com/opensdcp/opensnet-bridge-client">
+                <a href="https://github.com/opensdcp/opensnet-bridge-client/issues">
                   GitHub
                 </a>!
               </p>
