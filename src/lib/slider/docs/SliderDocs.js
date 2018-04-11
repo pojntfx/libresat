@@ -38,53 +38,53 @@ export const SliderDocs = () => (
 
 const code = `
 class SliderDemo extends Component {
-    state = {
-      amount: 15
-    };
-  
-    handleClick = ({ target: { value } }) => {
-      this.setState({
-        amount: parseInt(value, 10)
-      });
-    };
-  
-    render() {
-      const { amount } = this.state;
-      const { handleClick } = this;
-      return (
-        <Slider
-          label="Amount:"
-          name="currentAmount1"
-          value={amount}
-          onChange={handleClick}
-          range={10}
-          min={0}
-          max={100}
-        />
-      );
-    }
-  }
-`;
-
-class SliderDemo extends Component {
   state = {
-    amount: 15
+    brightness: 15
   };
 
   handleClick = ({ target: { value } }) => {
     this.setState({
-      amount: parseInt(value, 10)
+      brightness: parseInt(value, 10)
     });
   };
 
   render() {
-    const { amount } = this.state;
+    const { brightness } = this.state;
     const { handleClick } = this;
     return (
       <Slider
-        label="Amount:"
-        name="currentAmount1"
-        value={amount}
+        label="Brightness"
+        name="currentbrightness1"
+        value={brightness}
+        onChange={handleClick}
+        range={10}
+        min={0}
+        max={100}
+      />
+    );
+  }
+}
+`;
+
+class SliderDemo extends Component {
+  state = {
+    brightness: 15
+  };
+
+  handleClick = ({ target: { value } }) => {
+    this.setState({
+      brightness: parseInt(value, 10)
+    });
+  };
+
+  render() {
+    const { brightness } = this.state;
+    const { handleClick } = this;
+    return (
+      <Slider
+        label="Brightness"
+        name="currentbrightness1"
+        value={brightness}
         onChange={handleClick}
         range={10}
         min={0}
