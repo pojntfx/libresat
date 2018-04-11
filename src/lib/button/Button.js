@@ -23,7 +23,7 @@ export const Button = ({
   equal,
   ...otherProps
 }) => (
-  <ButtonWrapper
+  <ButtonWrapper2
     onClick={onClick}
     context={context}
     primary={primary}
@@ -31,7 +31,7 @@ export const Button = ({
     {...otherProps}
   >
     {value}
-  </ButtonWrapper>
+  </ButtonWrapper2>
 );
 
 Button.propTypes = {
@@ -41,6 +41,36 @@ Button.propTypes = {
   primary: PropTypes.bool,
   equal: PropTypes.bool
 };
+
+const ButtonWrapper2 = styled.button`
+  color: blue;
+  background: transparent;
+  padding: 0.75rem 0.5rem;
+  border-radius: 8px;
+  transition: background 0.25s, box-shadow 0.25s;
+  white-space: nowrap;
+  cursor: pointer;
+  border: 0;
+  outline: 0;
+  &:active,
+  &:focus {
+    color: blue;
+    background: darkgrey !important;
+    box-shadow: inset 0 0px 2px rgba(32, 33, 36, 0.28);
+  }
+  &:not(:hover) {
+    &:active,
+    &:focus {
+      color: blue;
+      background: transparent !important;
+      box-shadow: inset 0 0px 2px rgba(32, 33, 36, 0.28);
+    }
+  }
+  &:hover {
+    color: blue;
+    background: lightgrey;
+  }
+`;
 
 const ButtonWrapper = styled.button`
   color: ${({ context, primary, active, theme: { colors } }) =>
