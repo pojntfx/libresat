@@ -23,7 +23,7 @@ export const Button = ({
   equal,
   ...otherProps
 }) => (
-  <ButtonWrapper2
+  <ButtonWrapper
     onClick={onClick}
     context={context}
     primary={primary}
@@ -31,7 +31,7 @@ export const Button = ({
     {...otherProps}
   >
     {value}
-  </ButtonWrapper2>
+  </ButtonWrapper>
 );
 
 Button.propTypes = {
@@ -42,90 +42,111 @@ Button.propTypes = {
   equal: PropTypes.bool
 };
 
-const ButtonWrapper2 = styled.button`
-  color: blue;
-  background: transparent;
-  padding: 0.75rem 0.5rem;
-  border-radius: 8px;
-  transition: background 0.25s, box-shadow 0.25s;
-  white-space: nowrap;
+const ButtonWrapper = styled.button`
+  color: ${({ primary, active, context, theme: { colors2: { buttons } } }) =>
+    primary || active
+      ? context
+        ? buttons[context].primary.default
+        : buttons.default.primary.default
+      : context
+        ? buttons[context].light.default
+        : buttons.default.light.default};
+  background: ${({
+    primary,
+    active,
+    context,
+    theme: { backgrounds2: { buttons } }
+  }) =>
+    primary || active
+      ? context
+        ? buttons[context].primary.default
+        : buttons.default.primary.default
+      : context
+        ? buttons[context].light.default
+        : buttons.default.light.default};
+  padding: ${({ theme: { paddings: { buttons } } }) => buttons};
+  border-radius: ${({ theme: { radiuses: { buttons } } }) => buttons};
+  transition: background ${({ theme: { transitions: { buttons } } }) => buttons},
+    box-shadow ${({ theme: { transitions: { buttons } } }) => buttons};
+  ${({ equal }) => (equal ? "flex: 1;" : null)} white-space: nowrap;
+  -webkit-tap-highlight-color: transparent;
   cursor: pointer;
   border: 0;
   outline: 0;
   &:active,
   &:focus {
-    color: blue;
-    background: darkgrey !important;
-    box-shadow: inset 0 0px 2px rgba(32, 33, 36, 0.28);
+    color: ${({ primary, active, context, theme: { colors2: { buttons } } }) =>
+      primary || active
+        ? context
+          ? buttons[context].primary.active
+          : buttons.default.primary.active
+        : context
+          ? buttons[context].light.active
+          : buttons.default.light.active}!important;
+    background: ${({
+      primary,
+      active,
+      context,
+      theme: { backgrounds2: { buttons } }
+    }) =>
+      primary || active
+        ? context
+          ? buttons[context].primary.active
+          : buttons.default.primary.active
+        : context
+          ? buttons[context].light.active
+          : buttons.default.light.active} !important;
+    box-shadow: ${({ theme: { shadows: { defaultInset } } }) => defaultInset};
   }
   &:not(:hover) {
     &:active,
     &:focus {
-      color: blue;
-      background: transparent !important;
-      box-shadow: inset 0 0px 2px rgba(32, 33, 36, 0.28);
-    }
-  }
-  &:hover {
-    color: blue;
-    background: lightgrey;
-  }
-`;
-
-const ButtonWrapper = styled.button`
-  color: ${({ context, primary, active, theme: { colors } }) =>
-    primary || active
-      ? context ? colors.buttons[context] : colors.buttons.primary
-      : context ? colors.text[context] : colors.buttons.default};
-  background: ${({ context, primary, active, theme: { backgrounds } }) =>
-    primary
-      ? context ? backgrounds[context] : backgrounds.primary
-      : active
-        ? context ? backgrounds[context] : backgrounds.primary
-        : backgrounds.default};
-  border-radius: ${({ theme: { radiuses } }) => radiuses.default};
-  padding: ${({ theme: { paddings } }) => paddings.button};
-  ${({ equal }) => (equal ? "flex-grow: 1" : null)};
-  transition: ${({ theme: { transitions } }) =>
-    "background " +
-    transitions.defaultDuration +
-    ", box-shadow " +
-    transitions.defaultDuration};
-  white-space: nowrap;
-  cursor: pointer;
-  border: 0;
-  outline: 0;
-  &:focus,
-  &:active {
-    background: ${({
-      context,
-      primary,
-      active,
-      theme: { backgrounds, colors }
-    }) =>
-      primary || active
-        ? context ? backgrounds[context] : backgrounds.primary
-        : colors.darkgrey}!important;
-    box-shadow: ${({ theme: { shadows } }) => shadows.defaultInset};
-  }
-  &:not(:hover) {
-    &:focus,
-    &:active {
-      background: ${({ context, primary, active, theme: { backgrounds } }) =>
+      color: ${({
+        primary,
+        active,
+        context,
+        theme: { colors2: { buttons } }
+      }) =>
         primary || active
-          ? context ? backgrounds[context] : backgrounds.primary
-          : backgrounds.default}!important;
+          ? context
+            ? buttons[context].primary.default
+            : buttons.default.primary.default
+          : context
+            ? buttons[context].light.default
+            : buttons.default.light.default}!important;
+      background: ${({
+        primary,
+        active,
+        context,
+        theme: { backgrounds2: { buttons } }
+      }) =>
+        primary || active
+          ? context
+            ? buttons[context].primary.default
+            : buttons.default.primary.default
+          : context
+            ? buttons[context].light.default
+            : buttons.default.light.default} !important;
+      box-shadow: ${({ theme: { shadows: { defaultInset } } }) => defaultInset};
     }
   }
   &:hover {
+    color: ${({ primary, active, context, theme: { colors2: { buttons } } }) =>
+      primary || active
+        ? context
+          ? buttons[context].primary.hover
+          : buttons.default.primary.hover
+        : context ? buttons[context].light.hover : buttons.default.light.hover};
     background: ${({
-      context,
       primary,
       active,
-      theme: { backgrounds, colors }
+      context,
+      theme: { backgrounds2: { buttons } }
     }) =>
       primary || active
-        ? context ? backgrounds[context] : backgrounds.primary
-        : colors.lightgrey};
+        ? context
+          ? buttons[context].primary.hover
+          : buttons.default.primary.hover
+        : context ? buttons[context].light.hover : buttons.default.light.hover};
   }
 `;
