@@ -91,10 +91,12 @@ const InputWrapper = styled.input`
     height: 2.2rem;
     box-sizing: border-box;
     -webkit-appearance: none;
-    &:hover {
+    &:hover,
+    &:focus {
       background: ${({ theme: { colors } }) => colors.lightgrey};
     }
-    &:active {
+    &:active,
+    &:focus {
       width: 2.5rem;
       left: calc(100% - 0.2rem);
     }

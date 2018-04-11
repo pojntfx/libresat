@@ -38,14 +38,14 @@ const ListItemWrapper = styled.ul`
 `;
 
 const ListItem = styled.li`
-  padding: 1rem 0;
-  border-bottom: 1px solid #000000;
+  padding: ${({ theme: { paddings } }) => paddings.default} 0;
+  border-bottom: 1px solid ${({ theme: { colors } }) => colors.lightgrey};
   list-style-type: none;
   white-space: nowrap;
   overflow-x: auto;
   &:last-child {
     margin-bottom: 0;
-    border-bottom: solid 0;
+    border-bottom: 0;
   }
 `;
 
