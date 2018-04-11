@@ -38,13 +38,19 @@ export const CardDocs = () => (
 const code = `
 class CardDemo extends Component {
   CardImage = styled.img\`
-    max-width: 480px;
+    max-height: 360px;
+    object-fit: cover;
     width: 100%;
   \`;
 
-  FooterActions = styled.div\`
+  FooterActions = styled.menu\`
+    margin: 0;
+    padding: 0;
     display: flex;
     overflow-x: auto;
+    & > button:not(:last-child) {
+      margin-right: 1rem;
+    }
   \`;
 
   onLike = () => {
@@ -58,7 +64,13 @@ class CardDemo extends Component {
   };
 
   render() {
-    const { CardImage, FooterActions, onLike, onBookmark, onShare } = this;
+    const {
+      CardImage,
+      FooterActions,
+      onLike,
+      onBookmark,
+      onShare
+    } = this;
 
     return (
       <Card
@@ -80,17 +92,25 @@ class CardDemo extends Component {
       />
     );
   }
-}`;
+}
+
+`;
 
 class CardDemo extends Component {
   CardImage = styled.img`
-    max-width: 480px;
+    max-height: 360px;
+    object-fit: cover;
     width: 100%;
   `;
 
-  FooterActions = styled.div`
+  FooterActions = styled.menu`
+    margin: 0;
+    padding: 0;
     display: flex;
     overflow-x: auto;
+    & > button:not(:last-child) {
+      margin-right: 1rem;
+    }
   `;
 
   onLike = () => {
