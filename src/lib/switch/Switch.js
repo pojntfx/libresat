@@ -75,7 +75,7 @@ const Toggle = styled.label`
       background: ${({ theme: { colors } }) => colors.lightgrey};
     }
   }
-  input:disabled ~ & {
+  &:disabled {
     background: ${({ theme: { colors } }) => colors.lightgrey};
   }
 `;

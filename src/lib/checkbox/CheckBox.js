@@ -71,11 +71,11 @@ const Toggle = styled.label`
     height: 2rem;
   }
   &:hover {
-    &: after {
+    &:after {
       background: ${({ theme: { colors } }) => colors.lightgrey};
     }
   }
-  input:disabled ~ & {
+  &:disabled {
     background: ${({ theme: { colors } }) => colors.lightgrey};
   }
 `;
