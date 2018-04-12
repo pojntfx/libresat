@@ -42,41 +42,58 @@ const SwitchWrapper = styled.div`
   align-items: center;
 `;
 const Label = styled.span`
-  margin-right: ${({ theme: { margins } }) => margins.default};
+  margin-right: ${({ theme: { margins: { switches } } }) => switches};
 `;
 const Toggle = styled.label`
-  background: ${({ theme: { colors } }) => colors.darkgrey};
-  border-radius: ${({ theme: { radiuses } }) => radiuses.default};
+  background: ${({ theme: { backgrounds2: { bars } } }) => bars.default};
+  border-radius: ${({ theme: { radiuses: { switches } } }) => switches};
   transition: background-color
-    ${({ theme: { transitions } }) => transitions.defaultDuration} ease-out;
+      ${({ theme: { transitions: { switches } } }) => switches},
+    box-shadow ${({ theme: { transitions: { switches } } }) => switches};
   width: 4rem;
-  height: 2.2rem;
+  height: 2rem;
   cursor: pointer;
   text-indent: -9999px;
   display: inline-block;
   position: relative;
+  -webkit-tap-highlight-color: transparent;
   &:after {
-    box-shadow: ${({ theme: { shadows } }) => shadows.default};
-    background: ${({ theme: { colors } }) => colors.white};
+    background: ${({ theme: { colors2: { white } } }) => white};
     border-radius: calc(
-      ${({ theme: { radiuses } }) => radiuses.default} - 0.1rem
+      ${({ theme: { radiuses: { switches } } }) => switches} - 0.1rem
     );
-    transition: ${({ theme: { transitions } }) => transitions.defaultDuration};
-    content: "";
+    transition: ${({ theme: { transitions: { switches } } }) => switches};
     position: absolute;
+    width: 1.8rem;
+    height: 1.8rem;
     margin: 0.1rem;
     top: 0;
     left: 0;
-    width: 2rem;
-    height: 2rem;
+    content: "";
+  }
+  &:active,
+  &:focus {
+    box-shadow: ${({ theme: { shadows: { defaultInset } } }) => defaultInset};
+    &:after {
+      background: ${({ theme: { colors2: { darkgrey } } }) =>
+        darkgrey} !important;
+    }
+  }
+  &:not(:hover) {
+    &:active,
+    &:focus {
+      &:after {
+        background: ${({ theme: { colors2: { white } } }) => white} !important;
+      }
+    }
   }
   &:hover {
-    &: after {
-      background: ${({ theme: { colors } }) => colors.lightgrey};
+    &:after {
+      background: ${({ theme: { colors2: { lightgrey } } }) => lightgrey};
     }
   }
   &:disabled {
-    background: ${({ theme: { colors } }) => colors.lightgrey};
+    background: ${({ theme: { backgrounds2: { bars } } }) => bars.default};
   }
 `;
 const InputWrapper = styled.input`
@@ -84,14 +101,14 @@ const InputWrapper = styled.input`
   width: 0;
   visibility: hidden;
   &:checked + label {
-    background: ${({ theme: { backgrounds } }) => backgrounds.positive};
+    background: ${({ theme: { colors2: { positive } } }) => positive};
     &:active:after {
-      width: 2.5rem;
+      width: 2.25rem;
     }
   }
   & + label {
     &:active:after {
-      width: 2.5rem;
+      width: 2.25rem;
     }
   }
   &:checked + label:after {

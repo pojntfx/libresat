@@ -189,6 +189,9 @@ export const backgrounds2 = {
         focus: () => colors2.negativeLighter
       }
     }
+  },
+  bars: {
+    default: () => colors2.basegrey
   }
 };
 
@@ -204,7 +207,9 @@ export const backgrounds = {
 // Margins and Paddings
 export const margins = {
   default: "1rem",
-  expand: "0.5rem"
+  labels: "1rem",
+  expand: "0.5rem",
+  switches: "1rem"
 };
 
 export const paddings = {
@@ -219,13 +224,15 @@ export const paddings = {
 // Border Radiuses
 export const radiuses = {
   default: "8px",
-  buttons: "8px"
+  buttons: "8px",
+  switches: "8px"
 };
 
 // Transitions
 export const transitions = {
-  defaultDuration: "0.25s",
-  buttons: () => transitions.defaultDuration
+  defaultDuration: "0.25s ease-out",
+  buttons: () => transitions.defaultDuration,
+  switches: () => transitions.defaultDuration
 };
 
 // Shadows
