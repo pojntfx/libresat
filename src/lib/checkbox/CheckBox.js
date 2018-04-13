@@ -42,65 +42,83 @@ const CheckBoxWrapper = styled.div`
   align-items: center;
 `;
 const Label = styled.span`
-  margin-right: ${({ theme: { margins } }) => margins.default};
+  margin-right: ${({ theme: { margins: { switches } } }) => switches};
 `;
 const Toggle = styled.label`
-  background: ${({ theme: { colors } }) => colors.darkgrey};
-  border-radius: ${({ theme: { radiuses } }) => radiuses.default};
+  background: ${({ theme: { backgrounds2: { bars } } }) => bars.default};
+  border-radius: ${({ theme: { radiuses: { switches } } }) => switches};
   transition: background-color
-    ${({ theme: { transitions } }) => transitions.defaultDuration} ease-out;
-  width: 2.2rem;
-  height: 2.2rem;
+      ${({ theme: { transitions: { switches } } }) => switches},
+    box-shadow ${({ theme: { transitions: { switches } } }) => switches};
+  width: 2rem;
+  height: 2rem;
   cursor: pointer;
   text-indent: -9999px;
   display: inline-block;
   position: relative;
+  -webkit-tap-highlight-color: transparent;
   &:after {
-    box-shadow: ${({ theme: { shadows } }) => shadows.default};
-    background: ${({ theme: { colors } }) => colors.white};
+    background: ${({ theme: { colors2: { white } } }) => white};
     border-radius: calc(
-      ${({ theme: { radiuses } }) => radiuses.default} - 0.1rem
+      ${({ theme: { radiuses: { switches } } }) => switches} - 0.1rem
     );
-    transition: ${({ theme: { transitions } }) => transitions.defaultDuration};
-    content: "";
+    transition: ${({ theme: { transitions: { switches } } }) => switches};
     position: absolute;
+    width: 1.8rem;
+    height: 1.8rem;
     margin: 0.1rem;
     top: 0;
     left: 0;
-    width: 2rem;
-    height: 2rem;
+    content: "";
+  }
+  &:active,
+  &:focus {
+    box-shadow: ${({ theme: { shadows: { defaultInset } } }) => defaultInset};
+    &:after {
+      background: ${({ theme: { colors2: { darkgrey } } }) =>
+        darkgrey} !important;
+    }
+  }
+  &:not(:hover) {
+    &:active,
+    &:focus {
+      &:after {
+        background: ${({ theme: { colors2: { white } } }) => white} !important;
+      }
+    }
   }
   &:hover {
     &:after {
-      background: ${({ theme: { colors } }) => colors.lightgrey};
+      background: ${({ theme: { colors2: { lightgrey } } }) => lightgrey};
     }
   }
   &:disabled {
-    background: ${({ theme: { colors } }) => colors.lightgrey};
+    background: ${({ theme: { backgrounds2: { bars } } }) => bars.default};
   }
 `;
 const InputWrapper = styled.input`
   height: 0;
   width: 0;
   visibility: hidden;
+  transition: background-color ${({ theme: { transitions: { switches } } }) => switches};
   &:checked + label {
-    background: ${({ theme: { backgrounds } }) => backgrounds.positive};
-    &:after {
-      margin: 0.35rem;
-      width: 1.5rem;
-      height: 1.5rem;
-    }
+    background: ${({ theme: { colors2: { positive } } }) => positive};
     &:active:after {
-      margin: 0.35rem;
-      width: 1.5rem;
-      height: 1.5rem;
+      margin: 0.5rem;
+      width: 1rem;
+      height: 1rem;
     }
   }
   & + label {
     &:active:after {
-      margin: 0.35rem;
-      width: 1.5rem;
-      height: 1.5rem;
+      margin: 0.5rem;
+      width: 1rem;
+      height: 1rem;
     }
+  }
+  &:checked + label:after {
+    margin: 0.375rem;
+    width: 1.25rem;
+    height: 1.25rem;
   }
 `;

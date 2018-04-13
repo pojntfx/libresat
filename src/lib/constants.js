@@ -230,7 +230,7 @@ export const radiuses = {
 
 // Transitions
 export const transitions = {
-  defaultDuration: "0.25s ease-out",
+  defaultDuration: "0.25s",
   buttons: () => transitions.defaultDuration,
   switches: () => transitions.defaultDuration
 };
