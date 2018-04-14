@@ -34,7 +34,7 @@ export const ButtonDocs = () => (
       },
       {
         title: "...otherProps",
-        description: "Other (HTML5) props that should be passed to the button."
+        description: "Other props that should be passed to the button."
       }
     ]}
   />

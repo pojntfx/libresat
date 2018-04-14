@@ -25,12 +25,16 @@ export const CardDocs = () => (
         description: "Media (Images, Videos) of the card."
       },
       {
-        title: "body (optional) (node[])",
+        title: "children (optional) (node[] || string)",
         description: "Items in the main area of the card."
       },
       {
         title: "footer (optional) (node[])",
         description: "Items in the footer of the card."
+      },
+      {
+        title: "...otherProps",
+        description: "Other props that should be passed to the card."
       }
     ]}
   />
@@ -44,6 +48,8 @@ class CardDemo extends Component {
     width: 100%;
   \`;
 
+  onOptions = () => console.log("Opening options.");
+
   onLike = () => console.log("Liking.");
 
   onBookmark = () => console.log("Bookmarking.");
@@ -53,18 +59,29 @@ class CardDemo extends Component {
   onComment = () => console.log("Commenting.");
 
   render() {
-    const { CardImage, onLike, onBookmark, onShare, onComment } = this;
+    const {
+      onOptions,
+      CardImage,
+      onLike,
+      onBookmark,
+      onShare,
+      onComment
+    } = this;
 
     return (
       <Card
-        header="Corsica"
+        header={[
+          <Tool key="1" divided>
+            <span>Corsica</span>
+            <Button value="Options" onClick={onOptions} />
+          </Tool>
+        ]}
         media={
           <CardImage
             src="https://www.zoggs.com/wp/wp-content/uploads/2016/07/Palombaggia-beach.jpg"
             alt="beach on corsica"
           />
         }
-        body="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempora."
         footer={[
           <Tool key="1" divided>
             <Tool>
@@ -75,7 +92,18 @@ class CardDemo extends Component {
             <Button value="Comment" onClick={onComment} />
           </Tool>
         ]}
-      />
+      >
+        <span>
+          Jutting out of the Med like an impregnable fortress, Corsica resembles
+          a miniature continent, with astounding geographical diversity. Within
+          half an hour, the landscape morphs from glittering bays, glitzy
+          coastal cities and fabulous beaches to sawtooth peaks, breathtaking
+          valleys, dense forests and enigmatic hilltop villages. Holidays in
+          Corsica will therefore be incredibly varied: from hiking and canyoning
+          to working your tan, enjoying a leisurely cruise, delving into the
+          island’s rich history and sampling local specialities.
+        </span>
+      </Card>
     );
   }
 }
@@ -88,6 +116,8 @@ class CardDemo extends Component {
     width: 100%;
   `;
 
+  onOptions = () => console.log("Opening options.");
+
   onLike = () => console.log("Liking.");
 
   onBookmark = () => console.log("Bookmarking.");
@@ -97,18 +127,29 @@ class CardDemo extends Component {
   onComment = () => console.log("Commenting.");
 
   render() {
-    const { CardImage, onLike, onBookmark, onShare, onComment } = this;
+    const {
+      onOptions,
+      CardImage,
+      onLike,
+      onBookmark,
+      onShare,
+      onComment
+    } = this;
 
     return (
       <Card
-        header="Corsica"
+        header={[
+          <Tool key="1" divided>
+            <span>Corsica</span>
+            <Button value="Options" onClick={onOptions} />
+          </Tool>
+        ]}
         media={
           <CardImage
             src="https://www.zoggs.com/wp/wp-content/uploads/2016/07/Palombaggia-beach.jpg"
             alt="beach on corsica"
           />
         }
-        body="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempora."
         footer={[
           <Tool key="1" divided>
             <Tool>
@@ -119,7 +160,18 @@ class CardDemo extends Component {
             <Button value="Comment" onClick={onComment} />
           </Tool>
         ]}
-      />
+      >
+        <span>
+          Jutting out of the Med like an impregnable fortress, Corsica resembles
+          a miniature continent, with astounding geographical diversity. Within
+          half an hour, the landscape morphs from glittering bays, glitzy
+          coastal cities and fabulous beaches to sawtooth peaks, breathtaking
+          valleys, dense forests and enigmatic hilltop villages. Holidays in
+          Corsica will therefore be incredibly varied: from hiking and canyoning
+          to working your tan, enjoying a leisurely cruise, delving into the
+          island’s rich history and sampling local specialities.
+        </span>
+      </Card>
     );
   }
 }

@@ -12,7 +12,7 @@ import PropTypes from "prop-types";
  * @param {onClick} onClick Event handler (gets fired when the button has been clicked)
  * @param {context} context Whether the button triggers an additive, modifying or destructive action
  * @param {primary} primary Whether the button is the primary/main call to action
- * @param {...otherProps} ...otherProps Other (HTML5) props that should be passed to the button, i.e. "disabled"
+ * @param {...otherProps} ...otherProps Other props that should be passed to the button, i.e. "disabled"
  */
 export const Button = ({ value, onClick, context, primary, ...otherProps }) => (
   <ButtonWrapper

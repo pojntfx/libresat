@@ -10,14 +10,15 @@ import PropTypes from "prop-types";
  * A Card with actions.
  * @param {header} header Items in the header of the card
  * @param {media} media Media (Images, Videos) of the card
- * @param {body} body Items in the main area of the card
+ * @param {children} children Items in the main area of the card
  * @param {footer} footer Items in the footer of the card
+ * @param {...otherProps} ...otherProps Other props that should be passed to the card
  */
-export const Card = ({ header, media, body, footer }) => (
-  <CardWrapper>
+export const Card = ({ header, media, children, footer, ...otherProps }) => (
+  <CardWrapper {...otherProps}>
     {header ? <CardHeaderWrapper>{header}</CardHeaderWrapper> : null}
     {media ? <CardMediaWrapper>{media}</CardMediaWrapper> : null}
-    {body ? <CardBodyWrapper>{body}</CardBodyWrapper> : null}
+    {children ? <CardBodyWrapper>{children}</CardBodyWrapper> : null}
     {footer ? <CardFooterWrapper>{footer}</CardFooterWrapper> : null}
   </CardWrapper>
 );
@@ -45,7 +46,7 @@ Card.propTypes = {
     PropTypes.arrayOf(PropTypes.node)
   ]),
   media: PropTypes.oneOfType([PropTypes.node]),
-  body: PropTypes.oneOfType([
+  children: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.node,
     PropTypes.arrayOf(PropTypes.node)
