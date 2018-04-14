@@ -6,7 +6,7 @@ import { DocsSection } from "../../../components/docs/DocsSection";
 
 export const TabsDocs = () => (
   <DocsSection
-    title="Tab"
+    title="Tabs"
     id="tabs"
     demos={<TabDemo />}
     code={code}
