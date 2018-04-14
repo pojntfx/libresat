@@ -88,7 +88,7 @@ export const colors2 = {
     positive: {
       light: {
         default: () => colors2.positive,
-        hover: () => colors2.positive,
+        hover: () => colors2.positiveDark,
         active: () => colors2.positiveDark,
         focus: () => colors2.positiveDark
       },
@@ -103,8 +103,8 @@ export const colors2 = {
       light: {
         default: () => colors2.warning,
         hover: () => colors2.warningDark,
-        active: () => colors2.warningLight,
-        focus: () => colors2.warningLight
+        active: () => colors2.warningDarker,
+        focus: () => colors2.warningDarker
       },
       primary: {
         default: () => colors2.dark,
@@ -117,8 +117,8 @@ export const colors2 = {
       light: {
         default: () => colors2.negative,
         hover: () => colors2.negativeDark,
-        active: () => colors2.negative,
-        focus: () => colors2.negative
+        active: () => colors2.negativeDarker,
+        focus: () => colors2.negativeDarker
       },
       primary: {
         default: () => colors2.light,

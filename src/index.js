@@ -32,6 +32,7 @@ a {
     theme.transitions.defaultDuration};
   text-decoration: none;
   outline: 0;
+  -webkit-tap-highlight-color: transparent;
 &:focus,
   &:active {
     background: ${theme.colors.darkgrey}!important;
