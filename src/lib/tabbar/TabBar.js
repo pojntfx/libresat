@@ -24,6 +24,7 @@ export const TabBar = ({ links, panes, onChange, activePane }) => (
       panes={panes}
       onChange={onChange}
       activePane={activePane}
+      tabBar
       equal
     />
   </TabBarWrapper>
@@ -31,16 +32,14 @@ export const TabBar = ({ links, panes, onChange, activePane }) => (
 
 const TabBarWrapper = styled.div`
   & > div {
-    & > menu {
+    & > div:first-child > menu {
       background: ${({ theme: { colors } }) => colors.bargrey};
-      padding: ${({ theme: { paddings } }) => paddings.default};
-      border-bottom: 0;
-      &::after {
-        content: "";
-        flex: 0 0 ${({ theme: { margins } }) => margins.default};
-      }
+      padding: ${({ theme: { paddings } }) => paddings.default} 0;
     }
-    & > div {
+    & > div:first-child {
+      padding: 0 ${({ theme: { paddings } }) => paddings.default};
+    }
+    & > div:not(:first-child) {
       padding: ${({ theme: { paddings } }) => paddings.default};
     }
   }

@@ -9,18 +9,27 @@ import PropTypes from "prop-types";
 // Components
 import { Button } from "../button/Button";
 import { Pane } from "./Pane";
+import { Tool } from "../tool/Tool";
 
 /**
  * A tab.
+ * @param {tabBar} tabBar Whether the tab is being used in a TabBar or not
  * @param {links} links Tab titles
  * @param {panes} panes Tab content
  * @param {activePane} activePane Active pane (the one that is currently visible)
  * @param {onChange} onChange Event handler (gets fired when a tab title has been clicked)
  * @param {...otherProps} ...otherProps Other (HTML5) properties that should be applied to the title headers
  */
-export const Tab = ({ links, panes, activePane, onChange, ...otherProps }) => (
+export const Tab = ({
+  tabBar,
+  links,
+  panes,
+  activePane,
+  onChange,
+  ...otherProps
+}) => (
   <TabWrapper>
-    <TabControlsWrapper>
+    <Tool fill={tabBar}>
       {links.map((link, index) => (
         <ButtonWrapper
           value={link}
@@ -31,7 +40,7 @@ export const Tab = ({ links, panes, activePane, onChange, ...otherProps }) => (
           {...otherProps}
         />
       ))}
-    </TabControlsWrapper>
+    </Tool>
     {panes.map((pane, index) => (
       <Pane active={activePane === index ? true : false} key={index}>
         {pane}
@@ -41,19 +50,12 @@ export const Tab = ({ links, panes, activePane, onChange, ...otherProps }) => (
 );
 
 Tab.propTypes = {
+  tabBar: PropTypes.bool,
   links: PropTypes.arrayOf(PropTypes.string).isRequired,
   panes: PropTypes.arrayOf(PropTypes.node).isRequired,
   onChange: PropTypes.func.isRequired,
   activePane: PropTypes.number.isRequired
 };
-
-const TabControlsWrapper = styled.menu`
-  display: flex;
-  flex-direction: row;
-  overflow-x: auto;
-  margin: 0;
-  padding: 0;
-`;
 
 const TabWrapper = styled.div`
   display: flex;

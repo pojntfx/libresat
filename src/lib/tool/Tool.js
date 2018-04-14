@@ -10,14 +10,32 @@ import PropTypes from "prop-types";
  * A menu of components.
  * @param {children} children Components of the Tool
  * @param {equal} equal Components of the Tool are equally distributed
+ * @param {fill} fill Components of the Tool fill all available space
  * @param {divided} divided Components of the Tool are distributed with maximum distance to each other
  * @param {...otherProps} ...otherProps Other props that should be passed to the Tool
  */
-export const Tool = ({ children, equal, divided, ...otherProps }) => (
-  <ToolItemList equal={equal} divided={divided} {...otherProps}>
-    {children}
-  </ToolItemList>
-);
+export const Tool = ({ children, equal, fill, divided, ...otherProps }) =>
+  fill ? (
+    <EqualItemListWrapper>
+      <ToolItemList
+        equal={equal}
+        divided={divided}
+        filled={fill}
+        {...otherProps}
+      >
+        {children}
+      </ToolItemList>
+    </EqualItemListWrapper>
+  ) : (
+    <ToolItemList equal={equal} divided={divided} filled={fill} {...otherProps}>
+      {children}
+    </ToolItemList>
+  );
+
+const EqualItemListWrapper = styled.div`
+  padding: 0 ${({ theme: { paddings } }) => paddings.default};
+  background: ${({ theme: { colors } }) => colors.bargrey};
+`;
 
 const ToolItemList = styled.menu`
   display: flex;
@@ -35,10 +53,12 @@ const ToolItemList = styled.menu`
     margin-right: ${({ theme: { margins: { tool } } }) => tool};
   }
   ${({ equal }) => (equal ? "& > * { margin: 0 auto; }" : null)};
+  ${({ filled }) => (filled ? "flex: auto; & > * { flex: 1; }" : null)};
 `;
 
 Tool.propTypes = {
   children: PropTypes.arrayOf(PropTypes.node).isRequired,
   equal: PropTypes.bool,
+  fill: PropTypes.bool,
   divided: PropTypes.bool
 };

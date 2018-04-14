@@ -7,6 +7,7 @@ import { DocsSection } from "../../../components/docs/DocsSection";
 
 // Components
 import { Button } from "../../button/Button";
+import { Tool } from "../../tool/Tool";
 
 export const CardDocs = () => (
   <DocsSection
@@ -43,34 +44,16 @@ class CardDemo extends Component {
     width: 100%;
   \`;
 
-  FooterActions = styled.menu\`
-    margin: 0;
-    padding: 0;
-    display: flex;
-    overflow-x: auto;
-    & > button:not(:last-child) {
-      margin-right: 1rem;
-    }
-  \`;
+  onLike = () => console.log("Liking.");
 
-  onLike = () => {
-    console.log("Liking.");
-  };
-  onBookmark = () => {
-    console.log("Bookmarking.");
-  };
-  onShare = () => {
-    console.log("Sharing.");
-  };
+  onBookmark = () => console.log("Bookmarking.");
+
+  onShare = () => console.log("Sharing.");
+
+  onComment = () => console.log("Commenting.");
 
   render() {
-    const {
-      CardImage,
-      FooterActions,
-      onLike,
-      onBookmark,
-      onShare
-    } = this;
+    const { CardImage, onLike, onBookmark, onShare, onComment } = this;
 
     return (
       <Card
@@ -83,17 +66,19 @@ class CardDemo extends Component {
         }
         body="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempora."
         footer={[
-          <FooterActions key="editCard">
-            <Button value="Like" onClick={onLike} />
-            <Button value="Bookmark" onClick={onBookmark} />
-            <Button value="Share" onClick={onShare} />
-          </FooterActions>
+          <Tool key="1" divided>
+            <Tool>
+              <Button value="Like" onClick={onLike} />
+              <Button value="Bookmark" onClick={onBookmark} />
+              <Button value="Share" onClick={onShare} />
+            </Tool>
+            <Button value="Comment" onClick={onComment} />
+          </Tool>
         ]}
       />
     );
   }
 }
-
 `;
 
 class CardDemo extends Component {
@@ -103,28 +88,16 @@ class CardDemo extends Component {
     width: 100%;
   `;
 
-  FooterActions = styled.menu`
-    margin: 0;
-    padding: 0;
-    display: flex;
-    overflow-x: auto;
-    & > button:not(:last-child) {
-      margin-right: 1rem;
-    }
-  `;
+  onLike = () => console.log("Liking.");
 
-  onLike = () => {
-    console.log("Liking.");
-  };
-  onBookmark = () => {
-    console.log("Bookmarking.");
-  };
-  onShare = () => {
-    console.log("Sharing.");
-  };
+  onBookmark = () => console.log("Bookmarking.");
+
+  onShare = () => console.log("Sharing.");
+
+  onComment = () => console.log("Commenting.");
 
   render() {
-    const { CardImage, FooterActions, onLike, onBookmark, onShare } = this;
+    const { CardImage, onLike, onBookmark, onShare, onComment } = this;
 
     return (
       <Card
@@ -137,11 +110,14 @@ class CardDemo extends Component {
         }
         body="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempora."
         footer={[
-          <FooterActions key="editCard">
-            <Button value="Like" onClick={onLike} />
-            <Button value="Bookmark" onClick={onBookmark} />
-            <Button value="Share" onClick={onShare} />
-          </FooterActions>
+          <Tool key="1" divided>
+            <Tool>
+              <Button value="Like" onClick={onLike} />
+              <Button value="Bookmark" onClick={onBookmark} />
+              <Button value="Share" onClick={onShare} />
+            </Tool>
+            <Button value="Comment" onClick={onComment} />
+          </Tool>
         ]}
       />
     );

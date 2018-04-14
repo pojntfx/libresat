@@ -15,11 +15,7 @@ export const List = ({ title, items }) => (
   <ListWrapper>
     <ListTitleWrapper>{title}</ListTitleWrapper>
     <ListItemWrapper>
-      {items.map(link =>
-        link.props.children.map((linkItem, index) => (
-          <ListItem key={index}>{linkItem}</ListItem>
-        ))
-      )}
+      {items.map((item, index) => <ListItem key={index}>{item}</ListItem>)}
     </ListItemWrapper>
   </ListWrapper>
 );

@@ -1,14 +1,12 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import { List } from "../List";
 
 // Docs
 import { DocsSection } from "../../../components/docs/DocsSection";
 
-// Styled components
-import styled from "styled-components";
-
 // Components
 import { Button } from "../../button/Button";
+import { Tool } from "../../tool/Tool";
 
 export const ListDocs = () => (
   <DocsSection
@@ -31,21 +29,6 @@ export const ListDocs = () => (
 
 const code = `
 class ListDemo extends Component {
-  PersonComponent = styled.div\`
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  \`;
-
-  PersonActions = styled.menu\`
-    margin: 0;
-    padding: 0;
-    margin-left: 1rem;
-    & > button:not(:last-child) {
-      margin-right: 1rem;
-    }
-  \`;
-
   onAddPerson = () => {
     console.log("Adding person.");
   };
@@ -59,68 +42,60 @@ class ListDemo extends Component {
   };
 
   render() {
-    const {
-      PersonComponent,
-      PersonActions,
-      onAddPerson,
-      onRemovePerson,
-      onShareDetails
-    } = this;
+    const { onAddPerson, onRemovePerson, onShareDetails } = this;
 
     return (
       <List
         title="Manage users"
         items={[
-          <Fragment key="managePerson">
-            <PersonComponent>
-              First person
-              <PersonActions>
-                <Button
-                  context="positive"
-                  value="+ Add person"
-                  onClick={onAddPerson}
-                />
-                <Button
-                  context="negative"
-                  value="- Remove person"
-                  onClick={onRemovePerson}
-                />
-                <Button value="> Share details" onClick={onShareDetails} />
-              </PersonActions>
-            </PersonComponent>
-            <PersonComponent>
-              Second person
-              <PersonActions>
-                <Button
-                  context="positive"
-                  value="+ Add person"
-                  onClick={onAddPerson}
-                />
-                <Button
-                  context="negative"
-                  value="- Remove person"
-                  onClick={onRemovePerson}
-                />
-                <Button value="> Share details" onClick={onShareDetails} />
-              </PersonActions>
-            </PersonComponent>
-            <PersonComponent>
-              Third person
-              <PersonActions>
-                <Button
-                  context="positive"
-                  value="+ Add person"
-                  onClick={onAddPerson}
-                />
-                <Button
-                  context="negative"
-                  value="- Remove person"
-                  onClick={onRemovePerson}
-                />
-                <Button value="> Share details" onClick={onShareDetails} />
-              </PersonActions>
-            </PersonComponent>
-          </Fragment>
+          <Tool divided key="1">
+            <span>First Person</span>
+            <Tool>
+              <Button
+                context="positive"
+                value="+ Add person"
+                onClick={onAddPerson}
+              />
+              <Button
+                context="negative"
+                value="- Remove person"
+                onClick={onRemovePerson}
+              />
+              <Button value="> Share details" onClick={onShareDetails} />
+            </Tool>
+          </Tool>,
+          <Tool divided key="2">
+            <span>Second Person</span>
+            <Tool>
+              <Button
+                context="positive"
+                value="+ Add person"
+                onClick={onAddPerson}
+              />
+              <Button
+                context="negative"
+                value="- Remove person"
+                onClick={onRemovePerson}
+              />
+              <Button value="> Share details" onClick={onShareDetails} />
+            </Tool>
+          </Tool>,
+          <Tool divided key="3">
+            <span>Third Person</span>
+            <Tool>
+              <Button
+                context="positive"
+                value="+ Add person"
+                onClick={onAddPerson}
+              />
+              <Button
+                context="negative"
+                value="- Remove person"
+                onClick={onRemovePerson}
+              />
+              <Button value="> Share details" onClick={onShareDetails} />
+            </Tool>
+          </Tool>
         ]}
       />
     );
@@ -129,21 +104,6 @@ class ListDemo extends Component {
 `;
 
 class ListDemo extends Component {
-  PersonComponent = styled.div`
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  `;
-
-  PersonActions = styled.menu`
-    margin: 0;
-    padding: 0;
-    margin-left: 1rem;
-    & > button:not(:last-child) {
-      margin-right: 1rem;
-    }
-  `;
-
   onAddPerson = () => {
     console.log("Adding person.");
   };
@@ -157,68 +117,60 @@ class ListDemo extends Component {
   };
 
   render() {
-    const {
-      PersonComponent,
-      PersonActions,
-      onAddPerson,
-      onRemovePerson,
-      onShareDetails
-    } = this;
+    const { onAddPerson, onRemovePerson, onShareDetails } = this;
 
     return (
       <List
         title="Manage users"
         items={[
-          <Fragment key="managePerson">
-            <PersonComponent>
-              First person
-              <PersonActions>
-                <Button
-                  context="positive"
-                  value="+ Add person"
-                  onClick={onAddPerson}
-                />
-                <Button
-                  context="negative"
-                  value="- Remove person"
-                  onClick={onRemovePerson}
-                />
-                <Button value="> Share details" onClick={onShareDetails} />
-              </PersonActions>
-            </PersonComponent>
-            <PersonComponent>
-              Second person
-              <PersonActions>
-                <Button
-                  context="positive"
-                  value="+ Add person"
-                  onClick={onAddPerson}
-                />
-                <Button
-                  context="negative"
-                  value="- Remove person"
-                  onClick={onRemovePerson}
-                />
-                <Button value="> Share details" onClick={onShareDetails} />
-              </PersonActions>
-            </PersonComponent>
-            <PersonComponent>
-              Third person
-              <PersonActions>
-                <Button
-                  context="positive"
-                  value="+ Add person"
-                  onClick={onAddPerson}
-                />
-                <Button
-                  context="negative"
-                  value="- Remove person"
-                  onClick={onRemovePerson}
-                />
-                <Button value="> Share details" onClick={onShareDetails} />
-              </PersonActions>
-            </PersonComponent>
-          </Fragment>
+          <Tool divided key="1">
+            <span>First Person</span>
+            <Tool>
+              <Button
+                context="positive"
+                value="+ Add person"
+                onClick={onAddPerson}
+              />
+              <Button
+                context="negative"
+                value="- Remove person"
+                onClick={onRemovePerson}
+              />
+              <Button value="> Share details" onClick={onShareDetails} />
+            </Tool>
+          </Tool>,
+          <Tool divided key="2">
+            <span>Second Person</span>
+            <Tool>
+              <Button
+                context="positive"
+                value="+ Add person"
+                onClick={onAddPerson}
+              />
+              <Button
+                context="negative"
+                value="- Remove person"
+                onClick={onRemovePerson}
+              />
+              <Button value="> Share details" onClick={onShareDetails} />
+            </Tool>
+          </Tool>,
+          <Tool divided key="3">
+            <span>Third Person</span>
+            <Tool>
+              <Button
+                context="positive"
+                value="+ Add person"
+                onClick={onAddPerson}
+              />
+              <Button
+                context="negative"
+                value="- Remove person"
+                onClick={onRemovePerson}
+              />
+              <Button value="> Share details" onClick={onShareDetails} />
+            </Tool>
+          </Tool>
         ]}
       />
     );

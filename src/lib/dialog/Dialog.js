@@ -63,11 +63,6 @@ const DialogWrapper = styled.dialog`
       ? "position: fixed; top: 0; left: 0;height: 100%; width: 100%; overflow-y: auto"
       : "position: relative; height: auto; width: auto"};
   background: ${({ theme: { colors } }) => colors.white};
-  & > menu {
-    border: 0;
-    margin: 0;
-    background: ${({ theme: { colors } }) => colors.bars.default};
-  }
 `;
 
 const DialogHeader = styled(ToolBar)`
