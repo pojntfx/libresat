@@ -23,7 +23,7 @@ export const TextField = ({
   ...otherProps
 }) => (
   <InputWrapper>
-    <label htmlFor={name}>{label}</label>
+    <Label htmlFor={name}>{label}</Label>
     <TextFieldWrapper
       type={type}
       name={name}
@@ -43,26 +43,44 @@ TextField.propTypes = {
   onInput: PropTypes.func.isRequired
 };
 
-const TextFieldWrapper = styled.input`
-  padding: ${({ theme: { paddings } }) => paddings.default};
-  margin-left: ${({ theme: { margins } }) => margins.default};
-  border-radius: ${({ theme: { radiuses } }) => radiuses.default};
-  border: 1px solid ${({ theme: { colors } }) => colors.darkgrey};
-  transition: background
-      ${({ theme: { transitions } }) => transitions.defaultDuration},
-    box-shadow ${({ theme: { transitions } }) => transitions.defaultDuration};
-  flex-grow: 1;
-  outline: 0;
-  &:hover:not(:focus) {
-    background: ${({ theme: { colors } }) => colors.lightgrey};
-  }
-  &:focus {
-    box-shadow: ${({ theme: { shadows } }) => shadows.defaultInset};
-  }
-`;
-
 const InputWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+`;
+
+const Label = styled.label`
+  margin-right: ${({ theme: { paddings: { textFields } } }) => textFields};
+`;
+
+const TextFieldWrapper = styled.input`
+  padding: ${({ theme: { margins: { textFields } } }) => textFields};
+  margin-left: ${({ theme: { margins: { textFields } } }) => textFields};
+  border-radius: ${({ theme: { radiuses: { textFields } } }) => textFields};
+  border: 1px solid ${({ theme: { colors2: { lightgrey } } }) => lightgrey};
+  transition: background-color
+      ${({ theme: { transitions: { textFields } } }) => textFields},
+    box-shadow ${({ theme: { transitions: { textFields } } }) => textFields};
+  flex-grow: 1;
+  outline: 0;
+  &:active,
+  &:focus {
+    box-shadow: ${({ theme: { shadows: { defaultInset } } }) => defaultInset};
+    background: ${({ theme: { backgrounds2: { textFields: { active } } } }) =>
+      active} !important;
+  }
+  &:not(:hover) {
+    &:active,
+    &:focus {
+      background: ${({ theme: { backgrounds2: { textFields: { active } } } }) =>
+        active} !important;
+    }
+  }
+  &:hover {
+    background: ${({ theme: { backgrounds2: { textFields: { hover } } } }) =>
+      hover};
+  }
+  &:disabled {
+    background: ${({ theme: { backgrounds2: { bars } } }) => bars.default};
+  }
 `;

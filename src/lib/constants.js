@@ -103,7 +103,7 @@ export const colors2 = {
       light: {
         default: () => colors2.warning,
         hover: () => colors2.warningDark,
-        active: () => colors2.warning,
+        active: () => colors2.warningLight,
         focus: () => colors2.warningLight
       },
       primary: {
@@ -192,6 +192,18 @@ export const backgrounds2 = {
   },
   bars: {
     default: () => colors2.basegrey
+  },
+  textFields: {
+    default: () => colors2.transparent,
+    hover: () => colors2.lightgrey,
+    active: () => colors2.light,
+    focus: () => colors2.light
+  },
+  textAreas: {
+    default: () => colors2.transparent,
+    hover: () => colors2.lightgrey,
+    active: () => colors2.light,
+    focus: () => colors2.light
   }
 };
 
@@ -209,7 +221,9 @@ export const margins = {
   default: "1rem",
   labels: "1rem",
   expand: "0.5rem",
-  switches: "1rem"
+  switches: "1rem",
+  textFields: "1rem",
+  textAreas: "1rem"
 };
 
 export const paddings = {
@@ -218,21 +232,27 @@ export const paddings = {
   button: "1rem 1.25rem",
   expand: "0.5rem 0.75rem",
   select: "0.5rem 0.75rem",
-  link: "0.2rem"
+  link: "0.2rem",
+  textFields: "1rem",
+  textAreas: "1rem"
 };
 
 // Border Radiuses
 export const radiuses = {
   default: "8px",
   buttons: "8px",
-  switches: "8px"
+  switches: "8px",
+  textFields: "8px",
+  textAreas: "8px"
 };
 
 // Transitions
 export const transitions = {
   defaultDuration: "0.25s",
   buttons: () => transitions.defaultDuration,
-  switches: () => transitions.defaultDuration
+  switches: () => transitions.defaultDuration,
+  textFields: () => transitions.defaultDuration,
+  textAreas: () => transitions.defaultDuration
 };
 
 // Shadows
