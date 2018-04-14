@@ -27,7 +27,8 @@ import {
   ContainerDocs,
   LoadingDocs,
   GridLayoutDocs,
-  NavDocs
+  NavDocs,
+  ToolDocs
 } from "../../lib/framework";
 
 export class Docs extends Component {
@@ -54,6 +55,7 @@ export class Docs extends Component {
                 "TabBar",
                 "Nav",
                 "NavBar",
+                "Tool",
                 "ToolBar",
                 "List",
                 "Menu",
@@ -109,6 +111,7 @@ export class Docs extends Component {
             <TabBarDocs />
             <NavDocs />
             <NavBarDocs />
+            <ToolDocs />
             <ToolBarDocs />
             <ListDocs />
             <MenuDocs />

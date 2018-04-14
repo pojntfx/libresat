@@ -19,6 +19,7 @@ export const Nav = ({ children, ...otherProps }) => (
 
 const NavItemList = styled.ul`
   display: flex;
+  align-items: center;
   margin: 0;
   padding: 0;
   overflow-x: auto;
