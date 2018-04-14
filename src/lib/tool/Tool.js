@@ -22,10 +22,8 @@ export const Tool = ({ children, equal, divided, ...otherProps }) => (
 const ToolItemList = styled.menu`
   display: flex;
   align-items: center;
-  justify-content: ${({ equal, divided }) =>
-    equal || divided
-      ? equal ? "space-around" : "space-between"
-      : "flex-start"};
+  justify-content: ${({ divided }) =>
+    divided ? "space-between" : "flex-start"};
   margin: 0;
   padding: 0;
   overflow-x: auto;
@@ -36,6 +34,7 @@ const ToolItemList = styled.menu`
   & > *:not(:last-child) {
     margin-right: ${({ theme: { margins: { tool } } }) => tool};
   }
+  ${({ equal }) => (equal ? "& > * { margin: 0 auto; }" : null)};
 `;
 
 Tool.propTypes = {

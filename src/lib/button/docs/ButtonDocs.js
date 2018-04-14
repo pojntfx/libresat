@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Button } from "../Button";
-import styled from "styled-components";
+import { Tool } from "../../tool/Tool";
 
 // Docs
 import { DocsSection } from "../../../components/docs/DocsSection";
@@ -45,16 +45,6 @@ export const ButtonDocs = () => (
 
 const code = `
 class ButtonDemo extends Component {
-  ButtonWrapper = styled.menu\`
-    display: flex;
-    overflow-x: auto;
-    padding: 0;
-    margin: 0;
-    & > button:not(:last-child) {
-      margin-right: 1rem;
-    }
-  \`;
-
   onLog = () => {
     console.log("Logging to console.");
   };
@@ -72,9 +62,9 @@ class ButtonDemo extends Component {
   };
 
   render() {
-    const { ButtonWrapper, onLog, onSave, onDiscard, onDelete } = this;
+    const { onLog, onSave, onDiscard, onDelete } = this;
     return (
-      <ButtonWrapper>
+      <Tool equal>
         <Button value="Log to console" onClick={onLog} />
         <Button value="Save" context="positive" onClick={onSave} />
         <Button value="Discard" context="warning" onClick={onDiscard} />
@@ -83,23 +73,13 @@ class ButtonDemo extends Component {
         <Button value="Save" context="positive" primary onClick={onSave} />
         <Button value="Discard" context="warning" primary onClick={onDiscard} />
         <Button value="Delete" context="negative" primary onClick={onDelete} />
-      </ButtonWrapper>
+      </Tool>
     );
   }
 }
 `;
 
 class ButtonDemo extends Component {
-  ButtonWrapper = styled.menu`
-    display: flex;
-    overflow-x: auto;
-    padding: 0;
-    margin: 0;
-    & > button:not(:last-child) {
-      margin-right: 1rem;
-    }
-  `;
-
   onLog = () => {
     console.log("Logging to console.");
   };
@@ -117,9 +97,9 @@ class ButtonDemo extends Component {
   };
 
   render() {
-    const { ButtonWrapper, onLog, onSave, onDiscard, onDelete } = this;
+    const { onLog, onSave, onDiscard, onDelete } = this;
     return (
-      <ButtonWrapper>
+      <Tool equal>
         <Button value="Log to console" onClick={onLog} />
         <Button value="Save" context="positive" onClick={onSave} />
         <Button value="Discard" context="warning" onClick={onDiscard} />
@@ -128,7 +108,7 @@ class ButtonDemo extends Component {
         <Button value="Save" context="positive" primary onClick={onSave} />
         <Button value="Discard" context="warning" primary onClick={onDiscard} />
         <Button value="Delete" context="negative" primary onClick={onDelete} />
-      </ButtonWrapper>
+      </Tool>
     );
   }
 }
