@@ -47,36 +47,46 @@ Select.propTypes = {
 
 const InputWrapper = styled.div`
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
 `;
 
 const SelectWrapper = styled.select`
-  color: ${({ theme: { colors } }) => colors.buttons.default};
-  background: ${({ theme: { backgrounds } }) => backgrounds.default};
-  border-radius: ${({ theme: { radiuses } }) => radiuses.default};
-  padding: ${({ theme: { paddings } }) => paddings.select};
-  transition: background
-      ${({ theme: { transitions } }) => transitions.defaultDuration},
-    box-shadow ${({ theme: { transitions } }) => transitions.defaultDuration};
-  margin-left: auto;
-  white-space: nowrap;
+  color: ${({ theme: { colors2: { buttons } } }) =>
+    buttons.default.light.default};
+  background: ${({ theme: { backgrounds2: { buttons } } }) =>
+    buttons.default.light.default};
+  padding: ${({ theme: { paddings: { select } } }) => select};
+  border-radius: ${({ theme: { radiuses: { buttons } } }) => buttons};
+  transition: background ${({ theme: { transitions: { buttons } } }) => buttons},
+    box-shadow ${({ theme: { transitions: { buttons } } }) => buttons};
+  ${({ equal }) => (equal ? "flex: 1;" : null)} white-space: nowrap;
+  -webkit-tap-highlight-color: transparent;
   cursor: pointer;
   border: 0;
   outline: 0;
-  &:focus,
-  &:active {
-    background: ${({ theme: { colors } }) => colors.darkgrey}!important;
-    box-shadow: ${({ theme: { shadows } }) => shadows.defaultInset};
+  &:active,
+  &:focus {
+    color: ${({ theme: { colors2: { buttons } } }) =>
+      buttons.default.light.active}!important;
+    background: ${({ theme: { backgrounds2: { buttons } } }) =>
+      buttons.default.light.active} !important;
+    box-shadow: ${({ theme: { shadows: { defaultInset } } }) => defaultInset};
   }
   &:not(:hover) {
-    &:focus,
-    &:active {
-      background: ${({ theme: { backgrounds } }) =>
-        backgrounds.default}!important;
+    &:active,
+    &:focus {
+      color: ${({ theme: { colors2: { buttons } } }) =>
+        buttons.default.light.default}!important;
+      background: ${({ theme: { backgrounds2: { buttons } } }) =>
+        buttons.default.light.default} !important;
+      box-shadow: ${({ theme: { shadows: { defaultInset } } }) => defaultInset};
     }
   }
   &:hover {
-    background: ${({ theme: { colors } }) => colors.lightgrey};
+    color: ${({ theme: { colors2: { buttons } } }) =>
+      buttons.default.light.hover};
+    background: ${({ theme: { backgrounds2: { buttons } } }) =>
+      buttons.default.light.hover};
   }
 `;

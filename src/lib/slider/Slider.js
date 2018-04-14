@@ -42,63 +42,84 @@ const SliderWrapper = styled.div`
 `;
 
 const Label = styled.span`
-  margin-right: ${({ theme: { margins } }) => margins.default};
+  margin-right: ${({ theme: { margins: { sliders } } }) => sliders};
 `;
 
 const InputWrapper = styled.input`
-  border-radius: ${({ theme: { radiuses } }) => radiuses.default};
+  border-radius: ${({ theme: { radiuses: { sliders } } }) => sliders};
   width: 100%;
-  height: 2.2rem;
+  height: 2rem;
   outline: 0;
   position: relative;
   overflow: hidden;
   cursor: pointer;
   /* WebKit & Blink: Use custom styling */
   -webkit-appearance: none;
+  -webkit-tap-highlight-color: transparent;
   &[value="0"] {
     &::-webkit-slider-thumb {
-      border-color: ${({ theme: { colors } }) => colors.darkgrey};
+      border-color: ${({ theme: { backgrounds2: { bars } } }) => bars.default};
       box-shadow: none;
     }
   }
   &:disabled {
     &::-webkit-slider-runnable-track {
-      background: ${({ theme: { colors } }) => colors.lightgrey};
-    }
-  }
-  &:disabled {
-    &::-webkit-slider-thumb {
-      box-shadow: calc(-100vw - ${({ theme: { margins } }) => margins.default})
-        0 0 100vw ${({ theme: { colors } }) => colors.darkgrey};
-      border-color: ${({ theme: { colors } }) => colors.darkgrey};
+      background: ${({ theme: { backgrounds2: { bars } } }) => bars.default};
     }
   }
   &::-webkit-slider-runnable-track {
-    background: ${({ theme: { colors } }) => colors.darkgrey};
+    transition: ${({ theme: { transitions: { sliders } } }) => sliders};
+    -webkit-tap-highlight-color: transparent;
+    background: ${({ theme: { backgrounds2: { sliders } } }) =>
+      sliders.default};
+    border-radius: ${({ theme: { radiuses: { sliders } } }) => sliders};
+  }
+  &:focus::-webkit-slider-runnable-track,
+  &:active::-webkit-slider-runnable-track {
+    box-shadow: ${({ theme: { shadows: { sliders } } }) => sliders};
+  }
+  &:disabled {
+    &::-webkit-slider-thumb {
+      box-shadow: calc(
+          -100vw - ${({ theme: { margins: { sliders } } }) => sliders}
+        )
+        0 0 100vw ${({ theme: { colors2 } }) => colors2.darkgrey};
+      border-color: ${({ theme: { colors2 } }) => colors2.darkgrey};
+    }
   }
   &::-webkit-slider-thumb {
-    border: 0.1rem solid ${({ theme: { colors } }) => colors.text.primary};
+    border: 0.1rem solid ${({ theme: { colors2 } }) => colors2.primary};
     border-radius: calc(
-      ${({ theme: { radiuses } }) => radiuses.default} - 0.025rem
+      ${({ theme: { radiuses: { sliders } } }) => sliders} - 0.025rem
     );
-    background: ${({ theme: { colors } }) => colors.white};
-    box-shadow: calc(-100vw - ${({ theme: { margins } }) => margins.default}) 0
-      0 100vw ${({ theme: { colors } }) => colors.text.primary};
-    transition: ${({ theme: { transitions } }) => transitions.defaultDuration};
+    background: ${({ theme: { colors2: { light } } }) => light};
+    box-shadow: calc(
+        -100vw - ${({ theme: { margins: { sliders } } }) => sliders}
+      )
+      0 0 100vw ${({ theme: { colors2 } }) => colors2.primary};
+    transition: ${({ theme: { transitions: { sliders } } }) => sliders};
     margin: 0.1rem;
     margin-left: 0;
-    width: 2.2rem;
-    height: 2.2rem;
+    width: 2rem;
+    height: 2rem;
     box-sizing: border-box;
     -webkit-appearance: none;
-    &:hover,
-    &:focus {
-      background: ${({ theme: { colors } }) => colors.lightgrey};
-    }
+    -webkit-tap-highlight-color: transparent;
     &:active,
     &:focus {
-      width: 2.5rem;
+      background: ${({ theme: { colors2: { darkgrey } } }) =>
+        darkgrey} !important;
+      width: 2.25rem;
       left: calc(100% - 0.2rem);
+    }
+    &:not(:hover) {
+      &:active,
+      &:focus {
+        background: ${({ theme: { colors2: { white } } }) => white} !important;
+      }
+    }
+    &:hover {
+      background: ${({ theme: { colors2: { lightgrey } } }) => lightgrey};
     }
   }
 
