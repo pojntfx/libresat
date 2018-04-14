@@ -16,7 +16,7 @@ import PropTypes from "prop-types";
  */
 export const Tool = ({ children, equal, fill, divided, ...otherProps }) =>
   fill ? (
-    <EqualItemListWrapper>
+    <TabsListWrapper>
       <ToolItemList
         equal={equal}
         divided={divided}
@@ -25,16 +25,22 @@ export const Tool = ({ children, equal, fill, divided, ...otherProps }) =>
       >
         {children}
       </ToolItemList>
-    </EqualItemListWrapper>
+    </TabsListWrapper>
   ) : (
     <ToolItemList equal={equal} divided={divided} filled={fill} {...otherProps}>
       {children}
     </ToolItemList>
   );
 
-const EqualItemListWrapper = styled.div`
+const TabsListWrapper = styled.div`
   padding: 0 ${({ theme: { paddings } }) => paddings.default};
   background: ${({ theme: { colors } }) => colors.bargrey};
+  /* Enable the menu to flow over the inner wrapper */
+  overflow: auto;
+  & > menu {
+    display: inline-flex;
+    overflow: visible;
+  }
 `;
 
 const ToolItemList = styled.menu`
@@ -47,7 +53,7 @@ const ToolItemList = styled.menu`
   overflow-x: auto;
   /* If there are nested menus, don't overflow them - only the parent should do that. */
   & > menu {
-    overflow-x: initial;
+    overflow-x: visible;
   }
   & > *:not(:last-child) {
     margin-right: ${({ theme: { margins: { tool } } }) => tool};
