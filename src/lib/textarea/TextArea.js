@@ -15,7 +15,7 @@ import PropTypes from "prop-types";
  */
 export const TextArea = ({ label, value, name, onInput, ...otherProps }) => (
   <InputWrapper>
-    <label htmlFor={name}>{label}</label>
+    <Label htmlFor={name}>{label}</Label>
     <TextAreaWrapper
       name={name}
       id={name}
@@ -34,27 +34,45 @@ TextArea.propTypes = {
   onInput: PropTypes.func.isRequired
 };
 
-const TextAreaWrapper = styled.textarea`
-  padding: ${({ theme: { paddings } }) => paddings.default};
-  margin-left: ${({ theme: { margins } }) => margins.default};
-  border-radius: ${({ theme: { radiuses } }) => radiuses.default};
-  border: 1px solid ${({ theme: { colors } }) => colors.darkgrey};
-  transition: background
-      ${({ theme: { transitions } }) => transitions.defaultDuration},
-    box-shadow ${({ theme: { transitions } }) => transitions.defaultDuration};
-  flex-grow: 1;
-  outline: 0;
-  resize: vertical;
-  &:hover:not(:focus) {
-    background: ${({ theme: { colors } }) => colors.lightgrey};
-  }
-  &:focus {
-    box-shadow: ${({ theme: { shadows } }) => shadows.defaultInset};
-  }
-`;
-
 const InputWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+`;
+
+const Label = styled.label`
+  margin-right: ${({ theme: { paddings: { textAreas } } }) => textAreas};
+`;
+
+const TextAreaWrapper = styled.textarea`
+  padding: ${({ theme: { margins: { textAreas } } }) => textAreas};
+  margin-left: ${({ theme: { margins: { textAreas } } }) => textAreas};
+  border-radius: ${({ theme: { radiuses: { textAreas } } }) => textAreas};
+  border: 1px solid ${({ theme: { colors2: { lightgrey } } }) => lightgrey};
+  transition: background-color
+      ${({ theme: { transitions: { textAreas } } }) => textAreas},
+    box-shadow ${({ theme: { transitions: { textAreas } } }) => textAreas};
+  resize: vertical;
+  flex-grow: 1;
+  outline: 0;
+  &:active,
+  &:focus {
+    box-shadow: ${({ theme: { shadows: { defaultInset } } }) => defaultInset};
+    background: ${({ theme: { backgrounds2: { textAreas: { active } } } }) =>
+      active} !important;
+  }
+  &:not(:hover) {
+    &:active,
+    &:focus {
+      background: ${({ theme: { backgrounds2: { textAreas: { active } } } }) =>
+        active} !important;
+    }
+  }
+  &:hover {
+    background: ${({ theme: { backgrounds2: { textAreas: { hover } } } }) =>
+      hover};
+  }
+  &:disabled {
+    background: ${({ theme: { backgrounds2: { bars } } }) => bars.default};
+  }
 `;
