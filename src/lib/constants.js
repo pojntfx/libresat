@@ -204,6 +204,9 @@ export const backgrounds2 = {
     hover: () => colors2.lightgrey,
     active: () => colors2.light,
     focus: () => colors2.light
+  },
+  sliders: {
+    default: () => colors2.basegrey
   }
 };
 
@@ -223,7 +226,8 @@ export const margins = {
   expand: "0.5rem",
   switches: "1rem",
   textFields: "1rem",
-  textAreas: "1rem"
+  textAreas: "1rem",
+  sliders: "1rem"
 };
 
 export const paddings = {
@@ -243,7 +247,8 @@ export const radiuses = {
   buttons: "8px",
   switches: "8px",
   textFields: "8px",
-  textAreas: "8px"
+  textAreas: "8px",
+  sliders: "8px"
 };
 
 // Transitions
@@ -252,13 +257,15 @@ export const transitions = {
   buttons: () => transitions.defaultDuration,
   switches: () => transitions.defaultDuration,
   textFields: () => transitions.defaultDuration,
-  textAreas: () => transitions.defaultDuration
+  textAreas: () => transitions.defaultDuration,
+  sliders: () => transitions.defaultDuration
 };
 
 // Shadows
 export const shadows = {
   default: "0 1px 2px rgba(32, 33, 36, 0.28)",
-  defaultInset: "inset 0 0px 2px rgba(32, 33, 36, 0.28)"
+  defaultInset: "inset 0 0 2px rgba(32, 33, 36, 0.28)",
+  sliders: "inset 1px 0.01rem 4px rgba(32, 33, 36, 0.7)"
 };
 
 // Z-Indexes
