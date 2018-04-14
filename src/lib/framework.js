@@ -19,6 +19,7 @@ import { Container } from "./container/Container";
 import { Loading } from "./loading/Loading";
 import { GridLayout } from "./gridlayout/GridLayout";
 import { Nav } from "./nav/Nav";
+import { Tool } from "./tool/Tool";
 
 // Docs imports
 import { TextAreaDocs } from "./textarea/docs/TextAreaDocs";
@@ -40,6 +41,7 @@ import { ContainerDocs } from "./container/docs/ContainerDocs";
 import { LoadingDocs } from "./loading/docs/LoadingDocs";
 import { GridLayoutDocs } from "./gridlayout/docs/GridLayoutDocs";
 import { NavDocs } from "./nav/docs/NavDocs";
+import { ToolDocs } from "./tool/docs/ToolDocs";
 
 // Exports
 export {
@@ -55,6 +57,7 @@ export {
   TabBar,
   Nav,
   NavBar,
+  Tool,
   ToolBar,
   List,
   Menu,
@@ -74,6 +77,7 @@ export {
   TabBarDocs,
   NavDocs,
   NavBarDocs,
+  ToolDocs,
   ToolBarDocs,
   ListDocs,
   MenuDocs,

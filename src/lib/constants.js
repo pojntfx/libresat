@@ -228,7 +228,8 @@ export const margins = {
   textFields: "1rem",
   textAreas: "1rem",
   sliders: "1rem",
-  nav: "1rem"
+  nav: "1rem",
+  tool: "1rem"
 };
 
 export const paddings = {
