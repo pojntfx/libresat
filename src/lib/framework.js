@@ -18,6 +18,7 @@ import { Dialog } from "./dialog/Dialog";
 import { Container } from "./container/Container";
 import { Loading } from "./loading/Loading";
 import { GridLayout } from "./gridlayout/GridLayout";
+import { Nav } from "./nav/Nav";
 
 // Docs imports
 import { TextAreaDocs } from "./textarea/docs/TextAreaDocs";
@@ -38,6 +39,7 @@ import { DialogDocs } from "./dialog/docs/DialogDocs";
 import { ContainerDocs } from "./container/docs/ContainerDocs";
 import { LoadingDocs } from "./loading/docs/LoadingDocs";
 import { GridLayoutDocs } from "./gridlayout/docs/GridLayoutDocs";
+import { NavDocs } from "./nav/docs/NavDocs";
 
 // Exports
 export {
@@ -50,9 +52,10 @@ export {
   Slider,
   TextArea,
   Tab,
+  TabBar,
+  Nav,
   NavBar,
   ToolBar,
-  TabBar,
   List,
   Menu,
   Card,
@@ -62,15 +65,16 @@ export {
   GridLayout,
   TextAreaDocs,
   TextFieldDocs,
-  TabsDocs,
   SwitchDocs,
   SliderDocs,
   CheckBoxDocs,
   SelectDocs,
   ButtonDocs,
+  TabsDocs,
+  TabBarDocs,
+  NavDocs,
   NavBarDocs,
   ToolBarDocs,
-  TabBarDocs,
   ListDocs,
   MenuDocs,
   CardDocs,
