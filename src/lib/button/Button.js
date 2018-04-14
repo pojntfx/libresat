@@ -10,24 +10,15 @@ import PropTypes from "prop-types";
  * A button.
  * @param {value} value The text in the button
  * @param {onClick} onClick Event handler (gets fired when the button has been clicked)
- * @param {context} equal Whether the button triggers an additive, modifying or destructive action
+ * @param {context} context Whether the button triggers an additive, modifying or destructive action
  * @param {primary} primary Whether the button is the primary/main call to action
- * @param {equal} equal Whether all nearby buttons should have an equal width (used with tabs)
  * @param {...otherProps} ...otherProps Other (HTML5) props that should be passed to the button, i.e. "disabled"
  */
-export const Button = ({
-  value,
-  onClick,
-  context,
-  primary,
-  equal,
-  ...otherProps
-}) => (
+export const Button = ({ value, onClick, context, primary, ...otherProps }) => (
   <ButtonWrapper
     onClick={onClick}
     context={context}
     primary={primary}
-    equal={equal}
     {...otherProps}
   >
     {value}
@@ -38,8 +29,7 @@ Button.propTypes = {
   value: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
   context: PropTypes.oneOf(["positive", "warning", "negative"]),
-  primary: PropTypes.bool,
-  equal: PropTypes.bool
+  primary: PropTypes.bool
 };
 
 const ButtonWrapper = styled.button`
@@ -68,7 +58,7 @@ const ButtonWrapper = styled.button`
   border-radius: ${({ theme: { radiuses: { buttons } } }) => buttons};
   transition: background ${({ theme: { transitions: { buttons } } }) => buttons},
     box-shadow ${({ theme: { transitions: { buttons } } }) => buttons};
-  ${({ equal }) => (equal ? "flex: 1;" : null)} white-space: nowrap;
+  white-space: nowrap;
   -webkit-tap-highlight-color: transparent;
   cursor: pointer;
   border: 0;

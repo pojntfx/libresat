@@ -23,6 +23,10 @@ export const ToolDocs = () => (
         description: "Components of the Tool are equally distributed."
       },
       {
+        title: "fill (optional) (bool)",
+        description: "Components of the Tool fill all available space."
+      },
+      {
         title: "divided (optional) (bool)",
         description:
           "Components of the Tool are distributed with maximum distance to each other."

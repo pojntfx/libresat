@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import { Button } from "../Button";
-import { Tool } from "../../tool/Tool";
 
 // Docs
 import { DocsSection } from "../../../components/docs/DocsSection";
+
+// Components
+import { Tool } from "../../tool/Tool";
 
 export const ButtonDocs = () => (
   <DocsSection
@@ -29,11 +31,6 @@ export const ButtonDocs = () => (
       {
         title: "primary (optional) (bool)",
         description: "Whether the button is the primary/main call to action."
-      },
-      {
-        title: "equal (optional) (bool)",
-        description:
-          "Whether all nearby buttons should have an equal width (used with tabs)."
       },
       {
         title: "...otherProps",

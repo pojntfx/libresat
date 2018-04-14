@@ -172,12 +172,14 @@ class ToolBarDemo extends Component {
         {/* Equal layout */}
         <ToolBar
           equalItems={[
-            <Fragment key="equalItems">
-              <Button value="Add post" onClick={onAddPost} />
-              <Button value="Share view" onClick={onShareView} />
-              <Button value="Invite friend" onClick={onInviteFriend} />
-              <Button value="Distribute info" onClick={onDistributeInfo} />
-            </Fragment>
+            <Button key="1" value="Add post" onClick={onAddPost} />,
+            <Button key="2" value="Share view" onClick={onShareView} />,
+            <Button key="3" value="Invite friend" onClick={onInviteFriend} />,
+            <Button
+              key="4"
+              value="Distribute info"
+              onClick={onDistributeInfo}
+            />
           ]}
         />
       </Fragment>
