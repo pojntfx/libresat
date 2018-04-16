@@ -6,8 +6,18 @@ import PropTypes from "prop-types";
 // Styled components
 import styled from "styled-components";
 
+// Code highlighting
+import SyntaxHighlighter, {
+  registerLanguage
+} from "react-syntax-highlighter/prism-light";
+import jsx from "react-syntax-highlighter/languages/prism/jsx";
+import { vs } from "react-syntax-highlighter/styles/prism";
+
 // Components
 import { Expand } from "../../lib/framework";
+
+// Since we are using the light version, we need to manually do this
+registerLanguage("jsx", jsx);
 
 export class DocsSection extends Component {
   state = {
@@ -65,9 +75,9 @@ export class DocsSection extends Component {
           onClick={event => toggleCode(event)}
           summary="Code"
         >
-          <CodeWrapper>
-            <code>{`${code}`}</code>
-          </CodeWrapper>
+          <CodeDisplay language="jsx" style={vs}>
+            {code}
+          </CodeDisplay>
         </Expand>
         <Expand
           open={propsOpen}
@@ -104,10 +114,10 @@ DocsSection.propTypes = {
   api: PropTypes.arrayOf(PropTypes.shape(apiShape)).isRequired
 };
 
-const CodeWrapper = styled.pre`
-  overflow-x: auto;
-`;
-
 const DescriptionListHeader = styled.dt`
   font-weight: bold;
+`;
+
+const CodeDisplay = styled(SyntaxHighlighter)`
+  border: 0 !important;
 `;
