@@ -34,8 +34,7 @@ export const TextFieldDocs = () => (
       },
       {
         title: "...otherProps",
-        description:
-          "Other (HTML5) props that should be passed to the TextField."
+        description: "Other props that should be passed to the TextField."
       }
     ]}
   />

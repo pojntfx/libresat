@@ -15,14 +15,21 @@ import { Tool } from "../tool/Tool";
  * @param {equalItems} equalItems Equally distributed items. No leftItems/title/rightItems will be rendered if used.
  * @param {title} title Title/brand of the page
  * @param {leftItems} leftItems Items on the right side of the ToolBar
+ * @param {..otherProps} ..otherProps Other props that should be passed to the ToolBar
  */
-export const ToolBar = ({ equalItems, leftItems, title, rightItems }) =>
+export const ToolBar = ({
+  equalItems,
+  leftItems,
+  title,
+  rightItems,
+  ...otherProps
+}) =>
   equalItems ? (
-    <EqualItemListWrapper>
+    <EqualItemListWrapper {...otherProps}>
       <EqualItemList>{equalItems}</EqualItemList>
     </EqualItemListWrapper>
   ) : (
-    <DividedNavWrapper>
+    <DividedNavWrapper {...otherProps}>
       <Tool>{leftItems}</Tool>
       {title ? <NavTitleWrapper>{title}</NavTitleWrapper> : null}
       <Tool>{rightItems}</Tool>

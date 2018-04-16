@@ -22,6 +22,10 @@ export const ListDocs = () => (
       {
         title: "items (node[])",
         description: "Items in the List."
+      },
+      {
+        title: "...otherProps",
+        description: "Other props that should be passed to the GridLayout."
       }
     ]}
   />

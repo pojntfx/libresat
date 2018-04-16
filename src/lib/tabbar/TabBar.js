@@ -15,7 +15,7 @@ import { Tab } from "../tabs/Tab";
  * @param {panes} panes Tab content
  * @param {activePane} activePane Active pane (the one that is currently visible)
  * @param {onChange} onChange Event handler (gets fired when a tab title has been clicked)
- * @param {...otherProps} ...otherProps Other (HTML5) properties that should be applied to the title headers
+ * @param {...otherProps} ...otherProps Other properties that should be applied to the title headers
  */
 export const TabBar = ({ links, panes, onChange, activePane }) => (
   <TabBarWrapper>

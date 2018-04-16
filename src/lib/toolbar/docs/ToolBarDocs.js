@@ -28,6 +28,10 @@ export const ToolBarDocs = () => (
       {
         title: "rightItems (node[])",
         description: "Items on the right side."
+      },
+      {
+        title: "...otherProps",
+        description: "Other props that should be passed to the ToolBar."
       }
     ]}
   />

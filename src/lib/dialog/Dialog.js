@@ -20,7 +20,7 @@ import { Button } from "../button/Button";
  * @param {body} body Items in the main area of the Dialog
  * @param {active} active Whether the dialog is open or not
  * @param {fullscreen} fullscreen Whether the dialog fills the whole screen or not
- * @param {...otherProps} ...otherProps Other (HTML5) props that should be passed to the dialog
+ * @param {...otherProps} ...otherProps Other props that should be passed to the dialog
  */
 export const Dialog = ({
   title,

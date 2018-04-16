@@ -30,7 +30,7 @@ export const SwitchDocs = () => (
       },
       {
         title: "...otherProps",
-        description: "Other (HTML5) props that should be passed to the Switch."
+        description: "Other props that should be passed to the Switch."
       }
     ]}
   />

@@ -30,7 +30,7 @@ export const SliderDocs = () => (
       },
       {
         title: "...otherProps",
-        description: "Other (HTML5) props that should be passed to the slider."
+        description: "Other props that should be passed to the slider."
       }
     ]}
   />

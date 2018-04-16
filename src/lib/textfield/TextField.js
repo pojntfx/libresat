@@ -12,7 +12,7 @@ import PropTypes from "prop-types";
  * @param {value} value Content of the TextField
  * @param {name} name Unique identifier for the TextField
  * @param {type} type Type of the TextField (i.e. "text" or "password")
- * @param {..otherProps} ..otherProps Other HTML5 props
+ * @param {..otherProps} ..otherProps Other props that should be passed to the TextField
  */
 export const TextField = ({
   label,
@@ -50,37 +50,90 @@ const InputWrapper = styled.div`
 `;
 
 const Label = styled.label`
-  margin-right: ${({ theme: { paddings: { textFields } } }) => textFields};
+  margin-right: ${({
+    theme: {
+      paddings: { textFields }
+    }
+  }) => textFields};
 `;
 
 const TextFieldWrapper = styled.input`
-  padding: ${({ theme: { margins: { textFields } } }) => textFields};
-  margin-left: ${({ theme: { margins: { textFields } } }) => textFields};
-  border-radius: ${({ theme: { radiuses: { textFields } } }) => textFields};
-  border: 1px solid ${({ theme: { colors2: { lightgrey } } }) => lightgrey};
+  padding: ${({
+    theme: {
+      margins: { textFields }
+    }
+  }) => textFields};
+  margin-left: ${({
+    theme: {
+      margins: { textFields }
+    }
+  }) => textFields};
+  border-radius: ${({
+    theme: {
+      radiuses: { textFields }
+    }
+  }) => textFields};
+  border: 1px solid
+    ${({
+      theme: {
+        colors2: { lightgrey }
+      }
+    }) => lightgrey};
   transition: background-color
-      ${({ theme: { transitions: { textFields } } }) => textFields},
-    box-shadow ${({ theme: { transitions: { textFields } } }) => textFields};
+      ${({
+        theme: {
+          transitions: { textFields }
+        }
+      }) => textFields},
+    box-shadow
+      ${({
+        theme: {
+          transitions: { textFields }
+        }
+      }) => textFields};
   flex-grow: 1;
   outline: 0;
   &:active,
   &:focus {
-    box-shadow: ${({ theme: { shadows: { defaultInset } } }) => defaultInset};
-    background: ${({ theme: { backgrounds2: { textFields: { active } } } }) =>
-      active} !important;
+    box-shadow: ${({
+      theme: {
+        shadows: { defaultInset }
+      }
+    }) => defaultInset};
+    background: ${({
+      theme: {
+        backgrounds2: {
+          textFields: { active }
+        }
+      }
+    }) => active} !important;
   }
   &:not(:hover) {
     &:active,
     &:focus {
-      background: ${({ theme: { backgrounds2: { textFields: { active } } } }) =>
-        active} !important;
+      background: ${({
+        theme: {
+          backgrounds2: {
+            textFields: { active }
+          }
+        }
+      }) => active} !important;
     }
   }
   &:hover {
-    background: ${({ theme: { backgrounds2: { textFields: { hover } } } }) =>
-      hover};
+    background: ${({
+      theme: {
+        backgrounds2: {
+          textFields: { hover }
+        }
+      }
+    }) => hover};
   }
   &:disabled {
-    background: ${({ theme: { backgrounds2: { bars } } }) => bars.default};
+    background: ${({
+      theme: {
+        backgrounds2: { bars }
+      }
+    }) => bars.default};
   }
 `;

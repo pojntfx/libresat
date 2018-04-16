@@ -51,7 +51,7 @@ export const MenuDocs = () => (
       {
         title: "...otherProps",
         description:
-          "Other (HTML5 or React) props that should be passed to the Menu activation button."
+          "Other props that should be passed to the Menu activation button."
       }
     ]}
   />

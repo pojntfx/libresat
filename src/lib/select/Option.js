@@ -10,7 +10,7 @@ import PropTypes from "prop-types";
  * A select's option.
  * @param {value} value The value that the select should return when this option has been selected
  * @param {text} text The option's text that will be displayed
- * @param {...otherProps} ...otherProps Other (HTML5) props that should be passed to the option
+ * @param {...otherProps} ...otherProps Other props that should be passed to the option
  */
 export const Option = ({ value, text, ...otherProps }) => (
   <OptionWrapper value={value} {...otherProps}>

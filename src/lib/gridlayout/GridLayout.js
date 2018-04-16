@@ -17,7 +17,7 @@ const ResponsiveReactGridLayout = WidthProvider(Responsive);
  * @param {layouts} layouts Layout of the GridLayout
  * @param {onLayoutChange} onLayoutChange Event handler (gets fired when the user moves a component of the GridLayout)
  * @param {children} children Components of the GridLayout
- * @param {...otherProps} ...otherProps Other (HTML5 or React) props that should be passed to the GridLayout
+ * @param {...otherProps} ...otherProps Other props that should be passed to the GridLayout
  */
 export const GridLayout = ({
   layouts,
