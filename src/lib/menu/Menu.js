@@ -15,7 +15,7 @@ import { Button } from "../button/Button";
  * @param {onClick} onClick Event handler (gets fired when the user clicks the Menu activation button)
  * @param {onInnerClick} onInnerClick Event handler (gets fired when the user clicks a Menu's action)
  * @param {active} active Whether the menu is open or not
- * @param {actions} actions Actions in the Menu
+ * @param {children} children Actions in the Menu
  * @param {left} left Whether the menu should float to the left or not
  * @param {bottom} Bottom Whether the menu should be attached to the top or the bottom
  * @param {...otherProps} ...otherProps Other props that should be passed to the Menu activation button
@@ -25,7 +25,7 @@ export const Menu = ({
   onClick,
   onInnerClick,
   active,
-  actions,
+  children,
   left,
   bottom,
   ...otherProps
@@ -34,11 +34,9 @@ export const Menu = ({
     <MenuActivator value={label} onClick={onClick} {...otherProps} />
     {active ? (
       <MenuItemWrapper left={left} bottom={bottom} onClick={onInnerClick}>
-        {actions.map(action =>
-          action.props.children.map((actionItem, index) => (
-            <MenuItem key={index}>{actionItem}</MenuItem>
-          ))
-        )}
+        {children.map((action, index) => (
+          <MenuItem key={index}>{action}</MenuItem>
+        ))}
       </MenuItemWrapper>
     ) : null}
   </MenuWrapper>
@@ -78,7 +76,7 @@ Menu.propTypes = {
   onClick: PropTypes.func.isRequired,
   onInnerClick: PropTypes.func,
   active: PropTypes.bool.isRequired,
-  actions: PropTypes.arrayOf(PropTypes.node).isRequired,
+  children: PropTypes.arrayOf(PropTypes.node).isRequired,
   left: PropTypes.bool,
   bottom: PropTypes.bool
 };

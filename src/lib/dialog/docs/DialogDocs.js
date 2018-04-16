@@ -35,7 +35,7 @@ export const DialogDocs = () => (
           "Event handler (gets fired when the user clicks the right button)."
       },
       {
-        title: "body (optional) (node[])",
+        title: "children (optional) (node[])",
         description: "Items in the main area of the Dialog."
       },
       {
@@ -97,15 +97,23 @@ class DialogDemo extends Component {
           onLeftLabelClick={onCancel}
           rightLabel="Upload"
           onRightLabelClick={onUpload}
-          body="Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab voluptatibus possimus optio, porro culpa voluptatum deleniti ipsum ipsa est quis maiores nisi accusantium fugiat vero qui commodi. Autem libero quas maxime consequatur tempora consequuntur cumque repudiandae at mollitia tempore, quaerat id dolorem exercitationem nihil accusantium rerum sunt assumenda enim sapiente?"
           active={dialogIsActive}
           fullscreen={true}
-        />
+        >
+          <span>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab
+            voluptatibus possimus optio, porro culpa voluptatum deleniti ipsum
+            ipsa est quis maiores nisi accusantium fugiat vero qui commodi.
+            Autem libero quas maxime consequatur tempora consequuntur cumque
+            repudiandae at mollitia tempore, quaerat id dolorem exercitationem
+            nihil accusantium rerum sunt assumenda enim sapiente?
+          </span>
+        </Dialog>
       </Fragment>
     );
   }
 }
-  `;
+`;
 
 class DialogDemo extends Component {
   state = {
@@ -149,10 +157,18 @@ class DialogDemo extends Component {
           onLeftLabelClick={onCancel}
           rightLabel="Upload"
           onRightLabelClick={onUpload}
-          body="Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab voluptatibus possimus optio, porro culpa voluptatum deleniti ipsum ipsa est quis maiores nisi accusantium fugiat vero qui commodi. Autem libero quas maxime consequatur tempora consequuntur cumque repudiandae at mollitia tempore, quaerat id dolorem exercitationem nihil accusantium rerum sunt assumenda enim sapiente?"
           active={dialogIsActive}
           fullscreen={true}
-        />
+        >
+          <span>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab
+            voluptatibus possimus optio, porro culpa voluptatum deleniti ipsum
+            ipsa est quis maiores nisi accusantium fugiat vero qui commodi.
+            Autem libero quas maxime consequatur tempora consequuntur cumque
+            repudiandae at mollitia tempore, quaerat id dolorem exercitationem
+            nihil accusantium rerum sunt assumenda enim sapiente?
+          </span>
+        </Dialog>
       </Fragment>
     );
   }
