@@ -34,7 +34,11 @@ export const Tool = ({ children, equal, fill, divided, ...otherProps }) =>
 
 const TabsListWrapper = styled.div`
   padding: 0 ${({ theme: { paddings } }) => paddings.default};
-  background: ${({ theme: { colors } }) => colors.bargrey};
+  background: ${({
+    theme: {
+      backgrounds2: { bars }
+    }
+  }) => bars.default};
   /* Enable the menu to flow over the inner wrapper */
   overflow: auto;
   & > menu {

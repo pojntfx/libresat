@@ -1,39 +1,4 @@
 // Colors
-export const colors = {
-  transparent: "transparent",
-  bargrey: "#F5F5F5",
-  lightgrey: "#DCDCDC",
-  darkgrey: "#D3D3D3",
-  white: "#ffffff",
-  black: "#000000",
-  red: "#ff3b30",
-  orange: "#ff9500",
-  yellow: "#ffcc00",
-  green: "#4cd964",
-  tealBlue: "#59c8fa",
-  blue: "#007aff",
-  purple: "#5755d6",
-  pink: "#ff3855",
-  text: {
-    default: () => colors.black,
-    primary: () => colors.blue,
-    positive: () => colors.green,
-    warning: () => colors.orange,
-    negative: () => colors.red
-  },
-  buttons: {
-    default: () => colors.blue,
-    primary: () => colors.white,
-    positive: () => colors.white,
-    warning: () => colors.black,
-    negative: () => colors.white
-  },
-  bars: {
-    default: () => colors.bargrey
-  }
-};
-
-// New color API
 export const colors2 = {
   // Base
   transparent: "transparent",
@@ -130,7 +95,7 @@ export const colors2 = {
   }
 };
 
-// New backgrounds API
+// Backgrounds
 export const backgrounds2 = {
   buttons: {
     default: {
@@ -207,16 +172,19 @@ export const backgrounds2 = {
   },
   sliders: {
     default: () => colors2.basegrey
+  },
+  gridLayout: {
+    default: () => colors2.blue
+  },
+  cards: {
+    default: () => colors2.light
+  },
+  dialogs: {
+    default: () => colors2.light
+  },
+  menus: {
+    default: () => colors2.light
   }
-};
-
-// Backgrounds
-export const backgrounds = {
-  default: () => colors.transparent,
-  primary: () => colors.blue,
-  positive: () => colors.green,
-  warning: () => colors.orange,
-  negative: () => colors.red
 };
 
 // Margins and Paddings

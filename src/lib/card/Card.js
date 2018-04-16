@@ -25,7 +25,11 @@ export const Card = ({ header, media, children, footer, ...otherProps }) => (
 
 const CardWrapper = styled.div`
   border-radius: ${({ theme: { radiuses } }) => radiuses.default};
-  background: ${({ theme: { colors } }) => colors.white};
+  background: ${({
+    theme: {
+      backgrounds2: { cards }
+    }
+  }) => cards.default};
   box-shadow: ${({ theme: { shadows } }) => shadows.default};
 `;
 const CardHeaderWrapper = styled.div`

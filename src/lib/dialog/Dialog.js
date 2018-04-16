@@ -62,7 +62,11 @@ const DialogWrapper = styled.dialog`
     fullscreen
       ? "position: fixed; top: 0; left: 0;height: 100%; width: 100%; overflow-y: auto"
       : "position: relative; height: auto; width: auto"};
-  background: ${({ theme: { colors } }) => colors.white};
+  background: ${({
+    theme: {
+      backgrounds2: { dialogs }
+    }
+  }) => dialogs.default};
 `;
 
 const DialogHeader = styled(ToolBar)`

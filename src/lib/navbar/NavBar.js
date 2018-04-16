@@ -37,7 +37,11 @@ export const NavBar = ({ title, links, items, ...otherProps }) => (
 
 const NavHeaderWrapper = styled.header`
   padding: ${({ theme: { paddings } }) => paddings.default} 0;
-  background: ${({ theme: { colors } }) => colors.bargrey};
+  background: ${({
+    theme: {
+      backgrounds2: { bars }
+    }
+  }) => bars.default};
   display: flex;
   overflow-x: auto;
   justify-content: space-between;

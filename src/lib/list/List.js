@@ -36,7 +36,12 @@ const ListItemWrapper = styled.ul`
 
 const ListItem = styled.li`
   padding: ${({ theme: { paddings } }) => paddings.default} 0;
-  border-bottom: 1px solid ${({ theme: { colors } }) => colors.lightgrey};
+  border-bottom: 1px solid
+    ${({
+      theme: {
+        colors2: { basegrey }
+      }
+    }) => basegrey};
   list-style-type: none;
   white-space: nowrap;
   overflow-x: auto;

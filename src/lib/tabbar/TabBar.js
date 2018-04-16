@@ -33,7 +33,11 @@ export const TabBar = ({ links, panes, onChange, activePane }) => (
 const TabBarWrapper = styled.div`
   & > div {
     & > div:first-child > menu {
-      background: ${({ theme: { colors } }) => colors.bargrey};
+      background: ${({
+        theme: {
+          backgrounds2: { bars }
+        }
+      }) => bars.default};
       padding: ${({ theme: { paddings } }) => paddings.default} 0;
     }
     & > div:first-child {
