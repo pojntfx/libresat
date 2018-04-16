@@ -6,6 +6,9 @@ import PropTypes from "prop-types";
 // Styled components
 import styled from "styled-components";
 
+// Components
+import { Expand } from "../../lib/framework";
+
 export class DocsSection extends Component {
   state = {
     demoOpen: true,
@@ -50,18 +53,27 @@ export class DocsSection extends Component {
     return (
       <section id={id}>
         <h2>{title}</h2>
-        <Details open={demoOpen}>
-          <Summary onClick={event => toggleDemo(event)}>Demo</Summary>
-          <DemoWrapper>{demos}</DemoWrapper>
-        </Details>
-        <Details open={codeOpen}>
-          <Summary onClick={event => toggleCode(event)}>Code</Summary>
+        <Expand
+          open={demoOpen}
+          onClick={event => toggleDemo(event)}
+          summary="Demo"
+        >
+          {demos}
+        </Expand>
+        <Expand
+          open={codeOpen}
+          onClick={event => toggleCode(event)}
+          summary="Code"
+        >
           <CodeWrapper>
             <code>{`${code}`}</code>
           </CodeWrapper>
-        </Details>
-        <Details open={propsOpen}>
-          <Summary onClick={event => toggleProps(event)}>Props</Summary>
+        </Expand>
+        <Expand
+          open={propsOpen}
+          onClick={event => toggleProps(event)}
+          summary="Props"
+        >
           <dl>
             {api.map(({ title, description }) => (
               <Fragment key={title}>
@@ -70,7 +82,7 @@ export class DocsSection extends Component {
               </Fragment>
             ))}
           </dl>
-        </Details>
+        </Expand>
       </section>
     );
   }
@@ -91,121 +103,6 @@ DocsSection.propTypes = {
   code: PropTypes.string.isRequired,
   api: PropTypes.arrayOf(PropTypes.shape(apiShape)).isRequired
 };
-
-const DemoWrapper = styled.div`
-  padding: ${({
-    theme: {
-      paddings: { expandsBody }
-    }
-  }) => expandsBody};
-  & > * {
-    margin-bottom: ${({
-      theme: {
-        margins: { expands }
-      }
-    }) => expands};
-  }
-`;
-
-const Summary = styled.summary`
-  color: ${({
-    theme: {
-      colors: { buttons }
-    }
-  }) => buttons.default.light.default};
-  background: ${({
-    theme: {
-      backgrounds: { buttons }
-    }
-  }) => buttons.default.light.default};
-  padding: ${({
-    theme: {
-      paddings: { expands }
-    }
-  }) => expands};
-  border-radius: ${({
-    theme: {
-      radiuses: { buttons }
-    }
-  }) => buttons};
-  transition: background
-      ${({
-        theme: {
-          transitions: { buttons }
-        }
-      }) => buttons},
-    box-shadow
-      ${({
-        theme: {
-          transitions: { buttons }
-        }
-      }) => buttons};
-  white-space: nowrap;
-  -webkit-tap-highlight-color: transparent;
-  cursor: pointer;
-  border: 0;
-  outline: 0;
-  &:active,
-  &:focus {
-    color: ${({
-      theme: {
-        colors: { buttons }
-      }
-    }) => buttons.default.light.active}!important;
-    background: ${({
-      theme: {
-        backgrounds: { buttons }
-      }
-    }) => buttons.default.light.active} !important;
-    box-shadow: ${({
-      theme: {
-        shadows: { defaultInset }
-      }
-    }) => defaultInset};
-  }
-  &:not(:hover) {
-    &:active,
-    &:focus {
-      color: ${({
-        theme: {
-          colors: { buttons }
-        }
-      }) => buttons.default.light.default}!important;
-      background: ${({
-        theme: {
-          backgrounds: { buttons }
-        }
-      }) => buttons.default.light.default} !important;
-      box-shadow: ${({
-        theme: {
-          shadows: { defaultInset }
-        }
-      }) => defaultInset};
-    }
-  }
-  &:hover {
-    color: ${({
-      theme: {
-        colors: { buttons }
-      }
-    }) => buttons.default.light.hover};
-    background: ${({
-      theme: {
-        backgrounds: { buttons }
-      }
-    }) => buttons.default.light.hover};
-  }
-`;
-
-const Details = styled.details`
-  &:not(:last-child) > ${Summary} {
-    margin-bottom: ${({
-      theme: {
-        margins: { expands }
-      }
-    }) => expands};
-  }
-`;
 
 const CodeWrapper = styled.pre`
   overflow-x: auto;
