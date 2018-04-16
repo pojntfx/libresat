@@ -51,6 +51,7 @@ const EqualItemListWrapper = styled.div`
   }) => bars.default};
   overflow-x: auto;
   & > menu {
+    min-width: 100%;
     overflow-x: visible;
     display: inline-flex;
   }

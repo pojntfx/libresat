@@ -39,6 +39,7 @@ const TabBarWrapper = styled.div`
         }
       }) => bars.default};
       padding: ${({ theme: { paddings } }) => paddings.default} 0;
+      min-width: 100%;
     }
     & > div:first-child {
       padding: 0 ${({ theme: { paddings } }) => paddings.default};
