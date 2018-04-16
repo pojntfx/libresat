@@ -50,7 +50,11 @@ const MenuWrapper = styled.div`
 `;
 
 const MenuItemWrapper = styled.ul`
-  background: ${({ theme: { colors } }) => colors.white};
+  background: ${({
+    theme: {
+      backgrounds2: { menus }
+    }
+  }) => menus.default};
   border-radius: ${({ theme: { radiuses } }) => radiuses.default};
   box-shadow: ${({ theme: { shadows } }) => shadows.default};
   padding: ${({ theme: { paddings } }) => paddings.default};

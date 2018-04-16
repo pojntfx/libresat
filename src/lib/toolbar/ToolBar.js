@@ -44,7 +44,11 @@ const EqualItemList = styled(Tool).attrs({ equal: true })`
 // Enable scrolling & margins in the nav
 const EqualItemListWrapper = styled.div`
   padding: 0 ${({ theme: { paddings } }) => paddings.default};
-  background: ${({ theme: { colors } }) => colors.bargrey};
+  background: ${({
+    theme: {
+      backgrounds2: { bars }
+    }
+  }) => bars.default};
   overflow-x: auto;
   & > menu {
     overflow-x: visible;
@@ -54,7 +58,11 @@ const EqualItemListWrapper = styled.div`
 
 const DividedNavWrapper = styled(Tool).attrs({ divided: true })`
   padding: ${({ theme: { paddings } }) => paddings.default};
-  background: ${({ theme: { colors } }) => colors.bargrey};
+  background: ${({
+    theme: {
+      backgrounds2: { bars }
+    }
+  }) => bars.default};
   padding-right: 0;
   & > *:last-child {
     padding-right: ${({ theme: { paddings } }) => paddings.default};
