@@ -9,14 +9,14 @@ import PropTypes from "prop-types";
 /**
  * A list of information or data.
  * @param {title} title Title of the List
- * @param {items} items Items in the List
+ * @param {children} children Items in the List
  * @param {...otherProps} ...otherProps Other props that should be passed to the List
  */
-export const List = ({ title, items, ...otherProps }) => (
+export const List = ({ title, children, ...otherProps }) => (
   <ListWrapper {...otherProps}>
     <ListTitleWrapper>{title}</ListTitleWrapper>
     <ListItemWrapper>
-      {items.map((item, index) => <ListItem key={index}>{item}</ListItem>)}
+      {children.map((item, index) => <ListItem key={index}>{item}</ListItem>)}
     </ListItemWrapper>
   </ListWrapper>
 );
@@ -48,5 +48,5 @@ const ListItem = styled.li`
 
 List.propTypes = {
   title: PropTypes.string,
-  items: PropTypes.arrayOf(PropTypes.node).isRequired
+  children: PropTypes.arrayOf(PropTypes.node).isRequired
 };

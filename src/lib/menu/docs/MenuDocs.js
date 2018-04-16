@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import { Menu } from "../Menu";
 
 // Docs
@@ -36,7 +36,7 @@ export const MenuDocs = () => (
         description: "Whether the menu is open or not."
       },
       {
-        title: "actions (node[])",
+        title: "children (node[])",
         description: "Actions in the Menu."
       },
       {
@@ -59,53 +59,49 @@ export const MenuDocs = () => (
 
 const code = `
 class MenuDemo extends Component {
-    class MenuDemo extends Component {
-        state = {
-          menuIsOpen: false
-        };
-      
-        MenuButton = styled(Button)\`
-          width: 100%;
-        \`;
-      
-        onToggleMenu = () => {
-          this.setState({ menuIsOpen: !this.state.menuIsOpen });
-        };
-      
-        onSave = () => {
-          console.log("Saving.");
-        };
-      
-        onSaveAs = () => {
-          console.log("Saving as.");
-        };
-      
-        onUpload = () => {
-          console.log("Uploading.");
-        };
-      
-        render() {
-          const { onToggleMenu, MenuButton, onSave, onSaveAs, onUpload } = this;
-      
-          const { menuIsOpen } = this.state;
-      
-          return (
-            <Menu
-              label="Edit"
-              onClick={onToggleMenu}
-              onInnerClick={onToggleMenu}
-              active={menuIsOpen}
-              actions={[
-                <Fragment key="editMenu">
-                  <MenuButton value="Save" onClick={onSave} />
-                  <MenuButton value="Save as" onClick={onSaveAs} />
-                  <MenuButton value="Upload" onClick={onUpload} />
-                </Fragment>
-              ]}
-            />
-          );
-        }
-      }
+  state = {
+    menuIsOpen: false
+  };
+
+  MenuButton = styled(Button)\`
+    width: 100%;
+  \`;
+
+  onToggleMenu = () => {
+    this.setState({ menuIsOpen: !this.state.menuIsOpen });
+  };
+
+  onSave = () => {
+    console.log("Saving.");
+  };
+
+  onSaveAs = () => {
+    console.log("Saving as.");
+  };
+
+  onUpload = () => {
+    console.log("Uploading.");
+  };
+
+  render() {
+    const { onToggleMenu, MenuButton, onSave, onSaveAs, onUpload } = this;
+
+    const { menuIsOpen } = this.state;
+
+    return (
+      <Menu
+        label="Edit"
+        onClick={onToggleMenu}
+        onInnerClick={onToggleMenu}
+        active={menuIsOpen}
+      >
+        <MenuButton value="Save" onClick={onSave} />
+        <MenuButton value="Save as" onClick={onSaveAs} />
+        <MenuButton value="Upload" onClick={onUpload} />
+      </Menu>
+    );
+  }
+}
 `;
 
 class MenuDemo extends Component {
@@ -144,14 +140,11 @@ class MenuDemo extends Component {
         onClick={onToggleMenu}
         onInnerClick={onToggleMenu}
         active={menuIsOpen}
-        actions={[
-          <Fragment key="editMenu">
-            <MenuButton value="Save" onClick={onSave} />
-            <MenuButton value="Save as" onClick={onSaveAs} />
-            <MenuButton value="Upload" onClick={onUpload} />
-          </Fragment>
-        ]}
-      />
+      >
+        <MenuButton value="Save" onClick={onSave} />
+        <MenuButton value="Save as" onClick={onSaveAs} />
+        <MenuButton value="Upload" onClick={onUpload} />
+      </Menu>
     );
   }
 }

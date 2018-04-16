@@ -17,7 +17,7 @@ import { Button } from "../button/Button";
  * @param {onLeftLabelClick} onLeftLabelClick Event handler (gets fired when the user clicks the left button)
  * @param {rightLabel} rightLabel Text of the button on the top right of the dialog
  * @param {onRightLabelClick} onRightLabelClick Event handler (gets fired when the user clicks the right button)
- * @param {body} body Items in the main area of the Dialog
+ * @param {children} children Items in the main area of the Dialog
  * @param {active} active Whether the dialog is open or not
  * @param {fullscreen} fullscreen Whether the dialog fills the whole screen or not
  * @param {...otherProps} ...otherProps Other props that should be passed to the dialog
@@ -28,7 +28,7 @@ export const Dialog = ({
   onLeftLabelClick,
   rightLabel,
   onRightLabelClick,
-  body,
+  children,
   active,
   fullscreen,
   ...otherProps
@@ -48,7 +48,7 @@ export const Dialog = ({
         />
       ]}
     />
-    <DialogBodyWrapper>{body}</DialogBodyWrapper>
+    <DialogBodyWrapper>{children}</DialogBodyWrapper>
   </DialogWrapper>
 );
 
@@ -81,7 +81,7 @@ Dialog.propTypes = {
   onLeftLabelClick: PropTypes.func,
   rightLabel: PropTypes.string,
   onRightLabelClick: PropTypes.func,
-  body: PropTypes.oneOfType([
+  children: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.node,
     PropTypes.arrayOf(PropTypes.node)
