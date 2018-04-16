@@ -46,7 +46,7 @@ const EqualItemListWrapper = styled.div`
   padding: 0 ${({ theme: { paddings } }) => paddings.default};
   background: ${({
     theme: {
-      backgrounds2: { bars }
+      backgrounds: { bars }
     }
   }) => bars.default};
   overflow-x: auto;
@@ -60,7 +60,7 @@ const DividedNavWrapper = styled(Tool).attrs({ divided: true })`
   padding: ${({ theme: { paddings } }) => paddings.default};
   background: ${({
     theme: {
-      backgrounds2: { bars }
+      backgrounds: { bars }
     }
   }) => bars.default};
   padding-right: 0;

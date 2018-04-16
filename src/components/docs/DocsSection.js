@@ -110,12 +110,12 @@ const DemoWrapper = styled.div`
 const Summary = styled.summary`
   color: ${({
     theme: {
-      colors2: { buttons }
+      colors: { buttons }
     }
   }) => buttons.default.light.default};
   background: ${({
     theme: {
-      backgrounds2: { buttons }
+      backgrounds: { buttons }
     }
   }) => buttons.default.light.default};
   padding: ${({
@@ -149,12 +149,12 @@ const Summary = styled.summary`
   &:focus {
     color: ${({
       theme: {
-        colors2: { buttons }
+        colors: { buttons }
       }
     }) => buttons.default.light.active}!important;
     background: ${({
       theme: {
-        backgrounds2: { buttons }
+        backgrounds: { buttons }
       }
     }) => buttons.default.light.active} !important;
     box-shadow: ${({
@@ -168,12 +168,12 @@ const Summary = styled.summary`
     &:focus {
       color: ${({
         theme: {
-          colors2: { buttons }
+          colors: { buttons }
         }
       }) => buttons.default.light.default}!important;
       background: ${({
         theme: {
-          backgrounds2: { buttons }
+          backgrounds: { buttons }
         }
       }) => buttons.default.light.default} !important;
       box-shadow: ${({
@@ -186,12 +186,12 @@ const Summary = styled.summary`
   &:hover {
     color: ${({
       theme: {
-        colors2: { buttons }
+        colors: { buttons }
       }
     }) => buttons.default.light.hover};
     background: ${({
       theme: {
-        backgrounds2: { buttons }
+        backgrounds: { buttons }
       }
     }) => buttons.default.light.hover};
   }

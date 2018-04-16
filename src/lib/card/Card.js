@@ -27,7 +27,7 @@ const CardWrapper = styled.div`
   border-radius: ${({ theme: { radiuses } }) => radiuses.default};
   background: ${({
     theme: {
-      backgrounds2: { cards }
+      backgrounds: { cards }
     }
   }) => cards.default};
   box-shadow: ${({ theme: { shadows } }) => shadows.default};

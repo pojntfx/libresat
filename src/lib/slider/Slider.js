@@ -68,7 +68,7 @@ const InputWrapper = styled.input`
     &::-webkit-slider-thumb {
       border-color: ${({
         theme: {
-          backgrounds2: { bars }
+          backgrounds: { bars }
         }
       }) => bars.default};
       box-shadow: none;
@@ -78,7 +78,7 @@ const InputWrapper = styled.input`
     &::-webkit-slider-runnable-track {
       background: ${({
         theme: {
-          backgrounds2: { bars }
+          backgrounds: { bars }
         }
       }) => bars.default};
     }
@@ -92,7 +92,7 @@ const InputWrapper = styled.input`
     -webkit-tap-highlight-color: transparent;
     background: ${({
       theme: {
-        backgrounds2: { sliders }
+        backgrounds: { sliders }
       }
     }) => sliders.default};
     border-radius: ${({
@@ -118,12 +118,12 @@ const InputWrapper = styled.input`
               }
             }) => sliders}
         )
-        0 0 100vw ${({ theme: { colors2 } }) => colors2.darkgrey};
-      border-color: ${({ theme: { colors2 } }) => colors2.darkgrey};
+        0 0 100vw ${({ theme: { colors } }) => colors.darkgrey};
+      border-color: ${({ theme: { colors } }) => colors.darkgrey};
     }
   }
   &::-webkit-slider-thumb {
-    border: 0.1rem solid ${({ theme: { colors2 } }) => colors2.primary};
+    border: 0.1rem solid ${({ theme: { colors } }) => colors.primary};
     border-radius: calc(
       ${({
           theme: {
@@ -133,7 +133,7 @@ const InputWrapper = styled.input`
     );
     background: ${({
       theme: {
-        colors2: { light }
+        colors: { light }
       }
     }) => light};
     box-shadow: calc(
@@ -143,7 +143,7 @@ const InputWrapper = styled.input`
             }
           }) => sliders}
       )
-      0 0 100vw ${({ theme: { colors2 } }) => colors2.primary};
+      0 0 100vw ${({ theme: { colors } }) => colors.primary};
     transition: ${({
       theme: {
         transitions: { sliders }
@@ -160,7 +160,7 @@ const InputWrapper = styled.input`
     &:focus {
       background: ${({
         theme: {
-          colors2: { darkgrey }
+          colors: { darkgrey }
         }
       }) => darkgrey} !important;
       width: 2.25rem;
@@ -171,7 +171,7 @@ const InputWrapper = styled.input`
       &:focus {
         background: ${({
           theme: {
-            colors2: { white }
+            colors: { white }
           }
         }) => white} !important;
       }
@@ -179,7 +179,7 @@ const InputWrapper = styled.input`
     &:hover {
       background: ${({
         theme: {
-          colors2: { lightgrey }
+          colors: { lightgrey }
         }
       }) => lightgrey};
     }

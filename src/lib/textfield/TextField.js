@@ -76,7 +76,7 @@ const TextFieldWrapper = styled.input`
   border: 1px solid
     ${({
       theme: {
-        colors2: { lightgrey }
+        colors: { lightgrey }
       }
     }) => lightgrey};
   transition: background-color
@@ -102,7 +102,7 @@ const TextFieldWrapper = styled.input`
     }) => defaultInset};
     background: ${({
       theme: {
-        backgrounds2: {
+        backgrounds: {
           textFields: { active }
         }
       }
@@ -113,7 +113,7 @@ const TextFieldWrapper = styled.input`
     &:focus {
       background: ${({
         theme: {
-          backgrounds2: {
+          backgrounds: {
             textFields: { active }
           }
         }
@@ -123,7 +123,7 @@ const TextFieldWrapper = styled.input`
   &:hover {
     background: ${({
       theme: {
-        backgrounds2: {
+        backgrounds: {
           textFields: { hover }
         }
       }
@@ -132,7 +132,7 @@ const TextFieldWrapper = styled.input`
   &:disabled {
     background: ${({
       theme: {
-        backgrounds2: { bars }
+        backgrounds: { bars }
       }
     }) => bars.default};
   }

@@ -33,7 +33,7 @@ Button.propTypes = {
 };
 
 const ButtonWrapper = styled.button`
-  color: ${({ primary, active, context, theme: { colors2: { buttons } } }) =>
+  color: ${({ primary, active, context, theme: { colors: { buttons } } }) =>
     primary || active
       ? context
         ? buttons[context].primary.default
@@ -45,7 +45,7 @@ const ButtonWrapper = styled.button`
     primary,
     active,
     context,
-    theme: { backgrounds2: { buttons } }
+    theme: { backgrounds: { buttons } }
   }) =>
     primary || active
       ? context
@@ -65,7 +65,7 @@ const ButtonWrapper = styled.button`
   outline: 0;
   &:active,
   &:focus {
-    color: ${({ primary, active, context, theme: { colors2: { buttons } } }) =>
+    color: ${({ primary, active, context, theme: { colors: { buttons } } }) =>
       primary || active
         ? context
           ? buttons[context].primary.active
@@ -77,7 +77,7 @@ const ButtonWrapper = styled.button`
       primary,
       active,
       context,
-      theme: { backgrounds2: { buttons } }
+      theme: { backgrounds: { buttons } }
     }) =>
       primary || active
         ? context
@@ -95,7 +95,7 @@ const ButtonWrapper = styled.button`
         primary,
         active,
         context,
-        theme: { colors2: { buttons } }
+        theme: { colors: { buttons } }
       }) =>
         primary || active
           ? context
@@ -108,7 +108,7 @@ const ButtonWrapper = styled.button`
         primary,
         active,
         context,
-        theme: { backgrounds2: { buttons } }
+        theme: { backgrounds: { buttons } }
       }) =>
         primary || active
           ? context
@@ -121,7 +121,7 @@ const ButtonWrapper = styled.button`
     }
   }
   &:hover {
-    color: ${({ primary, active, context, theme: { colors2: { buttons } } }) =>
+    color: ${({ primary, active, context, theme: { colors: { buttons } } }) =>
       primary || active
         ? context
           ? buttons[context].primary.hover
@@ -131,7 +131,7 @@ const ButtonWrapper = styled.button`
       primary,
       active,
       context,
-      theme: { backgrounds2: { buttons } }
+      theme: { backgrounds: { buttons } }
     }) =>
       primary || active
         ? context

@@ -45,7 +45,7 @@ const Label = styled.span`
   margin-right: ${({ theme: { margins: { switches } } }) => switches};
 `;
 const Toggle = styled.label`
-  background: ${({ theme: { backgrounds2: { bars } } }) => bars.default};
+  background: ${({ theme: { backgrounds: { bars } } }) => bars.default};
   border-radius: ${({ theme: { radiuses: { switches } } }) => switches};
   transition: background-color
       ${({ theme: { transitions: { switches } } }) => switches},
@@ -58,7 +58,7 @@ const Toggle = styled.label`
   position: relative;
   -webkit-tap-highlight-color: transparent;
   &:after {
-    background: ${({ theme: { colors2: { white } } }) => white};
+    background: ${({ theme: { colors: { white } } }) => white};
     border-radius: calc(
       ${({ theme: { radiuses: { switches } } }) => switches} - 0.1rem
     );
@@ -75,7 +75,7 @@ const Toggle = styled.label`
   &:focus {
     box-shadow: ${({ theme: { shadows: { defaultInset } } }) => defaultInset};
     &:after {
-      background: ${({ theme: { colors2: { darkgrey } } }) =>
+      background: ${({ theme: { colors: { darkgrey } } }) =>
         darkgrey} !important;
     }
   }
@@ -83,17 +83,17 @@ const Toggle = styled.label`
     &:active,
     &:focus {
       &:after {
-        background: ${({ theme: { colors2: { white } } }) => white} !important;
+        background: ${({ theme: { colors: { white } } }) => white} !important;
       }
     }
   }
   &:hover {
     &:after {
-      background: ${({ theme: { colors2: { lightgrey } } }) => lightgrey};
+      background: ${({ theme: { colors: { lightgrey } } }) => lightgrey};
     }
   }
   &:disabled {
-    background: ${({ theme: { backgrounds2: { bars } } }) => bars.default};
+    background: ${({ theme: { backgrounds: { bars } } }) => bars.default};
   }
 `;
 const InputWrapper = styled.input`
@@ -101,7 +101,7 @@ const InputWrapper = styled.input`
   width: 0;
   visibility: hidden;
   &:checked + label {
-    background: ${({ theme: { colors2: { positive } } }) => positive};
+    background: ${({ theme: { colors: { positive } } }) => positive};
     &:active:after {
       width: 2.25rem;
     }
