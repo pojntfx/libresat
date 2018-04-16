@@ -39,7 +39,7 @@ const NavHeaderWrapper = styled.header`
   padding: ${({ theme: { paddings } }) => paddings.default} 0;
   background: ${({
     theme: {
-      backgrounds2: { bars }
+      backgrounds: { bars }
     }
   }) => bars.default};
   display: flex;

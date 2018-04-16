@@ -67,7 +67,7 @@ const TextAreaWrapper = styled.textarea`
   border: 1px solid
     ${({
       theme: {
-        colors2: { lightgrey }
+        colors: { lightgrey }
       }
     }) => lightgrey};
   transition: background-color
@@ -94,7 +94,7 @@ const TextAreaWrapper = styled.textarea`
     }) => defaultInset};
     background: ${({
       theme: {
-        backgrounds2: {
+        backgrounds: {
           textAreas: { active }
         }
       }
@@ -105,7 +105,7 @@ const TextAreaWrapper = styled.textarea`
     &:focus {
       background: ${({
         theme: {
-          backgrounds2: {
+          backgrounds: {
             textAreas: { active }
           }
         }
@@ -115,7 +115,7 @@ const TextAreaWrapper = styled.textarea`
   &:hover {
     background: ${({
       theme: {
-        backgrounds2: {
+        backgrounds: {
           textAreas: { hover }
         }
       }
@@ -124,7 +124,7 @@ const TextAreaWrapper = styled.textarea`
   &:disabled {
     background: ${({
       theme: {
-        backgrounds2: { bars }
+        backgrounds: { bars }
       }
     }) => bars.default};
   }

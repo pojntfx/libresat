@@ -23,7 +23,7 @@ body {
 
 // Make links consistent with the rest of the interactive elements
 a {
-  color: ${theme.colors2.blue};
+  color: ${theme.colors.blue};
   padding: ${theme.paddings.links};
   border-radius: ${theme.radiuses.links};
   transition: background
@@ -36,21 +36,21 @@ a {
   cursor: pointer;
   &:active,
   &:focus {
-    color: ${theme.colors2.blue}!important;
-    background: ${theme.colors2.darkgrey} !important;
+    color: ${theme.colors.blue}!important;
+    background: ${theme.colors.darkgrey} !important;
     box-shadow: ${theme.shadows.defaultInset};
   }
   &:not(:hover) {
     &:active,
     &:focus {
-      color: ${theme.colors2.blue}!important;
-      background: ${theme.colors2.transparent} !important;
+      color: ${theme.colors.blue}!important;
+      background: ${theme.colors.transparent} !important;
       box-shadow: ${theme.shadows.defaultInset};
     }
   }
   &:hover {
-    color: ${theme.colors2.blue};
-    background: ${theme.colors2.lightgrey};
+    color: ${theme.colors.blue};
+    background: ${theme.colors.lightgrey};
   }
 }
 `;

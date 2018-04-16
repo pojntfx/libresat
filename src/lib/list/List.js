@@ -39,7 +39,7 @@ const ListItem = styled.li`
   border-bottom: 1px solid
     ${({
       theme: {
-        colors2: { basegrey }
+        colors: { basegrey }
       }
     }) => basegrey};
   list-style-type: none;

@@ -36,7 +36,7 @@ const TabsListWrapper = styled.div`
   padding: 0 ${({ theme: { paddings } }) => paddings.default};
   background: ${({
     theme: {
-      backgrounds2: { bars }
+      backgrounds: { bars }
     }
   }) => bars.default};
   /* Enable the menu to flow over the inner wrapper */

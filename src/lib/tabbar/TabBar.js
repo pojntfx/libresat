@@ -35,7 +35,7 @@ const TabBarWrapper = styled.div`
     & > div:first-child > menu {
       background: ${({
         theme: {
-          backgrounds2: { bars }
+          backgrounds: { bars }
         }
       }) => bars.default};
       padding: ${({ theme: { paddings } }) => paddings.default} 0;

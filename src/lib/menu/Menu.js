@@ -52,7 +52,7 @@ const MenuWrapper = styled.div`
 const MenuItemWrapper = styled.ul`
   background: ${({
     theme: {
-      backgrounds2: { menus }
+      backgrounds: { menus }
     }
   }) => menus.default};
   border-radius: ${({ theme: { radiuses } }) => radiuses.default};

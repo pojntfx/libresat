@@ -68,7 +68,7 @@ const GridLayoutWrapper = styled(ResponsiveReactGridLayout)`
   & > .react-grid-placeholder {
     background: ${({
       theme: {
-        backgrounds2: { gridLayout }
+        backgrounds: { gridLayout }
       }
     }) => gridLayout.default}!important;
   }

@@ -54,12 +54,12 @@ const InputWrapper = styled.div`
 const SelectWrapper = styled.select`
   color: ${({
     theme: {
-      colors2: { buttons }
+      colors: { buttons }
     }
   }) => buttons.default.light.default};
   background: ${({
     theme: {
-      backgrounds2: { buttons }
+      backgrounds: { buttons }
     }
   }) => buttons.default.light.default};
   padding: ${({
@@ -93,12 +93,12 @@ const SelectWrapper = styled.select`
   &:focus {
     color: ${({
       theme: {
-        colors2: { buttons }
+        colors: { buttons }
       }
     }) => buttons.default.light.active}!important;
     background: ${({
       theme: {
-        backgrounds2: { buttons }
+        backgrounds: { buttons }
       }
     }) => buttons.default.light.active} !important;
     box-shadow: ${({
@@ -112,12 +112,12 @@ const SelectWrapper = styled.select`
     &:focus {
       color: ${({
         theme: {
-          colors2: { buttons }
+          colors: { buttons }
         }
       }) => buttons.default.light.default}!important;
       background: ${({
         theme: {
-          backgrounds2: { buttons }
+          backgrounds: { buttons }
         }
       }) => buttons.default.light.default} !important;
       box-shadow: ${({
@@ -130,12 +130,12 @@ const SelectWrapper = styled.select`
   &:hover {
     color: ${({
       theme: {
-        colors2: { buttons }
+        colors: { buttons }
       }
     }) => buttons.default.light.hover};
     background: ${({
       theme: {
-        backgrounds2: { buttons }
+        backgrounds: { buttons }
       }
     }) => buttons.default.light.hover};
   }

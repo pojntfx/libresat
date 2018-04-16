@@ -64,7 +64,7 @@ const DialogWrapper = styled.dialog`
       : "position: relative; height: auto; width: auto"};
   background: ${({
     theme: {
-      backgrounds2: { dialogs }
+      backgrounds: { dialogs }
     }
   }) => dialogs.default};
 `;

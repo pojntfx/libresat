@@ -1,5 +1,5 @@
 // Colors
-export const colors2 = {
+export const colors = {
   // Base
   transparent: "transparent",
   white: "#ffffff",
@@ -19,18 +19,18 @@ export const colors2 = {
   darkgrey: "darkgrey",
   dark: "#000000",
   // Context
-  primary: () => colors2.blue,
+  primary: () => colors.blue,
   primaryLighter: "#47a0ff",
   primaryLight: "#72b6ff",
-  positive: () => colors2.green,
+  positive: () => colors.green,
   positiveDark: "#287d36",
   positiveLighter: "#75d885",
   positiveLight: "#9ddba8",
-  warning: () => colors2.orange,
+  warning: () => colors.orange,
   warningDark: "#bc6e01",
   warningLighter: "#fcbb5f",
   warningLight: "#fcd092",
-  negative: () => colors2.red,
+  negative: () => colors.red,
   negativeDark: "#c5261d",
   negativeLighter: "#ff7770",
   negativeLight: "#ea7d77",
@@ -38,152 +38,152 @@ export const colors2 = {
   buttons: {
     default: {
       light: {
-        default: () => colors2.primary,
-        hover: () => colors2.primary,
-        active: () => colors2.primary,
-        focus: () => colors2.primary
+        default: () => colors.primary,
+        hover: () => colors.primary,
+        active: () => colors.primary,
+        focus: () => colors.primary
       },
       primary: {
-        default: () => colors2.light,
-        hover: () => colors2.light,
-        active: () => colors2.light,
-        focus: () => colors2.light
+        default: () => colors.light,
+        hover: () => colors.light,
+        active: () => colors.light,
+        focus: () => colors.light
       }
     },
     positive: {
       light: {
-        default: () => colors2.positive,
-        hover: () => colors2.positiveDark,
-        active: () => colors2.positiveDark,
-        focus: () => colors2.positiveDark
+        default: () => colors.positive,
+        hover: () => colors.positiveDark,
+        active: () => colors.positiveDark,
+        focus: () => colors.positiveDark
       },
       primary: {
-        default: () => colors2.light,
-        hover: () => colors2.light,
-        active: () => colors2.light,
-        focus: () => colors2.light
+        default: () => colors.light,
+        hover: () => colors.light,
+        active: () => colors.light,
+        focus: () => colors.light
       }
     },
     warning: {
       light: {
-        default: () => colors2.warning,
-        hover: () => colors2.warningDark,
-        active: () => colors2.warningDarker,
-        focus: () => colors2.warningDarker
+        default: () => colors.warning,
+        hover: () => colors.warningDark,
+        active: () => colors.warningDarker,
+        focus: () => colors.warningDarker
       },
       primary: {
-        default: () => colors2.dark,
-        hover: () => colors2.dark,
-        active: () => colors2.dark,
-        focus: () => colors2.dark
+        default: () => colors.dark,
+        hover: () => colors.dark,
+        active: () => colors.dark,
+        focus: () => colors.dark
       }
     },
     negative: {
       light: {
-        default: () => colors2.negative,
-        hover: () => colors2.negativeDark,
-        active: () => colors2.negativeDarker,
-        focus: () => colors2.negativeDarker
+        default: () => colors.negative,
+        hover: () => colors.negativeDark,
+        active: () => colors.negativeDarker,
+        focus: () => colors.negativeDarker
       },
       primary: {
-        default: () => colors2.light,
-        hover: () => colors2.light,
-        active: () => colors2.light,
-        focus: () => colors2.light
+        default: () => colors.light,
+        hover: () => colors.light,
+        active: () => colors.light,
+        focus: () => colors.light
       }
     }
   }
 };
 
 // Backgrounds
-export const backgrounds2 = {
+export const backgrounds = {
   buttons: {
     default: {
       light: {
-        default: () => colors2.transparent,
-        hover: () => colors2.lightgrey,
-        active: () => colors2.darkgrey,
-        focus: () => colors2.darkgrey
+        default: () => colors.transparent,
+        hover: () => colors.lightgrey,
+        active: () => colors.darkgrey,
+        focus: () => colors.darkgrey
       },
       primary: {
-        default: () => colors2.primary,
-        hover: () => colors2.primaryLight,
-        active: () => colors2.primaryLighter,
-        focus: () => colors2.primaryLighter
+        default: () => colors.primary,
+        hover: () => colors.primaryLight,
+        active: () => colors.primaryLighter,
+        focus: () => colors.primaryLighter
       }
     },
     positive: {
       light: {
-        default: () => colors2.transparent,
-        hover: () => colors2.lightgrey,
-        active: () => colors2.darkgrey,
-        focus: () => colors2.darkgrey
+        default: () => colors.transparent,
+        hover: () => colors.lightgrey,
+        active: () => colors.darkgrey,
+        focus: () => colors.darkgrey
       },
       primary: {
-        default: () => colors2.positive,
-        hover: () => colors2.positiveLight,
-        active: () => colors2.positiveLighter,
-        focus: () => colors2.positiveLighter
+        default: () => colors.positive,
+        hover: () => colors.positiveLight,
+        active: () => colors.positiveLighter,
+        focus: () => colors.positiveLighter
       }
     },
     warning: {
       light: {
-        default: () => colors2.transparent,
-        hover: () => colors2.lightgrey,
-        active: () => colors2.darkgrey,
-        focus: () => colors2.darkgrey
+        default: () => colors.transparent,
+        hover: () => colors.lightgrey,
+        active: () => colors.darkgrey,
+        focus: () => colors.darkgrey
       },
       primary: {
-        default: () => colors2.warning,
-        hover: () => colors2.warningLight,
-        active: () => colors2.warningLighter,
-        focus: () => colors2.warningLighter
+        default: () => colors.warning,
+        hover: () => colors.warningLight,
+        active: () => colors.warningLighter,
+        focus: () => colors.warningLighter
       }
     },
     negative: {
       light: {
-        default: () => colors2.transparent,
-        hover: () => colors2.lightgrey,
-        active: () => colors2.darkgrey,
-        focus: () => colors2.darkgrey
+        default: () => colors.transparent,
+        hover: () => colors.lightgrey,
+        active: () => colors.darkgrey,
+        focus: () => colors.darkgrey
       },
       primary: {
-        default: () => colors2.negative,
-        hover: () => colors2.negativeLight,
-        active: () => colors2.negativeLighter,
-        focus: () => colors2.negativeLighter
+        default: () => colors.negative,
+        hover: () => colors.negativeLight,
+        active: () => colors.negativeLighter,
+        focus: () => colors.negativeLighter
       }
     }
   },
   bars: {
-    default: () => colors2.basegrey
+    default: () => colors.basegrey
   },
   textFields: {
-    default: () => colors2.transparent,
-    hover: () => colors2.lightgrey,
-    active: () => colors2.light,
-    focus: () => colors2.light
+    default: () => colors.transparent,
+    hover: () => colors.lightgrey,
+    active: () => colors.light,
+    focus: () => colors.light
   },
   textAreas: {
-    default: () => colors2.transparent,
-    hover: () => colors2.lightgrey,
-    active: () => colors2.light,
-    focus: () => colors2.light
+    default: () => colors.transparent,
+    hover: () => colors.lightgrey,
+    active: () => colors.light,
+    focus: () => colors.light
   },
   sliders: {
-    default: () => colors2.basegrey
+    default: () => colors.basegrey
   },
   gridLayout: {
-    default: () => colors2.blue
+    default: () => colors.blue
   },
   cards: {
-    default: () => colors2.light
+    default: () => colors.light
   },
   dialogs: {
-    default: () => colors2.light
+    default: () => colors.light
   },
   menus: {
-    default: () => colors2.light
+    default: () => colors.light
   }
 };
 
@@ -203,7 +203,6 @@ export const margins = {
 export const paddings = {
   default: "1rem",
   buttons: "1rem 1.25rem",
-  button: "1rem 1.25rem",
   expands: "0.5rem 0.75rem",
   expandsBody: "0.5rem 0.75rem",
   select: "0.5rem 0.75rem",
