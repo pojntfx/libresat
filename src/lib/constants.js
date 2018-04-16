@@ -223,7 +223,7 @@ export const backgrounds = {
 export const margins = {
   default: "1rem",
   labels: "1rem",
-  expand: "0.5rem",
+  expands: "0.5rem",
   switches: "1rem",
   textFields: "1rem",
   textAreas: "1rem",
@@ -236,9 +236,10 @@ export const paddings = {
   default: "1rem",
   buttons: "1rem 1.25rem",
   button: "1rem 1.25rem",
-  expand: "0.5rem 0.75rem",
+  expands: "0.5rem 0.75rem",
+  expandsBody: "0.5rem 0.75rem",
   select: "0.5rem 0.75rem",
-  link: "0.2rem",
+  links: "0 0.2rem",
   textFields: "1rem",
   textAreas: "1rem"
 };
@@ -250,7 +251,8 @@ export const radiuses = {
   switches: "8px",
   textFields: "8px",
   textAreas: "8px",
-  sliders: "8px"
+  sliders: "8px",
+  links: "8px"
 };
 
 // Transitions
@@ -260,14 +262,16 @@ export const transitions = {
   switches: () => transitions.defaultDuration,
   textFields: () => transitions.defaultDuration,
   textAreas: () => transitions.defaultDuration,
-  sliders: () => transitions.defaultDuration
+  sliders: () => transitions.defaultDuration,
+  links: () => transitions.defaultDuration
 };
 
 // Shadows
 export const shadows = {
   default: "0 1px 2px rgba(32, 33, 36, 0.28)",
   defaultInset: "inset 0 0 2px rgba(32, 33, 36, 0.28)",
-  sliders: "inset 1px 0.01rem 4px rgba(32, 33, 36, 0.7)"
+  sliders: "inset 1px 0.01rem 4px rgba(32, 33, 36, 0.7)",
+  links: () => shadows.defaultInset
 };
 
 // Z-Indexes

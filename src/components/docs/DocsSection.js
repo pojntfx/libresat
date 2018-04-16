@@ -93,43 +93,118 @@ DocsSection.propTypes = {
 };
 
 const DemoWrapper = styled.div`
-  padding: ${({ theme: { paddings } }) => paddings.default} 0;
-  & > * {
-    margin-bottom: ${({ theme: { paddings } }) => paddings.default};
-    &:last-child {
-      margin-bottom: 0;
+  padding: ${({
+    theme: {
+      paddings: { expandsBody }
     }
+  }) => expandsBody};
+  & > * {
+    margin-bottom: ${({
+      theme: {
+        margins: { expands }
+      }
+    }) => expands};
   }
 `;
 
-const Details = styled.details``;
-
 const Summary = styled.summary`
-  padding: ${({ theme: { paddings } }) => paddings.expand};
-  border-radius: ${({ theme: { radiuses } }) => radiuses.default};
-  &:focus,
-  &:active {
-    background: ${({ theme: { colors } }) => colors.darkgrey}!important;
-    box-shadow: ${({ theme: { shadows } }) => shadows.defaultInset};
+  color: ${({
+    theme: {
+      colors2: { buttons }
+    }
+  }) => buttons.default.light.default};
+  background: ${({
+    theme: {
+      backgrounds2: { buttons }
+    }
+  }) => buttons.default.light.default};
+  padding: ${({
+    theme: {
+      paddings: { expands }
+    }
+  }) => expands};
+  border-radius: ${({
+    theme: {
+      radiuses: { buttons }
+    }
+  }) => buttons};
+  transition: background
+      ${({
+        theme: {
+          transitions: { buttons }
+        }
+      }) => buttons},
+    box-shadow
+      ${({
+        theme: {
+          transitions: { buttons }
+        }
+      }) => buttons};
+  white-space: nowrap;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+  border: 0;
+  outline: 0;
+  &:active,
+  &:focus {
+    color: ${({
+      theme: {
+        colors2: { buttons }
+      }
+    }) => buttons.default.light.active}!important;
+    background: ${({
+      theme: {
+        backgrounds2: { buttons }
+      }
+    }) => buttons.default.light.active} !important;
+    box-shadow: ${({
+      theme: {
+        shadows: { defaultInset }
+      }
+    }) => defaultInset};
   }
   &:not(:hover) {
-    &:focus,
-    &:active {
-      background: ${({ theme: { backgrounds } }) =>
-        backgrounds.default}!important;
+    &:active,
+    &:focus {
+      color: ${({
+        theme: {
+          colors2: { buttons }
+        }
+      }) => buttons.default.light.default}!important;
+      background: ${({
+        theme: {
+          backgrounds2: { buttons }
+        }
+      }) => buttons.default.light.default} !important;
+      box-shadow: ${({
+        theme: {
+          shadows: { defaultInset }
+        }
+      }) => defaultInset};
     }
   }
   &:hover {
-    background: ${({ theme: { colors } }) => colors.lightgrey};
+    color: ${({
+      theme: {
+        colors2: { buttons }
+      }
+    }) => buttons.default.light.hover};
+    background: ${({
+      theme: {
+        backgrounds2: { buttons }
+      }
+    }) => buttons.default.light.hover};
   }
-  &:not(:last-child) {
-    margin-bottom: ${({ theme: { margins } }) => margins.expand};
+`;
+
+const Details = styled.details`
+  &:not(:last-child) > ${Summary} {
+    margin-bottom: ${({
+      theme: {
+        margins: { expands }
+      }
+    }) => expands};
   }
-  transition: background
-      ${({ theme: { transitions } }) => transitions.defaultDuration},
-    box-shadow ${({ theme: { transitions } }) => transitions.defaultDuration};
-  outline: none;
-  cursor: pointer;
 `;
 
 const CodeWrapper = styled.pre`
