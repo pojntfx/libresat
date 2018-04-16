@@ -11,7 +11,7 @@ import PropTypes from "prop-types";
  * @param {label} label Label for the TextArea
  * @param {value} value Content of the TextArea
  * @param {name} name Unique identifier for the TextArea
- * @param {..otherProps} ..otherProps Other HTML5 props
+ * @param {..otherProps} ..otherProps Other props that should be passed to the TextArea
  */
 export const TextArea = ({ label, value, name, onInput, ...otherProps }) => (
   <InputWrapper>
@@ -41,38 +41,91 @@ const InputWrapper = styled.div`
 `;
 
 const Label = styled.label`
-  margin-right: ${({ theme: { paddings: { textAreas } } }) => textAreas};
+  margin-right: ${({
+    theme: {
+      paddings: { textAreas }
+    }
+  }) => textAreas};
 `;
 
 const TextAreaWrapper = styled.textarea`
-  padding: ${({ theme: { margins: { textAreas } } }) => textAreas};
-  margin-left: ${({ theme: { margins: { textAreas } } }) => textAreas};
-  border-radius: ${({ theme: { radiuses: { textAreas } } }) => textAreas};
-  border: 1px solid ${({ theme: { colors2: { lightgrey } } }) => lightgrey};
+  padding: ${({
+    theme: {
+      margins: { textAreas }
+    }
+  }) => textAreas};
+  margin-left: ${({
+    theme: {
+      margins: { textAreas }
+    }
+  }) => textAreas};
+  border-radius: ${({
+    theme: {
+      radiuses: { textAreas }
+    }
+  }) => textAreas};
+  border: 1px solid
+    ${({
+      theme: {
+        colors2: { lightgrey }
+      }
+    }) => lightgrey};
   transition: background-color
-      ${({ theme: { transitions: { textAreas } } }) => textAreas},
-    box-shadow ${({ theme: { transitions: { textAreas } } }) => textAreas};
+      ${({
+        theme: {
+          transitions: { textAreas }
+        }
+      }) => textAreas},
+    box-shadow
+      ${({
+        theme: {
+          transitions: { textAreas }
+        }
+      }) => textAreas};
   resize: vertical;
   flex-grow: 1;
   outline: 0;
   &:active,
   &:focus {
-    box-shadow: ${({ theme: { shadows: { defaultInset } } }) => defaultInset};
-    background: ${({ theme: { backgrounds2: { textAreas: { active } } } }) =>
-      active} !important;
+    box-shadow: ${({
+      theme: {
+        shadows: { defaultInset }
+      }
+    }) => defaultInset};
+    background: ${({
+      theme: {
+        backgrounds2: {
+          textAreas: { active }
+        }
+      }
+    }) => active} !important;
   }
   &:not(:hover) {
     &:active,
     &:focus {
-      background: ${({ theme: { backgrounds2: { textAreas: { active } } } }) =>
-        active} !important;
+      background: ${({
+        theme: {
+          backgrounds2: {
+            textAreas: { active }
+          }
+        }
+      }) => active} !important;
     }
   }
   &:hover {
-    background: ${({ theme: { backgrounds2: { textAreas: { hover } } } }) =>
-      hover};
+    background: ${({
+      theme: {
+        backgrounds2: {
+          textAreas: { hover }
+        }
+      }
+    }) => hover};
   }
   &:disabled {
-    background: ${({ theme: { backgrounds2: { bars } } }) => bars.default};
+    background: ${({
+      theme: {
+        backgrounds2: { bars }
+      }
+    }) => bars.default};
   }
 `;

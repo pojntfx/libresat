@@ -56,7 +56,11 @@ const ToolItemList = styled.menu`
     overflow-x: visible;
   }
   & > *:not(:last-child) {
-    margin-right: ${({ theme: { margins: { tool } } }) => tool};
+    margin-right: ${({
+      theme: {
+        margins: { tool }
+      }
+    }) => tool};
   }
   ${({ equal }) => (equal ? "& > * { margin: 0 auto; }" : null)};
   ${({ filled }) => (filled ? "flex: auto; & > * { flex: 1; }" : null)};

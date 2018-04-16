@@ -8,8 +8,11 @@ import PropTypes from "prop-types";
 
 /**
  * A loading screen.
+ * @param {...otherProps} ...otherProps Other props that should be passed to the LoadingWrapper
  */
-export const Loading = () => <LoadingWrapper>Loading ...</LoadingWrapper>;
+export const Loading = ({ ...otherProps }) => (
+  <LoadingWrapper {...otherProps}>Loading ...</LoadingWrapper>
+);
 
 const LoadingWrapper = styled.div`
   display: flex;

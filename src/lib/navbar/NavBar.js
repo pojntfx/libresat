@@ -11,7 +11,7 @@ import PropTypes from "prop-types";
  * @param {title} title Title/brand of the page
  * @param {links} links Links on the left side of the NavBar
  * @param {items} items Items on the right side of the NavBar
- * @param {...otherProps} ...otherProps Other (HTML5) props that should be passed to the button
+ * @param {...otherProps} ...otherProps Other props that should be passed to the button
  */
 export const NavBar = ({ title, links, items, ...otherProps }) => (
   <NavHeaderWrapper {...otherProps}>

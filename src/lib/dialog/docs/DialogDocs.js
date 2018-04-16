@@ -48,7 +48,7 @@ export const DialogDocs = () => (
       },
       {
         title: "...otherProps",
-        description: "Other (HTML5) props that should be passed to the dialog."
+        description: "Other props that should be passed to the dialog."
       }
     ]}
   />

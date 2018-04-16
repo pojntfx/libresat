@@ -13,7 +13,7 @@ import PropTypes from "prop-types";
  * @param {onSelect} onSelect Event handler (gets fired when an option has been selected)
  * @param {options} options The options that may be selected
  * @param {value} value The currently selected option
- * @param {...otherProps} ...otherProps Other (HTML5) props that should be passed to the select
+ * @param {...otherProps} ...otherProps Other props that should be passed to the select
  */
 export const Select = ({
   name,
@@ -52,14 +52,38 @@ const InputWrapper = styled.div`
 `;
 
 const SelectWrapper = styled.select`
-  color: ${({ theme: { colors2: { buttons } } }) =>
-    buttons.default.light.default};
-  background: ${({ theme: { backgrounds2: { buttons } } }) =>
-    buttons.default.light.default};
-  padding: ${({ theme: { paddings: { select } } }) => select};
-  border-radius: ${({ theme: { radiuses: { buttons } } }) => buttons};
-  transition: background ${({ theme: { transitions: { buttons } } }) => buttons},
-    box-shadow ${({ theme: { transitions: { buttons } } }) => buttons};
+  color: ${({
+    theme: {
+      colors2: { buttons }
+    }
+  }) => buttons.default.light.default};
+  background: ${({
+    theme: {
+      backgrounds2: { buttons }
+    }
+  }) => buttons.default.light.default};
+  padding: ${({
+    theme: {
+      paddings: { select }
+    }
+  }) => select};
+  border-radius: ${({
+    theme: {
+      radiuses: { buttons }
+    }
+  }) => buttons};
+  transition: background
+      ${({
+        theme: {
+          transitions: { buttons }
+        }
+      }) => buttons},
+    box-shadow
+      ${({
+        theme: {
+          transitions: { buttons }
+        }
+      }) => buttons};
   ${({ equal }) => (equal ? "flex: 1;" : null)} white-space: nowrap;
   -webkit-tap-highlight-color: transparent;
   cursor: pointer;
@@ -67,26 +91,52 @@ const SelectWrapper = styled.select`
   outline: 0;
   &:active,
   &:focus {
-    color: ${({ theme: { colors2: { buttons } } }) =>
-      buttons.default.light.active}!important;
-    background: ${({ theme: { backgrounds2: { buttons } } }) =>
-      buttons.default.light.active} !important;
-    box-shadow: ${({ theme: { shadows: { defaultInset } } }) => defaultInset};
+    color: ${({
+      theme: {
+        colors2: { buttons }
+      }
+    }) => buttons.default.light.active}!important;
+    background: ${({
+      theme: {
+        backgrounds2: { buttons }
+      }
+    }) => buttons.default.light.active} !important;
+    box-shadow: ${({
+      theme: {
+        shadows: { defaultInset }
+      }
+    }) => defaultInset};
   }
   &:not(:hover) {
     &:active,
     &:focus {
-      color: ${({ theme: { colors2: { buttons } } }) =>
-        buttons.default.light.default}!important;
-      background: ${({ theme: { backgrounds2: { buttons } } }) =>
-        buttons.default.light.default} !important;
-      box-shadow: ${({ theme: { shadows: { defaultInset } } }) => defaultInset};
+      color: ${({
+        theme: {
+          colors2: { buttons }
+        }
+      }) => buttons.default.light.default}!important;
+      background: ${({
+        theme: {
+          backgrounds2: { buttons }
+        }
+      }) => buttons.default.light.default} !important;
+      box-shadow: ${({
+        theme: {
+          shadows: { defaultInset }
+        }
+      }) => defaultInset};
     }
   }
   &:hover {
-    color: ${({ theme: { colors2: { buttons } } }) =>
-      buttons.default.light.hover};
-    background: ${({ theme: { backgrounds2: { buttons } } }) =>
-      buttons.default.light.hover};
+    color: ${({
+      theme: {
+        colors2: { buttons }
+      }
+    }) => buttons.default.light.hover};
+    background: ${({
+      theme: {
+        backgrounds2: { buttons }
+      }
+    }) => buttons.default.light.hover};
   }
 `;

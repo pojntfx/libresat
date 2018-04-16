@@ -12,7 +12,7 @@ import PropTypes from "prop-types";
  * @param {label} label A description of what information to enter
  * @param {name} name Unique identifier
  * @param {onChange} onChange Event handler (gets fired when content has been modified)
- * @param {...otherProps} ...otherProps Other (HTML5) props that should be passed to the slider
+ * @param {...otherProps} ...otherProps Other props that should be passed to the slider
  */
 export const Slider = ({ value, label, name, onChange, ...otherProps }) => (
   <SliderWrapper>
@@ -42,11 +42,19 @@ const SliderWrapper = styled.div`
 `;
 
 const Label = styled.span`
-  margin-right: ${({ theme: { margins: { sliders } } }) => sliders};
+  margin-right: ${({
+    theme: {
+      margins: { sliders }
+    }
+  }) => sliders};
 `;
 
 const InputWrapper = styled.input`
-  border-radius: ${({ theme: { radiuses: { sliders } } }) => sliders};
+  border-radius: ${({
+    theme: {
+      radiuses: { sliders }
+    }
+  }) => sliders};
   width: 100%;
   height: 2rem;
   outline: 0;
@@ -58,30 +66,57 @@ const InputWrapper = styled.input`
   -webkit-tap-highlight-color: transparent;
   &[value="0"] {
     &::-webkit-slider-thumb {
-      border-color: ${({ theme: { backgrounds2: { bars } } }) => bars.default};
+      border-color: ${({
+        theme: {
+          backgrounds2: { bars }
+        }
+      }) => bars.default};
       box-shadow: none;
     }
   }
   &:disabled {
     &::-webkit-slider-runnable-track {
-      background: ${({ theme: { backgrounds2: { bars } } }) => bars.default};
+      background: ${({
+        theme: {
+          backgrounds2: { bars }
+        }
+      }) => bars.default};
     }
   }
   &::-webkit-slider-runnable-track {
-    transition: ${({ theme: { transitions: { sliders } } }) => sliders};
+    transition: ${({
+      theme: {
+        transitions: { sliders }
+      }
+    }) => sliders};
     -webkit-tap-highlight-color: transparent;
-    background: ${({ theme: { backgrounds2: { sliders } } }) =>
-      sliders.default};
-    border-radius: ${({ theme: { radiuses: { sliders } } }) => sliders};
+    background: ${({
+      theme: {
+        backgrounds2: { sliders }
+      }
+    }) => sliders.default};
+    border-radius: ${({
+      theme: {
+        radiuses: { sliders }
+      }
+    }) => sliders};
   }
   &:focus::-webkit-slider-runnable-track,
   &:active::-webkit-slider-runnable-track {
-    box-shadow: ${({ theme: { shadows: { sliders } } }) => sliders};
+    box-shadow: ${({
+      theme: {
+        shadows: { sliders }
+      }
+    }) => sliders};
   }
   &:disabled {
     &::-webkit-slider-thumb {
       box-shadow: calc(
-          -100vw - ${({ theme: { margins: { sliders } } }) => sliders}
+          -100vw - ${({
+              theme: {
+                margins: { sliders }
+              }
+            }) => sliders}
         )
         0 0 100vw ${({ theme: { colors2 } }) => colors2.darkgrey};
       border-color: ${({ theme: { colors2 } }) => colors2.darkgrey};
@@ -90,14 +125,30 @@ const InputWrapper = styled.input`
   &::-webkit-slider-thumb {
     border: 0.1rem solid ${({ theme: { colors2 } }) => colors2.primary};
     border-radius: calc(
-      ${({ theme: { radiuses: { sliders } } }) => sliders} - 0.025rem
+      ${({
+          theme: {
+            radiuses: { sliders }
+          }
+        }) => sliders} - 0.025rem
     );
-    background: ${({ theme: { colors2: { light } } }) => light};
+    background: ${({
+      theme: {
+        colors2: { light }
+      }
+    }) => light};
     box-shadow: calc(
-        -100vw - ${({ theme: { margins: { sliders } } }) => sliders}
+        -100vw - ${({
+            theme: {
+              margins: { sliders }
+            }
+          }) => sliders}
       )
       0 0 100vw ${({ theme: { colors2 } }) => colors2.primary};
-    transition: ${({ theme: { transitions: { sliders } } }) => sliders};
+    transition: ${({
+      theme: {
+        transitions: { sliders }
+      }
+    }) => sliders};
     margin: 0.1rem;
     margin-left: 0;
     width: 2rem;
@@ -107,19 +158,30 @@ const InputWrapper = styled.input`
     -webkit-tap-highlight-color: transparent;
     &:active,
     &:focus {
-      background: ${({ theme: { colors2: { darkgrey } } }) =>
-        darkgrey} !important;
+      background: ${({
+        theme: {
+          colors2: { darkgrey }
+        }
+      }) => darkgrey} !important;
       width: 2.25rem;
       left: calc(100% - 0.2rem);
     }
     &:not(:hover) {
       &:active,
       &:focus {
-        background: ${({ theme: { colors2: { white } } }) => white} !important;
+        background: ${({
+          theme: {
+            colors2: { white }
+          }
+        }) => white} !important;
       }
     }
     &:hover {
-      background: ${({ theme: { colors2: { lightgrey } } }) => lightgrey};
+      background: ${({
+        theme: {
+          colors2: { lightgrey }
+        }
+      }) => lightgrey};
     }
   }
 

@@ -34,8 +34,7 @@ export const TabBarDocs = () => (
       },
       {
         title: "...otherProps",
-        description:
-          "Other (HTML5) props that should be passed to the TabBar titles."
+        description: "Other props that should be passed to the TabBar titles."
       }
     ]}
   />

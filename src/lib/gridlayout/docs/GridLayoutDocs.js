@@ -29,8 +29,7 @@ export const GridLayoutDocs = () => (
       },
       {
         title: "...otherProps",
-        description:
-          "Other (HTML5 or React) props that should be passed to the GridLayout."
+        description: "Other props that should be passed to the GridLayout."
       }
     ]}
   />

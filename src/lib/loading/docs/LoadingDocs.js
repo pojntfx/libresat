@@ -12,8 +12,8 @@ export const LoadingDocs = () => (
     code={code}
     api={[
       {
-        title: "This is a wrapper component.",
-        description: "It does not have any props."
+        title: "...otherProps",
+        description: "Other props that should be passed to the GridLayout."
       }
     ]}
   />

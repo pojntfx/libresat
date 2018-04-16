@@ -18,7 +18,7 @@ import { Button } from "../button/Button";
  * @param {actions} actions Actions in the Menu
  * @param {left} left Whether the menu should float to the left or not
  * @param {bottom} Bottom Whether the menu should be attached to the top or the bottom
- * @param {...otherProps} ...otherProps Other (HTML5 or React) props that should be passed to the Menu activation button
+ * @param {...otherProps} ...otherProps Other props that should be passed to the Menu activation button
  */
 export const Menu = ({
   label,

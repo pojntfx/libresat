@@ -14,6 +14,10 @@ export const ContainerDocs = () => (
       {
         title: "children (node[])",
         description: "Items inside the container."
+      },
+      {
+        title: "...otherProps",
+        description: "Other props that should be passed to the container."
       }
     ]}
   />

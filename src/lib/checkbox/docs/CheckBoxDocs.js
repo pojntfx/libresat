@@ -30,8 +30,7 @@ export const CheckBoxDocs = () => (
       },
       {
         title: "...otherProps",
-        description:
-          "Other (HTML5) props that should be passed to the CheckBox."
+        description: "Other props that should be passed to the CheckBox."
       }
     ]}
   />
