@@ -23,29 +23,34 @@ body {
 
 // Make links consistent with the rest of the interactive elements
 a {
-  color: ${theme.colors.blue};
-  padding: 0 ${theme.paddings.link};
-  border-radius: ${theme.radiuses.default};
-  transition: ${"background " +
-    theme.transitions.defaultDuration +
-    ", box-shadow " +
-    theme.transitions.defaultDuration};
+  color: ${theme.colors2.blue};
+  padding: ${theme.paddings.links};
+  border-radius: ${theme.radiuses.links};
+  transition: background
+      ${theme.transitions.defaultDuration},
+    box-shadow
+    ${theme.transitions.defaultDuration};
   text-decoration: none;
-  outline: 0;
+  white-space: nowrap;
   -webkit-tap-highlight-color: transparent;
-&:focus,
-  &:active {
-    background: ${theme.colors.darkgrey}!important;
+  cursor: pointer;
+  &:active,
+  &:focus {
+    color: ${theme.colors2.blue}!important;
+    background: ${theme.colors2.darkgrey} !important;
     box-shadow: ${theme.shadows.defaultInset};
   }
   &:not(:hover) {
-    &:focus,
-    &:active {
-      background: transparent!important;
+    &:active,
+    &:focus {
+      color: ${theme.colors2.blue}!important;
+      background: ${theme.colors2.transparent} !important;
+      box-shadow: ${theme.shadows.defaultInset};
     }
   }
   &:hover {
-    background: ${theme.colors.lightgrey};
+    color: ${theme.colors2.blue};
+    background: ${theme.colors2.lightgrey};
   }
 }
 `;
