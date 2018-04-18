@@ -8,8 +8,8 @@ export const TextAreaDocs = () => (
   <DocsSection
     title="TextArea"
     id="textarea"
-    demos={<TextAreaDemo />}
     code={code}
+    scope={scope}
     api={[
       {
         title: "label (optional) (string)",
@@ -36,17 +36,22 @@ export const TextAreaDocs = () => (
   />
 );
 
-const code = `
-class TextAreaDemo extends Component {
-  state = {
-    text: "Lorem ipsum"
-  };
+const scope = { TextArea, Component };
 
-  handleInput = ({ target: { value } }) => {
+const code = `class TextAreaDemo extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      text: "Lorem ipsum"
+    };
+    this.handleInput = this.handleInput.bind(this);
+  }
+
+  handleInput({ target: { value } }) {
     this.setState({
       text: value
     });
-  };
+  }
 
   render() {
     const { text } = this.state;
@@ -61,19 +66,23 @@ class TextAreaDemo extends Component {
       />
     );
   }
-}
-`;
+}`;
 
+// eslint-disable-next-line no-unused-vars
 class TextAreaDemo extends Component {
-  state = {
-    text: "Lorem ipsum"
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      text: "Lorem ipsum"
+    };
+    this.handleInput = this.handleInput.bind(this);
+  }
 
-  handleInput = ({ target: { value } }) => {
+  handleInput({ target: { value } }) {
     this.setState({
       text: value
     });
-  };
+  }
 
   render() {
     const { text } = this.state;

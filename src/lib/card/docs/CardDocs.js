@@ -13,7 +13,6 @@ export const CardDocs = () => (
   <DocsSection
     title="Card"
     id="card"
-    demos={<CardDemo />}
     code={code}
     scope={scope}
     api={[
@@ -112,6 +111,7 @@ const code = `class CardDemo extends Component {
   }
 }`;
 
+// eslint-disable-next-line no-unused-vars
 class CardDemo extends Component {
   onOptions() {
     console.log("Opening options.");

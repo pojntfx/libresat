@@ -8,8 +8,8 @@ export const TabBarDocs = () => (
   <DocsSection
     title="TabBar"
     id="tabbar"
-    demos={<TabBarDemo />}
     code={code}
+    scope={scope}
     api={[
       {
         title: "links (string[])",
@@ -40,17 +40,22 @@ export const TabBarDocs = () => (
   />
 );
 
-const code = `
-class TabBarDemo extends Component {
-  state = {
-    activePaneIndex: 0
-  };
+const scope = { TabBar, Component };
 
-  handleTabBarChange = activePaneIndex => {
+const code = `class TabBarDemo extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      activePaneIndex: 0
+    };
+    this.handleTabBarChange = this.handleTabBarChange.bind(this);
+  }
+
+  handleTabBarChange(activePaneIndex) {
     this.setState({
       activePaneIndex
     });
-  };
+  }
 
   render() {
     const { activePaneIndex } = this.state;
@@ -68,20 +73,23 @@ class TabBarDemo extends Component {
       />
     );
   }
-}
+}`;
 
-`;
-
+// eslint-disable-next-line no-unused-vars
 class TabBarDemo extends Component {
-  state = {
-    activePaneIndex: 0
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      activePaneIndex: 0
+    };
+    this.handleTabBarChange = this.handleTabBarChange.bind(this);
+  }
 
-  handleTabBarChange = activePaneIndex => {
+  handleTabBarChange(activePaneIndex) {
     this.setState({
       activePaneIndex
     });
-  };
+  }
 
   render() {
     const { activePaneIndex } = this.state;

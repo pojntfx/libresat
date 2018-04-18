@@ -75,7 +75,7 @@ export class DocsSection extends Component {
             onClick={event => toggleCode(event)}
             summary="Code"
           >
-            <LiveError />
+            <ErrorDisplay />
             <CodeEditor />
           </Expand>
           <Expand
@@ -110,6 +110,14 @@ DocsSection.propTypes = {
   scope: PropTypes.any,
   api: PropTypes.arrayOf(PropTypes.shape(apiShape)).isRequired
 };
+
+const ErrorDisplay = styled(LiveError)`
+  color: ${({
+    theme: {
+      colors: { negative }
+    }
+  }) => negative};
+`;
 
 const CodeEditor = styled(LiveEditor)`
   overflow-x: auto;

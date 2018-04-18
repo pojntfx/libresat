@@ -1,5 +1,6 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import { Switch } from "../Switch";
+import { List } from "../../list/List";
 
 // Docs
 import { DocsSection } from "../../../components/docs/DocsSection";
@@ -8,8 +9,8 @@ export const SwitchDocs = () => (
   <DocsSection
     title="Switch"
     id="switch"
-    demos={<SwitchDemo />}
     code={code}
+    scope={scope}
     api={[
       {
         title: "on (boolean)",
@@ -36,30 +37,36 @@ export const SwitchDocs = () => (
   />
 );
 
-const code = `
-class SwitchDemo extends Component {
-  state = {
-    wifiIsOn: true,
-    bluetoothIsOn: false
-  };
+const scope = { List, Switch, Component };
 
-  toggleWifi = () => {
+const code = `class SwitchDemo extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      wifiIsOn: true,
+      bluetoothIsOn: false
+    };
+    this.toggleWifi = this.toggleWifi.bind(this);
+    this.toggleBluetooth = this.toggleBluetooth.bind(this);
+  }
+
+  toggleWifi() {
     this.setState({
       wifiIsOn: !this.state.wifiIsOn
     });
-  };
+  }
 
-  toggleBluetooth = () => {
+  toggleBluetooth() {
     this.setState({
       bluetoothIsOn: !this.state.bluetoothIsOn
     });
-  };
+  }
 
   render() {
     const { wifiIsOn, bluetoothIsOn } = this.state;
     const { toggleWifi, toggleBluetooth } = this;
     return (
-      <Fragment>
+      <List>
         <Switch label="Wi-Fi" name="wifi" on={wifiIsOn} onClick={toggleWifi} />
         <Switch
           label="Bluetooth"
@@ -67,35 +74,40 @@ class SwitchDemo extends Component {
           on={bluetoothIsOn}
           onClick={toggleBluetooth}
         />
-      </Fragment>
+      </List>
     );
   }
-}
-`;
+}`;
 
+// eslint-disable-next-line no-unused-vars
 class SwitchDemo extends Component {
-  state = {
-    wifiIsOn: true,
-    bluetoothIsOn: false
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      wifiIsOn: true,
+      bluetoothIsOn: false
+    };
+    this.toggleWifi = this.toggleWifi.bind(this);
+    this.toggleBluetooth = this.toggleBluetooth.bind(this);
+  }
 
-  toggleWifi = () => {
+  toggleWifi() {
     this.setState({
       wifiIsOn: !this.state.wifiIsOn
     });
-  };
+  }
 
-  toggleBluetooth = () => {
+  toggleBluetooth() {
     this.setState({
       bluetoothIsOn: !this.state.bluetoothIsOn
     });
-  };
+  }
 
   render() {
     const { wifiIsOn, bluetoothIsOn } = this.state;
     const { toggleWifi, toggleBluetooth } = this;
     return (
-      <Fragment>
+      <List>
         <Switch label="Wi-Fi" name="wifi" on={wifiIsOn} onClick={toggleWifi} />
         <Switch
           label="Bluetooth"
@@ -103,7 +115,7 @@ class SwitchDemo extends Component {
           on={bluetoothIsOn}
           onClick={toggleBluetooth}
         />
-      </Fragment>
+      </List>
     );
   }
 }

@@ -8,8 +8,8 @@ export const ExpandDocs = () => (
   <DocsSection
     title="Expand"
     id="expand"
-    demos={<ExpandDemo />}
     code={code}
+    scope={scope}
     api={[
       {
         title: "open (optional) (bool)",
@@ -36,17 +36,22 @@ export const ExpandDocs = () => (
   />
 );
 
-const code = `
-class ExpandDemo extends Component {
-  state = {
-    descriptionIsShown: true
-  };
+const scope = { Expand, Component };
 
-  toggleDescription = () => {
+const code = `class ExpandDemo extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      descriptionIsShown: true
+    };
+    this.toggleDescription = this.toggleDescription.bind(this);
+  }
+
+  toggleDescription() {
     this.setState({
       descriptionIsShown: !this.descriptionIsShown
     });
-  };
+  }
 
   render() {
     const { toggleDescription } = this;
@@ -68,19 +73,23 @@ class ExpandDemo extends Component {
       </Expand>
     );
   }
-}
-`;
+}`;
 
+// eslint-disable-next-line no-unused-vars
 class ExpandDemo extends Component {
-  state = {
-    descriptionIsShown: true
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      descriptionIsShown: true
+    };
+    this.toggleDescription = this.toggleDescription.bind(this);
+  }
 
-  toggleDescription = () => {
+  toggleDescription() {
     this.setState({
       descriptionIsShown: !this.descriptionIsShown
     });
-  };
+  }
 
   render() {
     const { toggleDescription } = this;

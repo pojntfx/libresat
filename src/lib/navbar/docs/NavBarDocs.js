@@ -9,8 +9,8 @@ export const NavBarDocs = () => (
   <DocsSection
     title="NavBar"
     id="navbar"
-    demos={<NavBarDemo />}
     code={code}
+    scope={scope}
     api={[
       {
         title: "title (optional) (string || node)",
@@ -32,15 +32,16 @@ export const NavBarDocs = () => (
   />
 );
 
-const code = `
-class NavBarDemo extends Component {
-  onSignIn = () => {
-    console.log("Signed in.");
-  };
+const scope = { NavBar, Button, Component };
 
-  onSignUp = () => {
+const code = `class NavBarDemo extends Component {
+  onSignIn() {
+    console.log("Signed in.");
+  }
+
+  onSignUp() {
     console.log("Signed up.");
-  };
+  }
 
   render() {
     const { onSignIn, onSignUp } = this;
@@ -49,13 +50,13 @@ class NavBarDemo extends Component {
       <NavBar
         title="Title"
         links={[
-          <a key="1" href="/software">
+          <a key="1" href="#software">
             Software
           </a>,
-          <a key="2" href="/hardware">
+          <a key="2" href="#hardware">
             Hardware
           </a>,
-          <a key="3" href="/network">
+          <a key="3" href="#network">
             Network
           </a>
         ]}
@@ -66,17 +67,17 @@ class NavBarDemo extends Component {
       />
     );
   }
-}
-`;
+}`;
 
+// eslint-disable-next-line no-unused-vars
 class NavBarDemo extends Component {
-  onSignIn = () => {
+  onSignIn() {
     console.log("Signed in.");
-  };
+  }
 
-  onSignUp = () => {
+  onSignUp() {
     console.log("Signed up.");
-  };
+  }
 
   render() {
     const { onSignIn, onSignUp } = this;
@@ -85,13 +86,13 @@ class NavBarDemo extends Component {
       <NavBar
         title="Title"
         links={[
-          <a key="1" href="/software">
+          <a key="1" href="#software">
             Software
           </a>,
-          <a key="2" href="/hardware">
+          <a key="2" href="#hardware">
             Hardware
           </a>,
-          <a key="3" href="/network">
+          <a key="3" href="#network">
             Network
           </a>
         ]}

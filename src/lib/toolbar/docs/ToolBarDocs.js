@@ -9,8 +9,8 @@ export const ToolBarDocs = () => (
   <DocsSection
     title="ToolBar"
     id="toolbar"
-    demos={<ToolBarDemo />}
     code={code}
+    scope={scope}
     api={[
       {
         title: "title (string || node)",
@@ -37,39 +37,40 @@ export const ToolBarDocs = () => (
   />
 );
 
-const code = `
-class ToolBarDemo extends Component {
-  onOpenFile = () => {
+const scope = { Fragment, ToolBar, Button, Component };
+
+const code = `class ToolBarDemo extends Component {
+  onOpenFile() {
     console.log("Opening file.");
-  };
+  }
 
-  onOpenFolder = () => {
+  onOpenFolder() {
     console.log("Opening folder.");
-  };
+  }
 
-  onSaveFile = () => {
+  onSaveFile() {
     console.log("Saving file.");
-  };
+  }
 
-  onStageFolder = () => {
+  onStageFolder() {
     console.log("Staging folder.");
-  };
+  }
 
-  onAddPost = () => {
+  onAddPost() {
     console.log("Adding post.");
-  };
+  }
 
-  onShareView = () => {
+  onShareView() {
     console.log("Sharing view.");
-  };
+  }
 
-  onInviteFriend = () => {
+  onInviteFriend() {
     console.log("Inviting friend.");
-  };
+  }
 
-  onDistributeInfo = () => {
+  onDistributeInfo() {
     console.log("Distributing info.");
-  };
+  }
 
   render() {
     const {
@@ -96,56 +97,59 @@ class ToolBarDemo extends Component {
             <Button value="Save file" onClick={onSaveFile} key="1" />,
             <Button value="Stage folder" onClick={onStageFolder} key="2" />
           ]}
+          style={{ marginBottom: "1rem" }}
         />
         {/* Equal layout */}
         <ToolBar
           equalItems={[
-            <Fragment key="equalItems">
-              <Button value="Add post" onClick={onAddPost} />
-              <Button value="Share view" onClick={onShareView} />
-              <Button value="Invite friend" onClick={onInviteFriend} />
-              <Button value="Distribute info" onClick={onDistributeInfo} />
-            </Fragment>
+            <Button key="1" value="Add post" onClick={onAddPost} />,
+            <Button key="2" value="Share view" onClick={onShareView} />,
+            <Button key="3" value="Invite friend" onClick={onInviteFriend} />,
+            <Button
+              key="4"
+              value="Distribute info"
+              onClick={onDistributeInfo}
+            />
           ]}
         />
       </Fragment>
     );
   }
-}
-`;
+}`;
 
+// eslint-disable-next-line no-unused-vars
 class ToolBarDemo extends Component {
-  onOpenFile = () => {
+  onOpenFile() {
     console.log("Opening file.");
-  };
+  }
 
-  onOpenFolder = () => {
+  onOpenFolder() {
     console.log("Opening folder.");
-  };
+  }
 
-  onSaveFile = () => {
+  onSaveFile() {
     console.log("Saving file.");
-  };
+  }
 
-  onStageFolder = () => {
+  onStageFolder() {
     console.log("Staging folder.");
-  };
+  }
 
-  onAddPost = () => {
+  onAddPost() {
     console.log("Adding post.");
-  };
+  }
 
-  onShareView = () => {
+  onShareView() {
     console.log("Sharing view.");
-  };
+  }
 
-  onInviteFriend = () => {
+  onInviteFriend() {
     console.log("Inviting friend.");
-  };
+  }
 
-  onDistributeInfo = () => {
+  onDistributeInfo() {
     console.log("Distributing info.");
-  };
+  }
 
   render() {
     const {
@@ -172,6 +176,7 @@ class ToolBarDemo extends Component {
             <Button value="Save file" onClick={onSaveFile} key="1" />,
             <Button value="Stage folder" onClick={onStageFolder} key="2" />
           ]}
+          style={{ marginBottom: "1rem" }}
         />
         {/* Equal layout */}
         <ToolBar

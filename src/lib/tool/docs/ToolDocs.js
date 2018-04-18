@@ -11,8 +11,8 @@ export const ToolDocs = () => (
   <DocsSection
     title="Tool"
     id="tool"
-    demos={<ToolDemo />}
     code={code}
+    scope={scope}
     api={[
       {
         title: "children (node[])",
@@ -39,17 +39,28 @@ export const ToolDocs = () => (
   />
 );
 
-const code = `
-class ToolDemo extends Component {
-  onUpvote = () => console.log("Upvoting.");
+const scope = { Tool, Button, Component };
 
-  onDownvote = () => console.log("Downvoting.");
+const code = `class ToolDemo extends Component {
+  onUpvote() {
+    console.log("Upvoting.");
+  }
+  
+  onDownvote() {
+    console.log("Downvoting.");
+  }
 
-  onComment = () => console.log("Commenting.");
+  onComment() {
+    console.log("Commenting.");
+  }
 
-  onBookmark = () => console.log("Bookmarking.");
+  onBookmark() {
+    console.log("Bookmarking.");
+  }
 
-  onShare = () => console.log("Sharing.");
+  onShare() {
+    console.log("Sharing.");
+  }
 
   render() {
     const { onUpvote, onDownvote, onComment, onBookmark, onShare } = this;
@@ -68,19 +79,29 @@ class ToolDemo extends Component {
       </Tool>
     );
   }
-}
-`;
+}`;
 
+// eslint-disable-next-line no-unused-vars
 class ToolDemo extends Component {
-  onUpvote = () => console.log("Upvoting.");
+  onUpvote() {
+    console.log("Upvoting.");
+  }
 
-  onDownvote = () => console.log("Downvoting.");
+  onDownvote() {
+    console.log("Downvoting.");
+  }
 
-  onComment = () => console.log("Commenting.");
+  onComment() {
+    console.log("Commenting.");
+  }
 
-  onBookmark = () => console.log("Bookmarking.");
+  onBookmark() {
+    console.log("Bookmarking.");
+  }
 
-  onShare = () => console.log("Sharing.");
+  onShare() {
+    console.log("Sharing.");
+  }
 
   render() {
     const { onUpvote, onDownvote, onComment, onBookmark, onShare } = this;
