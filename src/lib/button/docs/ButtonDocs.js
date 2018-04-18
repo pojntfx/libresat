@@ -13,6 +13,7 @@ export const ButtonDocs = () => (
     id="button"
     demos={<ButtonDemo />}
     code={code}
+    scope={scope}
     api={[
       {
         title: "value (string)",
@@ -40,23 +41,24 @@ export const ButtonDocs = () => (
   />
 );
 
-const code = `
-class ButtonDemo extends Component {
-  onLog = () => {
+const scope = { Button, Tool, Component };
+
+const code = `class ButtonDemo extends Component {
+  onLog() {
     console.log("Logging to console.");
-  };
+  }
 
-  onSave = () => {
+  onSave() {
     console.log("Saving.");
-  };
+  }
 
-  onDiscard = () => {
+  onDiscard() {
     console.log("Discarding.");
-  };
+  }
 
-  onDelete = () => {
+  onDelete() {
     console.log("Deleting.");
-  };
+  }
 
   render() {
     const { onLog, onSave, onDiscard, onDelete } = this;
@@ -73,25 +75,24 @@ class ButtonDemo extends Component {
       </Tool>
     );
   }
-}
-`;
+}`;
 
 class ButtonDemo extends Component {
-  onLog = () => {
+  onLog() {
     console.log("Logging to console.");
-  };
+  }
 
-  onSave = () => {
+  onSave() {
     console.log("Saving.");
-  };
+  }
 
-  onDiscard = () => {
+  onDiscard() {
     console.log("Discarding.");
-  };
+  }
 
-  onDelete = () => {
+  onDelete() {
     console.log("Deleting.");
-  };
+  }
 
   render() {
     const { onLog, onSave, onDiscard, onDelete } = this;
