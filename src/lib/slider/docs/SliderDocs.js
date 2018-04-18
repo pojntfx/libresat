@@ -8,8 +8,8 @@ export const SliderDocs = () => (
   <DocsSection
     title="Slider"
     id="slider"
-    demos={<SliderDemo />}
     code={code}
+    scope={scope}
     api={[
       {
         title: "value (string)",
@@ -36,17 +36,22 @@ export const SliderDocs = () => (
   />
 );
 
-const code = `
-class SliderDemo extends Component {
-  state = {
-    brightness: 15
-  };
+const scope = { Slider, Component };
 
-  handleClick = ({ target: { value } }) => {
+const code = `class SliderDemo extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      brightness: 15
+    };
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick({ target: { value } }) {
     this.setState({
       brightness: parseInt(value, 10)
     });
-  };
+  }
 
   render() {
     const { brightness } = this.state;
@@ -63,19 +68,23 @@ class SliderDemo extends Component {
       />
     );
   }
-}
-`;
+}`;
 
+// eslint-disable-next-line no-unused-vars
 class SliderDemo extends Component {
-  state = {
-    brightness: 15
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      brightness: 15
+    };
+    this.handleClick = this.handleClick.bind(this);
+  }
 
-  handleClick = ({ target: { value } }) => {
+  handleClick({ target: { value } }) {
     this.setState({
       brightness: parseInt(value, 10)
     });
-  };
+  }
 
   render() {
     const { brightness } = this.state;

@@ -8,8 +8,8 @@ export const NavDocs = () => (
   <DocsSection
     title="Nav"
     id="nav"
-    demos={<NavDemo />}
     code={code}
+    scope={scope}
     api={[
       {
         title: "children (node[])",
@@ -23,8 +23,9 @@ export const NavDocs = () => (
   />
 );
 
-const code = `
-class NavDemo extends Component {
+const scope = { Nav, Component };
+
+const code = `class NavDemo extends Component {
   render() {
     return (
       <Nav>
@@ -35,9 +36,9 @@ class NavDemo extends Component {
       </Nav>
     );
   }
-}
-`;
+}`;
 
+// eslint-disable-next-line no-unused-vars
 class NavDemo extends Component {
   render() {
     return (

@@ -8,8 +8,8 @@ export const LoadingDocs = () => (
   <DocsSection
     title="Loading"
     id="loading"
-    demos={<LoadingDemo />}
     code={code}
+    scope={scope}
     api={[
       {
         title: "...otherProps",
@@ -19,14 +19,15 @@ export const LoadingDocs = () => (
   />
 );
 
-const code = `
-class LoadingDemo extends Component {
+const scope = { Loading, Component };
+
+const code = `class LoadingDemo extends Component {
   render() {
     return <Loading />;
   }
-}
-`;
+}`;
 
+// eslint-disable-next-line no-unused-vars
 class LoadingDemo extends Component {
   render() {
     return <Loading />;

@@ -8,8 +8,8 @@ export const ContainerDocs = () => (
   <DocsSection
     title="Container"
     id="container"
-    demos={<ContainerDemo />}
     code={code}
+    scope={scope}
     api={[
       {
         title: "children (node[])",
@@ -23,8 +23,9 @@ export const ContainerDocs = () => (
   />
 );
 
-const code = `
-class ContainerDemo extends Component {
+const scope = { Container, Component };
+
+const code = `class ContainerDemo extends Component {
   render() {
     return (
       <Container>
@@ -41,6 +42,7 @@ class ContainerDemo extends Component {
   }
 }`;
 
+// eslint-disable-next-line no-unused-vars
 class ContainerDemo extends Component {
   render() {
     return (

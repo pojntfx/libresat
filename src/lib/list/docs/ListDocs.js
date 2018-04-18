@@ -12,8 +12,8 @@ export const ListDocs = () => (
   <DocsSection
     title="List"
     id="list"
-    demos={<ListDemo />}
     code={code}
+    scope={scope}
     api={[
       {
         title: "title (optional) (string)",
@@ -31,19 +31,20 @@ export const ListDocs = () => (
   />
 );
 
-const code = `
-class ListDemo extends Component {
-  onAddPerson = () => {
+const scope = { List, Tool, Button, Component };
+
+const code = `class ListDemo extends Component {
+  onAddPerson() {
     console.log("Adding person.");
-  };
+  }
 
-  onRemovePerson = () => {
+  onRemovePerson() {
     console.log("Removing person.");
-  };
+  }
 
-  onShareDetails = () => {
+  onShareDetails() {
     console.log("Sharing details.");
-  };
+  }
 
   render() {
     const { onAddPerson, onRemovePerson, onShareDetails } = this;
@@ -101,21 +102,21 @@ class ListDemo extends Component {
       </List>
     );
   }
-}
-`;
+}`;
 
+// eslint-disable-next-line no-unused-vars
 class ListDemo extends Component {
-  onAddPerson = () => {
+  onAddPerson() {
     console.log("Adding person.");
-  };
+  }
 
-  onRemovePerson = () => {
+  onRemovePerson() {
     console.log("Removing person.");
-  };
+  }
 
-  onShareDetails = () => {
+  onShareDetails() {
     console.log("Sharing details.");
-  };
+  }
 
   render() {
     const { onAddPerson, onRemovePerson, onShareDetails } = this;

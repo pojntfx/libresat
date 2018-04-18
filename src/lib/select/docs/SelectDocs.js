@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import { Select } from "../Select";
 import { Option } from "../Option";
 
@@ -9,8 +9,8 @@ export const SelectDocs = () => (
   <DocsSection
     title="Select"
     id="select"
-    demos={<SelectDemo />}
     code={code}
+    scope={scope}
     api={[
       {
         title: "label (optional) (string)",
@@ -41,17 +41,22 @@ export const SelectDocs = () => (
   />
 );
 
-const code = `
-class SelectDemo extends Component {
-  state = {
-    currrentlySelected: "CET"
-  };
+const scope = { Select, Option, Component };
 
-  handleSelect = ({ target: { value } }) => {
+const code = `class SelectDemo extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      currrentlySelected: "CET"
+    };
+    this.handleSelect = this.handleSelect.bind(this);
+  }
+
+  handleSelect({ target: { value } }) {
     this.setState({
       currrentlySelected: value
     });
-  };
+  }
 
   render() {
     const { currrentlySelected } = this.state;
@@ -63,27 +68,29 @@ class SelectDemo extends Component {
         value={currrentlySelected}
         onSelect={handleSelect}
         options={[
-          <Fragment key="timezones">
-            <Option value="CET" text="CET" />
-            <Option value="UTC" text="UTC" />
-          </Fragment>
+            <Option value="CET" text="CET" key="1"/>,
+            <Option value="UTC" text="UTC" key="2"/>
         ]}
       />
     );
   }
-}
-`;
+}`;
 
+// eslint-disable-next-line no-unused-vars
 class SelectDemo extends Component {
-  state = {
-    currrentlySelected: "CET"
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      currrentlySelected: "CET"
+    };
+    this.handleSelect = this.handleSelect.bind(this);
+  }
 
-  handleSelect = ({ target: { value } }) => {
+  handleSelect({ target: { value } }) {
     this.setState({
       currrentlySelected: value
     });
-  };
+  }
 
   render() {
     const { currrentlySelected } = this.state;
@@ -95,10 +102,8 @@ class SelectDemo extends Component {
         value={currrentlySelected}
         onSelect={handleSelect}
         options={[
-          <Fragment key="timezones">
-            <Option value="CET" text="CET" />
-            <Option value="UTC" text="UTC" />
-          </Fragment>
+          <Option value="CET" text="CET" key="1" />,
+          <Option value="UTC" text="UTC" key="2" />
         ]}
       />
     );

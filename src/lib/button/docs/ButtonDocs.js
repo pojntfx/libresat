@@ -11,7 +11,6 @@ export const ButtonDocs = () => (
   <DocsSection
     title="Button"
     id="button"
-    demos={<ButtonDemo />}
     code={code}
     scope={scope}
     api={[
@@ -77,6 +76,7 @@ const code = `class ButtonDemo extends Component {
   }
 }`;
 
+// eslint-disable-next-line no-unused-vars
 class ButtonDemo extends Component {
   onLog() {
     console.log("Logging to console.");

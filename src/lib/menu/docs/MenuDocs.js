@@ -4,9 +4,6 @@ import { Menu } from "../Menu";
 // Docs
 import { DocsSection } from "../../../components/docs/DocsSection";
 
-// Styled components
-import styled from "styled-components";
-
 // Components
 import { Button } from "../../button/Button";
 
@@ -14,8 +11,8 @@ export const MenuDocs = () => (
   <DocsSection
     title="Menu"
     id="menu"
-    demos={<MenuDemo />}
     code={code}
+    scope={scope}
     api={[
       {
         title: "label (optional) (string)",
@@ -57,35 +54,35 @@ export const MenuDocs = () => (
   />
 );
 
-const code = `
-class MenuDemo extends Component {
-  state = {
-    menuIsOpen: false
-  };
+const scope = { Menu, Button, Component };
 
-  MenuButton = styled(Button)\`
-    width: 100%;
-  \`;
+const code = `class MenuDemo extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      menuIsOpen: false
+    };
+    this.onToggleMenu = this.onToggleMenu.bind(this);
+  }
 
-  onToggleMenu = () => {
+  onToggleMenu() {
     this.setState({ menuIsOpen: !this.state.menuIsOpen });
-  };
+  }
 
-  onSave = () => {
+  onSave() {
     console.log("Saving.");
-  };
+  }
 
-  onSaveAs = () => {
+  onSaveAs() {
     console.log("Saving as.");
-  };
+  }
 
-  onUpload = () => {
+  onUpload() {
     console.log("Uploading.");
-  };
+  }
 
   render() {
-    const { onToggleMenu, MenuButton, onSave, onSaveAs, onUpload } = this;
-
+    const { onToggleMenu, onSave, onSaveAs, onUpload } = this;
     const { menuIsOpen } = this.state;
 
     return (
@@ -95,43 +92,42 @@ class MenuDemo extends Component {
         onInnerClick={onToggleMenu}
         active={menuIsOpen}
       >
-        <MenuButton value="Save" onClick={onSave} />
-        <MenuButton value="Save as" onClick={onSaveAs} />
-        <MenuButton value="Upload" onClick={onUpload} />
+        <Button value="Save" onClick={onSave} style={{ width: "100%" }} />
+        <Button value="Save as" onClick={onSaveAs} style={{ width: "100%" }} />
+        <Button value="Upload" onClick={onUpload} style={{ width: "100%" }} />
       </Menu>
     );
   }
-}
-`;
+}`;
 
+// eslint-disable-next-line no-unused-vars
 class MenuDemo extends Component {
-  state = {
-    menuIsOpen: false
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      menuIsOpen: false
+    };
+    this.onToggleMenu = this.onToggleMenu.bind(this);
+  }
 
-  MenuButton = styled(Button)`
-    width: 100%;
-  `;
-
-  onToggleMenu = () => {
+  onToggleMenu() {
     this.setState({ menuIsOpen: !this.state.menuIsOpen });
-  };
+  }
 
-  onSave = () => {
+  onSave() {
     console.log("Saving.");
-  };
+  }
 
-  onSaveAs = () => {
+  onSaveAs() {
     console.log("Saving as.");
-  };
+  }
 
-  onUpload = () => {
+  onUpload() {
     console.log("Uploading.");
-  };
+  }
 
   render() {
-    const { onToggleMenu, MenuButton, onSave, onSaveAs, onUpload } = this;
-
+    const { onToggleMenu, onSave, onSaveAs, onUpload } = this;
     const { menuIsOpen } = this.state;
 
     return (
@@ -141,9 +137,9 @@ class MenuDemo extends Component {
         onInnerClick={onToggleMenu}
         active={menuIsOpen}
       >
-        <MenuButton value="Save" onClick={onSave} />
-        <MenuButton value="Save as" onClick={onSaveAs} />
-        <MenuButton value="Upload" onClick={onUpload} />
+        <Button value="Save" onClick={onSave} style={{ width: "100%" }} />
+        <Button value="Save as" onClick={onSaveAs} style={{ width: "100%" }} />
+        <Button value="Upload" onClick={onUpload} style={{ width: "100%" }} />
       </Menu>
     );
   }

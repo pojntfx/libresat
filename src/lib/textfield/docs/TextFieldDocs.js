@@ -8,8 +8,8 @@ export const TextFieldDocs = () => (
   <DocsSection
     title="TextField"
     id="textfield"
-    demos={<TextFieldDemo />}
     code={code}
+    scope={scope}
     api={[
       {
         title: "label (optional) (string)",
@@ -40,17 +40,22 @@ export const TextFieldDocs = () => (
   />
 );
 
-const code = `
-class TextFieldDemo extends Component {
-  state = {
-    text: "Lorem ipsum"
-  };
+const scope = { TextField, Component };
 
-  handleInput = ({ target: { value } }) => {
+const code = `class TextFieldDemo extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      text: "Lorem ipsum"
+    };
+    this.handleInput = this.handleInput.bind(this);
+  }
+
+  handleInput({ target: { value } }) {
     this.setState({
       text: value
     });
-  };
+  }
 
   render() {
     const { text } = this.state;
@@ -65,19 +70,23 @@ class TextFieldDemo extends Component {
       />
     );
   }
-}
-`;
+}`;
 
+// eslint-disable-next-line no-unused-vars
 class TextFieldDemo extends Component {
-  state = {
-    text: "Lorem ipsum"
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      text: "Lorem ipsum"
+    };
+    this.handleInput = this.handleInput.bind(this);
+  }
 
-  handleInput = ({ target: { value } }) => {
+  handleInput({ target: { value } }) {
     this.setState({
       text: value
     });
-  };
+  }
 
   render() {
     const { text } = this.state;

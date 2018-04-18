@@ -9,8 +9,8 @@ export const DialogDocs = () => (
   <DocsSection
     title="Dialog"
     id="dialog"
-    demos={<DialogDemo />}
     code={code}
+    scope={scope}
     api={[
       {
         title: "title (optional) (string)",
@@ -54,35 +54,43 @@ export const DialogDocs = () => (
   />
 );
 
-const code = `
-class DialogDemo extends Component {
-  state = {
-    dialogIsActive: false
-  };
+const scope = { Fragment, Button, Dialog, Component };
 
-  onUploadDialog = () => {
+const code = `class DialogDemo extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      dialogIsActive: false
+    };
+    this.onUploadDialog = this.onUploadDialog.bind(this);
+    this.onCancel = this.onCancel.bind(this);
+    this.onUpload = this.onUpload.bind(this);
+    this.upload = this.upload.bind(this);
+  }
+
+  onUploadDialog() {
     this.setState({
       dialogIsActive: true
     });
-  };
+  }
 
-  onCancel = () => {
+  onCancel() {
     console.log("Canceling.");
     this.setState({
       dialogIsActive: false
     });
-  };
+  }
 
-  onUpload = () => {
+  onUpload() {
     this.upload();
     this.setState({
       dialogIsActive: false
     });
-  };
+  }
 
-  upload = () => {
+  upload() {
     console.log("Uploading.");
-  };
+  }
 
   render() {
     const { onUploadDialog, onCancel, onUpload } = this;
@@ -112,37 +120,44 @@ class DialogDemo extends Component {
       </Fragment>
     );
   }
-}
-`;
+}`;
 
+// eslint-disable-next-line no-unused-vars
 class DialogDemo extends Component {
-  state = {
-    dialogIsActive: false
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      dialogIsActive: false
+    };
+    this.onUploadDialog = this.onUploadDialog.bind(this);
+    this.onCancel = this.onCancel.bind(this);
+    this.onUpload = this.onUpload.bind(this);
+    this.upload = this.upload.bind(this);
+  }
 
-  onUploadDialog = () => {
+  onUploadDialog() {
     this.setState({
       dialogIsActive: true
     });
-  };
+  }
 
-  onCancel = () => {
+  onCancel() {
     console.log("Canceling.");
     this.setState({
       dialogIsActive: false
     });
-  };
+  }
 
-  onUpload = () => {
+  onUpload() {
     this.upload();
     this.setState({
       dialogIsActive: false
     });
-  };
+  }
 
-  upload = () => {
+  upload() {
     console.log("Uploading.");
-  };
+  }
 
   render() {
     const { onUploadDialog, onCancel, onUpload } = this;

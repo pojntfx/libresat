@@ -1,5 +1,6 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import { CheckBox } from "../CheckBox";
+import { List } from "../../list/List";
 
 // Docs
 import { DocsSection } from "../../../components/docs/DocsSection";
@@ -8,8 +9,8 @@ export const CheckBoxDocs = () => (
   <DocsSection
     title="CheckBox"
     id="checkbox"
-    demos={<CheckBoxDemo />}
     code={code}
+    scope={scope}
     api={[
       {
         title: "on (boolean)",
@@ -36,30 +37,36 @@ export const CheckBoxDocs = () => (
   />
 );
 
-const code = `
-class CheckBoxDemo extends Component {
-  state = {
-    warnOnPageReloadIsOn: false,
-    reportBugsIsOn: true
-  };
+const scope = { List, CheckBox, Component };
 
-  toggleOnPageReloadWarning = () => {
+const code = `class CheckBoxDemo extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      warnOnPageReloadIsOn: false,
+      reportBugsIsOn: true
+    };
+    this.toggleOnPageReloadWarning = this.toggleOnPageReloadWarning.bind(this);
+    this.toggleReportBugs = this.toggleReportBugs.bind(this);
+  }
+
+  toggleOnPageReloadWarning() {
     this.setState({
       warnOnPageReloadIsOn: !this.state.warnOnPageReloadIsOn
     });
-  };
+  }
 
-  toggleReportBugs = () => {
+  toggleReportBugs() {
     this.setState({
       reportBugsIsOn: !this.state.reportBugsIsOn
     });
-  };
+  }
 
   render() {
     const { warnOnPageReloadIsOn, reportBugsIsOn } = this.state;
     const { toggleOnPageReloadWarning, toggleReportBugs } = this;
     return (
-      <Fragment>
+      <List>
         <CheckBox
           label="Warn on page reload"
           name="warn-on-page-reload"
@@ -72,35 +79,40 @@ class CheckBoxDemo extends Component {
           on={reportBugsIsOn}
           onClick={toggleReportBugs}
         />
-      </Fragment>
+      </List>
     );
   }
-}
-`;
+}`;
 
+// eslint-disable-next-line no-unused-vars
 class CheckBoxDemo extends Component {
-  state = {
-    warnOnPageReloadIsOn: false,
-    reportBugsIsOn: true
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      warnOnPageReloadIsOn: false,
+      reportBugsIsOn: true
+    };
+    this.toggleOnPageReloadWarning = this.toggleOnPageReloadWarning.bind(this);
+    this.toggleReportBugs = this.toggleReportBugs.bind(this);
+  }
 
-  toggleOnPageReloadWarning = () => {
+  toggleOnPageReloadWarning() {
     this.setState({
       warnOnPageReloadIsOn: !this.state.warnOnPageReloadIsOn
     });
-  };
+  }
 
-  toggleReportBugs = () => {
+  toggleReportBugs() {
     this.setState({
       reportBugsIsOn: !this.state.reportBugsIsOn
     });
-  };
+  }
 
   render() {
     const { warnOnPageReloadIsOn, reportBugsIsOn } = this.state;
     const { toggleOnPageReloadWarning, toggleReportBugs } = this;
     return (
-      <Fragment>
+      <List>
         <CheckBox
           label="Warn on page reload"
           name="warn-on-page-reload"
@@ -113,7 +125,7 @@ class CheckBoxDemo extends Component {
           on={reportBugsIsOn}
           onClick={toggleReportBugs}
         />
-      </Fragment>
+      </List>
     );
   }
 }
