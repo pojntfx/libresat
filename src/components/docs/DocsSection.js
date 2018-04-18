@@ -21,7 +21,7 @@ export class DocsSection extends Component {
   };
 
   // This is repetetive for now, but there will be features that require this
-  // kind of control in the docs in the future (live code editing).
+  // kind of control in the docs in the future (saving live code editing changes)
   toggleDemo = event => {
     // Don't use native open/close
     event.preventDefault();
