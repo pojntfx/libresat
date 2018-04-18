@@ -15,6 +15,7 @@ export const CardDocs = () => (
     id="card"
     demos={<CardDemo />}
     code={code}
+    scope={scope}
     api={[
       {
         title: "header (optional) (node[])",
@@ -40,33 +41,31 @@ export const CardDocs = () => (
   />
 );
 
-const code = `
-class CardDemo extends Component {
-  CardImage = styled.img\`
-    max-height: 360px;
-    object-fit: cover;
-    width: 100%;
-  \`;
+const scope = { styled, Card, Button, Tool, Component };
 
-  onOptions = () => console.log("Opening options.");
+const code = `class CardDemo extends Component {
+  onOptions() {
+    console.log("Opening options.");
+  }
 
-  onLike = () => console.log("Liking.");
+  onLike() {
+    console.log("Liking.");
+  }
 
-  onBookmark = () => console.log("Bookmarking.");
+  onBookmark() {
+    console.log("Bookmarking.");
+  }
 
-  onShare = () => console.log("Sharing.");
+  onShare() {
+    console.log("Sharing.");
+  }
 
-  onComment = () => console.log("Commenting.");
+  onComment() {
+    console.log("Commenting.");
+  }
 
   render() {
-    const {
-      onOptions,
-      CardImage,
-      onLike,
-      onBookmark,
-      onShare,
-      onComment
-    } = this;
+    const { onOptions, onLike, onBookmark, onShare, onComment } = this;
 
     return (
       <Card
@@ -77,9 +76,14 @@ class CardDemo extends Component {
           </Tool>
         ]}
         media={
-          <CardImage
+          <img
             src="https://www.zoggs.com/wp/wp-content/uploads/2016/07/Palombaggia-beach.jpg"
             alt="beach on corsica"
+            style={{
+              maxHeight: "360px",
+              objectFit: "cover",
+              width: "100%"
+            }}
           />
         }
         footer={[
@@ -106,35 +110,31 @@ class CardDemo extends Component {
       </Card>
     );
   }
-}
-`;
+}`;
 
 class CardDemo extends Component {
-  CardImage = styled.img`
-    max-height: 360px;
-    object-fit: cover;
-    width: 100%;
-  `;
+  onOptions() {
+    console.log("Opening options.");
+  }
 
-  onOptions = () => console.log("Opening options.");
+  onLike() {
+    console.log("Liking.");
+  }
 
-  onLike = () => console.log("Liking.");
+  onBookmark() {
+    console.log("Bookmarking.");
+  }
 
-  onBookmark = () => console.log("Bookmarking.");
+  onShare() {
+    console.log("Sharing.");
+  }
 
-  onShare = () => console.log("Sharing.");
-
-  onComment = () => console.log("Commenting.");
+  onComment() {
+    console.log("Commenting.");
+  }
 
   render() {
-    const {
-      onOptions,
-      CardImage,
-      onLike,
-      onBookmark,
-      onShare,
-      onComment
-    } = this;
+    const { onOptions, onLike, onBookmark, onShare, onComment } = this;
 
     return (
       <Card
@@ -145,9 +145,14 @@ class CardDemo extends Component {
           </Tool>
         ]}
         media={
-          <CardImage
+          <img
             src="https://www.zoggs.com/wp/wp-content/uploads/2016/07/Palombaggia-beach.jpg"
             alt="beach on corsica"
+            style={{
+              maxHeight: "360px",
+              objectFit: "cover",
+              width: "100%"
+            }}
           />
         }
         footer={[
