@@ -16,9 +16,19 @@ import * as theme from "./lib/constants";
 
 // Global styles
 injectGlobal`
+html {
+  height: 100%;
+}
+
 body {
   font-family: Roboto, -apple-system, BlinkMacSystemFont, "Segoe UI", Oxygen-Sans,
     Cantarell, Ubuntu, "Helvetica Neue", sans-serif;
+    height: 100%;
+    overflow-y: auto;
+}
+
+#osnet-bc{
+  min-height: 100%;
 }
 
 // Make links consistent with the rest of the interactive elements

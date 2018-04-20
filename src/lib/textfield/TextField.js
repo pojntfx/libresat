@@ -23,7 +23,7 @@ export const TextField = ({
   ...otherProps
 }) => (
   <InputWrapper>
-    <Label htmlFor={name}>{label}</Label>
+    {label ? <Label htmlFor={name}>{label}</Label> : null}
     <TextFieldWrapper
       type={type}
       name={name}
@@ -63,11 +63,14 @@ const TextFieldWrapper = styled.input`
       margins: { textFields }
     }
   }) => textFields};
-  margin-left: ${({
-    theme: {
-      margins: { textFields }
-    }
-  }) => textFields};
+  margin-left: ${(
+    {
+      theme: {
+        margins: { textFields }
+      }
+    },
+    label
+  ) => (label ? textFields : 0)};
   border-radius: ${({
     theme: {
       radiuses: { textFields }
