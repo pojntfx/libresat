@@ -1,6 +1,4 @@
 import React from "react";
-
-// Router
 import { Link } from "react-router-dom";
 
 export const Start = () => {
@@ -8,7 +6,13 @@ export const Start = () => {
     <nav>
       <ul>
         <li>
-          <Link to="/docs">Docs</Link>
+          <Link to="/login">Login</Link>
+        </li>
+        <li>
+          <Link to="/welcome">Welcome</Link>
+        </li>
+        <li>
+          <Link to="/docs">UI Docs</Link>
         </li>
       </ul>
     </nav>
