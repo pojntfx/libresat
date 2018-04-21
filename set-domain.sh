@@ -1,1 +1,0 @@
-sudo sed -i s/localhost/$1/g gitea/gitea/conf/app.ini

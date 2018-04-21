@@ -1,0 +1,25 @@
+version: "3"
+
+services: 
+  web:
+    image: gitea/gitea:latest
+    networks:
+      - opensdcp-git
+    ports:
+      - "2100:3000"
+      - "2101:22"
+    volumes:
+      - ./opensdcp-git-web-data-dev:/data
+  db:
+    image: postgres:9.6
+    environment: 
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=gitea
+    networks:
+      - opensdcp-git
+    volumes:
+      - ./opensdcp-git-db-data-dev:/var/lib/postgresql/data
+
+networks: 
+  opensdcp-git:

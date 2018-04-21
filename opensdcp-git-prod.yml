@@ -4,28 +4,28 @@ services:
   web:
     image: gitea/gitea:latest
     networks:
-      - gitea
+      - opensdcp-git
     ports:
-      - 1000:3000
-      - 222:3001
+      - "2000:3000"
+      - "2001:22"
     volumes:
-      - gitea-web-data:/data
+      - opensdcp-git-web-data:/data
     deploy:
       replicas: 5
       update_config:
         parallelism: 2
       restart_policy:
         condition: on-failure
-  database:
+  db:
     image: postgres:9.6
     environment: 
       - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
       - POSTGRES_DB=gitea
     networks:
-      - gitea
+      - opensdcp-git
     volumes:
-      - gitea-db-data:/var/lib/postgresql/data
+      - opensdcp-git-db-data:/var/lib/postgresql/data
     deploy:
       replicas: 1
       restart_policy:
@@ -34,8 +34,8 @@ services:
         constraints: [node.role == manager]
 
 networks: 
-  gitea:
+  opensdcp-git:
 
 volumes: 
-  gitea-web-data:
-  gitea-db-data:
+  opensdcp-git-web-data:
+  opensdcp-git-db-data:
