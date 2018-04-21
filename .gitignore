@@ -1,6 +1,6 @@
-# env variables for auth
+# env variables for secrets
 .env
 
-# docker volumes
-gitea/
-postgres/
+# development docker volumes
+opensdcp-git-web-data-dev/
+opensdcp-git-db-data-dev/

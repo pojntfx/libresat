@@ -1,64 +1,82 @@
 # OpenSDCP Git
 
-Gitea instance for the OpenSDCP project.
+Gitea service configuration for the OpenSDCP project.
+
+> Consider reading the [infrastructure overview](https://github.com/opensdcp/opensdcp-infrastructure#overview) before continuing.
 
 ## Demo
 
-> TODO: Add demo
+Visit [git.opensdcp.org](https://git.opensdcp.org/) and take a look at our instance.
 
 ## Usage
 
-First, create a `.env` file in this directory with the following content. Change `YOUR_PASSWORD_HERE` and `YOUR_USERNAME_HERE` to credentials of your liking:
+### Preparation
 
 ```bash
-POSTGRES_USER=YOUR_USERNAME_HERE
-POSTGRES_PASSWORD=YOUR_PASSWORD_HERE
+# Install dependencies (Ubuntu and Debian)
+sudo apt install docker.io docker-compose
+# Set password and username of the database
+echo \
+"POSTGRES_USER=YOUR_USERNAME_HERE
+POSTGRES_PASSWORD=YOUR_PASSWORD_HERE"\
+>> .env
+# Read in the env variables
+source .env
 ```
 
-Then, install dependencies and run the instance:
+### Startup
 
 ```bash
-# Install dependencies using apt (Ubuntu and Debian)
-npm run apt-install
-# Build and serve development version on http://localhost:3000/
-npm start
+# Serve development version on http://YOUR_IP:2100
+docker-compose -f opensdcp-git-dev.yml up
+# ALTERNATIVE: Serve production version on http://YOUR_IP:2000
+docker-compose -f opensdcp-git-prod.yml up
 ```
 
-Now open up your browser at `http://localhost:3000/` and continue with the installation. Select the following:
+### Setup
 
-* `PostgreSQL` as the database type
-* `database:5432` as the database host
-* `YOUR_USERNAME_HERE` as the database user
-* `YOUR_PASSWORD_HERE` as the database password
-* `My OpenSDCP Gitea` as the application name (use whatever you want here)
+Visit `http://YOUR_IP:YOUR_PORT_FROM_ABOVE` and continue with the installation. Select the following:
 
-Use the defaults for the rest. You may set your domain later using
+| Key               | Value                                           |
+| ----------------- | ----------------------------------------------- |
+| Database type     | `PostgreSQL`                                    |
+| Database host     | `db:5432`                                       |
+| Database user     | `YOUR_USERNAME_HERE`                            |
+| Database password | `YOUR_PASSWORD_HERE`                            |
+| Application name  | `My OpenSDCP Gitea`                             |
+| SSH server domain | `YOUR_IP`                                       |
+| SSH server port   | `YOUR_PORT_FROM_ABOVE_WITH_1_INSTEAD_OF_LAST_0` |
+| HTTP port         | `YOUR_PORT_FROM_ABOVE`                          |
+| Application URL   | `http://YOUR_IP:YOUR_PORT_FROM_ABOVE`           |
 
-```bash
-npm run set-domain YOUR_DOMAIN_OR_IP
-```
-
-if you want to deploy.
+Use the defaults for the rest. You may change YOUR_IP (which will be in the clone URLs) later by editing the Gitea config files.
 
 Now check the terminal output, look for whether the PostgreSQL database server has started up (it might take some time) and start the installation!
 
-After it has completed, register. The first user will be the admin. All the data will be saved in `gitea/` and `postgres/` in case you want to create backups.
+After it has completed, register. The first user will be the admin. Then sign in to test whether everything works!
+
+> If you chose the development version, all the data will be saved in `./opensdcp-git-web-data-dev/` and `./opensdcp-git-db-data-dev/` in case you want to create backups. If you used the production version, it will be saved in the `opensdcp-git-web-data` and `opensdcp-git-db-data` docker volumes.
 
 ## Screenshots
 
-> TODO: Add screenshots
+![Example repository in Gitea instance](screenshots/repository.png)
 
 ## Documentation
 
-> TODO: Add docs
+Visit the [official Gitea documentation](https://docs.gitea.io/) to learn more about Gitea.
 
 ## Deployment
 
-> TODO: Add deployment
+> Use the Portainer GUI (opensdcp-swarm-manager) to set the env variables by creating the stack there or hard-code them into the opensdcp-git-prod.yml file. They are NOT being read in by docker stack deploy, which will result in the `The database settings are invalid: pq: role "YOUR_USERNAME_HERE" does not exist` error upon setup.
+
+```bash
+# Deploy production version to your docker swarm on http://YOUR_IP:2000
+docker stack deploy -c opensdcp-git-prod.yml opensdcp-git
+```
 
 ## License
 
-OpenSDCP Gitea Instance (C) 2018 Felix Pojtinger
+OpenSDCP Gitea Service Configuration (C) 2018 Felix Pojtinger
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
