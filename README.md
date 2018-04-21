@@ -2,19 +2,36 @@
 
 Main website for all the OpenSDCP projects.
 
+> Consider reading the [infrastructure overview](https://github.com/opensdcp/opensdcp-infrastructure#overview) before continuing.
+
 ## Demo
 
 Try out an [up-to-date instance](https://opensdcp.now.sh/) hosted on Zeit Now.
 
 ## Usage
 
+### Preparation
+
 ```bash
 # Install dependencies
 npm install
-# Build and serve development version on http://localhost:3000/
+# ALTERNATIVE: If you want to use docker (Ubuntu and Debian):
+sudo apt install docker.io docker-compose
+```
+
+### Startup
+
+```bash
+# Build and serve development version on http://YOUR_IP:3000/
 npm run dev
-# Build and serve development version on http://localhost:3000 using docker-compose
-npm run dev-docker
+# Build a production ready version in the build/ folder
+npm run build
+# Serve production ready version on http://YOUR_IP:5000/
+npm run start
+# ALTERNATIVE: If you want to use docker, serve development version on http://YOUR_IP:8100
+docker-compose -f opensdcp-website-dev.yml up
+# ALTERNATIVE: If you want to use docker, serve production version on http://YOUR_IP:80
+docker-compose -f opensdcp-website-prod.yml up
 ```
 
 ## Screenshots
@@ -28,18 +45,12 @@ npm run dev-docker
 ## Deployment
 
 ```bash
-# Build a production ready version in the build/ folder
-npm run build
-# Serve production ready version on http://localhost:5000/
-npm run start
-# Build and serve production ready version on https://localhost using docker-compose
-npm run start-docker
 # If you want to share it with the world, deploy to Zeit Now
 npm run deploy
 # Deploy a demo instance on https://opensdcp.now.sh (if alias is not already taken)
 npm run deploy-demo
-# Deploy an instance on your docker swarm
-npm run deploy-docker
+# ALTERNATIVE: If you want to use docker, deploy production version to your docker swarm on http://YOUR_IP:80
+docker stack deploy -c opensdcp-website-prod.yml opensdcp-website
 ```
 
 ## License
