@@ -4,9 +4,9 @@ services:
   web:
     image: portainer/portainer:latest
     ports:
-      - 9000:9000
+      - "1100:9000"
     volumes:
-      - portainer-data:/data
+      - ./opensdcp-swarm-manager-web-data-dev:/data
       - /var/run/docker.sock:/var/run/docker.sock
     deploy:
       replicas: 1
@@ -16,6 +16,3 @@ services:
         condition: on-failure
       placement:
         constraints: [node.role == manager]
-
-volumes: 
-  portainer-data:
