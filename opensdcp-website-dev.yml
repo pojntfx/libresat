@@ -4,14 +4,8 @@ services:
   web:
     image: node:latest
     ports:
-      - 3000:3000
+      - "8100:3000"
     working_dir: /home/node/app
     volumes:
       - ./:/home/node/app
     command: bash -c "npm install; npm run dev"
-    deploy:
-      replicas: 5
-      update_config:
-        parallelism: 2
-      restart_policy:
-        condition: on-failure
