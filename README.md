@@ -1,82 +1,74 @@
 # OpenSDCP Wiki
 
-MediaWiki instance for the OpenSDCP project.
+MediaWiki service configuration for the OpenSDCP project.
+
+> Consider reading the [infrastructure overview](https://github.com/opensdcp/opensdcp-infrastructure#overview) before continuing.
 
 ## Demo
 
-> TODO: Add demo
+Visit [wiki.opensdcp.org](https://wiki.opensdcp.org/) and take a look at our instance.
 
 ## Usage
 
-First, create a `.env` file in this directory with the following content. Change `YOUR_PASSWORD_HERE`, `YOUR_SECOND_PASSWORD_HERE` and `YOUR_USERNAME_HERE` to credentials of your liking:
+### Preparation
 
 ```bash
-MYSQL_DATABASE_NAME=opensdcp_mediawiki
-MYSQL_USERNAME=YOUR_USERNAME_HERE
-MYSQL_PASSWORD=YOUR_PASSWORD_HERE
-MYSQL_ROOT_PASSWORD=YOUR_SECOND_PASSWORD_HERE
+# Install dependencies (Ubuntu and Debian)
+sudo apt install docker.io docker-compose
+# Set password and username of the database (change 4000 to 4100 when using the development instance)
+echo \
+"MYSQL_ROOT_PASSWORD=YOUR_PASSWORD_HERE
+WIKI_URL=//YOUR_IP:4000
+WIKI_NAME=YOUR_WIKI_NAME_HERE
+WIKI_ADMIN_USER=YOUR_NAME_HERE
+WIKI_ADMIN_PASSWORD=YOUR_PASSWORD_HERE
+WIKI_DB_USER=ANOTHER_NAME_HERE
+WIKI_DB_USER_PASSWORD=ANOTHER_PASSWORD_HERE
+RENDERER_ACCESS_KEY=A_SECURE_TOKEN_HERE"\
+>> .env
+# Read in the env variables
+source .env
 ```
 
-Then, install dependencies and run the instance:
+### Startup
 
 ```bash
-# Install dependencies using apt (Ubuntu and Debian)
-npm run apt-install
-# Build and serve development version on http://localhost:3000/
-npm start
+# Serve development version on http://YOUR_IP:4100
+docker-compose -f opensdcp-wiki-dev.yml up --build
+# ALTERNATIVE: Serve production version on http://YOUR_IP:4000
+# If you want to see your changes from the dev version reflected here, build a new image of the "web" container and
+# use it in `opensdcp-wiki-prod.yml` instead of `pojntfx/opensdcp-wiki-web:latest`
+docker-compose -f opensdcp-wiki-prod.yml up
 ```
 
-Now open up your browser at `http://localhost:3000/` and continue with the installation by clicking on "set up the wiki".
+### Setup
 
-First, select your language. Click "continue" until you're at "Connect to database".
+Wait until the web service is online (this may take some time), visit `http://YOUR_IP:YOUR_PORT_FROM_ABOVE` and sign in with the data from above to test whether everything works!
 
-Enter the following:
-
-* `db:3306` as the database host
-* `opensdcp_mediawiki` as the database name
-* `YOUR_USERNAME_HERE` as the database username
-* `YOUR_PASSWORD_HERE` as the database password
-
-Use the defaults for the rest. Click continue and select
-
-* `UTF-8` as the database character set
-
-Use the defaults for the rest. Click continue and enter the following (adjusting the credentials, of course):
-
-* `My OpenSDCP MediaWiki` (or what ever you want to use) as the name of the wiki
-* `ANOTHER_USERNAME_HERE` as the administrator account
-* `ANOTHER_PASSWORD_HERE` as the administator password
-* `YOUR_EMAIL` as the email address
-
-Use the defaults for the rest. Either select "I'm bored already, just install the wiki." and click continue or tweak more options. MediaWiki is now generating the configuration file.
-
-Your browser should have downloaded a "LocalSettings.php" file. Copy this file into the same directory as the `.env` file.
-
-Restart the server now by hitting `CTRL-C` in the terminal from before. Now read the configuration file:
-
-```bash
-npm run inject-config-file
-```
-
-and restart the server by running `npm start` again. The wiki should now be accessible at `localhost:3000`!
-
-After it has completed, login with the admin account or register. All the data will be saved in `mediawiki/` and `mariadb/` in case you want to create backups.
+> If you chose the development version, all the data will be saved in `./opensdcp-wiki-web-data/`, `./opensdcp-wiki-web-images-data/`, `./opensdcp-wiki-db-data/`, `./opensdcp-wiki-restbase-data/` and `./opensdcp-wiki-elasticsearch-data/` in case you want to create backups. If you used the production version, it will be saved in the `opensdcp-wiki-web-data`, `opensdcp-wiki-web-images-data`, `opensdcp-wiki-db-data`, `opensdcp-wiki-restbase-data` and `opensdcp-wiki-elasticsearch-data` docker volumes.
 
 ## Screenshots
 
-> TODO: Add screenshots
+![Main page in MediaWiki instance](screenshots/mainpage.png)
 
 ## Documentation
 
-> TODO: Add docs
+Visit the [official MediaWiki wiki](https://www.mediawiki.org/wiki/MediaWiki) to learn more about MediaWiki.
 
 ## Deployment
 
-> TODO: Add deployment
+> Use the Portainer GUI (opensdcp-swarm-manager) to set the env variables by creating the stack there or hard-code them into the opensdcp-wiki-prod.yml file. They are NOT being read in by docker stack deploy, which will result in various errors upon setup because the web server container can't connect to the database.
+
+```bash
+# Deploy production version to your docker swarm on http://YOUR_IP:4000
+# If you want to see your changes from the dev version reflected here, build a new image of the "web" container and
+# use it in `opensdcp-wiki-prod.yml` instead of `pojntfx/opensdcp-wiki-web:latest`
+docker stack deploy -c opensdcp-wiki-prod.yml opensdcp-git
+```
 
 ## License
 
-OpenSDCP WikiMedia Instance (C) 2018 Felix Pojtinger
+OpenSDCP MediaWiki Service Configuration (C) 2018 Felix Pojtinger
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
