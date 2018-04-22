@@ -28,9 +28,9 @@ source .env
 ### Startup
 
 ```bash
-# Serve development version on http://YOUR_IP:4100
+# Serve development version on http://YOUR_IP:3100
 docker-compose -f opensdcp-forum-dev.yml up
-# ALTERNATIVE: Serve production version on http://YOUR_IP:4000
+# ALTERNATIVE: Serve production version on http://YOUR_IP:3000
 docker-compose -f opensdcp-forum-prod.yml up
 ```
 
@@ -70,7 +70,7 @@ Visit the [official Flarum documentation](http://flarum.org/docs/) to learn more
 > Use the Portainer GUI (opensdcp-swarm-manager) to set the env variables by creating the stack there or hard-code them into the opensdcp-forum-prod.yml file. They are NOT being read in by docker stack deploy, which will result in various errors upon setup because the web server container can't connect to the database.
 
 ```bash
-# Deploy production version to your docker swarm on http://YOUR_IP:4000
+# Deploy production version to your docker swarm on http://YOUR_IP:3000
 docker stack deploy -c opensdcp-forum-prod.yml opensdcp-forum
 ```
 
