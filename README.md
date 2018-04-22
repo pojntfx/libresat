@@ -1,68 +1,82 @@
 # OpenSDCP Forum
 
-Discourse instance for the OpenSDCP project.
+Flarum service configuration for the OpenSDCP project.
+
+> Consider reading the [infrastructure overview](https://github.com/opensdcp/opensdcp-infrastructure#overview) before continuing.
 
 ## Demo
 
-> TODO: Add demo
+Visit [forum.opensdcp.org](https://forum.opensdcp.org/) and take a look at our instance.
 
 ## Usage
 
-First, create a `.env` file in this directory with the following content (or, if your hosting provider supports it, set them in your web console). Change usernames, passwords etc. to credentials of your liking:
+### Preparation
 
 ```bash
-# Database setup
-POSTGRES_PW=forum_postgres_password
-REDIS_PW=forum_redis_password
-# Discourse admin credentials
-DISCOURSE_EMAIL=admin@opensdcp.org
-# Discourse preferences
-DISCOURSE_SITENAME=OpenSDCP
-# Discourse email (notifications etc.)
-SMTP_HOST=smtp.opensdcp.org
-SMTP_PORT=587
-SMTP_USERNAME=forum@opensdcp.org
-SMTP_PASSWORD=forum_smtp_password
-```
-
-Now, source the environment variables:
-
-```bash
+# Install dependencies (Ubuntu and Debian)
+sudo apt install docker.io docker-compose
+# Set password and username of the database
+echo \
+"FORUM_URL=YOUR_IP
+DB_USER=YOUR_USERNAME_HERE
+DB_PASSWORD=YOUR_PASSWORD_HERE"\
+>> .env
+# Read in the env variables
 source .env
 ```
 
-After that, start the server (make sure you have the `docker.io` and `docker-compose` packages installed):
+### Startup
 
 ```bash
-docker-compose up
+# Serve development version on http://YOUR_IP:4100
+docker-compose -f opensdcp-forum-dev.yml up
+# ALTERNATIVE: Serve production version on http://YOUR_IP:4000
+docker-compose -f opensdcp-forum-prod.yml up
 ```
 
-This may take quite some time, especially when connecting to the Postgresql server. When it has been finished, open up `localhost:3000` and continue the setup there!
-The admin user has the following credentials:
+### Setup
 
-* DISCOURSE_USERNAME=admin
-* DISCOURSE_PASSWORD=discourse_admin_password
+Visit `http://YOUR_IP:YOUR_PORT_FROM_ABOVE` and continue with the installation. Select the following:
 
-Be sure to change that!
-If you need OpenSDCP branding etc., be sure to check out the [OpenSDCP design repository](https://github.com/opensdcp/opensdcp-design).
+| Key                                 | Value                                              |
+| ----------------------------------- | -------------------------------------------------- |
+| Forum title                         | `My OpenSDCP Community`                            |
+| MySQL host                          | `db`                                               |
+| MySQL database                      | `flarum`                                           |
+| MySQL user                          | `YOUR_USERNAME_HERE`                               |
+| MySQL password                      | `YOUR_PASSWORD_HERE`                               |
+| Admin username                      | `ANOTHER_USERNAME_HERE`                            |
+| Admin email                         | `you@your-provider.com`                            |
+| Admin password and Confirm password | `ANOTHER_PASSWORD_HERE_AT_LEAST_8_CHARACTERS_LONG` |
 
-All the data will be saved in `discourse/`, `postgresql/`, `redis` and `sidekiq` in case you want to create backups. If your hosting provider supports it, those will be `persistentVolumeClaims` that you can download.
+Use the defaults for the rest and start the installation.
+
+Then reload and sign in (you may already be signed in) to test whether everything works!
+
+If you need some OpenSDCP branding, be sure to check out the [OpenSDCP Design Repository](https://github.com/opensdcp/opensdcp-design).
+
+> If you chose the development version, all the data will be saved in `./opensdcp-forum-web-assets-data-dev/`, './opensdcp-forum-web-extensions-data-dev/' and `./opensdcp-forum-db-data-dev/` in case you want to create backups. If you used the production version, it will be saved in the `opensdcp-forum-web-assets-data`, `opensdcp-forum-web-extensions-data` and `opensdcp-forum-db-data` docker volumes.
 
 ## Screenshots
 
-> TODO: Add screenshots
+![Start page in Flarum instance](screenshots/startpage.png)
 
 ## Documentation
 
-> TODO: Add docs
+Visit the [official Flarum documentation](http://flarum.org/docs/) to learn more about Flarum.
 
 ## Deployment
 
-> TODO: Add deployment
+> Use the Portainer GUI (opensdcp-swarm-manager) to set the env variables by creating the stack there or hard-code them into the opensdcp-forum-prod.yml file. They are NOT being read in by docker stack deploy, which will result in various errors upon setup because the web server container can't connect to the database.
+
+```bash
+# Deploy production version to your docker swarm on http://YOUR_IP:4000
+docker stack deploy -c opensdcp-forum-prod.yml opensdcp-forum
+```
 
 ## License
 
-OpenSDCP Discourse Instance (C) 2018 Felix Pojtinger
+OpenSDCP Flarum Service Configuration (C) 2018 Felix Pojtinger
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
