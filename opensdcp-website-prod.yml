@@ -11,5 +11,3 @@ services:
         parallelism: 2
       restart_policy:
         condition: on-failure
-      placement:
-        constraints: [node.role == manager]
