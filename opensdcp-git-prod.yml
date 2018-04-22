@@ -11,9 +11,7 @@ services:
     volumes:
       - opensdcp-git-web-data:/data
     deploy:
-      replicas: 5
-      update_config:
-        parallelism: 2
+      replicas: 1
       restart_policy:
         condition: on-failure
   db:
