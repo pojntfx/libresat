@@ -66,7 +66,7 @@ Medium is particularly important here as it is the main site especially for js/h
 
 ### Forum
 
-Another really important factor of any modern open source project is a vibrant community forum. It is important in that without it, any shared information would be gone instantly (i.e. IRC conversations) if it would not be shared/written down in the wiki. Using a modern forum (discourse, of course) enables you to share and your information in a truly persistent way; the information is available without you signing in and you may be notified when your thread gets answers.
+Another really important factor of any modern open source project is a vibrant community forum. It is important in that without it, any shared information would be gone instantly (i.e. IRC conversations) if it would not be shared/written down in the wiki. Using a modern forum (Flarum) enables you to share and your information in a truly persistent way; the information is available without you signing in and you may be notified when your thread gets answers.
 
 ### Wiki
 

@@ -10,36 +10,34 @@ The infrastrucure is completely containerized and thus quite portable. Each serv
 
 ### Working services
 
-| Name                                                                         | Description                                            | Port | URL                                                |
-| ---------------------------------------------------------------------------- | ------------------------------------------------------ | ---- | -------------------------------------------------- |
-| [opensdcp-website](https://github.com/opensdcp/opensdcp-website)             | Main website for navigation and official documentation | 80   | [opensdcp.org](https://opensdcp.org)               |
-| [opensdcp-swarm-manager](https://github.com/opensdcp/opensdcp-swarm-manager) | Docker swarm management GUI                            | 1000 | [cpanel.opensdcp.org](https://cpanel.opensdcp.org) |
-| [opensdcp-git](https://github.com/opensdcp/opensdcp-git)                     | Git service for version control and collaboration      | 2000 | [git.opensdcp.org](https://git.opensdcp.org)       |
-| [opensdcp-forum](https://github.com/opensdcp/opensdcp-forum)                 | Discussion and support platform                        | 3000 | [forum.opensdcp.org](https://forum.opensdcp.org)   |
-| [opensdcp-wiki](https://github.com/opensdcp/opensdcp-wiki)                   | Documentation and detailed guides from the community   | 4000 | [wiki.opensdcp.org](https://wiki.opensdcp.org)     |
+| Name                                                                         | Description                                                      | Port | URL                                                |
+| ---------------------------------------------------------------------------- | ---------------------------------------------------------------- | ---- | -------------------------------------------------- |
+| [opensdcp-website](https://github.com/opensdcp/opensdcp-website)             | Main website for navigation and official documentation (NextJS)  | 80   | [opensdcp.org](https://opensdcp.org)               |
+| [opensdcp-swarm-manager](https://github.com/opensdcp/opensdcp-swarm-manager) | Docker swarm management GUI (Portainer)                          | 1000 | [cpanel.opensdcp.org](https://cpanel.opensdcp.org) |
+| [opensdcp-git](https://github.com/opensdcp/opensdcp-git)                     | Git service for version control and collaboration (Gitea)        | 2000 | [git.opensdcp.org](https://git.opensdcp.org)       |
+| [opensdcp-forum](https://github.com/opensdcp/opensdcp-forum)                 | Discussion and support platform (Flarum)                         | 3000 | [forum.opensdcp.org](https://forum.opensdcp.org)   |
+| [opensdcp-wiki](https://github.com/opensdcp/opensdcp-wiki)                   | Documentation and detailed guides from the community (MediaWiki) | 4000 | [wiki.opensdcp.org](https://wiki.opensdcp.org)     |
 
 ### Planned services
 
-| Name              | Description                                                                         |
-| ----------------- | ----------------------------------------------------------------------------------- |
-| opensdcp-demo     | Live demo of an OpenSNET Bridge                                                     |
-| opensdcp-chat     | Slack-like chat area for quick (and non-persistent) help and discussion             |
-| opensdcp-irc      | Simple and lightweight chat area for quick (and non-persistent) help and discussion |
-| opensdcp-call     | Video and voice calls for contributors                                              |
-| opensdcp-mail     | Mail server for contributors                                                        |
-| opensdcp-kanban   | Kanban boards for contributors to better coordinate the project                     |
-| opensdcp-identity | Single sign-on server for all services                                              |
+| Name              | Description                                                                                    |
+| ----------------- | ---------------------------------------------------------------------------------------------- |
+| opensdcp-demo     | Live demo of an OpenSNET Bridge (NodeJS)                                                       |
+| opensdcp-chat     | Slack-like chat area for quick (and non-persistent) help and discussion (Mattermost)           |
+| opensdcp-irc      | Simple and lightweight chat area for quick (and non-persistent) help and discussion (InspIRCd) |
+| opensdcp-call     | Video and voice calls for contributors (Jitsi)                                                 |
+| opensdcp-mail     | Mail server for contributors (Mailu)                                                           |
+| opensdcp-kanban   | Kanban boards for contributors to better coordinate the project (Wekan)                        |
+| opensdcp-identity | Single sign-on server for all services (OAuth)                                                 |
 
 ### Our setup
-
-This is how we've set up our services:
 
 We test our services in our local docker swarm (see [Usage](#usage)) and then deploy them to our public production swarm.
 Our domains are from [Gandi](https://www.gandi.net/) and our docker swarm nodes run on [OVH](https://www.ovh.com) VPSs.
 
 ## Demo
 
-> TODO: Add demo
+Visit [opensdcp.org](https://opensdcp.org/) and take a look all our instances.
 
 ## Usage
 
@@ -59,6 +57,8 @@ docker swarm join \
     --token yourtoken \
     youripaddress:2377
 # Now follow the individual instructions in the services' repositories (look for "Deployment to swarm")!
+# It makes sense to install the `opensdcp-swarm-manager` first and then deploy the services as stacks
+# using it's GUI (which is especially helpful for settings the environment variables)
 ```
 
 ## Screenshots
