@@ -20,14 +20,15 @@ The infrastrucure is completely containerized and thus quite portable. Each serv
 
 ### Planned services
 
-| Name            | Description                                                                         |
-| --------------- | ----------------------------------------------------------------------------------- |
-| opensdcp-demo   | Live demo of an OpenSNET Bridge                                                     |
-| opensdcp-chat   | Slack-like chat area for quick (and non-persistent) help and discussion             |
-| opensdcp-irc    | Simple and lightweight chat area for quick (and non-persistent) help and discussion |
-| opensdcp-call   | Video and voice calls for contributors                                              |
-| opensdcp-mail   | Mail server for contributors                                                        |
-| opensdcp-kanban | Kanban boards for contributors to better coordinate the project                     |
+| Name              | Description                                                                         |
+| ----------------- | ----------------------------------------------------------------------------------- |
+| opensdcp-demo     | Live demo of an OpenSNET Bridge                                                     |
+| opensdcp-chat     | Slack-like chat area for quick (and non-persistent) help and discussion             |
+| opensdcp-irc      | Simple and lightweight chat area for quick (and non-persistent) help and discussion |
+| opensdcp-call     | Video and voice calls for contributors                                              |
+| opensdcp-mail     | Mail server for contributors                                                        |
+| opensdcp-kanban   | Kanban boards for contributors to better coordinate the project                     |
+| opensdcp-identity | Single sign-on server for all services                                              |
 
 ### Our setup
 
