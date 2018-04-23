@@ -1,0 +1,39 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: opensdcp-git-web-service
+spec:
+  selector:
+    app: opensdcp-git-web
+    tier: backend
+    track: stable
+  ports:
+    - name: web
+      targetPort: web
+      port: 2000
+    - name: ssh
+      targetPort: ssh
+      port: 2001
+  type: NodePort
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: opensdcp-git-web-deployment
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: opensdcp-git-web
+        tier: backend
+        track: stable
+    spec:
+      containers:
+        - image: gitea/gitea:latest
+          name: web
+          ports:
+            - name: web
+              containerPort: 3000
+            - name: ssh
+              containerPort: 22
