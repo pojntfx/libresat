@@ -29,6 +29,7 @@ The infrastrucure is completely containerized and thus quite portable. Each serv
 | opensdcp-mail     | Mail server for contributors (Mailu)                                                           |
 | opensdcp-kanban   | Kanban boards for contributors to better coordinate the project (Wekan)                        |
 | opensdcp-identity | Single sign-on server for all services (OAuth)                                                 |
+| opensdcp-status   | Status page that shows each service's status info                                              |
 
 ### Our setup
 
