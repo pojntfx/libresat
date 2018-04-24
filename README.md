@@ -67,6 +67,38 @@ Visit the [official Gitea documentation](https://docs.gitea.io/) to learn more a
 
 ## Deployment
 
+### Kubernetes
+
+```bash
+# Set env variables
+kubectl create configmap opensdcp-git-config \
+--from-literal=postgres_user=YOUR_USERNAME_HERE \
+--from-literal=postgres_password=YOUR_PASSWORD_HERE \
+
+# Create the db's persistent volume
+kubectl create -f persistentvolumes/db.yml
+# Create the db's persistent volume claim
+kubectl create -f persistentvolumeclaims/db.yml
+# Create the db's deployment
+kubectl create -f deployments/db.yml
+# Create the db's service
+kubectl create -f services/db.yml
+
+# Create the web server's persistent volume
+kubectl create -f persistentvolumes/web.yml
+# Create the web server's persistent volume claim
+kubectl create -f persistentvolumeclaims/web.yml
+# Create the web server's deployment
+kubectl create -f deployments/web.yml
+# Create the web server's service
+kubectl create -f services/web.yml
+
+# Now open up the web server's endpoint and install it
+# (using the instructions from "Setup", but with `opensdcp-git-db` as the database host)
+```
+
+### Docker Swarm
+
 > Use the Portainer GUI (opensdcp-swarm-manager) to set the env variables by creating the stack there or hard-code them into the opensdcp-git-prod.yml file. They are NOT being read in by docker stack deploy, which will result in the `The database settings are invalid: pq: role "YOUR_USERNAME_HERE" does not exist` error upon setup.
 
 ```bash

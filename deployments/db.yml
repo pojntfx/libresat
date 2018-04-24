@@ -1,22 +1,7 @@
-apiVersion: v1
-kind: Service
-metadata:
-  name: opensdcp-git-db-service
-spec:
-  selector:
-    app: opensdcp-git-db
-    tier: backend
-    track: stable
-  ports:
-    - name: db
-      targetPort: db
-      port: 5432
-  type: NodePort
----
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: opensdcp-git-db-deployment
+  name: opensdcp-git-db
 spec:
   replicas: 1
   template:
@@ -45,9 +30,10 @@ spec:
                   key: postgres_password
             - name: POSTGRES_DB
               value: gitea
-
-# kubectl create configmap opensdcp-git-config \
-# --from-literal=postgres_user=YOUR_USERNAME_HERE \
-# --from-literal=postgres_password=YOUR_PASSWORD_HERE \
-
-# enter "opensdcp-git-db-service" as the DB host in gitea install data
+          volumeMounts:
+            - name: db-data
+              mountPath: /var/lib/postgresql/data
+      volumes:
+        - name: db-data
+          persistentVolumeClaim:
+            claimName: opensdcp-git-db
