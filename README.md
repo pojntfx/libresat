@@ -94,7 +94,8 @@ kubectl create -f deployments/web.yml
 kubectl create -f services/web.yml
 
 # Now open up the web server's endpoint and install it
-# (using the instructions from "Setup", but with `opensdcp-git-db` as the database host)
+# (using the instructions from "Setup", but with `opensdcp-git-db` as the database host and
+# `opensdcp-git-web` as the ssh server domain)
 ```
 
 ### Docker Swarm
