@@ -1,0 +1,44 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: opensdcp-forum-db
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: opensdcp-forum-db
+        tier: backend
+        track: stable
+    spec:
+      containers:
+        - image: mariadb:10.1
+          name: db
+          ports:
+            - name: db
+              containerPort: 3306
+          env:
+            - name: MYSQL_USER
+              valueFrom:
+                configMapKeyRef:
+                  name: opensdcp-forum-config
+                  key: db_user
+            - name: MYSQL_PASSWORD
+              valueFrom:
+                configMapKeyRef:
+                  name: opensdcp-forum-config
+                  key: db_password
+            - name: MYSQL_ROOT_PASSWORD
+              valueFrom:
+                configMapKeyRef:
+                  name: opensdcp-forum-config
+                  key: db_password
+            - name: MYSQL_DATABASE
+              value: flarum
+          volumeMounts:
+            - name: db-data
+              mountPath: /var/lib/mysql
+      volumes:
+        - name: db-data
+          persistentVolumeClaim:
+            claimName: opensdcp-forum-db

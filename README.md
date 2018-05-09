@@ -67,6 +67,43 @@ Visit the [official Flarum documentation](http://flarum.org/docs/) to learn more
 
 ## Deployment
 
+### Kubernetes
+
+```bash
+# Set env variables
+kubectl create configmap opensdcp-forum-config \
+--from-literal=forum_url=YOUR_IP \
+--from-literal=db_user=YOUR_USERNAME_HERE \
+--from-literal=db_password=YOUR_PASSWORD_HERE
+
+# Create the db's persistent volume
+kubectl create -f persistentvolumes/db.yml
+# Create the db's persistent volume claim
+kubectl create -f persistentvolumeclaims/db.yml
+# Create the db's deployment
+kubectl create -f deployments/db.yml
+# Create the db's service
+kubectl create -f services/db.yml
+
+# Create the web server's persistent volumes
+kubectl create -f persistentvolumes/web-assets.yml
+kubectl create -f persistentvolumes/web-extensions.yml
+# Create the web server's persistent volume claims
+kubectl create -f persistentvolumeclaims/web-assets.yml
+kubectl create -f persistentvolumeclaims/web-extensions.yml
+# Create the web server's deployment
+kubectl create -f deployments/web.yml
+# Create the web server's service
+kubectl create -f services/web.yml
+
+# Now open up the web server's endpoint and install it
+# This can take a LONG time. There will be no logs in the web container at first, especially
+# when using Minikube; just wait. After the installation, there could be temporary 500, 503
+# and 504 errors; these are only there because the forum is still setting itself up. Just wait.
+```
+
+### Docker Swarm
+
 > Use the Portainer GUI (opensdcp-swarm-manager) to set the env variables by creating the stack there or hard-code them into the opensdcp-forum-prod.yml file. They are NOT being read in by docker stack deploy, which will result in various errors upon setup because the web server container can't connect to the database.
 
 ```bash
