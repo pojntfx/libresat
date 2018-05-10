@@ -43,6 +43,32 @@ Visit [opensdcp.org](https://opensdcp.org/) and take a look all our instances.
 
 ## Usage
 
+### Kubernetes/OpenShift
+
+> This is still WIP and does not work for all services yet, so we do not recommend using it right now. 
+
+```bash
+# Install admin-user addon
+minishift addons install --defaults
+minishift addons enable admin-user
+# Start minishift cluster
+minishift start
+# Now open up the URL that you see in the console and login with
+# username: "admin"
+# password: "developer"
+# Login
+oc login -u system:admin -n default
+# Create your first project
+oc new-project opensdcp-forum
+# Get root privileges on the project
+oc adm policy add-scc-to-user anyuid -z default -n opensdcp-forum
+# Now deploy your first project! We recommend deploying `opensdcp-forum` first.
+# After you've deployed your first project, expose the `opensdcp-forum-web` service 
+# by clicking on "Create Route" in the web console and then "Create"!
+```
+
+### Docker Swarm
+
 ```bash
 # Install dependencies (Debian/Ubuntu)
 sudo apt install git docker.io docker-compose
