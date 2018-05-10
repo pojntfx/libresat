@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: opensdcp-wiki-proxy
+spec:
+  selector:
+    app: opensdcp-wiki-proxy
+    tier: backend
+    track: stable
+  ports:
+    - name: proxy
+      targetPort: proxy
+      port: 80
+  type: NodePort

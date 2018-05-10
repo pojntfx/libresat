@@ -57,6 +57,85 @@ Visit the [official MediaWiki wiki](https://www.mediawiki.org/wiki/MediaWiki) to
 
 ## Deployment
 
+### Kubernetes
+
+```bash
+# Set env variables
+kubectl create configmap opensdcp-wiki-config \
+--from-literal=db_root_password=YOUR_PASSWORD_HERE \
+--from-literal=wiki_url=//YOUR_IP:4000 \
+--from-literal=wiki_name=YOUR_WIKI_NAME_HERE \
+--from-literal=wiki_admin_user=YOUR_NAME_HERE \
+--from-literal=wiki_admin_password=YOUR_PASSWORD_HERE \
+--from-literal=wiki_db_user=ANOTHER_NAME_HERE \
+--from-literal=wiki_db_user_password=ANOTHER_PASSWORD_HERE \
+--from-literal=renderer_access_key=A_SECURE_TOKEN_HERE
+
+# Create the db's persistent volume
+kubectl create -f persistentvolumes/db.yml
+# Create the db's persistent volume claim
+kubectl create -f persistentvolumeclaims/db.yml
+# Create the db's deployment
+kubectl create -f deployments/db.yml
+# Create the db's service
+kubectl create -f services/db.yml
+
+# Create the elasticsearch's persistent volume
+kubectl create -f persistentvolumes/elasticsearch.yml
+# Create the elasticsearch's persistent volume claim
+kubectl create -f persistentvolumeclaims/elasticsearch.yml
+# Create the elasticsearch's deployment
+kubectl create -f deployments/elasticsearch.yml
+# Create the elasticsearch's service
+kubectl create -f services/elasticsearch.yml
+
+# Create the memcached's deployment
+kubectl create -f deployments/memcached.yml
+# Create the memcached's service
+kubectl create -f services/memcached.yml
+
+# Create the parsoid's deployment
+kubectl create -f deployments/parsoid.yml
+# Create the parsoid's service
+kubectl create -f services/parsoid.yml
+
+# Create the pdf renderer's deployment
+kubectl create -f deployments/pdf.yml
+# Create the pdf renderer's service
+kubectl create -f services/pdf.yml
+
+# Create the proxy's deployment
+kubectl create -f deployments/proxy.yml
+# Create the proxy renderer's service
+kubectl create -f services/proxy.yml
+
+# Create the restbase's persistent volume
+kubectl create -f persistentvolumes/restbase.yml
+# Create the restbase's persistent volume claim
+kubectl create -f persistentvolumeclaims/restbase.yml
+# Create the restbase's deployment
+kubectl create -f deployments/restbase.yml
+# Create the restbase's service
+kubectl create -f services/restbase.yml
+
+# Create the web server's persistent volumes
+kubectl create -f persistentvolumes/web.yml
+kubectl create -f persistentvolumes/web-images.yml
+# Create the web server's persistent volume claim
+kubectl create -f persistentvolumeclaims/web.yml
+kubectl create -f persistentvolumeclaims/web-images.yml
+# Create the web server's deployment
+kubectl create -f deployments/web.yml
+# Create the web server's service
+kubectl create -f services/web.yml
+
+# Now open up the web server's endpoint and test it!
+# This can take a LONG time. There will be no logs in the web container at first, especially
+# when using Minikube; just wait.
+```
+
+### Docker Swarm
+
 > Use the Portainer GUI (opensdcp-swarm-manager) to set the env variables by creating the stack there or hard-code them into the opensdcp-wiki-prod.yml file. They are NOT being read in by docker stack deploy, which will result in various errors upon setup because the web server container can't connect to the database.
 
 ```bash

@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: opensdcp-wiki-memcached
+spec:
+  selector:
+    app: opensdcp-wiki-memcached
+    tier: backend
+    track: stable
+  ports:
+    - name: memcached
+      targetPort: memcached
+      port: 11211
+  type: NodePort
