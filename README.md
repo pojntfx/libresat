@@ -96,7 +96,8 @@ kubectl create -f deployments/web.yml
 # Create the web server's service
 kubectl create -f services/web.yml
 
-# Now open up the web server's endpoint and install it
+# Now open up the web server's endpoint and install it!
+# Use `opensdcp-forum-db` instead of `db` as the MySQL host.
 # This can take a LONG time. There will be no logs in the web container at first, especially
 # when using Minikube; just wait. After the installation, there could be temporary 500, 503
 # and 504 errors; these are only there because the forum is still setting itself up. Just wait.
