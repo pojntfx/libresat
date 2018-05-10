@@ -44,13 +44,31 @@ docker-compose -f opensdcp-website-prod.yml up
 
 ## Deployment
 
+### Kubernetes
+
 ```bash
-# If you want to share it with the world, deploy to Zeit Now
+# Create the web server's deployment
+kubectl create -f deployments/web.yml
+# Create the web server's service
+kubectl create -f services/web.yml
+```
+
+### Docker Swarm
+
+```bash
+# Deploy production version to your docker swarm on http://YOUR_IP:80
+# If you want to see your changes from the dev version reflected here, build a new image of the "web" container and
+# use it in `opensdcp-website-prod.yml` instead of `pojntfx/opensdcp-website:latest`
+docker stack deploy -c opensdcp-website-prod.yml opensdcp-website
+```
+
+### Zeit Now
+
+```bash
+# If you want to quickly share it with the world, deploy to Zeit Now
 npm run deploy
 # Deploy a demo instance on https://opensdcp.now.sh (if alias is not already taken)
 npm run deploy-demo
-# ALTERNATIVE: If you want to use docker, deploy production version to your docker swarm on http://YOUR_IP:80
-docker stack deploy -c opensdcp-website-prod.yml opensdcp-website
 ```
 
 ## License

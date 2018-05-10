@@ -1,0 +1,19 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: opensdcp-website-web
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: opensdcp-website-web
+        tier: backend
+        track: stable
+    spec:
+      containers:
+        - image: pojntfx/opensdcp-website:latest
+          name: web
+          ports:
+            - name: web
+              containerPort: 5000
