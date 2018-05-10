@@ -12,7 +12,7 @@ spec:
         track: stable
     spec:
       containers:
-        - image: pastakhov/varnish-mediawiki:1.0
+        - image: pojntfx/opensdcp-wiki-proxy:latest
           name: proxy
           ports:
             - name: proxy
