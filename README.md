@@ -28,14 +28,14 @@ The infrastrucure is completely containerized and thus quite portable. Each serv
 | opensdcp-call     | Video and voice calls for contributors (Jitsi)                                                 |
 | opensdcp-mail     | Mail server for contributors (Mailu)                                                           |
 | opensdcp-kanban   | Kanban boards for contributors to better coordinate the project (Wekan)                        |
-| opensdcp-identity | Single sign-on server for all services (OAuth)                                                 |
+| opensdcp-identity | Single sign-on server for all services (OAuth and/or LDAP)                                     |
 | opensdcp-status   | Status page that shows each service's status info                                              |
 
 ### Our setup
 
 We test our services in our local docker swarm (see [Usage](#usage)) and then deploy them to our public production docker swarm.
-Our domains are from [Gandi](https://www.gandi.net/) and our docker swarm nodes run on [OVH](https://www.ovh.com) VPSs.
-We are currently moving to Kubernetes and will update the documentation accordingly.
+Our domains are from [Gandi](https://www.gandi.net/), our certificates and CDN from [Cloudflare](https://www.cloudflare.com/) and our docker swarm nodes run on [DigitalOcean](https://www.digitalocean.com/) Droplets.
+We are planning to move to Kubernetes and will update the documentation accordingly.
 
 ## Demo
 
@@ -43,9 +43,31 @@ Visit [opensdcp.org](https://opensdcp.org/) and take a look all our instances.
 
 ## Usage
 
+### Docker Swarm
+
+```bash
+# Install dependencies (Debian/Ubuntu)
+sudo apt install git docker.io docker-compose
+# Clone all repositories
+git clone https://github.com/opensdcp/opensdcp-website.git
+git clone https://github.com/opensdcp/opensdcp-swarm-manager.git
+git clone https://github.com/opensdcp/opensdcp-git.git
+git clone https://github.com/opensdcp/opensdcp-forum.git
+git clone https://github.com/opensdcp/opensdcp-wiki.git
+# Create your local docker swarm (use your IP address here)
+docker swarm init --advertise-addr YOUR_PUBLIC_IP
+# Join the swarm (use your token and ip address from the command above) (run this on all nodes you want to use)
+docker swarm join \
+    --token yourtoken \
+    YOUR_PUBLIC_IP:2377
+# Now follow the individual instructions in the services' repositories (look for "Deployment to swarm")!
+# It makes sense to install the `opensdcp-swarm-manager` first and then deploy the services as stacks
+# using it's GUI (which is especially helpful for settings the environment variables)
+```
+
 ### Kubernetes/OpenShift
 
-> This is still WIP and does not work for all services yet, so we do not recommend using it right now. 
+> This is still WIP and does not work for all services yet, so we do not recommend using it right now.
 
 ```bash
 # Install admin-user addon
@@ -63,30 +85,8 @@ oc new-project opensdcp-forum
 # Get root privileges on the project
 oc adm policy add-scc-to-user anyuid -z default -n opensdcp-forum
 # Now deploy your first project! We recommend deploying `opensdcp-forum` first.
-# After you've deployed your first project, expose the `opensdcp-forum-web` service 
+# After you've deployed your first project, expose the `opensdcp-forum-web` service
 # by clicking on "Create Route" in the web console and then "Create"!
-```
-
-### Docker Swarm
-
-```bash
-# Install dependencies (Debian/Ubuntu)
-sudo apt install git docker.io docker-compose
-# Clone all repositories
-git clone https://github.com/opensdcp/opensdcp-website.git
-git clone https://github.com/opensdcp/opensdcp-swarm-manager.git
-git clone https://github.com/opensdcp/opensdcp-git.git
-git clone https://github.com/opensdcp/opensdcp-forum.git
-git clone https://github.com/opensdcp/opensdcp-wiki.git
-# Create your local docker swarm (use your IP address here)
-docker swarm init --advertise-addr youripaddress
-# Join the swarm (use your token and ip address from the command above) (run this on all nodes you want to use)
-docker swarm join \
-    --token yourtoken \
-    youripaddress:2377
-# Now follow the individual instructions in the services' repositories (look for "Deployment to swarm")!
-# It makes sense to install the `opensdcp-swarm-manager` first and then deploy the services as stacks
-# using it's GUI (which is especially helpful for settings the environment variables)
 ```
 
 ## Screenshots
