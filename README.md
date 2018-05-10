@@ -73,7 +73,7 @@ Visit the [official Gitea documentation](https://docs.gitea.io/) to learn more a
 # Set env variables
 kubectl create configmap opensdcp-git-config \
 --from-literal=postgres_user=YOUR_USERNAME_HERE \
---from-literal=postgres_password=YOUR_PASSWORD_HERE \
+--from-literal=postgres_password=YOUR_PASSWORD_HERE
 
 # Create the db's persistent volume
 kubectl create -f persistentvolumes/db.yml
