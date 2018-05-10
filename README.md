@@ -59,6 +59,8 @@ Visit the [official MediaWiki wiki](https://www.mediawiki.org/wiki/MediaWiki) to
 
 ### Kubernetes
 
+> This is not working currently. Please help us debug and fix it!
+
 ```bash
 # Set env variables
 kubectl create configmap opensdcp-wiki-config \
