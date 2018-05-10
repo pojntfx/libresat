@@ -33,8 +33,9 @@ The infrastrucure is completely containerized and thus quite portable. Each serv
 
 ### Our setup
 
-We test our services in our local docker swarm (see [Usage](#usage)) and then deploy them to our public production swarm.
+We test our services in our local docker swarm (see [Usage](#usage)) and then deploy them to our public production docker swarm.
 Our domains are from [Gandi](https://www.gandi.net/) and our docker swarm nodes run on [OVH](https://www.ovh.com) VPSs.
+We are currently moving to Kubernetes and will update the documentation accordingly.
 
 ## Demo
 
