@@ -65,28 +65,91 @@ docker swarm join \
 # using it's GUI (which is especially helpful for settings the environment variables)
 ```
 
-### Kubernetes/OpenShift
+### Kubernetes
 
 > This is still WIP and does not work for all services yet, so we do not recommend using it right now.
 
+#### Single Machine (Minishift)
+
+> TODO: Add Minishift installation
+
+#### DIY Cloud (Kubeadm)
+
+> TODO: Add Kubeadm installation
+
+#### Cloud Providers (Kops)
+
+##### Create Cluster
+
 ```bash
-# Install admin-user addon
-minishift addons install --defaults
-minishift addons enable admin-user
-# Start minishift cluster
-minishift start
-# Now open up the URL that you see in the console and login with
-# username: "admin"
-# password: "developer"
-# Login
-oc login -u system:admin -n default
-# Create your first project
-oc new-project opensdcp-forum
-# Get root privileges on the project
-oc adm policy add-scc-to-user anyuid -z default -n opensdcp-forum
-# Now deploy your first project! We recommend deploying `opensdcp-forum` first.
-# After you've deployed your first project, expose the `opensdcp-forum-web` service
-# by clicking on "Create Route" in the web console and then "Create"!
+# Install kops
+cd /tmp
+wget -O kops https://github.com/kubernetes/kops/releases/download/$(curl -s https://api.github.com/repos/kubernetes/kops/releases/latest | grep tag_name | cut -d '"' -f 4)/kops-linux-amd64
+chmod +x ./kops
+sudo mv ./kops /usr/local/bin/
+
+# Install kubectl
+wget -O kubectl https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
+chmod +x ./kubectl
+sudo mv ./kubectl /usr/local/bin/kubectl
+
+# Setup a DigitalOcean account, access token, space with api keys and domain now and then continue here
+
+# Add your DigitalOcean space info
+export KOPS_STATE_STORE=do://<space-name> # i.e. opensdcp-space1
+export S3_ENDPOINT=<space-endpoint> # ie. nyc3.digitaloceanspaces.com
+export S3_ACCESS_KEY_ID=<space-key> # i.e. NKIRASDF(...)
+export S3_SECRET_ACCESS_KEY=<space-secret-key> # i.e. 2B85VG(...)
+
+# Add your DigitalOcean access token
+export DIGITALOCEAN_ACCESS_TOKEN=<access-token> # i.e. 4bds5dh7(...)
+
+# Enable kops' alpha features (to enable DigitalOcean)
+export KOPS_FEATURE_FLAGS="AlphaAllowDO"
+
+# Configure the cluster
+kops create cluster --cloud=digitalocean --name=opensdcp-cluster1.opensdcp.org --networking=flannel --zones=nyc1 --ssh-public-key=~/.ssh/id_rsa.pub
+# Create the cluster
+kops update cluster opensdcp-cluster1.opensdcp.org --yes
+# Now wait a little bit (~10 minutes), this can take some time. You can check whether it is done by typing:
+kubectl get nodes
+```
+
+##### Configure Cluster
+
+```bash
+# Install the Kubernetes dashboard
+# Create a service account
+kubectl create -f clusterrolebindings/kubernetes-dashboard.yml
+kubectl create -f serviceaccounts/kubernetes-dashboard.yml
+# Deploy the dashboard
+kubectl create -f https://raw.githubusercontent.com/kubernetes/kops/master/addons/kubernetes-dashboard/v1.8.1.yaml
+# Get the dashboard access token
+kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | grep admin-user | awk '{print $1}')
+# Create secure channel to the Kubernetes dashboard
+kubectl proxy
+# Now open `127.0.0.1:8001/ui` and sign in with the token from above!
+
+# Install Heapster (Monitoring)
+kubectl create -f https://raw.githubusercontent.com/kubernetes/kops/master/addons/monitoring-standalone/v1.7.0.yaml
+
+# Install Route53 (subdomains)
+kubectl create -f https://raw.githubusercontent.com/kubernetes/kops/master/addons/route53-mapper/v1.3.0.yml
+
+# # WIP (not working correctly yet) Install Prometheus (monitoring)
+# git clone -b master https://github.com/coreos/prometheus-operator.git
+# cd prometheus-operator/contrib/kube-prometheus
+# kubectl apply -f manifests/
+# # Create secure channel to grafana dashboard
+# kubectl proxy
+# # Now open `http://localhost:8001/api/v1/proxy/namespaces/monitoring/services/grafana:http` and sign in with
+# # `admin` as both the username and password
+```
+
+##### Delete Cluster
+
+```bash
+kops delete cluster opensdcp-cluster1.opensdcp.org --yes
 ```
 
 ## Screenshots
