@@ -10,27 +10,24 @@
     "react-live": "^1.10.1",
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.1.4",
-    "serve": "^6.5.5",
+    "serve": "^6.5.6",
     "styled-components": "^3.2.6"
   },
   "scripts": {
     "dev": "react-scripts start",
-    "docs":
-      "documentation build src/** -f html -o docs/ -g && serve docs/ --port=3001",
-    "annotated-source":
-      "docco --layout=parallel src/* src/components/*/* src/lib/*/* src/routes/* -o annotated-source/ && serve annotated-source/ --port=3002",
+    "docs": "documentation build src/** -f html -o docs/ -g && serve docs/ --port=3001",
+    "annotated-source": "docco --layout=parallel src/* src/components/*/* src/lib/*/* src/routes/* -o annotated-source/ && serve annotated-source/ --port=3002",
     "build": "react-scripts build",
     "start": "serve --single build/",
     "deploy": "npm run build && now --public"
   },
   "devDependencies": {
     "docco": "^0.8.0",
-    "documentation": "^6.2.0",
-    "eslint-plugin-react": "^7.7.0",
-    "now": "^11.1.6"
+    "documentation": "^6.3.2",
+    "eslint-plugin-react": "^7.8.1",
+    "now": "^11.1.7"
   },
-  "description":
-    "Fast and minimal React frontend for an OpenSNET Bridge Server.",
+  "description": "Fast and minimal React frontend for an OpenSNET Bridge Server.",
   "main": "src/index.js",
   "repository": {
     "type": "git",

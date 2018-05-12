@@ -47,9 +47,10 @@ const code = `class ExpandDemo extends Component {
     this.toggleDescription = this.toggleDescription.bind(this);
   }
 
-  toggleDescription() {
+  toggleDescription(event) {
+    event.preventDefault();
     this.setState({
-      descriptionIsShown: !this.descriptionIsShown
+      descriptionIsShown: !this.state.descriptionIsShown
     });
   }
 
@@ -61,7 +62,7 @@ const code = `class ExpandDemo extends Component {
       <Expand
         open={descriptionIsShown}
         summary="Corsica beach introduction"
-        onClick={toggleDescription}
+        onClick={(event) => toggleDescription(event)}
       >
         Judging which beaches are meant to be more beautiful than others is a
         slippery slope. Let{"'"}s just say that Corsica has a variety of
