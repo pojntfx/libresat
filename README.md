@@ -108,10 +108,13 @@ export DIGITALOCEAN_ACCESS_TOKEN=<access-token> # i.e. 4bds5dh7(...)
 export KOPS_FEATURE_FLAGS="AlphaAllowDO"
 
 # Configure the cluster
-kops create cluster --cloud=digitalocean --name=opensdcp-cluster1.opensdcp.org --networking=flannel --zones=nyc1 --ssh-public-key=~/.ssh/id_rsa.pub
+kops create cluster --cloud=digitalocean --name=opensdcp-cluster1.opensdcp.org --networking=flannel --zones=nyc3 --ssh-public-key=~/.ssh/id_rsa.pub
+# Take a look at the console output. It shows you how to configure the cluster further.
 # Create the cluster
 kops update cluster opensdcp-cluster1.opensdcp.org --yes
-# Now wait a little bit (~10 minutes), this can take some time. You can check whether it is done by typing:
+# Now wait a little bit (~10 minutes), this can take some time. You can check whether it is done by typing either:
+kops validate cluster
+# Or:
 kubectl get nodes
 ```
 
@@ -132,9 +135,6 @@ kubectl proxy
 
 # Install Heapster (Monitoring)
 kubectl create -f https://raw.githubusercontent.com/kubernetes/kops/master/addons/monitoring-standalone/v1.7.0.yaml
-
-# Install Route53 (subdomains)
-kubectl create -f https://raw.githubusercontent.com/kubernetes/kops/master/addons/route53-mapper/v1.3.0.yml
 
 # # WIP (not working correctly yet) Install Prometheus (monitoring)
 # git clone -b master https://github.com/coreos/prometheus-operator.git
