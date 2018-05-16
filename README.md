@@ -20,10 +20,11 @@ sudo gem install jekyll bundler
 # Install dependencies:
 bundle install
 
-# Build the site on the preview server:
-bundle exec jekyll serve
-
 # Build and serve development version on http://localhost:4000/
+bundle exec jekyll serve
+# Build and serve development version on http://your-ip:4000/
+bundle exec jekyll serve --host your-ip
+
 # An admin interface (jekyll-admin) is available at http://localhost:4000/admin
 ```
 
