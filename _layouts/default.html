@@ -1,19 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
+<!-- Head -->
+{% include default-layout/head.html %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{site.title}} | {{ page.title }}</title>
-    <!-- Styles -->
-    <link rel="stylesheet" href="/css/semantic.min.css">
-    <!-- Scripts -->
-    <script src="/js/jquery-3.3.1.min.js"></script>
-    <script src="/js/semantic.min.js"></script>
-</head>
+<!-- Navigation -->
+{% include default-layout/navbar.html %}
 
-<body>
-    {{content}}
-</body>
+<!-- Content -->
+{% include default-layout/container-top.html %} {{content}} {% include default-layout/container-bottom.html %}
 
-</html>
+<!-- Footer -->
+{% include default-layout/footer.html %}

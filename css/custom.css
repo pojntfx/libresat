@@ -1,0 +1,9 @@
+/* Menu */
+
+.ui__menu--fixed--overflow {
+  overflow-x: auto;
+}
+
+.ui__container--fixed-navbar {
+  margin-top: calc(50px + 1em);
+}
