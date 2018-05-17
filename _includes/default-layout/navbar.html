@@ -1,9 +1,10 @@
-<div class="ui borderless inverted menu fixed
+<div class="ui borderless fixed menu
 {% case page.url %}
-{% when '/hardware.html' %}green
-{% when '/network.html' %}orange
-{% when '/docs.html' %}teal
-{% else %}blue
+{% when '/' %}
+{% when '/software.html' %}blue inverted
+{% when '/hardware.html' %}green inverted
+{% when '/network.html' %}orange inverted
+{% when '/docs.html' %}teal inverted
 {% endcase %} 
 navbar--overflow">
     <a class="item navbar__item--sides" href="{{ site.baseurl }}/">
@@ -31,23 +32,23 @@ navbar--overflow">
             Docs
         </a>
         <div class="right menu">
-            <a class="item">
+            <a href="{{ site.baseurl }}/blog.html" class="item {% if page.url == '/blog.html' %}active{% endif %}">
                 <i class="rss icon"></i>
                 Blog
             </a>
-            <a class="item">
+            <a href="{{ site.baseurl }}/demo.html" class="item {% if page.url == '/demo.html' %}active{% endif %}">
                 <i class="eye icon"></i>
                 Demo
             </a>
-            <a class="item">
+            <a href="{{ site.baseurl }}/forum.html" class="item {% if page.url == '/forum.html' %}active{% endif %}">
                 <i class="users icon"></i>
                 Forum
             </a>
-            <a class="item">
+            <a href="{{ site.baseurl }}/wiki.html" class="item {% if page.url == '/wiki.html' %}active{% endif %}">
                 <i class="slideshare icon"></i>
                 Wiki
             </a>
-            <a class="item">
+            <a href="{{ site.baseurl }}/chat.html" class="item {% if page.url == '/chat.html' %}active{% endif %}">
                 <i class="comments icon"></i>
                 Chat
             </a>
