@@ -1,4 +1,5 @@
 ---
 title: Home
 ---
-# Home
+
+{% include home/hero.html %}

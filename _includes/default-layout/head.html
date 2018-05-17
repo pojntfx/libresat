@@ -5,7 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Theme Color -->
-    <meta name="theme-color" content="#2185d0">
+    <meta name="theme-color" content="
+    {% case page.url %}
+    {% when '/hardware.html' %}#21ba45
+    {% when '/network.html' %}#f2711c
+    {% when '/docs.html' %}#00b5ad
+    {% else %}#2185d0
+    {% endcase %} 
+    ">
     <!-- Page Title -->
     <title>{{site.title}} | {{ page.title }}</title>
     <!-- Styles -->
@@ -16,4 +23,4 @@
     <script src="/js/semantic.min.js"></script>
 </head>
 
-<body>
+<body class="body--bg-img">
