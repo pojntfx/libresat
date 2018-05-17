@@ -1,9 +1,33 @@
 /* Menu */
 
-.ui__menu--fixed--overflow {
-  overflow-x: auto;
+.navbar--overflow {
+    overflow-x: auto;
 }
 
-.ui__container--fixed-navbar {
-  margin-top: calc(50px + 1em);
+.navbar--fixed {
+    padding-top: calc(50px + 1em);
+}
+
+.body--bg-img {
+    background: url("/img/bg.jpg");
+    background-size: cover;
+}
+
+.navbar__item--sides {
+    width: 10rem;
+    text-align: center;
+    display: inline-block !important;
+}
+
+.navbar__center {
+    margin: 0 auto;
+    display: flex;
+}
+
+/* Make it consistent with the container */
+
+@media only screen and (min-width: 1410px) {
+    .navbar__center {
+        min-width: 1127px !important;
+    }
 }

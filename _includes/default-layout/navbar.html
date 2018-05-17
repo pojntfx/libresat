@@ -1,47 +1,60 @@
-<div class="ui menu fixed blue inverted ui__menu--fixed--overflow">
-    <div class="header item">
-        OpenSDCP
-    </div>
-    <div class="right menu">
-        <a class="item active">
+<div class="ui borderless inverted menu fixed
+{% case page.url %}
+{% when '/hardware.html' %}green
+{% when '/network.html' %}orange
+{% when '/docs.html' %}teal
+{% else %}blue
+{% endcase %} 
+navbar--overflow">
+    <a class="item navbar__item--sides" href="{{ site.baseurl }}/">
+        <strong>{{site.title}}</strong>
+    </a>
+    <div class="navbar__center">
+        <a href="{{ site.baseurl }}/" class="item {% if page.url == '/' %}active{% endif %}">
+            <i class="home icon"></i>
+            Home
+        </a>
+        <a href="{{ site.baseurl }}/software.html" class="item {% if page.url == '/software.html' %}active{% endif %}">
             <i class="code icon"></i>
             Software
         </a>
-        <a class="item">
+        <a href="{{ site.baseurl }}/hardware.html" class="item {% if page.url == '/hardware.html' %}active{% endif %}">
             <i class="microchip icon"></i>
             Hardware
         </a>
-        <a class="item">
+        <a href="{{ site.baseurl }}/network.html" class="item {% if page.url == '/network.html' %}active{% endif %}">
             <i class="globe icon"></i>
             Network
         </a>
-        <a class="item">
-            <i class="book icon"></i>
+        <a href="{{ site.baseurl }}/docs.html" class="item {% if page.url == '/docs.html' %}active{% endif %}">
+            <i class="globe icon"></i>
             Docs
         </a>
-        <a class="item">
-            <i class="rss icon"></i>
-            Blog
-        </a>
-        <a class="item">
-            <i class="eye icon"></i>
-            Demo
-        </a>
-        <a class="item">
-            <i class="users icon"></i>
-            Forum
-        </a>
-        <a class="item">
-            <i class="slideshare icon"></i>
-            Wiki
-        </a>
-        <a class="item">
-            <i class="comments icon"></i>
-            Chat
-        </a>
-        <a class="item">
-            <i class="code branch icon"></i>
-            Source Code
-        </a>
+        <div class="right menu">
+            <a class="item">
+                <i class="rss icon"></i>
+                Blog
+            </a>
+            <a class="item">
+                <i class="eye icon"></i>
+                Demo
+            </a>
+            <a class="item">
+                <i class="users icon"></i>
+                Forum
+            </a>
+            <a class="item">
+                <i class="slideshare icon"></i>
+                Wiki
+            </a>
+            <a class="item">
+                <i class="comments icon"></i>
+                Chat
+            </a>
+        </div>
     </div>
+    <a class="item navbar__item--sides">
+        <i class="code branch icon"></i>
+        Source Code
+    </a>
 </div>
