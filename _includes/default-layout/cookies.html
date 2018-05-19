@@ -1,0 +1,25 @@
+<div class="ui bound top sticky	inline cookie nag">
+    <span class="title">
+        We use cookies on this websites. By using this site you accept.
+    </span>
+    <i class="close icon" id="cookie__close-icon"></i>
+</div>
+
+<script>
+    // Show the cookie consent once
+    $(() => {
+        if (!localStorage.getItem("openscdp-website-org-cookie-consent-accepted")) {
+            $('.cookie')
+                .nag({
+                    storageMethod: "localstorage"
+                })
+                .sticky({
+                    context: '.container'
+                })
+                .after('<span style="padding-bottom: 1rem;" id="cookie__placeholder"></span>') // Add correct margin
+            // Remove the placeholder
+            $("#cookie__close-icon").click(() => $("#cookie__placeholder").remove())
+            localStorage.setItem("openscdp-website-org-cookie-consent-accepted", "true")
+        }
+    })
+</script>
