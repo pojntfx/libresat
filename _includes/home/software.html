@@ -1,0 +1,49 @@
+<!-- Header -->
+{% include home/section-header.html 
+color="blue" 
+icon="code" 
+title="Software" 
+short-description="Free and Open-Source Software for your Spacecraft" 
+docs-link="software" 
+contribute-link="software" 
+discuss-link="software" %}
+<!-- Overview -->
+{% include home/section-overview.html 
+img-src="home/software.jpg" 
+contributors="1 contributor"
+description="Lorem ipsum dolor sit amet consectetur, adipisicing
+elit. Explicabo asperiores." 
+license="AGPL-3.0 (libre)"
+loc="15k+ lines"%}
+<!-- Trending Projects Start -->
+{% include home/section-trending-projects-top.html %}
+<!-- Website -->
+{% include 
+home/project.html
+title="opensdcp-website" 
+last-change="2 hours ago" 
+description="Main website for all the OpenSDCP
+projects." 
+link="https://github.com/opensdcp/opensdcp-website" %}
+<!-- Bridge Client -->
+{% include 
+home/project.html 
+title="opensnet-bridge-client" 
+last-change="5 days ago" 
+description="Fast and minimal React frontend for an OpenSNET Bridge Server." 
+link="https://github.com/opensdcp/opensnet-bridge-client" %}
+<!-- Infrastructure -->
+{% include home/project.html 
+title="opensdcp-infrastructure" 
+last-change="5 days ago" 
+description="Shared configuration files, scripts and documentation for the OpenSDCP project's infrastructure." 
+link="https://github.com/opensdcp/opensdcp-infrastructure"
+%}
+<!-- Design -->
+{% include home/project.html 
+title="opensdcp-design" 
+last-change="28 day ago" 
+description="All design files and mockups for the OpenSDCP repos." 
+link="https://github.com/opensdcp/opensdcp-design" %}
+<!-- Trending Projects End -->
+{% include home/section-trending-projects-bottom.html %}

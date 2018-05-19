@@ -1,0 +1,61 @@
+<div class="ui borderless fixed menu
+{% case page.url %}
+{% when '/' %}
+{% when '/software.html' %}blue
+{% when '/hardware.html' %}green
+{% when '/network.html' %}orange
+{% when '/docs.html' %}teal
+{% endcase %} 
+navbar--overflow">
+    <a class="item navbar__item--sides" href="{{ site.baseurl }}/">
+        <strong>{{site.title}}</strong>
+    </a>
+    <div class="navbar__center">
+        <a href="{{ site.baseurl }}/" class="item {% if page.url == '/' %}active{% endif %}">
+            <i class="home icon"></i>
+            Home
+        </a>
+        <a href="{{ site.baseurl }}/software.html" class="item {% if page.url == '/software.html' %}active{% endif %}">
+            <i class="code icon"></i>
+            Software
+        </a>
+        <a href="{{ site.baseurl }}/hardware.html" class="item {% if page.url == '/hardware.html' %}active{% endif %}">
+            <i class="microchip icon"></i>
+            Hardware
+        </a>
+        <a href="{{ site.baseurl }}/network.html" class="item {% if page.url == '/network.html' %}active{% endif %}">
+            <i class="globe icon"></i>
+            Network
+        </a>
+        <a href="{{ site.baseurl }}/docs.html" class="item {% if page.url == '/docs.html' %}active{% endif %}">
+            <i class="book icon"></i>
+            Docs
+        </a>
+        <div class="right menu">
+            <a href="{{ site.baseurl }}/blog.html" class="item {% if page.url == '/blog.html' %}active{% endif %}">
+                <i class="rss icon"></i>
+                Blog
+            </a>
+            <a href="{{ site.baseurl }}/demo.html" class="item {% if page.url == '/demo.html' %}active{% endif %}">
+                <i class="eye icon"></i>
+                Demo
+            </a>
+            <a href="{{ site.baseurl }}/forum.html" class="item {% if page.url == '/forum.html' %}active{% endif %}">
+                <i class="users icon"></i>
+                Forum
+            </a>
+            <a href="{{ site.baseurl }}/wiki.html" class="item {% if page.url == '/wiki.html' %}active{% endif %}">
+                <i class="slideshare icon"></i>
+                Wiki
+            </a>
+            <a href="{{ site.baseurl }}/chat.html" class="item {% if page.url == '/chat.html' %}active{% endif %}">
+                <i class="comments icon"></i>
+                Chat
+            </a>
+        </div>
+    </div>
+    <a href="{{ site.baseurl }}/source-code.html" class="item {% if page.url == '/source-code.html' %}active{% endif %} navbar__item--sides">
+        <i class="code branch icon"></i>
+        Source Code
+    </a>
+</div>
