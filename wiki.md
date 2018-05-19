@@ -1,4 +1,5 @@
 ---
 title: Wiki
 ---
-# Wiki
+
+{% include global/construction-simple.html target="Wiki"%}
