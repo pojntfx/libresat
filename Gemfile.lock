@@ -45,7 +45,9 @@ GEM
     kramdown (1.16.2)
     liquid (4.0.0)
     listen (3.1.5)
+      rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
+      ruby_dep (~> 1.2)
     mercenary (0.3.6)
     multi_json (1.13.1)
     pathutil (0.16.1)
@@ -60,6 +62,7 @@ GEM
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
     rouge (3.1.1)
+    ruby_dep (1.5.0)
     safe_yaml (1.0.4)
     sass (3.5.6)
       sass-listen (~> 4.0.0)
@@ -86,6 +89,7 @@ DEPENDENCIES
   jekyll
   jekyll-admin
   jekyll-autoprefixer
+  jekyll-watch
 
 BUNDLED WITH
-   1.16.1
+   1.16.2
