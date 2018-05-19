@@ -13,5 +13,3 @@ title: Home
 {% include home/network.html %}
 
 {% include home/community.html %}
-
-<!-- TODO: Don't forget the footer (add it to the layout) -->

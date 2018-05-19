@@ -1,5 +1,5 @@
 <div class="ui icon info message">
-    <i class="close icon"></i>
+    <i class="close icon" id="home__message__close-icon"></i>
     <i class="bullhorn icon"></i>
     <div class="content">
         <div class="header">
@@ -12,12 +12,13 @@
 
 <script>
     // Enable closing of the message
-    $('.message .close')
-        .on('click', function () {
-            $(this)
-                .closest('.message')
-                .transition('fade')
-                ;
-        })
-        ;
+    $(() =>
+        $("#home__message__close-icon")
+            .on('click', function () {
+                $(this)
+                    .closest('.message')
+                    .transition('fade')
+                    ;
+            })
+    )
 </script>
