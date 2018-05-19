@@ -1,4 +1,5 @@
 ---
 title: Docs
 ---
-# Docs
+
+{% include global/construction-simple.html target="Docs"%}

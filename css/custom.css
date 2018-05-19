@@ -111,7 +111,8 @@
   align-items: center;
 }
 
-.home__community__links {
+.home__community__links,
+.source-code__git-links {
   margin-top: 1rem !important;
 }
 

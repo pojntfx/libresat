@@ -1,4 +1,5 @@
 ---
 title: Blog
 ---
-# Blog
+
+{% include global/construction-simple.html target="Blog"%}

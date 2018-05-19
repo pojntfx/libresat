@@ -1,4 +1,5 @@
 ---
 title: Demo
 ---
-# Demo
+
+{% include global/construction-simple.html target="Demo"%}

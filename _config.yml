@@ -6,7 +6,7 @@ description: >-
 
 # Config
 baseurl: ""
-url: "https://www.opensdcp.org"
+url: "https://opensdcp.org"
 defaults:
   - scope:
       path: ""
