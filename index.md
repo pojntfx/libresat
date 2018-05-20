@@ -1,8 +1,7 @@
 ---
 title: Home
+layout: home
 ---
-
-{% include home/hero.html %}
 
 {% include home/callout.html %}
 

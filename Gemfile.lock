@@ -89,7 +89,6 @@ DEPENDENCIES
   jekyll
   jekyll-admin
   jekyll-autoprefixer
-  jekyll-watch
 
 BUNDLED WITH
    1.16.2
