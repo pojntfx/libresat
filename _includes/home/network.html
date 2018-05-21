@@ -15,15 +15,6 @@ elit. Explicabo asperiores."
 contributors="1 contributor"
 license="AGPL-3.0 (libre)"
 loc="10k+ lines"%}
-<!-- Trending Projects Start -->
-{% include home/section-trending-projects-top.html %}
-<!-- Website -->
-{% include 
-home/project.html 
-title="opensdcp-website" 
-last-change="2 hours ago" 
-description="Main website for all the OpenSDCP
-projects." 
-link="https://github.com/opensdcp/opensdcp-website" %}
-<!-- Trending Projects End -->
-{% include home/section-trending-projects-bottom.html %}
+<!-- Trending Projects -->
+{% include home/trending-projects.html url="https://api.github.com/orgs/opensdcp/repos" id="network" %}
+</div>
