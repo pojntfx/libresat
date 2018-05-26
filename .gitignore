@@ -1,0 +1,5 @@
+# State and individual config
+/typhoon/terraform/.terraform/
+*.tfstate*
+# Cloned typhoon repo for addons
+/typhoon/typhoon
