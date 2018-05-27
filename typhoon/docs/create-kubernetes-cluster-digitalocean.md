@@ -176,3 +176,15 @@ chmod +x /tmp/get
 /tmp/get
 helm init
 ```
+
+## Setup Load Balancer (not working yet)
+
+```bash
+git clone https://github.com/digitalocean/digitalocean-cloud-controller-manager.git
+cd digitalocean-cloud-controller-manager
+export DIGITALOCEAN_ACCESS_TOKEN=abc123abc123abc123
+scripts/generate-secret.sh # answer with "y"
+kubectl -n kube-system get secrets
+kubectl apply -f releases/v0.1.5.yml
+kubectl apply -f examples/loadbalancers/http-nginx.yml
+```
