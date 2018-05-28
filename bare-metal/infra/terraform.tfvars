@@ -20,6 +20,6 @@ asset_dir = "assets"
 
 # Optional (defaults)
 cached_install = "false"
-# install_disk = "/dev/sda"
+install_disk = "/dev/sda"
 # container_linux_oem = ""
 # networking = "flannel"

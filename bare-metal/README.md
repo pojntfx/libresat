@@ -9,6 +9,7 @@ sudo apt-get install virt-manager virtinst qemu-kvm docker.io
 ## Get Matchbox
 
 ```bash
+cd clones
 git clone https://github.com/coreos/matchbox.git
 cd matchbox
 ```
@@ -122,7 +123,7 @@ cat ~/.ssh/id_rsa.pub
 
 ## Set Variables
 
-Add your SSH Public Key to `../bare-metal/infra/terraform.tfvars/` at the `ssh_authorized_key` key.
+Add your SSH Public Key to `../../infra/terraform.tfvars` at the `ssh_authorized_key` key.
 
 ## Add SSH Identity
 
@@ -133,11 +134,10 @@ ssh-add -L
 
 ## Init `terraform`
 
-This only has the be run when this is the first use with Terraform.
+This only has the be run when this is the first use with Terraform. Otherwise, still `cd`.
 
 ```bash
-cd ../bare-metal/
-cd infra/
+cd ../../infra/
 terraform init
 ```
 
@@ -146,8 +146,6 @@ terraform init
 Continue to the next step after running `terraform apply`, even if there still is output
 
 ```bash
-cd ../bare-metal/
-cd infra/
 terraform get --update
 terraform plan
 terraform apply # enter "yes"
@@ -195,4 +193,12 @@ virt-install \
 --noautoconsole \
 --events on_poweroff=preserve \
 --boot=hd,network
+```
+
+## Check the Status
+
+This can take a long time. In my case (i5 4690k, HDD) it took ~25 Minutes. Make sure you have enough free disk space!
+
+```bash
+docker logs -f matchbox
 ```
