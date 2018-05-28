@@ -1,0 +1,3 @@
+# Terraform data
+infra/.terraform/
+infra/assets/

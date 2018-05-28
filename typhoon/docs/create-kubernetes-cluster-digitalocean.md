@@ -4,7 +4,7 @@
 
 ```bash
 wget -P /tmp https://releases.hashicorp.com/terraform/0.11.7/terraform_0.11.7_linux_amd64.zip
-unzip /tmp/terraform_0.11.7_linux_amd64.zip
+unzip /tmp/terraform_0.11.7_linux_amd64.zip -d /tmp
 chmod +x /tmp/terraform
 sudo mv /tmp/terraform /usr/local/bin
 ```
@@ -53,13 +53,14 @@ You may adjust more values by editing `typhoon/terraform/cluster.tf` manually.
 sed -i -e 's/yourclustername/here/g' typhoon/terraform/cluster.tf # i.e. opensdcp-cluster1
 sed -i -e 's/yourdnszone/here/g' typhoon/terraform/cluster.tf # i.e. opensdcp.org
 sed -i -e 's/yourfingerprint/here/g' typhoon/terraform/cluster.tf # i.e. 7b:05:c2:f7:50:5c:a3:b0:eb:a7:09:c6:f1:53:04:a6
-sed -i -e 's/yourusername/pojntfx/g' typhoon/terraform/cluster.tf # i.e. pojntfx
+sed -i -e 's/yourusername/here/g' typhoon/terraform/cluster.tf # i.e. pojntfx
 ```
 
 ## Add SSH Identity
 
 ```bash
 ssh-add ~/.ssh/id_rsa
+ssh-add -L
 ```
 
 ## Init `terraform`
