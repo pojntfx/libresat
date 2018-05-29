@@ -3,21 +3,16 @@
 ## Install Dependencies
 
 ```bash
-sudo apt-get install virt-manager virtinst qemu-kvm docker.io
+sudo apt install virt-manager virtinst qemu-kvm docker.io
 ```
 
 ## Get Matchbox
 
 ```bash
+mkdir clones
 cd clones
 git clone https://github.com/coreos/matchbox.git
 cd matchbox
-```
-
-## Get Container Linux
-
-```bash
-./scripts/get-coreos stable 1576.4.0 ./examples/assets
 ```
 
 ## Add Node Hostnames
@@ -61,7 +56,8 @@ docker run \
 quay.io/coreos/matchbox:v0.7.0 \
 -address=0.0.0.0:8080 \
 -rpc-address=0.0.0.0:8081 \
--log-level=debug
+-log-level=debug \
+-assets-path=""
 ```
 
 ## Test if `matchbox` is container working
@@ -163,7 +159,7 @@ virt-install \
 --network=bridge:docker0,mac=52:54:00:a1:9c:ae \
 --memory=2048 \
 --vcpus=1 \
---disk pool=default,size=10 \
+--disk pool=default,size=8 \
 --os-type=linux \
 --os-variant=generic \
 --noautoconsole \
@@ -173,9 +169,9 @@ virt-install \
 virt-install \
 --name node2 \
 --network=bridge:docker0,mac=52:54:00:b2:2f:86 \
---memory=2048 \
+--memory=1024 \
 --vcpus=1 \
---disk pool=default,size=10 \
+--disk pool=default,size=4 \
 --os-type=linux \
 --os-variant=generic \
 --noautoconsole \
@@ -185,9 +181,9 @@ virt-install \
 virt-install \
 --name node3 \
 --network=bridge:docker0,mac=52:54:00:c3:61:77 \
---memory=2048 \
+--memory=1024 \
 --vcpus=1 \
---disk pool=default,size=10 \
+--disk pool=default,size=4 \
 --os-type=linux \
 --os-variant=generic \
 --noautoconsole \
