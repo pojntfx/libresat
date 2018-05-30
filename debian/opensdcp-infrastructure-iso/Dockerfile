@@ -3,7 +3,7 @@ FROM httpd:alpine
 # Set env variables (config the server here)
 ENV DEBIAN_MIRROR=https://cdimage.debian.org/
 ENV DEBIAN_VERSION=debian-9.4.0-amd64
-ENV PRESEED_URL=http://192.168.178.44/opensdcp/debian-9/preseed.cfg
+ENV PRESEED_URL=http://192.168.178.44:8200/opensdcp/debian-9/preseed.cfg
 ENV ISO_URL=opensdcp/debian-9/opensdcp-debian-9.iso
 ENV HOSTNAME=node1
 
@@ -34,18 +34,18 @@ RUN echo $'if loadfont /boot/grub/font.pf2 ; then \n\
     insmod gfxterm \n\
     terminal_output gfxterm \n\
     fi \n\
-    set default=0 \n\
+    set default=1 \n\
     set timeout=1 \n\
     set menu_color_normal=white/black \n\
     set menu_color_highlight=black/light-gray \n\
     menuentry "Install the OpenSDCP Distribution of Debian 9" { \n\
     set gfxpayload=keep \n\
-    linux /install.amd/vmlinuz gfxpayload=800x600x16,800x600 hostname='${HOSTNAME} $'--- auto=true url='${PRESEED_URL} $'quiet \n\
+    linux /install.amd/vmlinuz gfxpayload=800x600x16,800x600 hostname='${HOSTNAME} $'--- auto=true priority=critical preseed/locale=en_US kbd-chooser/method=us  url='${PRESEED_URL} $'quiet \n\
     initrd  /install.amd/initrd.gz \n\
     }' > boot/grub/grub.cfg
 
 # Overwrite /isolinux/txt.cfg
-RUN echo $'GRUB_DEFAULT=0 \n\
+RUN echo $'GRUB_DEFAULT=1 \n\
     GRUB_HIDDEN_TIMEOUT=0 \n\
     GRUB_HIDDEN_TIMEOUT_QUIET=true \n\
     GRUB_TIMEOUT=1 \n\
@@ -53,7 +53,7 @@ RUN echo $'GRUB_DEFAULT=0 \n\
     label install \n\
     menu label ^Install the OpenSDCP Distribution of Debian 9\n\
     kernel /install.amd/vmlinuz \n\
-    append preseed/url='${PRESEED_URL} $'bga=788 netcfg/choose_interface=auto initrd=/install.amd/initrd.gz priority=critical --' > isolinux/txt.cfg
+    append preseed/url='${PRESEED_URL} $'bga=788 auto=true priority=critical preseed/locale=en_US kbd-chooser/method=us netcfg/choose_interface=auto initrd=/install.amd/initrd.gz priority=critical --' > isolinux/txt.cfg
 
 # Prepare the ISO
 RUN dd \
@@ -77,5 +77,5 @@ RUN xorriso \
     -isohybrid-gpt-basdat \
     -o /usr/local/apache2/htdocs/${ISO_URL} .
 
-# Expose the server
+# Serve the ISO
 EXPOSE 80
