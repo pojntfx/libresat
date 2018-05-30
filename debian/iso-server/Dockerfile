@@ -40,8 +40,8 @@ RUN echo $'if loadfont /boot/grub/font.pf2 ; then \n\
     set menu_color_highlight=black/light-gray \n\
     menuentry "Install the OpenSDCP Distribution of Debian 9" { \n\
     set gfxpayload=keep \n\
-    linux /install/vmlinuz gfxpayload=800x600x16,800x600 hostname='${HOSTNAME} $'--- auto=true url='${PRESEED_URL} $'quiet \n\
-    initrd  /install/initrd.gz \n\
+    linux /install.amd/vmlinuz gfxpayload=800x600x16,800x600 hostname='${HOSTNAME} $'--- auto=true url='${PRESEED_URL} $'quiet \n\
+    initrd  /install.amd/initrd.gz \n\
     }' > boot/grub/grub.cfg
 
 # Overwrite /isolinux/txt.cfg
@@ -52,8 +52,8 @@ RUN echo $'GRUB_DEFAULT=0 \n\
     default install \n\
     label install \n\
     menu label ^Install the OpenSDCP Distribution of Debian 9\n\
-    kernel /install/vmlinuz \n\
-    append preseed/url='${PRESEED_URL} $'bga=788 netcfg/choose_interface=auto initrd=/install/initrd.gz priority=critical --' > isolinux/txt.cfg
+    kernel /install.amd/vmlinuz \n\
+    append preseed/url='${PRESEED_URL} $'bga=788 netcfg/choose_interface=auto initrd=/install.amd/initrd.gz priority=critical --' > isolinux/txt.cfg
 
 # Prepare the ISO
 RUN dd \
