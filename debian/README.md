@@ -17,9 +17,22 @@ wget -P assets localhost:8000/opensdcp/debian-9/opensdcp-debian-9.iso
 # or continue to automate this step.
 ```
 
-## ISO-Extraction- and PXEBoot-Server (`opensdcp-infrastructure-pxe`)
+## Kernel-, Initrd and PXEBoot-Server (`opensdcp-infrastructure-pxe`)
 
-> TODO: Add server
+> TODO: More decomposition (into kernel, initrd, pxelinux, preseed) is necessary as `opensdcp-infrastructure-iso` will be deprecated.
+
+```bash
+# Build the container
+docker build opensdcp-infrastructure-pxe -t opensdcp-infrastructure-pxe
+# Run the container
+PXECID=$(docker run --cap-add NET_ADMIN -p 69:69 -d opensdcp-infrastructure-pxe)
+# Configure the bridge to the host
+sudo opensdcp-infrastructure-pxe/pipework br0 $PXECID 192.168.242.1/24
+# Add the bridge
+sudo brctl addif br0 enp3s0
+```
+
+> FIXME: Currently outputs `Failed to load ldlinux.c32`
 
 ## Preseed- and Post-Install-Script-Server (`opensdcp-infrastructure-preseed`)
 
