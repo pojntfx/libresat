@@ -69,4 +69,3 @@
 # sudo reboot
 
 echo "TODO: Add post-install script"
-sudo reboot
