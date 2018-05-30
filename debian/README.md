@@ -2,19 +2,32 @@
 
 > TODO: Push example images to Docker Hub
 
-## Build and Serve the OpenSDCP Distribution of Debian 9 as an ISO
+## ISO-Build- and ISO-Serve-Server (`opensdcp-infrastructure-iso`)
+
+Add your configuration options to the environment variables in `opensdcp-infrastructure-iso/Dockerfile`!
 
 ```bash
 # Build the container
-docker build iso-server -t iso-server
+docker build opensdcp-infrastructure-iso -t opensdcp-infrastructure-iso
 # Run the container
-docker run -d -p 8080:80 iso-server
+docker run -d -p 8000:80 opensdcp-infrastructure-iso
 # Save the ISO to `assets/`
-wget -P assets localhost:8080/opensdcp/debian-9/opensdcp-debian-9.iso
+wget -P assets localhost:8000/opensdcp/debian-9/opensdcp-debian-9.iso
 # You may now install the ISO by flashing it to a USB stick and booting your machine from it,
 # or continue to automate this step.
 ```
 
-## Extract and Serve the OpenSDCP Distribution of Debian 9 as `linux`, `initrd.gz` and `pxelinux.0` for PXEBoot
+## ISO-Extraction- and PXEBoot-Server (`opensdcp-infrastructure-pxe`)
 
 > TODO: Add server
+
+## Preseed- and Post-Install-Script-Server (`opensdcp-infrastructure-preseed`)
+
+Add the ip of your `opensdcp-infrastructure-preseed`-server to the last line of `opensdcp-infrastructure-preseed/preseed.cfg`.
+
+```bash
+# Build the container
+docker build opensdcp-infrastructure-preseed -t opensdcp-infrastructure-preseed
+# Run the container
+docker run -d -p 8200:80 opensdcp-infrastructure-preseed
+```
