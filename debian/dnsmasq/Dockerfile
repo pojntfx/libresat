@@ -1,18 +1,15 @@
-FROM alpine:latest
+FROM debian:stretch
 
 # Configure access to other microservices and hostname
-ENV KERNEL_SERVER_IP=192.168.178.44:8000
-ENV INITRD_SERVER_IP=192.168.178.44:8100
-ENV PXELINUX_SERVER_IP=192.168.178.44:8200
 ENV PRESEED_SERVER_IP=192.168.242.2
 ENV NODE_HOSTNAME=node1
 
 # Update the system
-RUN apk update
-RUN apk upgrade
+RUN apt update
+RUN apt -y upgrade
 
 # Get dependencies
-RUN apk add wget dnsmasq iptables --no-cache
+RUN apt install -y wget dnsmasq iptables
 
 # Get pipework
 RUN wget https://raw.github.com/jpetazzo/pipework/master/pipework
@@ -21,14 +18,6 @@ RUN chmod +x pipework
 # Setup enviromnent
 RUN mkdir /tftp
 WORKDIR /tftp
-
-# Get kernel, intitrd and pxelinux
-RUN wget $KERNEL_SERVER_IP/opensdcp/debian/9/kernel/linux
-RUN wget $INITRD_SERVER_IP/opensdcp/debian/9/initrd/initrd.gz
-RUN wget $PXELINUX_SERVER_IP/opensdcp/debian/9/pxelinux/pxelinux.0
-RUN wget $PXELINUX_SERVER_IP/opensdcp/debian/9/pxelinux/bootnetx64.efi
-RUN wget -r -nH --no-parent --cut-dirs=5 --reject="index.html*" $PXELINUX_SERVER_IP/opensdcp/debian/9/pxelinux/grub
-RUN wget -r -nH --no-parent --cut-dirs=5 --reject="index.html*" $PXELINUX_SERVER_IP/opensdcp/debian/9/pxelinux/boot-screens
 
 # Setup syslinux
 RUN mkdir pxelinux.cfg
@@ -43,10 +32,14 @@ CMD \
     CONTAINER_IP=$(ip addr show dev eth1 | awk -F '[ /]+' '/global/ {print $3}') && \
     CONTAINER_SUBNET=$(echo $CONTAINER_IP | cut -d '.' -f 1,2,3) && \
     dnsmasq --interface=eth1 \
-    --dhcp-range=$CONTAINER_SUBNET.101,$CONTAINER_SUBNET.199,255.255.255.0,1h \
-    --dhcp-boot=pxelinux.0,pxeserver,$CONTAINER_IP \
-    --pxe-service=x86PC,"Automatically install the OpenSDCP Distribution of Debian 9",pxelinux \    
-    --enable-tftp --tftp-root=/tftp/ --no-daemon
+    --dhcp-range=192.168.242.0,proxy \
+    --dhcp-boot=pxelinux.0,pxeserver,192.168.242.3 \
+    --pxe-service=x86PC,"Automatically install the OpenSDCP Distribution of Debian 9",192.168.242.3/pxelinux \     
+    --dhcp-option=vendor:PXEClient,6,2b \
+    --dhcp-no-override \   
+    --no-daemon \
+    --port=0 \
+    --log-dhcp 
 
 # Serve dnsmasq
-EXPOSE 69
+EXPOSE 53

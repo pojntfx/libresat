@@ -4,6 +4,8 @@
 
 This setup uses a microservice-like architecture to install Debian over PXE. It does so by using Docker containers and Preseed files, which means that there is no need for any supervision.
 
+FIXME: Add seperated TFTP and PXE servers to diagram
+
 ```text
 Kernel Server    Initrd Server    PXELINUX Server    Preseed Server
 
@@ -87,21 +89,44 @@ sudo scripts/pipework br0 $PRESEED_CONTAINER_ID 192.168.242.2/24
 curl localhost:8300/opensdcp/debian/9/preseed/ | grep -e preseed.cfg -e post-install.sh
 ```
 
+## TFTP Server
+
+TODO: Use Alpine instead of Debian
+
+```bash
+# Build the container
+docker build tftp/ -t opensdcp-debian-tftp
+# Run the container
+TFTP_CONTAINER_ID=$(docker run --cap-add NET_ADMIN --cap-add=NET_RAW -td -p 69:69 opensdcp-debian-tftp)
+# Add extra network interface
+sudo scripts/pipework br0 $TFTP_CONTAINER_ID 192.168.242.3/24
+```
+
 ## DNSMasq Server
+
+TODO: Use Alpine instead of Debian
 
 ```bash
 # Build the container
 docker build dnsmasq/ -t opensdcp-debian-dnsmasq
 # Run the container
-DNSMASQ_CONTAINER_ID=$(docker run --cap-add NET_ADMIN --cap-add=NET_RAW -d -p 69:69 opensdcp-debian-dnsmasq)
+DNSMASQ_CONTAINER_ID=$(docker run --cap-add NET_ADMIN --cap-add=NET_RAW -d -p 54:53 opensdcp-debian-dnsmasq)
 # Add extra network interface
 sudo scripts/pipework br0 $DNSMASQ_CONTAINER_ID 192.168.242.1/24
 ```
 
-Now connect machines to the `br0` bridge and set them to PXEBoot. If you want to use your normal network card, bridge it (replace `enp3s0` with your actual network card) by running the following:
+Now connect machines to the `br0` bridge and set them to PXEBoot. If you want to use your normal network card, bridge it (replace `enp2s0` with your actual network card) by running the following:
 
 ```bash
-brctl addif br0 enp3s0
+sudo ip link set br0 up # Not necessary if this is the first time
+sudo brctl addif br0 enp2s0
+```
+
+Stop it with the following:
+
+```bash
+sudo ip link set br0 down
+sudo brctl delbr br0
 ```
 
 ## Alternative: ISO Server
