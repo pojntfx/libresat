@@ -1,2 +1,4 @@
-# Isos etc.
-assets/
+# pipework
+scripts/
+# ISOs
+/output/

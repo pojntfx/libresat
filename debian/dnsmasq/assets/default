@@ -1,0 +1,4 @@
+default opensdcp-debian-9
+label opensdcp-debian-9
+kernel linux
+append auto=true priority=critical initrd=initrd.gz hostname=NODE_HOSTNAME preseed/url=http://PRESEED_SERVER_IP/opensdcp/debian/9/preseed/preseed.cfg preseed/locale=en_US kbd-chooser/method=us netcfg/choose_interface=auto
