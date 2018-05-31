@@ -1,30 +1,32 @@
 FROM httpd:alpine
 
 # Set env variables (config the server here)
-ENV DEBIAN_MIRROR=https://cdimage.debian.org/
-ENV DEBIAN_VERSION=debian-9.4.0-amd64
-ENV PRESEED_URL=http://192.168.178.44:8200/opensdcp/debian-9/preseed.cfg
-ENV ISO_URL=opensdcp/debian-9/opensdcp-debian-9.iso
-ENV HOSTNAME=node1
+ENV DEBIAN_MIRROR=https://cdimage.debian.org
+ENV DEBIAN_VERSION=debian-9.4.0
+ENV DEBIAN_ARCH=amd64
+ENV PRESEED_SERVER_IP=192.168.242.2
+ENV ISO_URL=opensdcp/debian/9/opensdcp-debian-9.iso
+ENV NODE_HOSTNAME=node1
 
 # Update the system
 RUN apk update
 RUN apk upgrade
 
 # Install dependencies
-RUN apk add xorriso wget
+RUN apk add --node-cache xorriso wget
 
 # Setup the environment
-RUN mkdir /tmp/opensdcp-debian/
-RUN mkdir /usr/local/apache2/htdocs/opensdcp/
-RUN mkdir /usr/local/apache2/htdocs/opensdcp/debian-9/
+RUN mkdir /tmp/opensdcp-debian
+RUN mkdir /usr/local/apache2/htdocs/opensdcp
+RUN mkdir /usr/local/apache2/htdocs/opensdcp/debian
+RUN mkdir /usr/local/apache2/htdocs/opensdcp/debian/9
 WORKDIR /tmp/opensdcp-debian/
 
 # Get the official ISO
-RUN wget ${DEBIAN_MIRROR}debian-cd/current/amd64/iso-cd/${DEBIAN_VERSION}-netinst.iso
+RUN wget $DEBIAN_MIRROR/debian-cd/current/$DEBIAN_ARCH/iso-cd/$DEBIAN_VERSION-$DEBIAN_ARCH-netinst.iso
 
 # Extract the official ISO
-RUN xorriso -osirrox on -indev ${DEBIAN_VERSION}-netinst.iso -extract / .
+RUN xorriso -osirrox on -indev $DEBIAN_VERSION-$DEBIAN_ARCH-netinst.iso -extract / .
 
 # Overwrite contents of boot/grub/grub.cfg
 RUN echo $'if loadfont /boot/grub/font.pf2 ; then \n\
@@ -40,7 +42,7 @@ RUN echo $'if loadfont /boot/grub/font.pf2 ; then \n\
     set menu_color_highlight=black/light-gray \n\
     menuentry "Install the OpenSDCP Distribution of Debian 9" { \n\
     set gfxpayload=keep \n\
-    linux /install.amd/vmlinuz gfxpayload=800x600x16,800x600 --- url='${PRESEED_URL} $'hostname='${HOSTNAME} $'auto=true priority=critical preseed/locale=en_US kbd-chooser/method=us quiet \n\
+    linux /install.amd/vmlinuz gfxpayload=800x600x16,800x600 --- auto=true priority=critical initrd=/install.amd/initrd.gz hostname='$NODE_HOSTNAME$' preseed/url=http://'$PRESEED_SERVER_IP$'/opensdcp/debian/9/preseed/preseed.cfg preseed/locale=en_US kbd-chooser/method=us netcfg/choose_interface=auto\n\
     initrd  /install.amd/initrd.gz \n\
     }' > boot/grub/grub.cfg
 
@@ -53,11 +55,11 @@ RUN echo $'GRUB_DEFAULT=1 \n\
     label install \n\
     menu label ^Install the OpenSDCP Distribution of Debian 9\n\
     kernel /install.amd/vmlinuz \n\
-    append preseed/url='${PRESEED_URL} $'hostname='${HOSTNAME} $'bga=788 auto=true priority=critical preseed/locale=en_US kbd-chooser/method=us netcfg/choose_interface=auto initrd=/install.amd/initrd.gz priority=critical --' > isolinux/txt.cfg
+    append auto=true priority=critical initrd=/install.amd/initrd.gz hostname='$NODE_HOSTNAME$' preseed/url=http://'$PRESEED_SERVER_IP$'/opensdcp/debian/9/preseed/preseed.cfg preseed/locale=en_US kbd-chooser/method=us netcfg/choose_interface=auto' > isolinux/txt.cfg
 
 # Prepare the ISO
 RUN dd \
-    if=${DEBIAN_VERSION}-netinst.iso \
+    if=$DEBIAN_VERSION-$DEBIAN_ARCH-netinst.iso \
     bs=512 \
     count=1 \
     of=isolinux/isohdpfx.bin
@@ -75,7 +77,7 @@ RUN xorriso \
     -e boot/grub/efi.img \
     -no-emul-boot \
     -isohybrid-gpt-basdat \
-    -o /usr/local/apache2/htdocs/${ISO_URL} .
+    -o /usr/local/apache2/htdocs/$ISO_URL .
 
 # Serve the ISO
 EXPOSE 80
