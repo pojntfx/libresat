@@ -28,6 +28,8 @@ RUN wget $DEBIAN_MIRROR/debian-cd/current/$DEBIAN_ARCH/iso-cd/$DEBIAN_VERSION-$D
 # Extract the official ISO
 RUN xorriso -osirrox on -indev $DEBIAN_VERSION-$DEBIAN_ARCH-netinst.iso -extract / .
 
+# TODO: Add more sane config for grub and syslinux (branding, automatic boot)
+
 # Overwrite contents of boot/grub/grub.cfg
 RUN echo $'if loadfont /boot/grub/font.pf2 ; then \n\
     set gfxmode=auto \n\
