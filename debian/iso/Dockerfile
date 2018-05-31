@@ -28,30 +28,15 @@ RUN wget $DEBIAN_MIRROR/debian-cd/current/$DEBIAN_ARCH/iso-cd/$DEBIAN_VERSION-$D
 # Extract the official ISO
 RUN xorriso -osirrox on -indev $DEBIAN_VERSION-$DEBIAN_ARCH-netinst.iso -extract / .
 
-# TODO: Add more sane config for grub and syslinux (branding, automatic boot)
-
-# Overwrite contents of boot/grub/grub.cfg
-RUN echo $'if loadfont /boot/grub/font.pf2 ; then \n\
-    set gfxmode=auto \n\
-    insmod efi_gop \n\
-    insmod efi_uga \n\
-    insmod gfxterm \n\
-    terminal_output gfxterm \n\
-    fi \n\
-    set default=1 \n\
-    set timeout=1 \n\
-    set menu_color_normal=white/black \n\
-    set menu_color_highlight=black/light-gray \n\
-    menuentry "Install the OpenSDCP Distribution of Debian 9" { \n\
-    set gfxpayload=keep \n\
-    linux /install.amd/vmlinuz gfxpayload=800x600x16,800x600 --- auto=true priority=critical initrd=/install.amd/initrd.gz hostname='$NODE_HOSTNAME$' preseed/url=http://'$PRESEED_SERVER_IP$'/opensdcp/debian/9/preseed/preseed.cfg preseed/locale=en_US kbd-chooser/method=us netcfg/choose_interface=auto\n\
-    initrd  /install.amd/initrd.gz \n\
-    }' > boot/grub/grub.cfg
-
 # Setup syslinux
 COPY assets/isolinux.cfg isolinux/
 RUN sed -i s/PRESEED_SERVER_IP/$PRESEED_SERVER_IP/g isolinux/isolinux.cfg
 RUN sed -i s/NODE_HOSTNAME/$NODE_HOSTNAME/g isolinux/isolinux.cfg
+
+# Setup GRUB
+COPY assets/grub.cfg boot/grub/
+RUN sed -i s/PRESEED_SERVER_IP/$PRESEED_SERVER_IP/g boot/grub/grub.cfg
+RUN sed -i s/NODE_HOSTNAME/$NODE_HOSTNAME/g boot/grub/grub.cfg
 
 # Prepare the ISO
 RUN dd \
