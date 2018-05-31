@@ -30,7 +30,7 @@ RUN wget $PXELINUX_SERVER_IP/opensdcp/debian/9/pxelinux/bootnetx64.efi
 RUN wget -r -nH --no-parent --cut-dirs=5 --reject="index.html*" $PXELINUX_SERVER_IP/opensdcp/debian/9/pxelinux/grub
 RUN wget -r -nH --no-parent --cut-dirs=5 --reject="index.html*" $PXELINUX_SERVER_IP/opensdcp/debian/9/pxelinux/boot-screens
 
-# Setup pxelinux
+# Setup syslinux
 RUN mkdir pxelinux.cfg
 COPY assets/default pxelinux.cfg
 RUN sed -i s/PRESEED_SERVER_IP/$PRESEED_SERVER_IP/g pxelinux.cfg/default
@@ -38,14 +38,14 @@ RUN sed -i s/NODE_HOSTNAME/$NODE_HOSTNAME/g pxelinux.cfg/default
 
 # Run dnsmasq
 CMD \
-    iptables -t nat -A POSTROUTING -j MASQUERADE &&\
-    /pipework --wait &&\
-    myIP=$(ip addr show dev eth1 | awk -F '[ /]+' '/global/ {print $3}') &&\
-    mySUBNET=$(echo $myIP | cut -d '.' -f 1,2,3) &&\
+    iptables -t nat -A POSTROUTING -j MASQUERADE && \
+    /pipework --wait && \
+    CONTAINER_IP=$(ip addr show dev eth1 | awk -F '[ /]+' '/global/ {print $3}') && \
+    CONTAINER_SUBNET=$(echo $CONTAINER_IP | cut -d '.' -f 1,2,3) && \
     dnsmasq --interface=eth1 \
-    --dhcp-range=$mySUBNET.101,$mySUBNET.199,255.255.255.0,1h \
-    --dhcp-boot=pxelinux.0,pxeserver,$myIP \
-    --pxe-service=x86PC,"Install the OpenSDCP Distribution of Debian 9",pxelinux \
+    --dhcp-range=$CONTAINER_SUBNET.101,$CONTAINER_SUBNET.199,255.255.255.0,1h \
+    --dhcp-boot=pxelinux.0,pxeserver,$CONTAINER_IP \
+    --pxe-service=x86PC,"Automatically install the OpenSDCP Distribution of Debian 9",pxelinux \    
     --enable-tftp --tftp-root=/tftp/ --no-daemon
 
 # Serve dnsmasq

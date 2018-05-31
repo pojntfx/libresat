@@ -48,16 +48,10 @@ RUN echo $'if loadfont /boot/grub/font.pf2 ; then \n\
     initrd  /install.amd/initrd.gz \n\
     }' > boot/grub/grub.cfg
 
-# Overwrite /isolinux/txt.cfg
-RUN echo $'GRUB_DEFAULT=1 \n\
-    GRUB_HIDDEN_TIMEOUT=0 \n\
-    GRUB_HIDDEN_TIMEOUT_QUIET=true \n\
-    GRUB_TIMEOUT=1 \n\
-    default install \n\
-    label install \n\
-    menu label ^Install the OpenSDCP Distribution of Debian 9\n\
-    kernel /install.amd/vmlinuz \n\
-    append auto=true priority=critical initrd=/install.amd/initrd.gz hostname='$NODE_HOSTNAME$' preseed/url=http://'$PRESEED_SERVER_IP$'/opensdcp/debian/9/preseed/preseed.cfg preseed/locale=en_US kbd-chooser/method=us netcfg/choose_interface=auto' > isolinux/txt.cfg
+# Setup syslinux
+COPY assets/isolinux.cfg isolinux/
+RUN sed -i s/PRESEED_SERVER_IP/$PRESEED_SERVER_IP/g isolinux/isolinux.cfg
+RUN sed -i s/NODE_HOSTNAME/$NODE_HOSTNAME/g isolinux/isolinux.cfg
 
 # Prepare the ISO
 RUN dd \
