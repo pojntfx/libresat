@@ -25,6 +25,15 @@ Kernel Server    Initrd Server    PXELINUX Server    Preseed Server
 
 Alternatively, if you do not want to set up a the PXELINUX, Kernel and Initrd Servers, consider using the ISO Server, manually flashing the ISO to a USB stick and then booting from it.
 
+## Roadmap
+
+This is still a work-in-progress! The following features are currently planned to be implemented as well:
+
+* `apt-mirror` for much faster installations in mass deployments
+* Installation and setup of SSH and Ansible dependencies so that the nodes, once Debian has been deployed, can be provisioned using Ansible (i.e. for Kubernetes deployments)
+* An IP scanner and IP registry REST API server
+* React Frontend and NodeJS/Go CLI with common Ansible scripts (apt update, apt install, reboot etc.) and an infrastructure overview (`nmap -sP iface`)
+
 ## Configuration
 
 Configure the environment variables in the Dockerfiles to match your configuration (mostly IP addresses).
