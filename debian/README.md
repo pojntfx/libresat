@@ -98,10 +98,18 @@ DNSMASQ_CONTAINER_ID=$(docker run --cap-add NET_ADMIN --cap-add=NET_RAW -d -p 69
 sudo scripts/pipework br0 $DNSMASQ_CONTAINER_ID 192.168.242.1/24
 ```
 
-Now connect machines to the `br0` bridge and set them to PXEBoot. If you want to use your normal network card, bridge it (replace `enp3s0` with your actual network card) by running the following:
+Now connect machines to the `br0` bridge and set them to PXEBoot. If you want to use your normal network card, bridge it (replace `enp2s0` with your actual network card) by running the following:
 
 ```bash
-brctl addif br0 enp3s0
+sudo ip link set br0 up # Not necessary if this is the first time
+sudo brctl addif br0 enp2s0
+```
+
+This might prevent you from connecting to the internet. Stop it with the following:
+
+```bash
+sudo ip link set br0 down
+sudo brctl delbr br0
 ```
 
 ## Alternative: ISO Server
