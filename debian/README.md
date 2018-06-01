@@ -97,9 +97,7 @@ TODO: Use Alpine instead of Debian
 # Build the container
 docker build tftp/ -t opensdcp-debian-tftp
 # Run the container
-TFTP_CONTAINER_ID=$(docker run --cap-add NET_ADMIN --cap-add=NET_RAW -td -p 69:69 opensdcp-debian-tftp)
-# Add extra network interface
-sudo scripts/pipework br0 $TFTP_CONTAINER_ID 192.168.242.3/24
+docker run --net=host --cap-add NET_ADMIN --cap-add=NET_RAW -td -p 69:69 opensdcp-debian-tftp
 # Test if the container works
 tftp localhost
 get test.txt # should return "xx bytes transfered"
@@ -108,8 +106,6 @@ get test.txt # should return "xx bytes transfered"
 ## DNSMasq Server
 
 TODO: Use Alpine instead of Debian
-TODO: Add env variable for TFTP server
-FIXME: Wrong PRESEED_SERVER_IP
 
 ```bash
 # Build the container
