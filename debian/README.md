@@ -97,10 +97,9 @@ TODO: Use Alpine instead of Debian
 # Build the container
 docker build tftp/ -t opensdcp-debian-tftp
 # Run the container
-docker run --net=host --cap-add NET_ADMIN --cap-add=NET_RAW -td -p 69:69 opensdcp-debian-tftp
-# Test if the container works
-tftp localhost
-get test.txt # should return "xx bytes transfered"
+TFTP_CONTAINER_ID=$(docker run --cap-add NET_ADMIN --cap-add=NET_RAW -td -p 69:69 opensdcp-debian-tftp)
+# Add extra network interface
+sudo scripts/pipework br0 $TFTP_CONTAINER_ID 192.168.242.3/24
 ```
 
 ## DNSMasq Server
