@@ -32,14 +32,11 @@ CMD \
     CONTAINER_IP=$(ip addr show dev eth1 | awk -F '[ /]+' '/global/ {print $3}') && \
     CONTAINER_SUBNET=$(echo $CONTAINER_IP | cut -d '.' -f 1,2,3) && \
     dnsmasq --interface=eth1 \
-    --dhcp-range=192.168.242.0,proxy \
-    --dhcp-boot=pxelinux.0,pxeserver,192.168.242.3 \
-    --pxe-service=x86PC,"Automatically install the OpenSDCP Distribution of Debian 9",192.168.242.3/pxelinux \     
-    --dhcp-option=vendor:PXEClient,6,2b \
-    --dhcp-no-override \   
-    --no-daemon \
-    --port=0 \
-    --log-dhcp 
+    --dhcp-range=$CONTAINER_SUBNET.101,$CONTAINER_SUBNET.199,255.255.255.0,1h \
+    --dhcp-boot=pxelinux.0,pxeserver,192.168.178.44 \
+    --pxe-service=x86PC,"Automatically install the OpenSDCP Distribution of Debian 9",pxelinux,192.168.178.44 \    
+    --no-daemon
 
 # Serve dnsmasq
 EXPOSE 53
+
