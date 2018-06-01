@@ -12,6 +12,10 @@ RUN apt -y upgrade
 # Get dependencies
 RUN apt install -y wget iptables tftpd-hpa tftp
 
+# Get pipework
+RUN wget https://raw.github.com/jpetazzo/pipework/master/pipework
+RUN chmod +x pipework
+
 # Setup enviromnent
 RUN mkdir /tftp
 WORKDIR /tftp
@@ -29,11 +33,12 @@ RUN echo 'TFTP_USERNAME="root" \n\
     TFTP_DIRECTORY="/tftp" \n\
     TFTP_ADDRESS=":69" \n\
     TFTP_OPTIONS="-s"' > /etc/default/tftpd-hpa
-RUN echo 'keep running!' >> test.txt
+RUN echo 'asdf is great' >> test.txt
 
 # Run dnsmasq
 CMD \
     iptables -t nat -A POSTROUTING -j MASQUERADE && \
+    /pipework --wait && \
     service tftpd-hpa start && \
     tail -f /tftp/test.txt
 
