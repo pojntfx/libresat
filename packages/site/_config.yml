@@ -1,0 +1,22 @@
+# Meta
+title: OpenSDCP
+email: felicitas@pojtinger.com
+description: >-
+  Main website for all the OpenSDCP projects
+
+# Config
+baseurl: ""
+url: "https://opensdcp.org"
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: "default"
+
+# Plugins
+plugins:
+  - jekyll-admin
+  - jekyll-autoprefixer
+jekyll_admin:
+  hidden_links:
+    - datafiles # We do not have any data files currently

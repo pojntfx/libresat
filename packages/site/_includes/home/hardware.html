@@ -1,0 +1,21 @@
+<!-- Header -->
+{% include home/section-header.html 
+color="green" 
+icon="microchip" 
+title="Hardware" 
+short-description="Free and Open-Source Hardware for your Spacecraft" 
+docs-link="hardware" 
+contribute-link="hardware" 
+discuss-link="hardware" %}
+<!-- Overview -->
+{% include home/section-overview.html 
+img-src="home/software.jpg" 
+img-left="true"
+description="Lorem ipsum dolor sit amet consectetur, adipisicing
+elit. Explicabo asperiores." 
+contributors="1 contributor"
+license="AGPL-3.0 (libre)"
+loc="5k+ lines"%}
+<!-- Trending Projects -->
+{% include home/trending-projects.html url="https://api.github.com/orgs/opensdcp/repos" id="hardware" %}
+</div>
