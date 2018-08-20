@@ -1,0 +1,41 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: opensdcp-wiki-restbase
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: opensdcp-wiki-restbase
+        tier: backend
+        track: stable
+    spec:
+      containers:
+        - image: pastakhov/restbase:0.16.9
+          name: restbase
+          ports:
+            - name: restbase
+              containerPort: 7231
+          volumeMounts:
+            - name: restbase-data
+              mountPath: /data
+          env:
+            - name: RB_CONF_NUM_WORKERS
+              value: "0"
+            - name: RB_CONF_DOMAIN_web
+              value: http://opensdcp-wiki-web/w/api.php
+            - name: RB_CONF_PARSOID_HOST
+              value: http://opensdcp-wiki-parsoid:8000
+            - name: RB_CONF_BASE_URI_TEMPLATE
+              value: http://{domain}/api/rest_v1
+            - name: RB_CONF_API_URI_TEMPLATE
+              value: http://{domain}/w/api.php
+            - name: RB_CONF_LOGGING_LEVEL
+              value: info
+            - name: RB_CONF_PDF_URI
+              value: http://opensdcp-wiki-pdf:3000
+      volumes:
+        - name: restbase-data
+          persistentVolumeClaim:
+            claimName: opensdcp-wiki-restbase

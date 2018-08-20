@@ -1,0 +1,24 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: opensdcp-wiki-parsoid
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: opensdcp-wiki-parsoid
+        tier: backend
+        track: stable
+    spec:
+      containers:
+        - image: pastakhov/parsoid:0.7.1
+          name: parsoid
+          ports:
+            - name: parsoid
+              containerPort: 8000
+          env:
+            - name: PARSOID_NUM_WORKERS
+              value: "0"
+            - name: PARSOID_DOMAIN_web
+              value: http://opensdcp-wiki-web/w/api.php
