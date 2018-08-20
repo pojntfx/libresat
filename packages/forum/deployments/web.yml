@@ -1,0 +1,42 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: opensdcp-forum-web
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: opensdcp-forum-web
+        tier: backend
+        track: stable
+    spec:
+      containers:
+        - image: mondedie/docker-flarum:0.1.0-beta.7.1-stable
+          name: web
+          ports:
+            - name: web
+              containerPort: 8888
+          volumeMounts:
+            - name: web-assets-data
+              mountPath: /flarum/app/assets
+            - name: web-extensions-data
+              mountPath: /flarum/app/extensions
+          env:
+            - name: FORUM_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: opensdcp-forum-config
+                  key: forum_url
+            - name: DB_PASS
+              valueFrom:
+                configMapKeyRef:
+                  name: opensdcp-forum-config
+                  key: db_password
+      volumes:
+        - name: web-assets-data
+          persistentVolumeClaim:
+            claimName: opensdcp-forum-web-assets
+        - name: web-extensions-data
+          persistentVolumeClaim:
+            claimName: opensdcp-forum-web-extensions
