@@ -106,11 +106,6 @@ kubectl create -f deployments/pdf.yml
 # Create the pdf renderer's service
 kubectl create -f services/pdf.yml
 
-# Create the proxy's deployment
-kubectl create -f deployments/proxy.yml
-# Create the proxy renderer's service
-kubectl create -f services/proxy.yml
-
 # Create the restbase's persistent volume
 kubectl create -f persistentvolumes/restbase.yml
 # Create the restbase's persistent volume claim
@@ -130,6 +125,11 @@ kubectl create -f persistentvolumeclaims/web-images.yml
 kubectl create -f deployments/web.yml
 # Create the web server's service
 kubectl create -f services/web.yml
+
+# Create the proxy's deployment
+kubectl create -f deployments/proxy.yml
+# Create the proxy renderer's service
+kubectl create -f services/proxy.yml
 
 # Now open up the web server's endpoint and test it!
 # This can take a LONG time. There will be no logs in the web container at first, especially
