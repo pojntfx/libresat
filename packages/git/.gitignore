@@ -1,0 +1,6 @@
+# env variables for secrets
+.env
+
+# development docker volumes
+opensdcp-git-web-data-dev/
+opensdcp-git-db-data-dev/

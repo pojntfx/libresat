@@ -1,0 +1,28 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: opensdcp-git-web
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: opensdcp-git-web
+        tier: backend
+        track: stable
+    spec:
+      containers:
+        - image: gitea/gitea:latest
+          name: web
+          ports:
+            - name: web
+              containerPort: 3000
+            - name: ssh
+              containerPort: 22
+          volumeMounts:
+            - name: web-data
+              mountPath: /data
+      volumes:
+        - name: web-data
+          persistentVolumeClaim:
+            claimName: opensdcp-git-web
