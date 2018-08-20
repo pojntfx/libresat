@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: opensdcp-wiki-pdf
+spec:
+  selector:
+    app: opensdcp-wiki-pdf
+    tier: backend
+    track: stable
+  ports:
+    - name: pdf
+      targetPort: pdf
+      port: 3000
+  type: NodePort

@@ -1,0 +1,105 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: opensdcp-wiki-web
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: opensdcp-wiki-web
+        tier: backend
+        track: stable
+    spec:
+      containers:
+        - image: pojntfx/opensdcp-wiki-web:latest
+          name: web
+          ports:
+            - name: web
+              containerPort: 80
+          volumeMounts:
+            - name: web-data
+              mountPath: /mediawiki
+            - name: web-images-data
+              mountPath: /var/www/html/w/images
+          env:
+            - name: MW_SITE_SERVER
+              valueFrom:
+                configMapKeyRef:
+                  name: opensdcp-wiki-config
+                  key: wiki_url
+            - name: MW_SITE_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: opensdcp-wiki-config
+                  key: wiki_name
+            - name: MW_SITE_LANG
+              value: en
+            - name: MW_DEFAULT_SKIN
+              value: vector
+            - name: MW_ENABLE_UPLOADS
+              value: "1"
+            - name: MW_USE_INSTANT_COMMONS
+              value: "0"
+            - name: MW_ADMIN_USER
+              valueFrom:
+                configMapKeyRef:
+                  name: opensdcp-wiki-config
+                  key: wiki_admin_user
+            - name: MW_ADMIN_PASS
+              valueFrom:
+                configMapKeyRef:
+                  name: opensdcp-wiki-config
+                  key: wiki_admin_password
+            - name: MW_DB_NAME
+              value: mediawiki
+            - name: MW_DB_USER
+              valueFrom:
+                configMapKeyRef:
+                  name: opensdcp-wiki-config
+                  key: wiki_db_user
+            - name: MW_DB_PASS
+              valueFrom:
+                configMapKeyRef:
+                  name: opensdcp-wiki-config
+                  key: wiki_db_user_password
+            - name: MW_DB_INSTALLDB_USER
+              value: root
+            - name: MW_DB_INSTALLDB_PASS
+              valueFrom:
+                configMapKeyRef:
+                  name: opensdcp-wiki-config
+                  key: db_root_password
+            - name: MW_AUTOUPDATE
+              value: "true"
+            - name: MW_PROXY_SERVERS
+              value: opensdcp-wiki-proxy
+            - name: MW_MAIN_CACHE_TYPE
+              value: CACHE_MEMCACHED
+            - name: MW_MEMCACHED_SERVERS
+              value: opensdcp-wiki-memcached:11211
+            - name: MW_SEARCH_TYPE
+              value: CirrusSearch
+            - name: MW_CIRRUS_SEARCH_SERVERS
+              value: elasticsearch
+            - name: MW_REST_DOMAIN
+              value: opensdcp-wiki-web
+            - name: MW_REST_PARSOID_URL
+              value: http://opensdcp-wiki-parsoid:8000
+            - name: MW_REST_RESTBASE_URL
+              value: http://opensdcp-wiki-restbase:7231
+            - name: MW_REST_RESTBASE_PROXY_PATH
+              value: /api/rest_
+            - name: MW_FLOW_NAMESPACES
+              value: NS_TALK,NS_USER_TALK
+            - name: PHP_LOG_ERRORS
+              value: "On"
+            - name: PHP_ERROR_REPORTING
+              value: E_ALL
+      volumes:
+        - name: web-data
+          persistentVolumeClaim:
+            claimName: opensdcp-wiki-web
+        - name: web-images-data
+          persistentVolumeClaim:
+            claimName: opensdcp-wiki-web-images

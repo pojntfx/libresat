@@ -1,0 +1,25 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: opensdcp-wiki-pdf
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: opensdcp-wiki-pdf
+        tier: backend
+        track: stable
+    spec:
+      containers:
+        - image: msokk/electron-render-service
+          name: pdf
+          ports:
+            - name: pdf
+              containerPort: 3000
+          env:
+            - name: RENDERER_ACCESS_KEY
+              valueFrom:
+                configMapKeyRef:
+                  name: opensdcp-wiki-config
+                  key: renderer_access_key
