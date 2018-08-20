@@ -1,0 +1,21 @@
+version: "3"
+
+services: 
+  web:
+    image: portainer/portainer:latest
+    ports:
+      - "1000:9000"
+    volumes:
+      - opensdcp-swarm-manager-web-data:/data
+      - /var/run/docker.sock:/var/run/docker.sock
+    deploy:
+      replicas: 1
+      update_config:
+        parallelism: 2
+      restart_policy:
+        condition: on-failure
+      placement:
+        constraints: [node.role == manager]
+
+volumes: 
+  opensdcp-swarm-manager-web-data:
