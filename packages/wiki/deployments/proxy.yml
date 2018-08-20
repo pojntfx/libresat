@@ -1,0 +1,30 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: opensdcp-wiki-proxy
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: opensdcp-wiki-proxy
+        tier: backend
+        track: stable
+    spec:
+      containers:
+        - image: pojntfx/opensdcp-wiki-proxy:latest
+          name: proxy
+          ports:
+            - name: proxy
+              containerPort: 80
+          env:
+            - name: PROXY_BACKEND_web
+              value: opensdcp-wiki-web:80
+            - name: PROXY_BACKEND_restbase
+              value: opensdcp-wiki-restbase:7231
+            - name: PROXY_RESTBASE_BACKEND
+              value: opensdcp-wiki-restbase
+            - name: PROXY_RESTBASE_URL
+              value: ^/api/rest_v1
+            - name: PROXY_RESTBASE_SUB
+              value: /{backend_hint}/v1

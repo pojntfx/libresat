@@ -1,0 +1,26 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: opensdcp-wiki-elasticsearch
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: opensdcp-wiki-elasticsearch
+        tier: backend
+        track: stable
+    spec:
+      containers:
+        - image: elasticsearch:5.6
+          name: elasticsearch
+          ports:
+            - name: elasticsearch
+              containerPort: 9200
+          volumeMounts:
+            - name: elasticsearch-data
+              mountPath: /usr/share/elasticsearch/data
+      volumes:
+        - name: elasticsearch-data
+          persistentVolumeClaim:
+            claimName: opensdcp-wiki-elasticsearch

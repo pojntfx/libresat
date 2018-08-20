@@ -1,0 +1,124 @@
+version: "3"
+
+services:
+    db:
+        image: pastakhov/mysql:5.7
+        restart: always
+        environment:
+            - MYSQL_ROOT_HOST=%
+            - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+        networks:
+          - opensdcp-wiki
+        volumes:
+          - ./opensdcp-wiki-db-data:/var/lib/mysql
+
+    proxy:
+        image: pastakhov/varnish-mediawiki:1.0
+        restart: always
+        depends_on:
+            - web
+            - restbase
+        ports:
+            - "4100:80"
+        environment:
+            - PROXY_BACKEND_web=web:80
+            - PROXY_BACKEND_restbase=restbase:7231
+            - PROXY_RESTBASE_BACKEND=restbase
+            - PROXY_RESTBASE_URL=^/api/rest_v1
+            - PROXY_RESTBASE_SUB=/{backend_hint}/v1
+        networks:
+          - opensdcp-wiki
+
+    web:
+        build: 
+            context: ./web
+            dockerfile: Dockerfile
+        restart: always
+        depends_on:
+            - db
+            - elasticsearch
+            - memcached
+            - parsoid
+            - restbase
+        environment:
+            - MW_SITE_SERVER=${WIKI_URL}
+            - MW_SITE_NAME=${WIKI_NAME}
+            - MW_SITE_LANG=en
+            - MW_DEFAULT_SKIN=vector
+            - MW_ENABLE_UPLOADS=1
+            - MW_USE_INSTANT_COMMONS=0
+            - MW_ADMIN_USER=${WIKI_ADMIN_USER}
+            - MW_ADMIN_PASS=${WIKI_ADMIN_PASSWORD}
+            - MW_DB_NAME=mediawiki
+            - MW_DB_USER=${WIKI_DB_USER}
+            - MW_DB_PASS=${WIKI_DB_USER_PASSWORD}
+            - MW_DB_INSTALLDB_USER=root
+            - MW_DB_INSTALLDB_PASS=${MYSQL_ROOT_PASSWORD}
+            - MW_AUTOUPDATE=true
+            - MW_PROXY_SERVERS=proxy
+            - MW_MAIN_CACHE_TYPE=CACHE_MEMCACHED
+            - MW_MEMCACHED_SERVERS=memcached:11211
+            - MW_SEARCH_TYPE=CirrusSearch
+            - MW_CIRRUS_SEARCH_SERVERS=elasticsearch
+            - MW_REST_DOMAIN=web
+            - MW_REST_PARSOID_URL=http://parsoid:8000
+            - MW_REST_RESTBASE_URL=http://restbase:7231
+            - MW_REST_RESTBASE_PROXY_PATH=/api/rest_
+            - MW_FLOW_NAMESPACES=NS_TALK,NS_USER_TALK
+            - PHP_LOG_ERRORS=On
+            - PHP_ERROR_REPORTING=E_ALL #Production Value: E_ALL & ~E_DEPRECATED & ~E_STRICT
+        networks:
+          - opensdcp-wiki
+        volumes:
+          - ./opensdcp-wiki-web-data:/mediawiki
+          - ./opensdcp-wiki-web-images-data:/var/www/html/w/images
+
+    memcached:
+        image: memcached
+        restart: always
+        networks:
+          - opensdcp-wiki
+
+    parsoid:
+        image: pastakhov/parsoid:0.7.1
+        restart: always
+        environment:
+            - PARSOID_NUM_WORKERS=0
+            - PARSOID_DOMAIN_web=http://web/w/api.php
+        networks:
+          - opensdcp-wiki
+
+    restbase:
+        image: pastakhov/restbase:0.16.9
+        restart: always
+        environment:
+            - RB_CONF_NUM_WORKERS=0
+            - RB_CONF_DOMAIN_web=http://web/w/api.php
+            - RB_CONF_PARSOID_HOST=http://parsoid:8000
+            - RB_CONF_BASE_URI_TEMPLATE=http://{domain}/api/rest_v1
+            - RB_CONF_API_URI_TEMPLATE=http://{domain}/w/api.php
+            - RB_CONF_LOGGING_LEVEL=info #trace
+            - RB_CONF_PDF_URI=http://pdf:3000
+        networks:
+          - opensdcp-wiki
+        volumes:
+          - ./opensdcp-wiki-restbase-data:/data
+
+    elasticsearch:
+        image: elasticsearch:5.6
+        restart: always
+        networks:
+          - opensdcp-wiki
+        volumes:
+          - ./opensdcp-wiki-elasticsearch-data:/usr/share/elasticsearch/data
+
+    pdf:
+        image: msokk/electron-render-service
+        restart: always
+        environment:
+            RENDERER_ACCESS_KEY: ${RENDERER_ACCESS_KEY}
+        networks:
+          - opensdcp-wiki
+
+networks: 
+  opensdcp-wiki:
