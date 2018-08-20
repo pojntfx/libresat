@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: opensdcp-forum-db
+spec:
+  selector:
+    app: opensdcp-forum-db
+    tier: backend
+    track: stable
+  ports:
+    - name: db
+      targetPort: db
+      port: 3306
+  type: NodePort

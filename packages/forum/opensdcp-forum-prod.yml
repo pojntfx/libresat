@@ -1,0 +1,46 @@
+version: "3"
+
+services: 
+  web:
+    image: mondedie/docker-flarum:0.1.0-beta.7.1-stable
+    ports:
+      - "3000:8888"
+    environment:
+      - FORUM_URL=${FORUM_URL}
+      - DB_PASS=${DB_PASSWORD}
+    networks:
+      - opensdcp-forum
+    volumes:
+      - opensdcp-forum-web-assets-data:/flarum/app/assets
+      - opensdcp-forum-web-extensions-data:/flarum/app/extensions
+    depends_on:
+      - db
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+  db:
+    image: mariadb:10.1
+    environment:
+      - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
+      - MYSQL_DATABASE=flarum
+      - MYSQL_USER=${DB_USER}
+      - MYSQL_PASSWORD=${DB_PASSWORD}
+    networks:
+      - opensdcp-forum
+    volumes:
+      - opensdcp-forum-db-data:/var/lib/mysql
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+      placement:
+        constraints: [node.role == manager]
+
+networks: 
+  opensdcp-forum:
+
+volumes: 
+  opensdcp-forum-web-assets-data:
+  opensdcp-forum-web-extensions-data:
+  opensdcp-forum-db-data:
