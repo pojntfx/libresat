@@ -1,0 +1,24 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: web
+  namespace: webmail
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: web
+    spec:
+      containers:
+        - name: web
+          image: hardware/rainloop
+          ports:
+            - containerPort: 8888
+          volumeMounts:
+            - name: data
+              mountPath: "/rainloop/data"
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: data
