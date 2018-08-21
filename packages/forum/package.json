@@ -1,8 +1,8 @@
 {
-  "name": "@libresat/cluster",
+  "name": "@libresat/forum",
   "version": "0.0.1-0",
-  "description": "The [LibreSat](https://libresat.space/) Distribution of [Kubernetes](https://kubernetes.io/)",
-  "main": "src/cluster.yaml",
+  "description": "The [LibreSat](https://libresat.space/) Distribution of [GNU Mailman](http://www.list.org/)",
+  "main": "src/forum.yaml",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -11,12 +11,13 @@
     "url": "git+https://gitlab.com/libresat/libresat.git"
   },
   "keywords": [
-    "kubernetes",
-    "cluster",
-    "containers",
-    "docker",
-    "orchestration",
-    "deployment"
+    "mailing-list",
+    "mail",
+    "mailman",
+    "mailman3",
+    "forum",
+    "hyperkitty",
+    "postorius"
   ],
   "author": "Felicitas Pojtinger <felicitas@pojtinger.com>",
   "license": "AGPL-3.0",
