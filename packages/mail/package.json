@@ -1,8 +1,8 @@
 {
-  "name": "@libresat/cluster",
+  "name": "@libresat/mail",
   "version": "0.0.1-0",
-  "description": "The [LibreSat](https://libresat.space/) Distribution of [Kubernetes](https://kubernetes.io/)",
-  "main": "src/cluster.yaml",
+  "description": "The [LibreSat](https://libresat.space/) Distribution of [Rainloop](https://www.rainloop.net/)",
+  "main": "src/mail.yaml",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -11,12 +11,10 @@
     "url": "git+https://gitlab.com/libresat/libresat.git"
   },
   "keywords": [
-    "kubernetes",
-    "cluster",
-    "containers",
-    "docker",
-    "orchestration",
-    "deployment"
+    "mail",
+    "rainloop",
+    "webmail",
+    "mail-client"
   ],
   "author": "Felix Pojtinger <felix@pojtinger.com>",
   "license": "AGPL-3.0",

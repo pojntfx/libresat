@@ -1,0 +1,30 @@
+{
+  "name": "@libresat/wiki",
+  "version": "0.0.1-0",
+  "description": "The [LibreSat](https://libresat.space/) Distribution of [Gitit](https://github.com/jgm/gitit)",
+  "main": "src/wiki.yaml",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build-semantic": "cd src/assets/static/semantic && gulp build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/libresat/libresat.git"
+  },
+  "keywords": [
+    "wiki",
+    "gitit",
+    "git",
+    "haskell"
+  ],
+  "author": "Felix Pojtinger <felix@pojtinger.com>",
+  "license": "AGPL-3.0",
+  "bugs": {
+    "url": "https://gitlab.com/libresat/libresat/issues"
+  },
+  "homepage": "https://gitlab.com/libresat/libresat#README",
+  "dependencies": {
+    "gulp": "^3.9.1",
+    "semantic-ui": "^2.3.3"
+  }
+}
