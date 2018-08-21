@@ -1,4 +1,0 @@
-# Terraform data
-infra/.terraform/
-infra/assets/
-clones/*

@@ -1,9 +1,0 @@
-# env variables for auth
-.env
-
-# docker volumes
-mediawiki/
-mariadb/
-
-# mediawiki config
-LocalSettings.php

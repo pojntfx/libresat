@@ -1,7 +1,0 @@
-# environment variables
-.env
-
-# development docker volumes
-opensdcp-forum-web-assets-data-dev/
-opensdcp-forum-web-extensions-data-dev/
-opensdcp-forum-db-data-dev/
