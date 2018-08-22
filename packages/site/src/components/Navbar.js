@@ -2,6 +2,8 @@ import React from "react";
 import { Menu } from "semantic-ui-react";
 import { withPrefix } from "gatsby";
 import styled from "styled-components";
+import { StaticQuery, graphql } from "gatsby";
+import Link from "gatsby-link";
 
 const MainMenu = styled(Menu)`
   overflow-x: auto;
@@ -29,25 +31,80 @@ const Logo = styled.img`
   width: auto !important;
 `;
 
-export const Navbar = props => (
-  <MainMenu borderless fixed="top" {...props}>
-    <EdgeItem>
-      <Logo src={withPrefix("/img/logo.png")} alt="LibreSat Logo" />
+const activeClassName = "active";
+
+const NavbarView = ({
+  data: {
+    siteYaml: { title },
+    navbarYaml: { logoUrl, startItems, endItems, endItem }
+  },
+  ...otherProps
+}) => (
+  <MainMenu borderless fixed="top" {...otherProps}>
+    <EdgeItem as={Link} to="/">
+      <Logo src={withPrefix(logoUrl)} alt={`${title} Logo`} />
     </EdgeItem>
     <CenterMenu>
-      <Menu.Item icon="home" name="Home" active />
-      <Menu.Item icon="code" name="Software" />
-      <Menu.Item icon="microchip" name="Hardware" />
-      <Menu.Item icon="globe" name="Network" />
-      <Menu.Item icon="book" name="Docs" />
+      {startItems.map(({ label, icon, link }, index) => (
+        <Menu.Item
+          key={index}
+          as={Link}
+          name={label}
+          icon={icon}
+          to={link}
+          activeClassName={activeClassName}
+        />
+      ))}
       <Menu.Menu position="right">
-        <Menu.Item icon="rss" name="Blog" />
-        <Menu.Item icon="eye" name="Demo" />
-        <Menu.Item icon="slideshare" name="Wiki" />
-        <Menu.Item icon="users" name="Forum" />
-        <Menu.Item icon="conversation" name="Chat" />
+        {endItems.map(({ label, icon, link }, index) => (
+          <Menu.Item
+            key={index}
+            as={Link}
+            name={label}
+            icon={icon}
+            to={link}
+            activeClassName={activeClassName}
+          />
+        ))}
       </Menu.Menu>
     </CenterMenu>
-    <EdgeItem icon="fork" name="Source Code" />
+    <EdgeItem
+      as={Link}
+      icon={endItem.icon}
+      name={endItem.label}
+      to={endItem.link}
+      activeClassName={activeClassName}
+    />
   </MainMenu>
+);
+
+export const Navbar = () => (
+  <StaticQuery
+    query={graphql`
+      query NavbarQuery {
+        navbarYaml {
+          logoUrl
+          startItems {
+            label
+            icon
+            link
+          }
+          endItems {
+            label
+            icon
+            link
+          }
+          endItem {
+            label
+            icon
+            link
+          }
+        }
+        siteYaml {
+          title
+        }
+      }
+    `}
+    render={data => <NavbarView data={data} />}
+  />
 );

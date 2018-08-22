@@ -3,7 +3,7 @@ import { StaticQuery, graphql } from "gatsby";
 
 const Title = ({
   data: {
-    dataYaml: { title }
+    siteYaml: { title }
   },
   ...otherProps
 }) => <span {...otherProps}>{title}</span>;
@@ -12,7 +12,7 @@ export default () => (
   <StaticQuery
     query={graphql`
       query SiteTitle {
-        dataYaml {
+        siteYaml {
           title
         }
       }

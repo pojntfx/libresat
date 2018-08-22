@@ -1,0 +1,37 @@
+- logoUrl: /img/logo.png
+  startItems:
+    - label: Home
+      icon: home
+      link: /
+    - label: Software
+      icon: code
+      link: /software
+    - label: Hardware
+      icon: microchip
+      link: /hardware
+    - label: Network
+      icon: globe
+      link: /network
+    - label: Docs
+      icon: book
+      link: /docs
+  endItems:
+    - label: Blog
+      icon: rss
+      link: /blog
+    - label: Demo
+      icon: eye
+      link: /demo
+    - label: Wiki
+      icon: slideshare
+      link: /wiki
+    - label: Forum
+      icon: users
+      link: /forum
+    - label: Chat
+      icon: conversation
+      link: /chat
+  endItem:
+    label: Source Code
+    icon: fork
+    link: /source-code
