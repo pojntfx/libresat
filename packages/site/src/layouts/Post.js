@@ -1,6 +1,7 @@
 import React from "react";
 import { Base } from "./Base";
 import styled from "styled-components";
+import { Paper } from "../components/Paper";
 
 const Heading = styled.div`
   font-style: italic;
@@ -8,7 +9,9 @@ const Heading = styled.div`
 
 export default ({ children, pageContext: { author } }) => (
   <Base>
-    <Heading>By {author}</Heading>
-    {children}
+    <Paper>
+      <Heading>By {author}</Heading>
+      {children}
+    </Paper>
   </Base>
 );

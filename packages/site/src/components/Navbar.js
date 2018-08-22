@@ -17,7 +17,7 @@ const CenterMenu = styled(Menu.Menu)`
 `;
 
 const EdgeItem = styled(Menu.Item)`
-  width: 11rem;
+  width: 11em;
   display: flex !important;
   justify-content: center;
   align-items: center;
