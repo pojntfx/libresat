@@ -1,1 +1,15 @@
 - title: LibreSat
+  licenses:
+    media:
+      spdxLicenseIdentifier: CC-BY-SA-4.0
+      product: Media of LibreSat Website
+      copyrightHolder: Felix Pojtinger
+      licenseText: >
+        This work is licensed under a Creative Commons Attribution 4.0 International License.
+      timeSpan: 2018
+      badge:
+        alt: CC-BY-SA-4.0 license badge
+        src: https://licensebuttons.net/l/by-sa/4.0/88x31.png
+      moreInfo:
+        text: the Creative Commons
+        link: https://creativecommons.org/licenses/by-sa/4.0/
