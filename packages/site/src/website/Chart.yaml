@@ -1,0 +1,11 @@
+apiVersion: v1
+name: libresat-website
+version: 0.0.1-0
+description: The LibreSat website
+home: https://libresat.space/docs/services/site.html
+sources:
+  - https://gitlab.com/libresat/libresat.git
+maintainers:
+  - name: Felicitas Pojtinger
+    email: felicitas@pojtinger.com
+    url: https://twitter.com/pojntfx

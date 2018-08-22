@@ -2,7 +2,7 @@
   "name": "@libresat/site",
   "version": "0.0.1-0",
   "description": "The [LibreSat](https://libresat.space/) Website",
-  "main": "src/site.yaml",
+  "main": "src/website/Chart.yaml",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

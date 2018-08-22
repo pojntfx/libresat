@@ -18,31 +18,28 @@ Richard Stallman](https://stallman.org/) are given to you, so you have the ...
 
 {% include global/segment-top.html title="Choosing your source code provider" %}
 
-While we work primarly with GitHub for issue tracking and in order to
-reach a greater audience, we also have a public, self hosted Gitea (will
-be implemented soon) instance. Gitea is an open-source alternative to
-GitHub used by organisations such as the Free Sofware Foundation Europe
-(FSFE). We recommend exploring the repositories through it and opening
+We develop LibreSat on GitLab. GitLab is a free/libre and open source alternative to
+GitHub used by organisations such as [GNOME](https://gnome.org). We recommend exploring the repositories through it and opening
 up issues there, but you may of course also use GitHub as both repos are
 being kept in sync.
 
-With that in mind, visit either our open-source work-in-progress [Gitea instance](https://git.openscdp.org)
-or [GitHub organisation](https://github.com/opensdcp) to look
+With that in mind, visit either our open-source work-in-progress [GitLab Group](https://git.openscdp.org)
+or [GitHub organisation](https://github.com/libresat) to look
 at the source code by either clicking on the links above or the cards below.
 
 <div class="ui two stackable cards source-code__git-links">
-    <a class="ui card" href="https://git.opensdcp.org">
+    <a class="ui card" href="https://gitlab.com/libresat">
         <div class="content">
             <h2 class="ui icon header">
-                <i class="git icon"></i>
+                <i class="gitlab icon"></i>
                 <div class="content">
-                    Gitea
-                    <div class="sub header">Our self-hosted, free and open source Git service</div>
+                    GitLab
+                    <div class="sub header">Free/libre and open source Git service</div>
                 </div>
             </h2>
         </div>
     </a>
-    <a class="ui card" href="https://github.com/opensdcp">
+    <a class="ui card" href="https://github.com/libresat">
         <div class="content">
             <h2 class="ui icon header">
                 <i class="github icon"></i>
@@ -64,10 +61,10 @@ as we find it to be simple, helpful and concise.
 
 ## Summary
 
-The OpenSDCP project creates software and hardware for a better world. We
+The LibreSat project creates software and hardware for a better world. We
 achieve this by behaving well towards each other. Therefore this document
 suggests what we consider ideal behaviour, so you know what to expect when
-getting involved in the OpenSDCP project. This is who we are and what we
+getting involved in the LibreSat project. This is who we are and what we
 want to be. There is no official enforcement of these principles, and this
 should not be interpreted like a legal document.
 
