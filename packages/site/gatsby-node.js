@@ -1,4 +1,8 @@
 exports.createPages = async ({ graphql, actions: { createPage } }) => {
+  createPosts(graphql, createPage);
+};
+
+createPosts = async (graphql, createPage) => {
   try {
     const { data } = await graphql(`
       {
