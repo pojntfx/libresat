@@ -4,6 +4,9 @@
   "description": "The [LibreSat](https://libresat.space/) Website",
   "main": "src/website/Chart.yaml",
   "scripts": {
+    "dev": "gatsby develop",
+    "build": "gatsby build",
+    "start": "gatsby serve",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -21,5 +24,13 @@
   "bugs": {
     "url": "https://gitlab.com/libresat/libresat/issues"
   },
-  "homepage": "https://gitlab.com/libresat/libresat#README"
+  "homepage": "https://gitlab.com/libresat/libresat#README",
+  "dependencies": {
+    "gatsby": "^1.9.277",
+    "gatsby-link": "^1.6.46",
+    "gatsby-plugin-styled-components": "^2.0.11",
+    "semantic-ui-css": "^2.3.3",
+    "semantic-ui-react": "^0.82.2",
+    "styled-components": "^3.4.4"
+  }
 }
