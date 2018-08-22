@@ -4,7 +4,7 @@ The [LibreSat](https://libresat.space/) Distribution of [Rainloop](https://www.r
 
 > The `mail` package is part of the `libresat` monorepository. Consider reading the [LibreSat cluster overview](https://libresat.space/docs/cluster.html) before continuing.
 
-## Usage
+## Deployment
 
 ### Configuration
 
