@@ -2,6 +2,7 @@ import React from "react";
 import { Segment, Grid, Modal, Button } from "semantic-ui-react";
 import { StaticQuery, graphql } from "gatsby";
 import styled from "styled-components";
+import Link, { withPrefix } from "gatsby-link";
 
 const FooterWrapper = styled(Segment)`
   margin-top: 1em !important;
@@ -34,6 +35,21 @@ const LicenseBadge = ({ src, alt, href, ...otherProps }) => (
   </a>
 );
 
+const LicenseTextCodeWrapper = styled.div`
+  padding-top: 1em;
+  padding-bottom: 1em;
+`;
+
+const LicenseTextCode = styled.code`
+  overflow-x: auto;
+`;
+
+const LicenseText = ({ children, ...otherProps }) => (
+  <LicenseTextCodeWrapper {...otherProps}>
+    <LicenseTextCode>{children}</LicenseTextCode>
+  </LicenseTextCodeWrapper>
+);
+
 const LicenseInfo = ({
   spdxLicenseIdentifier,
   product,
@@ -50,7 +66,7 @@ const LicenseInfo = ({
     </p>
     <span>SPDX-License-Identifier: {spdxLicenseIdentifier}</span>
     <br />
-    <p>{licenseText}</p>
+    <LicenseText>{licenseText}</LicenseText>
     <p>
       Find out more about this license over at{" "}
       <a href={moreInfo.link}>{moreInfo.text}</a>.
@@ -58,7 +74,7 @@ const LicenseInfo = ({
   </Modal.Content>
 );
 
-const FooterContent = ({ licenses: { media }, imprint }) => (
+const FooterContent = ({ licenses: { media, code }, imprint }) => (
   <FooterWrapper>
     <Grid stackable columns={2}>
       <FooterSection width={4}>
@@ -93,15 +109,25 @@ const FooterContent = ({ licenses: { media }, imprint }) => (
               closeIcon
             >
               <Modal.Header>Code License</Modal.Header>
-              asdf
+              <LicenseInfo
+                spdxLicenseIdentifier={code.spdxLicenseIdentifier}
+                product={code.product}
+                copyrightHolder={code.copyrightHolder}
+                licenseText={code.licenseText}
+                timeSpan={code.timeSpan}
+                badge={code.badge}
+                moreInfo={code.moreInfo}
+              />
             </Modal>
           </Grid.Column>
           <Grid.Column>
-            <Modal
-              trigger={<MetaButton fluid icon="legal" content="Imprint" />}
-              header="Imprint"
-              content="Text Here"
-              closeIcon
+            <MetaButton
+              fluid
+              icon="legal"
+              content="Imprint"
+              as={Link}
+              to={withPrefix("/imprint")}
+              activeClassName="active"
             />
           </Grid.Column>
         </Grid>
@@ -121,6 +147,21 @@ export const Footer = () => (
         siteYaml {
           licenses {
             media {
+              spdxLicenseIdentifier
+              product
+              copyrightHolder
+              licenseText
+              timeSpan
+              badge {
+                alt
+                src
+              }
+              moreInfo {
+                text
+                link
+              }
+            }
+            code {
               spdxLicenseIdentifier
               product
               copyrightHolder

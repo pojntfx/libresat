@@ -41,7 +41,7 @@ const NavbarView = ({
   ...otherProps
 }) => (
   <MainMenu borderless fixed="top" {...otherProps}>
-    <EdgeItem as={Link} to="/">
+    <EdgeItem as={Link} to={withPrefix("/")}>
       <Logo src={withPrefix(logoUrl)} alt={`${title} Logo`} />
     </EdgeItem>
     <CenterMenu>
