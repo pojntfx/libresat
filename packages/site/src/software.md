@@ -8,5 +8,5 @@ Free and Open Source Software for your Spacecraft.
 
 
 {% include global/section-start.html title="Projects" id="projects"%}
-{% include home/trending-projects.html url="https://api.github.com/orgs/opensdcp/repos" id="software" %}
+{% include home/trending-projects.html url="https://api.github.com/orgs/libresat/repos" id="software" %}
 {% include global/section-end.html %}
