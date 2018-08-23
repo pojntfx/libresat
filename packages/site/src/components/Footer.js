@@ -17,8 +17,12 @@ const FooterSection = styled(Grid.Column)`
     justify-content: end;
   }
   @media (max-width: 767px) {
-    justify-content: start !important;
+    justify-content: center !important;
   }
+`;
+
+const FooterLegalGrid = styled(Grid)`
+  margin-left: auto !important;
 `;
 
 const MetaButton = styled(Button)`
@@ -83,7 +87,7 @@ const FooterContent = ({ licenses: { media, code }, imprint }) => (
         </span>
       </FooterSection>
       <FooterSection width={12}>
-        <Grid stackable columns={3}>
+        <FooterLegalGrid stackable columns={3}>
           <Grid.Column>
             <Modal
               trigger={
@@ -130,7 +134,7 @@ const FooterContent = ({ licenses: { media, code }, imprint }) => (
               activeClassName="active"
             />
           </Grid.Column>
-        </Grid>
+        </FooterLegalGrid>
       </FooterSection>
     </Grid>
   </FooterWrapper>
