@@ -1,24 +1,24 @@
 import React from "react";
 import styled from "styled-components";
 import { Button, Grid, Header as HeaderTemplate } from "semantic-ui-react";
-import { Link } from "gatsby-link";
+import Link from "gatsby-link";
 
-const CardAction = styled(Button)`
+const Action = styled(Button)`
   white-space: nowrap;
 `;
 
-const CardActions = styled(Grid.Column).attrs({
+const Actions = styled(Grid.Column).attrs({
   width: 10
 })`
   display: flex !important;
   overflow-x: auto;
-  & > ${CardAction}:first-child {
+  & > ${Action}:first-child {
     margin-left: auto;
     @media (max-width: 767px) {
       margin-left: auto;
     }
   }
-  & > ${CardAction}:last-child {
+  & > ${Action}:last-child {
     @media (max-width: 767px) {
       margin-right: auto;
     }
@@ -38,21 +38,16 @@ export const Header = ({
     <Grid.Column width={6}>
       <HeaderTemplate content={title} subheader={subtitle} icon={icon} />
     </Grid.Column>
-    <CardActions>
-      <CardAction
+    <Actions>
+      <Action
         as={Link}
         to={docsLink}
         color="blue"
         content="Read the docs"
         icon="book"
       />
-      <CardAction as={Link} to={repoLink} content="Contribute" icon="fork" />
-      <CardAction
-        as={Link}
-        to={forumLink}
-        content="Discuss"
-        icon="conversation"
-      />
-    </CardActions>
+      <Action as="a" href={repoLink} content="Contribute" icon="fork" />
+      <Action as="a" href={forumLink} content="Discuss" icon="conversation" />
+    </Actions>
   </Grid>
 );
