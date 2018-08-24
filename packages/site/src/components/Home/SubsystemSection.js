@@ -5,60 +5,73 @@ import { Subsystem } from "./Subsystem";
 const SubsystemView = (
   {
     data: {
-      subsystemsYaml: {
-        imgSrc,
-        header: { docsLink, ...header },
-        ...subsystemsYaml
-      }
+      allSubsystemsYaml: { edges }
     }
   },
   ...otherProps
-) => (
-  <Subsystem
-    imgSrc={withPrefix(imgSrc)}
-    header={{
-      docsLink: withPrefix(docsLink),
-      ...header
-    }}
-    {...subsystemsYaml}
-    {...otherProps}
-  />
-);
+) =>
+  edges.map(
+    (
+      {
+        node: {
+          imgSrc,
+          header: { docsLink, ...header },
+          ...subsystemYaml
+        }
+      },
+      key
+    ) => (
+      <Subsystem
+        imgSrc={withPrefix(imgSrc)}
+        header={{
+          docsLink: withPrefix(docsLink),
+          ...header
+        }}
+        key={key}
+        {...subsystemYaml}
+        {...otherProps}
+      />
+    )
+  );
 
 export const SubsystemSection = props => (
   <StaticQuery
     query={graphql`
       query SubsystemQuery {
-        subsystemsYaml {
-          color
-          imgAlt
-          imgSrc
-          header {
-            title
-            subtitle
-            icon
-            docsLink
-            forumLink
-          }
-          description
-          overviewDivider {
-            label
-            icon
-          }
-          statistics {
-            value
-            label
-            icon
-          }
-          trendingProjectsDivider {
-            label
-            icon
-          }
-          trendingProjects {
-            endpoint
-            groupName
-            projectName
-            projectID
+        allSubsystemsYaml {
+          edges {
+            node {
+              color
+              imgAlt
+              imgSrc
+              header {
+                title
+                subtitle
+                icon
+                docsLink
+                forumLink
+              }
+              description
+              overviewDivider {
+                label
+                icon
+              }
+              statistics {
+                value
+                label
+                icon
+              }
+              trendingProjectsDivider {
+                label
+                icon
+              }
+              trendingProjects {
+                endpoint
+                groupName
+                projectName
+                projectID
+              }
+            }
           }
         }
       }
