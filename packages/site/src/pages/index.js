@@ -1,26 +1,12 @@
 import React from "react";
 import { Base } from "../layouts/Base";
-import { Hero } from "../components/Home/Hero";
 import { Subsystem } from "../components/Home/Subsystem";
+import { HeroSection } from "../components/Home/HeroSection";
 import { withPrefix } from "gatsby";
 
 export default () => (
   <Base>
-    <Hero
-      title="Develop and Control Satellites, the Libre Way"
-      subtitle="The Free/Libre and Open Source Satellite Development and Control Platform"
-      primaryAction={{
-        label: "Get started",
-        icon: "rocket",
-        link: withPrefix("/docs")
-      }}
-      secondaryAction={{
-        label: "Watch video",
-        icon: "video",
-        header: "LibreSat Introduction Video",
-        videoSrc: "http://lunduke.com/720classic/LinuxSucks-2016.mp4"
-      }}
-    />
+    <HeroSection />
     <Subsystem
       color="blue"
       imgAlt="Screenshot of the LibreSat OS concept"

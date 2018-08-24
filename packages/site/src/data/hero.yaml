@@ -1,0 +1,11 @@
+- title: Develop and Control Satellites, the Libre Way
+  subtitle: The Free/Libre and Open Source Satellite Development and Control Platform
+  primaryAction:
+    label: Get started
+    icon: rocket
+    link: /docs
+  secondaryAction:
+    label: Watch video
+    icon: video
+    header: LibreSat Introduction Video
+    videoSrc: http://lunduke.com/720classic/LinuxSucks-2016.mp4
