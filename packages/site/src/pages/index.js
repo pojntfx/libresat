@@ -115,16 +115,20 @@ const SoftwareCardDescription = styled(Card.Description)`
   padding: 1em 0;
 `;
 
-const SoftwareCardOverviewIcon = styled(Icon)`
+const DividerIcon = styled(Icon)`
   padding-right: 1.75em;
+`;
+
+const OverviewDivider = styled(Divider)`
+  margin-bottom: 2em !important;
 `;
 
 const SoftwareCardOverview = () => (
   <>
-    <Divider horizontal>
-      <SoftwareCardOverviewIcon name="compass" />
+    <OverviewDivider horizontal>
+      <DividerIcon name="compass" />
       Overview
-    </Divider>
+    </OverviewDivider>
     <Grid stackable divided="vertically" columns={3} textAlign="center">
       <Grid.Column>
         <Statistic>
@@ -154,6 +158,61 @@ const SoftwareCardOverview = () => (
   </>
 );
 
+const TrendingProjectsList = styled.div`
+  display: flex;
+  align-items: center;
+  overflow-x: auto;
+  &::after {
+    content: "";
+    padding: 0.1em;
+  }
+`;
+
+const TrendingProjectWrapper = styled(Card)`
+  min-width: 18em;
+  margin-top: 1em !important;
+  margin-bottom: 1em !important;
+  margin-left: 0.5em !important;
+  margin-right: 0.5em !important;
+  & > .content {
+    min-width: 16em !important;
+  }
+`;
+
+const TrendingProject = () => (
+  <TrendingProjectWrapper
+    as="a"
+    href="https://gitlab.com/libresat/libresat/tree/master/packages/site"
+    fluid
+  >
+    <Card.Content>
+      <Card.Header>workspace</Card.Header>
+      <Card.Meta>Last update: 2018-08-24</Card.Meta>
+      <Card.Description>
+        The central hub for all things LibreSat.
+      </Card.Description>
+    </Card.Content>
+  </TrendingProjectWrapper>
+);
+
+const TrendingProjectsDivider = styled(Divider)`
+  margin-top: 2em !important;
+`;
+
+const SoftwareCardTrendingProjects = () => (
+  <>
+    <TrendingProjectsDivider horizontal>
+      <DividerIcon name="bar chart" />
+      Trending Projects
+    </TrendingProjectsDivider>
+    <TrendingProjectsList>
+      <TrendingProject />
+      <TrendingProject />
+      <TrendingProject />
+    </TrendingProjectsList>
+  </>
+);
+
 const SoftwareCard = () => (
   <Card fluid color="blue">
     <Card.Content>
@@ -164,6 +223,7 @@ const SoftwareCard = () => (
         minima!
       </SoftwareCardDescription>
       <SoftwareCardOverview />
+      <SoftwareCardTrendingProjects />
     </Card.Content>
   </Card>
 );
