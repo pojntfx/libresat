@@ -5,7 +5,7 @@ export const Overview = ({ statistics, ...otherProps }) => (
   <Grid
     stackable
     divided="vertically"
-    columns={3}
+    columns={statistics.length}
     textAlign="center"
     {...otherProps}
   >
