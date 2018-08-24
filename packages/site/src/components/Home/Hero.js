@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import { Link } from "gatsby-link";
+import Link from "gatsby-link";
 import { Modal, Button } from "semantic-ui-react";
 
-const HeroWrapper = styled.div`
+const Wrapper = styled.div`
   padding-top: 10em;
   padding-bottom: 10em;
   width: 100%;
@@ -14,15 +14,15 @@ const HeroWrapper = styled.div`
   color: white;
 `;
 
-const HeroSubHeader = styled.h5`
+const SubHeader = styled.h5`
   margin-top: 0;
 `;
 
-const HeroActions = styled.div`
+const Actions = styled.div`
   margin-top: 0.5em;
 `;
 
-const VideoModalVideo = styled.video`
+const Video = styled.video`
   width: 100%;
 `;
 
@@ -34,16 +34,16 @@ const VideoModal = ({ icon, label, header, src, ...otherProps }) => (
   >
     <Modal.Header>{header}</Modal.Header>
     <Modal.Content>
-      <VideoModalVideo controls src={src} />
+      <Video controls src={src} />
     </Modal.Content>
   </Modal>
 );
 
 export const Hero = ({ title, subtitle, primaryAction, secondaryAction }) => (
-  <HeroWrapper>
+  <Wrapper>
     <h1>{title}</h1>
-    <HeroSubHeader>{subtitle}</HeroSubHeader>
-    <HeroActions>
+    <SubHeader>{subtitle}</SubHeader>
+    <Actions>
       <Button
         primary
         content={primaryAction.label}
@@ -57,6 +57,6 @@ export const Hero = ({ title, subtitle, primaryAction, secondaryAction }) => (
         header={secondaryAction.header}
         src={secondaryAction.videoSrc}
       />
-    </HeroActions>
-  </HeroWrapper>
+    </Actions>
+  </Wrapper>
 );
