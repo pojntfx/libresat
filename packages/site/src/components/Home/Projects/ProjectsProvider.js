@@ -8,7 +8,9 @@ export class ProjectsProvider extends Component {
 
   componentDidMount = async () => {
     const response = await fetch(
-      "https://gitlab.com/api/v4/projects/8000820/repository/tree?path=packages/"
+      `${this.props.endpoint}/api/v4/projects/${
+        this.props.projectID
+      }/repository/tree?path=packages/`
     );
     const json = await response.json();
     this.setState({ projects: json, loading: false });

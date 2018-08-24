@@ -18,7 +18,9 @@ export class ProjectProvider extends Component {
 
   getLastCommitDate = async ({ path }) => {
     const response = await fetch(
-      `https://gitlab.com/api/v4/projects/8000820/repository/commits?path=${path}`
+      `${this.props.endpoint}/api/v4/projects/${
+        this.props.projectID
+      }/repository/commits?path=${path}`
     );
     const json = await response.json();
     this.setState({
@@ -28,13 +30,17 @@ export class ProjectProvider extends Component {
 
   getDescription = async ({ path }) => {
     const response = await fetch(
-      `https://gitlab.com/api/v4/projects/8000820/repository/tree/?path=${path}`
+      `${this.props.endpoint}/api/v4/projects/${
+        this.props.projectID
+      }/repository/tree/?path=${path}`
     );
     const json = await response.json();
     const packageJsonFile = json.filter(({ name }) => name === "package.json");
     const packageJsonBlobSHA = packageJsonFile[0].id;
     const packageJsonContentResponse = await fetch(
-      `https://gitlab.com/api/v4/projects/8000820/repository/blobs/${packageJsonBlobSHA}/raw`
+      `${this.props.endpoint}/api/v4/projects/${
+        this.props.projectID
+      }/repository/blobs/${packageJsonBlobSHA}/raw`
     );
     const { description } = await packageJsonContentResponse.json();
     this.setState({
