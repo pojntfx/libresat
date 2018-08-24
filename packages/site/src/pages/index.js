@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import { Base } from "../layouts/Base";
 import styled from "styled-components";
 import {
@@ -9,7 +9,8 @@ import {
   Header,
   Divider,
   Icon,
-  Statistic
+  Statistic,
+  Image
 } from "semantic-ui-react";
 import Link from "gatsby-link";
 import { withPrefix } from "gatsby";
@@ -179,42 +180,110 @@ const TrendingProjectWrapper = styled(Card)`
   }
 `;
 
-const TrendingProject = () => (
-  <TrendingProjectWrapper
-    as="a"
-    href="https://gitlab.com/libresat/libresat/tree/master/packages/site"
-    fluid
-  >
+const TrendingProject = ({ link, title, lastUpdate, description }) => (
+  <TrendingProjectWrapper as="a" href={link} fluid>
     <Card.Content>
-      <Card.Header>workspace</Card.Header>
-      <Card.Meta>Last update: 2018-08-24</Card.Meta>
-      <Card.Description>
-        The central hub for all things LibreSat.
-      </Card.Description>
+      <Card.Header>{title}</Card.Header>
+      <Card.Meta>Last update: {lastUpdate}</Card.Meta>
+      <Card.Description>{description}</Card.Description>
     </Card.Content>
   </TrendingProjectWrapper>
 );
+
+class TrendingProjectProvider extends Component {
+  constructor() {
+    super();
+    this.state = { lastCommitDate: {}, description: "" };
+  }
+
+  componentDidMount = async () => {
+    this.getLastCommitDate();
+    this.getDescription();
+  };
+
+  getLastCommitDate = async () => {
+    const response = await fetch(
+      `https://gitlab.com/api/v4/projects/8000820/repository/commits?path=${
+        this.props.link.split("/master/")[1]
+      }`
+    );
+    const json = await response.json();
+    this.setState({ lastCommitDate: new Date(json[0].committed_date) });
+  };
+
+  getDescription = async () => {
+    const response = await fetch(
+      `https://gitlab.com/api/v4/projects/8000820/repository/tree/?path=${
+        this.props.link.split("/master/")[1]
+      }`
+    );
+    const json = await response.json();
+    const packageJsonFile = json.filter(({ name }) => name === "package.json");
+    const packageJsonBlobSHA = packageJsonFile[0].id;
+    const packageJsonContentResponse = await fetch(
+      `https://gitlab.com/api/v4/projects/8000820/repository/blobs/${packageJsonBlobSHA}/raw`
+    );
+    const { description } = await packageJsonContentResponse.json();
+    this.setState({
+      description
+    });
+  };
+
+  render() {
+    return (
+      <TrendingProject
+        link={this.props.link}
+        title={this.props.title}
+        lastUpdate={this.state.lastCommitDate.toLocaleString()}
+        description={this.state.description}
+      />
+    );
+  }
+}
 
 const TrendingProjectsDivider = styled(Divider)`
   margin-top: 2em !important;
 `;
 
-const SoftwareCardTrendingProjects = () => (
-  <>
-    <TrendingProjectsDivider horizontal>
-      <DividerIcon name="bar chart" />
-      Trending Projects
-    </TrendingProjectsDivider>
-    <TrendingProjectsList>
-      <TrendingProject />
-      <TrendingProject />
-      <TrendingProject />
-    </TrendingProjectsList>
-  </>
-);
+class SoftwareCardTrendingProjects extends Component {
+  constructor() {
+    super();
+    this.state = { projects: [] };
+  }
+
+  componentDidMount = async () => {
+    const response = await fetch(
+      "https://gitlab.com/api/v4/projects/8000820/repository/tree?path=packages/"
+    );
+    const json = await response.json();
+    this.setState({ projects: json });
+  };
+
+  render() {
+    return (
+      <>
+        <TrendingProjectsDivider horizontal>
+          <DividerIcon name="bar chart" />
+          Trending Projects
+        </TrendingProjectsDivider>
+        <TrendingProjectsList>
+          {this.state.projects.map(({ name, path }, index) => (
+            <TrendingProjectProvider
+              link={`https://gitlab.com/libresat/libresat/tree/master/${path}`}
+              title={name}
+              description="The central hub for all things LibreSat."
+              key={index}
+            />
+          ))}
+        </TrendingProjectsList>
+      </>
+    );
+  }
+}
 
 const SoftwareCard = () => (
   <Card fluid color="blue">
+    <Image src={withPrefix("/img/software-card.png")} />
     <Card.Content>
       <SoftwareCardHeader />
       <SoftwareCardDescription>
