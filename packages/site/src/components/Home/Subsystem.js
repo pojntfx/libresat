@@ -26,6 +26,7 @@ export const Subsystem = ({
           trendingProjects.projectName
         }`}
         {...header}
+        color={color}
       />
       <Description>{description}</Description>
       <Divider offset="bottom" {...overviewDivider} />

@@ -32,6 +32,7 @@ export const Header = ({
   docsLink,
   repoLink,
   forumLink,
+  color,
   ...otherProps
 }) => (
   <Grid stackable colums={2} {...otherProps}>
@@ -42,7 +43,7 @@ export const Header = ({
       <Action
         as={Link}
         to={docsLink}
-        color="blue"
+        color={color}
         content="Read the docs"
         icon="book"
       />
