@@ -37,9 +37,9 @@ const isPartiallyActive = ({ isPartiallyCurrent }) =>
 const NavbarView = ({
   data: {
     siteYaml: { title },
-    navbarYaml: { logoUrl, startItems, endItems, endItem }
-  },
-  ...otherProps
+    navbarYaml: { logoUrl, startItems, endItems, endItem },
+    ...otherProps
+  }
 }) => (
   <MainMenu borderless fixed="top" {...otherProps}>
     <EdgeItem as={Link} to={withPrefix("/")}>

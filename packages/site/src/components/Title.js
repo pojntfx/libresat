@@ -3,9 +3,9 @@ import { StaticQuery, graphql } from "gatsby";
 
 const Title = ({
   data: {
-    siteYaml: { title }
-  },
-  ...otherProps
+    siteYaml: { title },
+    ...otherProps
+  }
 }) => <span {...otherProps}>{title}</span>;
 
 export default () => (

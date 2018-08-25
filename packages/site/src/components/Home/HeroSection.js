@@ -2,14 +2,12 @@ import React from "react";
 import { withPrefix, StaticQuery, graphql } from "gatsby";
 import { Hero } from "./Hero";
 
-const HeroView = (
-  {
-    data: {
-      heroYaml: { primaryAction, ...heroYaml }
-    }
+const HeroView = ({
+  data: {
+    heroYaml: { primaryAction, ...heroYaml }
   },
   ...otherProps
-) => (
+}) => (
   <Hero
     primaryAction={{ link: withPrefix(primaryAction.link), ...primaryAction }}
     {...heroYaml}
