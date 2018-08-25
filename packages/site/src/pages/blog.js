@@ -2,18 +2,14 @@ import React from "react";
 import { Base } from "../layouts/Base";
 import { Container, Header } from "semantic-ui-react";
 import { Paper } from "../components/Paper";
-import { PageHeader } from "../components/Blog/PageHeader";
 import { CoverflowSection } from "../components/Blog/Coverflow/CoverflowSection";
 import { GallerySection } from "../components/Blog/Gallery/GallerySection";
+import { BlogHeader } from "../components/Blog/Headers/Blog";
 
 export default () => (
   <Base noContainer>
     <Container>
-      <PageHeader
-        as="h1"
-        content="The LibreSat Blog"
-        subheader="Posts on all things LibreSat."
-      />
+      <BlogHeader />
       <Paper>
         <Header
           content="Featured Posts"
