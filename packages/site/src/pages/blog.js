@@ -78,9 +78,22 @@ const Gallery = () => (
   </Masonry>
 );
 
+const BlogHeader = styled(Header).attrs({
+  inverted: true,
+  textAlign: "center"
+})`
+  padding-top: 4em !important;
+  padding-bottom: 4em !important;
+`;
+
 export default () => (
   <Base noContainer>
     <Container>
+      <BlogHeader
+        as="h1"
+        content="The LibreSat Blog"
+        subheader="Posts on all things LibreSat."
+      />
       <Paper>
         <Header
           content="Featured Posts"
