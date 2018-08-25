@@ -15,6 +15,8 @@ createPosts = async (graphql, createPage) => {
               }
               frontmatter {
                 author
+                title
+                excerpt
               }
             }
           }

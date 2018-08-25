@@ -13,7 +13,7 @@ export const TrendingProjects = ({
 }) => (
   <ProjectList>
     <ProjectsProvider endpoint={endpoint} projectID={projectID}>
-      {({ loading, projects, url }) =>
+      {({ loading, projects }) =>
         loading ? (
           <Loader />
         ) : (

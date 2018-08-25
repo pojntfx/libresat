@@ -5,18 +5,16 @@ import { Broadcast } from "./Broadcast";
 const BroadcastView = (
   {
     data: {
-      mdx: {
-        relativePath,
-        frontmatter: { title, excerpt }
-      }
+      mdx: { relativePath, frontmatter },
+      broadcastYaml: { postsLink, ...broadcastYaml }
     }
   },
   ...otherProps
 ) => (
   <Broadcast
-    link={withPrefix(`/posts/${relativePath}`)}
-    title={title}
-    excerpt={excerpt}
+    link={withPrefix(`${postsLink}/${relativePath.split(".")[0]}`)}
+    {...frontmatter}
+    {...broadcastYaml}
     {...otherProps}
   />
 );
@@ -31,6 +29,11 @@ export const BroadcastSection = props => (
             excerpt
           }
           relativePath
+        }
+        broadcastYaml {
+          icon
+          postsLink
+          readMore
         }
       }
     `}
