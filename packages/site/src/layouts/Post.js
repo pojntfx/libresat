@@ -2,7 +2,7 @@ import React from "react";
 import { Base } from "./Base";
 import styled from "styled-components";
 import { Paper } from "../components/Paper";
-import { PageHeader } from "../components/Blog/PageHeader";
+import { BlogHeader } from "../components/Blog/Headers/Blog";
 import { Header, Card, Image } from "semantic-ui-react";
 import { CoverflowSection } from "../components/Blog/Coverflow/CoverflowSection";
 import Link, { withPrefix } from "gatsby-link";
@@ -17,11 +17,7 @@ export default ({
 }) => (
   <Base>
     <Link to={withPrefix("/blog")}>
-      <PageHeader
-        as="h1"
-        content="The LibreSat Blog"
-        subheader="Posts on all things LibreSat."
-      />
+      <BlogHeader />
     </Link>
     <Card fluid>
       <Card.Content>
