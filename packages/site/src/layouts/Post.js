@@ -8,11 +8,15 @@ const Author = styled.div`
   margin-bottom: 1em;
 `;
 
-export default ({ children, pageContext: { author, date, lastEdit } }) => (
+export default ({
+  children,
+  pageContext: { author, date, lastEdit, timeToRead }
+}) => (
   <Base>
     <Paper>
       <Author>
-        By {author} on {date}. Last edit on {lastEdit}.
+        By {author} on {date}. Last edit on {lastEdit}. Estimated time to read:{" "}
+        {timeToRead} {timeToRead === 1 ? "minute" : "minutes"}.
       </Author>
       {children}
     </Paper>
