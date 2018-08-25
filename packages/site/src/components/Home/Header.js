@@ -52,7 +52,7 @@ export const Header = ({
         icon="book"
       />
       <Action as="a" href={repoLink} content="Contribute" icon="fork" />
-      <Action as="a" href={forumLink} content="Discuss" icon="conversation" />
+      <Action as={Link} to={forumLink} content="Discuss" icon="conversation" />
     </Actions>
   </Grid>
 );
