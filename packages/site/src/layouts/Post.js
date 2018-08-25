@@ -13,7 +13,7 @@ const Author = styled.div`
 
 export default ({
   children,
-  pageContext: { author, featured, date, lastEdit, imgSrc, timeToRead }
+  pageContext: { author, featured, date, lastEdit, imgSrc, imgAlt, timeToRead }
 }) => (
   <Base>
     <Link to={withPrefix("/blog")}>
@@ -32,7 +32,7 @@ export default ({
         </Author>
       </Card.Content>
       <a href={withPrefix(imgSrc)}>
-        <Image src={withPrefix(imgSrc)} />
+        <Image src={withPrefix(imgSrc)} alt={imgAlt} />
       </a>
       <Card.Content>{children}</Card.Content>
     </Card>
