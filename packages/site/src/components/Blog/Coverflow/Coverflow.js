@@ -7,6 +7,7 @@ import Link, { withPrefix } from "gatsby-link";
 const PostsCoverflow = styled(CoverflowTemplate)`
   margin-top: 1em;
   margin-bottom: 1em;
+  background: transparent;
 `;
 
 const PostTemplate = ({ imgSrc, ...otherProps }) => (
