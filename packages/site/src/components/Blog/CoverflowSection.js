@@ -15,13 +15,13 @@ const CoverflowView = (
       ({
         node: {
           fileNode,
-          frontmatter: { author },
+          frontmatter: { author, imgSrc },
           headings,
           excerpt
         }
       }) => {
         return {
-          imgSrc: withPrefix("/img/software-card.png"),
+          imgSrc: withPrefix(imgSrc),
           link: `/blog/${fileNode.name}`,
           header: headings.filter(({ depth }) => depth === 1)[0].value,
           meta: `${fileNode.name
@@ -48,6 +48,7 @@ export const CoverflowSection = props => (
               }
               frontmatter {
                 author
+                imgSrc
               }
               headings {
                 value
@@ -62,32 +63,3 @@ export const CoverflowSection = props => (
     render={data => <CoverflowView data={data} {...props} />}
   />
 );
-
-// export const CoverflowSection = props => (
-//   <CoverflowSectionView
-//     posts={[
-//       {
-//         imgSrc: withPrefix("/img/software-card.png"),
-//         link: withPrefix("/"),
-//         header: "Post Title",
-//         meta: "2 days ago by Felix Pojtinger",
-//         description: "Post Description"
-//       },
-//       {
-//         imgSrc: withPrefix("/img/software-card.png"),
-//         link: withPrefix("/"),
-//         header: "Post Title",
-//         meta: "2 days ago by Felix Pojtinger",
-//         description: "Post Description"
-//       },
-//       {
-//         imgSrc: withPrefix("/img/software-card.png"),
-//         link: withPrefix("/"),
-//         header: "Post Title",
-//         meta: "2 days ago by Felix Pojtinger",
-//         description: "Post Description"
-//       }
-//     ]}
-//     {...props}
-//   />
-// );
