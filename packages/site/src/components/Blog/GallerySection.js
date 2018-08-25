@@ -4,20 +4,11 @@ import { Card } from "semantic-ui-react";
 import Link, { withPrefix } from "gatsby-link";
 import { Gallery } from "./Gallery";
 
-const LatestPostTemplate = props => (
-  <Card
-    fluid
-    image={withPrefix("/img/software-card.png")}
-    header="Post Title"
-    meta="2 days ago by Felicitas Pojtinger. Last edit 1 day ago. Estimated reading time: 1 Minute."
-    description={`Waaayyyy longeeer Post Description ${Math.random()
-      .toString(36)
-      .substring(7)}`}
-    {...props}
-  />
+const PostTemplate = ({ imgSrc, ...otherProps }) => (
+  <Card image={withPrefix(imgSrc)} {...otherProps} />
 );
 
-const LatestPost = styled(LatestPostTemplate)`
+const Post = styled(PostTemplate)`
   margin-top: 1em !important;
   margin-bottom: 1em !important;
   width: auto !important;
@@ -28,13 +19,44 @@ const LatestPost = styled(LatestPostTemplate)`
   }
 `;
 
-export const GallerySection = () => (
-  <Gallery options={{ gutter: 30 }}>
-    <LatestPost as={Link} to={withPrefix("/")} />
-    <LatestPost as={Link} to={withPrefix("/")} />
-    <LatestPost as={Link} to={withPrefix("/")} />
-    <LatestPost as={Link} to={withPrefix("/")} />
-    <LatestPost as={Link} to={withPrefix("/")} />
-    <LatestPost as={Link} to={withPrefix("/")} />
+const GallerySectionView = ({ posts, ...otherProps }) => (
+  <Gallery options={{ gutter: 30 }} {...otherProps}>
+    {posts.map(({ link, ...props }, index) => (
+      <Post {...props} as={Link} to={link} key={index} />
+    ))}
   </Gallery>
+);
+export const GallerySection = props => (
+  <GallerySectionView
+    posts={[
+      {
+        imgSrc: withPrefix("/img/software-card.png"),
+        link: withPrefix("/"),
+        header: "Post Title",
+        meta:
+          "2 days ago by Felicitas Pojtinger. Last edit 1 day ago. Estimated reading time: 1 Minute.",
+        description:
+          "Lorem ipsum dolor sit nesciunt cumque alias beatae Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, hic voluptatem nesciunt cumque alias beatae"
+      },
+      {
+        imgSrc: withPrefix("/img/software-card.png"),
+        link: withPrefix("/"),
+        header: "Post Title",
+        meta:
+          "2 days ago by Felicitas Pojtinger. Last edit 1 day ago. Estimated reading time: 1 Minute.",
+        description:
+          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, hic voluptatem nesciunt cumque alias beataeLorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, hic voluptatem nesciunt cumque alias beataeLorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, hic voluptatem nesciunt cumque alias beatae"
+      },
+      {
+        imgSrc: withPrefix("/img/software-card.png"),
+        link: withPrefix("/"),
+        header: "Post Title",
+        meta:
+          "2 days ago by Felicitas Pojtinger. Last edit 1 day ago. Estimated reading time: 1 Minute.",
+        description:
+          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi, hic voluptatem nesciunt cumque alias beatae"
+      }
+    ]}
+    {...props}
+  />
 );
