@@ -31,7 +31,8 @@ const Logo = styled.img`
   width: auto !important;
 `;
 
-const activeClassName = "active";
+const isPartiallyActive = ({ isPartiallyCurrent }) =>
+  isPartiallyCurrent ? { className: "item active" } : null;
 
 const NavbarView = ({
   data: {
@@ -52,7 +53,8 @@ const NavbarView = ({
           name={label}
           icon={icon}
           to={link}
-          activeClassName={activeClassName}
+          activeClassName={link === "/" ? "active" : undefined}
+          getProps={link === "/" ? undefined : isPartiallyActive}
         />
       ))}
       <Menu.Menu position="right">
@@ -63,7 +65,7 @@ const NavbarView = ({
             name={label}
             icon={icon}
             to={link}
-            activeClassName={activeClassName}
+            getProps={isPartiallyActive}
           />
         ))}
       </Menu.Menu>
@@ -73,7 +75,7 @@ const NavbarView = ({
       icon={endItem.icon}
       name={endItem.label}
       to={endItem.link}
-      activeClassName={activeClassName}
+      getProps={isPartiallyActive}
     />
   </MainMenu>
 );
