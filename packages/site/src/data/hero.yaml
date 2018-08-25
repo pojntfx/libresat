@@ -1,5 +1,6 @@
 - title: Develop and Control Satellites, the Libre Way
-  subtitle: The Free/Libre and Open Source Satellite Development and Control Platform
+  subtitle: >
+    The Free/Libre and Open Source Satellite Development and Control Platform
   primaryAction:
     label: Get started
     icon: rocket
