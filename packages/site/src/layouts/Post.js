@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { Paper } from "../components/Paper";
 import { PageHeader } from "../components/Blog/PageHeader";
 import { Header, Card, Image } from "semantic-ui-react";
-import { CoverflowSection } from "../components/Blog/CoverflowSection";
+import { CoverflowSection } from "../components/Blog/Coverflow/CoverflowSection";
 import Link, { withPrefix } from "gatsby-link";
 
 const Author = styled.div`
@@ -53,6 +53,6 @@ export default ({
         />
       )}
     </Paper>
-    <CoverflowSection />
+    <CoverflowSection featured={featured} />
   </Base>
 );
