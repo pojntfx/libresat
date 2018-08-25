@@ -4,7 +4,7 @@ import styled from "styled-components";
 import Link from "gatsby-link";
 
 const Description = styled(Card.Description)`
-  margin-bottom: 1.25em;
+  margin-bottom: 2em;
 `;
 
 const Links = ({ links, linksPerRow, ...otherProps }) => (
