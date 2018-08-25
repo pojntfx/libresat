@@ -5,7 +5,7 @@ import { Broadcast } from "./Broadcast";
 const BroadcastView = (
   {
     data: {
-      mdx: { relativePath, frontmatter },
+      mdx: { relativePath, headings, frontmatter },
       broadcastYaml: { postsLink, ...broadcastYaml }
     }
   },
@@ -13,6 +13,7 @@ const BroadcastView = (
 ) => (
   <Broadcast
     link={withPrefix(`${postsLink}/${relativePath.split(".")[0]}`)}
+    title={headings.filter(({ depth }) => depth === 1)[0].value}
     {...frontmatter}
     {...broadcastYaml}
     {...otherProps}
@@ -25,10 +26,13 @@ export const BroadcastSection = props => (
       query BroadcastQuery {
         mdx {
           frontmatter {
-            title
             excerpt
           }
           relativePath
+          headings {
+            value
+            depth
+          }
         }
         broadcastYaml {
           icon
