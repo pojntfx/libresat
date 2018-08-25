@@ -1,8 +1,10 @@
 import React from "react";
-import { withPrefix, StaticQuery, graphql } from "gatsby";
+import { withPrefix } from "gatsby";
 import { Coverflow } from "./Coverflow";
+import { NonFeaturedSection } from "./NonFeaturedSection";
+import { FeaturedSection } from "./FeaturedSection";
 
-const CoverflowView = (
+export const CoverflowView = (
   {
     data: {
       allMdx: { edges }
@@ -36,30 +38,5 @@ const CoverflowView = (
   />
 );
 
-export const CoverflowSection = props => (
-  <StaticQuery
-    query={graphql`
-      query CoverflowQuery {
-        allMdx {
-          edges {
-            node {
-              fileNode {
-                name
-              }
-              frontmatter {
-                author
-                imgSrc
-              }
-              headings {
-                value
-                depth
-              }
-              excerpt
-            }
-          }
-        }
-      }
-    `}
-    render={data => <CoverflowView data={data} {...props} />}
-  />
-);
+export const CoverflowSection = ({ featured, ...otherProps }) =>
+  featured ? <FeaturedSection /> : <NonFeaturedSection />;
