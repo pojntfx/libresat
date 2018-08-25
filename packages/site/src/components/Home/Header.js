@@ -5,6 +5,8 @@ import Link from "gatsby-link";
 
 const Action = styled(Button)`
   white-space: nowrap;
+  /* This is necessary to prevent glitches if the row get's to high */
+  max-height: 3em;
 `;
 
 const Actions = styled(Grid.Column).attrs({
