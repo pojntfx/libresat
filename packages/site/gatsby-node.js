@@ -15,21 +15,34 @@ createPosts = async (graphql, createPage) => {
               }
               frontmatter {
                 author
-                title
                 excerpt
+                lastEdit
+              }
+              headings {
+                value
+                depth
               }
             }
           }
         }
       }
     `);
-    data.allMdx.edges.forEach(({ node }) => {
-      createPage({
-        path: `/posts/${node.fileNode.name}`,
-        component: node.fileAbsolutePath,
-        context: { author: node.frontmatter.author }
-      });
-    });
+    data.allMdx.edges.forEach(
+      ({ node: { fileNode, fileAbsolutePath, frontmatter, headings } }) => {
+        createPage({
+          path: `/blog/${fileNode.name}`,
+          component: fileAbsolutePath,
+          context: {
+            title: headings.filter(({ depth }) => depth === 1)[0].value,
+            date: fileNode.name
+              .split("-")
+              .filter((element, index) => (index < 3 ? element : null)) // Get the date from the post's filename, like with Jekyll
+              .join("-"),
+            ...frontmatter
+          }
+        });
+      }
+    );
   } catch (e) {
     throw e;
   }
