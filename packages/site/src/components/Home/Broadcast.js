@@ -28,16 +28,15 @@ export class Broadcast extends Component {
         hidden={!this.state.isVisible}
         icon
         info
-        {...this.props}
       >
-        <Icon name="podcast" />
+        <Icon name={this.props.icon} />
         <Message.Content>
           <Message.Header>{this.props.title}</Message.Header>
           {this.props.excerpt}
           <br />
           <Link to={this.props.link}>
             <Icon name="arrow right" />
-            Read more over at the blog
+            {this.props.readMore}
           </Link>
         </Message.Content>
       </Message>
