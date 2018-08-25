@@ -17,6 +17,7 @@ createPosts = async (graphql, createPage) => {
                 author
                 lastEdit
                 imgSrc
+                featured
               }
               timeToRead
               headings {
