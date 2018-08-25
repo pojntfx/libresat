@@ -16,6 +16,7 @@ createPosts = async (graphql, createPage) => {
               frontmatter {
                 author
                 lastEdit
+                imgSrc
               }
               timeToRead
               headings {
