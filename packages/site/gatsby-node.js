@@ -15,7 +15,6 @@ createPosts = async (graphql, createPage) => {
               }
               frontmatter {
                 author
-                excerpt
                 lastEdit
               }
               timeToRead
@@ -23,6 +22,7 @@ createPosts = async (graphql, createPage) => {
                 value
                 depth
               }
+              excerpt
             }
           }
         }
@@ -30,7 +30,14 @@ createPosts = async (graphql, createPage) => {
     `);
     data.allMdx.edges.forEach(
       ({
-        node: { fileNode, fileAbsolutePath, timeToRead, frontmatter, headings }
+        node: {
+          fileNode,
+          fileAbsolutePath,
+          timeToRead,
+          frontmatter,
+          headings,
+          excerpt
+        }
       }) => {
         createPage({
           path: `/blog/${fileNode.name}`,
@@ -42,6 +49,7 @@ createPosts = async (graphql, createPage) => {
               .filter((element, index) => (index < 3 ? element : null)) // Get the date from the post's filename, like with Jekyll
               .join("-"),
             timeToRead,
+            excerpt,
             ...frontmatter
           }
         });
