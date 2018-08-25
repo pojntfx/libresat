@@ -3,14 +3,17 @@ import { Base } from "./Base";
 import styled from "styled-components";
 import { Paper } from "../components/Paper";
 
-const Heading = styled.div`
+const Author = styled.div`
   font-style: italic;
+  margin-bottom: 1em;
 `;
 
-export default ({ children, pageContext: { author } }) => (
+export default ({ children, pageContext: { author, date, lastEdit } }) => (
   <Base>
     <Paper>
-      <Heading>By {author}</Heading>
+      <Author>
+        By {author} on {date}. Last edit on {lastEdit}.
+      </Author>
       {children}
     </Paper>
   </Base>
