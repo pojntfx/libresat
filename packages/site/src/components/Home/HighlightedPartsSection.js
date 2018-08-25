@@ -2,14 +2,12 @@ import React from "react";
 import { withPrefix, StaticQuery, graphql } from "gatsby";
 import { HighlightedParts } from "./HighlightedParts";
 
-const HighlightedPartsView = (
-  {
-    data: {
-      highlightedPartsYaml: { links, ...highlightedPartsYaml }
-    }
+const HighlightedPartsView = ({
+  data: {
+    highlightedPartsYaml: { links, ...highlightedPartsYaml }
   },
   ...otherProps
-) => (
+}) => (
   <HighlightedParts
     links={links.map(({ link, ...rest }) => {
       return {

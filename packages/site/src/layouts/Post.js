@@ -3,9 +3,11 @@ import { Base } from "./Base";
 import styled from "styled-components";
 import { Paper } from "../components/Paper";
 import { BlogHeader } from "../components/Blog/Headers/Blog";
-import { Header, Card, Image } from "semantic-ui-react";
+import { Card, Image } from "semantic-ui-react";
 import { CoverflowSection } from "../components/Blog/Coverflow/CoverflowSection";
 import Link, { withPrefix } from "gatsby-link";
+import { FeaturedHeader } from "../components/Blog/Headers/Featured";
+import { LatestHeader } from "../components/Blog/Headers/Latest";
 
 const Author = styled.div`
   font-style: italic;
@@ -32,23 +34,7 @@ export default ({
       </a>
       <Card.Content>{children}</Card.Content>
     </Card>
-    <Paper>
-      {featured ? (
-        <Header
-          content="More Featured Posts"
-          icon="star"
-          subheader={`Check out the featured, editorial posts below and get an insight into
-          recent news, updates and changes.`}
-        />
-      ) : (
-        <Header
-          content="More Posts"
-          icon="newspaper"
-          subheader={`Non-editorial, federated posts by the community and/or core devs.
-      Consider contributing your own post by submitting a merge request!`}
-        />
-      )}
-    </Paper>
+    <Paper>{featured ? <FeaturedHeader more /> : <LatestHeader more />}</Paper>
     <CoverflowSection featured={featured} />
   </Base>
 );

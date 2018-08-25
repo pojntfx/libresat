@@ -2,14 +2,12 @@ import React from "react";
 import { withPrefix, StaticQuery, graphql } from "gatsby";
 import { Subsystem } from "./Subsystem";
 
-const SubsystemView = (
-  {
-    data: {
-      allSubsystemsYaml: { edges }
-    }
+const SubsystemView = ({
+  data: {
+    allSubsystemsYaml: { edges }
   },
   ...otherProps
-) =>
+}) =>
   edges.map(
     (
       {
