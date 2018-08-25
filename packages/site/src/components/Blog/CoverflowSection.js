@@ -1,51 +1,93 @@
 import React from "react";
-import styled from "styled-components";
-import { Card } from "semantic-ui-react";
-import Link, { withPrefix } from "gatsby-link";
+import { withPrefix, StaticQuery, graphql } from "gatsby";
 import { Coverflow } from "./Coverflow";
 
-const PostTemplate = ({ imgSrc, ...otherProps }) => (
-  <Card image={withPrefix(imgSrc)} {...otherProps} />
-);
-
-const Post = styled(PostTemplate)`
-  margin-top: 1em !important;
-  margin-bottom: 1em !important;
-`;
-
-const CoverflowSectionView = ({ posts, ...otherProps }) => (
-  <Coverflow rotate={10}>
-    {posts.map(({ link, ...props }, index) => (
-      <Post {...props} as={Link} to={link} key={index} />
-    ))}
-  </Coverflow>
+const CoverflowView = (
+  {
+    data: {
+      allMdx: { edges }
+    }
+  },
+  ...otherProps
+) => (
+  <Coverflow
+    posts={edges.map(
+      ({
+        node: {
+          fileNode,
+          frontmatter: { author },
+          headings,
+          excerpt
+        }
+      }) => {
+        return {
+          imgSrc: withPrefix("/img/software-card.png"),
+          link: `/blog/${fileNode.name}`,
+          header: headings.filter(({ depth }) => depth === 1)[0].value,
+          meta: `${fileNode.name
+            .split("-")
+            .filter((element, index) => (index < 3 ? element : null)) // Get the date from the post's filename, like with Jekyll
+            .join("-")} by ${author}`,
+          description: excerpt
+        };
+      }
+    )}
+    {...otherProps}
+  />
 );
 
 export const CoverflowSection = props => (
-  <CoverflowSectionView
-    posts={[
-      {
-        imgSrc: withPrefix("/img/software-card.png"),
-        link: withPrefix("/"),
-        header: "Post Title",
-        meta: "2 days ago by Felicitas Pojtinger",
-        description: "Post Description"
-      },
-      {
-        imgSrc: withPrefix("/img/software-card.png"),
-        link: withPrefix("/"),
-        header: "Post Title",
-        meta: "2 days ago by Felicitas Pojtinger",
-        description: "Post Description"
-      },
-      {
-        imgSrc: withPrefix("/img/software-card.png"),
-        link: withPrefix("/"),
-        header: "Post Title",
-        meta: "2 days ago by Felicitas Pojtinger",
-        description: "Post Description"
+  <StaticQuery
+    query={graphql`
+      query CoverflowQuery {
+        allMdx {
+          edges {
+            node {
+              fileNode {
+                name
+              }
+              frontmatter {
+                author
+              }
+              headings {
+                value
+                depth
+              }
+              excerpt
+            }
+          }
+        }
       }
-    ]}
-    {...props}
+    `}
+    render={data => <CoverflowView data={data} {...props} />}
   />
 );
+
+// export const CoverflowSection = props => (
+//   <CoverflowSectionView
+//     posts={[
+//       {
+//         imgSrc: withPrefix("/img/software-card.png"),
+//         link: withPrefix("/"),
+//         header: "Post Title",
+//         meta: "2 days ago by Felicitas Pojtinger",
+//         description: "Post Description"
+//       },
+//       {
+//         imgSrc: withPrefix("/img/software-card.png"),
+//         link: withPrefix("/"),
+//         header: "Post Title",
+//         meta: "2 days ago by Felicitas Pojtinger",
+//         description: "Post Description"
+//       },
+//       {
+//         imgSrc: withPrefix("/img/software-card.png"),
+//         link: withPrefix("/"),
+//         header: "Post Title",
+//         meta: "2 days ago by Felicitas Pojtinger",
+//         description: "Post Description"
+//       }
+//     ]}
+//     {...props}
+//   />
+// );
