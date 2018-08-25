@@ -25,7 +25,7 @@ const FooterLegalGrid = styled(Grid)`
   margin-left: auto !important;
 `;
 
-const MetaButton = styled(Button)`
+const MetaButton = styled(Button).attrs({ fluid: true })`
   white-space: nowrap;
 `;
 
@@ -90,9 +90,7 @@ const FooterContent = ({ licenses: { media, code }, imprint }) => (
         <FooterLegalGrid stackable columns={3}>
           <Grid.Column>
             <Modal
-              trigger={
-                <MetaButton fluid icon="images" content="Media License" />
-              }
+              trigger={<MetaButton icon="images" content="Media License" />}
               closeIcon
             >
               <Modal.Header>Media License</Modal.Header>
@@ -109,7 +107,7 @@ const FooterContent = ({ licenses: { media, code }, imprint }) => (
           </Grid.Column>
           <Grid.Column>
             <Modal
-              trigger={<MetaButton fluid icon="code" content="Code License" />}
+              trigger={<MetaButton icon="code" content="Code License" />}
               closeIcon
             >
               <Modal.Header>Code License</Modal.Header>
@@ -126,7 +124,6 @@ const FooterContent = ({ licenses: { media, code }, imprint }) => (
           </Grid.Column>
           <Grid.Column>
             <MetaButton
-              fluid
               icon="legal"
               content="Imprint"
               as={Link}

@@ -3,7 +3,9 @@ import styled from "styled-components";
 import { Button, Grid, Header as HeaderTemplate } from "semantic-ui-react";
 import Link from "gatsby-link";
 
-const Action = styled(Button)`
+const Action = styled(Button).attrs({
+  labelPosition: "left"
+})`
   white-space: nowrap;
   /* This is necessary to prevent glitches if the row get's to high */
   max-height: 3em;
