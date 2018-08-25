@@ -1,0 +1,22 @@
+- header:
+    content: "Community"
+    subheader: "Connect to thousands of spacecraft enthusiasts!"
+  description: >
+    Lorem dolor sit space communities are great
+  linksPerRow: 3
+  links:
+    - label: Wiki
+      icon: slideshare
+      link: /wiki
+      description: >
+        Community-driven, distributed documentation and detailed guides
+    - label: Forum
+      icon: users
+      link: /forum
+      description: >
+        A persistent place for discussions, proposals and support
+    - label: Chat
+      icon: conversation
+      link: /chat
+      description: >
+        Quick and direct support from the community
