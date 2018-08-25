@@ -15,12 +15,21 @@ injectGlobal`
   }
 `;
 
-export const Base = ({ children, ...otherProps }) => (
+export const Base = ({ children, noContainer, ...otherProps }) => (
   <>
     <Navbar />
-    <Container {...otherProps}>
-      {children}
-      <Footer />
-    </Container>
+    {noContainer ? (
+      <>
+        {children}
+        <Container>
+          <Footer />
+        </Container>
+      </>
+    ) : (
+      <Container {...otherProps}>
+        {children}
+        <Footer />
+      </Container>
+    )}
   </>
 );
