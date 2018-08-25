@@ -15,7 +15,7 @@ const SubsystemView = (
       {
         node: {
           imgSrc,
-          header: { docsLink, ...header },
+          header: { docsLink, forumLink, ...header },
           ...subsystemYaml
         }
       },
@@ -25,6 +25,7 @@ const SubsystemView = (
         imgSrc={withPrefix(imgSrc)}
         header={{
           docsLink: withPrefix(docsLink),
+          forumLink: withPrefix(forumLink),
           ...header
         }}
         key={key}

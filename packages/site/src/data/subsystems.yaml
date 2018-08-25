@@ -6,7 +6,7 @@
     subtitle: Liberate your Spacecraft
     icon: code
     docsLink: /docs/software
-    forumLink: https://forum.libresat.space/forum
+    forumLink: /forum
   description: >
     Lorem dolor sit space software is awesome
   overviewDivider:
@@ -38,7 +38,7 @@
     subtitle: Make your designs as open as space
     icon: code
     docsLink: /docs/hardware
-    forumLink: https://forum.libresat.space/forum
+    forumLink: /forum
   description: >
     Lorem dolor sit space hardware is awesome
   overviewDivider:
@@ -70,7 +70,7 @@
     subtitle: Join the Federation!
     icon: code
     docsLink: /docs/network
-    forumLink: https://forum.libresat.space/forum
+    forumLink: /forum
   description: >
     Lorem dolor sit space networks are the most awesome
   overviewDivider:
