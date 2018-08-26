@@ -6,8 +6,8 @@ import { Paper } from "../components/Paper";
 import styled from "styled-components";
 
 const InputView = styled(InputTemplate)`
-  margin-bottom: 10em;
-  & > .ui.icon.input {
+  ${props =>
+    props.value.length < 1 ? "margin-bottom: 10em;" : null} & > .ui.icon.input {
     width: 100%;
   }
 `;
@@ -130,6 +130,7 @@ const search = rawQuery => {
 
 class Input extends Component {
   state = {
+    query: "",
     results: []
   };
 
@@ -139,7 +140,10 @@ class Input extends Component {
     });
   };
 
-  handleInput = query => this.updateResults(query);
+  handleInput = query => {
+    this.updateResults(query);
+    this.setState({ query });
+  };
 
   render() {
     return (
@@ -149,6 +153,8 @@ class Input extends Component {
           placeholder="Search ..."
           fluid
           onChange={(e, { value }) => this.handleInput(value)}
+          value={this.state.query}
+          autoFocus
         />
         {this.state.results.map((result, index) => (
           <Paper key={index}>{result.link}</Paper>
