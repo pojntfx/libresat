@@ -1,6 +1,7 @@
 import React from "react";
 import { StaticQuery, graphql } from "gatsby";
 import { Helmet } from "react-helmet";
+import { withPrefix } from "gatsby-link";
 
 const Title = ({
   data: {
@@ -9,7 +10,8 @@ const Title = ({
       themeColor: siteThemeColor,
       description: siteDescription,
       keywords: siteKeywords,
-      author: siteAuthor
+      author: siteAuthor,
+      favicon: siteFavicon
     }
   },
   title: pageTitle,
@@ -17,6 +19,7 @@ const Title = ({
   description: pageDescription,
   keywords: pageKeywords,
   author: pageAuthor,
+  favicon: pageFavicon,
   ...otherProps
 }) => (
   <Helmet {...otherProps}>
@@ -33,6 +36,10 @@ const Title = ({
       content={pageKeywords ? pageKeywords.join(", ") : siteKeywords.join(", ")}
     />
     <meta name="author" content={pageAuthor ? pageAuthor : siteAuthor} />
+    <link
+      rel="icon"
+      href={pageFavicon ? pageFavicon : withPrefix(siteFavicon)}
+    />
     {/* TODO: Add icon and manifest */}
     <title>
       {siteTitle} | {pageTitle}
@@ -50,6 +57,7 @@ export const Head = props => (
           description
           keywords
           author
+          favicon
         }
       }
     `}

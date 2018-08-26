@@ -25,6 +25,20 @@ module.exports = {
       }
     },
     "gatsby-plugin-styled-components",
-    "gatsby-plugin-react-helmet"
+    "gatsby-plugin-react-helmet",
+    {
+      resolve: "gatsby-plugin-manifest",
+      options: {
+        name:
+          "LibreSat - The Free/Libre and Open Source Satellite Development and Control Platform",
+        short_name: "LibreSat",
+        start_url: "/",
+        background_color: "#000000",
+        theme_color: "#a2466c",
+        display: "standalone",
+        icon: "static/img/icon.png"
+      }
+    },
+    "gatsby-plugin-offline"
   ]
 };
