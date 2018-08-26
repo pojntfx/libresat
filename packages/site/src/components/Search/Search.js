@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import { Input as InputTemplate, Transition } from "semantic-ui-react";
-import { Paper } from "../Paper";
 import { search } from "../../utils/search";
 import styled from "styled-components";
+import { Post } from "../Blog/Coverflow/Coverflow";
+import { Link } from "../Link";
 
 const InputView = styled(InputTemplate)`
   ${props =>
@@ -33,15 +34,15 @@ export class SearchFilter extends Component {
       <>
         <InputView
           icon="search"
-          placeholder="Search ..."
+          placeholder={this.props.placeholder}
           fluid
           onChange={(e, { value }) => this.handleInput(value)}
           value={this.state.query}
           autoFocus
         />
         <Transition.Group animation="scale">
-          {this.state.results.map((result, index) => (
-            <Paper key={index}>{result.link}</Paper>
+          {this.state.results.map(({ link, ...props }, index) => (
+            <Post fluid {...props} as={Link} to={link} key={index} />
           ))}
         </Transition.Group>
       </>
