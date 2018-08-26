@@ -26,6 +26,12 @@ const Title = ({
 }) => (
   <Helmet {...otherProps}>
     <html lang={pageLang ? pageLang : siteLang} />
+    <meta charSet="utf-8" />
+    <meta httpEquiv="x-ua-compatible" content="ie=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
     <meta
       name="theme-color"
       content={pageThemeColor ? pageThemeColor : siteThemeColor}
