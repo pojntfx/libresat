@@ -7,6 +7,7 @@ import { injectGlobal } from "styled-components";
 import { withPrefix } from "gatsby-link";
 import { MDXProvider } from "@mdx-js/tag";
 import { Link } from "../components/Link";
+import { Image } from "semantic-ui-react";
 
 injectGlobal`
   body {
@@ -20,7 +21,8 @@ injectGlobal`
 export const Base = ({ children, noContainer, ...otherProps }) => (
   <MDXProvider
     components={{
-      a: ({ href, ...otherProps }) => <Link to={href} {...otherProps} />
+      a: ({ href, ...otherProps }) => <Link to={href} {...otherProps} />,
+      img: props => <Image {...props} />
     }}
   >
     <>
