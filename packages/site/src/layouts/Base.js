@@ -7,7 +7,7 @@ import { injectGlobal } from "styled-components";
 import { withPrefix } from "gatsby-link";
 import { MDXProvider } from "@mdx-js/tag";
 import { Link } from "../components/Link";
-import { Image } from "semantic-ui-react";
+import { Image } from "../components/Blog/Image";
 
 injectGlobal`
   body {

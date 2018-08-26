@@ -38,15 +38,6 @@ module.exports = {
         icon: "static/img/icon.png"
       }
     },
-    "gatsby-plugin-offline",
-    {
-      resolve: "gatsby-source-filesystem",
-      options: {
-        name: "img",
-        path: `${__dirname}/static/img/`
-      }
-    },
-    "gatsby-transformer-sharp",
-    "gatsby-plugin-sharp"
+    "gatsby-plugin-offline"
   ]
 };
