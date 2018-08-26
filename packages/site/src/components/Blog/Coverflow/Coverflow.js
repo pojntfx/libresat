@@ -2,7 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import CoverflowTemplate from "reactjs-coverflow";
 import { Card } from "semantic-ui-react";
-import Link, { withPrefix } from "gatsby-link";
+import { withPrefix } from "gatsby-link";
+import { Link } from "../../Link";
 
 const PostsCoverflow = styled(CoverflowTemplate)`
   margin-top: 1em;

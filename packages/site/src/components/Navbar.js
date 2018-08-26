@@ -3,7 +3,7 @@ import { Menu } from "semantic-ui-react";
 import { withPrefix } from "gatsby";
 import styled from "styled-components";
 import { StaticQuery, graphql } from "gatsby";
-import Link from "gatsby-link";
+import { Link } from "./Link";
 
 const MainMenu = styled(Menu)`
   overflow-x: auto;
@@ -42,7 +42,7 @@ const NavbarView = ({
   }
 }) => (
   <MainMenu borderless fixed="top" {...otherProps}>
-    <EdgeItem as={Link} to={withPrefix("/")}>
+    <EdgeItem as={Link} to="/">
       <Logo src={withPrefix(logoUrl)} alt={`${title} Logo`} />
     </EdgeItem>
     <CenterMenu>

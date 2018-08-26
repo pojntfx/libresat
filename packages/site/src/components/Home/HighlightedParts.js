@@ -1,7 +1,7 @@
 import React from "react";
 import { Card, Header, Icon } from "semantic-ui-react";
 import styled from "styled-components";
-import Link from "gatsby-link";
+import { Link } from "../Link";
 
 const Description = styled(Card.Description)`
   margin-bottom: 2em;

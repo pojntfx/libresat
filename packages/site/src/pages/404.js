@@ -1,8 +1,8 @@
 import React from "react";
 import { Button, Image, Card, Icon } from "semantic-ui-react";
 import styled from "styled-components";
-import Link from "gatsby-link";
-import { withPrefix } from "gatsby";
+import { withPrefix } from "gatsby-link";
+import { Link } from "../components/Link";
 import { Head } from "../components/Head.js";
 
 // This 404 page has been adopted from @pojntfx's https://gitlab.com/irasync
@@ -39,7 +39,7 @@ const PageNotFound = ({ className }) => (
             </Button.Content>
           </Button>
           <Button.Or />
-          <Button as={Link} to={withPrefix("/")} primary>
+          <Button as={Link} to="/" primary>
             Go to the home page
           </Button>
         </Button.Group>

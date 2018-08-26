@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Message, Icon } from "semantic-ui-react";
-import Link from "gatsby-link";
+import { Link } from "../Link";
 
 export class Broadcast extends Component {
   state = {

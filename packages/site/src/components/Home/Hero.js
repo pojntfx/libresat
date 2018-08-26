@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import Link from "gatsby-link";
+import { Link } from "../Link";
 import { Modal, Button } from "semantic-ui-react";
 
 const Wrapper = styled.div`

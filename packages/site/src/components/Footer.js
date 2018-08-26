@@ -2,7 +2,7 @@ import React from "react";
 import { Segment, Grid, Modal, Button } from "semantic-ui-react";
 import { StaticQuery, graphql } from "gatsby";
 import styled from "styled-components";
-import Link, { withPrefix } from "gatsby-link";
+import { Link } from "../components/Link";
 
 const FooterWrapper = styled(Segment)`
   margin-top: 1em !important;
@@ -127,7 +127,7 @@ const FooterContent = ({ licenses: { media, code }, imprint }) => (
               icon="legal"
               content="Imprint"
               as={Link}
-              to={withPrefix("/imprint")}
+              to={"/imprint"}
               activeClassName="active"
             />
           </Grid.Column>

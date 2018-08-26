@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Button, Grid, Header as HeaderTemplate } from "semantic-ui-react";
-import Link from "gatsby-link";
+import { Link } from "../Link";
 
 const Action = styled(Button).attrs({
   labelPosition: "left"
