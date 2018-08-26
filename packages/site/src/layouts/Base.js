@@ -22,7 +22,9 @@ export const Base = ({ children, noContainer, ...otherProps }) => (
   <MDXProvider
     components={{
       a: ({ href, ...otherProps }) => <Link to={href} {...otherProps} />,
-      img: props => <Image {...props} />
+      img: ({ src, ...otherProps }) => (
+        <Image as={Link} to={src} src={src} {...otherProps} />
+      )
     }}
   >
     <>

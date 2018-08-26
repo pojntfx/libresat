@@ -5,7 +5,8 @@ import { Paper } from "../components/Paper";
 import { BlogHeader } from "../components/Blog/Headers/Blog";
 import { Card, Image } from "semantic-ui-react";
 import { CoverflowSection } from "../components/Blog/Coverflow/CoverflowSection";
-import Link, { withPrefix } from "gatsby-link";
+import { withPrefix } from "gatsby-link";
+import { Link } from "../components/Link";
 import { FeaturedHeader } from "../components/Blog/Headers/Featured";
 import { LatestHeader } from "../components/Blog/Headers/Latest";
 import { Head } from "../components/Head";
@@ -29,7 +30,7 @@ export default ({
 }) => (
   <Base>
     <Head title={title} />
-    <Link to={withPrefix("/blog")}>
+    <Link to="/blog">
       <BlogHeader />
     </Link>
     <Card fluid>

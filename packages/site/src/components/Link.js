@@ -10,7 +10,7 @@ export const Link = ({ to, children, ...otherProps }) =>
       {children ? children : null}
     </a>
   ) : (
-    <LinkTemplate to={withPrefix(to)}>
+    <LinkTemplate to={withPrefix(to)} {...otherProps}>
       {children ? children : null}
     </LinkTemplate>
   );
