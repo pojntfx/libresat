@@ -29,12 +29,11 @@ module.exports = {
     {
       resolve: "gatsby-plugin-manifest",
       options: {
-        name:
-          "LibreSat - The Free/Libre and Open Source Satellite Development and Control Platform",
+        name: "LibreSat",
         short_name: "LibreSat",
         start_url: "/",
         background_color: "#000000",
-        theme_color: "#a2466c",
+        theme_color: "#000000",
         display: "standalone",
         icon: "static/img/icon.png"
       }
