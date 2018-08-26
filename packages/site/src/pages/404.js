@@ -10,7 +10,7 @@ const PageNotFound = ({ className }) => (
   <div className={className}>
     <Head title="404 A Rabbit Ate This Page" />
     <Card>
-      <Image src={withPrefix("/img/404-rabbit.jpg")} centered />
+      <Image src={withPrefix("/img/404-rabbit.png")} centered />
       <Card.Content>
         <Card.Header>
           {" "}
