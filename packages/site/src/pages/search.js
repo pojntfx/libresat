@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Base } from "../layouts/Base";
 import { PageHeader } from "../components/Blog/Headers/PageHeader";
-import { Input as InputTemplate } from "semantic-ui-react";
+import { Input as InputTemplate, Transition } from "semantic-ui-react";
 import { Paper } from "../components/Paper";
 import styled from "styled-components";
 
@@ -156,9 +156,11 @@ class Input extends Component {
           value={this.state.query}
           autoFocus
         />
-        {this.state.results.map((result, index) => (
-          <Paper key={index}>{result.link}</Paper>
-        ))}
+        <Transition.Group animation="scale">
+          {this.state.results.map((result, index) => (
+            <Paper key={index}>{result.link}</Paper>
+          ))}
+        </Transition.Group>
       </>
     );
   }
