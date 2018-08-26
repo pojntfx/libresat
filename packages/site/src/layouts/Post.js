@@ -41,9 +41,7 @@ export default ({
           read: {timeToRead} {timeToRead === 1 ? "minute" : "minutes"}.
         </Author>
       </Card.Content>
-      <a href={withPrefix(imgSrc)}>
-        <Image src={withPrefix(imgSrc)} alt={imgAlt} />
-      </a>
+      <Image as={Link} to={imgSrc} src={withPrefix(imgSrc)} alt={imgAlt} />
       <Card.Content>{children}</Card.Content>
     </Card>
     <Paper>{featured ? <FeaturedHeader more /> : <LatestHeader more />}</Paper>
