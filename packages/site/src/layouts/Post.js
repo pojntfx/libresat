@@ -8,6 +8,7 @@ import { CoverflowSection } from "../components/Blog/Coverflow/CoverflowSection"
 import Link, { withPrefix } from "gatsby-link";
 import { FeaturedHeader } from "../components/Blog/Headers/Featured";
 import { LatestHeader } from "../components/Blog/Headers/Latest";
+import { Head } from "../components/Head";
 
 const Author = styled.div`
   font-style: italic;
@@ -15,9 +16,19 @@ const Author = styled.div`
 
 export default ({
   children,
-  pageContext: { author, featured, date, lastEdit, imgSrc, imgAlt, timeToRead }
+  pageContext: {
+    author,
+    featured,
+    date,
+    lastEdit,
+    imgSrc,
+    imgAlt,
+    timeToRead,
+    title
+  }
 }) => (
   <Base>
+    <Head title={title} />
     <Link to={withPrefix("/blog")}>
       <BlogHeader />
     </Link>

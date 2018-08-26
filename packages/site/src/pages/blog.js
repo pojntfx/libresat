@@ -7,9 +7,11 @@ import { GallerySection } from "../components/Blog/Gallery/GallerySection";
 import { BlogHeader } from "../components/Blog/Headers/Blog";
 import { FeaturedHeader } from "../components/Blog/Headers/Featured";
 import { LatestHeader } from "../components/Blog/Headers/Latest";
+import { Head } from "../components/Head.js";
 
 export default () => (
   <Base noContainer>
+    <Head title="Blog" />
     <Container>
       <BlogHeader />
       <Paper>
