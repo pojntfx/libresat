@@ -11,7 +11,8 @@ const Title = ({
       description: siteDescription,
       keywords: siteKeywords,
       author: siteAuthor,
-      favicon: siteFavicon
+      favicon: siteFavicon,
+      lang: siteLang
     }
   },
   title: pageTitle,
@@ -20,9 +21,11 @@ const Title = ({
   keywords: pageKeywords,
   author: pageAuthor,
   favicon: pageFavicon,
+  lang: pageLang,
   ...otherProps
 }) => (
   <Helmet {...otherProps}>
+    <html lang={pageLang ? pageLang : siteLang} />
     <meta
       name="theme-color"
       content={pageThemeColor ? pageThemeColor : siteThemeColor}
@@ -58,6 +61,7 @@ export const Head = props => (
           keywords
           author
           favicon
+          lang
         }
       }
     `}

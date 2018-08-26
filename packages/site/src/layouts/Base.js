@@ -8,6 +8,7 @@ import { withPrefix } from "gatsby-link";
 import { MDXProvider } from "@mdx-js/tag";
 import { Link } from "../components/Link";
 import { Image } from "../components/Blog/Image";
+import { NoScript } from "../components/NoScript";
 
 injectGlobal`
   body {
@@ -28,6 +29,7 @@ export const Base = ({ children, noContainer, ...otherProps }) => (
     }}
   >
     <>
+      <NoScript />
       <Navbar />
       {noContainer ? (
         <>

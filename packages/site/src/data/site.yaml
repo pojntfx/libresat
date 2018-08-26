@@ -2,6 +2,11 @@
   themeColor: "#000000"
   description: >
     The Free/Libre and Open Source Satellite Development and Control Platform
+  lang: en
+  noscriptHeader: ECMAScript/JavaScript not enabled
+  noscriptBody: >
+    Please enable ECMAScript/JavaScript in your browser to view the LibreSat website properly.
+    It's AGPL-3.0 licensed Free/Libre and Open Source Software.
   keywords:
     - LibreSat
     - OpenSDCP
