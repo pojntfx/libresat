@@ -1,35 +1,74 @@
 import React from "react";
+import { StaticQuery, graphql } from "gatsby";
 import { SearchFilter } from "./Search";
+import { withPrefix } from "gatsby-link";
 
-const exampleSource = [
-  {
-    title: "First page",
-    content: "<h1>First page title</h1><p>First page content</p>",
-    link: "/first",
-    secretNumber: 1027
+const Search = ({
+  data: {
+    allMdx: { edges },
+    allSitePage: { totalCount }
   },
-  {
-    title: "Second page",
-    content: "<h1>Second page title</h1><p>Second page content</p>",
-    link: "/second",
-    tags: [
-      "I am human",
-      "This is a text",
-      {
-        name: "Nested tag",
-        link: "/third",
-        moreTags: [
-          {
-            link: "/fourth",
-            name: "Deeply nested tag",
-            tags: ["Super heavily nested tag", 3458478]
-          }
-        ]
+  ...otherProps
+}) => (
+  <SearchFilter
+    placeholder={`Search ${totalCount} ${
+      totalCount === 1 ? "page" : "pages"
+    } ...`}
+    source={edges.map(
+      ({
+        node: {
+          rawBody,
+          frontmatter: { author, imgSrc },
+          headings,
+          excerpt,
+          fileNode: { name }
+        }
+      }) => {
+        return {
+          body: rawBody,
+          imgSrc: withPrefix(imgSrc),
+          link: `/blog/${name}`,
+          header: headings.filter(({ depth }) => depth === 1)[0].value,
+          meta: `${name
+            .split("-")
+            .filter((element, index) => (index < 3 ? element : null)) // Get the date from the post's filename, like with Jekyll
+            .join("-")} by ${author}`,
+          description: excerpt
+        };
       }
-    ]
-  }
-];
+    )}
+    {...otherProps}
+  />
+);
 
 export const SearchSection = props => (
-  <SearchFilter source={exampleSource} {...props} />
+  <StaticQuery
+    query={graphql`
+      query SiteSearch {
+        allMdx {
+          edges {
+            node {
+              rawBody
+              fileNode {
+                name
+              }
+              headings {
+                value
+                depth
+              }
+              frontmatter {
+                author
+                imgSrc
+              }
+              excerpt
+            }
+          }
+        }
+        allSitePage {
+          totalCount
+        }
+      }
+    `}
+    render={data => <Search data={data} {...props} />}
+  />
 );

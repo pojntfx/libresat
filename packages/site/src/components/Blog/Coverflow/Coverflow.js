@@ -15,7 +15,7 @@ const PostTemplate = ({ imgSrc, ...otherProps }) => (
   <Card image={withPrefix(imgSrc)} {...otherProps} />
 );
 
-const Post = styled(PostTemplate)`
+export const Post = styled(PostTemplate)`
   margin-top: 1em !important;
   margin-bottom: 1em !important;
 `;
