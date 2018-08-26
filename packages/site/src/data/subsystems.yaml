@@ -1,6 +1,6 @@
 - color: blue
   imgAlt: Screenshot of the LibreSat OS concept
-  imgSrc: /img/software-card.png
+  imgSrc: /img/software-card.jpg
   header:
     title: Software
     subtitle: Liberate your Spacecraft
@@ -32,7 +32,7 @@
     projectID: 8000820
 - color: green
   imgAlt: Screenshot of the LibreSat hardware standard
-  imgSrc: /img/hardware-card.png
+  imgSrc: /img/hardware-card.jpg
   header:
     title: Hardware
     subtitle: Make your designs as open as space
@@ -64,7 +64,7 @@
     projectID: 8000820
 - color: orange
   imgAlt: Screenshot of the interconnected world with the LibreSat logo
-  imgSrc: /img/network-card.png
+  imgSrc: /img/network-card.jpg
   header:
     title: Network
     subtitle: Join the Federation!
