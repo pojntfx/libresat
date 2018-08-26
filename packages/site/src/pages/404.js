@@ -3,10 +3,12 @@ import { Button, Image, Card, Icon } from "semantic-ui-react";
 import styled from "styled-components";
 import Link from "gatsby-link";
 import { withPrefix } from "gatsby";
+import { Head } from "../components/Head.js";
 
-// This 404 page has been adopted from @pojntfx's https://gitlab.com/irasync 
+// This 404 page has been adopted from @pojntfx's https://gitlab.com/irasync
 const PageNotFound = ({ className }) => (
   <div className={className}>
+    <Head title="404 A Rabbit Ate This Page" />
     <Card>
       <Image src={withPrefix("/img/404-rabbit.jpg")} centered />
       <Card.Content>
