@@ -1,4 +1,11 @@
-import React from "react";
+---
+title: Blog
+author: Felix Pojtinger
+excerpt: >
+  Posts on all things LibreSat.
+date: 2018-08-27
+---
+
 import { Base } from "../layouts/Base";
 import { Container } from "semantic-ui-react";
 import { Paper } from "../components/Paper";
@@ -9,21 +16,18 @@ import { FeaturedHeader } from "../components/Blog/Headers/Featured";
 import { LatestHeader } from "../components/Blog/Headers/Latest";
 import { Head } from "../components/Head.js";
 
-export default () => (
-  <Base noContainer>
-    <Head title="Blog" />
-    <Container>
-      <BlogHeader />
-      <Paper>
-        <FeaturedHeader />
-      </Paper>
-    </Container>
-    <CoverflowSection featured />
-    <Container>
-      <Paper>
-        <LatestHeader />
-      </Paper>
-      <GallerySection />
-    </Container>
-  </Base>
-);
+export default ({children}) => <Base noContainer>{children}</Base>
+
+<Container>
+  <BlogHeader />
+  <Paper>
+    <FeaturedHeader />
+  </Paper>
+</Container>
+<CoverflowSection featured />
+<Container>
+  <Paper>
+    <LatestHeader />
+  </Paper>
+  <GallerySection />
+</Container>

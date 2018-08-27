@@ -26,10 +26,12 @@ export const CoverflowView = (
           imgSrc: withPrefix(imgSrc),
           link: `/blog/${fileNode.name}`,
           header: headings.filter(({ depth }) => depth === 1)[0].value,
-          meta: `${fileNode.name
-            .split("-")
-            .filter((element, index) => (index < 3 ? element : null)) // Get the date from the post's filename, like with Jekyll
-            .join("-")} by ${author}`,
+          meta: `${new Date(
+            fileNode.name
+              .split("-")
+              .filter((element, index) => (index < 3 ? element : null)) // Get the date from the post's filename, like with Jekyll
+              .join("-")
+          ).toLocaleDateString()} by ${author}`,
           description: excerpt
         };
       }

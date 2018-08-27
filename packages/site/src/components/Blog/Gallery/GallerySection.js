@@ -27,12 +27,14 @@ export const GallerySectionView = (
           imgSrc: withPrefix(imgSrc),
           link: `/blog/${fileNode.name}`,
           header: headings.filter(({ depth }) => depth === 1)[0].value,
-          meta: `${fileNode.name
-            .split("-")
-            .filter((element, index) => (index < 3 ? element : null)) // Get the date from the post's filename, like with Jekyll
-            .join(
-              "-"
-            )} by ${author}. Last edit on ${lastEdit}. Estimated time to read: ${timeToRead} ${
+          meta: `${new Date(
+            fileNode.name
+              .split("-")
+              .filter((element, index) => (index < 3 ? element : null)) // Get the date from the post's filename, like with Jekyll
+              .join("-")
+          ).toLocaleDateString()} by ${author}. Last edit on ${new Date(
+            lastEdit
+          ).toLocaleDateString()}. Estimated time to read: ${timeToRead} ${
             timeToRead === 1 ? "minute" : "minutes"
           }.`,
           description: excerpt

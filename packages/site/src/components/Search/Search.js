@@ -41,8 +41,15 @@ export class SearchFilter extends Component {
           autoFocus
         />
         <Transition.Group animation="scale">
-          {this.state.results.map(({ link, ...props }, index) => (
-            <Post fluid {...props} as={Link} to={link} key={index} />
+          {this.state.results.map(({ link, imgSrc, ...props }, index) => (
+            <Post
+              fluid
+              {...props}
+              as={Link}
+              to={link}
+              key={index}
+              imgSrc={imgSrc}
+            />
           ))}
         </Transition.Group>
       </>

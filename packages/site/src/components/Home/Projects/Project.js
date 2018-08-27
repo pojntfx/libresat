@@ -23,7 +23,7 @@ export const Project = ({
   <ProjectWrapper as="a" href={link} fluid {...otherProps}>
     <Card.Content>
       <Card.Header>{name}</Card.Header>
-      <Card.Meta>Last update: {lastUpdateDate.toLocaleString()}</Card.Meta>
+      <Card.Meta>Last update: {lastUpdateDate.toLocaleDateString()}</Card.Meta>
       <Card.Description>{description}</Card.Description>
     </Card.Content>
   </ProjectWrapper>

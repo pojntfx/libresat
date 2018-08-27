@@ -1,0 +1,16 @@
+---
+title: Search
+author: Felix Pojtinger
+excerpt: >
+  Search all pages on the LibreSat website.
+date: 2018-08-27
+---
+
+import { Base } from "../layouts/Base";
+import { PageHeader } from "../components/Blog/Headers/PageHeader";
+import { SearchSection } from "../components/Search/SearchSection";
+
+export default ({children}) => <Base>{children}</Base>
+
+<PageHeader as="h1" content="Search" subheader="Filter the universe" />
+<SearchSection />

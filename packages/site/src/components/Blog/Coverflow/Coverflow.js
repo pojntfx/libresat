@@ -12,7 +12,10 @@ const PostsCoverflow = styled(CoverflowTemplate)`
 `;
 
 const PostTemplate = ({ imgSrc, ...otherProps }) => (
-  <Card image={withPrefix(imgSrc)} {...otherProps} />
+  <Card
+    image={imgSrc === "/null" ? undefined : withPrefix(imgSrc)}
+    {...otherProps}
+  />
 );
 
 export const Post = styled(PostTemplate)`

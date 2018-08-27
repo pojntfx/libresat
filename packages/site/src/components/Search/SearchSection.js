@@ -18,7 +18,7 @@ const Search = ({
       ({
         node: {
           rawBody,
-          frontmatter: { author, imgSrc },
+          frontmatter: { author, title, imgSrc, date },
           headings,
           excerpt,
           fileNode: { name }
@@ -28,11 +28,20 @@ const Search = ({
           body: rawBody,
           imgSrc: withPrefix(imgSrc),
           link: `/blog/${name}`,
-          header: headings.filter(({ depth }) => depth === 1)[0].value,
-          meta: `${name
-            .split("-")
-            .filter((element, index) => (index < 3 ? element : null)) // Get the date from the post's filename, like with Jekyll
-            .join("-")} by ${author}`,
+          header:
+            headings.filter(({ depth }) => depth === 1).length === 0
+              ? title
+              : headings.filter(({ depth }) => depth === 1)[0].value,
+          meta: `${
+            date
+              ? new Date(date).toLocaleDateString()
+              : new Date(
+                  name
+                    .split("-")
+                    .filter((element, index) => (index < 3 ? element : null)) // Get the date from the post's filename, like with Jekyll
+                    .join("-")
+                ).toLocaleDateString()
+          } by ${author}`,
           description: excerpt
         };
       }
@@ -59,6 +68,8 @@ export const SearchSection = props => (
               frontmatter {
                 author
                 imgSrc
+                title
+                date
               }
               excerpt
             }
