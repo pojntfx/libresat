@@ -49,9 +49,10 @@ createPosts = async (graphql, createPage) => {
           component: fileAbsolutePath,
           context: {
             ...frontmatter,
-            title: headings.filter(({ depth }) => depth === 1).firstChild
-              ? headings.filter(({ depth }) => depth === 1)[0].value
-              : frontmatter.title,
+            title:
+              headings.filter(({ depth }) => depth === 1).length === 0
+                ? frontmatter.title
+                : headings.filter(({ depth }) => depth === 1)[0].value,
             date: frontmatter.date
               ? frontmatter.date
               : fileNode.name
@@ -68,22 +69,3 @@ createPosts = async (graphql, createPage) => {
     throw e;
   }
 };
-
-// exports.onCreatePage = async ({
-//   page,
-//   actions: { createPage, deletePage }
-// }) => {
-//   try {
-//     const oldPage = Object.assign({}, page);
-//     console.log(page);
-//     if (!page.context.title) {
-//       page.context.title = "Test title";
-//     }
-//     if (page.path !== oldPage.path) {
-//       deletePage(oldPage);
-//       createPage(page);
-//     }
-//   } catch (e) {
-//     throw e;
-//   }
-// };
