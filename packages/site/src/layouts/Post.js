@@ -37,8 +37,9 @@ export default ({
       <Card.Content>
         <Author>
           A {featured ? "featured " : null}
-          post by {author} on {date}. Last edit on {lastEdit}. Estimated time to
-          read: {timeToRead} {timeToRead === 1 ? "minute" : "minutes"}.
+          post by {author} on {new Date(date).toLocaleDateString()}. Last edit
+          on {new Date(lastEdit).toLocaleDateString()}. Estimated time to read:{" "}
+          {timeToRead} {timeToRead === 1 ? "minute" : "minutes"}.
         </Author>
       </Card.Content>
       <Image as={Link} to={imgSrc} src={withPrefix(imgSrc)} alt={imgAlt} />

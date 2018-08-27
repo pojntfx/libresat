@@ -14,11 +14,13 @@ createPosts = async (graphql, createPage) => {
                 name
               }
               frontmatter {
+                title
                 author
                 lastEdit
                 imgSrc
                 imgAlt
                 featured
+                date
               }
               timeToRead
               headings {
@@ -46,14 +48,18 @@ createPosts = async (graphql, createPage) => {
           path: `/blog/${fileNode.name}`,
           component: fileAbsolutePath,
           context: {
-            title: headings.filter(({ depth }) => depth === 1)[0].value,
-            date: fileNode.name
-              .split("-")
-              .filter((element, index) => (index < 3 ? element : null)) // Get the date from the post's filename, like with Jekyll
-              .join("-"),
+            ...frontmatter,
+            title: headings.filter(({ depth }) => depth === 1).firstChild
+              ? headings.filter(({ depth }) => depth === 1)[0].value
+              : frontmatter.title,
+            date: frontmatter.date
+              ? frontmatter.date
+              : fileNode.name
+                  .split("-")
+                  .filter((element, index) => (index < 3 ? element : null)) // Get the date from the post's filename, like with Jekyll
+                  .join("-"),
             timeToRead,
-            excerpt,
-            ...frontmatter
+            excerpt
           }
         });
       }
@@ -62,3 +68,22 @@ createPosts = async (graphql, createPage) => {
     throw e;
   }
 };
+
+// exports.onCreatePage = async ({
+//   page,
+//   actions: { createPage, deletePage }
+// }) => {
+//   try {
+//     const oldPage = Object.assign({}, page);
+//     console.log(page);
+//     if (!page.context.title) {
+//       page.context.title = "Test title";
+//     }
+//     if (page.path !== oldPage.path) {
+//       deletePage(oldPage);
+//       createPage(page);
+//     }
+//   } catch (e) {
+//     throw e;
+//   }
+// };

@@ -1,0 +1,22 @@
+---
+title: Home
+author: Felicitas Pojtinger
+excerpt: >
+  LibreSat, the Free/Libre and Open Source Satellite Development and Control Platform,
+  consists of software, hardware and a federated network built by a collaborative community.
+date: 2018-08-27
+---
+
+import {Base} from "../layouts/Base.js"
+import { HeroSection } from "../components/Home/HeroSection";
+import { SubsystemSection } from "../components/Home/SubsystemSection";
+import { HighlightedPartsSection } from "../components/Home/HighlightedPartsSection";
+import { BroadcastSection } from "../components/Home/BroadcastSection";
+import { Head } from "../components/Head";
+
+export default ({children}) => <Base>{children}</Base>
+
+<HeroSection />
+<BroadcastSection />
+<SubsystemSection />
+<HighlightedPartsSection />
