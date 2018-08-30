@@ -11,13 +11,13 @@ export const search = ({ source, query: rawQuery }) => {
     /**
      * Create a flat index of all possible search fields
      */
-    const flatten = source => {
+    const getKeywords = source => {
       // Add all fields to a (nested) array
       const fields = source.map(item => Object.keys(item));
-      // Get all flattened fields
-      const flattenedFields = flatten2(fields);
+      // Get all getKeywordsed fields
+      const keywords = flattenKeywords(fields);
       // Remove duplicates
-      return flattenedFields.filter(
+      return keywords.filter(
         (field, index, self) => index === self.indexOf(field)
       );
     };
@@ -25,14 +25,10 @@ export const search = ({ source, query: rawQuery }) => {
     /**
      * Flatten nested search fields (Object.keys)
      */
-    const flatten2 = fields => {
-      let searchFields = [];
-      for (let items of fields) {
-        for (let item of items) {
-          searchFields.push(item);
-        }
-      }
-      return searchFields;
+    const flattenKeywords = fields => {
+      let flattenedFields = [];
+      fields.map(field => field.map(field => flattenedFields.push(field)));
+      return flattenedFields;
     };
 
     const searchByKeywordAndQuery = (source, keywords, query) => {
@@ -58,7 +54,7 @@ export const search = ({ source, query: rawQuery }) => {
                             ? results.push(
                                 ...searchByKeywordAndQuery(
                                   [item],
-                                  flatten([item]),
+                                  getKeywords([item]),
                                   query
                                 ).filter(
                                   (field, index, self) =>
@@ -81,7 +77,7 @@ export const search = ({ source, query: rawQuery }) => {
       return results; // These can still have duplicates in them
     };
     // De-duplicate the results
-    return searchByKeywordAndQuery(source, flatten(source), query).filter(
+    return searchByKeywordAndQuery(source, getKeywords(source), query).filter(
       (field, index, self) => index === self.indexOf(field)
     );
   }
