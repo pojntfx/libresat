@@ -4,6 +4,9 @@
   "description": "The [LibreSat](https://libresat.space/) Website",
   "main": "src/website/Chart.yaml",
   "scripts": {
+    "dev": "gatsby develop",
+    "build": "gatsby build",
+    "start": "gatsby serve",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -21,5 +24,28 @@
   "bugs": {
     "url": "https://gitlab.com/libresat/libresat/issues"
   },
-  "homepage": "https://gitlab.com/libresat/libresat#README"
+  "homepage": "https://gitlab.com/libresat/libresat#README",
+  "dependencies": {
+    "@mdx-js/mdx": "^0.15.0",
+    "@mdx-js/tag": "^0.15.0",
+    "babel-plugin-styled-components": "^1.5.1",
+    "copy-webpack-plugin": "^4.5.2",
+    "gatsby": "^2.0.0-rc.0",
+    "gatsby-link": "^2.0.0-rc.0",
+    "gatsby-mdx": "0.0.11",
+    "gatsby-plugin-manifest": "^2.0.2-rc.0",
+    "gatsby-plugin-offline": "^2.0.0-rc.0",
+    "gatsby-plugin-react-helmet": "^2.0.11",
+    "gatsby-plugin-styled-components": "^3.0.0-rc.0",
+    "gatsby-source-filesystem": "^2.0.1-rc.0",
+    "gatsby-transformer-yaml": "^1.5.18",
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2",
+    "react-helmet": "^5.2.0",
+    "react-masonry-component": "^6.2.1",
+    "reactjs-coverflow": "^2.1.3",
+    "semantic-ui-css": "^2.3.3",
+    "semantic-ui-react": "^0.82.2",
+    "styled-components": "^3.4.4"
+  }
 }
