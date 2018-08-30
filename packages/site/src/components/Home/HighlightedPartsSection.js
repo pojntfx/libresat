@@ -36,6 +36,7 @@ export const HighlightedPartsSection = props => (
             icon
             link
             description
+            disabled
           }
         }
       }

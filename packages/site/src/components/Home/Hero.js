@@ -26,9 +26,11 @@ const Video = styled.video`
   width: 100%;
 `;
 
-const VideoModal = ({ icon, label, header, src, ...otherProps }) => (
+const VideoModal = ({ icon, label, header, src, disabled, ...otherProps }) => (
   <Modal
-    trigger={<Button secondary icon={icon} content={label} />}
+    trigger={
+      <Button secondary icon={icon} content={label} disabled={disabled} />
+    }
     closeIcon
     {...otherProps}
   >
@@ -50,12 +52,14 @@ export const Hero = ({ title, subtitle, primaryAction, secondaryAction }) => (
         icon={primaryAction.icon}
         as={Link}
         to={primaryAction.link}
+        disabled={primaryAction.disabled}
       />
       <VideoModal
         label={secondaryAction.label}
         icon={secondaryAction.icon}
         header={secondaryAction.header}
         src={secondaryAction.videoSrc}
+        disabled={secondaryAction.disabled}
       />
     </Actions>
   </Wrapper>

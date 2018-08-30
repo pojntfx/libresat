@@ -5,8 +5,10 @@
     label: Get started
     icon: rocket
     link: /docs
+    disabled: true
   secondaryAction:
     label: Watch video
     icon: video
     header: LibreSat Introduction Video
     videoSrc: http://lunduke.com/720classic/LinuxSucks-2016.mp4
+    disabled: true

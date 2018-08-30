@@ -26,12 +26,14 @@ export const HeroSection = props => (
             label
             icon
             link
+            disabled
           }
           secondaryAction {
             label
             icon
             header
             videoSrc
+            disabled
           }
         }
       }

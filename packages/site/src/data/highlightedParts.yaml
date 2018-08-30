@@ -10,13 +10,16 @@
       link: /wiki
       description: >
         Community-driven, distributed documentation and detailed guides
+      disabled: true
     - label: Forum
       icon: users
       link: /forum
       description: >
         A persistent place for discussions, proposals and support
+      disabled: true
     - label: Chat
       icon: conversation
       link: /chat
       description: >
         Quick and direct support from the community
+      disabled: true

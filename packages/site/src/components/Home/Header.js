@@ -34,8 +34,10 @@ export const Header = ({
   subtitle,
   icon,
   docsLink,
+  docsDisabled,
   repoLink,
   forumLink,
+  forumDisabled,
   color,
   ...otherProps
 }) => (
@@ -50,9 +52,16 @@ export const Header = ({
         color={color}
         content="Read the docs"
         icon="book"
+        disabled={docsDisabled}
       />
       <Action as="a" href={repoLink} content="Contribute" icon="fork" />
-      <Action as={Link} to={forumLink} content="Discuss" icon="conversation" />
+      <Action
+        as={Link}
+        to={forumLink}
+        content="Discuss"
+        icon="conversation"
+        disabled={forumDisabled}
+      />
     </Actions>
   </Grid>
 );
