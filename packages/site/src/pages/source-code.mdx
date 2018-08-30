@@ -1,12 +1,38 @@
 ---
 author: Felix Pojtinger
-date: 2018-08-27
+date: 2018-08-30
 ---
 
-import { Head } from "../components/Head"
+<!-- This needs to be refactored. -->
 
-<Head title="Source Code" />
+import Site from "../layouts/Site.js"
+
+export default props => <Site {...props} title="Source Code" subheader="Free as in Freedom."/>
 
 # Source Code
 
-The source code detail page will be here soon.
+## Philosophy
+
+Everything we create and maintain (both the hardware and the software) is open-source and free as in freedom. This means that by using our software all the [four essential freedoms of free software as defined by Richard Stallman and published by the Free Software Foundation](https://en.wikipedia.org/wiki/The_Free_Software_Definition) are given to you, to ensure that you have the …
+
+1. Freedom to run the program as you wish.
+2. Freedom to study the source code of the program and then change it so the program does what you wish.
+3. Freedom to help your neighbour. That’s the freedom to redistribute the exact copies of the software when you wish.
+4. Freedom to contribute to your community. That’s the freedom to distribute copies or modified versions when you wish.
+
+## Contributing
+
+We collaborate on the free/libre and open source GitLab. Simply follow the instructions in the project's README by heading over to [our GitLab Group](https://gitlab.com/libresat)!
+
+## Code Of Conduct
+
+This code of conduct has been adapted from the [GNOME Code of Conduct](https://wiki.gnome.org/Foundation/CodeOfConduct).
+
+LibreSat creates software for a better world. We achieve this by behaving well towards each other.
+
+Therefore this document suggests what we consider ideal behaviour, so you know what to expect when getting involved in LibreSat. This is who we are and what we want to be. There is no official enforcement of these principles, and this should not be interpreted like a legal document.
+
+1. **Be respectful and considerate**: Disagreement is no excuse for poor behaviour or personal attacks. Remember that a community where people feel uncomfortable is not a productive one.
+2. **Be patient and generous**: If someone asks for help it is because they need it. Do politely suggest specific documentation or more appropriate venues where appropriate, but avoid aggressive or vague responses such as "RTFM".
+3. **Assume people mean well**: Remember that decisions are often a difficult choice between competing priorities. If you disagree, please do so politely. If something seems outrageous, check that you did not misinterpret it. Ask for clarification, but do not assume the worst.
+4. **Try to be concise**: Avoid repeating what has been said already. Making a conversation larger makes it difficult to follow, and people often feel personally attacked if they receive multiple messages telling them the same thing.

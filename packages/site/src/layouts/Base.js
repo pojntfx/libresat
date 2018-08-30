@@ -9,6 +9,7 @@ import { MDXProvider } from "@mdx-js/tag";
 import { Link } from "../components/Link";
 import { Image } from "../components/Blog/Image";
 import { NoScript } from "../components/NoScript";
+import { Paper } from "../components/Paper";
 
 injectGlobal`
   body {
@@ -25,6 +26,11 @@ export const Base = ({ children, noContainer, ...otherProps }) => (
       a: ({ href, ...otherProps }) => <Link to={href} {...otherProps} />,
       img: ({ src, ...otherProps }) => (
         <Image as={Link} to={src} src={src} {...otherProps} />
+      ),
+      blockquote: ({ children, ...otherProps }) => (
+        <Paper {...otherProps}>
+          <i>{children}</i>
+        </Paper>
       )
     }}
   >
