@@ -27,7 +27,11 @@ const Search = ({
         return {
           body: rawBody,
           imgSrc: withPrefix(imgSrc),
-          link: `/blog/${name}`,
+          link: /[0-9]+-[0-9]+-[0-9]+(.*)/.test(name)
+            ? withPrefix(`/blog/${name}`)
+            : name === "index"
+              ? withPrefix("/")
+              : withPrefix(name),
           header:
             headings.filter(({ depth }) => depth === 1).length === 0
               ? title
