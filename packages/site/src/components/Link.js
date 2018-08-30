@@ -1,12 +1,17 @@
 import React from "react";
 import LinkTemplate, { withPrefix } from "gatsby-link";
 
-const isExternalLink = link =>
-  link.includes("http://") || link.includes("https://");
+const isExternalLink = link => /(http|https):\/\/(.*)/.test(link);
+const isImageLink = link => /(.*)(\.jpg|\.png|\.webp)/.test(link);
 
 export const Link = ({ to, children, ...otherProps }) =>
   isExternalLink(to) ? (
-    <a href={to} {...otherProps}>
+    <a {...otherProps} href={to}>
+      {children ? children : null}
+    </a>
+  ) : isImageLink(to) ? (
+    <a {...otherProps} href={withPrefix(to)}>
+      {/* Prefix local images */}
       {children ? children : null}
     </a>
   ) : (
