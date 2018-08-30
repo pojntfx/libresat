@@ -27,7 +27,13 @@ const Search = ({
         return {
           body: rawBody,
           imgSrc: withPrefix(imgSrc),
-          link: `/blog/${name}`,
+          /* FIXME: Nested pages don't get a correct link if they are
+          not blog posts! */
+          link: /[0-9]+-[0-9]+-[0-9]+(.*)/.test(name)
+            ? withPrefix(`/blog/${name}`)
+            : name === "index"
+              ? withPrefix("/")
+              : withPrefix(name),
           header:
             headings.filter(({ depth }) => depth === 1).length === 0
               ? title
