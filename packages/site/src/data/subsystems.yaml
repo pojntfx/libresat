@@ -6,14 +6,16 @@
     subtitle: Liberate your Spacecraft
     icon: code
     docsLink: /docs/software
+    docsDisabled: true
     forumLink: /forum
+    forumDisabled: true
   description: >
     Lorem dolor sit space software is awesome
   overviewDivider:
     label: Overview
     icon: compass
   statistics:
-    - value: "10024"
+    - value: "10000+"
       label: Lines of Code
       icon: code file
     - value: "1"
@@ -30,67 +32,67 @@
     groupName: libresat
     projectName: libresat
     projectID: 8000820
-- color: green
-  imgAlt: Screenshot of the LibreSat hardware standard
-  imgSrc: /img/hardware-card.jpg
-  header:
-    title: Hardware
-    subtitle: Make your designs as open as space
-    icon: code
-    docsLink: /docs/hardware
-    forumLink: /forum
-  description: >
-    Lorem dolor sit space hardware is awesome
-  overviewDivider:
-    label: Overview
-    icon: compass
-  statistics:
-    - value: "563"
-      label: CAD Models
-      icon: box
-    - value: "1"
-      label: Contributor
-      icon: users
-    - value: CC-BY-SA-4.0
-      label: Licensed
-      icon: unlock
-  trendingProjectsDivider:
-    label: Trending Projects
-    icon: bar chart
-  trendingProjects:
-    endpoint: https://gitlab.com
-    groupName: libresat
-    projectName: libresat
-    projectID: 8000820
-- color: orange
-  imgAlt: Screenshot of the interconnected world with the LibreSat logo
-  imgSrc: /img/network-card.jpg
-  header:
-    title: Network
-    subtitle: Join the Federation!
-    icon: code
-    docsLink: /docs/network
-    forumLink: /forum
-  description: >
-    Lorem dolor sit space networks are the most awesome
-  overviewDivider:
-    label: Overview
-    icon: compass
-  statistics:
-    - value: "25"
-      label: Nodes
-      icon: globe
-    - value: "1"
-      label: Contributor
-      icon: users
-    - value: AGPL-3.0
-      label: Licensed
-      icon: unlock
-  trendingProjectsDivider:
-    label: Trending Projects
-    icon: bar chart
-  trendingProjects:
-    endpoint: https://gitlab.com
-    groupName: libresat
-    projectName: libresat
-    projectID: 8000820
+# - color: green
+#   imgAlt: Screenshot of the LibreSat hardware standard
+#   imgSrc: /img/hardware-card.jpg
+#   header:
+#     title: Hardware
+#     subtitle: Make your designs as open as space
+#     icon: code
+#     docsLink: /docs/hardware
+#     forumLink: /forum
+#   description: >
+#     Lorem dolor sit space hardware is awesome
+#   overviewDivider:
+#     label: Overview
+#     icon: compass
+#   statistics:
+#     - value: "563"
+#       label: CAD Models
+#       icon: box
+#     - value: "1"
+#       label: Contributor
+#       icon: users
+#     - value: CC-BY-SA-4.0
+#       label: Licensed
+#       icon: unlock
+#   trendingProjectsDivider:
+#     label: Trending Projects
+#     icon: bar chart
+#   trendingProjects:
+#     endpoint: https://gitlab.com
+#     groupName: libresat
+#     projectName: libresat
+#     projectID: 8000820
+# - color: orange
+#   imgAlt: Screenshot of the interconnected world with the LibreSat logo
+#   imgSrc: /img/network-card.jpg
+#   header:
+#     title: Network
+#     subtitle: Join the Federation!
+#     icon: code
+#     docsLink: /docs/network
+#     forumLink: /forum
+#   description: >
+#     Lorem dolor sit space networks are the most awesome
+#   overviewDivider:
+#     label: Overview
+#     icon: compass
+#   statistics:
+#     - value: "25"
+#       label: Nodes
+#       icon: globe
+#     - value: "1"
+#       label: Contributor
+#       icon: users
+#     - value: AGPL-3.0
+#       label: Licensed
+#       icon: unlock
+#   trendingProjectsDivider:
+#     label: Trending Projects
+#     icon: bar chart
+#   trendingProjects:
+#     endpoint: https://gitlab.com
+#     groupName: libresat
+#     projectName: libresat
+#     projectID: 8000820

@@ -6,15 +6,19 @@
     - label: Software
       icon: code
       link: /software
+      disabled: true
     - label: Hardware
       icon: microchip
       link: /hardware
+      disabled: true
     - label: Network
       icon: globe
       link: /network
+      disabled: true
     - label: Docs
       icon: book
       link: /docs
+      disabled: true
   endItems:
     - label: Blog
       icon: rss
@@ -22,15 +26,19 @@
     - label: Demo
       icon: eye
       link: /demo
+      disabled: true
     - label: Wiki
       icon: slideshare
       link: /wiki
+      disabled: true
     - label: Forum
       icon: users
       link: /forum
+      disabled: true
     - label: Chat
       icon: conversation
       link: /chat
+      disabled: true
     - label: Search
       icon: search
       link: /search
@@ -38,3 +46,4 @@
     label: Source Code
     icon: fork
     link: /source-code
+    disabled: false

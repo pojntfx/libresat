@@ -48,7 +48,9 @@ export const SubsystemSection = props => (
                 subtitle
                 icon
                 docsLink
+                docsDisabled
                 forumLink
+                forumDisabled
               }
               description
               overviewDivider {
