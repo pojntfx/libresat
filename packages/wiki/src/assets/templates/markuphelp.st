@@ -3,44 +3,46 @@
   Formatting Help
 </button>
 
-<button class="ui button button--preview" onclick="updatePreviewPane();">
+<button class="ui button button--preview">
   <i class="eye icon"></i>
   Preview
 </button>
 
-<div class="ui modal modal--formatting-help">
-  <i class="close icon"></i>
-  <div class="header">
+<div class="ui segment section--formatting-help">
+  <h2>
     Formatting
-  </div>
-  <div class="scrolling content">
-    <div class="description">
-      $markuphelp$
-    </div>
+  </h2>
+  <div>
+    $markuphelp$
   </div>
 </div>
 
-<div class="ui modal modal--preview">
-  <i class="close icon"></i>
-  <div class="header">
+<div class="ui segment section--preview">
+  <h2>
     Preview
-  </div>
-  <div class="scrolling content">
-    <div class="description">
-      <span id="previewPane"></span>
-    </div>
+  </h2>
+  <div>
+    <span id="previewPane"></span>
   </div>
 </div>
 
 <script>
-  jQuery(".modal--formatting-help").modal("attach events", ".button--formatting-help", "show")
-  jQuery(".modal--preview").modal("attach events", ".button--preview", "show")
+  jQuery(".button--formatting-help").click(() => jQuery(".section--formatting-help").css("margin-top", "0").slideToggle())
+  jQuery(".button--preview").click(() => { updatePreviewPane(); jQuery(".section--preview").css("margin-top", "0").slideToggle() })
   // Add code from content.st here!
 </script>
 
 <style>
   .button--formatting-help {
     margin-bottom: 1em !important;
+  }
+
+  .section--preview {
+    display: none;
+  }
+
+  .section--formatting-help {
+    display: none;
   }
 </style>
 
