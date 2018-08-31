@@ -1,0 +1,9 @@
+domain: wiki.stg1.libresat.space
+gitBot:
+  email: gitit-bot@libresat.space
+  name: LibreSat Gitit Bot
+remoteGitRepo: git@gitlab.com:pojntfx/git-wikidata-test.git
+externalSMTP:
+  domain: mail.gandi.net
+  username: noreply@libresat.space
+  password: 249j89aSf8234ns@#234

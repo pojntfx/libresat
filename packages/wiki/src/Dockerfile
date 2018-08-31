@@ -9,8 +9,8 @@ RUN apt upgrade -y
 RUN apt install -y wget git gitit openssh-server sendmail sendmail-bin sensible-mda sasl2-bin cron
 
 # Setup environment
-RUN mkdir /opt/assets
-WORKDIR /opt/assets
+RUN mkdir -p /opt/libresat/assets
+WORKDIR /opt/libresat/assets
 
 # Get SSH keys, templates and static files (will use configMap/secrets later on)
 COPY assets/ssh/id_rsa_container .
@@ -34,11 +34,11 @@ ENV EXTERNAL_SMTP_USERNAME="noreply@libresat.space"
 ENV EXTERNAL_SMTP_PASSWORD="249j89aSf8234ns@#234"
 
 # Setup environment
-WORKDIR /opt
+WORKDIR /opt/libresat
 COPY assets/run.sh .
 RUN chmod +x run.sh
-RUN mkdir /opt/gitit
-WORKDIR /opt/gitit
+RUN mkdir /opt/libresat/gitit
+WORKDIR /opt/libresat/gitit
 
 # Start everything
-CMD bash -c "/opt/run.sh"
+CMD bash -c "/opt/libresat/run.sh"

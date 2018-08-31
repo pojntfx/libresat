@@ -5,7 +5,7 @@
   "main": "src/wiki.yaml",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build-semantic": "cd src/assets/static/semantic && gulp build"
+    "add-semantic": "cp node_modules/semantic-ui-css/*.min.* src/assets/static/semantic/dist && cp -r node_modules/semantic-ui-css/themes src/assets/static/semantic/dist"
   },
   "repository": {
     "type": "git",
@@ -24,7 +24,6 @@
   },
   "homepage": "https://gitlab.com/libresat/libresat#README",
   "dependencies": {
-    "gulp": "^3.9.1",
-    "semantic-ui": "^2.3.3"
+    "semantic-ui-css": "^2.3.3"
   }
 }

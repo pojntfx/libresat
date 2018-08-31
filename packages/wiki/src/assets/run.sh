@@ -2,9 +2,9 @@ setup_ssh() {
 	echo "Setting up SSH ..."
 	sed -i -e "s/#PubkeyAuth/PubkeyAuth/g" /etc/ssh/sshd_config
 	mkdir -p ~/.ssh/authorized_keys
-	cp /opt/assets/id_rsa_container ~/.ssh/id_rsa
-	cp /opt/assets/id_rsa_container.pub ~/.ssh/id_rsa.pub
-	cp /opt/assets/id_rsa_repo_access.pub ~/.ssh/authorized_keys
+	cp /opt/libresat/assets/id_rsa_container ~/.ssh/id_rsa
+	cp /opt/libresat/assets/id_rsa_container.pub ~/.ssh/id_rsa.pub
+	cp /opt/libresat/assets/id_rsa_repo_access.pub ~/.ssh/authorized_keys
 	chmod 600 ~/.ssh/authorized_keys
 }
 
@@ -16,6 +16,7 @@ configure_git_bot() {
 
 get_wiki_data_repo() {
 	echo "Cloning wiki data repository ..."
+	chmod 400 ~/.ssh/id_rsa
 	ssh-keyscan -t rsa $(echo $GIT_REMOTE | cut -d"@" -f 2 | cut -d":" -f 1) >>~/.ssh/known_hosts
 	git clone ${GIT_REMOTE}
 	mv $(echo $GIT_REMOTE | cut -d"/" -f 2 | cut -d"." -f 1) wikidata
@@ -24,9 +25,9 @@ get_wiki_data_repo() {
 
 setup_pre_post_commit_hooks() {
 	echo "Setting up pre- and post-commit hooks ..."
-	cp /opt/assets/pre-commit ./wikidata/.git/hooks/pre-commit
+	cp /opt/libresat/assets/pre-commit ./wikidata/.git/hooks/pre-commit
 	chmod +x ./wikidata/.git/hooks/pre-commit
-	cp /opt/assets/post-commit ./wikidata/.git/hooks/post-commit
+	cp /opt/libresat/assets/post-commit ./wikidata/.git/hooks/post-commit
 	chmod +x ./wikidata/.git/hooks/post-commit
 }
 
@@ -37,9 +38,9 @@ setup_userdata() {
 
 add_templates_and_config() {
 	echo "Adding templates and config ..."
-	cp /opt/assets/gitit.conf .
-	cp -r /opt/assets/templates .
-	cp -r /opt/assets/static .
+	cp /opt/libresat/assets/gitit.conf .
+	cp -r /opt/libresat/assets/templates .
+	cp -r /opt/libresat/assets/static .
 }
 
 configure_locale() {
@@ -61,9 +62,9 @@ configure_sendmail() {
 
 setup_cron_jobs() {
 	echo "Setting up cron jobs ..."
-	echo "cd /opt/gitit/wikidata/ && git checkout master && git pull && git checkout dev && git merge master && cd /opt/gitit" >>pull_latest_changes.sh
+	echo "cd /opt/libresat/gitit/wikidata/ && git checkout master && git pull && git checkout dev && git merge master && cd /opt/libresat/gitit" >>pull_latest_changes.sh
 	chmod +x pull_latest_changes.sh
-	echo "* * * * * root cd /opt/gitit && ./pull_latest_changes.sh" >>/etc/cron.d/libresat-wiki
+	echo "* * * * * root cd /opt/libresat/gitit && ./pull_latest_changes.sh" >>/etc/cron.d/libresat-wiki
 }
 
 reload_and_start_services() {
@@ -73,8 +74,8 @@ reload_and_start_services() {
 	service saslauthd start
 	service ssh start
 	gitit -f gitit.conf &
-	make -C /etc/mail
-	service sendmail start
+	make -C /etc/mail &
+	service sendmail start &
 	tail -f gitit.conf
 }
 

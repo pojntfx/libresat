@@ -2,7 +2,7 @@ version: "3"
 
 services:
   web:
-    image: "libresat-wiki:latest"
+    image: "pojntfx/libresat-wiki"
     restart: "always"
     ports:
       - "4000:5001"
@@ -10,7 +10,7 @@ services:
     networks:
       - "libresat-wiki"
     volumes:
-      - "libresat-wiki-web-data:/opt/gitit/userdata"
+      - "libresat-wiki-web-data:/opt/libresat/gitit/userdata"
 networks:
   libresat-wiki:
 
