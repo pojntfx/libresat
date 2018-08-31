@@ -40,6 +40,8 @@ add_templates_and_config() {
 	echo "Adding templates and config ..."
 	cp /opt/libresat/assets/gitit.conf .
 	cp -r /opt/libresat/assets/templates .
+	cp -r /opt/libresat/assets/markupHelp .
+	cp -r /opt/libresat/assets/s5 .
 	cp -r /opt/libresat/assets/static .
 }
 
