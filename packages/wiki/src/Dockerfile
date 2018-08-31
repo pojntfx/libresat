@@ -6,7 +6,7 @@ RUN apt update
 RUN apt upgrade -y
 
 # Install dependencies
-RUN apt install -y wget git gitit openssh-server sendmail sendmail-bin sensible-mda sasl2-bin cron
+RUN apt install -y wget git gitit openssh-server sendmail sendmail-bin sensible-mda sasl2-bin cron texlive-latex-base xzdec pandoc latex-beamer texlive-latex-extra s5
 
 # Setup environment
 RUN mkdir -p /opt/libresat/assets
@@ -22,6 +22,11 @@ COPY assets/gitit.conf .
 COPY assets/templates ./templates
 COPY assets/static ./static
 
+# Get remote assets
+RUN git clone https://github.com/jgm/gitit
+RUN cp -r gitit/data/markupHelp ./markupHelp
+RUN cp -r gitit/data/s5 ./s5
+
 # Expose the web interface and SSH server
 EXPOSE 5001 22
 
@@ -32,6 +37,10 @@ ENV GIT_REMOTE="git@gitlab.com:pojntfx/git-wikidata-test.git"
 ENV EXTERNAL_SMTP_DOMAIN="mail.gandi.net"
 ENV EXTERNAL_SMTP_USERNAME="noreply@libresat.space"
 ENV EXTERNAL_SMTP_PASSWORD="249j89aSf8234ns@#234"
+
+# Enable PDF exports
+RUN tlmgr init-usertree
+RUN tlmgr install ec --repository http://mirror.ctan.org/systems/texlive/tlnet
 
 # Setup environment
 WORKDIR /opt/libresat

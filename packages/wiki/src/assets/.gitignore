@@ -1,5 +1,7 @@
 # User data (passwords etc.)
 gitit-users
+# Gitit logs
+gitit.log
 # Gitit cache
 cache/
 # Gitit data

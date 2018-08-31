@@ -40,7 +40,7 @@
             <i class="code icon"></i>
             Raw page source
           </a>
-          <a class="item disabled" href="$base$$pageUrl$?printable$if(revision)$&amp;revision=$revision$$endif$">
+          <a class="item" href="$base$$pageUrl$?printable$if(revision)$&amp;revision=$revision$$endif$">
             <i class="print icon"></i>
             Printable version
           </a>
