@@ -49,6 +49,7 @@
     <!-- Header -->
     $navbar()$
     <!-- Content -->
+    $downloadsection()$
     $content()$
     <!-- Footer -->
     $footer()$
