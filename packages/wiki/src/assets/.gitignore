@@ -4,3 +4,7 @@ gitit-users
 cache/
 # Gitit data
 wikidata/
+# Built Semantic UI
+static/semantic/dist/semantic.min.css
+static/semantic/dist/semantic.min.js
+static/semantic/dist/themes/

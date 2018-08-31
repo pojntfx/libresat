@@ -79,8 +79,8 @@ They are being passed into the container at build time with the `--build-arg` fl
 ```bash
 # Install dependencies
 npm install
-# Compile CSS and JS
-npm run build-semantic
+# Build and add CSS and JS
+npm run add-semantic
 ```
 
 #### Build Container
@@ -125,7 +125,7 @@ You may test if it is working by running the following:
 # Test if web interface works
 curl localhost:4000
 # Test access to internal git repo
-git clone ssh://git@localhost:4001/opt/gitit/wikidata
+git clone ssh://git@localhost:4001/opt/libresat/gitit/wikidata
 ```
 
 ### Setup
