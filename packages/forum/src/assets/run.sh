@@ -50,7 +50,7 @@ setup_mailman_web() {
 	printf "\033[0;32mSetting up mailman-web ...\033[0m\n"
 	sed -i -e "s/mailman-web-secret-key/${HYPERKITTY_API_KEY}/g" /opt/mailman-web/settings.py
 	sed -i -e "s/Mailman Web Admin/${HYPERKITTY_ADMIN_USERNAME}/g" /opt/mailman-web/settings.py
-	sed -i -e "s/root@localhost/${HYPERKITY_ADMIN_EMAIL}/g" /opt/mailman-web/settings.py
+	sed -i -e "s/root@localhost/${HYPERKITTY_ADMIN_EMAIL}/g" /opt/mailman-web/settings.py
 	sed -i -e "s/forum.libresat.space/${MAILMAN_DOMAIN}/g" /opt/mailman-web/settings.py
 	sed -i -e "s/mailman-rest-admin/${MAILMAN_ADMIN_USERNAME}/g" /opt/mailman-web/settings.py
 	sed -i -e "s/mailman-rest-pass/${MAILMAN_ADMIN_PASSWORD}/g" /opt/mailman-web/settings.py
@@ -73,7 +73,7 @@ setup_mailman_web() {
 reload_and_start_services() {
 	printf "\033[0;32mReloading and starting services, then listening to mailman's log (until forever) ...\033[0m\n"
 	service postfix restart
-	mailman start
+	mailman start --force
 	service apache2 restart
 	chmod 777 -R /opt/mailman-web
 	tail -f /var/tmp/mailman/logs/mailman.log

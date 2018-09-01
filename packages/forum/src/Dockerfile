@@ -116,7 +116,7 @@ RUN python3 setup.py install
 
 # Configure mailman-web
 ENV HYPERKITTY_ADMIN_USERNAME="Felix Pojtinger"
-ENV HYPERKITY_ADMIN_EMAIL="felix@pojtinger.com"
+ENV HYPERKITTY_ADMIN_EMAIL="felix@pojtinger.com"
 ENV DJANGO_ADMIN_EMAIL="goooglehupf007@gmail.com"
 ENV DJANGO_ADMIN_USERNAME="pojntfx"
 ENV DJANGO_ADMIN_PASSWORD="supersecurepassword"

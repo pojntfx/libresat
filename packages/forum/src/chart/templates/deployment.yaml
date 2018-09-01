@@ -1,0 +1,67 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: web
+  namespace: forum
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: web
+    spec:
+      hostNetwork: true
+      containers:
+        - name: web
+          image: pojntfx/libresat-forum
+          ports:
+            - containerPort: 25
+              hostPort: 25
+            - containerPort: 7000
+            - containerPort: 8024
+              hostPort: 8024
+          securityContext:
+            privileged: true
+          env:
+            - name: POSTFIX_DOMAIN
+              value: {{ .Values.postfixDomain }}
+            - name: EXTERNAL_SMTP_DOMAIN
+              value: {{ .Values.externalSMTP.domain }}
+            - name: EXTERNAL_SMTP_USERNAME
+              value: {{ .Values.externalSMTP.username }}
+            - name: EXTERNAL_SMTP_PASSWORD
+              value: {{ .Values.externalSMTP.password }}
+            - name: MAILMAN_ADMIN_EMAIL
+              value: {{ .Values.mailman.adminUser.email }}
+            - name: MAILMAN_ADMIN_USERNAME
+              value: {{ .Values.mailman.adminUser.username }}
+            - name: MAILMAN_ADMIN_PASSWORD
+              value: {{ .Values.mailman.adminUser.password }}
+            - name: MAILMAN_DEFAULT_LANGUAGE
+              value: {{ .Values.mailman.defaultLanguage }}
+            - name: MAILMAN_DOMAIN
+              value: {{ .Values.mailman.domain }}
+            - name: HYPERKITTY_API_KEY
+              value: {{ .Values.hyperkitty.apiKey }}
+            - name: HYPERKITTY_ADMIN_USERNAME
+              value: {{ .Values.hyperkitty.adminUser.username }}
+            - name: HYPERKITTY_ADMIN_EMAIL
+              value: {{ .Values.hyperkitty.adminUser.email }}
+            - name: DJANGO_ADMIN_EMAIL
+              value: {{ .Values.django.adminUser.email }}
+            - name: DJANGO_ADMIN_USERNAME
+              value: {{ .Values.django.adminUser.username }}
+            - name: DJANGO_ADMIN_PASSWORD
+              value: {{ .Values.django.adminUser.password }}
+          volumeMounts:
+            - name: web-data
+              mountPath: "/opt/mailman-web/databases"
+            - name: core-data
+              mountPath: "/var/tmp/mailman"
+      volumes:
+        - name: web-data
+          persistentVolumeClaim:
+            claimName: web-data
+        - name: core-data
+          persistentVolumeClaim:
+            claimName: core-data
