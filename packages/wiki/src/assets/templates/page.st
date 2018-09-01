@@ -8,12 +8,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
   <meta name="theme-color" content="#000000" />
   <title>$pagetitle$ | $wikititle$</title>
+  <meta name="description" content="$wikititle$ - a collaborative content database" />
   <!-- Atom feed -->
   <link href="$base$/img/icon.png" rel="icon" />
   <link href="$base$/_feed/" type="application/atom+xml" rel="alternate" title="$wikititle$" />
   <link href="$base$/_feed$pageUrl$" type="application/atom+xml" rel="alternate" title="$pagetitle$ - $wikititle$" />
   <!-- Semantic CSS -->
   <link rel="stylesheet" href="$base$/semantic/dist/semantic.min.css">
+  <!-- PWA -->
+  <link rel="manifest" href="$base$/manifest.json">
   <script>
     /*    
     @licstart  The following is the entire license notice for the 
