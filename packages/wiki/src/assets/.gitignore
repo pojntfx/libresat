@@ -10,3 +10,5 @@ wikidata/
 static/semantic/dist/semantic.min.css
 static/semantic/dist/semantic.min.js
 static/semantic/dist/themes/
+# Built service worker
+sw.js

@@ -18,6 +18,15 @@
   <!-- PWA -->
   <link rel="manifest" href="$base$/manifest.json">
   <script>
+    // Check that service workers are registered
+    if ('serviceWorker' in navigator) {
+      // Use the window load event to keep the page load performant
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('$base$/sw.js');
+      });
+    }
+  </script>
+  <script>
     /*    
     @licstart  The following is the entire license notice for the 
     JavaScript code in this page.

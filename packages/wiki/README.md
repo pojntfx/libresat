@@ -17,6 +17,7 @@ The [LibreSat](https://libresat.space/) distribution of [Gitit](https://github.c
 npm install
 # Build assets
 npm run add-semantic
+npm run build-service-worker
 # Build and serve on http://localhost:5001
 cd src/assets && gitit -f gitit.conf
 ```
@@ -56,8 +57,9 @@ To deploy the wiki, run the following:
 ```bash
 # Build assets
 npm run add-semantic
+npm run build-service-worker
 # Build image
-docker build src/ -t libresat-wiki
+docker build src/ -t pojntfx/libresat-wiki
 # Deploy to Kubernetes
 helm install --values src/chart/values.yaml src/chart
 ```
