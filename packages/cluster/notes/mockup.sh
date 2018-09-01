@@ -86,18 +86,19 @@ satctl microplatform create cluster \
 
 satctl update
 satctl upgrade
-satctl connect role:token@cloud
+satctl connect user:token@cluster.cloud
 satctl status
 
 satctl create connection -f resource.yaml
 satctl create role -f resource.yaml
 satctl create token -f resource.yaml
+satctl create user -f resource.yaml
 
-satctl create cloud -f resource.yaml
 satctl create host -f resource.yaml
-satctl create driver -f resource.yaml
+satctl create cloud -f resource.yaml
 satctl create cluster -f resource.yaml
 
+satctl create driver -f resource.yaml
 satctl create deployment -f resource.yaml
 satctl create persistentvolumeclaim -f resource.yaml
 satctl create service -f resource.yaml
@@ -106,3 +107,20 @@ satctl create ingress -f resource.yaml
 satctl bootstrap platform
 satctl bootstrap driver
 satctl bootstrap service
+
+@libresat/satctl#0.0.1-0
+pojntfx@cluster1.stg1.libresat.space
+authorized as dev
+
+(satctl) update
+No updates found.
+
+(satctl) create cluster -f cluster1.yaml
+Cluster cluster1 created.
+
+@group/tool#version
+username@cluster.cloud
+authorized as dev
+
+(tool) cmd args
+Output
