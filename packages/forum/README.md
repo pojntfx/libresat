@@ -54,7 +54,7 @@ docker build \
 --build-arg MAILMAN_ADMIN_PASSWORD="asdfasdf123" \
 --build-arg MAILMAN_DEFAULT_LANGUAGE="en" \
 --build-arg HYPERKITTY_ADMIN_USERNAME="Felicitas Pojtinger" \
---build-arg HYPERKITY_ADMIN_EMAIL="felicitas@pojtinger.com" \
+--build-arg HYPERKITTY_ADMIN_EMAIL="felicitas@pojtinger.com" \
 --build-arg HYPERKITTY_API_KEY="asdfasdf474" \
 mailman-suite \
 -t "libresat-forum"

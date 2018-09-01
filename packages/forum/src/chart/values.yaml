@@ -1,0 +1,23 @@
+domain: forum.stg1.libresat.space
+postfixDomain: forum.stg1.libresat.space
+externalSMTP:
+  domain: mail.gandi.net
+  username: test@libresat.space
+  password: 345lkUDfg03jd~
+mailman:
+  adminUser:
+    email: felicitas@pojtinger.com
+    username: pojntfx
+    password: asdfasdf123
+  defaultLanguage: en
+  domain: forum.stg1.libresat.space
+hyperkitty:
+  adminUser:
+    email: felicitas@pojtinger.com
+    username: Felicitas Pojtinger
+  apiKey: asdfasdf123456
+django:
+  adminUser:
+    email: goooglehupf007@gmail.com
+    username: pojntfx
+    password: supersecurepassword
