@@ -1,7 +1,7 @@
 {
   "name": "@libresat/wiki",
   "version": "0.0.1-0",
-  "description": "The [LibreSat](https://libresat.space/) Distribution of [Gitit](https://github.com/jgm/gitit)",
+  "description": "The [LibreSat](https://libresat.space/) distribution of [Gitit](https://github.com/jgm/gitit)",
   "main": "src/wiki.yaml",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
