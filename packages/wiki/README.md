@@ -51,6 +51,8 @@ echo "https://gitlab.com/pojntfx/git-wikidata-test/-/archive/master/git-wikidata
 
 Lastly, edit [src/chart/values.yaml](src/chart/values.yaml) according to your needs to finish the configuration. If you want even more configuration options, consider editing [src/assets/gitit.conf](src/assets/gitit.conf).
 
+To deploy the wiki, run the following:
+
 ```bash
 # Build assets
 npm run add-semantic
