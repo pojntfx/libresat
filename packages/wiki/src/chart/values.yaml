@@ -1,9 +1,9 @@
-domain: wiki.stg1.libresat.space
+domain: wiki.stg1.libresat.space # The domain you want the site to be accessible on
 gitBot:
-  email: gitit-bot@libresat.space
-  name: LibreSat Gitit Bot
-remoteGitRepo: git@gitlab.com:pojntfx/git-wikidata-test.git
+  email: gitit-bot@libresat.space # Email address of the git bot
+  name: LibreSat Gitit Bot # Name of the git bot
+remoteGitRepo: git@gitlab.com:pojntfx/git-wikidata-test.git # Remote git repo that the data will be mirrored to and from
 externalSMTP:
-  domain: mail.gandi.net
-  username: noreply@libresat.space
-  password: 249j89aSf8234ns@#234
+  domain: mail.gandi.net # External SMTP server's domain (for resetting passwords)
+  username: noreply@libresat.space # External SMTP server username
+  password: 249j89aSf8234ns@#234 # External SMTP server password

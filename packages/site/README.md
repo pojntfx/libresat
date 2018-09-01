@@ -1,6 +1,6 @@
 # LibreSat Site
 
-The [LibreSat](https://libresat.space/) Website.
+The [LibreSat](https://libresat.space/) website.
 
 ![Home Page Banner](screenshots/banner.png)
 
@@ -15,8 +15,6 @@ The [LibreSat](https://libresat.space/) Website.
 ```bash
 # Install dependencies
 npm install
-# Build assets
-npm run add-semantic
 # Build and serve development version on http://localhost:8000
 npm run dev
 # Build and serve production version on http://localhost:9000
