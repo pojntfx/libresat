@@ -1,0 +1,47 @@
+apiVersion: https://standards.libresat.space/satctl/v0.0.1-0
+kind: Host
+metadata:
+  name: host1
+  description: Host 1
+spec:
+  ip: 206.189.226.226
+  publicKey: ssh-rsa AAA3Dx(...)== felix@pojtinger.com # Key of the deploying user
+---
+apiVersion: https://standards.libresat.space/satctl/v0.0.1-0
+kind: Cloud
+metadata:
+  name: cloud1
+  description: Cloud 1
+spec:
+  domain: stg1.libresat.space
+  hosts:
+    - name: host1
+---
+apiVersion: https://standards.libresat.space/satctl/v0.0.1-0
+kind: User
+metadata:
+  name: user1
+  description: User 1
+  cloud: cloud1
+  # Later, a role should be specified here (user implements role)
+spec:
+  email: user1@example.com
+  publicKey: ssh-rsa AAA3Dx(...)== felix@pojtinger.com
+---
+apiVersion: https://standards.libresat.space/satctl/v0.0.1-0
+kind: Cluster
+metadata:
+  name: cluster1
+  description: Cluster 1
+  cloud: cloud1
+spec:
+  domain: cluster1.stg1.libresat.space
+  hosts:
+    - name: host1
+      role: master
+  storage:
+    provider: https://www.digitalocean.com
+    token: 2344j90sjf23j423ij3
+  acme:
+    provider: https://www.gandi.net
+    token: 9234jsjdf82344i23ik3
