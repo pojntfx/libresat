@@ -118,7 +118,7 @@ You should have received a copy of the GNU Affero General Public License along w
       custom interface that is being used on this wiki is free/libre open source software (it is licensed under the
       <a href="https://www.gnu.org/licenses/agpl-3.0.en.html">GNU Affero General Public License, version 3</a> ) and it's
       source code is available on
-      <a href="https://gitlab.com/pojntfx/incubator/tree/master/packages/gitit-docker">Gitlab</a>.</p>
+      <a href="https://gitlab.com/libresat/libresat/tree/master/packages/gitit-docker">Gitlab</a>.</p>
     <p>In addition to the source, there are also instructions on how to setup and deploy the wiki using the free/libre open
       source software
       <a href="https://www.docker.com/">Docker</a> as well as

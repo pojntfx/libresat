@@ -1,5 +1,5 @@
 # Mailman on Kubernetes
-# See: https://gitlab.com/pojntfx/incubator/tree/master/packages/libresat-forum
+# See: https://gitlab.com/libresat/libresat/tree/master/packages/libresat-forum
 apiVersion: v1
 kind: Namespace
 metadata:

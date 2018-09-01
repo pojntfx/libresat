@@ -80,7 +80,7 @@ Then, secondly, run the following:
 
 ```bash
 apt update && apt upgrade -y && apt install git -y curl && curl https://get.docker.com/ | bash
-cd ~/ && git clone https://gitlab.com/pojntfx/incubator.git
+cd ~/ && git clone https://gitlab.com/libresat/libresat.git
 cd ~/incubator/packages/libresat-forum/ && mailman-suite/build-run-test.sh
 ```
 

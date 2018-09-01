@@ -3,8 +3,10 @@
 
 <head>
   <!-- Meta info -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta charSet="utf-8" />
+  <meta httpEquiv="x-ua-compatible" content="ie=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="theme-color" content="#000000" />
   <title>$pagetitle$ | $wikititle$</title>
   <!-- Atom feed -->
   <link href="$base$/img/icon.png" rel="icon" />
@@ -49,8 +51,7 @@
     <!-- Header -->
     $navbar()$
     <!-- Content -->
-    $downloadsection()$
-    $content()$
+    $downloadsection()$ $content()$
     <!-- Footer -->
     $footer()$
   </div>
@@ -80,6 +81,8 @@
     /* Fix unnecessary scrollbar */
 
     body {
+      background: url("/img/bg.jpg") no-repeat center center fixed;
+      background-size: cover;
       height: auto !important;
     }
 

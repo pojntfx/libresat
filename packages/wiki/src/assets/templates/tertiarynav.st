@@ -10,6 +10,12 @@
   .tertiary-nav__dropdown--more__title {
     padding: 0 !important;
   }
+
+  /* Make the items readable on dark background */
+
+  .tertiary-nav {
+    background: rgba(255, 255, 255, 0.9) !important;
+  }
 </style>
 
 <script>
