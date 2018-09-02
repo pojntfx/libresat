@@ -67,7 +67,11 @@ setup_mailman_web() {
 	cd /opt/mailman-web && django-admin collectstatic --pythonpath . --settings settings
 	cd /opt/mailman-web && django-admin compress --pythonpath . --settings settings
 
-	echo "from django.contrib.auth import get_user_model; User = get_user_model(); User.objects.create_superuser('${DJANGO_ADMIN_USERNAME}', '${DJANGO_ADMIN_EMAIL}', '${DJANGO_ADMIN_PASSWORD}')" | python3 /opt/mailman-web/manage.py shell
+	# Check if setup has been done before; if so, don't create the admin user another time!
+	if [ ! -f /opt/mailman-web/setup_successfull ]; then
+		echo "from django.contrib.auth import get_user_model; User = get_user_model(); User.objects.create_superuser('${DJANGO_ADMIN_USERNAME}', '${DJANGO_ADMIN_EMAIL}', '${DJANGO_ADMIN_PASSWORD}')" | python3 /opt/mailman-web/manage.py shell
+	fi
+	touch /opt/mailman-web/setup_successfull
 }
 
 reload_and_start_services() {

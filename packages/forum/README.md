@@ -1,37 +1,22 @@
 # LibreSat Forum
 
-[LibreSat](http://libresat.space/)'s [GNU Mailman](http://www.list.org/) distribution.
+The [LibreSat](https://libresat.space/) distribution of [GNU Mailman](http://www.list.org/).
 
-> Consider reading the [infrastructure overview](https://github.com/opensdcp/opensdcp-infrastructure#overview) before continuing.
+![Home Page Banner](screenshots/banner.png)
 
-## Overview
-
-> TODO: Add overview
-
-## Demo
-
-Visit [forum.libresat.space](https://forum.libresat.space) and take a look at our instance.
+[![Demo Site](https://img.shields.io/badge/demo%20site-forum.libresat.space-blue.svg)](https://forum.libresat.space/forum)
+[![Code License AGPL-3.0](https://img.shields.io/badge/code%20license-AGPL--3.0-blue.svg)](https://www.gnu.org/licenses/agpl-3.0.en.html)
+[![Media License CC-BY-SA-4.0](https://img.shields.io/badge/media%20license-CC--BY--SA--4.0-blue.svg)](https://creativecommons.org/licenses/by-sa/4.0/)
+[![Part of LibreSat](https://img.shields.io/badge/part%20of-libresat-blue.svg)](https://gitlab.com/libresat/libresat)
+[![Infrastructure Overview](https://img.shields.io/badge/support-infrastructure%20overview-blue.svg)](https://libresat.space/docs/infrastructure)
 
 ## Usage
 
-### Preparation
+See [src/chart/templates/NOTES.txt](src/chart/templates/NOTES.txt) for setup instructions.
 
-```bash
-# Create volume for mailman-core's data
-docker volume create mailman-core-data
-# Create volume for mailman-web's data
-docker volume create mailman-web-data
-```
+You can use [custom templates for Mailman](http://docs.mailman3.org/en/latest/config-core.html#configure-templates) by putting them into the [src/assets/mailman-core/templates](src/assets/mailman-core/templates) folder.
 
-### Configuraton
-
-You can use [custom templates for Mailman](http://docs.mailman3.org/en/latest/config-core.html#configure-templates) by putting them into the `mailman-suite/assets/mailman-core/templates` folder.
-
-### Building
-
-#### With the build script
-
-If you want to customize the containers, consider using the `build-run-test.sh` script:
+### With build script
 
 ```bash
 # Make it executable
@@ -40,84 +25,34 @@ chmod +x mailman-suite/build-run-test.sh
 mailman-suite/build-run-test.sh
 ```
 
-#### Without the build script
+### Without build script
 
 ```bash
-docker build \
---build-arg POSTFIX_DOMAIN="forum.stg1.libresat.space" \
---build-arg EXTERNAL_SMTP_DOMAIN="mail.gandi.net" \
---build-arg EXTERNAL_SMTP_USERNAME="test@libresat.space" \
---build-arg EXTERNAL_SMTP_PASSWORD="345lkUDfg03jd" \
---build-arg MAILMAN_DOMAIN="forum.libresat.space" \
---build-arg MAILMAN_ADMIN_EMAIL="felicitas@pojtinger.com" \
---build-arg MAILMAN_ADMIN_USERNAME="pojntfx" \
---build-arg MAILMAN_ADMIN_PASSWORD="asdfasdf123" \
---build-arg MAILMAN_DEFAULT_LANGUAGE="en" \
---build-arg HYPERKITTY_ADMIN_USERNAME="Felicitas Pojtinger" \
---build-arg HYPERKITTY_ADMIN_EMAIL="felicitas@pojtinger.com" \
---build-arg HYPERKITTY_API_KEY="asdfasdf474" \
-mailman-suite \
--t "libresat-forum"
-```
-
-### Startup
-
-```bash
+# Create volume for mailman-core's data
+docker volume create mailman-core-data
+# Create volume for mailman-web's data
+docker volume create mailman-web-data
+# Build image
+docker build src -t pojntfx/libresat-forum
+# Run image
 docker run \
 -d \
--h "mail@domain.tld" \
--p "8000:80" \
--v "mailman-core-data:/var/tmp/mailman/data" \
--v "mailman-web-data:/opt/mailman-web/databases" \
-libresat-forum
-# Now open up http://localhost:8000//forum/hyperkitty and/or http://localhost:8000//forum/postorius and sign up!
+-h mail@domain.tld \
+-p 8000:80 \
+-v mailman-core-data:/var/tmp/mailman/data \
+-v mailman-web-data:/opt/mailman-web/databases \
+pojntfx/libresat-forum
 ```
-
-### Setup
-
-First, add `A` record: `forum.stg1.libresat.space` -> `138.68.21.3`. (this can take some time).
-Then, secondly, run the following:
-
-```bash
-apt update && apt upgrade -y && apt install git -y curl && curl https://get.docker.com/ | bash
-cd ~/ && git clone https://gitlab.com/libresat/libresat.git
-cd ~/incubator/packages/libresat-forum/ && mailman-suite/build-run-test.sh
-```
-
-Wait some time, and open up `http://forum.stg1.libresat.space/forum`. Log in with the credentials you've set for DJANGO_ADMIN_USER. A confirmation mail will be send, in which you need to click the link (and probably use `http` instead of `https`) and login with the credentials again.
-
-Now, visit `http://forum.stg1.libresat.space/forum/postorius/domains/` and add a new domain. Create a new site with Django as well, refresh the form and select it.
-
-Once completed, create a new list, subscribe to it and test it.
-
-1.  Visit `http://forum.stg1.libresat.space/forum` and sign in with the Django admin user's credentials
-2.  Confirm the mail for the Django admin user (use `http` instead of `https` if necessary)
-3.  Log in again
-4.  Click on "Manage lists" (top right)
-5.  Click on "Domains"
-6.  Click on "Add Domain" and create new Web Host (blue link at the bottom right)
-7.  Add site `forum.stg1.libresat.space` for both domain and display name, click save
-8.  Go back and refresh
-9.  Enter `forum.stg1.libresat.space` as mail host and select `forum.stg1.libresat.space` as web host
-10. Click "Create domain"
-11. Click "Lists"
-12. Click "Create New List"
-13. Enter all-lowercase, no spaces list name, select `forum.stg1.libresat.space` as mail host
-14. Click "Create list"
-15. Enter your name, click "Subscribe"
-16. Check inbox for the account you've selected, reply to mail with 'help' in body
 
 ### Debugging
 
 ```bash
 # Get docker container id
 docker ps | grep libresat-forum
-# Test postfix by sending a mail (THIS WILL NOT WORK IF YOU HAVE NOT YET SET UP DOMAIN AS DESCRIBED ABOVE)
+# Test postfix by sending a mail (THIS WILL NOT WORK IF YOU HAVE NOT YET SET UP DOMAIN AS DESCRIBED IN NOTES.txt!)
 docker exec DOCKER_CONTAINER_ID bash -c 'echo "Test Message Body" | mail -s "Test Message Subject" user@domain.tld'
 # Test mailman-core REST api (should return "401 Unauthorized")
 docker exec DOCKER_CONTAINER_ID bash -c "apt install -y curl && sleep 15 && curl http://localhost:8001/3.1 && apt remove curl"
-# Look at postfix's logs
-# docker exec DOCKER_CONTAINER_ID bash -c "tail -f /var/log/exim4/mainlog" # This will log all mail traffic, but doesn't currently work
 # Look at mailman-core's logs
 docker exec DOCKER_CONTAINER_ID bash -c "tail -f /var/tmp/mailman/logs/mailman.log" # When you sign up and verify using hyperkitty/postorius, the REST actions will show up here
 # Look at mailman-web's logs
@@ -126,47 +61,27 @@ docker exec DOCKER_CONTAINER_ID bash -c "tail -f /var/log/apache2/error.log" # m
 docker exec -it DOCKER_CONTAINER_ID bash
 ```
 
-## Screenshots
-
-> TODO: Add screenshots
-
-## Documentation
-
-Visit the [official GNU Mailman documentation](http://docs.mailman3.org/en/latest/) to learn more about GNU Mailman.
-
 ## Deployment
 
-### Kubernetes
+Edit [src/chart/values.yaml](src/chart/values.yaml) according to your needs.
 
-> TODO: Add Kubernetes deployment
+```bash
+# Build image
+docker build src/ -t pojntfx/libresat-forum
+# Deploy to Kubernetes
+helm install --values src/chart/values.yaml src/chart
+```
 
-### Docker Swarm
+## Screenshots
 
-> TODO: Add Docker Swarm deployment
+![List Creator](screenshots/create-list.png)
 
-## License
+![List Overview](screenshots/list-overview.png)
 
-### Source Code
+![HyperKitty Overview](screenshots/hyperkitty-overview.png)
 
-<a rel="license" href="https://www.gnu.org/licenses/agpl.html">
-  <img alt="AGPL-3.0 License" style="border-width:0" src="https://www.gnu.org/graphics/agplv3-155x51.png"/>
-</a>
+![Subject Overview](screenshots/subject-overview.png)
 
-LibreSat Forum
-Copyright (C) 2018 Felicitas Pojtinger
+![Example Post](screenshots/post.png)
 
-This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
-
-This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
-
-You should have received a copy of the GNU Affero General Public License along with this program. If not, see <https://www.gnu.org/licenses/>.
-
-### Media
-
-Media of LibreSat Forum (C) 2018 Felicitas Pojtinger
-
-<a rel="license" href="http://creativecommons.org/licenses/by/4.0/">
-  <img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png"/>
-</a>
-
-This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+![System Information](screenshots/system-info.png)
