@@ -8,16 +8,19 @@ The Free/Libre and Open Source Satellite Development and Control Platform, since
 [![Forum](https://img.shields.io/badge/Forum-forum.libresat.space-blue.svg)](https://forum.libresat.space/forum)
 [![Chat](https://img.shields.io/badge/Chat-chat.libresat.space-blue.svg)](https://chat.libresat.space)
 
-[![Code License AGPL-3.0](https://img.shields.io/badge/Code%20License-AGPL--3.0-brightgreen.svg)](https://www.gnu.org/licenses/agpl-3.0.en.html)
-[![Media License CC-BY-SA-4.0](https://img.shields.io/badge/Media%20License-CC--BY--SA--4.0-brightgreen.svg)](https://creativecommons.org/licenses/by-sa/4.0/)
+![LibreSat Logo](https://gitlab.com/libresat/design/raw/master/packages/logos/logo--no-padding.png)
 
-[![GitLab](https://img.shields.io/badge/GitLab-%40libresat-fc6d26.svg?logo=gitlab)](https://gitlab.com/libresat)
-[![GitHub](https://img.shields.io/badge/GitHub-%40libresat-181717.svg?logo=github&logoColor=ffffff)](https://github.com/libresat)
-[![NPM](https://img.shields.io/badge/npm-%7elibresat-CB3837.svg?logo=npm)](https://www.npmjs.com/~libresat)
 [![Mastondon](https://img.shields.io/badge/Mastodon-%40libresat-3088D4.svg?logo=mastodon&style=social)](https://mastodon.cloud/@libresat)
 [![Twitter](https://img.shields.io/badge/Twitter-%40libresat-1DA1F2.svg?logo=twitter&style=social)](https://twitter.com/libresat)
 [![Reddit](https://img.shields.io/badge/reddit-r%2Flibresat-FF4500.svg?logo=reddit&style=social)](https://www.reddit.com/r/libresat/)
 [![Instagram](https://img.shields.io/badge/Instagram-%40libresat-E4405F.svg?logo=instagram&style=social)](https://www.instagram.com/libresat/)
+
+[![GitLab](https://img.shields.io/badge/GitLab-%40libresat-fc6d26.svg?logo=gitlab)](https://gitlab.com/libresat)
+[![GitHub](https://img.shields.io/badge/GitHub-%40libresat-181717.svg?logo=github&logoColor=ffffff)](https://github.com/libresat)
+[![NPM](https://img.shields.io/badge/npm-%7elibresat-CB3837.svg?logo=npm)](https://www.npmjs.com/~libresat)
+
+[![Code License AGPL-3.0](https://img.shields.io/badge/Code%20License-AGPL--3.0-brightgreen.svg)](https://www.gnu.org/licenses/agpl-3.0.en.html)
+[![Media License CC-BY-SA-4.0](https://img.shields.io/badge/Media%20License-CC--BY--SA--4.0-brightgreen.svg)](https://creativecommons.org/licenses/by-sa/4.0/)
 
 ---
 
