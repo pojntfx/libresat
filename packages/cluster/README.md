@@ -12,6 +12,15 @@ A 1GB RAM & 1 CPU host should be enough.
 
 ### Setup DNS
 
+Subdomains without a fixed subdomain (i.e. service.libresat.space, service.stg1.libresat.space):
+
+| Type  | Hostname | Value           |
+| ----- | -------- | --------------- |
+| A     | @        | 206.189.226.226 |
+| CNAME | \*       | libresat.space. |
+
+Subdomains on a fixed subdomain (i.e. `service.stg1.libresat.space):
+
 | Type  | Hostname | Value                |
 | ----- | -------- | -------------------- |
 | A     | stg1     | 206.189.226.226      |
