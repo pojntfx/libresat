@@ -1,7 +1,7 @@
 {
   "name": "@libresat/site",
   "version": "0.0.1-0",
-  "description": "The [LibreSat](https://libresat.space/) Website",
+  "description": "The [LibreSat](https://libresat.space/) website",
   "main": "src/website/Chart.yaml",
   "scripts": {
     "dev": "gatsby develop",

@@ -1,0 +1,23 @@
+domain: forum.stg1.libresat.space # The domain you want the site to be accessible on
+postfixDomain: forum.stg1.libresat.space # Domain which postfix should relay/listen to (list@domain.tld)
+externalSMTP:
+  domain: mail.gandi.net # External SMTP server's domain (sending mail)
+  username: test@libresat.space # External SMTP server username
+  password: 345lkUDfg03jd~ # External SMTP server password
+mailman:
+  adminUser:
+    email: felix@pojtinger.com # Mailman admin user email (REST API, not public)
+    username: pojntfx # Mailman admin user username
+    password: asdfasdf123 # Mailman admin user password
+  defaultLanguage: en # Default language for mailing lists
+  domain: forum.stg1.libresat.space # Domain that should be used inside mailing list templates
+hyperkitty:
+  adminUser:
+    email: felix@pojtinger.com # HyperKitty admin user email (public)
+    username: Felix Pojtinger # HyperKitty admin user (display) username (public)
+  apiKey: asdfasdf123456 # HyperKitty API key (not public)
+django:
+  adminUser:
+    email: goooglehupf007@gmail.com # Django admin user email (Dashboard)
+    username: pojntfx # Django admin user username
+    password: supersecurepassword # Django admin user password

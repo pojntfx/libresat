@@ -1,50 +1,45 @@
 # LibreSat Wiki
 
-[Gitit](https://github.com/jgm/gitit) distribution for the [LibreSat](http://libresat.space/) project. It uses [Semantic UI](https://semantic-ui.com/) as it's UI framework, [Git](https://git-scm.com/) as it's VCS and a remote git host (such as [GitLab](https://gitlab.com/)) as it's data backend. It also includes a SSH server to access the git repo locally.
+The [LibreSat](https://libresat.space/) distribution of [Gitit](https://github.com/jgm/gitit).
 
-> Consider reading the [infrastructure overview](https://github.com/opensdcp/opensdcp-infrastructure#overview) before continuing.
+![Home Page Banner](screenshots/banner.png)
 
-## Demo
-
-Visit [wiki.libresat.space](https://wiki.libresat.space) and take a look at our instance.
+[![Demo Site](https://img.shields.io/badge/demo%20site-wiki.libresat.space-blue.svg)](https://wiki.libresat.space)
+[![Code License AGPL-3.0](https://img.shields.io/badge/code%20license-AGPL--3.0-blue.svg)](https://www.gnu.org/licenses/agpl-3.0.en.html)
+[![Media License CC-BY-SA-4.0](https://img.shields.io/badge/media%20license-CC--BY--SA--4.0-blue.svg)](https://creativecommons.org/licenses/by-sa/4.0/)
+[![Part of LibreSat](https://img.shields.io/badge/part%20of-libresat-blue.svg)](https://gitlab.com/libresat/libresat)
+[![Infrastructure Overview](https://img.shields.io/badge/support-infrastructure%20overview-blue.svg)](https://libresat.space/docs/infrastructure)
 
 ## Usage
 
-### Preparation
-
 ```bash
-# Install dependencies (Fedora/CentOS/RHEL)
-sudo dnf install npm docker docker-compose
-
-# Install dependencies (Debian/Mint/Elementary/Ubuntu)
-sudo apt install npm docker.io docker-compose
+# Install dependencies
+npm install
+# Build assets
+npm run add-semantic
+npm run build-service-worker
+# Build and serve on http://localhost:5001
+cd src/assets && gitit -f gitit.conf
 ```
 
-### Configuraton
+## Deployment
 
-#### Create SSH key
+First, set the SSH key for the git bot:
 
 ```bash
 ssh-keygen -t rsa -N "" -f "src/assets/ssh/id_rsa_container"
-```
-
-#### Set SSH Key
-
-```bash
-# Reads your public SSH key and overwrites the contents of assets/id_rsa.pub with it
+# Reads your public SSH key and overwrites the contents of assets/id_rsa.pub with it, so that the bot can clone the wikidata repo
 echo $(<~/.ssh/id_rsa.pub) > src/assets/ssh/id_rsa_repo_access.pub
 ```
 
-#### Create Bot Account and Remote Git Repository
+Then, create the git bot account and remote git repository:
 
 1.  Create account on [GitLab](https://gitlab.com) or other host
 2.  Create git repo on host and give the bot account access to it (on GitLab, the "Maintainer" role permission is the right one)
 3.  Add a file called "LICENSE.md" with a free (as in freedom) license in it (see [https://choosealicense.com/non-software/](https://choosealicense.com/non-software/)) to the repo. The repo must not be empty.
 4.  Open up the SSH keys settings page of the bot account (on GitLab, that's [https://gitlab.com/profile/keys](https://gitlab.com/profile/keys)). We'll have to paste in the public SSH key of the bot later on
 
-#### Link to the Remote Git Repository
-
-> Use your own data here, of course.
+Furthermore, link to the remote git repository:
 
 ```bash
 echo "git@gitlab.com:pojntfx/git-wikidata-test.git" \
@@ -55,145 +50,42 @@ echo "https://gitlab.com/pojntfx/git-wikidata-test/-/archive/master/git-wikidata
 > src/assets/templates/ziplink.st
 ```
 
-Consider editing `src/gitit.conf` for many more configuration options.
+Lastly, edit [src/chart/values.yaml](src/chart/values.yaml) according to your needs to finish the configuration. If you want even more configuration options, consider editing [src/assets/gitit.conf](src/assets/gitit.conf).
 
-#### Set Env Variables
-
-The following env variables are available:
-
-| Variable Name          | Example Value                                | Description                                                                                     |
-| ---------------------- | -------------------------------------------- | ----------------------------------------------------------------------------------------------- |
-| GIT_BOT_EMAIL          | gitit-bot@libresat.space                     | Email to use for the merge bot                                                                  |
-| GIT_BOT_NAME           | LibreSat Gitit Bot                           | Name to use for the merge bot                                                                   |
-| GIT_REMOTE             | git@gitlab.com:pojntfx/git-wikidata-test.git | Remote git repo to store the data in (use SSH, not HTTPS)                                       |  |
-| EXTERNAL_SMTP_DOMAIN   | mail.gandi.net                               | SMTP server's domain to send "reset password" mails to with                                     |
-| EXTERNAL_SMTP_USERNAME | noreply@libresat.space                       | Account name of the account on the SMTP server you want to send the "reset password" mails with |
-| EXTERNAL_SMTP_PASSWORD | 249j8923490sdaSf8234ns                       | Password of the account on the SMTP server you want to send the "reset password" mails with     |
-
-They are being passed into the container at build time with the `--build-arg` flag.
-
-### Building
-
-#### Compile Assets
+To deploy the wiki, run the following:
 
 ```bash
-# Install dependencies
-npm install
-# Compile CSS and JS
-npm run build-semantic
+# Build assets
+npm run add-semantic
+npm run build-service-worker
+# Build image
+docker build src/ -t pojntfx/libresat-wiki
+# Deploy to Kubernetes
+helm install --values src/chart/values.yaml src/chart
 ```
-
-#### Build Container
-
-During the container's build, the public SSH key of the container will be logged after a message like this:
-
-```sh
->>> USER ACTION REQUIRED: CREATE A GITLAB/GITHUB USER, GRANT ACCESS TO WIKIDATA REPO, ADD FOLLOWING PUBLIC SSH KEY TO PROFILE <<<
-```
-
-It will look like this:
-
-```sh
-ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDKIXi4sTx2(...)0HLDtR2nuSSPGr root@f639faccb8ce
-```
-
-Copy-and-paste this public SSH key into SSH keys settings page of the bot account (see [Create Bot Account and Remote Git Repository](#Create%20Bot%20Account%20and%20Remote%20Git%20Repository)). If you don't do so and just let the build run, cloning the remote git repo will fail. If this happens, just copy-and-paste the key and re-run the command below (the key will be the same). You'll only have to do this once - all further instances have the same private key so they can use this public key.
-
-```bash
-# Build the container
-docker build \
---build-arg GIT_BOT_EMAIL="gitit-bot@libresat.space" \
---build-arg GIT_BOT_NAME="LibreSat Gitit Bot" \
---build-arg GIT_REMOTE="git@gitlab.com:pojntfx/git-wikidata-test.git" \
---build-arg EXTERNAL_SMTP_DOMAIN="mail.gandi.net" \
---build-arg EXTERNAL_SMTP_USERNAME="test@libresat.space" \
---build-arg EXTERNAL_SMTP_PASSWORD="345lkUDfg03jd~" \
-src/ \
--t libresat-wiki
-```
-
-### Startup
-
-```bash
-# Serve production version on http://localhost:4000 with the SSH server on http://localhost:4001
-docker-compose -f src/libresat-wiki-prod.yml up -d
-```
-
-You may test if it is working by running the following:
-
-```bash
-# Test if web interface works
-curl localhost:4000
-# Test access to internal git repo
-git clone ssh://git@localhost:4001/opt/gitit/wikidata
-```
-
-### Setup
-
-> No further setup is required.
 
 ## Screenshots
 
-![Front Page](screenshots/front-page.png)
+![Home Page](screenshots/home.png)
 
-![Editor](screenshots/edit.png)
+![Registration](screenshots/register.png)
 
-![Edit Preview](screenshots/edit-preview.png)
+![Editor](screenshots/editor.png)
 
-![Generated Commits in GitLab](screenshots/commits-gitlab.png)
-
-![Export Menu](screenshots/export-menu.png)
-
-![Atom Feed](screenshots/atom-feed.png)
+![Generated Commits in GitLab](screenshots/commits.png)
 
 ![History](screenshots/history.png)
 
 ![Revision](screenshots/revision.png)
 
+![Atom Feed](screenshots/atom-feed.png)
+
+![Export Menu](screenshots/export-menu.png)
+
+![Exported PDF](screenshots/pdf-output.png)
+
+![Exported Slides](screenshots/s5.png)
+
 ![Download Menu](screenshots/download-menu.png)
 
-![Responsive Mode](screenshots/front-page-responsive.png)
-
-## Documentation
-
-Visit the [official Gitit documentation](https://github.com/jgm/gitit) to learn more about Gitit.
-
-## Deployment
-
-### Kubernetes
-
-> TODO: Add Kubernetes deployment
-
-### Docker Swarm
-
-```bash
-# Serve production version on http://yourip:4000 with the SSH server on http://yourip:4001
-docker stack deploy -c src/libresat-wiki-prod.yml libresat-wiki
-```
-
-## License
-
-### Source Code
-
-<a rel="license" href="https://www.gnu.org/licenses/agpl.html">
-  <img alt="AGPL-3.0 License" style="border-width:0" src="https://www.gnu.org/graphics/agplv3-155x51.png"/>
-</a>
-
-LibreSat Wiki
-Copyright (C) 2018 Felix Pojtinger
-
-This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
-
-This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
-
-You should have received a copy of the GNU Affero General Public License along with this program. If not, see <https://www.gnu.org/licenses/>.
-
-### Media
-
-Media of LibreSat Wiki (C) 2018 Felix Pojtinger
-
-<a rel="license" href="http://creativecommons.org/licenses/by/4.0/">
-  <img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png"/>
-</a>
-
-This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+![Home Page Responsive](screenshots/home-responsive.png)

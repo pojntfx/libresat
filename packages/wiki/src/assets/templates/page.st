@@ -3,15 +3,29 @@
 
 <head>
   <!-- Meta info -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta charSet="utf-8" />
+  <meta httpEquiv="x-ua-compatible" content="ie=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="theme-color" content="#000000" />
   <title>$pagetitle$ | $wikititle$</title>
+  <meta name="description" content="$wikititle$ - a collaborative content database" />
   <!-- Atom feed -->
   <link href="$base$/img/icon.png" rel="icon" />
   <link href="$base$/_feed/" type="application/atom+xml" rel="alternate" title="$wikititle$" />
   <link href="$base$/_feed$pageUrl$" type="application/atom+xml" rel="alternate" title="$pagetitle$ - $wikititle$" />
   <!-- Semantic CSS -->
   <link rel="stylesheet" href="$base$/semantic/dist/semantic.min.css">
+  <!-- PWA -->
+  <link rel="manifest" href="$base$/manifest.json">
+  <script>
+    // Check that service workers are registered
+    if ('serviceWorker' in navigator) {
+      // Use the window load event to keep the page load performant
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('$base$/sw.js');
+      });
+    }
+  </script>
   <script>
     /*    
     @licstart  The following is the entire license notice for the 
@@ -49,7 +63,7 @@
     <!-- Header -->
     $navbar()$
     <!-- Content -->
-    $content()$
+    $downloadsection()$ $content()$
     <!-- Footer -->
     $footer()$
   </div>
@@ -79,6 +93,8 @@
     /* Fix unnecessary scrollbar */
 
     body {
+      background: url("/img/bg.jpg") no-repeat center center fixed;
+      background-size: cover;
       height: auto !important;
     }
 

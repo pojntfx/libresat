@@ -1,7 +1,7 @@
 {
   "name": "@libresat/cluster",
   "version": "0.0.1-0",
-  "description": "The [LibreSat](https://libresat.space/) Distribution of [Kubernetes](https://kubernetes.io/)",
+  "description": "The [LibreSat](https://libresat.space/) distribution of [Kubernetes](https://kubernetes.io/)",
   "main": "src/cluster.yaml",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

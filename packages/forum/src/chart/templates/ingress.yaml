@@ -1,0 +1,18 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: web
+  namespace: forum
+spec:
+  rules:
+    - host: {{ .Values.domain }}
+      http:
+        paths:
+          - path: /forum
+            backend:
+              serviceName: web
+              servicePort: web
+          - path: /static
+            backend:
+              serviceName: web
+              servicePort: web

@@ -1,0 +1,36 @@
+Release {{ .Release.Name }} of {{ .Chart.Name }} has been installed.
+
+To get {{ .Release.Name }}'s status, run:
+
+  $ helm status {{ .Release.Name }}
+
+To delete {{ .Release.Name }}, run:
+
+  $ helm delete {{ .Release.Name }}
+
+{{ .Release.Name }}'s end user domain: https://{{ .Values.domain }}/forum
+
+To setup {{ .Release.Name }}, do:
+
+1.  Visit https://{{ .Values.domain }}/forum and sign in with the Django admin user's credentials:
+
+    Username: {{ .Values.django.adminUser.username }}
+    Password: {{ .Values.django.adminUser.password }}
+
+2.  Confirm the mail for the Django admin user ({{ .Values.django.adminUser.email }}) (use `http` instead of `https` if necessary)
+3.  Log in again
+4.  Click on "Manage lists" (top right)
+5.  Click on "Domains"
+6.  Click on "Add Domain" and create new Web Host (blue link in the bottom right)
+7.  Add site {{ .Values.domain }} for both domain and display name, click save
+8.  Go back and refresh
+9.  Enter {{ .Values.domain }} as mail host and select {{ .Values.domain }} as web host
+10. Click "Create domain"
+11. Click "Lists"
+12. Click "Create New List"
+13. Enter all-lowercase, no spaces list name, select {{ .Values.domain }} as mail host
+14. Click "Create list"
+15. Enter your name, click "Subscribe"
+16. Check inbox for the account you've selected, reply to mail with 'help' in body
+
+For more, check out {{ .Chart.Name }}'s documentation: {{ .Chart.Home }}
