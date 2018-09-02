@@ -21,6 +21,19 @@
     - SatNOGS
   author: Felix Pojtinger
   favicon: /img/favicon.png
+  socialLinks:
+    - label: Mastodon
+      imgSrc: https://img.shields.io/badge/Mastodon-%40libresat-3088D4.svg?logo=mastodon&style=social
+      to: https://mastodon.cloud/@libresat
+    - label: Twitter
+      imgSrc: https://img.shields.io/badge/Twitter-%40libresat-1DA1F2.svg?logo=twitter&style=social
+      to: https://twitter.com/libresat
+    - label: Reddit
+      imgSrc: https://img.shields.io/badge/reddit-r%2Flibresat-FF4500.svg?logo=reddit&style=social
+      to: https://www.reddit.com/r/libresat/
+    - label: Instagram
+      imgSrc: https://img.shields.io/badge/Instagram-%40libresat-E4405F.svg?logo=instagram&style=social
+      to: https://www.instagram.com/libresat/
   licenses:
     media:
       spdxLicenseIdentifier: CC-BY-SA-4.0
