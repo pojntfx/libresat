@@ -1,33 +1,23 @@
 # LibreSat Mail
 
-The [LibreSat](https://libresat.space/) Distribution of [Rainloop](https://www.rainloop.net/).
+The [LibreSat](https://libresat.space/) distribution of [Rainloop](https://www.rainloop.net/).
 
-> The `mail` package is part of the `libresat` monorepository. Consider reading the [LibreSat cluster overview](https://libresat.space/docs/cluster.html) before continuing.
+![Home Page Banner](screenshots/banner.png)
+
+[![Demo Site](https://img.shields.io/badge/demo%20site-webmail.libresat.space-blue.svg)](https://webmail.libresat.space)
+[![Code License AGPL-3.0](https://img.shields.io/badge/code%20license-AGPL--3.0-blue.svg)](https://www.gnu.org/licenses/agpl-3.0.en.html)
+[![Media License CC-BY-SA-4.0](https://img.shields.io/badge/media%20license-CC--BY--SA--4.0-blue.svg)](https://creativecommons.org/licenses/by-sa/4.0/)
+[![Part of LibreSat](https://img.shields.io/badge/part%20of-libresat-blue.svg)](https://gitlab.com/libresat/libresat)
+[![Infrastructure Overview](https://img.shields.io/badge/support-infrastructure%20overview-blue.svg)](https://libresat.space/docs/infrastructure)
 
 ## Deployment
 
-### Configuration
-
-Open up [src/rainloop/values.yaml](src/rainloop/values.yaml) and adjust it to your needs.
-
-| Key    | Default Value               | Description                                        |
-| ------ | --------------------------- | -------------------------------------------------- |
-| domain | webmail.stg1.libresat.space | The FQDN that you wish Rainloop to be reachable on |
-
-### Installation
+Edit [src/chart/values.yaml](src/chart/values.yaml) according to your needs.
 
 ```bash
-# Install on Kubernetes cluster
-helm install src/rainloop
+# Deploy to Kubernetes
+helm install --values src/chart/values.yaml src/chart
 ```
-
-### Setup
-
-Check out the terminal output from the [Installation](#Installation) command for further setup instructions.
-
-## Demos
-
-Visit [webmail.stg1.libresat.space](https://webmail.stg1.libresat.space) and take a look at our staging instance.
 
 ## Screenshots
 
@@ -40,31 +30,3 @@ Visit [webmail.stg1.libresat.space](https://webmail.stg1.libresat.space) and tak
 ![Settings](screenshots/settings.png)
 
 ![Mobile Dashboard](screenshots/dashboard-mobile.png)
-
-## Documentation
-
-Visit [libresat.space/docs/services/mail](https://libresat.space/docs/services/mail.html) and take a look at the official documentation.
-
-## License
-
-### Source Code
-
-[![GNU AGPL-3.0 License](https://www.gnu.org/graphics/agplv3-155x51.png)](https://www.gnu.org/licenses/agpl.html)
-
-LibreSat Distribution of Rainloop
-Copyright (C) 2018 Felicitas Pojtinger
-
-This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
-
-This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
-
-You should have received a copy of the GNU Affero General Public License along with this program. If not, see [https://www.gnu.org/licenses/](https://www.gnu.org/licenses/).
-
-### Media
-
-[![Creative Commons CC-BY-4.0 License](https://i.creativecommons.org/l/by/4.0/88x31.png)](https://creativecommons.org/licenses/by/4.0/)
-
-Media of the LibreSat Distribution of Rainloop
-Copyright (C) 2018 Felicitas Pojtinger
-
-This work is licensed under a [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/)
