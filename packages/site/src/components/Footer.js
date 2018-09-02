@@ -86,9 +86,7 @@ const SocialButtonTemplate = ({ src, alt, to, ...otherProps }, index) => (
 
 const SocialButton = styled(SocialButtonTemplate)`
   display: block;
-  &:not(:last-child) {
-    margin-right: 1em !important;
-  }
+  margin-right: 1em;
   &:first-child {
     margin-left: auto;
   }
@@ -98,39 +96,24 @@ const SocialButton = styled(SocialButtonTemplate)`
 `;
 
 const SocialsWrapper = styled.div`
-  margin-top: 1em;
-  margin-bottom: 1em;
   display: flex;
-  /* justify-content: center; */
   align-items: center;
   overflow-x: auto;
+  margin-top: 1em;
+  margin-bottom: 1.75em;
 `;
 
 const Socials = ({ links, ...otherProps }) => (
   <SocialsWrapper {...otherProps}>
-    {links.map(({ src, alt, to, ...rest }) => (
-      <SocialButton
-        src="https://img.shields.io/badge/Mastodon-%40libresat-3088D4.svg?logo=mastodon&style=social"
-        alt="Mastodon"
-        to="https://mastodon.cloud/@libresat"
-        {...rest}
-      />
+    {links.map(({ imgSrc: src, label: alt, ...rest }, index) => (
+      <SocialButton src={src} alt={alt} key={index} {...rest} />
     ))}
   </SocialsWrapper>
 );
 
-const links = [
-  {
-    alt: "Mastodon",
-    src:
-      "https://img.shields.io/badge/Mastodon-%40libresat-3088D4.svg?logo=mastodon&style=social",
-    to: "https://mastodon.cloud/@libresat"
-  }
-];
-
-const FooterContent = ({ licenses: { media, code }, imprint }) => (
+const FooterContent = ({ socialLinks, licenses: { media, code } }) => (
   <FooterWrapper>
-    <Socials links={links} />
+    <Socials links={socialLinks} />
     <Grid stackable columns={2}>
       <FooterSection width={4}>
         <span>
@@ -178,7 +161,7 @@ const FooterContent = ({ licenses: { media, code }, imprint }) => (
               icon="legal"
               content="Imprint"
               as={Link}
-              to={"/imprint"}
+              to="/imprint"
               activeClassName="active"
             />
           </Grid.Column>
@@ -189,7 +172,11 @@ const FooterContent = ({ licenses: { media, code }, imprint }) => (
 );
 
 export const FooterView = ({ data, ...otherProps }) => (
-  <FooterContent licenses={data.siteYaml.licenses} {...otherProps} />
+  <FooterContent
+    socialLinks={data.siteYaml.socialLinks}
+    licenses={data.siteYaml.licenses}
+    {...otherProps}
+  />
 );
 
 export const Footer = () => (
@@ -197,6 +184,11 @@ export const Footer = () => (
     query={graphql`
       query FooterQuery {
         siteYaml {
+          socialLinks {
+            label
+            imgSrc
+            to
+          }
           licenses {
             media {
               spdxLicenseIdentifier
