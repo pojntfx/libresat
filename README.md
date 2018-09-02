@@ -10,7 +10,7 @@ The Free/Libre and Open Source Satellite Development and Control Platform, since
 
 ![LibreSat Logo](https://gitlab.com/libresat/design/raw/master/packages/logos/logo--no-padding.png)
 
-[![Mastondon](https://img.shields.io/badge/Mastodon-%40libresat-3088D4.svg?logo=mastodon&style=social)](https://mastodon.cloud/@libresat)
+[![Mastodon](https://img.shields.io/badge/Mastodon-%40libresat-3088D4.svg?logo=mastodon&style=social)](https://mastodon.cloud/@libresat)
 [![Twitter](https://img.shields.io/badge/Twitter-%40libresat-1DA1F2.svg?logo=twitter&style=social)](https://twitter.com/libresat)
 [![Reddit](https://img.shields.io/badge/reddit-r%2Flibresat-FF4500.svg?logo=reddit&style=social)](https://www.reddit.com/r/libresat/)
 [![Instagram](https://img.shields.io/badge/Instagram-%40libresat-E4405F.svg?logo=instagram&style=social)](https://www.instagram.com/libresat/)
