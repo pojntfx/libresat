@@ -1,11 +1,12 @@
 {
   "name": "@libresat/wiki",
   "version": "0.0.1-0",
-  "description": "The [LibreSat](https://libresat.space/) Distribution of [Gitit](https://github.com/jgm/gitit)",
+  "description": "The [LibreSat](https://libresat.space/) distribution of [Gitit](https://github.com/jgm/gitit)",
   "main": "src/wiki.yaml",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build-semantic": "cd src/assets/static/semantic && gulp build"
+    "add-semantic": "cp node_modules/semantic-ui-css/*.min.* src/assets/static/semantic/dist && cp -r node_modules/semantic-ui-css/themes src/assets/static/semantic/dist",
+    "build-service-worker": "workbox generateSW workbox-config.js"
   },
   "repository": {
     "type": "git",
@@ -24,7 +25,7 @@
   },
   "homepage": "https://gitlab.com/libresat/libresat#README",
   "dependencies": {
-    "gulp": "^3.9.1",
-    "semantic-ui": "^2.3.3"
+    "semantic-ui-css": "^2.3.3",
+    "workbox-cli": "^3.4.1"
   }
 }

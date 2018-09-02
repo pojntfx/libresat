@@ -1,0 +1,21 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: web
+  namespace: wiki
+spec:
+  rules:
+    - host: {{ .Values.domain }}
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: web
+              servicePort: web
+    - host: git.{{ .Values.domain }}
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: web
+              servicePort: ssh

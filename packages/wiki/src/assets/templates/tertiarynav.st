@@ -10,6 +10,12 @@
   .tertiary-nav__dropdown--more__title {
     padding: 0 !important;
   }
+
+  /* Make the items readable on dark background */
+
+  .tertiary-nav {
+    background: rgba(255, 255, 255, 0.9) !important;
+  }
 </style>
 
 <script>
@@ -40,7 +46,7 @@
             <i class="code icon"></i>
             Raw page source
           </a>
-          <a class="item disabled" href="$base$$pageUrl$?printable$if(revision)$&amp;revision=$revision$$endif$">
+          <a class="item" href="$base$$pageUrl$?printable$if(revision)$&amp;revision=$revision$$endif$">
             <i class="print icon"></i>
             Printable version
           </a>

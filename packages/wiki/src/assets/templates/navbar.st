@@ -37,7 +37,7 @@
               Upload a file
             </a>
             $endif$ $if(feed)$
-            <a class="disabled item" href="$base$/_feed/" type="application/atom+xml" rel="alternate" title="ATOM Feed">
+            <a class="item" href="$base$/_feed/" type="application/atom+xml" rel="alternate" title="ATOM Feed">
               <i class="feed icon"></i>
               Atom feed
             </a>
@@ -60,12 +60,12 @@
       </div>
     </div>
     <div class="right menu">
-      $downloadmenu()$
-      $userbox()$
+      $downloadmenu()$ $userbox()$
       <div class="item">
         <form action="$base$/_search" method="get">
           <div class="ui icon input">
-            <input placeholder="Search $wikititle$" type="text" name="patterns">
+            <label for="search" class="search__label">Search $wikititle$</label>
+            <input placeholder="Search $wikititle$" id="search" type="text" name="patterns">
             <i class="search link icon"></i>
           </div>
         </form>
@@ -75,6 +75,15 @@
 </div>
 
 <style>
+  .search__label {
+    position: absolute;
+    left: -10000px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+
   .secondary-nav {
     overflow-x: auto;
   }
