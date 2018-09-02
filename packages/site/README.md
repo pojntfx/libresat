@@ -28,7 +28,7 @@ Edit [src/chart/values.yaml](src/chart/values.yaml) according to your needs.
 
 ```bash
 # Build image
-docker build . -t libresat-site
+docker build . -t pojntfx/libresat-site
 # Deploy to Kubernetes
 helm install --values src/chart/values.yaml src/chart
 ```
