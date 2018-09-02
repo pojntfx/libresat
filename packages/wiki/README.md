@@ -4,11 +4,11 @@ The [LibreSat](https://libresat.space/) distribution of [Gitit](https://github.c
 
 ![Home Page Banner](screenshots/banner.png)
 
-[![Demo Site](https://img.shields.io/badge/demo%20site-wiki.libresat.space-blue.svg)](https://wiki.libresat.space)
-[![Code License AGPL-3.0](https://img.shields.io/badge/code%20license-AGPL--3.0-blue.svg)](https://www.gnu.org/licenses/agpl-3.0.en.html)
-[![Media License CC-BY-SA-4.0](https://img.shields.io/badge/media%20license-CC--BY--SA--4.0-blue.svg)](https://creativecommons.org/licenses/by-sa/4.0/)
-[![Part of LibreSat](https://img.shields.io/badge/part%20of-libresat-blue.svg)](https://gitlab.com/libresat/libresat)
-[![Infrastructure Overview](https://img.shields.io/badge/support-infrastructure%20overview-blue.svg)](https://libresat.space/docs/infrastructure)
+[![Demo Site](https://img.shields.io/badge/Demo%20Site-wiki.libresat.space-blue.svg)](https://wiki.libresat.space)
+[![Code License AGPL-3.0](https://img.shields.io/badge/Code%20License-AGPL--3.0-brightgreen.svg)](https://www.gnu.org/licenses/agpl-3.0.en.html)
+[![Media License CC-BY-SA-4.0](https://img.shields.io/badge/Media%20License-CC--BY--SA--4.0-brightgreen.svg)](https://creativecommons.org/licenses/by-sa/4.0/)
+[![Part of LibreSat](https://img.shields.io/badge/Part%20Of-LibreSat-blue.svg)](https://gitlab.com/libresat/libresat)
+[![Infrastructure Overview](https://img.shields.io/badge/Support-Infrastructure%20Overview-blue.svg)](https://libresat.space/docs/infrastructure)
 
 ## Usage
 
