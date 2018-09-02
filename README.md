@@ -2,26 +2,22 @@
 
 The Free/Libre and Open Source Satellite Development and Control Platform, since 2014.
 
-[![Website](https://img.shields.io/badge/website-libresat.space-blue.svg)](https://libresat.space)
-[![Wiki](https://img.shields.io/badge/wiki-wiki.libresat.space-blue.svg)](https://wiki.libresat.space)
-[![Forum](https://img.shields.io/badge/forum-forum.libresat.space-blue.svg)](https://forum.libresat.space/forum)
-[![Chat](https://img.shields.io/badge/chat-chat.libresat.space-blue.svg)](https://chat.libresat.space)
-[![Code License AGPL-3.0](https://img.shields.io/badge/code%20license-AGPL--3.0-blue.svg)](https://www.gnu.org/licenses/agpl-3.0.en.html)
-[![Media License CC-BY-SA-4.0](https://img.shields.io/badge/media%20license-CC--BY--SA--4.0-blue.svg)](https://creativecommons.org/licenses/by-sa/4.0/)
+[![Website](https://img.shields.io/badge/Website-libresat.space-blue.svg)](https://libresat.space)
+[![Demo Site](https://img.shields.io/badge/Demo-demo.libresat.space-blue.svg)](https://demo.libresat.space)
+[![Wiki](https://img.shields.io/badge/Wiki-wiki.libresat.space-blue.svg)](https://wiki.libresat.space)
+[![Forum](https://img.shields.io/badge/Forum-forum.libresat.space-blue.svg)](https://forum.libresat.space/forum)
+[![Chat](https://img.shields.io/badge/Chat-chat.libresat.space-blue.svg)](https://chat.libresat.space)
 
-<!-- ---
+[![Code License AGPL-3.0](https://img.shields.io/badge/Code%20License-AGPL--3.0-brightgreen.svg)](https://www.gnu.org/licenses/agpl-3.0.en.html)
+[![Media License CC-BY-SA-4.0](https://img.shields.io/badge/Media%20License-CC--BY--SA--4.0-brightgreen.svg)](https://creativecommons.org/licenses/by-sa/4.0/)
 
-![LibreSat Logo](./libresat-logo-no-lines.png)
-
---- -->
-
-[![GitLab](https://img.shields.io/badge/gitlab-%40libresat-orange.svg)](https://gitlab.com/libresat)
-[![GitHub](https://img.shields.io/badge/github-%40libresat-lightgrey.svg)](https://github.com/libresat)
-[![NPM](https://img.shields.io/badge/npm-%7elibresat-red.svg)](https://www.npmjs.com/~libresat)
-[![Twitter](https://img.shields.io/badge/twitter-%40libresat-blue.svg)](https://twitter.com/libresat)
-[![Reddit](https://img.shields.io/badge/reddit-r%2Flibresat-orange.svg)](https://www.reddit.com/r/libresat/)
-[![Mastondon](https://img.shields.io/badge/mastodon-%40libresat-blue.svg)](https://mastodon.cloud/@libresat)
-[![Instagram](https://img.shields.io/badge/instagram-%40libresat-blue.svg)](https://www.instagram.com/libresat/)
+[![GitLab](https://img.shields.io/badge/GitLab-%40libresat-fc6d26.svg?logo=gitlab)](https://gitlab.com/libresat)
+[![GitHub](https://img.shields.io/badge/GitHub-%40libresat-181717.svg?logo=github&logoColor=ffffff)](https://github.com/libresat)
+[![NPM](https://img.shields.io/badge/npm-%7elibresat-CB3837.svg?logo=npm)](https://www.npmjs.com/~libresat)
+[![Mastondon](https://img.shields.io/badge/Mastodon-%40libresat-3088D4.svg?logo=mastodon&style=social)](https://mastodon.cloud/@libresat)
+[![Twitter](https://img.shields.io/badge/Twitter-%40libresat-1DA1F2.svg?logo=twitter&style=social)](https://twitter.com/libresat)
+[![Reddit](https://img.shields.io/badge/reddit-r%2Flibresat-FF4500.svg?logo=reddit&style=social)](https://www.reddit.com/r/libresat/)
+[![Instagram](https://img.shields.io/badge/Instagram-%40libresat-E4405F.svg?logo=instagram&style=social)](https://www.instagram.com/libresat/)
 
 ---
 
@@ -29,19 +25,23 @@ The Free/Libre and Open Source Satellite Development and Control Platform, since
 
 > TODO: Add usage
 
-## Demos
+## Deployment
 
-> TODO: Add demos
+> TODO: Add deployment
 
 ## Screenshots
 
-> TODO: Add screenshots
+![Site](packages/site/screenshots/home.png)
 
-## Documentation
+![Wiki](packages/wiki/screenshots/home.png)
 
-> TODO: Add documentation
+![Forum](packages/forum/screenshots/hyperkitty-overview.png)
+
+![Mail](packages/mail/screenshots/dashboard.png)
 
 ## License
+
+These licenses do, if not otherwise specified, apply to all packages in this repository.
 
 ### Code
 
