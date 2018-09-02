@@ -78,8 +78,59 @@ const LicenseInfo = ({
   </Modal.Content>
 );
 
+const SocialButtonTemplate = ({ src, alt, to, ...otherProps }, index) => (
+  <Link to={to} key={index} {...otherProps}>
+    <img src={src} alt={alt} />
+  </Link>
+);
+
+const SocialButton = styled(SocialButtonTemplate)`
+  display: block;
+  &:not(:last-child) {
+    margin-right: 1em !important;
+  }
+  &:first-child {
+    margin-left: auto;
+  }
+  &:last-child {
+    margin-right: auto;
+  }
+`;
+
+const SocialsWrapper = styled.div`
+  margin-top: 1em;
+  margin-bottom: 1em;
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  overflow-x: auto;
+`;
+
+const Socials = ({ links, ...otherProps }) => (
+  <SocialsWrapper {...otherProps}>
+    {links.map(({ src, alt, to, ...rest }) => (
+      <SocialButton
+        src="https://img.shields.io/badge/Mastodon-%40libresat-3088D4.svg?logo=mastodon&style=social"
+        alt="Mastodon"
+        to="https://mastodon.cloud/@libresat"
+        {...rest}
+      />
+    ))}
+  </SocialsWrapper>
+);
+
+const links = [
+  {
+    alt: "Mastodon",
+    src:
+      "https://img.shields.io/badge/Mastodon-%40libresat-3088D4.svg?logo=mastodon&style=social",
+    to: "https://mastodon.cloud/@libresat"
+  }
+];
+
 const FooterContent = ({ licenses: { media, code }, imprint }) => (
   <FooterWrapper>
+    <Socials links={links} />
     <Grid stackable columns={2}>
       <FooterSection width={4}>
         <span>
