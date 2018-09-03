@@ -71,8 +71,8 @@ spec:
         k8s-app: traefik-ingress-lb
     spec:
       containers:
-          # Comment below to NOT use DNS challenge (with HTTPS subdomains)
-          - args:
+        # Comment below to NOT use DNS challenge (with HTTPS subdomains)
+        - args:
             - "--api"
             - "--kubernetes"
             - "--logLevel=DEBUG"
@@ -90,7 +90,7 @@ spec:
             - "--acme.dnschallenge.provider=gandiv5"
           env:
             - name: GANDIV5_API_KEY
-              value: "87y8ghjkbjg8" # Change this to your API key
+              value: "24jksdf83" # Change this to your API key
           # Uncomment below to use HTTP challenge (no HTTPS subdomains)
           # - args:
           #     - "--api"
