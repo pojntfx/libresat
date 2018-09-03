@@ -1,0 +1,25 @@
+restic:
+  password: asdfasf123
+s3:
+  endpoint: nyc3.digitaloceanspaces.com
+  bucket: libresat-cluster1
+  prefix: backups1
+  accessKey: lwjeri1
+  secretAccessKey: 349j/343
+targets:
+  - namespace: forum
+    app: web
+    intervall: 10m
+    revisions: 10
+    volumes:
+      - mountPath: /opt/mailman-web/databases
+        name: web-data
+      - mountPath: /var/tmp/mailman
+        name: core-data
+  - namespace: webmail
+    app: web
+    intervall: 10m
+    revisions: 10
+    volumes:
+      - mountPath: /rainloop/data
+        name: data
