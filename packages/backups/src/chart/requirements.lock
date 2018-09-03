@@ -1,0 +1,6 @@
+dependencies:
+- name: stash
+  repository: https://charts.appscode.com/stable/
+  version: 0.7.0
+digest: sha256:a2efa9d25432328aa409ee4b1416fb9599497cf11516e4c8e25885a2e622777e
+generated: 2018-09-04T01:31:10.183626045+02:00

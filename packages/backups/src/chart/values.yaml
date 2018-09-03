@@ -1,0 +1,24 @@
+s3: # Remote s3 server (object storage) to back up to
+  endpoint: nyc3.digitaloceanspaces.com # Remote S3 endpoint
+  bucket: libresat-cluster1 # Remote S3 bucket
+  prefix: backups1 # Folder in the bucket's root directory to store the backups in
+  accessKey: fjwjlsjflsjdf # Access Key
+  secretAccessKey: 34okwfsfwraspkfjwerj # Secret Access Key
+
+# Example targets (in this case: https://gitlab.com/libresat/libresat/tree/master/packages/mail)
+targets: # Objects to backup
+  - name: webmail  # Name of the backup
+    namespace: webmail # Namespace of the object to backup
+    app: web # App of the object to backup
+    interval: 10m # After which interval the backup should be done (in minutes)
+    password: asdfasdf123 # Password for the backup
+    revisions: 10 # How many older revisions of the backup should be kept
+    volumes: # Volumes of the object to backup
+      - mountPath: /rainloop/data # Mount path of the volume in the deployment
+        name: data # Name of the volume to backup
+
+# Configure role-based authentication for stash
+stash:
+  apiserver.enableValidatingWebhook: true
+  apiserver.enableMutatingWebhook: true
+  rbac.create: true

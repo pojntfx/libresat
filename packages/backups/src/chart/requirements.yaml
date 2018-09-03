@@ -1,0 +1,4 @@
+dependencies:
+  - name: stash
+    version: 0.7.0
+    repository: https://charts.appscode.com/stable/
