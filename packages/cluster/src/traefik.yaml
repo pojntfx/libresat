@@ -71,7 +71,7 @@ spec:
         k8s-app: traefik-ingress-lb
     spec:
       containers:
-        # Comment below to NOT use DNS challenge (with HTTPS subdomains)
+        # Uncomment below to use DNS challenge (with HTTPS subdomains)
         - args:
             - "--api"
             - "--kubernetes"
@@ -88,26 +88,22 @@ spec:
             - "--acme.storage=/certs/acme.json"
             - "--acme.dnschallenge"
             - "--acme.dnschallenge.provider=gandiv5"
+        # Uncomment below to use HTTP challenge (no HTTPS subdomains)
+        # - args:
+        #     - "--defaultentrypoints=http,https"
+        #     - "--entrypoints=Name:http Address::80 Redirect.EntryPoint:https"
+        #     - "--entrypoints=Name:https Address::443 TLS"
+        #     - "--acme"
+        #     - "--acme.onhostrule"
+        #     - "--acme.entrypoint=https"
+        #     - "--acme.domains=stg1.libresat.space" # Change this to your own domain
+        #     - "--acme.email=felicitas@pojtinger.com" # Change this to your own email
+        #     - "--acme.storage=/certs/acme.json"
+        #     - "--acme.httpchallenge"
+        #     - "--acme.httpchallenge.entrypoint=http"
           env:
             - name: GANDIV5_API_KEY
               value: "24jksdf83" # Change this to your API key
-          # Uncomment below to use HTTP challenge (no HTTPS subdomains)
-          # - args:
-          #     - "--api"
-          #     - "--kubernetes"
-          #     - "--logLevel=DEBUG"
-          #     - "--debug"
-          #     - "--defaultentrypoints=http,https"
-          #     - "--entrypoints=Name:http Address::80 Redirect.EntryPoint:https"
-          #     - "--entrypoints=Name:https Address::443 TLS"
-          #     - "--acme"
-          #     - "--acme.onhostrule"
-          #     - "--acme.entrypoint=https"
-          #     - "--acme.domains=stg1.libresat.space" # Change this to your own domain
-          #     - "--acme.email=felicitas@pojtinger.com" # Change this to your own email
-          #     - "--acme.storage=/certs/acme.json"
-          #     - "--acme.httpchallenge"
-          #     - "--acme.httpchallenge.entrypoint=http"
           image: traefik:alpine
           name: traefik-ingress-lb
           ports:
