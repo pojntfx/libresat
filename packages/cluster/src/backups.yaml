@@ -1,0 +1,73 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: stash-demo
+---
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    app: stash-demo
+  name: stash-demo
+  namespace: stash-demo
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: stash-demo
+      name: busybox
+    spec:
+      containers:
+        - command:
+            - sleep
+            - "3600"
+          image: busybox
+          imagePullPolicy: IfNotPresent
+          name: busybox
+          volumeMounts:
+            - mountPath: /source/data
+              name: source-data
+      restartPolicy: Always
+      volumes:
+        - gitRepo:
+            repository: https://github.com/appscode/stash-data.git
+          name: source-data
+---
+# Your own Minio server, DO Spaces, AWS S3, ...
+apiVersion: v1
+kind: Secret
+metadata:
+  name: stash-demo
+  namespace: stash-demo
+stringData:
+  AWS_ACCESS_KEY_ID: "asdfw43"
+  AWS_SECRET_ACCESS_KEY: "sdf9234ij3"
+  RESTIC_PASSWORD: "changeme"
+---
+apiVersion: stash.appscode.com/v1alpha1
+kind: Restic
+metadata:
+  name: stash-demo
+  namespace: stash-demo
+spec:
+  selector:
+    matchLabels:
+      app: stash-demo
+  fileGroups:
+    - path: /source/data
+      retentionPolicyName: "keep-last-5"
+  backend:
+    s3:
+      endpoint: "nyc3.digitaloceanspaces.com"
+      bucket: libresat-cluster1
+      prefix: stash-demo
+    storageSecretName: stash-demo
+  schedule: "@every 1m"
+  volumeMounts:
+    - mountPath: /source/data
+      name: source-data
+  retentionPolicies:
+    - name: "keep-last-5"
+      keepLast: 5
+      prune: true
