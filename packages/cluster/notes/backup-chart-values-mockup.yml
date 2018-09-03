@@ -9,7 +9,7 @@ s3:
 targets:
   - namespace: forum
     app: web
-    intervall: 10m
+    interval: 10m
     revisions: 10
     volumes:
       - mountPath: /opt/mailman-web/databases
@@ -18,7 +18,7 @@ targets:
         name: core-data
   - namespace: webmail
     app: web
-    intervall: 10m
+    interval: 10m
     revisions: 10
     volumes:
       - mountPath: /rainloop/data

@@ -1,0 +1,11 @@
+apiVersion: v1
+name: libresat-backups
+version: 0.0.1-0
+description: The LibreSat Distribution of Stash
+home: https://libresat.space/docs/services/backups.html
+sources:
+  - https://gitlab.com/libresat/libresat.git
+maintainers:
+  - name: Felix Pojtinger
+    email: felix@pojtinger.com
+    url: https://twitter.com/pojntfx

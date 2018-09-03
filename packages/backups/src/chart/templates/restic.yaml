@@ -1,0 +1,38 @@
+{{- $relname := .Release.Name }}
+{{- $s3endpoint := .Values.s3.endpoint }}
+{{- $s3bucket := .Values.s3.bucket }}
+{{- $s3prefix := .Values.s3.prefix }}
+
+{{- range .Values.targets }}
+{{- $targetname := .name }}
+apiVersion: stash.appscode.com/v1alpha1
+kind: Restic
+metadata:
+  name: {{ $relname }}-{{ .name }}
+  namespace: {{ .namespace }}
+spec:
+  selector:
+    matchLabels:
+      app: {{ .app }}
+  fileGroups:
+  {{- range .volumes }}
+    - path: {{ .mountPath }}
+      retentionPolicyName: {{ $relname }}-{{ $targetname }}
+  {{ end }}
+  backend:
+    s3:
+      endpoint: {{ $s3endpoint }}
+      bucket: {{ $s3bucket }}
+      prefix: {{ $s3prefix }}
+    storageSecretName: {{ $relname }}-{{ .name }}
+  schedule: "@every {{ .interval }}"
+  volumeMounts:
+  {{- range .volumes }}
+    - mountPath: {{ .mountPath }}
+      name: {{ .name }}
+  {{ end }}
+  retentionPolicies:
+    - name: {{ $relname }}-{{ $targetname }}
+      keepLast: {{ .revisions }}
+      prune: true
+{{ end }}

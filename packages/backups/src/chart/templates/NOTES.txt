@@ -1,0 +1,18 @@
+Release {{ .Release.Name }} of {{ .Chart.Name }} has been installed.
+
+To get {{ .Release.Name }}'s status, run:
+
+  $ helm status {{ .Release.Name }}
+
+  or
+
+  $ kubectl -n {{ .Release.Namespace }} get deployments -l "release={{ .Release.Name }}, app=stash"
+
+To delete {{ .Release.Name }}, run:
+
+  $ helm delete {{ .Release.Name }}
+  $ kubectl -n {{ .Release.Namespace }} delete validatingwebhookconfiguration -l app=stash || true
+  $ kubectl -n {{ .Release.Namespace }} delete mutatingwebhookconfiguration -l app=stash || true
+  $ kubectl -n {{ .Release.Namespace }} delete apiservice -l app=stash
+
+For more, check out {{ .Chart.Name }}'s documentation: {{ .Chart.Home }}
