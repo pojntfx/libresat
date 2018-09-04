@@ -24,5 +24,8 @@
   "bugs": {
     "url": "https://gitlab.com/libresat/libresat/issues"
   },
-  "homepage": "https://gitlab.com/libresat/libresat#README"
+  "homepage": "https://gitlab.com/libresat/libresat#README",
+  "publishConfig": {
+    "access": "public"
+  }
 }
