@@ -1,18 +1,14 @@
 import { GraphQL } from "../../servers/grapqhl/graphql";
 import { IResolverMerger, MergedResolvers } from "./resolvers.types";
-
-const resolvers = {
-  Query: {
-    hello: (_, { name }) => `Hello ${name || "World"}`
-  }
-};
+import { mergeResolvers } from "merge-graphql-schemas";
 
 class ResolverMerger implements IResolverMerger {
   name: "resolvers";
   service: GraphQL;
-  dir: string;
 
-  merge = () => resolvers as MergedResolvers; // This has to be casted
+  constructor(public dir: IResolverMerger["dir"]) {}
+
+  merge = () => mergeResolvers(this.dir); // This has to be casted
 }
 
 export { ResolverMerger };
