@@ -3,7 +3,8 @@ import {
   MongoDB,
   GraphQL,
   TypeDefMerger,
-  ResolverMerger
+  ResolverMerger,
+  ModelMerger
 } from "../../src/index";
 
 const { server, database } = composeService({
@@ -14,7 +15,11 @@ const { server, database } = composeService({
     resolvers: new ResolverMerger().merge(),
     port: 3000
   }),
-  database: new MongoDB()
+  database: new MongoDB({
+    name: "example-service-database",
+    models: new ModelMerger().merge(),
+    url: "mongodb://localhost:21700"
+  })
 });
 
 console.log(server, database);
