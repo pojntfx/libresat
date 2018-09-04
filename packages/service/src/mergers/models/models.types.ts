@@ -1,5 +1,14 @@
 import { IMongoDB } from "../../databases/mongodb/mongodb.types";
+import { IMerger } from "../merger.types";
 
 type MergedModels = IMongoDB["models"];
 
-export { MergedModels };
+interface MergeModels {
+  (): MergedModels;
+}
+
+interface IResolverMerger extends IMerger {
+  merge: MergeModels;
+}
+
+export { IResolverMerger };
