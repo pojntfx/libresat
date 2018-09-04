@@ -8,7 +8,7 @@
     "build": "tsc -p tsconfig.json",
     "dev": "nodemon --exec ts-node example/src/index.ts",
     "build-docs": "typedoc --out docs-dist/",
-    "serve-docs": "serve docs/",
+    "serve-docs": "serve docs-dist/",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -28,6 +28,8 @@
   },
   "devDependencies": {
     "nodemon": "^1.18.4",
-    "ts-node": "^7.0.1"
+    "serve": "^10.0.0",
+    "ts-node": "^7.0.1",
+    "typedoc": "^0.12.0"
   }
 }
