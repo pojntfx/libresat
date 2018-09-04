@@ -67,6 +67,41 @@ admin.conf  100% 5455    53.8KB/s   00:00
 $ export KUBECONFIG=${HOME}/.kube/config-206.189.226.226.conf
 ```
 
+### Enable Persistent Volumes
+
+> You can use any block storage provider (i.e. Ceph) here. Don't run the following commands unless all the pods in the `kube-system` namespace are available.
+
+```bash
+# Add the access token
+$ kubectl apply -f src/storage.yaml
+secret "digitalocean" created
+
+# Install DigitalOcean's CSI
+$ kubectl apply -f https://raw.githubusercontent.com/digitalocean/csi-digitalocean/master/deploy/kubernetes/releases/csi-digitalocean-v0.1.5.yaml
+storageclass.storage.k8s.io "do-block-storage" created
+serviceaccount "csi-attacher" created
+clusterrole.rbac.authorization.k8s.io "external-attacher-runner" created
+clusterrolebinding.rbac.authorization.k8s.io "csi-attacher-role" created
+service "csi-attacher-doplugin" created
+statefulset.apps "csi-attacher-doplugin" created
+serviceaccount "csi-provisioner" created
+clusterrole.rbac.authorization.k8s.io "external-provisioner-runner" created
+clusterrolebinding.rbac.authorization.k8s.io "csi-provisioner-role" created
+service "csi-provisioner-doplugin" created
+statefulset.apps "csi-provisioner-doplugin" created
+serviceaccount "csi-doplugin" created
+clusterrole.rbac.authorization.k8s.io "csi-doplugin" created
+clusterrolebinding.rbac.authorization.k8s.io "csi-doplugin" created
+daemonset.apps "csi-doplugin" created
+
+# Check if it worked
+$ kubectl --namespace=kube-system get pods -w
+NAME                                      READY     STATUS    RESTARTS   AGE
+csi-attacher-doplugin-0                   2/2       Running   0          1m
+csi-doplugin-9dcb2                        2/2       Running   0          59s
+csi-provisioner-doplugin-0                2/2       Running   0          1m
+```
+
 ### Setup Helm
 
 ```bash
@@ -86,41 +121,6 @@ Tiller (the Helm server-side component) has been installed into your Kubernetes 
 (...)
 ```
 
-### Enable Persistent Volumes
-
-> You can use any block storage provider (i.e. Ceph) here.
-
-```bash
-# Install DigitalOcean's CSI
-$ kubectl apply -f https://raw.githubusercontent.com/digitalocean/csi-digitalocean/master/deploy/kubernetes/releases/csi-digitalocean-v0.1.5.yaml
-storageclass.storage.k8s.io "do-block-storage" created
-serviceaccount "csi-attacher" created
-clusterrole.rbac.authorization.k8s.io "external-attacher-runner" created
-clusterrolebinding.rbac.authorization.k8s.io "csi-attacher-role" created
-service "csi-attacher-doplugin" created
-statefulset.apps "csi-attacher-doplugin" created
-serviceaccount "csi-provisioner" created
-clusterrole.rbac.authorization.k8s.io "external-provisioner-runner" created
-clusterrolebinding.rbac.authorization.k8s.io "csi-provisioner-role" created
-service "csi-provisioner-doplugin" created
-statefulset.apps "csi-provisioner-doplugin" created
-serviceaccount "csi-doplugin" created
-clusterrole.rbac.authorization.k8s.io "csi-doplugin" created
-clusterrolebinding.rbac.authorization.k8s.io "csi-doplugin" created
-daemonset.apps "csi-doplugin" create
-
-# Add the access token
-$ kubectl apply -f src/storage.yaml
-secret "digitalocean" created
-
-# Check if it worked
-$ kubectl --namespace=kube-system get pods -w
-NAME                                      READY     STATUS    RESTARTS   AGE
-csi-attacher-doplugin-0                   2/2       Running   0          1m
-csi-doplugin-9dcb2                        2/2       Running   0          59s
-csi-provisioner-doplugin-0                2/2       Running   0          1m
-```
-
 ### Enable Backups
 
 > You can use any object storage provider (i.e. Swift) here.
@@ -132,64 +132,36 @@ $ curl -fsSL -o onessl https://github.com/kubepack/onessl/releases/download/0.3.
   && sudo mv onessl /usr/local/bin/
 [sudo] password for pojntfx: (...)
 
-# Create namespace for stash
-$ kubectl apply -f src/backups-namespace.yaml
-namespace "backups" created
-
-# Add appscode repo for stash
-$ helm repo add appscode https://charts.appscode.com/stable/
-"appscode" has been added to your repositories
-
-$ helm repo update
-Hang tight while we grab the latest from your chart repositories...
-...Skip local chart repository
-...Successfully got an update from the "appscode" chart repository
-Update Complete. ⎈ Happy Helming!⎈
-
-# Install stash
-$ helm install appscode/stash --version 0.7.0 \
-  --set apiserver.ca="$(onessl get kube-ca)" \
-  --set apiserver.enableValidatingWebhook=true \
-  --set apiserver.enableMutatingWebhook=true \
-  --set rbac.create=true \
-  --namespace backups
+# Install libresat-backups
+$ helm install \
+  --values ../backups/src/chart \
+  --set stash.apiserver.ca="$(onessl get kube-ca)" \
+  --namespace backups \
+  ../backups/src/chart
 (...)
-NOTES:
-To verify that Stash has started, run:
+To delete looming-snake, run:
 
-  kubectl --namespace=backups get deployments -l "release=foiled-flee, app=stash"
+  $ helm delete looming-snake
+  $ kubectl -n backups delete validatingwebhookconfiguration -l app=stash || true
+  $ kubectl -n backups delete mutatingwebhookconfiguration -l app=stash || true
+  $ kubectl -n backups delete apiservice -l app=stash
 
-# Create a test deployment and restic for it
-$ kubectl apply -f src/backups.yaml
-namespace "stash-demo" created
-deployment.apps "stash-demo" created
-secret "stash-demo" created
-restic.stash.appscode.com "stash-demo" created
-
-# Check if the repository for the snapshots has been created
-$ kubectl get repository -l workload-name=stash-demo -n stash-demo
-NAME                    AGE
-deployment.stash-demo   7s
-
-# (After waiting for ~1 1/2 minutes) Check if the snapshots has been created in the repository (and using your S3 interface)
-$ kubectl get snapshots -l repository=deployment.stash-demo -n stash-demo
-NAME                             AGE
-deployment.stash-demo-b3341f81   18s
+For more, check out libresat-backups's documentation: https://libresat.space/docs/services/backups.html
 ```
 
 ### Enable Ingress
 
-> You may use either a HTTP or DNS challenge to receive the ACME certs. Check out [src/traefik.yaml](src/traefik.yaml) for more info; use your own API key if you want to use the DNS challenge.
+> You may use either a HTTP or DNS challenge to receive the ACME certs. Check out [../ingress-controller/src/chart/values.yaml](../ingress-controller/src/chart/values.yaml) for more info; use your own API key if you want to use the DNS challenge.
 
 ```bash
-# Install Traefik as ingress controller
-$ kubectl apply -f src/traefik.yaml
-serviceaccount "traefik-ingress-controller" unchanged
-clusterrolebinding.rbac.authorization.k8s.io "traefik-ingress-controller" configured
-clusterrole.rbac.authorization.k8s.io "traefik-ingress-controller" configured
-persistentvolumeclaim "certificates-claim" unchanged
-deployment.extensions "traefik-ingress-controller" created
-service "traefik-ingress-service" created
+# Install libresat-ingress-controller
+$ helm install --values ../ingress-controller/src/chart/values.yaml --namespace kube-system ../ingress-controller/src/chart
+(...)
+To delete intended-joey, run:
+
+  $ helm delete intended-joey
+
+For more, check out libresat-ingress-controllers documentation: https://libresat.space/docs/services/ingress.html
 
 # Check if it worked
 $ kubectl --namespace=kube-system get pods -w
