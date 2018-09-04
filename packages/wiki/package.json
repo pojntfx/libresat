@@ -8,10 +8,7 @@
     "add-semantic": "cp node_modules/semantic-ui-css/*.min.* src/assets/static/semantic/dist && cp -r node_modules/semantic-ui-css/themes src/assets/static/semantic/dist",
     "build-service-worker": "workbox generateSW workbox-config.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://gitlab.com/libresat/libresat.git"
-  },
+  "repository": "https://gitlab.com/libresat/libresat/tree/master/packages/wiki",
   "keywords": [
     "wiki",
     "gitit",
