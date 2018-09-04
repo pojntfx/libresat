@@ -16,7 +16,7 @@ Edit [src/chart/values.yaml](src/chart/values.yaml) according to your needs.
 
 ```bash
 # Deploy to Kubernetes
-helm install --values src/chart/values.yaml src/chart
+helm install --values src/chart/values.yaml --namespace forum src/chart
 ```
 
 ## Screenshots

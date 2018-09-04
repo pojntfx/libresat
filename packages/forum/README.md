@@ -69,7 +69,7 @@ Edit [src/chart/values.yaml](src/chart/values.yaml) according to your needs.
 # Build image
 docker build src/ -t pojntfx/libresat-forum
 # Deploy to Kubernetes
-helm install --values src/chart/values.yaml src/chart
+helm install --values src/chart/values.yaml --namespace forum src/chart
 ```
 
 ## Screenshots

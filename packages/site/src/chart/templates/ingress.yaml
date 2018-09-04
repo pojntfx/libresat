@@ -2,7 +2,7 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: web
-  namespace: site
+  namespace: {{ .Release.Namespace }}
 spec:
   rules:
     - host: {{ .Values.domain }}

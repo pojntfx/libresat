@@ -7,7 +7,7 @@ s3:
   accessKey: lwjeri1
   secretAccessKey: 349j/343
 targets:
-  - namespace: forum
+  - namespace: {{ .Release.Namespace }}
     app: web
     interval: 10m
     revisions: 10
@@ -16,7 +16,7 @@ targets:
         name: web-data
       - mountPath: /var/tmp/mailman
         name: core-data
-  - namespace: webmail
+  - namespace: {{ .Release.Namespace }}
     app: web
     interval: 10m
     revisions: 10

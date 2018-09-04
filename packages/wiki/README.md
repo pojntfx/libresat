@@ -61,7 +61,7 @@ npm run build-service-worker
 # Build image
 docker build src/ -t pojntfx/libresat-wiki
 # Deploy to Kubernetes
-helm install --values src/chart/values.yaml src/chart
+helm install --values src/chart/values.yaml --namespace wiki src/chart
 ```
 
 ## Screenshots
