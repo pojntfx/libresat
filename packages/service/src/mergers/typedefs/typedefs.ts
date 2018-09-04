@@ -1,11 +1,6 @@
 import { GraphQL } from "../../servers/grapqhl/graphql";
 import { ITypeDefMerger } from "./typedefs.types";
-
-const typeDefs = `
-  type Query {
-    hello(name: String): String!
-  }
-`;
+import { fileLoader, mergeTypes } from "merge-graphql-schemas";
 
 class TypeDefMerger implements ITypeDefMerger {
   name: "typedefs";
@@ -13,7 +8,8 @@ class TypeDefMerger implements ITypeDefMerger {
 
   constructor(public dir: ITypeDefMerger["dir"]) {}
 
-  merge = (): string => typeDefs;
+  merge = () =>
+    mergeTypes(fileLoader(this.dir, { recursive: true }), { all: true });
 }
 
 export { TypeDefMerger };
