@@ -2,7 +2,7 @@
   "name": "@libresat/mail",
   "version": "0.0.1-0",
   "description": "The [LibreSat](https://libresat.space/) distribution of [Rainloop](https://www.rainloop.net/)",
-  "main": "src/rainloop/Chart.yaml",
+  "main": "src/chart/Chart.yaml",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

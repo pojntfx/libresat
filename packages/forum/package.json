@@ -2,7 +2,7 @@
   "name": "@libresat/forum",
   "version": "0.0.1-0",
   "description": "The [LibreSat](https://libresat.space/) distribution of [GNU Mailman](http://www.list.org/)",
-  "main": "src/forum.yaml",
+  "main": "src/chart/Chart.yaml",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
