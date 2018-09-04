@@ -2,7 +2,7 @@
   "name": "@libresat/wiki",
   "version": "0.0.1-0",
   "description": "The [LibreSat](https://libresat.space/) distribution of [Gitit](https://github.com/jgm/gitit)",
-  "main": "src/wiki.yaml",
+  "main": "src/chart/Chart.yaml",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "add-semantic": "cp node_modules/semantic-ui-css/*.min.* src/assets/static/semantic/dist && cp -r node_modules/semantic-ui-css/themes src/assets/static/semantic/dist",

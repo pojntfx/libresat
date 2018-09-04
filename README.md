@@ -41,7 +41,6 @@ npm run dev
 
 ```bash
 # Publish packages to npm
-NPM_CONFIG_OTP=123456 # OTP token for npm
 npm run publish
 ```
 
