@@ -5,4 +5,4 @@ lerna-debug.log
 # Built Packages
 dist/
 # Generated docs
-docs-dist/**
+docs-dist/
