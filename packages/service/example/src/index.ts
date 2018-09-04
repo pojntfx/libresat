@@ -1,5 +1,6 @@
 import {
   composeService,
+  loadPath,
   MongoDB,
   GraphQL,
   TypeDefMerger,
@@ -9,12 +10,12 @@ import {
 
 const { server, database } = composeService({
   name: "example-service",
-  server: new GraphQL({
-    name: "example-service-server",
-    typeDefs: new TypeDefMerger().merge(),
-    resolvers: new ResolverMerger().merge(),
-    port: 3000
-  }),
+  server: new GraphQL(
+    "example-service-server",
+    new TypeDefMerger(loadPath("typeDefs")).merge(),
+    new ResolverMerger().merge(),
+    3000
+  ),
   database: new MongoDB({
     name: "example-service-database",
     models: new ModelMerger().merge(),
