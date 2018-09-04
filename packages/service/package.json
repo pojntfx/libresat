@@ -1,0 +1,28 @@
+{
+  "name": "@libresat/service",
+  "version": "0.0.1-1",
+  "description": "Opinionated utility for creating GraphQL microservices with a database",
+  "main": "src/index.ts",
+  "scripts": {
+    "start": "node dist/index.js",
+    "build": "tsc src/index.ts --outFile dist/index.js",
+    "dev": "nodemon --exec ts-node example/index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://gitlab.com/libresat/libresat/tree/master/packages/service"
+  },
+  "keywords": [
+    "microservice"
+  ],
+  "author": "Felix Pojtinger <felix@pojtinger.com>",
+  "license": "AGPL-3.0",
+  "dependencies": {
+    "typescript": "^3.0.3"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.4",
+    "ts-node": "^7.0.1"
+  }
+}
