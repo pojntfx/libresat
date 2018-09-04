@@ -16,7 +16,7 @@ interface IGraphQLParams {
   name: IServer["name"];
   port: IServer["port"];
   typeDefs: string;
-  resolvers: any[];
+  resolvers: any;
 }
 
 export { IGraphQL, IGraphQLParams };

@@ -10,7 +10,8 @@ const typeDefs = `
 class TypeDefMerger implements ITypeDefMerger {
   name: "typedefs";
   service: GraphQL;
-  dir: string;
+
+  constructor(public dir: ITypeDefMerger["dir"]) {}
 
   merge = (): string => typeDefs;
 }
