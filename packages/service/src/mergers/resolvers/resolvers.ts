@@ -1,10 +1,12 @@
-import { IMerger } from "../merger.types";
 import { GraphQL } from "../../servers/grapqhl/graphql";
+import { IResolverMerger } from "./resolvers.types";
 
-class ResolverMerger implements IMerger {
+class ResolverMerger implements IResolverMerger {
   name: "resolvers";
   service: GraphQL;
   dir: string;
+
+  merge = () => [];
 }
 
 export { ResolverMerger };
