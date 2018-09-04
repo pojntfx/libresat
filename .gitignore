@@ -2,3 +2,5 @@
 node_modules/
 # Lerna
 lerna-debug.log
+# Built Packages
+dist/
