@@ -12,7 +12,7 @@ const { server, database } = composeService({
   name: "example-service",
   server: new GraphQL(
     "example-service-server",
-    new TypeDefMerger(loadPath("typeDefs")).merge(),
+    new TypeDefMerger(loadPath(__dirname, "typeDefs")).merge(),
     new ResolverMerger().merge(),
     3000
   ),
