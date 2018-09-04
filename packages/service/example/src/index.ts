@@ -13,7 +13,7 @@ const { server, database } = composeService({
   server: new GraphQL(
     "example-service-server",
     new TypeDefMerger(loadPath(__dirname, "typeDefs")).merge(),
-    new ResolverMerger().merge(),
+    new ResolverMerger(loadPath(__dirname, "resolvers")).merge(),
     3000
   ),
   database: new MongoDB({
