@@ -1,8 +1,8 @@
-acme:
-  email: felix@pojtinger.com
-  domains: "*.stg1.libresat.space"
-  # domains: "stg1.libresat.space"
+acme: # Certificate authority configuration
+  email: felix@pojtinger.com # Email to which notification emails on cert status should be sent too
+  domains: "*.stg1.libresat.space" # Wildcard domains for which ACME should generate certs (DNS only)
+  # domains: "stg1.libresat.space" # Domain for which ACME should generate a cert (DNS + HTTP)
   challenge:
-    type: dns
-    # type: http
-    gandiV5ApiKey: asfw345wfsdfs
+    type: dns # DNS: Supports wildcard HTTPS subdomains
+    # type: http # HTTP: Supports wildcard HTTP subdomains, but only one HTTPS domain
+    gandiV5ApiKey: asfw345wfsdfs # Gandi V5 Production API key (DNS only)
