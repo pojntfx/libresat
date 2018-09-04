@@ -11,4 +11,4 @@ interface IResolverMerger extends IMerger {
   merge: MergeResolvers;
 }
 
-export { IResolverMerger };
+export { MergedResolvers, IResolverMerger };

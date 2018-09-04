@@ -5,7 +5,7 @@
   "main": "src/index.ts",
   "scripts": {
     "start": "node dist/index.js",
-    "build": "tsc src/index.ts --outFile dist/index.js",
+    "build": "tsc -p tsconfig.json",
     "dev": "nodemon --exec ts-node example/src/index.ts",
     "build-docs": "typedoc --out docs-dist/",
     "serve-docs": "serve docs/",
