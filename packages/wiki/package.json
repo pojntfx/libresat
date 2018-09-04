@@ -1,6 +1,6 @@
 {
   "name": "@libresat/wiki",
-  "version": "0.0.1-0",
+  "version": "0.0.1-1",
   "description": "The [LibreSat](https://libresat.space/) distribution of [Gitit](https://github.com/jgm/gitit)",
   "main": "src/chart/Chart.yaml",
   "scripts": {
