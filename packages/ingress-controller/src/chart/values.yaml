@@ -1,0 +1,8 @@
+acme:
+  email: felix@pojtinger.com
+  domains: "*.stg1.libresat.space"
+  # domains: "stg1.libresat.space"
+  challenge:
+    type: dns
+    # type: http
+    gandiV5ApiKey: asfw345wfsdfs

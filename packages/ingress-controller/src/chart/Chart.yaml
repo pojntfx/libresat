@@ -1,0 +1,11 @@
+apiVersion: v1
+name: libresat-ingress-controller
+version: 0.0.1-0
+description: The LibreSat Distribution of Traefik
+home: https://libresat.space/docs/services/ingress.html
+sources:
+  - https://gitlab.com/libresat/libresat.git
+maintainers:
+  - name: Felix Pojtinger
+    email: felix@pojtinger.com
+    url: https://twitter.com/pojntfx
