@@ -1,8 +1,10 @@
-import { composeService } from "../../src/utils/composeService";
-import { GraphQL } from "../../src/servers/grapqhl/graphql";
-import { MongoDB } from "../../src/databases/mongodb/mongodb";
-import { TypeDefMerger } from "../../src/mergers/typedefs/typedefs";
-import { ResolverMerger } from "../../src/mergers/resolvers/resolvers";
+import {
+  composeService,
+  MongoDB,
+  GraphQL,
+  TypeDefMerger,
+  ResolverMerger
+} from "../../src/index";
 
 const { server, database } = composeService({
   name: "example-service",
