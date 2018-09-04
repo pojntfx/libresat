@@ -1,0 +1,26 @@
+{
+  "name": "@libresat/ingress-controller",
+  "version": "0.0.1-0",
+  "description": "The [LibreSat](https://libresat.space/) distribution of [Traefik](https://traefik.io/)",
+  "main": "src/chart/Chart.yaml",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/libresat/libresat.git"
+  },
+  "keywords": [
+    "kubernetes",
+    "ingress",
+    "ingress-controller",
+    "traefik",
+    "reverse-proxy"
+  ],
+  "author": "Felicitas Pojtinger <felicitas@pojtinger.com>",
+  "license": "AGPL-3.0",
+  "bugs": {
+    "url": "https://gitlab.com/libresat/libresat/issues"
+  },
+  "homepage": "https://gitlab.com/libresat/libresat#README"
+}
