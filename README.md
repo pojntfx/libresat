@@ -26,11 +26,24 @@ The Free/Libre and Open Source Satellite Development and Control Platform, since
 
 ## Usage
 
-> TODO: Add usage
+```bash
+# Install dependencies #1
+npm install
+# Install dependencies #2
+npm run bootstrap
+# Start inidividual package
+npm run dev -- --scope @libresat/site
+# Start all packages
+npm run dev
+```
 
 ## Deployment
 
-> TODO: Add deployment
+```bash
+# Publish packages to npm
+NPM_CONFIG_OTP=123456 # OTP token for npm
+npm run publish
+```
 
 ## Screenshots
 
