@@ -22,26 +22,40 @@ class Main extends Command {
 
   handleFile(file) {
     const instanceOfHost = (object: Host): object is Host =>
-      // console.log(Host)
-      "spec" in object ? true : false;
+      "apiVersion" in object &&
+      "kind" in object &&
+      "metadata" in object &&
+      "spec" in object
+        ? "name" in object.metadata
+          ? "description" in object.metadata
+            ? true
+            : false
+          : false
+            ? "ip" in object.spec
+              ? "publicKey" in object.spec
+                ? true
+                : false
+              : false
+            : false
+        : false;
 
     if (instanceOfHost(file)) {
       const host1 = deployableFactory(Host, file);
-      if (instanceOfHost(host1)) {
-        console.log(host1);
-      }
+      this.log(host1);
+    } else {
+      this.error("The supplied host is invalid.");
     }
   }
 
   async run() {
     const {
       args: { file }
-    } = super.parse(Main);
+    } = this.parse(Main);
 
     if (file) {
       this.handleFile(loadFile(file));
     } else {
-      super.warn("Please provide a YAML file to parse.");
+      this.warn("Please provide a YAML file to parse.");
     }
   }
 }
