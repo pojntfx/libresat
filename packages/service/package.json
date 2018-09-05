@@ -5,12 +5,13 @@
   "main": "dist/index.js",
   "bin": "dist/example/src/index.js",
   "scripts": {
-    "dev": "nodemon --exec ts-node example/src/index.ts",
+    "dev": "nodemon --ext json,ts,graphql --exec ts-node example/src/index.ts",
     "build": "tsc -p tsconfig.json && cp -r example/src/typeDefs dist/example/src/",
     "build:docs": "typedoc --out docs-dist/",
     "build:binary": "pkg package.json --out-path dist/",
     "start": "node dist/index.js",
     "start:docs": "serve docs-dist/",
+    "start:binary": "chmod +x dist/service-linux && dist/service-linux",
     "prepublish": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
