@@ -18,6 +18,19 @@ class GraphQL implements IGraphQL {
     });
     return this.server;
   }
+
+  listen() {
+    this.server.start({ port: this.port }, ({ port }) =>
+      console.log(`${this.name} is listening on port ${port}!`)
+    );
+    return this;
+  }
+
+  start() {
+    this.createServer();
+    this.listen();
+    return this;
+  }
 }
 
 export { GraphQL };

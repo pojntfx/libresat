@@ -15,7 +15,7 @@ const { server, database } = composeService({
     new TypeDefMerger(loadPath(__dirname, "typeDefs")).merge(),
     new ResolverMerger(loadPath(__dirname, "resolvers")).merge(),
     3000
-  ),
+  ).start(),
   database: new MongoDB({
     name: "example-service-database",
     models: new ModelMerger().merge(),
