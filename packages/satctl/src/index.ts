@@ -1,8 +1,13 @@
 import { Command, flags } from "@oclif/command";
 import { loadFile } from "./utils";
-import { validate, ObjectDoesNotPassTypeGuardException } from "./validate";
 const { version, help } = flags;
-import { Host, deployableFactory } from "@libresat/host-agent-core";
+import {
+  Host,
+  Validator,
+  HostValidator,
+  ObjectDoesNotPassTypeGuardException,
+  deployableFactory
+} from "@libresat/host-agent-core";
 
 /**
  * Main command
@@ -23,13 +28,7 @@ class Main extends Command {
 
   handleFile(file) {
     try {
-      validate(file, [
-        ["apiVersion", "kind"],
-        [
-          [["metadata"], ["name", "description"]],
-          [["spec"], ["ip", "publicKey"]]
-        ]
-      ]);
+      new Validator(file, HostValidator).evaluate();
       const host1 = deployableFactory(Host, file);
       this.log(host1);
     } catch (e) {

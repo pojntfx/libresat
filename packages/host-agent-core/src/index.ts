@@ -1,3 +1,15 @@
-export { Deployable, IHost, Host, Cloud, User, Cluster } from "./types";
+export {
+  Deployable,
+  IHost,
+  Host,
+  Cloud,
+  User,
+  Cluster,
+  HostValidator
+} from "./types";
 
-export { deployableFactory } from "./utils";
+export {
+  Validator,
+  ObjectDoesNotPassTypeGuardException,
+  deployableFactory
+} from "./utils";
