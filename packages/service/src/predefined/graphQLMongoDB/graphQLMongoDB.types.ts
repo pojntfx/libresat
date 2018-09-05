@@ -18,12 +18,17 @@ interface IGraphQLMongoDBStarter extends IPredefinedStarter {
   (): IExportedGraphQLMongoDB;
 }
 
+interface IGraphQLMongoDBHandleErrors {
+  (database: Mongoose): void;
+}
+
 // The service itself
 interface IGraphQLMongoDB extends IPredefined {
   service: IService;
   server: IGraphQL;
   database: IMongoDB;
   start: IGraphQLMongoDBStarter;
+  registerErrorHandlers: IGraphQLMongoDBHandleErrors;
 }
 
 interface IGraphQLMongoDBParams extends IPredefined {
