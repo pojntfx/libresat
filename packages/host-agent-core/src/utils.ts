@@ -1,4 +1,4 @@
-import { IDeployableFactory, IValidator } from "./types";
+import { IDeployableFactory, IValidators, IValidator } from "./types";
 
 const deployableFactory: IDeployableFactory = (
   DeployableClass,
@@ -13,13 +13,13 @@ const deployableFactory: IDeployableFactory = (
 
 class ObjectDoesNotPassTypeGuardException extends Error {}
 
-class Validator {
+class Validator implements IValidator {
   isValid: boolean = true;
 
-  constructor(public object: any, public validators: IValidator) {}
+  constructor(public object: any, public validators: IValidators) {}
 
-  validate(object: any, validators: IValidator) {
-    if (this.isValid && object !== undefined) {
+  validate(object: any, validators: IValidators) {
+    if (this.isValid && object !== (undefined || null)) {
       for (let validator of validators) {
         for (let nestedValidator of validator) {
           if (typeof nestedValidator === "string") {
