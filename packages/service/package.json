@@ -24,6 +24,7 @@
   "author": "Felicitas Pojtinger <felicitas@pojtinger.com>",
   "license": "AGPL-3.0",
   "dependencies": {
+    "@types/mongoose": "^5.2.9",
     "graphql-yoga": "^1.16.2",
     "merge-graphql-schemas": "^1.5.3",
     "mongoose": "^5.2.13",

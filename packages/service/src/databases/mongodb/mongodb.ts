@@ -1,14 +1,21 @@
 import { IMongoDB } from "./mongodb.types";
+import * as mongoose from "mongoose";
 
 class MongoDB implements IMongoDB {
-  name: IMongoDB["name"];
-  models: IMongoDB["models"];
-  url: IMongoDB["url"];
+  database: IMongoDB["database"];
 
-  constructor({ name, models, url }: IMongoDB) {
-    this.name = name;
-    this.models = models;
-    this.url = url;
+  constructor(public name: IMongoDB["name"], public url: IMongoDB["url"]) {}
+
+  connect() {
+    mongoose.connect(this.url);
+    this.database = mongoose;
+    console.log(`${this.name} is connected to ${this.url}!`);
+    return mongoose.connection;
+  }
+
+  start() {
+    this.connect();
+    return this;
   }
 }
 
