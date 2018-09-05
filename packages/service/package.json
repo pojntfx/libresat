@@ -1,6 +1,6 @@
 {
   "name": "@libresat/service",
-  "version": "0.0.1-4",
+  "version": "0.0.1-5",
   "description": "Opinionated utility for creating GraphQL microservices with a database",
   "main": "dist/index.js",
   "bin": "dist/example/src/index.js",
