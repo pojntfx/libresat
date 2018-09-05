@@ -45,6 +45,13 @@ class Host extends Deployable implements IHost {
   }
 }
 
+type IValidator = [string[], string[][][]?];
+
+const HostValidator: IValidator = [
+  ["apiVersion", "kind"],
+  [[["metadata"], ["name", "description"]], [["spec"], ["ip", "publicKey"]]]
+];
+
 type HostName = IHost["metadata"]["name"];
 
 interface ICloudSpec {
@@ -124,4 +131,14 @@ class Cluster extends Deployable implements ICluster {
   }
 }
 
-export { IDeployableFactory, Deployable, IHost, Host, Cloud, User, Cluster };
+export {
+  IDeployableFactory,
+  Deployable,
+  IHost,
+  Host,
+  Cloud,
+  User,
+  Cluster,
+  IValidator,
+  HostValidator
+};
