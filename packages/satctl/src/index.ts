@@ -1,6 +1,6 @@
 import { Command, flags } from "@oclif/command";
 import { loadFile } from "./utils";
-import { validate } from "./validate";
+import { validate, ObjectDoesNotPassTypeGuardException } from "./validate";
 const { version, help } = flags;
 import { Host, deployableFactory } from "@libresat/host-agent-core";
 
@@ -22,24 +22,6 @@ class Main extends Command {
   ];
 
   handleFile(file) {
-    // const instanceOfHost = (object: Host): object is Host =>
-    //   "apiVersion" in object &&
-    //   "kind" in object &&
-    //   "metadata" in object &&
-    //   "spec" in object
-    //     ? "name" in object.metadata
-    //       ? "description" in object.metadata
-    //         ? true
-    //         : false
-    //       : false
-    //         ? "ip" in object.spec
-    //           ? "publicKey" in object.spec
-    //             ? true
-    //             : false
-    //           : false
-    //         : false
-    //     : false;
-
     try {
       validate(file, [
         ["apiVersion", "kind"],
@@ -51,9 +33,13 @@ class Main extends Command {
       const host1 = deployableFactory(Host, file);
       this.log(host1);
     } catch (e) {
-      this.warn(
-        `${e}. Aborting, please check whether deployable is implemented correctly!`
-      );
+      if (e instanceof ObjectDoesNotPassTypeGuardException) {
+        this.warn(
+          `${e}. Aborting, please check whether deployable is implemented correctly!`
+        );
+      } else {
+        this.error(e);
+      }
     }
   }
 
