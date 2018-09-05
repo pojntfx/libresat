@@ -5,6 +5,12 @@
   "main": "lerna.json",
   "scripts": {
     "dev": "lerna run dev --parallel",
+    "build": "lerna run build --parallel",
+    "build:binary": "lerna run build:binary --parallel",
+    "build:docs": "lerna run build:docs --parallel",
+    "start": "lerna run start --parallel",
+    "start:docs": "lerna run start:docs --parallel",
+    "start:binary": "lerna run start:binary --parallel",
     "bootstrap": "lerna bootstrap",
     "test": "lerna run test",
     "publish": "lerna publish"

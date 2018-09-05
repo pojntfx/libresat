@@ -6,6 +6,8 @@ import { TypeDefMerger } from "../../mergers/typedefs/typedefs";
 import { ResolverMerger } from "../../mergers/resolvers/resolvers";
 import { MongoDB } from "../../databases/mongodb/mongodb";
 import { GraphQL } from "../../servers/grapqhl/graphql";
+import { Mongoose } from "mongoose";
+import { GraphQLServer } from "graphql-yoga";
 
 class GraphQLMongoDB implements IGraphQLMongoDB {
   service: Service;
@@ -32,8 +34,8 @@ class GraphQLMongoDB implements IGraphQLMongoDB {
     ]).start();
     return {
       service: this.service,
-      server: (<GraphQL>this.service.services[0]).server,
-      database: (<MongoDB>this.service.services[1]).database
+      server: <GraphQLServer>(<GraphQL>this.service.services[0]).server,
+      database: <Mongoose>(<MongoDB>this.service.services[1]).database
     };
   }
 }

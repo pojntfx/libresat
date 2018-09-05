@@ -1,0 +1,9 @@
+type Hello {
+  _id: String!
+  name: String!
+}
+
+type Query {
+  createHello(name: String): Hello!
+  getAllHellos: [Hello!]!
+}
