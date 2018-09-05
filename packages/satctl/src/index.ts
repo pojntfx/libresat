@@ -1,5 +1,6 @@
 import { Command, flags } from "@oclif/command";
 import { loadFile } from "./utils";
+import { validate } from "./validate";
 const { version, help } = flags;
 import { Host, deployableFactory } from "@libresat/host-agent-core";
 
@@ -21,29 +22,38 @@ class Main extends Command {
   ];
 
   handleFile(file) {
-    const instanceOfHost = (object: Host): object is Host =>
-      "apiVersion" in object &&
-      "kind" in object &&
-      "metadata" in object &&
-      "spec" in object
-        ? "name" in object.metadata
-          ? "description" in object.metadata
-            ? true
-            : false
-          : false
-            ? "ip" in object.spec
-              ? "publicKey" in object.spec
-                ? true
-                : false
-              : false
-            : false
-        : false;
+    // const instanceOfHost = (object: Host): object is Host =>
+    //   "apiVersion" in object &&
+    //   "kind" in object &&
+    //   "metadata" in object &&
+    //   "spec" in object
+    //     ? "name" in object.metadata
+    //       ? "description" in object.metadata
+    //         ? true
+    //         : false
+    //       : false
+    //         ? "ip" in object.spec
+    //           ? "publicKey" in object.spec
+    //             ? true
+    //             : false
+    //           : false
+    //         : false
+    //     : false;
 
-    if (instanceOfHost(file)) {
+    try {
+      validate(file, [
+        ["apiVersion", "kind"],
+        [
+          [["metadata"], ["name", "description"]],
+          [["spec"], ["ip", "publicKey"]]
+        ]
+      ]);
       const host1 = deployableFactory(Host, file);
       this.log(host1);
-    } else {
-      this.error("The supplied host is invalid.");
+    } catch (e) {
+      this.warn(
+        `${e}. Aborting, please check whether deployable is implemented correctly!`
+      );
     }
   }
 
