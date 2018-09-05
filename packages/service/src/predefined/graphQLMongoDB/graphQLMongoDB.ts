@@ -8,6 +8,7 @@ import { MongoDB } from "../../databases/mongodb/mongodb";
 import { GraphQL } from "../../servers/grapqhl/graphql";
 import { Mongoose } from "mongoose";
 import { GraphQLServer } from "graphql-yoga";
+import { ConnectionToDatabaseFailedException } from "./exception/connectionToDatabaseFailedException";
 
 class GraphQLMongoDB implements IGraphQLMongoDB {
   service: Service;
@@ -22,6 +23,13 @@ class GraphQLMongoDB implements IGraphQLMongoDB {
     private resolverDir: IGraphQLMongoDBParams["resolverDir"]
   ) {}
 
+  registerErrorHandlers(database) {
+    const { connection } = database;
+    connection.on("error", error => {
+      throw new ConnectionToDatabaseFailedException(this.dbUrl, error);
+    });
+  }
+
   start() {
     this.service = new Service(this.name, [
       new GraphQL(
@@ -32,10 +40,13 @@ class GraphQLMongoDB implements IGraphQLMongoDB {
       ).start(),
       new MongoDB(`${this.name}-database`, this.dbUrl).start()
     ]).start();
+    const server = <GraphQLServer>(<GraphQL>this.service.services[0]).server;
+    const database = <Mongoose>(<MongoDB>this.service.services[1]).database;
+    this.registerErrorHandlers(database);
     return {
       service: this.service,
-      server: <GraphQLServer>(<GraphQL>this.service.services[0]).server,
-      database: <Mongoose>(<MongoDB>this.service.services[1]).database
+      server,
+      database
     };
   }
 }
