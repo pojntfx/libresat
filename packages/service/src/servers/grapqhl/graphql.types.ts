@@ -5,11 +5,17 @@ interface IGraphQLServerCreator {
   (): GraphQLServer;
 }
 
+interface IGraphQLServerStarter {
+  (): any;
+}
+
 interface IGraphQL extends IServer {
   typeDefs: string;
   resolvers: any;
   server: GraphQLServer;
   createServer: IGraphQLServerCreator;
+  listen: IGraphQLServerStarter;
+  start: IGraphQLServerStarter;
 }
 
 interface IGraphQLParams {
