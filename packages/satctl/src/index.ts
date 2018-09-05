@@ -1,7 +1,7 @@
 import { Command, flags } from "@oclif/command";
 import { loadFile } from "./utils";
 const { version, help } = flags;
-import { sayHello } from "@libresat/host-agent-core";
+import { Host, deployableFactory } from "@libresat/host-agent-core";
 
 /**
  * Main command
@@ -20,15 +20,26 @@ class Main extends Command {
     }
   ];
 
+  handleFile(file) {
+    const instanceOfHost = (object: Host): object is Host =>
+      // console.log(Host)
+      "spec" in object ? true : false;
+
+    if (instanceOfHost(file)) {
+      const host1 = deployableFactory(Host, file);
+      if (instanceOfHost(host1)) {
+        console.log(host1);
+      }
+    }
+  }
+
   async run() {
     const {
       args: { file }
     } = super.parse(Main);
 
-    super.log(sayHello());
-
     if (file) {
-      super.log(JSON.stringify(loadFile(file), null, 2));
+      this.handleFile(loadFile(file));
     } else {
       super.warn("Please provide a YAML file to parse.");
     }
