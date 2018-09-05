@@ -21,4 +21,4 @@ const validate = (object: any, validators: any[]) => {
   }
 };
 
-export { validate };
+export { validate, ObjectDoesNotPassTypeGuardException };
