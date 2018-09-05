@@ -2,13 +2,16 @@
   "name": "@libresat/service",
   "version": "0.0.1-1",
   "description": "Opinionated utility for creating GraphQL microservices with a database",
-  "main": "src/index.ts",
+  "main": "dist/index.js",
+  "bin": "dist/example/src/index.js",
   "scripts": {
-    "start": "node dist/index.js",
-    "build": "tsc -p tsconfig.json",
     "dev": "nodemon --exec ts-node example/src/index.ts",
-    "build-docs": "typedoc --out docs-dist/",
-    "serve-docs": "serve docs-dist/",
+    "build": "tsc -p tsconfig.json && cp -r example/src/typeDefs dist/example/src/",
+    "build:docs": "typedoc --out docs-dist/",
+    "build:binary": "pkg package.json --out-path dist/",
+    "start": "node dist/index.js",
+    "start:docs": "serve docs-dist/",
+    "prepublish": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -26,8 +29,13 @@
     "mongoose": "^5.2.13",
     "typescript": "^3.0.3"
   },
+  "pkg": {
+    "scripts": "dist/**/*.js",
+    "assets": "dist/**/*.graphql"
+  },
   "devDependencies": {
     "nodemon": "^1.18.4",
+    "pkg": "^4.3.4",
     "serve": "^10.0.0",
     "ts-node": "^7.0.1",
     "typedoc": "^0.12.0"
