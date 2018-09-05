@@ -1,0 +1,37 @@
+{
+  "name": "@libresat/host-agent-core",
+  "version": "0.0.1-0",
+  "description": "Core functionality of the host agent, a utility for managing bare-metal hosts in the [LibreSat Platform](https://libresat.space/)",
+  "main": "dist/index.js",
+  "scripts": {
+    "dev": "nodemon --ext ts --watch src/ --exec npm run build",
+    "build": "tsc -p tsconfig.json",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://gitlab.com/libresat/libresat/tree/master/packages/host-manager-core"
+  },
+  "keywords": [
+    "agent",
+    "bare-metal",
+    "kubernetes",
+    "linux",
+    "cloud",
+    "deployment"
+  ],
+  "author": "Felicitas Pojtinger <felicitas@pojtinger.com>",
+  "license": "AGPL-3.0",
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "typescript": "^3.0.3"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.4",
+    "serve": "^10.0.0",
+    "ts-node": "^7.0.1",
+    "typedoc": "^0.12.0"
+  }
+}

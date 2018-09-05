@@ -1,6 +1,7 @@
 import { Command, flags } from "@oclif/command";
 import { loadFile } from "./utils";
 const { version, help } = flags;
+import { sayHello } from "@libresat/host-agent-core";
 
 /**
  * Main command
@@ -24,8 +25,10 @@ class Main extends Command {
       args: { file }
     } = super.parse(Main);
 
+    super.log(sayHello());
+
     if (file) {
-      console.log(JSON.stringify(loadFile(file), null, 2));
+      super.log(JSON.stringify(loadFile(file), null, 2));
     } else {
       super.warn("Please provide a YAML file to parse.");
     }
