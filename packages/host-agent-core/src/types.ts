@@ -10,6 +10,20 @@ interface IDeployable {
   spec: any;
 }
 
+type IValidators = [string[], string[][][]?];
+
+interface IValidatorValidator {
+  (object: IValidator["object"], validators: IValidators): void;
+}
+
+interface IValidator {
+  isValid: boolean;
+  object: any;
+  validators: IValidators;
+  validate: IValidatorValidator;
+  evaluate: IValidatorValidator;
+}
+
 interface IDeployableFactory {
   (DeployableClass: typeof Deployable, rawDeployable: IDeployable): IDeployable;
 }
@@ -45,9 +59,7 @@ class Host extends Deployable implements IHost {
   }
 }
 
-type IValidator = [string[], string[][][]?];
-
-const HostValidator: IValidator = [
+const HostValidator: IValidators = [
   ["apiVersion", "kind"],
   [[["metadata"], ["name", "description"]], [["spec"], ["ip", "publicKey"]]]
 ];
@@ -139,6 +151,7 @@ export {
   Cloud,
   User,
   Cluster,
+  IValidators,
   IValidator,
   HostValidator
 };
