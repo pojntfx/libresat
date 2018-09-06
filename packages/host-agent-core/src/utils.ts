@@ -36,8 +36,17 @@ class Validator implements IValidator {
           } else if (
             this.getArrays(object[nestedValidator[0][0]]).length !== 0
           ) {
-            console.log(this.getArrays(object[nestedValidator[0][0]]));
+            const checkable = object[nestedValidator[0][0]];
+            const arrays = this.getArrays(checkable);
+            const nestedValidators = this.getNestedValidators(checkable);
+            for (let array of arrays) {
+              this.validate(array, [nestedValidators]);
+            }
           } else {
+            const nestedObject = object[nestedValidator[0][0]];
+            const nestedNestedValidator = nestedValidator[1];
+            console.log(nestedObject);
+            console.log(nestedNestedValidator);
             this.validate(object[nestedValidator[0][0]], [nestedValidator[1]]);
           }
         }
@@ -52,10 +61,21 @@ class Validator implements IValidator {
     for (let key in checkable) {
       const isArray = Array.isArray(checkable[key]);
       if (isArray) {
-        arrays.push(checkable[key]);
+        arrays.push(checkable);
       }
     }
     return arrays;
+  }
+
+  getNestedValidators(checkable) {
+    let nestedValidators = [];
+    for (let key in checkable) {
+      const isArray = Array.isArray(checkable[key]);
+      if (isArray) {
+        nestedValidators.push(key);
+      }
+    }
+    return nestedValidators;
   }
 
   evaluate() {
