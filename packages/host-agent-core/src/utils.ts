@@ -33,6 +33,10 @@ class Validator implements IValidator {
                 `Object does pass type guard`
               );
             }
+          } else if (
+            this.getArrays(object[nestedValidator[0][0]]).length !== 0
+          ) {
+            console.log(this.getArrays(object[nestedValidator[0][0]]));
           } else {
             this.validate(object[nestedValidator[0][0]], [nestedValidator[1]]);
           }
@@ -41,6 +45,17 @@ class Validator implements IValidator {
     } else {
       throw new ObjectDoesNotPassTypeGuardError(`Object does pass type guard`);
     }
+  }
+
+  getArrays(checkable) {
+    let arrays = [];
+    for (let key in checkable) {
+      const isArray = Array.isArray(checkable[key]);
+      if (isArray) {
+        arrays.push(checkable[key]);
+      }
+    }
+    return arrays;
   }
 
   evaluate() {

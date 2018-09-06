@@ -90,7 +90,7 @@ const CloudValidator: IValidators = [
   ["apiVersion", "kind"],
   [
     [["metadata"], ["name", "description"]],
-    [["spec"], ["domain"] /*, [["hosts"], ["name"]] */]
+    [["spec"], ["domain", [["hosts"], ["name"]]]]
   ]
 ];
 
