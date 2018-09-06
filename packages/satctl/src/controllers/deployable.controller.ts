@@ -8,6 +8,7 @@ import {
 import { UnknownDeployableError } from "../errors/unknownDeployableError";
 import { DeployableTypeNotSpecifiedError } from "../errors/deployableTypeNotSpecifiedError";
 import { FileNotFoundError } from "../errors/fileNotFoundErrror";
+import { IncompatibleAPIVersionError } from "../errors/incompatibleAPIVersionError";
 
 class DeployableController {
   static create(content) {
@@ -22,7 +23,14 @@ class DeployableController {
         switch (type) {
           case "Host": {
             new Validator(file, HostValidator).evaluate();
-            return deployableFactory(Host, file);
+            if (
+              file.apiVersion ===
+              "https://standards.libresat.space/satctl/v0.0.1-0"
+            ) {
+              return deployableFactory(Host, file);
+            } else {
+              throw new IncompatibleAPIVersionError(file.apiVersion);
+            }
           }
         }
         throw new UnknownDeployableError();
