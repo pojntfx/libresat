@@ -1,13 +1,10 @@
 import { Command, flags } from "@oclif/command";
 import { loadFile } from "./utils";
 const { version, help } = flags;
-import {
-  Host,
-  Validator,
-  HostValidator,
-  ObjectDoesNotPassTypeGuardException,
-  deployableFactory
-} from "@libresat/host-agent-core";
+import { ObjectDoesNotPassTypeGuardError } from "@libresat/host-agent-core";
+import { DeployableController } from "./controllers/deployable.controller";
+import { UnknownDeployableError } from "./errors/unknownDeployableError";
+import { DeployableTypeNotSpecifiedError } from "./errors/deployableTypeNotSpecifiedError";
 
 /**
  * Main command
@@ -28,16 +25,19 @@ class Main extends Command {
 
   handleFile(file) {
     try {
-      new Validator(file, HostValidator).evaluate();
-      const host1 = deployableFactory(Host, file);
-      this.log(host1);
+      const { type, content } = DeployableController.create(file);
+      this.log(type, JSON.stringify(content, null, 2));
     } catch (e) {
-      if (e instanceof ObjectDoesNotPassTypeGuardException) {
+      if (
+        e instanceof UnknownDeployableError ||
+        DeployableTypeNotSpecifiedError ||
+        ObjectDoesNotPassTypeGuardError
+      ) {
         this.warn(
           `${e}. Aborting, please check whether deployable is implemented correctly!`
         );
       } else {
-        this.error(e);
+        throw e;
       }
     }
   }

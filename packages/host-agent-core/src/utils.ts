@@ -11,7 +11,7 @@ const deployableFactory: IDeployableFactory = (
   return new DeployableClass(...args);
 };
 
-class ObjectDoesNotPassTypeGuardException extends Error {}
+class ObjectDoesNotPassTypeGuardError extends Error {}
 
 class Validator implements IValidator {
   isValid: boolean = true;
@@ -32,7 +32,7 @@ class Validator implements IValidator {
         }
       }
     } else {
-      throw new ObjectDoesNotPassTypeGuardException(
+      throw new ObjectDoesNotPassTypeGuardError(
         `Object does pass type guard`
       );
     }
@@ -43,4 +43,4 @@ class Validator implements IValidator {
   }
 }
 
-export { Validator, ObjectDoesNotPassTypeGuardException, deployableFactory };
+export { Validator, ObjectDoesNotPassTypeGuardError, deployableFactory };

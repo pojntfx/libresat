@@ -10,6 +10,6 @@ export {
 
 export {
   Validator,
-  ObjectDoesNotPassTypeGuardException,
+  ObjectDoesNotPassTypeGuardError,
   deployableFactory
 } from "./utils";
