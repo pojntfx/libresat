@@ -23,8 +23,15 @@ class Validator implements IValidator {
       for (let validator of validators) {
         for (let nestedValidator of validator) {
           if (typeof nestedValidator === "string") {
-            if (!object.hasOwnProperty(nestedValidator)) {
+            if (
+              object === undefined ||
+              null ||
+              object.hasOwnProperty(nestedValidator) === false
+            ) {
               this.isValid = false;
+              throw new ObjectDoesNotPassTypeGuardError(
+                `Object does pass type guard`
+              );
             }
           } else {
             this.validate(object[nestedValidator[0][0]], [nestedValidator[1]]);
@@ -32,9 +39,7 @@ class Validator implements IValidator {
         }
       }
     } else {
-      throw new ObjectDoesNotPassTypeGuardError(
-        `Object does pass type guard`
-      );
+      throw new ObjectDoesNotPassTypeGuardError(`Object does pass type guard`);
     }
   }
 

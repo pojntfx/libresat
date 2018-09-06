@@ -2,10 +2,11 @@ export {
   Deployable,
   IHost,
   Host,
+  HostValidator,
   Cloud,
+  CloudValidator,
   User,
-  Cluster,
-  HostValidator
+  Cluster
 } from "./types";
 
 export {

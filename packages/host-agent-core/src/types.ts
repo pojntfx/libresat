@@ -10,7 +10,7 @@ interface IDeployable {
   spec: any;
 }
 
-type IValidators = [string[], string[][][]?];
+type IValidators = [string[], any[][][]?];
 
 interface IValidatorValidator {
   (object: IValidator["object"], validators: IValidators): void;
@@ -86,6 +86,14 @@ class Cloud extends Deployable implements ICloud {
   }
 }
 
+const CloudValidator: IValidators = [
+  ["apiVersion", "kind"],
+  [
+    [["metadata"], ["name", "description"]],
+    [["spec"], ["domain"] /*, [["hosts"], ["name"]] */]
+  ]
+];
+
 type CloudName = ICloud["metadata"]["name"];
 
 interface ICloudDeployableMetadata extends IMetadata {
@@ -148,10 +156,11 @@ export {
   Deployable,
   IHost,
   Host,
+  HostValidator,
   Cloud,
+  CloudValidator,
   User,
   Cluster,
   IValidators,
-  IValidator,
-  HostValidator
+  IValidator
 };

@@ -3,6 +3,8 @@ import {
   Validator,
   HostValidator,
   Host,
+  CloudValidator,
+  Cloud,
   deployableFactory
 } from "@libresat/host-agent-core";
 import { UnknownDeployableError } from "../errors/unknownDeployableError";
@@ -32,8 +34,21 @@ class DeployableController {
               throw new IncompatibleAPIVersionError(file.apiVersion);
             }
           }
+          case "Cloud": {
+            new Validator(file, CloudValidator).evaluate();
+            if (
+              file.apiVersion ===
+              "https://standards.libresat.space/satctl/v0.0.1-0"
+            ) {
+              return deployableFactory(Cloud, file);
+            } else {
+              throw new IncompatibleAPIVersionError(file.apiVersion);
+            }
+          }
+          default: {
+            throw new UnknownDeployableError();
+          }
         }
-        throw new UnknownDeployableError();
       } else {
         throw new DeployableTypeNotSpecifiedError();
       }
