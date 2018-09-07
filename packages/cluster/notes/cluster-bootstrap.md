@@ -78,3 +78,189 @@ $ kubectl get nodes
 NAME              STATUS    ROLES     AGE       VERSION
 libresat-node-1   Ready     master    16d       v1.11.2
 ```
+
+## GraphQL Queries and Mutations
+
+> The args implement the IDeployable interfaces, the data is defined by GraphQL types.
+
+```graphql
+login(username: "platformadmin", password: "platformsecret") {
+  data {
+    token
+  }
+}
+
+createOrganisation(apiVersion, metadata, spec) {
+  data {
+    apiVersion
+    kind
+    metadata {
+      name
+      description
+    }
+    spec {
+      email
+      secret
+      roles
+    }
+  }
+}
+
+login(username: "organisationname", password: "organisationsecret") {
+  data {
+    token
+  }
+}
+
+createRole(apiVersion, metadata, spec) {
+  apiVersion
+  kind
+  metadata {
+    name
+    description
+  }
+  spec {
+    email
+    secret
+    access {
+      readUser
+      writeUser
+      readHost
+      writeHost
+      createCloud
+      writeCloud
+    }
+    users
+  }
+}
+
+login(username: "rolename", password: "rolesecret") {
+  data {
+    token
+  }
+}
+
+createUser(apiVersion, metadata, spec) {
+  data {
+    apiVersion
+    kind
+    metadata {
+      name
+      description
+    }
+    spec {
+      email
+      secret
+      roles
+      organisation
+    }
+  }
+}
+
+login(organisation: "organisationname", username: "username", password: "usersecret") {
+  data {
+    token
+  }
+}
+
+createHost(apiVersion, metadata, spec) {
+  data {
+    apiVersion
+    kind
+    metadata {
+      name
+      description
+    }
+    spec {
+      ip
+      publicKey
+      organisation
+    }
+  }
+}
+
+createCloud(apiVersion, metadata, spec) {
+  data {
+    apiVersion
+    kind
+    metadata {
+      name
+      description
+    }
+    spec {
+      domain
+      hosts
+      organisation
+    }
+  }
+}
+
+createCluster(apiVersion, metadata, spec) {
+  data {
+    apiVersion
+    kind
+    metadata {
+      name
+      description
+      cloud
+    }
+    spec {
+      domain
+      storage {
+        provider
+        token
+      }
+      acme {
+        provider
+        token
+      }
+      hosts
+    }
+  }
+}
+
+allClusters {
+  data {
+    metadata {
+      cloud {
+        spec {
+          organisation {
+            spec {
+              roles {
+                spec {
+                  users {
+                    metadata {
+                      name
+                    }
+                    spec {
+                      email
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    spec {
+      hosts {
+        metadata {
+          name
+        }
+        spec {
+          ip
+        }
+      }
+    }
+  }
+}
+
+cluster(filterByMetadata: {name: "cluster1"}) {
+  data {
+    spec {
+      domain
+    }
+  }
+}
+```
