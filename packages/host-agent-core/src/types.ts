@@ -29,7 +29,7 @@ interface IHostSpec {
   ip: string;
   publicKey: PublicKey;
 }
-
+``;
 interface IHost extends IDeployable {
   spec: IHostSpec;
 }
@@ -47,13 +47,13 @@ class Host extends Deployable implements IHost {
 
 type HostName = IHost["metadata"]["name"];
 
-interface IHosts {
+interface IHostRef {
   name: HostName;
 }
 
 interface ICloudSpec {
   domain: string;
-  hosts: IHosts;
+  hosts: IHostRef[];
 }
 
 interface ICloud extends IDeployable {
@@ -106,9 +106,13 @@ interface IClusterProvider {
   token: string;
 }
 
+interface IClusterHostRef extends IHostRef {
+  role: string;
+}
+
 interface IClusterSpec {
   domain: ICloudSpec["domain"];
-  hosts: ICloudSpec["hosts"];
+  hosts: IClusterHostRef[];
   storage: IClusterProvider;
   acme: IClusterProvider;
 }
