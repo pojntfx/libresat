@@ -13,6 +13,7 @@
     "start:binary": "lerna run start:binary --parallel",
     "bootstrap": "lerna bootstrap",
     "test": "lerna run test",
+    "link": "lerna link",
     "publish": "lerna publish"
   },
   "repository": {
