@@ -26,6 +26,7 @@
     "access": "public"
   },
   "dependencies": {
+    "ajv": "^6.5.3",
     "typescript": "^3.0.3"
   },
   "devDependencies": {
