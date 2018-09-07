@@ -2,7 +2,7 @@
   "name": "@libresat/service",
   "version": "0.0.1-y.0",
   "description": "Opinionated utility for creating GraphQL microservices with a database",
-  "main": "dist/index.js",
+  "main": "dist/src/index.js",
   "bin": "dist/example/src/index.js",
   "scripts": {
     "dev": "nodemon --ext json,ts,graphql --exec ts-node example/src/index.ts",
