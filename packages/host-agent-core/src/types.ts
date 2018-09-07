@@ -124,6 +124,14 @@ class User extends Deployable implements IUser {
   }
 }
 
+const UserValidator: IValidators = [
+  ["apiVersion", "kind"],
+  [
+    [["metadata"], ["name", "description", "cloud"]],
+    [["spec"], ["email", "publicKey"]]
+  ]
+];
+
 interface IClusterProvider {
   provider: string;
   token: string;
@@ -151,6 +159,22 @@ class Cluster extends Deployable implements ICluster {
   }
 }
 
+const ClusterValidator: IValidators = [
+  ["apiVersion", "kind"],
+  [
+    [["metadata"], ["name", "description", "cloud"]],
+    [
+      ["spec"],
+      [
+        "domain",
+        [["hosts"], ["name", "role"]],
+        [["storage"], ["provider", "token"]],
+        [["acme"], ["provider", "token"]]
+      ]
+    ]
+  ]
+];
+
 export {
   IDeployableFactory,
   Deployable,
@@ -160,7 +184,9 @@ export {
   Cloud,
   CloudValidator,
   User,
+  UserValidator,
   Cluster,
+  ClusterValidator,
   IValidators,
   IValidator
 };
