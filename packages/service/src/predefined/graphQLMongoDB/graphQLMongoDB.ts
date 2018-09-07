@@ -11,9 +11,9 @@ import { GraphQLServer } from "graphql-yoga";
 import { ConnectionToDatabaseFailedException } from "./exception/connectionToDatabaseFailedException";
 
 class GraphQLMongoDB implements IGraphQLMongoDB {
-  service: Service;
-  server: IGraphQL;
-  database: IMongoDB;
+  service!: Service;
+  server!: IGraphQL;
+  database!: IMongoDB;
 
   constructor(
     public name: IGraphQLMongoDBParams["name"],
@@ -23,7 +23,7 @@ class GraphQLMongoDB implements IGraphQLMongoDB {
     private resolverDir: IGraphQLMongoDBParams["resolverDir"]
   ) {}
 
-  registerErrorHandlers(database) {
+  registerErrorHandlers(database: Mongoose) {
     const { connection } = database;
     connection.on("error", error => {
       throw new ConnectionToDatabaseFailedException(this.dbUrl, error);

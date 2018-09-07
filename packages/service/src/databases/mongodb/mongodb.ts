@@ -2,7 +2,7 @@ import { IMongoDB } from "./mongodb.types";
 import * as mongoose from "mongoose";
 
 class MongoDB implements IMongoDB {
-  database: IMongoDB["database"];
+  database!: IMongoDB["database"];
 
   constructor(public name: IMongoDB["name"], public url: IMongoDB["url"]) {}
 

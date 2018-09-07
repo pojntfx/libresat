@@ -2,7 +2,7 @@ import { IGraphQL, IGraphQLParams } from "./graphql.types";
 import { GraphQLServer } from "graphql-yoga";
 
 class GraphQL implements IGraphQL {
-  server: IGraphQL["server"];
+  server!: IGraphQL["server"];
 
   constructor(
     public name: IGraphQLParams["name"],
