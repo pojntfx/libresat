@@ -5,6 +5,10 @@ import {
   Host,
   CloudValidator,
   Cloud,
+  UserValidator,
+  User,
+  ClusterValidator,
+  Cluster,
   deployableFactory
 } from "@libresat/host-agent-core";
 import { UnknownDeployableError } from "../errors/unknownDeployableError";
@@ -41,6 +45,28 @@ class DeployableController {
               "https://standards.libresat.space/satctl/v0.0.1-0"
             ) {
               return deployableFactory(Cloud, file);
+            } else {
+              throw new IncompatibleAPIVersionError(file.apiVersion);
+            }
+          }
+          case "User": {
+            new Validator(file, UserValidator).evaluate();
+            if (
+              file.apiVersion ===
+              "https://standards.libresat.space/satctl/v0.0.1-0"
+            ) {
+              return deployableFactory(User, file);
+            } else {
+              throw new IncompatibleAPIVersionError(file.apiVersion);
+            }
+          }
+          case "Cluster": {
+            new Validator(file, ClusterValidator).evaluate();
+            if (
+              file.apiVersion ===
+              "https://standards.libresat.space/satctl/v0.0.1-0"
+            ) {
+              return deployableFactory(Cluster, file);
             } else {
               throw new IncompatibleAPIVersionError(file.apiVersion);
             }

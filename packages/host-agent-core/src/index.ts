@@ -6,7 +6,9 @@ export {
   Cloud,
   CloudValidator,
   User,
-  Cluster
+  UserValidator,
+  Cluster,
+  ClusterValidator
 } from "./types";
 
 export {

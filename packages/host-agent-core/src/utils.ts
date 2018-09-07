@@ -25,7 +25,7 @@ class Validator implements IValidator {
           if (typeof nestedValidator === "string") {
             if (
               object === undefined ||
-              null ||
+              object === null ||
               object.hasOwnProperty(nestedValidator) === false
             ) {
               this.isValid = false;
@@ -36,7 +36,6 @@ class Validator implements IValidator {
           } else if (
             this.getArrays(object[nestedValidator[0][0]]).length !== 0
           ) {
-            console.log(this.getArrays(object[nestedValidator[0][0]]));
           } else {
             this.validate(object[nestedValidator[0][0]], [nestedValidator[1]]);
           }
