@@ -1,6 +1,6 @@
 {
   "name": "@libresat/identity",
-  "version": "0.0.1-8",
+  "version": "0.0.1-9",
   "description": "Identity provider for [LibreSat](https://libresat.space/)",
   "main": "dist/index.ts",
   "bin": "dist/tasks/start.js",
@@ -27,7 +27,7 @@
   "author": "Felix Pojtinger <felix@pojtinger.com>",
   "license": "AGPL-3.0",
   "dependencies": {
-    "@libresat/service": "^0.0.1-8",
+    "@libresat/service": "^0.0.1-9",
     "typescript": "^3.0.3"
   },
   "devDependencies": {
