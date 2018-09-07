@@ -4,6 +4,9 @@ type Hello {
 }
 
 type Query {
-  createHello(name: String): Hello!
   getAllHellos: [Hello!]!
+}
+
+type Mutation {
+  createHello(name: String): Hello!
 }

@@ -41,6 +41,9 @@
     "url": "https://gitlab.com/libresat/libresat/issues"
   },
   "homepage": "https://gitlab.com/libresat/libresat#README",
+  "dependencies": {
+    "@types/ws": "^6.0.1"
+  },
   "publishConfig": {
     "access": "public"
   }

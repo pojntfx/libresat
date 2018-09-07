@@ -3,8 +3,8 @@ import { ITypeDefMerger } from "./typedefs.types";
 import { mergeTypes } from "merge-graphql-schemas";
 
 class TypeDefMerger implements ITypeDefMerger {
-  name: "typedefs";
-  service: GraphQL;
+  name!: "typedefs";
+  service!: GraphQL;
 
   constructor(public dir: ITypeDefMerger["dir"]) {}
 
