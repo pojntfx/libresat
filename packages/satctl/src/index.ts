@@ -1,10 +1,7 @@
 import { Command, flags } from "@oclif/command";
 import { loadFile } from "./utils/loadFile";
+import { FileHandler } from "./handlers/file.handler";
 const { version, help } = flags;
-import { ObjectDoesNotPassTypeGuardError } from "@libresat/host-agent-core";
-import { DeployableController } from "./controllers/deployable.controller";
-import { UnknownDeployableError } from "./errors/unknownDeployableError";
-import { DeployableTypeNotSpecifiedError } from "./errors/deployableTypeNotSpecifiedError";
 
 /**
  * Main command
@@ -23,32 +20,13 @@ class Main extends Command {
     }
   ];
 
-  handleFile(file) {
-    try {
-      const { type, content } = DeployableController.create(file);
-      this.log(type, JSON.stringify(content, null, 2));
-    } catch (e) {
-      if (
-        e instanceof UnknownDeployableError ||
-        DeployableTypeNotSpecifiedError ||
-        ObjectDoesNotPassTypeGuardError
-      ) {
-        this.warn(
-          `${e}. Aborting, please check whether deployable is implemented correctly!`
-        );
-      } else {
-        throw e;
-      }
-    }
-  }
-
   async run() {
     const {
       args: { file }
     } = this.parse(Main);
 
     if (file) {
-      this.handleFile(loadFile(file));
+      new FileHandler(this).resolve(loadFile(file));
     } else {
       this.warn("Please provide a YAML file to parse.");
     }
