@@ -2,17 +2,12 @@ export {
   Deployable,
   IHost,
   Host,
-  HostValidator,
   Cloud,
-  CloudValidator,
+  ICloud,
   User,
-  UserValidator,
+  IUser,
   Cluster,
-  ClusterValidator
+  ICluster
 } from "./types";
 
-export {
-  Validator,
-  ObjectDoesNotPassTypeGuardError,
-  deployableFactory
-} from "./utils";
+export { deployableFactory } from "./utils";
