@@ -1,4 +1,4 @@
-import { IDeployableFactory } from "./types";
+import { IDeployableFactory } from "../types/deployableFactory.types";
 
 const deployableFactory: IDeployableFactory = (
   DeployableClass,

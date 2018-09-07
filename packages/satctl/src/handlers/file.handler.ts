@@ -2,6 +2,10 @@ import { DeployableController } from "../controllers/deployable.controller";
 import { UnknownDeployableError } from "../errors/unknownDeployableError";
 import { DeployableTypeNotSpecifiedError } from "../errors/deployableTypeNotSpecifiedError";
 import Command from "@oclif/command";
+import {
+  DeployableDidNotPassValidationError,
+  IncompatibleAPIVersionError
+} from "@libresat/host-agent-core";
 
 class FileHandler {
   constructor(private cli: Command) {}
@@ -13,13 +17,15 @@ class FileHandler {
     } catch (e) {
       if (
         e instanceof UnknownDeployableError ||
-        e instanceof DeployableTypeNotSpecifiedError
+        e instanceof DeployableTypeNotSpecifiedError ||
+        e instanceof DeployableDidNotPassValidationError ||
+        e instanceof IncompatibleAPIVersionError
       ) {
         this.cli.warn(
           `${e}. Aborting, please check whether deployable is implemented correctly!`
         );
       } else {
-        throw e;
+        console.log(e);
       }
     }
   }
