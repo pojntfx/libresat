@@ -7,8 +7,10 @@
   "scripts": {
     "dev": "nodemon --ext json,ts,graphql --exec ts-node --project ./tsconfig.json --files example/src/index.ts",
     "build": "tsc -p tsconfig.json && cp -r example/src/typeDefs dist/example/src/",
+    "build:docs": "typedoc --out docs-dist/",
     "build:binary": "pkg package.json --out-path dist/",
-    "start": "node dist/index.js",
+    "start": "node dist/example/src/index.js",
+    "start:docs": "serve docs-dist/",
     "start:binary": "chmod +x dist/service-linux && dist/service-linux",
     "prepublish": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -24,6 +26,7 @@
   "license": "AGPL-3.0",
   "dependencies": {
     "@types/mongoose": "^5.2.9",
+    "@types/ws": "^6.0.1",
     "graphql-yoga": "^1.16.2",
     "merge-graphql-schemas": "^1.5.3",
     "mongoose": "^5.2.13",

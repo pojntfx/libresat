@@ -3,8 +3,6 @@
     "strict": true,
     "target": "esnext",
     "module": "commonjs",
-    "outDir": "dist/",
-    "declaration": true,
-    "declarationDir": "dist/"
+    "outDir": "dist/"
   }
 }
