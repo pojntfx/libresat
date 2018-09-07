@@ -1,4 +1,4 @@
-import { IFile } from "../types";
+import { IFile } from "../types/file.types";
 
 class FileModel implements IFile {
   constructor(public content) {}

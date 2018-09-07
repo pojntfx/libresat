@@ -1,5 +1,5 @@
 import { Command, flags } from "@oclif/command";
-import { loadFile } from "./utils";
+import { loadFile } from "./utils/loadFile";
 const { version, help } = flags;
 import { ObjectDoesNotPassTypeGuardError } from "@libresat/host-agent-core";
 import { DeployableController } from "./controllers/deployable.controller";

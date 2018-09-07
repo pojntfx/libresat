@@ -10,8 +10,4 @@ interface IFileController {
   create: IFileCreator;
 }
 
-interface IDeployable extends IFile {
-  type: string;
-}
-
-export { IFile, IFileController, IDeployable };
+export { IFile, IFileController };
