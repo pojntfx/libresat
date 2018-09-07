@@ -19,11 +19,14 @@ class Validator implements IValidator {
   private ajv: any;
   validateable: Validateable;
 
-  constructor(public apiVersion, public type) {
+  constructor(
+    public apiVersion: IValidator["apiVersion"],
+    public type: IValidator["type"]
+  ) {
     this.ajv = new Ajv();
   }
 
-  private getSchema(type) {
+  private getSchema(type: IValidator["type"]) {
     const settings: TJS.PartialArgs = {
       noExtraProps: true,
       required: true
@@ -38,7 +41,7 @@ class Validator implements IValidator {
     return schema;
   }
 
-  validate(validateable) {
+  validate(validateable: any) {
     if (validateable.apiVersion === this.apiVersion) {
       const valid = this.ajv.validate(this.getSchema(this.type), validateable);
       if (valid) {

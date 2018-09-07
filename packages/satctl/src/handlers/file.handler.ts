@@ -1,20 +1,19 @@
 import { DeployableController } from "../controllers/deployable.controller";
 import { UnknownDeployableError } from "../errors/unknownDeployableError";
 import { DeployableTypeNotSpecifiedError } from "../errors/deployableTypeNotSpecifiedError";
-import { ObjectDoesNotPassTypeGuardError } from "@libresat/host-agent-core";
+import Command from "@oclif/command";
 
 class FileHandler {
-  constructor(private cli) {}
+  constructor(private cli: Command) {}
 
-  resolve(file) {
+  resolve(file: any) {
     try {
       const { type, content } = DeployableController.create(file);
       this.cli.log(type, JSON.stringify(content, null, 2));
     } catch (e) {
       if (
         e instanceof UnknownDeployableError ||
-        DeployableTypeNotSpecifiedError ||
-        ObjectDoesNotPassTypeGuardError
+        e instanceof DeployableTypeNotSpecifiedError
       ) {
         this.cli.warn(
           `${e}. Aborting, please check whether deployable is implemented correctly!`

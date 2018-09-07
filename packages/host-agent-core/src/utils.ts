@@ -2,7 +2,7 @@ import { IDeployableFactory } from "./types";
 
 const deployableFactory: IDeployableFactory = (
   DeployableClass,
-  rawDeployable
+  rawDeployable: any
 ) => {
   let args: [any, any, any, any] = [
     ...Object.keys(rawDeployable).map(key => rawDeployable[key])

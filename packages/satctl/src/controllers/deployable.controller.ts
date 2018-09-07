@@ -10,14 +10,16 @@ import {
 import { UnknownDeployableError } from "../errors/unknownDeployableError";
 import { DeployableTypeNotSpecifiedError } from "../errors/deployableTypeNotSpecifiedError";
 import { FileNotFoundError } from "../errors/fileNotFoundErrror";
+import { IDeployable } from "../types/deployable.types";
+import { IFile } from "../types/file.types";
 
 class DeployableController {
-  static create(content) {
+  static create(content: IDeployable["content"]) {
     const deployable = this.validateAndConvert(content);
     return new DeployableModel(deployable.kind, deployable);
   }
 
-  static validateAndConvert(file) {
+  static validateAndConvert(file: IFile["content"]): any {
     if (file !== false) {
       if ("kind" in file) {
         const type = file.kind;
