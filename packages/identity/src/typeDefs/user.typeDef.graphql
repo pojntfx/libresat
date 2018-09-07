@@ -1,0 +1,9 @@
+type User {
+  _id: String!
+  name: String!
+}
+
+type Query {
+  createUser(name: String): User!
+  allUsers: [User!]!
+}

@@ -1,0 +1,33 @@
+{
+  "name": "@libresat/identity",
+  "version": "0.0.1-1",
+  "description": "Identity provider for [LibreSat](https://libresat.space/)",
+  "main": "dist/index.ts",
+  "scripts": {
+    "dev": "nodemon --ext json,ts,graphql --exec ts-node src/index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://gitlab.com/libresat/libresat/tree/master/packages/identity"
+  },
+  "keywords": [
+    "identity",
+    "authentication",
+    "authorization",
+    "roles",
+    "users"
+  ],
+  "author": "Felix Pojtinger <felix@pojtinger.com>",
+  "license": "AGPL-3.0",
+  "dependencies": {
+    "@libresat/service": "0.0.1-7"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.4",
+    "ts-node": "^7.0.1"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
