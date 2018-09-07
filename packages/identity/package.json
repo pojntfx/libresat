@@ -2,9 +2,9 @@
   "name": "@libresat/identity",
   "version": "0.0.1-7",
   "description": "Identity provider for [LibreSat](https://libresat.space/)",
-  "main": "dist/index.ts",
+  "main": "src/index.ts",
   "scripts": {
-    "dev": "nodemon --ext json,ts,graphql --exec ts-node src/index.ts",
+    "dev": "nodemon --ext json,ts,graphql --exec ts-node src/tasks/start.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
