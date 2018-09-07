@@ -33,7 +33,12 @@ class Validator implements IValidator {
     };
 
     const program = TJS.getProgramFromFiles([
-      resolve(__dirname, "../../src/types.ts")
+      resolve(__dirname, "../../src/types/cloud.types.ts"),
+      resolve(__dirname, "../../src/types/cluster.types.ts"),
+      resolve(__dirname, "../../src/types/deployable.types.ts"),
+      resolve(__dirname, "../../src/types/host.types.ts"),
+      resolve(__dirname, "../../src/types/publicKey.types.ts"),
+      resolve(__dirname, "../../src/types/user.types.ts")
     ]);
 
     const schema = TJS.generateSchema(program, type, settings);
