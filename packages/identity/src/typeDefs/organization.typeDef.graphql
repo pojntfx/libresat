@@ -1,0 +1,31 @@
+type Organization {
+  _id: String!
+  apiVersion: String!
+  metadata: OrganizationMetadata!
+  spec: OrganizationSpec
+}
+
+type OrganizationMetadata {
+  name: String!
+  description: String!
+}
+
+type OrganizationSpec {
+  email: String!
+  secret: String!
+  #roles: [Role]
+}
+
+type Query {
+  allOrganizations: [Organization!]!
+}
+
+type Mutation {
+  createOrganization(
+    apiVersion: String!
+    metadataName: String!
+    metadataDescription: String!
+    specEmail: String!
+    specSecret: String!
+  ): Organization!
+}
