@@ -1,6 +1,6 @@
 {
   "name": "@libresat/cluster",
-  "version": "0.0.1-6",
+  "version": "0.0.1-y.0",
   "description": "The [LibreSat](https://libresat.space/) distribution of [Kubernetes](https://kubernetes.io/)",
   "main": "src/provision-kubernetes.sh",
   "scripts": {
