@@ -84,7 +84,7 @@ libresat-node-1   Ready     master    16d       v1.11.2
 > The args implement the IDeployable interfaces, the data is defined by GraphQL types.
 
 ```graphql
-login(username: "platformadmin", password: "platformsecret") {
+loginAsPlatform(username: "platformadmin", password: "platformsecret") {
   data {
     token
   }
@@ -106,7 +106,7 @@ createOrganisation(apiVersion, metadata, spec) {
   }
 }
 
-login(username: "organisationname", password: "organisationsecret") {
+loginAsOrganisation(username: "organisationname", password: "organisationsecret") {
   data {
     token
   }
@@ -134,7 +134,7 @@ createRole(apiVersion, metadata, spec) {
   }
 }
 
-login(username: "rolename", password: "rolesecret") {
+loginAsRole(username: "rolename", password: "rolesecret") {
   data {
     token
   }
@@ -157,7 +157,7 @@ createUser(apiVersion, metadata, spec) {
   }
 }
 
-login(organisation: "organisationname", username: "username", password: "usersecret") {
+loginAsUser(organisation: "organisationname", username: "username", password: "usersecret") {
   data {
     token
   }
