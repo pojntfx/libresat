@@ -10,20 +10,6 @@ interface IDeployable {
   spec: any;
 }
 
-type IValidators = [string[], any[][][]?];
-
-interface IValidatorValidator {
-  (object: IValidator["object"], validators: IValidators): void;
-}
-
-interface IValidator {
-  isValid: boolean;
-  object: any;
-  validators: IValidators;
-  validate: IValidatorValidator;
-  evaluate: IValidatorValidator;
-}
-
 interface IDeployableFactory {
   (DeployableClass: typeof Deployable, rawDeployable: IDeployable): IDeployable;
 }
@@ -59,16 +45,15 @@ class Host extends Deployable implements IHost {
   }
 }
 
-const HostValidator: IValidators = [
-  ["apiVersion", "kind"],
-  [[["metadata"], ["name", "description"]], [["spec"], ["ip", "publicKey"]]]
-];
-
 type HostName = IHost["metadata"]["name"];
+
+interface IHosts {
+  name: HostName;
+}
 
 interface ICloudSpec {
   domain: string;
-  hosts: HostName[];
+  hosts: IHosts;
 }
 
 interface ICloud extends IDeployable {
@@ -85,14 +70,6 @@ class Cloud extends Deployable implements ICloud {
     super(apiVersion, kind, metadata, spec);
   }
 }
-
-const CloudValidator: IValidators = [
-  ["apiVersion", "kind"],
-  [
-    [["metadata"], ["name", "description"]],
-    [["spec"], ["domain", [["hosts"], ["name"]]]]
-  ]
-];
 
 type CloudName = ICloud["metadata"]["name"];
 
@@ -124,14 +101,6 @@ class User extends Deployable implements IUser {
   }
 }
 
-const UserValidator: IValidators = [
-  ["apiVersion", "kind"],
-  [
-    [["metadata"], ["name", "description", "cloud"]],
-    [["spec"], ["email", "publicKey"]]
-  ]
-];
-
 interface IClusterProvider {
   provider: string;
   token: string;
@@ -159,34 +128,15 @@ class Cluster extends Deployable implements ICluster {
   }
 }
 
-const ClusterValidator: IValidators = [
-  ["apiVersion", "kind"],
-  [
-    [["metadata"], ["name", "description", "cloud"]],
-    [
-      ["spec"],
-      [
-        "domain",
-        [["hosts"], ["name", "role"]],
-        [["storage"], ["provider", "token"]],
-        [["acme"], ["provider", "token"]]
-      ]
-    ]
-  ]
-];
-
 export {
   IDeployableFactory,
   Deployable,
   IHost,
   Host,
-  HostValidator,
+  ICloud,
   Cloud,
-  CloudValidator,
+  IUser,
   User,
-  UserValidator,
-  Cluster,
-  ClusterValidator,
-  IValidators,
-  IValidator
+  ICluster,
+  Cluster
 };
