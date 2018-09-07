@@ -11,3 +11,5 @@ export {
 } from "./types";
 
 export { deployableFactory } from "./utils";
+
+export { Validator } from "./utils/Validator";

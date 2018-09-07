@@ -1,7 +1,6 @@
 import { Command, flags } from "@oclif/command";
 import { loadFile } from "./utils";
 const { version, help } = flags;
-import { ObjectDoesNotPassTypeGuardError } from "@libresat/host-agent-core";
 import { DeployableController } from "./controllers/deployable.controller";
 import { UnknownDeployableError } from "./errors/unknownDeployableError";
 import { DeployableTypeNotSpecifiedError } from "./errors/deployableTypeNotSpecifiedError";
@@ -24,22 +23,7 @@ class Main extends Command {
   ];
 
   handleFile(file) {
-    try {
-      const { type, content } = DeployableController.create(file);
-      this.log(type, JSON.stringify(content, null, 2));
-    } catch (e) {
-      if (
-        e instanceof UnknownDeployableError ||
-        DeployableTypeNotSpecifiedError ||
-        ObjectDoesNotPassTypeGuardError
-      ) {
-        this.warn(
-          `${e}. Aborting, please check whether deployable is implemented correctly!`
-        );
-      } else {
-        throw e;
-      }
-    }
+    DeployableController.create(file);
   }
 
   async run() {

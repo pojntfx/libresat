@@ -1,6 +1,5 @@
-import * as Ajv from "ajv";
 import { DeployableModel } from "../models/deployable.model";
-import { Host, deployableFactory } from "@libresat/host-agent-core";
+import { Validator, Host, deployableFactory } from "@libresat/host-agent-core";
 import { UnknownDeployableError } from "../errors/unknownDeployableError";
 import { DeployableTypeNotSpecifiedError } from "../errors/deployableTypeNotSpecifiedError";
 import { FileNotFoundError } from "../errors/fileNotFoundErrror";
@@ -58,7 +57,7 @@ const HostSchema = {
 class DeployableController {
   static create(content) {
     const deployable = this.validateAndConvert(content);
-    return new DeployableModel(deployable.kind, deployable);
+    // return new DeployableModel(deployable.kind, deployable);
   }
 
   static validateAndConvert(file) {
@@ -67,58 +66,12 @@ class DeployableController {
         const type = file.kind;
         switch (type) {
           case "Host": {
-            const validator = new Ajv();
-            const validate = validator.compile(HostSchema);
-            const valid = validate(file);
-            console.log(valid);
-            if (
-              file.apiVersion ===
-              "https://standards.libresat.space/satctl/v0.0.1-0"
-            ) {
-              return deployableFactory(Host, file);
-            } else {
-              throw new IncompatibleAPIVersionError(file.apiVersion);
-            }
-          }
-          // case "Cloud": {
-          //   new Validator(file, CloudValidator).evaluate();
-          //   if (
-          //     file.apiVersion ===
-          //     "https://standards.libresat.space/satctl/v0.0.1-0"
-          //   ) {
-          //     return deployableFactory(Cloud, file);
-          //   } else {
-          //     throw new IncompatibleAPIVersionError(file.apiVersion);
-          //   }
-          // }
-          // case "User": {
-          //   new Validator(file, UserValidator).evaluate();
-          //   if (
-          //     file.apiVersion ===
-          //     "https://standards.libresat.space/satctl/v0.0.1-0"
-          //   ) {
-          //     return deployableFactory(User, file);
-          //   } else {
-          //     throw new IncompatibleAPIVersionError(file.apiVersion);
-          //   }
-          // }
-          // case "Cluster": {
-          //   new Validator(file, ClusterValidator).evaluate();
-          //   if (
-          //     file.apiVersion ===
-          //     "https://standards.libresat.space/satctl/v0.0.1-0"
-          //   ) {
-          //     return deployableFactory(Cluster, file);
-          //   } else {
-          //     throw new IncompatibleAPIVersionError(file.apiVersion);
-          //   }
-          // }
-          default: {
-            throw new UnknownDeployableError();
+            return new Validator(
+              "https://standards.libresat.space/satctl/v0.0.1-0",
+              HostSchema
+            ).validate(file);
           }
         }
-      } else {
-        throw new DeployableTypeNotSpecifiedError();
       }
     } else {
       throw new FileNotFoundError();
