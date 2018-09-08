@@ -5,17 +5,6 @@ type Organization {
   spec: OrganizationSpec
 }
 
-type OrganizationMetadata {
-  name: String!
-  description: String!
-}
-
-type OrganizationSpec {
-  email: String!
-  secret: String!
-  #roles: [Role]
-}
-
 type Query {
   allOrganizations: [Organization!]!
 }
@@ -28,4 +17,15 @@ type Mutation {
     specEmail: String!
     specSecret: String!
   ): Organization!
+}
+
+type OrganizationMetadata {
+  name: String!
+  description: String!
+}
+
+type OrganizationSpec {
+  email: String!
+  secret: String!
+  roles: [Role]
 }

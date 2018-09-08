@@ -24,7 +24,8 @@ export default {
         },
         spec: {
           email,
-          secret
+          secret,
+          roles: []
         }
       })
   }
