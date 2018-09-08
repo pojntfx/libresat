@@ -5,11 +5,11 @@
   "main": "dist/index.ts",
   "bin": "dist/tasks/start.js",
   "scripts": {
-    "dev": "nodemon --ext json,ts,graphql --exec ts-node --project ./tsconfig.json --files src/tasks/start.ts",
+    "dev": "nodemon --ext json,ts,graphql --exec ts-node --project ./tsconfig.json --files src/tasks/start.ts -- --port 3000 --db-url mongodb://localhost:27017",
     "build": "tsc -p tsconfig.json && cp -r src/typeDefs dist/",
     "build:binary": "pkg package.json --targets node10-linux-x64 --out-path dist/",
-    "start": "node dist/tasks/start.js",
-    "start:binary": "chmod +x dist/identity && dist/identity",
+    "start": "node dist/tasks/start.js -- --port 3000 --db-url mongodb://localhost:27017",
+    "start:binary": "chmod +x dist/identity && dist/identity --port 3000 --db-url mongodb://localhost:27017",
     "install:binary": "sudo install dist/identity /usr/bin",
     "prepublish": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"

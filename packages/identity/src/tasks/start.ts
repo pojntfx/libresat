@@ -2,7 +2,7 @@ import { service } from "../index";
 
 const args = process.argv.slice(2);
 
-if (args.includes("-h") || args.includes("--help")) {
+if (args.length <= 2 || args.includes("-h") || args.includes("--help")) {
   console.log(`LibreSat Identity
 @libresat/identity#0.0.1-10
 
