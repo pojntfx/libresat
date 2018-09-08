@@ -7,8 +7,8 @@
   "scripts": {
     "dev": "nodemon --ext json,ts,graphql --exec ts-node --project ./tsconfig.json --files src/tasks/start.ts",
     "build": "tsc -p tsconfig.json && cp -r src/typeDefs dist/",
-    "build:binary": "pkg package.json --out-path dist/",
-    "start": "node dist/index.js",
+    "build:binary": "pkg package.json --targets node10-linux-x64 --out-path dist/",
+    "start": "node dist/tasks/start.js",
     "start:binary": "chmod +x dist/identity-linux && dist/identity-linux",
     "prepublish": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
