@@ -34,14 +34,20 @@ class GraphQLMongoDB implements IGraphQLMongoDB {
     port?: IGraphQLMongoDBParams["port"],
     dbUrl?: IGraphQLMongoDBParams["dbUrl"]
   ) {
+    if (port) {
+      this.port = port;
+    }
+    if (dbUrl) {
+      this.dbUrl = dbUrl;
+    }
     this.service = new Service(this.name, [
       new GraphQL(
         `${this.name}-server`,
         new TypeDefMerger(this.typeDefDir).merge(),
         new ResolverMerger(this.resolverDir).merge(),
-        port ? port : this.port
+        this.port
       ).start(),
-      new MongoDB(`${this.name}-database`, dbUrl ? dbUrl : this.dbUrl).start()
+      new MongoDB(`${this.name}-database`, this.dbUrl).start()
     ]).start();
     const server = <GraphQLServer>(<GraphQL>this.service.services[0]).server;
     const database = <Mongoose>(<MongoDB>this.service.services[1]).database;
