@@ -1,22 +1,55 @@
-type Organization {
-  _id: String!
-  apiVersion: String!
-  metadata: OrganizationMetadata!
-  spec: OrganizationSpec
-}
-
 type Query {
-  allOrganizations: [Organization!]!
+  getOrganization(id: String): Organization
+  getAllOrganizations: [Organization]
+  filterAllOrganizations(
+    id: String
+    apiVersion: String
+    metadata: OrganizationParamsFilterMetadata
+    spec: OrganizationParamsFilterSpec
+  ): [Organization]
 }
 
 type Mutation {
   createOrganization(
     apiVersion: String!
-    metadataName: String!
-    metadataDescription: String!
-    specEmail: String!
-    specSecret: String!
-  ): Organization!
+    metadata: OrganizationParamsMetadata!
+    spec: OrganizationParamsSpec!
+  ): Organization
+  updateOrganization(
+    id: String!
+    apiVersion: String!
+    metadata: OrganizationParamsMetadata!
+    spec: OrganizationParamsSpec!
+  ): Organization
+  deleteOrganization(id: String): Organization
+  deleteAllOrganizations: [Organization]
+}
+
+input OrganizationParamsMetadata {
+  name: String!
+  description: String!
+}
+
+input OrganizationParamsSpec {
+  email: String!
+  secret: String!
+}
+
+input OrganizationParamsFilterMetadata {
+  name: String
+  description: String
+}
+
+input OrganizationParamsFilterSpec {
+  email: String
+  secret: String
+}
+
+type Organization {
+  _id: String!
+  apiVersion: String!
+  metadata: OrganizationMetadata!
+  spec: OrganizationSpec
 }
 
 type OrganizationMetadata {
@@ -27,5 +60,4 @@ type OrganizationMetadata {
 type OrganizationSpec {
   email: String!
   secret: String!
-  roles: [Role]
 }

@@ -1,13 +1,4 @@
 import { Document } from "mongoose";
-import { IRole } from "./role.types";
-
-interface IOrganizationGraphQLParams {
-  apiVersion: IOrganization["apiVersion"];
-  metadataName: IOrganization["metadata"]["name"];
-  metadataDescription: IOrganization["metadata"]["description"];
-  specEmail: IOrganization["spec"]["email"];
-  specSecret: IOrganization["spec"]["secret"];
-}
 
 interface IOrganizationParams {
   apiVersion: IOrganization["apiVersion"];
@@ -15,12 +6,14 @@ interface IOrganizationParams {
   spec: IOrganization["spec"];
 }
 
-interface IOrganizationCreator {
-  ({  }: IOrganizationParams): Promise<IOrganization>;
+interface IOrganizationGraphQLParams extends IOrganizationParams {}
+
+interface IOrganizationGraphQLId {
+  id: string;
 }
 
-interface IOrganizationRoleAdder {
-  (id: IOrganization["_id"], role: IRole): Promise<IOrganization>;
+interface IOrganizationGraphQLParamsAndId extends IOrganizationParams {
+  id: IOrganizationGraphQLId["id"];
 }
 
 interface IOrganization extends Document {
@@ -33,14 +26,13 @@ interface IOrganization extends Document {
   spec: {
     email: string;
     secret: string;
-    roles: IRole[];
   };
 }
 
 export {
   IOrganization,
-  IOrganizationGraphQLParams,
   IOrganizationParams,
-  IOrganizationCreator,
-  IOrganizationRoleAdder
+  IOrganizationGraphQLParams,
+  IOrganizationGraphQLId,
+  IOrganizationGraphQLParamsAndId
 };
