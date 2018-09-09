@@ -1,26 +1,29 @@
 {
   "name": "@libresat/service",
+  "description": "A minimal, modular and optionally opinionated microservice library, based on Apollo GraphQL and MongoDB",
   "version": "0.0.1-10",
-  "description": "Opinionated utility for creating GraphQL microservices with a database",
-  "main": "dist/src/index.js",
-  "bin": "dist/example/src/index.js",
+  "main": "dist/index.js",
   "scripts": {
-    "dev": "nodemon --ext json,ts,graphql --exec ts-node --project ./tsconfig.json --files example/src/index.ts",
-    "build": "tsc -p tsconfig.json && cp -r example/src/typeDefs dist/example/src/",
-    "build:docs": "typedoc --out docs-dist/",
-    "build:binary": "pkg package.json --out-path dist/",
-    "start": "node dist/example/src/index.js",
-    "start:docs": "serve docs-dist/",
-    "start:binary": "chmod +x dist/service-linux && dist/service-linux",
-    "prepublish": "npm run build",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "npm run watch",
+    "build": "tsc -p tsconfig.json",
+    "build:dev": "ts-node --files -P tsconfig.json src/index.ts",
+    "watch": "nodemon -e ts -x npm run build -w src/",
+    "watch:dev": "nodemon -e ts -x npm run build:dev -w src/",
+    "watch:build": "nodemon -e ts -x npm run build -w src/",
+    "watch:build:dev": "nodemon -e ts -x npm run build:dev -w src/",
+    "prepare": "npm run build",
+    "test": "npm run build"
   },
   "repository": {
     "type": "git",
     "url": "https://gitlab.com/libresat/libresat/tree/master/packages/service"
   },
   "keywords": [
-    "microservice"
+    "microservice",
+    "microplatform",
+    "graphql",
+    "apollo",
+    "mongodb"
   ],
   "author": "Felicitas Pojtinger <felicitas@pojtinger.com>",
   "license": "AGPL-3.0",
@@ -29,20 +32,12 @@
     "@types/ws": "^6.0.1",
     "graphql-yoga": "^1.16.2",
     "merge-graphql-schemas": "^1.5.3",
-    "mongoose": "^5.2.13",
-    "typescript": "^3.0.3"
+    "mongoose": "^5.2.13"
   },
-  "devDependencies": {
-    "nodemon": "^1.18.4",
-    "pkg": "^4.3.4",
-    "serve": "^10.0.0",
-    "ts-node": "^7.0.1",
-    "typedoc": "^0.12.0"
+  "bugs": {
+    "url": "https://gitlab.com/libresat/libresat/issues"
   },
-  "pkg": {
-    "scripts": "dist/**/*.js",
-    "assets": "dist/**/*.graphql"
-  },
+  "homepage": "https://gitlab.com/libresat/libresat/tree/master/packages/service#README",
   "publishConfig": {
     "access": "public"
   }
