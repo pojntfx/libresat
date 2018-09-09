@@ -6,12 +6,19 @@
   "scripts": {
     "dev": "lerna run dev --parallel",
     "build": "lerna run build --parallel",
+    "build:dev": "lerna run build:dev --parallel",
     "build:binary": "lerna run build:binary --parallel",
-    "build:docs": "lerna run build:docs --parallel",
     "start": "lerna run start --parallel",
-    "start:docs": "lerna run start:docs --parallel",
+    "start:dev": "lerna run start:dev --parallel",
     "start:binary": "lerna run start:binary --parallel",
-    "bootstrap": "lerna bootstrap",
+    "install:binary": "lerna run install:binary --parallel",
+    "watch": "lerna run watch --parallel",
+    "watch:dev": "lerna run watch:dev --parallel",
+    "watch:build": "lerna run watch:build --parallel",
+    "watch:build:dev": "lerna run watch:build:dev --parallel",
+    "watch:start": "lerna run watch:start --parallel",
+    "watch:start:dev": "lerna run watch:start:dev --parallel",
+    "prepare": "lerna bootstrap",
     "test": "lerna run test",
     "link": "lerna link",
     "clean": "lerna clean",
@@ -30,21 +37,22 @@
     "containers",
     "linux"
   ],
+  "author": "Felicitas Pojtinger <felicitas@pojtinger.com>",
+  "license": "AGPL-3.0",
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-eslint": "^9.0.0",
     "babel-preset-env": "^1.7.0",
-    "lerna": "^2.11.0"
+    "lerna": "^2.11.0",
+    "typescript": "^3.0.3",
+    "nodemon": "^1.18.4",
+    "pkg": "^4.3.4",
+    "ts-node": "^7.0.1"
   },
-  "author": "Felicitas Pojtinger <felicitas@pojtinger.com>",
-  "license": "AGPL-3.0",
   "bugs": {
     "url": "https://gitlab.com/libresat/libresat/issues"
   },
   "homepage": "https://gitlab.com/libresat/libresat#README",
-  "dependencies": {
-    "@types/ws": "^6.0.1"
-  },
   "publishConfig": {
     "access": "public"
   }

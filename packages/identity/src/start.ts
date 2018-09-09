@@ -1,4 +1,4 @@
-import { service } from "../index";
+import { service } from "./index";
 
 const args = process.argv.slice(2);
 

@@ -27,19 +27,25 @@ The Free/Libre and Open Source Satellite Development and Control Platform, since
 ## Usage
 
 ```bash
-# Install dependencies #1
+# Install dependencies
 npm install
-# Install dependencies #2
-npm run bootstrap
-# Start inidividual package
-npm run dev -- --scope @libresat/site
-# Start all packages
+# Start development version of inidividual package
+npm run dev -- --scope @libresat/identity
+# Start development versions of all packages
 npm run dev
 ```
 
 ## Deployment
 
 ```bash
+# Build production version of inidividual package
+npm run build -- --scope @libresat/identity
+# Build production versions of all packages
+npm run build
+# Start production version of inidividual package
+npm run start -- --scope @libresat/identity
+# Start production versions of all packages
+npm run start
 # Publish packages to npm
 npm run publish
 ```
