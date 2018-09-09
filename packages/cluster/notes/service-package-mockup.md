@@ -72,7 +72,7 @@ export { service };' > index.ts
 
 ```bash
 $ echo \
-'import { service } from "index";
+'import { service } from "./index";
 import { flag } from "@libresat/service";
 
 const description = `LibreSat Identity
