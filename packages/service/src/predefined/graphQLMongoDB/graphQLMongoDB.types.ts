@@ -6,6 +6,7 @@ import { ITypeDefMerger } from "../../mergers/typedefs/typedefs.types";
 import { IResolverMerger } from "../../mergers/resolvers/resolvers.types";
 import { GraphQLServer } from "graphql-yoga";
 import { Mongoose } from "mongoose";
+import { IGraphQLMongoDBFlagParser } from "./startup/flags.types";
 
 // The service plus shorthands for the actual GraphQL server and MongoDB database
 interface IExportedGraphQLMongoDB {
@@ -18,6 +19,12 @@ interface IGraphQLMongoDBStarter extends IPredefinedStarter {
   (): IExportedGraphQLMongoDB;
 }
 
+interface IGraphQLMongoDBArgsStarter {
+  (description: string, args: IGraphQLMongoDBFlagParser["args"]):
+    | IExportedGraphQLMongoDB
+    | boolean;
+}
+
 interface IGraphQLMongoDBHandleErrors {
   (database: Mongoose): void;
 }
@@ -28,6 +35,7 @@ interface IGraphQLMongoDB extends IPredefined {
   server: IGraphQL;
   database: IMongoDB;
   start: IGraphQLMongoDBStarter;
+  startWithArgs: IGraphQLMongoDBArgsStarter;
   registerErrorHandlers: IGraphQLMongoDBHandleErrors;
 }
 

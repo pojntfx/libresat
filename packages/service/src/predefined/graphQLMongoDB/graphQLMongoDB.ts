@@ -9,6 +9,8 @@ import { GraphQL } from "../../servers/grapqhl/graphql";
 import { Mongoose } from "mongoose";
 import { GraphQLServer } from "graphql-yoga";
 import { ConnectionToDatabaseFailedError } from "./error/connectionToDatabaseFailedError";
+import { IGraphQLMongoDBFlagParser } from "./startup/flags.types";
+import { GraphQLMongoDBFlagParser } from "./startup/flags";
 
 class GraphQLMongoDB implements IGraphQLMongoDB {
   service!: Service;
@@ -57,6 +59,34 @@ class GraphQLMongoDB implements IGraphQLMongoDB {
       server,
       database
     };
+  }
+
+  startWithArgs(description: string, args: IGraphQLMongoDBFlagParser["args"]) {
+    const flagParser = new GraphQLMongoDBFlagParser(args);
+
+    const help = flagParser.getFlag("-h", () => true, () => true);
+
+    if (!help && flagParser.flagsHaveBeenProvided()) {
+      try {
+        const port = flagParser.getFlag(
+          "-p",
+          (arg: any) => !isNaN(parseInt(arg)),
+          (arg: any) => arg
+        );
+        const dbUrl = flagParser.getFlag(
+          "--db-url",
+          (arg: any) => /mongodb:\/\/.*:\d+/.test(arg),
+          (arg: any) => arg
+        );
+        return this.start(port, dbUrl);
+      } catch (e) {
+        console.error(e);
+        return false;
+      }
+    } else {
+      console.log(description);
+      return false;
+    }
   }
 }
 
