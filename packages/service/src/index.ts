@@ -7,5 +7,9 @@ export { ResolverMerger } from "./mergers/resolvers/resolvers";
 export { loadPath } from "./utils/loadPath";
 export { Service } from "./service/service";
 export { GraphQLMongoDB } from "./predefined/graphQLMongoDB/graphQLMongoDB";
+export {
+  GraphQLMongoDBControllable,
+  GraphQLMongoDBController
+} from "./predefined/graphQLMongoDB/controller/controller";
 
 export { mongoose };
