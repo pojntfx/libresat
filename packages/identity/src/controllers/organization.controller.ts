@@ -1,4 +1,4 @@
-import { Controller } from "../utils/controller";
+import { GraphQLMongoDBController as Controller } from "@libresat/service";
 
 class OrganizationController extends Controller {}
 

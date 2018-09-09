@@ -1,33 +1,18 @@
-import { mongoose as database } from "@libresat/service";
+import * as mongoose from "mongoose";
+import {
+  IGraphQLMongoDBControllerParams,
+  ControllerID,
+  IGraphQLMongoDBController
+} from "./controller.types";
+import { MultipleFilterParamsError } from "../error/multipleFilterParamsError";
 
-class Controllable extends database.Model {}
+class GraphQLMongoDBControllable extends mongoose.Model {}
 
-type ControllerID = string;
+class GraphQLMongoDBController implements IGraphQLMongoDBController {
+  constructor(public model: GraphQLMongoDBControllable) {}
 
-interface IControllerParams {}
-
-interface IController {
-  model: Controllable;
-
-  create(params: IControllerParams): Promise<Controllable>;
-
-  get(id: ControllerID): Promise<Controllable>;
-
-  getAll(): Promise<Controllable[]>;
-
-  filter(params: IControllerParams): Promise<Controllable[]>;
-
-  update(id: ControllerID, params: IControllerParams): Promise<Controllable>;
-
-  delete(id: ControllerID): Promise<Controllable>;
-
-  deleteAll(): Promise<Controllable[]>;
-}
-
-class Controller implements IController {
-  constructor(public model: Controllable) {}
-
-  create = async (params: IControllerParams) => await this.model.create(params);
+  create = async (params: IGraphQLMongoDBControllerParams) =>
+    await this.model.create(params);
 
   get = async (id: ControllerID) => await this.model.findById(id);
 
@@ -42,9 +27,7 @@ class Controller implements IController {
             nestedPath.push(param);
             getEdgeNodePath(params[param]);
           } else {
-            throw new Error(
-              "Can only filter by one (optionally nested) property"
-            );
+            throw new MultipleFilterParamsError();
           }
         } else if (nestedPath.length > 0) {
           nestedPath.push(param);
@@ -70,7 +53,7 @@ class Controller implements IController {
     return await this.model.find({ [edgeNodePath]: edgeNodeValue }).exec(); // All documents that match key-value
   };
 
-  async update(id: ControllerID, params: IControllerParams) {
+  async update(id: ControllerID, params: IGraphQLMongoDBControllerParams) {
     await this.model.findByIdAndUpdate(id, params, { upsert: true });
     return await this.get(id); // So that we get the new instead of the old one (usefull for subscriptions)
   }
@@ -94,4 +77,4 @@ class Controller implements IController {
   }
 }
 
-export { Controllable, Controller };
+export { GraphQLMongoDBControllable, GraphQLMongoDBController };
