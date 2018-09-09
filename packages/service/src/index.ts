@@ -11,5 +11,8 @@ export {
   GraphQLMongoDBControllable,
   GraphQLMongoDBController
 } from "./predefined/graphQLMongoDB/controller/controller";
+export {
+  GraphQLMongoDBFlagParser
+} from "./predefined/graphQLMongoDB/startup/flags";
 
 export { mongoose };

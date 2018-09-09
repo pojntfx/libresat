@@ -1,31 +1,36 @@
+import { GraphQLMongoDBFlagParser as FlagParser } from "@libresat/service";
 import { service } from "./index";
 
-const args = process.argv.slice(2);
-
-if (args.length <= 2 || args.includes("-h") || args.includes("--help")) {
-  console.log(`LibreSat Identity
-@libresat/identity#0.0.1-10
+const description = `LibreSat Identity
+@libresat/identity#0.0.1-11
 
 Usage: identity [OPTION...]
 
-  -p,       --port          Port to run the GraphQL server on
-  --db-url, --database-url  MongoDB server to connect to
+-p,       --port         Port to run the GraphQL server on
+--db-url, --database-url MongoDB server to connect to
 
-More info: https://libresat.space/docs/services/identity`);
-} else {
-  const port: number =
-    parseInt(args[args.indexOf("--port") + 1]) ||
-    parseInt(args[args.indexOf("-p") + 1]);
+More info: https://libresat.space/docs/services/identity`;
 
-  const dbUrl: string =
-    args[args.indexOf("--db-url") + 1] ||
-    args[args.indexOf("--database-url") + 1];
+const flagParser = new FlagParser(process.argv);
+
+const help = flagParser.getFlag("-h", () => true, () => true);
+
+if (!help && flagParser.flagsHaveBeenProvided()) {
   try {
-    service.start(
-      !isNaN(port) ? port : 3000,
-      /mongodb:\/\/.*:\d+/.test(dbUrl) ? dbUrl : "mongodb://localhost:27017"
+    const port = flagParser.getFlag(
+      "-p",
+      (arg: any) => !isNaN(parseInt(arg)),
+      (arg: any) => arg
     );
+    const dbUrl = flagParser.getFlag(
+      "--db-url",
+      (arg: any) => /mongodb:\/\/.*:\d+/.test(arg),
+      (arg: any) => arg
+    );
+    service.start(port, dbUrl);
   } catch (e) {
-    console.log(e);
+    console.error(e);
   }
+} else {
+  console.log(description);
 }
