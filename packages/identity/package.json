@@ -1,19 +1,30 @@
 {
   "name": "@libresat/identity",
-  "version": "0.0.1-9",
   "description": "Identity provider for [LibreSat](https://libresat.space/)",
-  "main": "dist/index.ts",
-  "bin": "dist/tasks/start.js",
+  "version": "0.0.1-9",
+  "main": "dist/index.js",
+  "bin": "dist/start.js",
+  "pkg": {
+    "scripts": "dist/**/*.js",
+    "assets": "dist/**/*.graphql"
+  },
   "scripts": {
-    "dev": "nodemon --ext json,ts,graphql --watch src/ --exec \"npm run start:dev && npm run build\"",
+    "dev": "npm run watch:dev",
     "build": "tsc -p tsconfig.json && cp -r src/typeDefs dist/",
-    "build:binary": "pkg package.json --targets node10-linux-x64 --out-path dist/",
-    "start": "node dist/tasks/start.js -- --port 3000 --db-url mongodb://localhost:27017",
-    "start:dev": "ts-node --project ./tsconfig.json --files src/tasks/start.ts -- --port 4000 --db-url mongodb://localhost:27017",
-    "start:binary": "chmod +x dist/identity && dist/identity --port 3000 --db-url mongodb://localhost:27017",
-    "install:binary": "sudo install dist/identity /usr/bin",
-    "prepublish": "npm run build",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build:dev": "ts-node -P tsconfig.json src/index.ts",
+    "build:binary": "pkg package.json -t node10-linux-x64 -o dist/libresat-identity",
+    "start": "node dist/start.js -p 2000 --db-url mongodb://localhost:27017",
+    "start:dev": "ts-node -P tsconfig.json src/start.ts -p 2000 --db-url mongodb://localhost:27017",
+    "start:binary": "chmod +x dist/libresat-identity && dist/libresat-identity -p 2000 --db-url mongodb://localhost:27017",
+    "install:binary": "sudo install dist/libresat-identity /usr/bin",
+    "watch": "nodemon -e ts,js,graphql -x \"npm run build && npm run start\" -w src/",
+    "watch:dev": "nodemon -e ts,js,graphql -x \"npm run build:dev && npm run start:dev\" -w src/",
+    "watch:build": "nodemon -e ts,js,graphql -x npm run build -w src/",
+    "watch:build:dev": "nodemon -e ts,js,graphql -x npm run build:dev -w src/",
+    "watch:start": "nodemon -e ts,js,graphql -x npm run start -w src/",
+    "watch:start:dev": "nodemon -e ts,js,graphql -x npm run start:dev -w src/",
+    "prepare": "npm run build",
+    "test": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -23,6 +34,7 @@
     "identity",
     "authentication",
     "authorization",
+    "organizations",
     "roles",
     "users"
   ],
@@ -31,16 +43,10 @@
   "dependencies": {
     "@libresat/service": "^0.0.1-9"
   },
-  "devDependencies": {
-    "typescript": "^3.0.3",
-    "nodemon": "^1.18.4",
-    "pkg": "^4.3.4",
-    "ts-node": "^7.0.1"
+  "bugs": {
+    "url": "https://gitlab.com/libresat/libresat/issues"
   },
-  "pkg": {
-    "scripts": "dist/**/*.js",
-    "assets": "dist/**/*.graphql"
-  },
+  "homepage": "https://gitlab.com/libresat/libresat/tree/master/packages/identity#README",
   "publishConfig": {
     "access": "public"
   }
