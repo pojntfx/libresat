@@ -1,7 +1,7 @@
 {
   "name": "@libresat/service",
   "description": "A minimal, modular and optionally opinionated microservice library, based on Apollo GraphQL and MongoDB",
-  "version": "0.0.1-10",
+  "version": "0.0.1-11",
   "main": "dist/index.js",
   "scripts": {
     "dev": "npm run watch",
