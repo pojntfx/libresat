@@ -1,0 +1,13 @@
+type Role {
+  _id: String!
+  name: String!
+  organization: Organization
+}
+
+type Mutation {
+  createRole(organizationId: String!, name: String!): Role
+}
+
+type Query {
+  getRole(organizationId: String!, id: String!): Role
+}
