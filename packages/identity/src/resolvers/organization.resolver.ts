@@ -10,7 +10,7 @@ export default {
   },
   Query: {
     getOrganization: async (_: any, params: any) =>
-      await organization.model.findById(params.id).populate("roles")
+      await organization.get(params.id)
   }
 };
 
