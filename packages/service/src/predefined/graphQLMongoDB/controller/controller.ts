@@ -11,14 +11,19 @@ class GraphQLMongoDBControllable extends mongoose.Model {}
 class GraphQLMongoDBController implements IGraphQLMongoDBController {
   constructor(public model: GraphQLMongoDBControllable) {}
 
-  create = async (params: IGraphQLMongoDBControllerParams) =>
-    await this.model.create(params);
+  async create(params: IGraphQLMongoDBControllerParams) {
+    return await this.model.create(params);
+  }
 
-  get = async (id: ControllerID) => await this.model.findById(id);
+  async get(id: ControllerID) {
+    return await this.model.findById(id);
+  }
 
-  getAll = async () => await this.model.find();
+  async getAll() {
+    return await this.model.find();
+  }
 
-  filter = async (params: any) => {
+  async filter(params: any) {
     let nestedPath: string[] = [];
     const getEdgeNodePath = (params: any) => {
       for (let param in params) {
@@ -51,7 +56,7 @@ class GraphQLMongoDBController implements IGraphQLMongoDBController {
     const edgeNodePath = nestedPath.join("."); // key1.key2.key3
     const edgeNodeValue = getProperty(nestedPath.join("."), params); // value at key1.key2.key3
     return await this.model.find({ [edgeNodePath]: edgeNodeValue }).exec(); // All documents that match key-value
-  };
+  }
 
   async update(id: ControllerID, params: IGraphQLMongoDBControllerParams) {
     await this.model.findByIdAndUpdate(id, params, { upsert: true });
