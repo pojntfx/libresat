@@ -1,18 +1,16 @@
 import { mongoose as database } from "@libresat/service";
 
-const OrganizationSchema = new database.Schema({
-  apiVersion: String,
-  metadata: new database.Schema({
-    name: String,
-    description: String
-  }),
-  spec: new database.Schema({
-    email: String,
-    secret: String
-  })
-});
+const { Schema } = database;
 
-OrganizationSchema.index({ "$**": "text" });
+const OrganizationSchema = new Schema({
+  name: String,
+  roles: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Role"
+    }
+  ]
+});
 
 const OrganizationModel = database.model("Organization", OrganizationSchema);
 
