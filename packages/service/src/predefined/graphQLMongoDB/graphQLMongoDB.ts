@@ -68,16 +68,28 @@ class GraphQLMongoDB implements IGraphQLMongoDB {
 
     if (!help && flagParser.flagsHaveBeenProvided()) {
       try {
-        const port = flagParser.getFlag(
-          "-p",
-          (arg: any) => !isNaN(parseInt(arg)),
-          (arg: any) => arg
-        );
-        const dbUrl = flagParser.getFlag(
-          "--db-url",
-          (arg: any) => /mongodb:\/\/.*:\d+/.test(arg),
-          (arg: any) => arg
-        );
+        const port =
+          flagParser.getFlag(
+            "-p",
+            (arg: any) => !isNaN(parseInt(arg)),
+            (arg: any) => arg
+          ) ||
+          flagParser.getFlag(
+            "--port",
+            (arg: any) => !isNaN(parseInt(arg)),
+            (arg: any) => arg
+          );
+        const dbUrl =
+          flagParser.getFlag(
+            "--db-url",
+            (arg: any) => /mongodb:\/\/.*:\d+/.test(arg),
+            (arg: any) => arg
+          ) ||
+          flagParser.getFlag(
+            "--database-url",
+            (arg: any) => /mongodb:\/\/.*:\d+/.test(arg),
+            (arg: any) => arg
+          );
         return this.start(port, dbUrl);
       } catch (e) {
         console.error(e);
