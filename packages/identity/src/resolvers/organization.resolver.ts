@@ -14,10 +14,7 @@ export default {
       await organization.get(params.id)
   },
   Organization: {
-    roles: async (parent: any, params: any) =>
-      await organization
-        .get(parent.id)
-        .then(org => org.roles.map((id: string) => role.get(id)))
+    roles: async (parent: any) => await organization.getAllRoles(parent)
   }
 };
 
