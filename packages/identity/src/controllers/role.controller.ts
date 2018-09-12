@@ -20,12 +20,10 @@ class RoleController extends Controller {
     return newRole;
   }
 
-  async get(id: string) {
-    return this.model
-      .findById(id)
-      .populate("organization")
-      .populate("users");
-  }
+  getOrganization = async (parent: any) =>
+    await this.get(parent.id).then(
+      async (role: any) => await organization.get(role.organization._id)
+    );
 }
 
 export { RoleController };

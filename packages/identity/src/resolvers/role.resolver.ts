@@ -8,7 +8,10 @@ export default {
     createRole: async (_: any, params: any) => await role.create(params)
   },
   Query: {
-    getRole: async (_: any, params: any) => await role.get(params.id)
+    role: async (_: any, params: any) => await role.get(params.id)
+  },
+  Role: {
+    organization: async (parent: any) => await role.getOrganization(parent)
   }
 };
 

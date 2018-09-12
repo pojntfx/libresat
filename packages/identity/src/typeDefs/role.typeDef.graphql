@@ -10,5 +10,5 @@ type Mutation {
 }
 
 type Query {
-  getRole(organizationId: String!, id: String!): Role
+  role(organizationId: String!, id: String!): Role
 }
