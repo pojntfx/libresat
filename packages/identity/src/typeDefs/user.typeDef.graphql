@@ -9,5 +9,5 @@ type Mutation {
 }
 
 type Query {
-  getUser(roleId: String!, id: String!): User
+  user(roleId: String!, id: String!): User
 }

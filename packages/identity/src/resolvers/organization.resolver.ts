@@ -1,6 +1,5 @@
 import { OrganizationController } from "../controllers/organization.controller";
 import { OrganizationModel } from "../models/organization.model";
-import { role } from "./role.resolver";
 
 const organization = new OrganizationController(OrganizationModel);
 

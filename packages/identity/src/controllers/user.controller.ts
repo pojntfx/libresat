@@ -20,14 +20,10 @@ class UserController extends Controller {
     return newUser;
   }
 
-  async get(id: string) {
-    return this.model.findById(id).populate({
-      path: "roles",
-      populate: {
-        path: "organization"
-      }
-    });
-  }
+  getAllRoles = async (parent: any) =>
+    this.get(parent.id).then(user =>
+      user.roles.map(async (roleId: any) => await role.get(roleId))
+    );
 }
 
 export { UserController };
