@@ -19,6 +19,13 @@ class RoleController extends Controller {
     await ownerOrganization.save();
     return newRole;
   }
+
+  async get(id: string) {
+    return this.model
+      .findById(id)
+      .populate("organization")
+      .populate("users");
+  }
 }
 
 export { RoleController };
