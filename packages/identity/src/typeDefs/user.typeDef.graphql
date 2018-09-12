@@ -6,6 +6,9 @@ type User {
 
 type Mutation {
   createUser(roleId: String!, name: String!): User
+  updateUser(roleId: String!, userId: String!, name: String!): User
+  deleteUser(roleId: String!, userId: String!): User
+  deleteAllUsers: [User]
 }
 
 type Query {

@@ -7,6 +7,9 @@ type Role {
 
 type Mutation {
   createRole(organizationId: String!, name: String!): Role
+  updateRole(organizationId: String!, roleId: String!, name: String!): Role
+  deleteRole(id: String!): Role
+  deleteAllRoles: [Role]
 }
 
 type Query {
