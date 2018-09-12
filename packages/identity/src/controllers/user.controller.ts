@@ -22,7 +22,7 @@ class UserController extends Controller {
 
   getAllRoles = async (parent: any) =>
     this.get(parent.id).then(user =>
-      user.roles.map(async (roleId: any) => await role.get(roleId))
+      user.roles.map(async (roleId: string) => await role.get(roleId))
     );
 }
 
