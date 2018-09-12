@@ -13,8 +13,7 @@ export default {
   },
   Query: {
     role: async (_: any, params: any) => await role.get(params.id),
-    roles: async (_: any, params: any) =>
-      await role.filter(params.filter || undefined)
+    roles: async (_: any, params: any) => await role.filter(params)
   },
   Role: {
     organization: async (parent: any) => await role.getOrganization(parent),
