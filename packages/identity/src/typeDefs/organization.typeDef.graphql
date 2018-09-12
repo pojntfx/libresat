@@ -6,6 +6,9 @@ type Organization {
 
 type Mutation {
   createOrganization(name: String!): Organization
+  updateOrganization(id: String!, name: String!): Organization
+  deleteOrganization(id: String!): Organization
+  deleteAllOrganizations: [Organization]
 }
 
 type Query {
