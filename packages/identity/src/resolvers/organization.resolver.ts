@@ -11,7 +11,8 @@ export default {
   Query: {
     organization: async (_: any, params: any) =>
       await organization.get(params.id),
-    organizations: async () => await organization.getAll()
+    organizations: async (_: any, params: any) =>
+      await organization.filter(params)
   },
   Organization: {
     roles: async (parent: any) => await organization.getAllRoles(parent)

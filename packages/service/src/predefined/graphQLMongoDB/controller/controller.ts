@@ -24,6 +24,12 @@ class GraphQLMongoDBController implements IGraphQLMongoDBController {
   }
 
   async filter(params: any) {
+    let isRootParam = false;
+    for (let param in params) {
+      if (typeof param === "string" || typeof param === "number") {
+        isRootParam = true;
+      }
+    }
     let nestedPath: string[] = [];
     const getEdgeNodePath = (params: any) => {
       for (let param in params) {
@@ -52,10 +58,18 @@ class GraphQLMongoDBController implements IGraphQLMongoDBController {
 
       return property;
     };
-    getEdgeNodePath(params);
-    const edgeNodePath = nestedPath.join("."); // key1.key2.key3
-    const edgeNodeValue = getProperty(nestedPath.join("."), params); // value at key1.key2.key3
-    return await this.model.find({ [edgeNodePath]: edgeNodeValue }).exec(); // All documents that match key-value
+    if (!isRootParam) {
+      getEdgeNodePath(params);
+      const edgeNodePath = nestedPath.join("."); // key1.key2.key3
+      const edgeNodeValue = getProperty(nestedPath.join("."), params); // value at key1.key2.key3
+      return await this.model.find({ [edgeNodePath]: edgeNodeValue }).exec(); // All documents that match key-value
+    } else {
+      const key = Object.keys(params)[0];
+      const value = params[Object.keys(params)[0]];
+      return await this.model.find({
+        [key]: value
+      });
+    }
   }
 
   async update(id: ControllerID, params: IGraphQLMongoDBControllerParams) {

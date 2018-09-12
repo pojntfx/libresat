@@ -9,7 +9,8 @@ export default {
   },
   Query: {
     role: async (_: any, params: any) => await role.get(params.id),
-    roles: async () => await role.getAll()
+    roles: async (_: any, params: any) =>
+      await role.filter(params.filter || undefined)
   },
   Role: {
     organization: async (parent: any) => await role.getOrganization(parent),

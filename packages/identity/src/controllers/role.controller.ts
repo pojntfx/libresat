@@ -30,6 +30,8 @@ class RoleController extends Controller {
     await this.get(parent.id).then(async (role: any) =>
       role.users.map((userId: string) => user.get(userId))
     );
+
+  filter = async (params: any) => super.filter(params.filter || undefined);
 }
 
 export { RoleController };
