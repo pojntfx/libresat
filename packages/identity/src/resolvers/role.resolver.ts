@@ -11,7 +11,8 @@ export default {
     role: async (_: any, params: any) => await role.get(params.id)
   },
   Role: {
-    organization: async (parent: any) => await role.getOrganization(parent)
+    organization: async (parent: any) => await role.getOrganization(parent),
+    users: async (parent: any) => await role.getAllUsers(parent)
   }
 };
 
