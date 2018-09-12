@@ -9,5 +9,5 @@ type Mutation {
 }
 
 type Query {
-  getOrganization(id: String!): Organization
+  organization(id: String!): Organization
 }
