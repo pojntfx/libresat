@@ -10,5 +10,10 @@ type Mutation {
 
 type Query {
   organization(id: String!): Organization
-  organizations: [Organization]
+  organizations(filter: OrganizationFilterInput): [Organization]
+}
+
+input OrganizationFilterInput {
+  _id: String
+  name: String
 }

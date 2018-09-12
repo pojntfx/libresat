@@ -10,5 +10,10 @@ type Mutation {
 
 type Query {
   user(roleId: String!, id: String!): User
-  users: [User]
+  users(filter: UserFilterInput): [User]
+}
+
+input UserFilterInput {
+  _id: String
+  name: String
 }

@@ -9,7 +9,8 @@ export default {
   },
   Query: {
     user: async (_: any, params: any) => await user.get(params.id),
-    users: async () => await user.getAll()
+    users: async (_: any, params: any) =>
+      await user.filter(params.filter || undefined)
   },
   User: {
     roles: async (parent: any) => await user.getAllRoles(parent)

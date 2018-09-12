@@ -6,6 +6,8 @@ class OrganizationController extends Controller {
     await this.get(parent.id).then(org =>
       org.roles.map(async (roleId: string) => await role.get(roleId))
     );
+
+  filter = async (params: any) => super.filter(params.filter || undefined);
 }
 
 export { OrganizationController };
