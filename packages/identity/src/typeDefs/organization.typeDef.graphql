@@ -10,4 +10,5 @@ type Mutation {
 
 type Query {
   organization(id: String!): Organization
+  organizations: [Organization]
 }
