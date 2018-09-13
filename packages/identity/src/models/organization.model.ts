@@ -4,7 +4,6 @@ const { Schema } = database;
 
 const OrganizationSchema = new Schema({
   name: String,
-  secret: String,
   roles: [
     {
       type: Schema.Types.ObjectId,

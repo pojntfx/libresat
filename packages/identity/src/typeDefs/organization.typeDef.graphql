@@ -1,13 +1,13 @@
 type Organization {
   _id: String!
   name: String!
-  secret: String!
+  password: String!
   roles: [Role]
 }
 
 type Mutation {
-  createOrganization(name: String!, secret: String!): Organization
-  updateOrganization(id: String!, name: String!, secret: String!): Organization
+  createOrganization(name: String!, password: String!): Organization
+  updateOrganization(id: String!, name: String!, password: String!): Organization
   deleteOrganization(id: String!): Organization
   deleteAllOrganizations: [Organization]
 }

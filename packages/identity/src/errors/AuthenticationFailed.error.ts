@@ -1,6 +1,6 @@
 class AuthenticationFailedError extends Error {
   constructor() {
-    super("Authentication failed, wrong secret!");
+    super("Authentication failed, wrong username or password!");
   }
 }
 

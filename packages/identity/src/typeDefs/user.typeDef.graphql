@@ -1,12 +1,18 @@
 type User {
   _id: String!
   name: String!
+  password: String!
   roles: [Role]
 }
 
 type Mutation {
-  createUser(roleId: String!, name: String!): User
-  updateUser(roleId: String!, userId: String!, name: String!): User
+  createUser(roleId: String!, name: String!, password: String!): User
+  updateUser(
+    roleId: String!
+    userId: String!
+    name: String
+    password: String
+  ): User
   deleteUser(roleId: String!, userId: String!): User
   deleteAllUsers: [User]
 }
