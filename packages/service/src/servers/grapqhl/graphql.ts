@@ -8,13 +8,19 @@ class GraphQL implements IGraphQL {
     public name: IGraphQLParams["name"],
     public typeDefs: IGraphQLParams["typeDefs"],
     public resolvers: IGraphQLParams["resolvers"],
-    public port: IGraphQLParams["port"]
+    public port: IGraphQLParams["port"],
+    public enableHeaders?: IGraphQLParams["enableHeaders"]
   ) {}
 
   createServer() {
     this.server = new GraphQLServer({
       typeDefs: this.typeDefs,
-      resolvers: this.resolvers
+      resolvers: this.resolvers,
+      context: this.enableHeaders
+        ? ({ request: { headers } }) => ({
+            headers
+          })
+        : undefined
     });
     return this.server;
   }

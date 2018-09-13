@@ -5,8 +5,9 @@ const description = `LibreSat Identity
 
   Usage: identity [OPTION...]
 
-  -p,       --port         Port to run the GraphQL server on
-  --db-url, --database-url MongoDB server to connect to
+  -p,     --port            Port to run the GraphQL server on
+  -db,    --database-url    MongoDB server to connect to
+  -hds,   --headers         Whether to use HTTP headers for authentication or not
 
 More info: https://libresat.space/docs/services/identity`;
 

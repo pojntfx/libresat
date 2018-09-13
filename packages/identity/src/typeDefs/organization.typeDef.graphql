@@ -7,12 +7,7 @@ type Organization {
 
 type Mutation {
   createOrganization(name: String!, secret: String!): Organization
-  updateOrganization(
-    id: String!
-    name: String!
-    oldSecret: String!
-    newSecret: String!
-  ): Organization
+  updateOrganization(id: String!, name: String!, secret: String!): Organization
   deleteOrganization(id: String!): Organization
   deleteAllOrganizations: [Organization]
 }
