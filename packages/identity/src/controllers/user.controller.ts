@@ -2,8 +2,12 @@ import { GraphQLMongoDBController as Controller } from "@libresat/service";
 import { role } from "../resolvers/role.resolver";
 import { compare, hash } from "bcryptjs";
 import { AuthenticationFailedError } from "../errors/AuthenticationFailed.error";
+import { AuthorizationFailedError } from "../errors/AuthorzationFailed.error";
 
 class UserController extends Controller {
+  getWithRoles = async (id: string) =>
+    this.model.findById(id).populate("roles");
+
   getAllRoles = async (parent: any) =>
     this.get(parent.id).then(user =>
       user.roles.map(async (roleId: string) => await role.get(roleId))
@@ -31,43 +35,48 @@ class UserController extends Controller {
   update = async (_: any, params: any) => {
     const userId = params.authorization.userid;
     const password = params.authorization.password;
-    const isAuthenticated = await this.authenticate(userId, password);
+    const isAuthenticated = await this.isAuthorized(userId, password, [
+      "role1"
+    ]);
     if (isAuthenticated) {
-      const user = await this.get(userId);
-      const roleIds = await user.roles;
-      let roles = [];
-      for (let roleId of roleIds) {
-        roles.push(await role.get(roleId));
-      }
-      const doesHaveRole = await this.doesUserHaveRole(roles, ["role1"]);
-      if (doesHaveRole) {
-        return await this.updateWithHashedPassword(
-          userId,
-          params,
-          params.password
-        );
-      } else {
-        throw new AuthenticationFailedError();
-      }
+      return await this.updateWithHashedPassword(
+        userId,
+        params,
+        params.password
+      );
     } else {
       throw new AuthenticationFailedError();
     }
   };
 
-  authenticate = async (id: string, password: string) =>
-    await this.get(id).then(
-      async (user: any) => await compare(password, user.password)
-    );
+  async isAuthorized(
+    userId: string,
+    password: string,
+    authorizedRoles: string[]
+  ) {
+    const user = await this.getWithRoles(userId);
+    if (await this.isAuthenticated(user, password)) {
+      if (await this.hasRoles(user, authorizedRoles)) {
+        return true;
+      } else {
+        throw new AuthorizationFailedError();
+      }
+    } else {
+      throw new AuthenticationFailedError();
+    }
+  }
 
-  async doesUserHaveRole(userRoles: any, wantedRoles: string[]) {
+  isAuthenticated = async (user: any, password: string) =>
+    await compare(password, user.password);
+
+  async hasRoles(user: any, authorizedRoles: string[]) {
     const validRoles = [];
-    // This is much faster then array.filter(), so we use it even though it's imperative
-    for (let wantedRole of wantedRoles) {
+    for (let authorizedRole of authorizedRoles) {
       if (validRoles.length >= 1) {
         break;
       } else {
-        for (let userRole of userRoles) {
-          if (userRole.name === wantedRole) {
+        for (let userRole of user.roles) {
+          if (userRole.name === authorizedRole) {
             validRoles.push(userRole);
             break;
           }
