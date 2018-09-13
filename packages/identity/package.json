@@ -42,8 +42,8 @@
   "license": "AGPL-3.0",
   "dependencies": {
     "@libresat/service": "^0.0.1-14",
-    "@types/bcrypt": "^2.0.0",
-    "bcrypt": "^3.0.0"
+    "@types/bcryptjs": "^2.4.1",
+    "bcryptjs": "^2.4.3"
   },
   "bugs": {
     "url": "https://gitlab.com/libresat/libresat/issues"

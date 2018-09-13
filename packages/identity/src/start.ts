@@ -1,9 +1,9 @@
 import { service } from "./index";
 
 const description = `LibreSat Identity
-@libresat/identity#0.0.1-11
+@libresat/identity#0.0.1-15
 
-  Usage: identity [OPTION...]
+  Usage: libresat-identity [OPTION...]
 
   -p,     --port            Port to run the GraphQL server on
   -db,    --database-url    MongoDB server to connect to

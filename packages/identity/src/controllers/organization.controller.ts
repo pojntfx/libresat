@@ -1,6 +1,6 @@
 import { GraphQLMongoDBController as Controller } from "@libresat/service";
 import { role } from "../resolvers/role.resolver";
-import { hash, compare } from "bcrypt";
+import { hash, compare } from "bcryptjs";
 import { AuthenticationFailedError } from "../errors/AuthenticationFailed.error";
 
 class OrganizationController extends Controller {
