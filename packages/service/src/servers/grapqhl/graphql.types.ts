@@ -23,6 +23,7 @@ interface IGraphQLParams {
   port: IServer["port"];
   typeDefs: string;
   resolvers: any;
+  enableHeaders: boolean;
 }
 
 export { IGraphQL, IGraphQLParams };

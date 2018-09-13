@@ -34,7 +34,8 @@ class GraphQLMongoDB implements IGraphQLMongoDB {
 
   start(
     port?: IGraphQLMongoDBParams["port"],
-    dbUrl?: IGraphQLMongoDBParams["dbUrl"]
+    dbUrl?: IGraphQLMongoDBParams["dbUrl"],
+    enableHeaders?: IGraphQLMongoDBParams["enableHeaders"]
   ) {
     if (port) {
       this.port = port;
@@ -47,7 +48,8 @@ class GraphQLMongoDB implements IGraphQLMongoDB {
         `${this.name}-server`,
         new TypeDefMerger(this.typeDefDir).merge(),
         new ResolverMerger(this.resolverDir).merge(),
-        this.port
+        this.port,
+        enableHeaders
       ).start(),
       new MongoDB(`${this.name}-database`, this.dbUrl).start()
     ]).start();
@@ -81,7 +83,7 @@ class GraphQLMongoDB implements IGraphQLMongoDB {
           );
         const dbUrl =
           flagParser.getFlag(
-            "--db-url",
+            "-db",
             (arg: any) => /mongodb:\/\/.*:\d+/.test(arg),
             (arg: any) => arg
           ) ||
@@ -90,7 +92,11 @@ class GraphQLMongoDB implements IGraphQLMongoDB {
             (arg: any) => /mongodb:\/\/.*:\d+/.test(arg),
             (arg: any) => arg
           );
-        return this.start(port, dbUrl);
+        const enableHeaders =
+          flagParser.getFlag("-hds", () => true, () => true) ||
+          flagParser.getFlag("--headers", () => true, () => true) ||
+          false;
+        return this.start(port, dbUrl, enableHeaders);
       } catch (e) {
         console.error(e);
         return false;

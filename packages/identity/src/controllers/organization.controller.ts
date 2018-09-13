@@ -14,13 +14,13 @@ class OrganizationController extends Controller {
     );
 
   update = async (id: string, params: any) =>
-    compare(
-      params.oldSecret,
+    await compare(
+      params.authorization,
       await this.get(id).then((organization: any) => organization.secret)
     ).then(
       async (res: boolean) =>
         res
-          ? await hash(params.newSecret, 10).then(
+          ? await hash(params.secret, 10).then(
               async (saltedSecret: string) =>
                 await super.update(params.id, {
                   ...params,

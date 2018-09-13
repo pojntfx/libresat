@@ -7,8 +7,11 @@ export default {
   Mutation: {
     createOrganization: async (_: any, params: any) =>
       await organization.create(params),
-    updateOrganization: async (_: any, params: any) =>
-      await organization.update(params.id, params),
+    updateOrganization: async (_: any, params: any, context: any) =>
+      await organization.update(params.id, {
+        authorization: context.headers.authorization,
+        ...params
+      }),
     deleteOrganization: async (_: any, params: any) =>
       await organization.delete(params.id),
     deleteAllOrganizations: async () => await organization.deleteAll()

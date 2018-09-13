@@ -44,6 +44,7 @@ interface IGraphQLMongoDBParams extends IPredefined {
   port: IGraphQL["port"];
   typeDefDir: ITypeDefMerger["dir"];
   resolverDir: IResolverMerger["dir"];
+  enableHeaders: boolean;
 }
 
 export { IGraphQLMongoDBParams, IGraphQLMongoDB };
