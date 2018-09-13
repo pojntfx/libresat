@@ -6,19 +6,11 @@ import { AuthorizationFailedError } from "../errors/AuthorizationFailed.error";
 import { writeSelf } from "../constants/roles.constants";
 
 class UserController extends Controller {
-  getWithRoles = async (id: string) =>
-    this.model.findById(id).populate("roles");
-
-  getAllRoles = async (parent: any) =>
-    this.get(parent.id).then(user =>
-      user.roles.map(async (roleId: string) => await role.get(roleId))
-    );
-
   async create(params: any) {
-    const saltedpassword = await hash(params.password, 10);
+    const saltedPassword = await hash(params.password, 10);
     const newUser = await super.create({
       ...params,
-      password: saltedpassword
+      password: saltedPassword
     });
     // Get role to which this user belongs to
     const ownerRole = await role.get(params.roleId);
@@ -33,22 +25,27 @@ class UserController extends Controller {
     return newUser;
   }
 
-  update = async (_: any, params: any) => {
-    const userId = params.authorization.userid;
-    const password = params.authorization.password;
-    const isAuthenticated = await this.isAuthorized(userId, password, [
-      writeSelf
-    ]);
-    if (isAuthenticated) {
-      return await this.updateWithHashedPassword(
-        userId,
-        params,
-        params.password
-      );
-    } else {
-      throw new AuthenticationFailedError();
-    }
-  };
+  async update(_: any, params: any) {
+    const { userId, password } = await this.parseCredentials(params);
+    return (await this.isAuthorized(userId, password, [writeSelf]))
+      ? await this.updateWithHashedPassword(userId, params, params.password)
+      : new AuthorizationFailedError();
+  }
+
+  async delete(params: any) {
+    const { userId, password } = await this.parseCredentials(params);
+    return (await this.isAuthorized(userId, password, [writeSelf]))
+      ? super.delete(params.userId)
+      : new AuthorizationFailedError();
+  }
+
+  getWithRoles = async (id: string) =>
+    this.model.findById(id).populate("roles");
+
+  getAllRoles = async (parent: any) =>
+    this.get(parent.id).then(user =>
+      user.roles.map(async (roleId: string) => await role.get(roleId))
+    );
 
   async isAuthorized(
     userId: string,
@@ -56,15 +53,11 @@ class UserController extends Controller {
     authorizedRoles: string[]
   ) {
     const user = await this.getWithRoles(userId);
-    if (await this.isAuthenticated(user, password)) {
-      if (await this.hasRoles(user, authorizedRoles)) {
-        return true;
-      } else {
-        throw new AuthorizationFailedError();
-      }
-    } else {
-      throw new AuthenticationFailedError();
-    }
+    return (await this.isAuthenticated(user, password))
+      ? (await this.hasRoles(user, authorizedRoles))
+        ? true
+        : new AuthorizationFailedError()
+      : new AuthenticationFailedError();
   }
 
   isAuthenticated = async (user: any, password: string) =>
@@ -94,6 +87,11 @@ class UserController extends Controller {
       password: hashedPassword
     });
   }
+
+  parseCredentials = async (params: any) => ({
+    userId: params.context.headers.userid,
+    password: params.context.headers.password
+  });
 
   filter = async (params: any) => super.filter(params.filter || undefined);
 }

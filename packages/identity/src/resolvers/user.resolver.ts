@@ -8,10 +8,11 @@ export default {
     createUser: async (_: any, params: any) => await user.create(params),
     updateUser: async (_: any, params: any, context: any) =>
       await user.update(params.userId, {
-        authorization: context.headers,
+        context,
         ...params
       }),
-    deleteUser: async (_: any, params: any) => await user.delete(params.id),
+    deleteUser: async (_: any, _2: any, context: any) =>
+      await user.delete({ context }),
     deleteAllUsers: async () => await user.deleteAll()
   },
   Query: {
