@@ -2,7 +2,8 @@ import { GraphQLMongoDBController as Controller } from "@libresat/service";
 import { role } from "../resolvers/role.resolver";
 import { compare, hash } from "bcryptjs";
 import { AuthenticationFailedError } from "../errors/AuthenticationFailed.error";
-import { AuthorizationFailedError } from "../errors/AuthorzationFailed.error";
+import { AuthorizationFailedError } from "../errors/AuthorizationFailed.error";
+import { writeSelf } from "../constants/roles.constants";
 
 class UserController extends Controller {
   getWithRoles = async (id: string) =>
@@ -36,7 +37,7 @@ class UserController extends Controller {
     const userId = params.authorization.userid;
     const password = params.authorization.password;
     const isAuthenticated = await this.isAuthorized(userId, password, [
-      "role1"
+      writeSelf
     ]);
     if (isAuthenticated) {
       return await this.updateWithHashedPassword(
