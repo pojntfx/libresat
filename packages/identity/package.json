@@ -41,7 +41,9 @@
   "author": "Felix Pojtinger <felix@pojtinger.com>",
   "license": "AGPL-3.0",
   "dependencies": {
-    "@libresat/service": "^0.0.1-14"
+    "@libresat/service": "^0.0.1-14",
+    "@types/bcrypt": "^2.0.0",
+    "bcrypt": "^3.0.0"
   },
   "bugs": {
     "url": "https://gitlab.com/libresat/libresat/issues"
