@@ -4,6 +4,7 @@ const { Schema } = database;
 
 const UserSchema = new Schema({
   name: String,
+  password: String,
   roles: [
     {
       type: Schema.Types.ObjectId,

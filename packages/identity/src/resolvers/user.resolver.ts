@@ -6,8 +6,11 @@ const user = new UserController(UserModel);
 export default {
   Mutation: {
     createUser: async (_: any, params: any) => await user.create(params),
-    updateUser: async (_: any, params: any) =>
-      await user.update(params.userId, params),
+    updateUser: async (_: any, params: any, context: any) =>
+      await user.update(params.userId, {
+        authorization: context.headers,
+        ...params
+      }),
     deleteUser: async (_: any, params: any) => await user.delete(params.id),
     deleteAllUsers: async () => await user.deleteAll()
   },
