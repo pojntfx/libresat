@@ -1,7 +1,15 @@
 import { service } from "./index";
+const {
+  name,
+  description: pkgDescription,
+  version,
+  author,
+  license,
+  homepage
+} = require("../package.json");
 
 const description = `LibreSat Identity
-@libresat/identity#0.0.1-15
+${pkgDescription}
 
   Usage: libresat-identity [OPTION...]
 
@@ -9,6 +17,8 @@ const description = `LibreSat Identity
   -db,    --database-url    MongoDB server to connect to
   -hds,   --headers         Whether to use HTTP headers for authentication or not
 
-More info: https://libresat.space/docs/services/identity`;
+Version: ${name}#${version} by ${author}
+License: ${license}
+More info: ${homepage}`;
 
 service.startWithArgs(description, process.argv);
