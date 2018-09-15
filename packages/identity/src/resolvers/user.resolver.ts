@@ -13,7 +13,12 @@ export default {
       }),
     deleteUser: async (_: any, _2: any, context: any) =>
       await user.delete({ context }),
-    deleteAllUsers: async () => await user.deleteAll()
+    deleteAllUsers: async () => await user.deleteAll(),
+    authorizeWithNames: async (_: any, params: any, context: any) =>
+      await user.authorizeWithNames({
+        context,
+        ...params
+      })
   },
   Query: {
     user: async (_: any, params: any) => await user.get(params.id),

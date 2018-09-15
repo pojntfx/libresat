@@ -4,6 +4,7 @@ import { compare, hash } from "bcryptjs";
 import { AuthenticationFailedError } from "../errors/AuthenticationFailed.error";
 import { AuthorizationFailedError } from "../errors/AuthorizationFailed.error";
 import { writeSelf } from "../constants/roles.constants";
+import { organization } from "../resolvers/organization.resolver";
 
 class UserController extends Controller {
   async create(params: any) {
@@ -37,6 +38,17 @@ class UserController extends Controller {
     return (await this.isAuthorized(userId, password, [writeSelf]))
       ? super.delete(params.userId)
       : new AuthorizationFailedError();
+  }
+
+  async authorizeWithNames(params: any) {
+    const authorizedRoles = await organization.filterRolesByNames(
+      params.organizationName,
+      params.roleNames
+    );
+    console.log(authorizedRoles);
+    const { userId, password } = await this.parseCredentials(params);
+    const user = await this.getWithRoles(userId);
+    console.log(await this.isAuthenticated(user, password));
   }
 
   getWithRoles = async (id: string) =>

@@ -8,6 +8,28 @@ class OrganizationController extends Controller {
     );
 
   filter = async (params: any) => super.filter(params.filter || undefined);
+
+  getAllByName = async (name: string) =>
+    await this.model
+      .find({
+        name
+      })
+      .populate("roles");
+
+  async filterRolesByNames(name: string, roleNames: [string]) {
+    const orgsThatMatchName = await this.getAllByName(name);
+    let authorizedRoles = [];
+    for (let roleName of roleNames) {
+      for (let org of orgsThatMatchName) {
+        for (let role of org.roles) {
+          if (role.name === roleName) {
+            authorizedRoles.push(role);
+          }
+        }
+      }
+    }
+    return authorizedRoles;
+  }
 }
 
 export { OrganizationController };
