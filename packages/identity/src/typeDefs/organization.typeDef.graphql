@@ -1,23 +1,18 @@
 type Organization {
   _id: String!
   name: String!
-  password: String!
+  users: [User]
   roles: [Role]
 }
 
 type Mutation {
-  createOrganization(name: String!, password: String!): Organization
-  updateOrganization(id: String!, name: String!, password: String!): Organization
-  deleteOrganization(id: String!): Organization
-  deleteAllOrganizations: [Organization]
-}
-
-type Query {
-  organization(id: String!): Organization
-  organizations(filter: OrganizationFilterInput): [Organization]
-}
-
-input OrganizationFilterInput {
-  _id: String
-  name: String
+  createOrganization(name: String!): Organization!
+  assignUserToOrganization(
+    userId: String!
+    organizationId: String!
+  ): Organization
+  assignRoleToOrganization(
+    roleId: String!
+    organizationId: String!
+  ): Organization
 }
