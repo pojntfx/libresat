@@ -10,6 +10,7 @@ type Mutation {
   updateUser(name: String, password: String): User
   deleteUser: User
   deleteAllUsers: [User]
+  authorizeWithNames(organizationName: String!, roleNames: [String]!): User # Username & Password should be passed through with HTTP Headers
 }
 
 type Query {
