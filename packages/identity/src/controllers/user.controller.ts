@@ -41,14 +41,33 @@ class UserController extends Controller {
   }
 
   async authorizeWithNames(params: any) {
-    const authorizedRoles = await organization.filterRolesByNames(
-      params.organizationName,
-      params.roleNames
-    );
-    console.log(authorizedRoles);
     const { userId, password } = await this.parseCredentials(params);
     const user = await this.getWithRoles(userId);
-    console.log(await this.isAuthenticated(user, password));
+    if (await this.isAuthenticated(user, password)) {
+      const authorizedRoles = await organization.filterRolesByNames(
+        params.organizationName,
+        params.roleNames
+      );
+      if (await this.hasRolesByRole(user, authorizedRoles)) {
+        return user;
+      } else {
+        throw new AuthorizationFailedError();
+      }
+    } else {
+      throw new AuthenticationFailedError();
+    }
+  }
+
+  async hasRolesByRole(user: any, authorizedRoles: any[]) {
+    const validRoles = [];
+    for (let authorizedRole of authorizedRoles) {
+      for (let userRole of user.roles) {
+        if (userRole.name === authorizedRole.name) {
+          validRoles.push(userRole);
+        }
+      }
+    }
+    return validRoles.length <= 0 ? false : true;
   }
 
   getWithRoles = async (id: string) =>
