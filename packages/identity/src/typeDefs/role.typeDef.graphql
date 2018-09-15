@@ -1,23 +1,10 @@
 type Role {
   _id: String!
   name: String!
-  organization: Organization
   users: [User]
+  organizations: [Organization]
 }
 
 type Mutation {
-  createRole(organizationId: String!, name: String!): Role
-  updateRole(organizationId: String!, roleId: String!, name: String!): Role
-  deleteRole(id: String!): Role
-  deleteAllRoles: [Role]
-}
-
-type Query {
-  role(organizationId: String!, id: String!): Role
-  roles(filter: RoleFilterInput): [Role]
-}
-
-input RoleFilterInput {
-  _id: String
-  name: String
+  createRole(name: String!): Role!
 }
