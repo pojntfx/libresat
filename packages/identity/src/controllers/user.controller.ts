@@ -73,7 +73,7 @@ class UserController extends Controller {
     const validRoles = [];
     for (let authorizedRole of authorizedRoles) {
       for (let userRole of user.roles) {
-        if (userRole.name === authorizedRole.name) {
+        if (userRole.id === authorizedRole.id) {
           validRoles.push(userRole);
         }
       }
