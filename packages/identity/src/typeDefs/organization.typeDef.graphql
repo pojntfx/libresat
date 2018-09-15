@@ -6,7 +6,6 @@ type Organization {
 }
 
 type Mutation {
-  createOrganization(name: String!): Organization!
   assignUserToOrganization(
     userId: String!
     organizationId: String!
@@ -16,3 +15,8 @@ type Mutation {
     organizationId: String!
   ): Organization
 }
+
+type Query {
+  hello: String!
+}
+# createOrganization(name: String!): Organization!

@@ -5,6 +5,6 @@ type Role {
   organizations: [Organization]
 }
 
-type Mutation {
-  createRole(name: String!): Role!
-}
+# type Mutation {
+#   createRole(name: String!): Role!
+# }
