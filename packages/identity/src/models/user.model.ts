@@ -10,6 +10,12 @@ const UserSchema = new Schema({
       type: Schema.Types.ObjectId,
       ref: "Role"
     }
+  ],
+  organizations: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Organization"
+    }
   ]
 });
 

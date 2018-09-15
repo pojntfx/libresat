@@ -4,14 +4,16 @@ const { Schema } = database;
 
 const RoleSchema = new Schema({
   name: String,
-  organization: {
-    type: Schema.Types.ObjectId,
-    ref: "Organization"
-  },
   users: [
     {
       type: Schema.Types.ObjectId,
       ref: "User"
+    }
+  ],
+  organizations: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Organization"
     }
   ]
 });
