@@ -14,8 +14,8 @@ export default {
     deleteUser: async (_: any, _2: any, context: any) =>
       await user.delete({ context }),
     deleteAllUsers: async () => await user.deleteAll(),
-    authorizeWithNames: async (_: any, params: any, context: any) =>
-      await user.authorizeWithNames({
+    authorizeByOrgAndRoles: async (_: any, params: any, context: any) =>
+      await user.authorizeByOrgAndRoles({
         context,
         ...params
       })
