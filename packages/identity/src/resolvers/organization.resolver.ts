@@ -9,7 +9,9 @@ export default {
     assignUserToOrganization: async (_: any, params: any) =>
       await organization.assignUser(params),
     assignRoleToOrganization: async (_: any, params: any) =>
-      await organization.assignRole(params)
+      await organization.assignRole(params),
+    createOrganization: async (_: any, params: any) =>
+      await organization.create(params)
   }
 };
 

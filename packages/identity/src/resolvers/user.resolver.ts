@@ -10,7 +10,8 @@ export default {
   User: {},
   Mutation: {
     assignRoleToUser: async (_: any, params: any) =>
-      await user.assignRole(params)
+      await user.assignRole(params),
+    createUser: async (_: any, params: any) => await user.create(params)
   }
 };
 

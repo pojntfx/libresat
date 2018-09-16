@@ -3,7 +3,7 @@ import { mongoose as database } from "@libresat/service";
 const { Schema } = database;
 
 const OrganizationSchema = new Schema({
-  name: String,
+  name: { type: String, unique: true },
   users: [
     {
       type: Schema.Types.ObjectId,

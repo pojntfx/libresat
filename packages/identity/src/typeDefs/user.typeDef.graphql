@@ -8,6 +8,5 @@ type User {
 
 type Mutation {
   assignRoleToUser(roleId: String!, userId: String!): User!
+  createUser(name: String!, password: String!): User!
 }
-
-# createUser(name: String!, password: String!): User!

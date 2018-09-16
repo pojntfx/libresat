@@ -14,9 +14,9 @@ type Mutation {
     roleId: String!
     organizationId: String!
   ): Organization
+  createOrganization(name: String!): Organization!
 }
 
 type Query {
   hello: String!
 }
-# createOrganization(name: String!): Organization!
