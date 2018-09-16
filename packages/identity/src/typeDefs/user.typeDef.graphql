@@ -10,4 +10,5 @@ type Mutation {
   assignRoleToUser(roleId: String!, userId: String!): User!
   createUser(name: String!, password: String!): User!
   auth(scopeId: String!, validRolesNames: [String!]!): User!
+  updateUser(newName: String!, newPassword: String!): User!
 }
