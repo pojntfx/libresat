@@ -9,7 +9,13 @@ import { MultipleFilterParamsError } from "../error/multipleFilterParamsError";
 class GraphQLMongoDBControllable extends mongoose.Model {}
 
 class GraphQLMongoDBController implements IGraphQLMongoDBController {
-  constructor(public model: GraphQLMongoDBControllable) {}
+  constructor(public model: GraphQLMongoDBControllable) {
+    this.init();
+  }
+
+  async init() {
+    await this.model.init();
+  }
 
   async create(params: IGraphQLMongoDBControllerParams) {
     return await this.model.create(params);
