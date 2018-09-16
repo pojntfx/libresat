@@ -33,6 +33,10 @@ class OrganizationController extends Controller {
 
     return organizationToAssignRoleTo;
   }
+
+  async getWithRoles(id: string) {
+    return this.model.findById(id).populate("roles");
+  }
 }
 
 export { OrganizationController };

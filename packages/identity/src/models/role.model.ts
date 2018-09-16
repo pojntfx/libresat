@@ -7,15 +7,13 @@ const RoleSchema = new Schema({
   users: [
     {
       type: Schema.Types.ObjectId,
-      ref: "User",
-      unique: true
+      ref: "User"
     }
   ],
   organizations: [
     {
       type: Schema.Types.ObjectId,
-      ref: "Organization",
-      unique: true
+      ref: "Organization"
     }
   ]
 });
