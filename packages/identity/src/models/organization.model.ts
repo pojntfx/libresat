@@ -7,12 +7,14 @@ const OrganizationSchema = new Schema({
   users: [
     {
       type: Schema.Types.ObjectId,
+      unique: true,
       ref: "User"
     }
   ],
   roles: [
     {
       type: Schema.Types.ObjectId,
+      unique: true,
       ref: "Role"
     }
   ]

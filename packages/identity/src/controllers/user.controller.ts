@@ -1,5 +1,7 @@
 import { GraphQLMongoDBController as Controller } from "@libresat/service";
 import { hash } from "bcryptjs";
+import { assign } from "../utils/assign";
+import { role } from "../resolvers/role.resolver";
 
 class UserController extends Controller {
   async create(params: any) {
@@ -12,7 +14,18 @@ class UserController extends Controller {
   }
 
   async assignRole(params: any) {
-    console.log(`Assigning role ${params.roleId} to user ${params.userId}`);
+    const { userId, roleId } = params;
+
+    const organizationToAssignRoleTo = await assign(
+      this,
+      userId,
+      "roles",
+      role,
+      roleId,
+      "users"
+    );
+
+    return organizationToAssignRoleTo;
   }
 }
 

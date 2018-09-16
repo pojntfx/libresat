@@ -8,13 +8,15 @@ const UserSchema = new Schema({
   roles: [
     {
       type: Schema.Types.ObjectId,
-      ref: "Role"
+      ref: "Role",
+      unique: true
     }
   ],
   organizations: [
     {
       type: Schema.Types.ObjectId,
-      ref: "Organization"
+      ref: "Organization",
+      unique: true
     }
   ]
 });
