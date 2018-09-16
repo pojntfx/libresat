@@ -10,11 +10,34 @@ import { parseCredentials } from "../utils/parseCredentials";
 class UserController extends Controller {
   async create(params: any) {
     const { password } = params;
+
     const encryptedPassword = await hash(password, 10);
-    return await super.create({
+
+    const user = await super.create({
       ...params,
       password: encryptedPassword
     });
+
+    // Create a scope for each user so that they can edit themselves
+    const { id: userScopeId } = await scope.create({ name: params.name });
+    const { id: writeSelfRoleId } = await role.create({ name: "WRITE:SELF" });
+
+    await scope.assignUser({
+      scopeId: userScopeId,
+      userId: user.id
+    });
+
+    await this.assignRole({
+      userId: user.id,
+      roleId: writeSelfRoleId
+    });
+
+    await scope.assignRole({
+      scopeId: userScopeId,
+      roleId: writeSelfRoleId
+    });
+
+    return user;
   }
 
   async assignRole(params: any) {
