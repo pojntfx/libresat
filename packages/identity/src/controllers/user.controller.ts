@@ -64,14 +64,14 @@ class UserController extends Controller {
   async update(params: any) {
     const { userId } = await parseCredentials(params);
     const user = await this.get(userId);
-    const userScopeId = (await this.getWithScopes(userId)).scopes.filter(
+    const userScope = (await this.getWithScopes(userId)).scopes.filter(
       (scope: any) => scope.name === user.name
     );
 
     // Check if user is a) authenticated and b) authorized to change himself
     await this.auth({
       ...params,
-      scopeId: userScopeId,
+      scopeId: userScope,
       validRolesNames: ["WRITE:SELF"]
     });
 

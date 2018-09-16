@@ -8,9 +8,11 @@ async function authenticate(
   password: string
 ) {
   const encryptedPassword = (await user.get(userId)).password;
-  return (await compare(password, encryptedPassword))
-    ? true
-    : new AuthenticationFailedError();
+  if (await compare(password, encryptedPassword)) {
+    return true;
+  } else {
+    throw new AuthenticationFailedError();
+  }
 }
 
 export { authenticate };
