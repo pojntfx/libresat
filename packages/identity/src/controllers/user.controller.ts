@@ -93,6 +93,12 @@ class UserController extends Controller {
 
   getWithScopes = async (id: string) =>
     this.model.findById(id).populate("scopes");
+
+  getAllRoles = async (parent: any) =>
+    (await this.model.findById(parent.id).populate("roles")).roles;
+
+  getAllScopes = async (parent: any) =>
+    (await this.model.findById(parent.id).populate("scopes")).scopes;
 }
 
 export { UserController };

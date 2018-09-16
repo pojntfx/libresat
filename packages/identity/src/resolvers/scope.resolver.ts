@@ -4,13 +4,13 @@ import { ScopeModel } from "../models/scope.model";
 const scope = new ScopeController(ScopeModel);
 
 export default {
-  Query: {
-    scopes: async () => scope.getAll(),
-    scope: async (_: any, params: any) => scope.get(params.id)
-  },
   Scope: {
     users: async (parent: any) => await scope.getAllUsers(parent),
     roles: async (parent: any) => await scope.getAllRoles(parent)
+  },
+  Query: {
+    scopes: async () => await scope.getAll(),
+    scope: async (_: any, params: any) => await scope.get(params.id)
   },
   Mutation: {
     assignUserToScope: async (_: any, params: any) =>
