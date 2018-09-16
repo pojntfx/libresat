@@ -8,3 +8,8 @@ type Role {
 type Mutation {
   createRole(name: String!): Role!
 }
+
+type Query {
+  roles: [Role]
+  role(id: String!): Role!
+}
