@@ -12,7 +12,8 @@ export default {
     assignRoleToUser: async (_: any, params: any) =>
       await user.assignRole(params),
     createUser: async (_: any, params: any) => await user.create(params),
-    authorize: async (_: any, params: any) => await user.authorize(params)
+    auth: async (_: any, params: any, context: any) =>
+      await user.auth({ ...params, context })
   }
 };
 

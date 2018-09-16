@@ -5,6 +5,7 @@ import { role } from "../resolvers/role.resolver";
 import { authenticate } from "../utils/authenticate";
 import { authorize } from "../utils/authorize";
 import { organization } from "../resolvers/organization.resolver";
+import { parseCredentials } from "../utils/parseCredentials";
 
 class UserController extends Controller {
   async create(params: any) {
@@ -29,6 +30,12 @@ class UserController extends Controller {
     );
 
     return organizationToAssignRoleTo;
+  }
+
+  async auth(params: any) {
+    const { userId, password } = await parseCredentials(params);
+    await this.authenticate(userId, password);
+    return await this.authorize({ ...params, userId });
   }
 
   async authenticate(userId: string, password: string) {
