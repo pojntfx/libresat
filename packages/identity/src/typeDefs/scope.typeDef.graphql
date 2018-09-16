@@ -6,17 +6,12 @@ type Scope {
 }
 
 type Mutation {
-  assignUserToScope(
-    userId: String!
-    scopeId: String!
-  ): Scope
-  assignRoleToScope(
-    roleId: String!
-    scopeId: String!
-  ): Scope
+  assignUserToScope(userId: String!, scopeId: String!): Scope
+  assignRoleToScope(roleId: String!, scopeId: String!): Scope
   createScope(name: String!): Scope!
 }
 
 type Query {
-  hello: String!
+  scopes: [Scope]
+  scope(id: String!): Scope!
 }
