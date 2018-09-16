@@ -1,6 +1,6 @@
 {
   "name": "@libresat/satctl",
-  "version": "0.0.1-17",
+  "version": "0.0.1-18",
   "description": "`kubectl`-like CLI to develop or/and control satellites using the [LibreSat Platform](https://libresat.space/)",
   "main": "lib/index.js",
   "scripts": {
@@ -30,7 +30,7 @@
     "bin": "satctl"
   },
   "dependencies": {
-    "@libresat/host-agent-core": "^0.0.1-17",
+    "@libresat/host-agent-core": "^0.0.1-18",
     "@oclif/command": "^1.5.0",
     "@oclif/config": "^1.7.4",
     "@oclif/plugin-help": "^2.1.1",

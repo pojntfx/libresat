@@ -1,6 +1,6 @@
 {
   "name": "@libresat/host-agent-core",
-  "version": "0.0.1-17",
+  "version": "0.0.1-18",
   "description": "Core functionality of the host agent, a utility for managing bare-metal hosts in the [LibreSat Platform](https://libresat.space/)",
   "main": "dist/index.js",
   "scripts": {
