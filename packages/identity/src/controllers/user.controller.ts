@@ -57,8 +57,9 @@ class UserController extends Controller {
 
   async auth(params: any) {
     const { userId, password } = await parseCredentials(params);
+    const { scopeId, validRolesNames } = params;
     await this.authenticate(userId, password);
-    return await this.authorize({ ...params, userId });
+    return await this.authorize(userId, scopeId, validRolesNames);
   }
 
   async update(params: any) {
@@ -85,8 +86,7 @@ class UserController extends Controller {
     return await authenticate(this, userId, password);
   }
 
-  async authorize(params: any) {
-    const { userId, scopeId, validRolesNames } = params;
+  async authorize(userId: string, scopeId: string, validRolesNames: string[]) {
     await authorize(userId, scope, scopeId, validRolesNames);
     return await this.get(userId);
   }
