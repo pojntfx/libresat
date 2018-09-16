@@ -3,7 +3,8 @@ import { hash } from "bcryptjs";
 import { assign } from "../utils/assign";
 import { role } from "../resolvers/role.resolver";
 import { authenticate } from "../utils/authenticate";
-import { AuthenticationFailedError } from "../errors/AuthenticationFailed.error";
+import { authorize } from "../utils/authorize";
+import { organization } from "../resolvers/organization.resolver";
 
 class UserController extends Controller {
   async create(params: any) {
@@ -31,9 +32,20 @@ class UserController extends Controller {
   }
 
   async authenticate(userId: string, password: string) {
-    return (await authenticate(this, userId, password))
-      ? true
-      : new AuthenticationFailedError();
+    return await authenticate(this, userId, password);
+  }
+
+  async authorize(
+    userId: string,
+    organizationId: string,
+    validRolesNames: string[]
+  ) {
+    return await authorize(
+      userId,
+      organization,
+      organizationId,
+      validRolesNames
+    );
   }
 }
 
