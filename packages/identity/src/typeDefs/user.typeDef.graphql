@@ -3,22 +3,11 @@ type User {
   name: String!
   password: String!
   roles: [Role]
+  scopes: [Scope]
 }
 
 type Mutation {
-  createUser(roleId: String!, name: String!, password: String!): User
-  updateUser(name: String, password: String): User
-  deleteUser: User
-  deleteAllUsers: [User]
-  authorizeByOrgAndRoles(organizationName: String!, roleNames: [String]!): User # Username & Password should be passed through with HTTP Headers
-}
-
-type Query {
-  user(id: String!): User
-  users(filter: UserFilterInput): [User]
-}
-
-input UserFilterInput {
-  _id: String
-  name: String
+  assignRoleToUser(roleId: String!, userId: String!): User!
+  createUser(name: String!, password: String!): User!
+  auth(scopeId: String!, validRolesNames: [String!]!): User!
 }

@@ -1,0 +1,22 @@
+type Scope {
+  _id: String!
+  name: String!
+  users: [User]
+  roles: [Role]
+}
+
+type Mutation {
+  assignUserToScope(
+    userId: String!
+    scopeId: String!
+  ): Scope
+  assignRoleToScope(
+    roleId: String!
+    scopeId: String!
+  ): Scope
+  createScope(name: String!): Scope!
+}
+
+type Query {
+  hello: String!
+}

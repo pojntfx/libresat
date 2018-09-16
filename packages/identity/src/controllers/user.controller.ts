@@ -1,141 +1,52 @@
 import { GraphQLMongoDBController as Controller } from "@libresat/service";
+import { hash } from "bcryptjs";
+import { assign } from "../utils/assign";
 import { role } from "../resolvers/role.resolver";
-import { compare, hash } from "bcryptjs";
-import { AuthenticationFailedError } from "../errors/AuthenticationFailed.error";
-import { AuthorizationFailedError } from "../errors/AuthorizationFailed.error";
-import { writeSelf } from "../constants/roles.constants";
-import { organization } from "../resolvers/organization.resolver";
+import { authenticate } from "../utils/authenticate";
+import { authorize } from "../utils/authorize";
+import { scope } from "../resolvers/scope.resolver";
+import { parseCredentials } from "../utils/parseCredentials";
 
 class UserController extends Controller {
   async create(params: any) {
-    const saltedPassword = await hash(params.password, 10);
-    const newUser = await super.create({
+    const { password } = params;
+    const encryptedPassword = await hash(password, 10);
+    return await super.create({
       ...params,
-      password: saltedPassword
+      password: encryptedPassword
     });
-    // Get role to which this user belongs to
-    const ownerRole = await role.get(params.roleId);
-    // Assign user to role
-    await newUser.roles.push(ownerRole);
-    // Save the user
-    await newUser.save();
-    // Assign role to user
-    ownerRole.users.push(newUser);
-    // Save the role
-    await ownerRole.save();
-    return newUser;
   }
 
-  async update(_: any, params: any) {
-    const { userId, password } = await this.parseCredentials(params);
-    return (await this.isAuthorized(userId, password, [writeSelf]))
-      ? await this.updateWithHashedPassword(userId, params, params.password)
-      : new AuthorizationFailedError();
-  }
+  async assignRole(params: any) {
+    const { userId, roleId } = params;
 
-  async delete(params: any) {
-    const { userId, password } = await this.parseCredentials(params);
-    return (await this.isAuthorized(userId, password, [writeSelf]))
-      ? super.delete(params.userId)
-      : new AuthorizationFailedError();
-  }
-
-  async authorizeByOrgAndRoles(params: any) {
-    const { userId, password } = await this.parseCredentials(params);
-    return (await this.isAuthorizedInOrg(
-      params.organizationName,
-      params.roleNames,
+    const scopeToAssignRoleTo = await assign(
+      this,
       userId,
-      password
-    ))
-      ? this.get(userId)
-      : new AuthorizationFailedError();
-  }
-
-  async isAuthorizedInOrg(
-    organizationName: string,
-    roleNames: [string],
-    userId: string,
-    password: string
-  ) {
-    const user = await this.getWithRoles(userId);
-    return (await this.isAuthenticated(user, password))
-      ? organization
-          .filterRolesByNames(organizationName, roleNames)
-          .then(
-            async (authorizedRoles: any) =>
-              await this.hasRolesByRole(user, authorizedRoles)
-          )
-      : new AuthenticationFailedError();
-  }
-
-  async hasRolesByRole(user: any, authorizedRoles: any[]) {
-    const validRoles = [];
-    for (let authorizedRole of authorizedRoles) {
-      for (let userRole of user.roles) {
-        if (userRole.id === authorizedRole.id) {
-          validRoles.push(userRole);
-        }
-      }
-    }
-    return validRoles.length <= 0 ? false : true;
-  }
-
-  getWithRoles = async (id: string) =>
-    this.model.findById(id).populate("roles");
-
-  getAllRoles = async (parent: any) =>
-    this.get(parent.id).then(user =>
-      user.roles.map(async (roleId: string) => await role.get(roleId))
+      "roles",
+      role,
+      roleId,
+      "users"
     );
 
-  async isAuthorized(
-    userId: string,
-    password: string,
-    authorizedRoles: string[]
-  ) {
-    const user = await this.getWithRoles(userId);
-    return (await this.isAuthenticated(user, password))
-      ? (await this.hasRoles(user, authorizedRoles))
-        ? true
-        : new AuthorizationFailedError()
-      : new AuthenticationFailedError();
+    return scopeToAssignRoleTo;
   }
 
-  isAuthenticated = async (user: any, password: string) =>
-    await compare(password, user.password);
-
-  async hasRoles(user: any, authorizedRoles: string[]) {
-    const validRoles = [];
-    for (let authorizedRole of authorizedRoles) {
-      if (validRoles.length >= 1) {
-        break;
-      } else {
-        for (let userRole of user.roles) {
-          if (userRole.name === authorizedRole) {
-            validRoles.push(userRole);
-            break;
-          }
-        }
-      }
-    }
-    return validRoles.length <= 0 ? false : true;
+  async auth(params: any) {
+    const { userId, password } = await parseCredentials(params);
+    await this.authenticate(userId, password);
+    return await this.authorize({ ...params, userId });
   }
 
-  async updateWithHashedPassword(id: string, params: any, password: string) {
-    const hashedPassword = await hash(password, 10);
-    return super.update(id, {
-      ...params,
-      password: hashedPassword
-    });
+  async authenticate(userId: string, password: string) {
+    return await authenticate(this, userId, password);
   }
 
-  parseCredentials = async (params: any) => ({
-    userId: params.context.headers.userid,
-    password: params.context.headers.password
-  });
-
-  filter = async (params: any) => super.filter(params.filter || undefined);
+  async authorize(params: any) {
+    const { userId, scopeId, validRolesNames } = params;
+    await authorize(userId, scope, scopeId, validRolesNames);
+    return await this.get(userId);
+  }
 }
 
 export { UserController };
