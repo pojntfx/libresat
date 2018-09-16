@@ -36,6 +36,12 @@ class ScopeController extends Controller {
 
   getWithRoles = async (id: string) =>
     this.model.findById(id).populate("roles");
+
+  getAllUsers = async (parent: any) =>
+    (await this.model.findById(parent.id).populate("users")).users;
+
+  getAllRoles = async (parent: any) =>
+    (await this.model.findById(parent.id).populate("roles")).roles;
 }
 
 export { ScopeController };
