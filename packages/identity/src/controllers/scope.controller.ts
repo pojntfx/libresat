@@ -34,9 +34,8 @@ class ScopeController extends Controller {
     return scopeToAssignRoleTo;
   }
 
-  async getWithRoles(id: string) {
-    return this.model.findById(id).populate("roles");
-  }
+  getWithRoles = async (id: string) =>
+    this.model.findById(id).populate("roles");
 }
 
 export { ScopeController };

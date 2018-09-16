@@ -61,6 +61,26 @@ class UserController extends Controller {
     return await this.authorize({ ...params, userId });
   }
 
+  async update(params: any) {
+    const { userId } = await parseCredentials(params);
+    const user = await this.get(userId);
+    const userScopeId = (await this.getWithScopes(userId)).scopes.filter(
+      (scope: any) => scope.name === user.name
+    );
+
+    // Check if user is a) authenticated and b) authorized to change himself
+    await this.auth({
+      ...params,
+      scopeId: userScopeId,
+      validRolesNames: ["WRITE:SELF"]
+    });
+
+    return await super.update(userId, {
+      name: params.newName,
+      password: await hash(params.newPassword, 10)
+    });
+  }
+
   async authenticate(userId: string, password: string) {
     return await authenticate(this, userId, password);
   }
@@ -70,6 +90,9 @@ class UserController extends Controller {
     await authorize(userId, scope, scopeId, validRolesNames);
     return await this.get(userId);
   }
+
+  getWithScopes = async (id: string) =>
+    this.model.findById(id).populate("scopes");
 }
 
 export { UserController };
