@@ -4,7 +4,7 @@ import { assign } from "../utils/assign";
 import { role } from "../resolvers/role.resolver";
 import { authenticate } from "../utils/authenticate";
 import { authorize } from "../utils/authorize";
-import { organization } from "../resolvers/organization.resolver";
+import { scope } from "../resolvers/scope.resolver";
 import { parseCredentials } from "../utils/parseCredentials";
 
 class UserController extends Controller {
@@ -20,7 +20,7 @@ class UserController extends Controller {
   async assignRole(params: any) {
     const { userId, roleId } = params;
 
-    const organizationToAssignRoleTo = await assign(
+    const scopeToAssignRoleTo = await assign(
       this,
       userId,
       "roles",
@@ -29,7 +29,7 @@ class UserController extends Controller {
       "users"
     );
 
-    return organizationToAssignRoleTo;
+    return scopeToAssignRoleTo;
   }
 
   async auth(params: any) {
@@ -43,8 +43,8 @@ class UserController extends Controller {
   }
 
   async authorize(params: any) {
-    const { userId, organizationId, validRolesNames } = params;
-    await authorize(userId, organization, organizationId, validRolesNames);
+    const { userId, scopeId, validRolesNames } = params;
+    await authorize(userId, scope, scopeId, validRolesNames);
     return await this.get(userId);
   }
 }

@@ -2,7 +2,7 @@ import { mongoose as database } from "@libresat/service";
 
 const { Schema } = database;
 
-const OrganizationSchema = new Schema({
+const ScopeSchema = new Schema({
   name: { type: String, unique: true },
   users: [
     {
@@ -18,6 +18,6 @@ const OrganizationSchema = new Schema({
   ]
 });
 
-const OrganizationModel = database.model("Organization", OrganizationSchema);
+const ScopeModel = database.model("Scope", ScopeSchema);
 
-export { OrganizationModel };
+export { ScopeModel };

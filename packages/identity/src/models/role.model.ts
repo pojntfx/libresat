@@ -10,10 +10,10 @@ const RoleSchema = new Schema({
       ref: "User"
     }
   ],
-  organizations: [
+  scopes: [
     {
       type: Schema.Types.ObjectId,
-      ref: "Organization"
+      ref: "Scope"
     }
   ]
 });
