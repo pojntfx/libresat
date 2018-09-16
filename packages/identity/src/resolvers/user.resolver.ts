@@ -4,7 +4,14 @@ import { UserModel } from "../models/user.model";
 const user = new UserController(UserModel);
 
 export default {
-  User: {},
+  User: {
+    roles: async (parent: any) => await user.getAllRoles(parent),
+    scopes: async (parent: any) => await user.getAllScopes(parent)
+  },
+  Query: {
+    users: async () => await user.getAll(),
+    user: async (_: any, params: any) => await user.get(params.id)
+  },
   Mutation: {
     assignRoleToUser: async (_: any, params: any) =>
       await user.assignRole(params),
