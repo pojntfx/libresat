@@ -1,21 +1,21 @@
-import { OrganizationController } from "../controllers/organization.controller";
+import { ScopeController } from "../controllers/scope.controller";
 import { role } from "../resolvers/role.resolver";
 import { AuthorizationFailedError } from "../errors/AuthorizationFailed.error";
-import { OrganizationNotFoundError } from "../errors/OrganizationNotFound.error";
+import { ScopeNotFoundError } from "../errors/ScopeNotFound.error";
 import { UserNotFoundError } from "../errors/UserNotFound.error";
 
 async function authorize(
   userId: string,
-  organization: OrganizationController,
-  organizationId: string,
+  scope: ScopeController,
+  scopeId: string,
   validRolesNames: string[]
 ) {
-  const organizationWithRoles = await organization.getWithRoles(organizationId);
+  const scopeWithRoles = await scope.getWithRoles(scopeId);
 
-  if (!organizationWithRoles) {
-    throw new OrganizationNotFoundError();
+  if (!scopeWithRoles) {
+    throw new ScopeNotFoundError();
   } else {
-    const organizationRoles = organizationWithRoles.roles;
+    const scopeRoles = scopeWithRoles.roles;
 
     let validRoles = [];
 
@@ -27,10 +27,10 @@ async function authorize(
     if (validRoles[0]) {
       let userRoles = [];
 
-      for (let organizationRole of organizationRoles) {
-        for (let organizationUserId of organizationRole.users) {
-          if (organizationUserId.toString() === userId) {
-            userRoles.push(organizationRole);
+      for (let scopeRole of scopeRoles) {
+        for (let scopeUserId of scopeRole.users) {
+          if (scopeUserId.toString() === userId) {
+            userRoles.push(scopeRole);
           }
         }
       }

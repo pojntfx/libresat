@@ -3,35 +3,35 @@ import { user } from "../resolvers/user.resolver";
 import { role } from "../resolvers/role.resolver";
 import { assign } from "../utils/assign";
 
-class OrganizationController extends Controller {
+class ScopeController extends Controller {
   async assignUser(params: any) {
-    const { organizationId, userId } = params;
+    const { scopeId, userId } = params;
 
-    const organizationToAssignUserTo = await assign(
+    const scopeToAssignUserTo = await assign(
       this,
-      organizationId,
+      scopeId,
       "users",
       user,
       userId,
-      "organizations"
+      "scopes"
     );
 
-    return organizationToAssignUserTo;
+    return scopeToAssignUserTo;
   }
 
   async assignRole(params: any) {
-    const { organizationId, roleId } = params;
+    const { scopeId, roleId } = params;
 
-    const organizationToAssignRoleTo = await assign(
+    const scopeToAssignRoleTo = await assign(
       this,
-      organizationId,
+      scopeId,
       "roles",
       role,
       roleId,
-      "organizations"
+      "scopes"
     );
 
-    return organizationToAssignRoleTo;
+    return scopeToAssignRoleTo;
   }
 
   async getWithRoles(id: string) {
@@ -39,4 +39,4 @@ class OrganizationController extends Controller {
   }
 }
 
-export { OrganizationController };
+export { ScopeController };

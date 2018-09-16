@@ -34,7 +34,7 @@
     "identity",
     "authentication",
     "authorization",
-    "organizations",
+    "scopes",
     "roles",
     "users"
   ],

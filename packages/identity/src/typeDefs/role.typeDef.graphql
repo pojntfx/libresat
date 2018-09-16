@@ -2,7 +2,7 @@ type Role {
   _id: String!
   name: String!
   users: [User]
-  organizations: [Organization]
+  scopes: [Scope]
 }
 
 type Mutation {

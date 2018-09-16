@@ -3,11 +3,11 @@ type User {
   name: String!
   password: String!
   roles: [Role]
-  organizations: [Organization]
+  scopes: [Scope]
 }
 
 type Mutation {
   assignRoleToUser(roleId: String!, userId: String!): User!
   createUser(name: String!, password: String!): User!
-  auth(organizationId: String!, validRolesNames: [String!]!): User!
+  auth(scopeId: String!, validRolesNames: [String!]!): User!
 }
