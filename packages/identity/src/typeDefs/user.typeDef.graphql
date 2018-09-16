@@ -9,9 +9,5 @@ type User {
 type Mutation {
   assignRoleToUser(roleId: String!, userId: String!): User!
   createUser(name: String!, password: String!): User!
-  authorize(
-    userId: String!
-    organizationId: String!
-    validRolesNames: [String!]!
-  ): User!
+  auth(organizationId: String!, validRolesNames: [String!]!): User!
 }
