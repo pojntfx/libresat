@@ -1,6 +1,8 @@
 import { OrganizationController } from "../controllers/organization.controller";
 import { role } from "../resolvers/role.resolver";
 import { AuthorizationFailedError } from "../errors/AuthorizationFailed.error";
+import { OrganizationNotFoundError } from "../errors/OrganizationNotFound.error";
+import { UserNotFoundError } from "../errors/UserNotFound.error";
 
 async function authorize(
   userId: string,
@@ -8,40 +10,59 @@ async function authorize(
   organizationId: string,
   validRolesNames: string[]
 ) {
-  const organizationRoles = (await organization.get(organizationId)).roles;
+  const organizationWithRoles = await organization.getWithRoles(organizationId);
 
-  let validRoles = [];
+  if (!organizationWithRoles) {
+    throw new OrganizationNotFoundError();
+  } else {
+    const organizationRoles = organizationWithRoles.roles;
 
-  for (let validRoleName of validRolesNames) {
-    const validRole = await role.filter({ filter: { name: validRoleName } });
-    validRoles.push(validRole);
-  }
+    let validRoles = [];
 
-  let userRoles = []; // All roles of the organization which the user has
-
-  for (let organizationRole of organizationRoles) {
-    for (let organizationUser of organizationRole.users) {
-      if (organizationUser.id === userId) {
-        userRoles.push(organizationRole);
-      }
+    for (let validRoleName of validRolesNames) {
+      const validRole = (await role.filter({ name: validRoleName }))[0]; // [0] removes duplicates
+      validRoles.push(validRole);
     }
-  }
 
-  let userHasAllValidRoles = false;
+    if (validRoles[0]) {
+      let userRoles = [];
 
-  // Check if user has all roles necessary
-  for (let validRole of validRoles) {
-    for (let userRole of userRoles) {
-      if (userRole.id === validRole.id) {
-        userHasAllValidRoles = true;
+      for (let organizationRole of organizationRoles) {
+        for (let organizationUserId of organizationRole.users) {
+          if (organizationUserId.toString() === userId) {
+            userRoles.push(organizationRole);
+          }
+        }
+      }
+
+      if (userRoles[0]) {
+        let userHasAllValidRoles = false;
+
+        if (userRoles.length > 0) {
+          for (let validRole of validRoles) {
+            for (let userRole of userRoles) {
+              if (validRole) {
+                if (userRole.id === validRole.id) {
+                  userHasAllValidRoles = true;
+                } else {
+                  userHasAllValidRoles = false;
+                  break;
+                }
+              } else {
+                throw new AuthorizationFailedError();
+              }
+            }
+          }
+        }
+
+        return userHasAllValidRoles ? true : new AuthorizationFailedError();
       } else {
-        userHasAllValidRoles = false;
-        break;
+        throw new UserNotFoundError();
       }
+    } else {
+      throw new AuthorizationFailedError();
     }
   }
-
-  return userHasAllValidRoles ? true : new AuthorizationFailedError();
 }
 
 export { authorize };

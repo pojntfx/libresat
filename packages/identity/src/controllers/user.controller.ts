@@ -35,17 +35,10 @@ class UserController extends Controller {
     return await authenticate(this, userId, password);
   }
 
-  async authorize(
-    userId: string,
-    organizationId: string,
-    validRolesNames: string[]
-  ) {
-    return await authorize(
-      userId,
-      organization,
-      organizationId,
-      validRolesNames
-    );
+  async authorize(params: any) {
+    const { userId, organizationId, validRolesNames } = params;
+    await authorize(userId, organization, organizationId, validRolesNames);
+    return await this.get(userId);
   }
 }
 
