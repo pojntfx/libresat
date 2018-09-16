@@ -1,7 +1,7 @@
 {
   "name": "@libresat/identity",
   "description": "Identity provider for [LibreSat](https://libresat.space/)",
-  "version": "0.0.1-16",
+  "version": "0.0.1-17",
   "main": "dist/index.js",
   "bin": "dist/start.js",
   "pkg": {
@@ -41,7 +41,7 @@
   "author": "Felicitas Pojtinger <felicitas@pojtinger.com>",
   "license": "AGPL-3.0",
   "dependencies": {
-    "@libresat/service": "^0.0.1-16",
+    "@libresat/service": "^0.0.1-17",
     "@types/bcryptjs": "^2.4.1",
     "bcryptjs": "^2.4.3"
   },
