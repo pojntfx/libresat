@@ -1,3 +1,7 @@
+import { NoPasswordProvidedError } from "../errors/NoPasswordProvided.error";
+import { NoUserIdProvidedError } from "../errors/NoUserIdProvided.error";
+import { NoCredentialsProvidedError } from "../errors/NoCredentialsProvided.error";
+
 async function parseCredentials(params: any) {
   if (params.context.headers) {
     if (params.context.headers.userid) {
@@ -7,13 +11,13 @@ async function parseCredentials(params: any) {
           password: params.context.headers.password
         };
       } else {
-        throw new Error("No password provided!");
+        throw new NoPasswordProvidedError();
       }
     } else {
-      throw new Error("No user ID provided!");
+      throw new NoUserIdProvidedError();
     }
   } else {
-    throw new Error("No credentials provided!");
+    throw new NoCredentialsProvidedError();
   }
 }
 
