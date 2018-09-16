@@ -2,6 +2,8 @@ import { GraphQLMongoDBController as Controller } from "@libresat/service";
 import { hash } from "bcryptjs";
 import { assign } from "../utils/assign";
 import { role } from "../resolvers/role.resolver";
+import { authenticate } from "../utils/authenticate";
+import { AuthenticationFailedError } from "../errors/AuthenticationFailed.error";
 
 class UserController extends Controller {
   async create(params: any) {
@@ -26,6 +28,12 @@ class UserController extends Controller {
     );
 
     return organizationToAssignRoleTo;
+  }
+
+  async authenticate(userId: string, password: string) {
+    return (await authenticate(this, userId, password))
+      ? true
+      : new AuthenticationFailedError();
   }
 }
 
