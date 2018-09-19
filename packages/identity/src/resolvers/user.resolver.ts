@@ -19,7 +19,9 @@ export default {
     updateUser: async (_: any, params: any, context: any) =>
       await user.update({ ...params, context }),
     auth: async (_: any, params: any, context: any) =>
-      await user.auth({ ...params, context })
+      await user.auth({ ...params, context }),
+    deleteUser: async (_: any, params: any, context: any) =>
+      await user.delete({ ...params, context })
   }
 };
 

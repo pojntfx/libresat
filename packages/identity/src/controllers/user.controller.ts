@@ -65,8 +65,34 @@ class UserController extends Controller {
   async update(params: any) {
     const { userId } = await parseCredentials(params);
     const user = await this.get(userId);
-    const userScope = (await this.getWithScopes(userId)).scopes.filter(
+    const userScope = (await this.getWithScopes(userId)).scopes.find(
       (scope: any) => scope.name === user.name
+    );
+
+    // Check if user is a) authenticated and b) authorized to change himself
+    await this.auth({
+      ...params,
+      scopeId: userScope.id,
+      validRolesNames: ["WRITE:SELF"]
+    });
+
+    // Update name for scope
+    await scope.update(userScope.id, { name: params.newName });
+    // Update user itself
+    return await super.update(userId, {
+      name: params.newName,
+      password: await hash(params.newPassword, 10)
+    });
+  }
+
+  async delete(params: any) {
+    const { userId } = await parseCredentials(params);
+    const user = await this.get(userId);
+    const userScope = (await this.getWithScopes(userId)).scopes.find(
+      (scope: any) => scope.name === user.name
+    );
+    const userRole = (await this.getWithRoles(userId)).roles.find(
+      (role: any) => role.name === "WRITE:SELF"
     );
 
     // Check if user is a) authenticated and b) authorized to change himself
@@ -76,29 +102,36 @@ class UserController extends Controller {
       validRolesNames: ["WRITE:SELF"]
     });
 
-    return await super.update(userId, {
-      name: params.newName,
-      password: await hash(params.newPassword, 10)
-    });
+    // Delete role, scope and user
+    await role.delete(userRole.id);
+    await scope.delete(userScope.id);
+    return await super.delete(userId);
   }
-
-  async authenticate(userId: string, password: string) {
-    return await authenticate(this, userId, password);
-  }
-
-  async authorize(userId: string, scopeId: string, validRolesNames: string[]) {
-    await authorize(userId, scope, scopeId, validRolesNames);
-    return await this.get(userId);
-  }
-
-  getWithScopes = async (id: string) =>
-    this.model.findById(id).populate("scopes");
 
   getAllRoles = async (parent: any) =>
     (await this.model.findById(parent.id).populate("roles")).roles;
 
   getAllScopes = async (parent: any) =>
     (await this.model.findById(parent.id).populate("scopes")).scopes;
+
+  private async authenticate(userId: string, password: string) {
+    return await authenticate(this, userId, password);
+  }
+
+  private async authorize(
+    userId: string,
+    scopeId: string,
+    validRolesNames: string[]
+  ) {
+    await authorize(userId, scope, scopeId, validRolesNames);
+    return await this.get(userId);
+  }
+
+  private getWithScopes = async (id: string) =>
+    this.model.findById(id).populate("scopes");
+
+  private getWithRoles = async (id: string) =>
+    this.model.findById(id).populate("roles");
 }
 
 export { UserController };
