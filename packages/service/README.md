@@ -42,7 +42,7 @@ $ npm i -s @libresat/service
 $ npm i -D typescript
 $ echo \
 '{
-  "extends": "node_modules/@libresat/service/tsconfig.json"
+  "extends": "./node_modules/@libresat/service/tsconfig.json"
 }' > tsconfig.json
 ```
 
