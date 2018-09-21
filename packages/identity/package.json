@@ -1,6 +1,6 @@
 {
   "name": "@libresat/identity",
-  "description": "Identity provider for [LibreSat](https://libresat.space/)",
+  "description": "Simple and secure role-based authentication, authorization & identity provider implemented as a GraphQL microservice for [LibreSat](https://libresat.space/)",
   "version": "0.0.1-19",
   "main": "dist/index.js",
   "bin": "dist/start.js",
