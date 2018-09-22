@@ -2,6 +2,7 @@ import { GraphQLMongoDBController as Controller } from "@libresat/service";
 import { user } from "../resolvers/user.resolver";
 import { role } from "../resolvers/role.resolver";
 import { assign } from "../utils/assign";
+import { AccessToScopeNotConfiguredOrIncorrectCredentialsError } from "../errors/AccessToScopeNotConfiguredOrIncorrectCredentials.error";
 
 class ScopeController extends Controller {
   async assignUser(params: any) {
@@ -42,6 +43,34 @@ class ScopeController extends Controller {
 
   getAllRoles = async (parent: any) =>
     (await this.model.findById(parent.id).populate("roles")).roles;
+
+  async delete(params: any) {
+    const { id: scopeId } = params;
+    try {
+      await user.auth({
+        ...params,
+        scopeId,
+        validRolesNames: ["WRITE:SCOPE"]
+      });
+      // Remove the scope from all users that have it
+      const usersWithRoleIds = (await this.get(scopeId)).users;
+      for (let usersWithRoleId of usersWithRoleIds) {
+        const newScopes = (await user.get(usersWithRoleId)).scopes.filter(
+          (usersScopeId: any) => usersScopeId.toString() !== scopeId
+        );
+        if (newScopes.length > 0) {
+          await user.updateScopes(usersWithRoleId, newScopes);
+        }
+      }
+      const deletedScope = await this.get(scopeId);
+      console.log(deletedScope);
+      // Delete the scope
+      await super.delete(scopeId);
+      return deletedScope;
+    } catch (e) {
+      throw new AccessToScopeNotConfiguredOrIncorrectCredentialsError(e);
+    }
+  }
 }
 
 export { ScopeController };

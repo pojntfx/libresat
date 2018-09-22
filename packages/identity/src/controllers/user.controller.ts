@@ -114,6 +114,12 @@ class UserController extends Controller {
   getAllScopes = async (parent: any) =>
     (await this.model.findById(parent.id).populate("scopes")).scopes;
 
+  async updateScopes(id: string, scopes: any) {
+    const userToUpdate = await this.model.findById(id);
+    userToUpdate.scopes = scopes;
+    userToUpdate.save();
+  }
+
   private async authenticate(userId: string, password: string) {
     return await authenticate(this, userId, password);
   }
