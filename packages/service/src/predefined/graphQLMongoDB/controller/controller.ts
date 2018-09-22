@@ -32,7 +32,10 @@ class GraphQLMongoDBController implements IGraphQLMongoDBController {
   async filter(params: any) {
     let isRootParam = false;
     for (let param in params) {
-      if (typeof param === "string" || typeof param === "number") {
+      if (
+        typeof params[param] === "string" ||
+        typeof params[param] === "number"
+      ) {
         isRootParam = true;
       }
     }
