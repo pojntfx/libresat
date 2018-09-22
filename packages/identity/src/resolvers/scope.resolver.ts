@@ -17,7 +17,9 @@ export default {
       await scope.assignUser(params),
     assignRoleToScope: async (_: any, params: any) =>
       await scope.assignRole(params),
-    createScope: async (_: any, params: any) => await scope.create(params)
+    createScope: async (_: any, params: any) => await scope.create(params),
+    deleteScope: async (_: any, params: any, context: any) =>
+      await scope.delete({ ...params, context })
   }
 };
 
