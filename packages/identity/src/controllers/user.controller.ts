@@ -19,8 +19,14 @@ class UserController extends Controller {
     });
 
     // Create a scope for each user so that they can edit themselves
-    const { id: userScopeId } = await scope.create({ name: user.id });
-    const { id: writeSelfRoleId } = await role.create({ name: "WRITE:SELF" });
+    const { id: userScopeId } = await scope.create({
+      name: user.id,
+      isMeta: true
+    });
+    const { id: writeSelfRoleId } = await role.create({
+      name: "WRITE:SELF",
+      isMeta: true
+    });
 
     await scope.assignUser({
       scopeId: userScopeId,

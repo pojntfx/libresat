@@ -15,7 +15,8 @@ const RoleSchema = new Schema({
       type: Schema.Types.ObjectId,
       ref: "Scope"
     }
-  ]
+  ],
+  isMeta: { type: Boolean, default: false }
 });
 
 const RoleModel = database.model("Role", RoleSchema);
