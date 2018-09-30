@@ -8,32 +8,26 @@ import { scope } from "../resolvers/scope.resolver";
 import { parseCredentials } from "../utils/parseCredentials";
 import { IUserController, IUser, IUserCreateParams } from "../types/user.type";
 import { assignRoleAndScopeToUser } from "../utils/assignRolesAndScopesToUser";
+import { createUserWithScopeAndRole } from "../utils/createUserWithScopeAndRole";
 
 class UserController extends Controller implements IUserController {
-  async create(params: IUserCreateParams) {
-    const { password } = params;
-
-    const encryptedPassword = await hash(password, 10);
-
-    const user: IUser = await super.create({
-      ...params,
-      password: encryptedPassword
-    });
-
-    // Create a scope for each user so that they can edit themselves
-    const { id: userScopeId } = await scope.create({
-      name: user.id,
-      isMeta: true
-    });
-    const { id: writeSelfRoleId } = await role.create({
-      name: "WRITE:SELF",
-      isMeta: true
-    });
-
-    await assignRoleAndScopeToUser(user.id, writeSelfRoleId, userScopeId);
-
-    return user;
-  }
+  create = async (params: IUserCreateParams) =>
+    await hash(params.password, 10)
+      .then(encryptedPassword =>
+        createUserWithScopeAndRole(
+          params => super.create(params),
+          params.name,
+          encryptedPassword
+        )
+      )
+      .then(documents => {
+        assignRoleAndScopeToUser(
+          documents.userId,
+          documents.writeSelfRoleId,
+          documents.userScopeId
+        );
+        return documents.user;
+      });
 
   async assignRole(params: any) {
     const { userId, roleId } = params;

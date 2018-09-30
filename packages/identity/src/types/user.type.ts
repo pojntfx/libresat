@@ -12,7 +12,8 @@ interface IUser {
 }
 
 interface IUserCreateParams extends IGraphQLMongoDBControllerParams {
-  password: string;
+  name: IUser["name"];
+  password: IUser["password"];
 }
 
 interface IUserController extends GraphQLMongoDBController {
