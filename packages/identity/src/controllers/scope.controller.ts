@@ -49,20 +49,19 @@ class ScopeController extends Controller {
 
   async update(params: any) {
     try {
-      const { id: scopeId } = params;
       await user.auth({
         ...params,
-        scopeId,
-        validRolesNames: ["WRITE:SCOPE"]
+        scopeId: params.scopeId,
+        validRolesNames: ["WRITE:SELF"]
       });
-      const scope = await this.get(scopeId);
+      const scope = await this.get(params.scopeId);
       if (!scope) {
         throw new ScopeNotFoundError();
       } else {
         if (scope.isMeta) {
           throw new ScopeIsMetaScopeError();
         } else {
-          return super.update(scopeId, {
+          return super.update(params.scopeId, {
             name: params.name
           });
         }
