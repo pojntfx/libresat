@@ -29,6 +29,27 @@ class UserController extends Controller implements IUserController {
         return documents.user;
       });
 
+  async update(params: any) {
+    const { userId } = await parseCredentials(params);
+    const user = await this.get(userId);
+    const userScope = (await this.getWithScopes(userId)).scopes.find(
+      (scope: any) => scope.name === user.id
+    );
+
+    // Check if user is a) authenticated and b) authorized to change himself
+    await this.auth({
+      ...params,
+      scopeId: userScope.id,
+      validRolesNames: ["WRITE:SELF"]
+    });
+
+    // Update user itself
+    return await super.update(userId, {
+      name: params.newName,
+      password: await hash(params.newPassword, 10)
+    });
+  }
+
   async assignRole(params: any) {
     const { userId, roleId } = params;
 
@@ -49,29 +70,6 @@ class UserController extends Controller implements IUserController {
     const { scopeId, validRolesNames } = params;
     await this.authenticate(userId, password);
     return await this.authorize(userId, scopeId, validRolesNames);
-  }
-
-  async update(params: any) {
-    const { userId } = await parseCredentials(params);
-    const user = await this.get(userId);
-    const userScope = (await this.getWithScopes(userId)).scopes.find(
-      (scope: any) => scope.name === user.id
-    );
-
-    // Check if user is a) authenticated and b) authorized to change himself
-    await this.auth({
-      ...params,
-      scopeId: userScope.id,
-      validRolesNames: ["WRITE:SELF"]
-    });
-
-    // Update name for scope
-    await scope.update({ ...params, name: params.newName });
-    // Update user itself
-    return await super.update(userId, {
-      name: params.newName,
-      password: await hash(params.newPassword, 10)
-    });
   }
 
   async delete(params: any) {
