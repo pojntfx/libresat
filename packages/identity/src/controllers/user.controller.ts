@@ -7,6 +7,7 @@ import { authorize } from "../utils/authorize";
 import { scope } from "../resolvers/scope.resolver";
 import { parseCredentials } from "../utils/parseCredentials";
 import { IUserController, IUser, IUserCreateParams } from "../types/user.type";
+import { assignRoleAndScopeToUser } from "../utils/assignRolesAndScopesToUser";
 
 class UserController extends Controller implements IUserController {
   async create(params: IUserCreateParams) {
@@ -29,20 +30,7 @@ class UserController extends Controller implements IUserController {
       isMeta: true
     });
 
-    await scope.assignUser({
-      scopeId: userScopeId,
-      userId: user.id
-    });
-
-    await this.assignRole({
-      userId: user.id,
-      roleId: writeSelfRoleId
-    });
-
-    await scope.assignRole({
-      scopeId: userScopeId,
-      roleId: writeSelfRoleId
-    });
+    await assignRoleAndScopeToUser(user.id, writeSelfRoleId, userScopeId);
 
     return user;
   }
