@@ -13,7 +13,9 @@ export default {
     role: async (_: any, params: any) => await role.get(params.id)
   },
   Mutation: {
-    createRole: async (_: any, params: any) => await role.create(params)
+    createRole: async (_: any, params: any) => await role.create(params),
+    deleteRole: async (_: any, params: any, context: any) =>
+      await role.delete({ ...params, context })
   }
 };
 
