@@ -11,6 +11,11 @@ export {
   GraphQLMongoDBControllable,
   GraphQLMongoDBController
 } from "./predefined/graphQLMongoDB/controller/controller";
+
+export {
+  IGraphQLMongoDBControllerParams
+} from "./predefined/graphQLMongoDB/controller/controller.types";
+
 export {
   GraphQLMongoDBFlagParser
 } from "./predefined/graphQLMongoDB/startup/flags";

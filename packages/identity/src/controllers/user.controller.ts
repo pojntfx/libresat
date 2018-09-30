@@ -6,14 +6,15 @@ import { authenticate } from "../utils/authenticate";
 import { authorize } from "../utils/authorize";
 import { scope } from "../resolvers/scope.resolver";
 import { parseCredentials } from "../utils/parseCredentials";
+import { IUserController, IUser, IUserCreateParams } from "../types/user.type";
 
-class UserController extends Controller {
-  async create(params: any) {
+class UserController extends Controller implements IUserController {
+  async create(params: IUserCreateParams) {
     const { password } = params;
 
     const encryptedPassword = await hash(password, 10);
 
-    const user = await super.create({
+    const user: IUser = await super.create({
       ...params,
       password: encryptedPassword
     });
@@ -49,7 +50,7 @@ class UserController extends Controller {
   async assignRole(params: any) {
     const { userId, roleId } = params;
 
-    const scopeToAssignRoleTo = await assign(
+    const userToAssignRoleTo = await assign(
       this,
       userId,
       "roles",
@@ -58,7 +59,7 @@ class UserController extends Controller {
       "users"
     );
 
-    return scopeToAssignRoleTo;
+    return userToAssignRoleTo;
   }
 
   async auth(params: any) {
