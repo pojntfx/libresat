@@ -1,6 +1,7 @@
 import { GraphQLMongoDBController as Controller } from "@libresat/service";
 import { user } from "../resolvers/user.resolver";
 import { deleteNested } from "../utils/deleteNested";
+import { scope } from "../resolvers/scope.resolver";
 
 class RoleController extends Controller {
   getAllUsers = async (parent: any) =>
@@ -12,6 +13,24 @@ class RoleController extends Controller {
   private getWithScopes = async (id: string) =>
     this.model.findById(id).populate("scopes");
 
+  async create(params: any) {
+    const role = await super.create(params);
+    const { id: roleScopeId } = await scope.create({ name: role.id });
+    const { id: writeSelfRoleId } = await super.create({ name: "WRITE:SELF" });
+
+    await scope.assignRole({
+      scopeId: roleScopeId,
+      roleId: role.id
+    });
+
+    await scope.assignRole({
+      scopeId: roleScopeId,
+      roleId: writeSelfRoleId
+    });
+
+    return role;
+  }
+
   async delete(params: any) {
     const { id: roleId } = params;
     const { scopes } = await this.getWithScopes(roleId);
@@ -20,7 +39,7 @@ class RoleController extends Controller {
     await user.auth({
       ...params,
       scopeId,
-      validRolesNames: ["WRITE:ROLE"]
+      validRolesNames: ["WRITE:SELF"]
     });
 
     const deletedRole: any = await deleteNested(
