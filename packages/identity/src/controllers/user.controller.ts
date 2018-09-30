@@ -83,7 +83,7 @@ class UserController extends Controller {
     });
 
     // Update name for scope
-    await scope.update(userScope.id, { name: params.newName });
+    await scope.update({ ...params, name: params.newName });
     // Update user itself
     return await super.update(userId, {
       name: params.newName,
