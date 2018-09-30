@@ -4,6 +4,7 @@ import { role } from "../resolvers/role.resolver";
 import { assign } from "../utils/assign";
 import { AccessToScopeNotConfiguredOrIncorrectCredentialsError } from "../errors/AccessToScopeNotConfiguredOrIncorrectCredentials.error";
 import { deleteNested } from "../utils/deleteNested";
+import { ScopeIsMetaScopeError } from "../errors/ScopeIsMetaScope.error";
 
 class ScopeController extends Controller {
   async assignUser(params: any) {
@@ -53,20 +54,26 @@ class ScopeController extends Controller {
         scopeId,
         validRolesNames: ["WRITE:SCOPE"]
       });
-      const deletedScope: any = await deleteNested(
-        this,
-        scopeId,
-        async (deletableId: string) => await super.delete(deletableId),
-        [
-          {
-            getter: async (scopeId: string) => (await this.get(scopeId)).users,
-            controller: user,
-            path: "scopes"
-          }
-        ]
-      );
+      const scope = await this.get(scopeId);
+      if (scope.isMeta) {
+        throw new ScopeIsMetaScopeError();
+      } else {
+        const deletedScope: any = await deleteNested(
+          this,
+          scopeId,
+          async (deletableId: string) => await super.delete(deletableId),
+          [
+            {
+              getter: async (scopeId: string) =>
+                (await this.get(scopeId)).users,
+              controller: user,
+              path: "scopes"
+            }
+          ]
+        );
 
-      return deletedScope;
+        return deletedScope;
+      }
     } catch (e) {
       throw new AccessToScopeNotConfiguredOrIncorrectCredentialsError(e);
     }
