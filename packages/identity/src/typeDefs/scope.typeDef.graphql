@@ -9,6 +9,7 @@ type Mutation {
   assignUserToScope(userId: String!, scopeId: String!): Scope
   assignRoleToScope(roleId: String!, scopeId: String!): Scope
   createScope(name: String!): Scope!
+  updateScope(id: String!, name: String!): Scope!
   deleteScope(id: String!): Scope!
 }
 

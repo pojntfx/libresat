@@ -5,6 +5,7 @@ import { assign } from "../utils/assign";
 import { AccessToScopeNotConfiguredOrIncorrectCredentialsError } from "../errors/AccessToScopeNotConfiguredOrIncorrectCredentials.error";
 import { deleteNested } from "../utils/deleteNested";
 import { ScopeIsMetaScopeError } from "../errors/ScopeIsMetaScope.error";
+import { ScopeNotFoundError } from "../errors/ScopeNotFound.error";
 
 class ScopeController extends Controller {
   async assignUser(params: any) {
@@ -46,6 +47,31 @@ class ScopeController extends Controller {
   getAllRoles = async (parent: any) =>
     (await this.model.findById(parent.id).populate("roles")).roles;
 
+  async update(params: any) {
+    try {
+      const { id: scopeId } = params;
+      await user.auth({
+        ...params,
+        scopeId,
+        validRolesNames: ["WRITE:SCOPE"]
+      });
+      const scope = await this.get(scopeId);
+      if (!scope) {
+        throw new ScopeNotFoundError();
+      } else {
+        if (scope.isMeta) {
+          throw new ScopeIsMetaScopeError();
+        } else {
+          return super.update(scopeId, {
+            name: params.name
+          });
+        }
+      }
+    } catch (e) {
+      throw new AccessToScopeNotConfiguredOrIncorrectCredentialsError(e);
+    }
+  }
+
   async delete(params: any) {
     try {
       const { id: scopeId } = params;
@@ -55,24 +81,28 @@ class ScopeController extends Controller {
         validRolesNames: ["WRITE:SCOPE"]
       });
       const scope = await this.get(scopeId);
-      if (scope.isMeta) {
-        throw new ScopeIsMetaScopeError();
+      if (!scope) {
+        throw new ScopeNotFoundError();
       } else {
-        const deletedScope: any = await deleteNested(
-          this,
-          scopeId,
-          async (deletableId: string) => await super.delete(deletableId),
-          [
-            {
-              getter: async (scopeId: string) =>
-                (await this.get(scopeId)).users,
-              controller: user,
-              path: "scopes"
-            }
-          ]
-        );
+        if (scope.isMeta) {
+          throw new ScopeIsMetaScopeError();
+        } else {
+          const deletedScope: any = await deleteNested(
+            this,
+            scopeId,
+            async (deletableId: string) => await super.delete(deletableId),
+            [
+              {
+                getter: async (scopeId: string) =>
+                  (await this.get(scopeId)).users,
+                controller: user,
+                path: "scopes"
+              }
+            ]
+          );
 
-        return deletedScope;
+          return deletedScope;
+        }
       }
     } catch (e) {
       throw new AccessToScopeNotConfiguredOrIncorrectCredentialsError(e);

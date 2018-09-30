@@ -2,9 +2,9 @@ import { GraphQLMongoDBController as Controller } from "@libresat/service";
 import { user } from "../resolvers/user.resolver";
 import { deleteNested } from "../utils/deleteNested";
 import { scope } from "../resolvers/scope.resolver";
-import { ScopeNotFoundError } from "../errors/ScopeNotFound.error";
 import { RoleIsMetaRoleError } from "../errors/RoleIsMetaRole.error";
 import { RoleNotFoundError } from "../errors/RoleNotFound.error";
+import { AccessToRoleNotConfiguredOrIncorrectCredentialsError } from "../errors/AccessToRoleNotConfiguredOrIncorrectCredentials.error";
 
 class RoleController extends Controller {
   getAllUsers = async (parent: any) =>
@@ -41,65 +41,74 @@ class RoleController extends Controller {
   }
 
   async update(params: any) {
-    const { id: roleId } = params;
-    const role = await this.getWithScopes(roleId);
-    if (!role) {
-      throw new RoleNotFoundError();
-    } else {
-      if (role.isMeta) {
-        throw new RoleIsMetaRoleError();
+    try {
+      const { id: roleId } = params;
+      const role = await this.getWithScopes(roleId);
+      if (!role) {
+        throw new RoleNotFoundError();
       } else {
-        const { id: scopeId } = role.scopes.find(
-          (scope: any) => scope.name === roleId
-        );
+        if (role.isMeta) {
+          throw new RoleIsMetaRoleError();
+        } else {
+          const { id: scopeId } = role.scopes.find(
+            (scope: any) => scope.name === roleId
+          );
 
-        await user.auth({
-          ...params,
-          scopeId,
-          validRolesNames: ["WRITE:ROLE"]
-        });
+          await user.auth({
+            ...params,
+            scopeId,
+            validRolesNames: ["WRITE:ROLE"]
+          });
 
-        return super.update(roleId, {
-          name: params.name
-        });
+          return super.update(roleId, {
+            name: params.name
+          });
+        }
       }
+    } catch (e) {
+      throw new AccessToRoleNotConfiguredOrIncorrectCredentialsError(e);
     }
   }
 
   async delete(params: any) {
-    const { id: roleId } = params;
-    const role = await this.getWithScopes(roleId);
-    if (!role) {
-      throw new RoleNotFoundError();
-    } else {
-      if (role.isMeta) {
-        throw new RoleIsMetaRoleError();
+    try {
+      const { id: roleId } = params;
+      const role = await this.getWithScopes(roleId);
+      if (!role) {
+        throw new RoleNotFoundError();
       } else {
-        const { id: scopeId } = role.scopes.find(
-          (scope: any) => scope.name === roleId
-        );
+        if (role.isMeta) {
+          throw new RoleIsMetaRoleError();
+        } else {
+          const { id: scopeId } = role.scopes.find(
+            (scope: any) => scope.name === roleId
+          );
 
-        await user.auth({
-          ...params,
-          scopeId,
-          validRolesNames: ["WRITE:ROLE"]
-        });
+          await user.auth({
+            ...params,
+            scopeId,
+            validRolesNames: ["WRITE:ROLE"]
+          });
 
-        const deletedRole: any = await deleteNested(
-          this,
-          roleId,
-          async (deletableId: string) => await super.delete(deletableId),
-          [
-            {
-              getter: async (roleId: string) => (await this.get(roleId)).users,
-              controller: user,
-              path: "scopes"
-            }
-          ]
-        );
+          const deletedRole: any = await deleteNested(
+            this,
+            roleId,
+            async (deletableId: string) => await super.delete(deletableId),
+            [
+              {
+                getter: async (roleId: string) =>
+                  (await this.get(roleId)).users,
+                controller: user,
+                path: "scopes"
+              }
+            ]
+          );
 
-        return deletedRole;
+          return deletedRole;
+        }
       }
+    } catch (e) {
+      throw new AccessToRoleNotConfiguredOrIncorrectCredentialsError(e);
     }
   }
 }
