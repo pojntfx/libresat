@@ -19,7 +19,7 @@ class UserController extends Controller {
     });
 
     // Create a scope for each user so that they can edit themselves
-    const { id: userScopeId } = await scope.create({ name: params.name });
+    const { id: userScopeId } = await scope.create({ name: user.id });
     const { id: writeSelfRoleId } = await role.create({ name: "WRITE:SELF" });
 
     await scope.assignUser({
@@ -66,7 +66,7 @@ class UserController extends Controller {
     const { userId } = await parseCredentials(params);
     const user = await this.get(userId);
     const userScope = (await this.getWithScopes(userId)).scopes.find(
-      (scope: any) => scope.name === user.name
+      (scope: any) => scope.name === user.id
     );
 
     // Check if user is a) authenticated and b) authorized to change himself
@@ -89,7 +89,7 @@ class UserController extends Controller {
     const { userId } = await parseCredentials(params);
     const user = await this.get(userId);
     const userScope = (await this.getWithScopes(userId)).scopes.find(
-      (scope: any) => scope.name === user.name
+      (scope: any) => scope.name === user.id
     );
     const userRole = (await this.getWithRoles(userId)).roles.find(
       (role: any) => role.name === "WRITE:SELF"
