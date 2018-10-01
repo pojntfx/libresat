@@ -6,8 +6,9 @@ import { RoleNotFoundError } from "../errors/RoleNotFound.error";
 import { AccessToRoleNotConfiguredOrIncorrectCredentialsError } from "../errors/AccessToRoleNotConfiguredOrIncorrectCredentials.error";
 import { WRITE_ROLE } from "../constants/roles.constants";
 import { deleteNested } from "../utils/deleteNested.util";
+import { IRoleController, IRoleCreateParams } from "../types/role.type";
 
-class RoleController extends Controller {
+class RoleController extends Controller implements IRoleController {
   getAllUsers = async (parent: any) =>
     (await this.model.findById(parent.id).populate("users")).users;
 
@@ -17,7 +18,7 @@ class RoleController extends Controller {
   private getWithScopes = async (id: string) =>
     this.model.findById(id).populate("scopes");
 
-  async create(params: any) {
+  async create(params: IRoleCreateParams) {
     const role = await super.create(params);
     const { id: roleScopeId } = await scope.create({
       name: role.id,

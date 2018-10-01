@@ -7,8 +7,9 @@ import { ScopeIsMetaScopeError } from "../errors/ScopeIsMetaScope.error";
 import { ScopeNotFoundError } from "../errors/ScopeNotFound.error";
 import { WRITE_SELF, WRITE_SCOPE } from "../constants/roles.constants";
 import { deleteNested } from "../utils/deleteNested.util";
+import { IScopeController } from "../types/scope.type";
 
-class ScopeController extends Controller {
+class ScopeController extends Controller implements IScopeController {
   async assignUser(params: any) {
     const { scopeId, userId } = params;
 
