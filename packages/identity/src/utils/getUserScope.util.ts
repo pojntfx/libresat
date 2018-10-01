@@ -1,5 +1,6 @@
 import { IScope } from "../types/scope.type";
 import { IGetUserScopeParams } from "../types/getUserScope.type";
+import { UserNotFoundError } from "../errors/UserNotFound.error";
 
 /**
  * Get a user's user scope (to see whether they can change themselves)
@@ -13,10 +14,14 @@ async function getUserScope(
   userWithScopesGetter: IGetUserScopeParams["userWithScopesGetter"]
 ): Promise<IScope> {
   const user = await userGetter(userId);
-  const userScope = (await userWithScopesGetter(userId)).scopes.find(
-    (scope: any) => scope.name === user.id
-  );
-  return userScope;
+  if (user) {
+    const userScope = (await userWithScopesGetter(userId)).scopes.find(
+      (scope: any) => scope.name === user.id
+    );
+    return userScope;
+  } else {
+    throw new UserNotFoundError();
+  }
 }
 
 export { getUserScope };

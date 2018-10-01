@@ -7,9 +7,10 @@ import { scope } from "../resolvers/scope.resolver";
 import {
   IUserController,
   IUserCreateParams,
-  IUserUpdateParams
+  IUserUpdateParams,
+  IUserDeleteParams,
+  IUser
 } from "../types/user.type";
-import { WRITE_SELF } from "../constants/roles.constants";
 import { parseCredentials } from "../utils/parseCredentials.util";
 import { createUserWithScopeAndRole } from "../utils/createUserWithScopeAndRole.util";
 import { assignRoleAndScopeToUser } from "../utils/assignRolesAndScopesToUser.util";
@@ -19,6 +20,9 @@ import { updateUserById } from "../utils/updateUserById.util";
 import { hashPassword } from "../utils/hashPassword.util";
 import { CouldNotUpdateUserError } from "../errors/CouldNotUpdateUser.error";
 import { CouldNotCreateUserError } from "../errors/CouldNotCreateUser.error";
+import { deleteUserScopeAndRole } from "../utils/deleteUserScopeAndRole.util";
+import { getUserRole } from "../utils/getUserRole.util";
+import { CouldNotDeleteUserError } from "../errors/CouldNotDeleteUser.error";
 
 class UserController extends Controller implements IUserController {
   /**
@@ -53,7 +57,7 @@ class UserController extends Controller implements IUserController {
   /**
    * Update a user
    */
-  update = async (_: any, params: IUserUpdateParams) =>
+  updateWithCredentials = async (params: IUserUpdateParams) =>
     // Get user id
     parseCredentials(params)
       .then(({ userId }) =>
@@ -79,6 +83,50 @@ class UserController extends Controller implements IUserController {
       )
       .catch(e => new CouldNotUpdateUserError(e));
 
+  /**
+   * Delete a user
+   */
+  deleteWithCredentials = (params: IUserDeleteParams) =>
+    parseCredentials(params)
+      .then(async ({ userId }) =>
+        // Get user's scope id
+        ({
+          userScopeId: (await getUserScope(
+            userId,
+            id => this.get(id),
+            id => this.getWithScopes(id)
+          )).id
+        })
+      )
+      // Check if user is authenticated
+      .then(async ({ userScopeId }) => ({
+        userScopeId,
+        userId: (await authenticateUserInUserScope(
+          credentials => this.auth(credentials),
+          userScopeId,
+          params
+        )).id
+      }))
+      // Get user's role id
+      .then(async ({ userId, ...otherIds }) => ({
+        ...otherIds,
+        userId,
+        userRoleId: (await getUserRole(userId, id => this.getWithRoles(id))).id
+      }))
+      // Delete user, it's role and scope
+      .then(
+        async ({ userId, userRoleId, userScopeId }) =>
+          (await deleteUserScopeAndRole(
+            userId,
+            userScopeId,
+            userRoleId,
+            id => role.delete(id),
+            id => scope.delete(id),
+            id => this.delete(id)
+          )) as IUser
+      )
+      .catch(e => new CouldNotDeleteUserError(e));
+
   async assignRole(params: any) {
     const { userId, roleId } = params;
 
@@ -99,29 +147,6 @@ class UserController extends Controller implements IUserController {
     const { scopeId, validRolesNames } = params;
     await this.authenticate(userId, password);
     return await this.authorize(userId, scopeId, validRolesNames);
-  }
-
-  async delete(params: any) {
-    const { userId } = await parseCredentials(params);
-    const user = await this.get(userId);
-    const userScope = (await this.getWithScopes(userId)).scopes.find(
-      (scope: any) => scope.name === user.id
-    );
-    const userRole = (await this.getWithRoles(userId)).roles.find(
-      (role: any) => role.name === WRITE_SELF
-    );
-
-    // Check if user is a) authenticated and b) authorized to change himself
-    await this.auth({
-      ...params,
-      scopeId: userScope,
-      validRolesNames: [WRITE_SELF]
-    });
-
-    // Delete role, scope and user
-    await role.delete(userRole.id);
-    await scope.delete(userScope.id);
-    return await super.delete(userId);
   }
 
   getAllRoles = async (parent: any) =>

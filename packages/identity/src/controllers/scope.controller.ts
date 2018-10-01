@@ -73,7 +73,7 @@ class ScopeController extends Controller implements IScopeController {
     }
   }
 
-  async delete(params: any) {
+  async deleteWithCredentials(params: any) {
     try {
       const { id: scopeId } = params;
       await user.auth({
