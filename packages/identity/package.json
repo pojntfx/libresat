@@ -54,5 +54,8 @@
   "homepage": "https://gitlab.com/libresat/libresat/tree/master/packages/identity#README",
   "publishConfig": {
     "access": "public"
+  },
+  "devDependencies": {
+    "jest": "^23.6.0"
   }
 }
