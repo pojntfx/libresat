@@ -1,5 +1,9 @@
 import { IUser } from "./user.type";
 import { IScope } from "./scope.type";
+import {
+  IGraphQLMongoDBControllerParams,
+  GraphQLMongoDBController
+} from "@libresat/service";
 
 interface IRole {
   id: string;
@@ -8,4 +12,13 @@ interface IRole {
   scopes: IScope[];
 }
 
-export { IRole };
+interface IRoleCreateParams extends IGraphQLMongoDBControllerParams {
+  name: IRole["name"];
+  isMeta: boolean;
+}
+
+interface IRoleController extends GraphQLMongoDBController {
+  create(params: IRoleCreateParams): Promise<IRole | Error>;
+}
+
+export { IRole, IRoleCreateParams, IRoleController };

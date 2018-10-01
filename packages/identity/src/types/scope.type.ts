@@ -1,5 +1,9 @@
 import { IUser } from "./user.type";
 import { IRole } from "./role.type";
+import {
+  IGraphQLMongoDBControllerParams,
+  GraphQLMongoDBController
+} from "@libresat/service";
 
 interface IScope {
   id: string;
@@ -8,4 +12,12 @@ interface IScope {
   roles: IRole[];
 }
 
-export { IScope };
+interface IScopeCreateParams extends IGraphQLMongoDBControllerParams {
+  name: IScope["name"];
+}
+
+interface IScopeController extends GraphQLMongoDBController {
+  create(params: IScopeCreateParams): Promise<IScope | Error>;
+}
+
+export { IScope, IScopeCreateParams, IScopeController };
