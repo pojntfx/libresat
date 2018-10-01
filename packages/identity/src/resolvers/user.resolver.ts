@@ -22,13 +22,13 @@ export default {
     createUser: async (_: any, params: IUserCreateParams) =>
       await user.create(params),
     updateUser: async (_: any, params: any, context: any) =>
-      await user.update(_, { ...params, context }),
+      await user.updateWithCredentials({ ...params, context }),
+    deleteUser: async (_: any, params: any, context: any) =>
+      await user.deleteWithCredentials({ ...params, context }),
     assignRoleToUser: async (_: any, params: any): Promise<IUser> =>
       await user.assignRole(params),
     auth: async (_: any, params: any, context: any): Promise<IUser> =>
-      await user.auth({ ...params, context }),
-    deleteUser: async (_: any, params: any, context: any): Promise<IUser> =>
-      await user.delete({ ...params, context })
+      await user.auth({ ...params, context })
   }
 };
 

@@ -72,7 +72,7 @@ class RoleController extends Controller implements IRoleController {
     }
   }
 
-  async delete(params: any) {
+  async deleteWithCredentials(params: any) {
     try {
       const { id: roleId } = params;
       const role = await this.getWithScopes(roleId);
