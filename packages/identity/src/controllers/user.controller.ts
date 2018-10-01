@@ -17,6 +17,8 @@ import { getUserScope } from "../utils/getUserScope.util";
 import { authenticateUserInUserScope } from "../utils/authenticateUserInUserScope.util";
 import { updateUserById } from "../utils/updateUserById.util";
 import { hashPassword } from "../utils/hashPassword.util";
+import { CouldNotUpdateUserError } from "../errors/CouldNotUpdateUser.error";
+import { CouldNotCreateUserError } from "../errors/CouldNotCreateUser.error";
 
 class UserController extends Controller implements IUserController {
   /**
@@ -34,7 +36,8 @@ class UserController extends Controller implements IUserController {
       .then(({ user, userId, writeSelfRoleId, userScopeId }) => {
         assignRoleAndScopeToUser(userId, writeSelfRoleId, userScopeId);
         return user;
-      });
+      })
+      .catch(e => new CouldNotCreateUserError(e));
 
   /**
    * Update a user
@@ -50,7 +53,8 @@ class UserController extends Controller implements IUserController {
           params.newName,
           params.newPassword
         )
-      );
+      )
+      .catch(e => new CouldNotUpdateUserError(e));
 
   async assignRole(params: any) {
     const { userId, roleId } = params;

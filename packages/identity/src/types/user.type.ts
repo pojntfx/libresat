@@ -22,8 +22,8 @@ interface IUserUpdateParams extends IGraphQLMongoDBControllerParams {
 }
 
 interface IUserController extends GraphQLMongoDBController {
-  create(params: IUserCreateParams): Promise<IUser>;
-  update(id: IUser["id"], params: IUserUpdateParams): Promise<IUser>;
+  create(params: IUserCreateParams): Promise<IUser | Error>;
+  update(id: IUser["id"], params: IUserUpdateParams): Promise<IUser | Error>;
 }
 
 export { IUser, IUserCreateParams, IUserUpdateParams, IUserController };
