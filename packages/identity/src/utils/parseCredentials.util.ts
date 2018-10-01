@@ -7,18 +7,22 @@ import { NoCredentialsProvidedError } from "../errors/NoCredentialsProvided.erro
  * @param params Params containing the user's credentials
  */
 async function parseCredentials(params: any) {
-  if (params.context.headers) {
-    if (params.context.headers.userid) {
-      if (params.context.headers.password) {
-        return {
-          userId: params.context.headers.userid,
-          password: params.context.headers.password
-        };
+  if (params.hasOwnProperty("context")) {
+    if (params.context.headers) {
+      if (params.context.headers.userid) {
+        if (params.context.headers.password) {
+          return {
+            userId: params.context.headers.userid,
+            password: params.context.headers.password
+          };
+        } else {
+          throw new NoPasswordProvidedError();
+        }
       } else {
-        throw new NoPasswordProvidedError();
+        throw new NoUserIdProvidedError();
       }
     } else {
-      throw new NoUserIdProvidedError();
+      throw new NoCredentialsProvidedError();
     }
   } else {
     throw new NoCredentialsProvidedError();
