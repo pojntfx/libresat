@@ -5,8 +5,6 @@ import {
 } from "../types/createUserWithScopeAndRole.type";
 import { UserWithNameExistsError } from "../errors/UserWithNameExists.error";
 import { WRITE_SELF } from "../constants/roles.constants";
-import { ScopeController } from "../controllers/scope.controller";
-import { RoleController } from "../controllers/role.controller";
 
 /**
  * Create a user with a scope and role
@@ -20,8 +18,8 @@ async function createUserWithScopeAndRole(
   name: ICreateUserWithScopeAndRoleParams["name"],
   password: ICreateUserWithScopeAndRoleParams["password"],
   creator: ICreateUserWithScopeAndRoleParams["creator"],
-  scopeCreator: ScopeController["create"],
-  roleCreator: RoleController["create"]
+  scopeCreator: ICreateUserWithScopeAndRoleParams["scopeCreator"],
+  roleCreator: ICreateUserWithScopeAndRoleParams["roleCreator"]
 ): Promise<IUserWithScopeAndRoleIds> {
   try {
     const user = (await creator({

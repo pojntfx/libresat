@@ -1,5 +1,3 @@
-import { scope } from "../resolvers/scope.resolver";
-import { user } from "../resolvers/user.resolver";
 import {
   IAssignRoleAndScopeToUserParams,
   IUserRoleAndScope
@@ -10,23 +8,29 @@ import {
  * @param userId ID of the user to assign the roles and scopes to
  * @param roleId ID of the role to assign the user to
  * @param scopeId ID of the scope to assign the role to
+ * @param userToScopeAssigner Function that assigns user to scope
+ * @param roleToUserAssigner Function that assigns role to user
+ * @param roleToScopeAssigner Function that assigns role to scope
  */
 async function assignRoleAndScopeToUser(
   userId: IAssignRoleAndScopeToUserParams["userId"],
   roleId: IAssignRoleAndScopeToUserParams["roleId"],
-  scopeId: IAssignRoleAndScopeToUserParams["scopeId"]
+  scopeId: IAssignRoleAndScopeToUserParams["scopeId"],
+  userToScopeAssigner: IAssignRoleAndScopeToUserParams["userToScopeAssigner"],
+  roleToUserAssigner: IAssignRoleAndScopeToUserParams["roleToUserAssigner"],
+  roleToScopeAssigner: IAssignRoleAndScopeToUserParams["roleToScopeAssigner"]
 ): Promise<IUserRoleAndScope> {
-  const scopeOfUser = await scope.assignUser({
+  const scopeOfUser = await userToScopeAssigner({
     scopeId,
     userId
   });
 
-  const roleOfUser = await user.assignRole({
+  const roleOfUser = await roleToUserAssigner({
     userId,
     roleId
   });
 
-  const roleOfScope = await scope.assignRole({
+  const roleOfScope = await roleToScopeAssigner({
     scopeId,
     roleId
   });
