@@ -1,10 +1,11 @@
 import { GraphQLMongoDBController as Controller } from "@libresat/service";
 import { user } from "../resolvers/user.resolver";
-import { deleteNested } from "../utils/deleteNested";
 import { scope } from "../resolvers/scope.resolver";
 import { RoleIsMetaRoleError } from "../errors/RoleIsMetaRole.error";
 import { RoleNotFoundError } from "../errors/RoleNotFound.error";
 import { AccessToRoleNotConfiguredOrIncorrectCredentialsError } from "../errors/AccessToRoleNotConfiguredOrIncorrectCredentials.error";
+import { WRITE_ROLE } from "../constants/roles.constants";
+import { deleteNested } from "../utils/deleteNested.util";
 
 class RoleController extends Controller {
   getAllUsers = async (parent: any) =>
@@ -23,7 +24,7 @@ class RoleController extends Controller {
       isMeta: true
     });
     const { id: writeSelfRoleId } = await super.create({
-      name: "WRITE:ROLE",
+      name: WRITE_ROLE,
       isMeta: true
     });
 
@@ -57,7 +58,7 @@ class RoleController extends Controller {
           await user.auth({
             ...params,
             scopeId,
-            validRolesNames: ["WRITE:ROLE"]
+            validRolesNames: [WRITE_ROLE]
           });
 
           return super.update(roleId, {
@@ -87,7 +88,7 @@ class RoleController extends Controller {
           await user.auth({
             ...params,
             scopeId,
-            validRolesNames: ["WRITE:ROLE"]
+            validRolesNames: [WRITE_ROLE]
           });
 
           const deletedRole: any = await deleteNested(

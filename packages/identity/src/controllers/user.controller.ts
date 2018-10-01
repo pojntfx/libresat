@@ -1,14 +1,15 @@
 import { GraphQLMongoDBController as Controller } from "@libresat/service";
 import { hash } from "bcryptjs";
-import { assign } from "../utils/assign";
+import { assign } from "../utils/assign.util";
 import { role } from "../resolvers/role.resolver";
-import { authenticate } from "../utils/authenticate";
-import { authorize } from "../utils/authorize";
+import { authenticate } from "../utils/authenticate.util";
+import { authorize } from "../utils/authorize.util";
 import { scope } from "../resolvers/scope.resolver";
-import { parseCredentials } from "../utils/parseCredentials";
-import { IUserController, IUser, IUserCreateParams } from "../types/user.type";
-import { assignRoleAndScopeToUser } from "../utils/assignRolesAndScopesToUser";
-import { createUserWithScopeAndRole } from "../utils/createUserWithScopeAndRole";
+import { IUserController, IUserCreateParams } from "../types/user.type";
+import { WRITE_SELF } from "../constants/roles.constants";
+import { parseCredentials } from "../utils/parseCredentials.util";
+import { createUserWithScopeAndRole } from "../utils/createUserWithScopeAndRole.util";
+import { assignRoleAndScopeToUser } from "../utils/assignRolesAndScopesToUser.util";
 
 class UserController extends Controller implements IUserController {
   create = async (params: IUserCreateParams) =>
@@ -30,6 +31,7 @@ class UserController extends Controller implements IUserController {
       });
 
   async update(params: any) {
+    // TODO: Decompose and "de-variable-lize"
     const { userId } = await parseCredentials(params);
     const user = await this.get(userId);
     const userScope = (await this.getWithScopes(userId)).scopes.find(
@@ -40,9 +42,9 @@ class UserController extends Controller implements IUserController {
     await this.auth({
       ...params,
       scopeId: userScope.id,
-      validRolesNames: ["WRITE:SELF"]
+      validRolesNames: [WRITE_SELF]
     });
-
+    // TODO: Throw error (duplicate user name)
     // Update user itself
     return await super.update(userId, {
       name: params.newName,
@@ -79,14 +81,14 @@ class UserController extends Controller implements IUserController {
       (scope: any) => scope.name === user.id
     );
     const userRole = (await this.getWithRoles(userId)).roles.find(
-      (role: any) => role.name === "WRITE:SELF"
+      (role: any) => role.name === WRITE_SELF
     );
 
     // Check if user is a) authenticated and b) authorized to change himself
     await this.auth({
       ...params,
       scopeId: userScope,
-      validRolesNames: ["WRITE:SELF"]
+      validRolesNames: [WRITE_SELF]
     });
 
     // Delete role, scope and user
