@@ -4,16 +4,16 @@ import { IAuthenticateUserInUserScopeParams } from "../types/authenticateUserInU
 
 /**
  * Authenticate a user in it's own userScope (to see whether the user is allowed to change themselves)
- * @param userController User controller
+ * @param authenticator Function that authenticates the user
  * @param userScopeId I of the user's scope
  * @param params Parameters containing the user's authentication credentials
  */
 async function authenticateUserInUserScope(
-  userController: IAuthenticateUserInUserScopeParams["userController"],
+  authenticator: IAuthenticateUserInUserScopeParams["authenticator"],
   userScopeId: IAuthenticateUserInUserScopeParams["scopeId"],
   params: IAuthenticateUserInUserScopeParams["params"]
 ): Promise<IUser> {
-  const user = await userController.auth({
+  const user = await authenticator({
     ...params,
     scopeId: userScopeId,
     validRolesNames: [WRITE_SELF]

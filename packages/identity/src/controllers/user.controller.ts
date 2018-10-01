@@ -27,6 +27,7 @@ class UserController extends Controller implements IUserController {
   create = async (params: IUserCreateParams) =>
     hashPassword(params.password)
       .then(hashedPassword =>
+        // Create a user plus their scope and role to manage them
         createUserWithScopeAndRole(
           params.name,
           hashedPassword,
@@ -36,6 +37,7 @@ class UserController extends Controller implements IUserController {
         )
       )
       .then(({ user, userId, writeSelfRoleId, userScopeId }) => {
+        // Assign the management scope and role to the user
         assignRoleAndScopeToUser(
           userId,
           writeSelfRoleId,
@@ -52,10 +54,22 @@ class UserController extends Controller implements IUserController {
    * Update a user
    */
   update = async (_: any, params: IUserUpdateParams) =>
+    // Get user id
     parseCredentials(params)
-      .then(({ userId }) => getUserScope(this, userId))
-      .then(({ id }) => authenticateUserInUserScope(this, id, params))
+      .then(({ userId }) =>
+        // Get user's scope
+        getUserScope(id => this.get(id), id => this.getWithScopes(id), userId)
+      )
       .then(({ id }) =>
+        // Check if the user is authenticated in it's scope
+        authenticateUserInUserScope(
+          credentials => this.auth(credentials),
+          id,
+          params
+        )
+      )
+      .then(({ id }) =>
+        // Update the user with the new parameters
         updateUserById(
           (id, properties) => super.update(id, properties),
           id,
