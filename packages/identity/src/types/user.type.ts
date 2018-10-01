@@ -16,8 +16,14 @@ interface IUserCreateParams extends IGraphQLMongoDBControllerParams {
   password: IUser["password"];
 }
 
-interface IUserController extends GraphQLMongoDBController {
-  create(params: IUserCreateParams): Promise<IUser>;
+interface IUserUpdateParams extends IGraphQLMongoDBControllerParams {
+  newName: IUser["name"];
+  newPassword: IUser["password"];
 }
 
-export { IUser, IUserCreateParams, IUserController };
+interface IUserController extends GraphQLMongoDBController {
+  create(params: IUserCreateParams): Promise<IUser>;
+  update(id: IUser["id"], params: IUserUpdateParams): Promise<IUser>;
+}
+
+export { IUser, IUserCreateParams, IUserUpdateParams, IUserController };

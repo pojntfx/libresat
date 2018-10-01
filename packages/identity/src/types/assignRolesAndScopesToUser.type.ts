@@ -1,10 +1,11 @@
 import { IScope } from "../types/scope.type";
 import { IRole } from "../types/role.type";
+import { IUser } from "./user.type";
 
 interface IAssignRoleAndScopeToUserParams {
-  userId: string;
-  roleId: string;
-  scopeId: string;
+  userId: IUser["id"];
+  roleId: IRole["id"];
+  scopeId: IScope["id"];
 }
 
 interface IUserRoleAndScope {

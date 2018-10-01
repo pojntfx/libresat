@@ -4,6 +4,13 @@ import { AuthorizationFailedError } from "../errors/AuthorizationFailed.error";
 import { ScopeNotFoundError } from "../errors/ScopeNotFound.error";
 import { UserNotFoundError } from "../errors/UserNotFound.error";
 
+/**
+ * Authorize a user in a scope
+ * @param userId Id of the user to authorize
+ * @param scope Scope controller
+ * @param scopeId Id of scope to authorize the user in
+ * @param validRolesNames Valid names to authorize the user with in the scope
+ */
 async function authorize(
   userId: string,
   scope: ScopeController,

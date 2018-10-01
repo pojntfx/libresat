@@ -20,10 +20,10 @@ async function createUserWithScopeAndRole(
   password: ICreateUserWithScopeAndRoleParams["password"]
 ): Promise<IUserWithScopeAndRoleIds> {
   try {
-    const user: IUser = await creator({
+    const user = (await creator({
       name,
       password
-    });
+    })) as IUser;
 
     const { id: userId } = user;
 

@@ -1,17 +1,19 @@
-import { GraphQLMongoDBController } from "@libresat/service";
 import { IUser } from "../types/user.type";
+import { IScope } from "./scope.type";
+import { IRole } from "./role.type";
+import { IGraphQLMongoDBController } from "@libresat/service/dist/predefined/graphQLMongoDB/controller/controller.types";
 
 interface ICreateUserWithScopeAndRoleParams {
-  creator: GraphQLMongoDBController["create"];
+  creator: IGraphQLMongoDBController["create"];
   name: IUser["name"];
   password: IUser["password"];
 }
 
 interface IUserWithScopeAndRoleIds {
   user: IUser;
-  userId: string;
-  userScopeId: string;
-  writeSelfRoleId: string;
+  userId: IUser["id"];
+  userScopeId: IScope["id"];
+  writeSelfRoleId: IRole["id"];
 }
 
 export { ICreateUserWithScopeAndRoleParams, IUserWithScopeAndRoleIds };
