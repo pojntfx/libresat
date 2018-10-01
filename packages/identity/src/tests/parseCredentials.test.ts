@@ -52,3 +52,5 @@ it("Should throw error if neither a userId nor a password are provided", () =>
   expect(parseCredentials(fakeParamsWithoutContext)).rejects.toEqual(
     new NoCredentialsProvidedError()
   ));
+
+export { fakeParams, fakeParamsWithoutContext, fakeParamsWithoutPassword };
