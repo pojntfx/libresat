@@ -2,7 +2,8 @@ import { UserController } from "../controllers/user.controller";
 import { IUser } from "./user.type";
 
 interface IGetUserScopeParams {
-  userController: UserController;
+  userGetter: UserController["get"];
+  userWithScopesGetter: UserController["getWithScopes"];
   userId: IUser["id"];
 }
 

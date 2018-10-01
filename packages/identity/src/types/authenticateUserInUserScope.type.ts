@@ -3,7 +3,7 @@ import { IScope } from "./scope.type";
 import { UserController } from "../controllers/user.controller";
 
 interface IAuthenticateUserInUserScopeParams {
-  userController: UserController;
+  authenticator: UserController["auth"];
   params: IUserUpdateParams;
   scopeId: IScope["id"];
 }
