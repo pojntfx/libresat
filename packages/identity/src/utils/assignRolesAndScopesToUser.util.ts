@@ -3,7 +3,7 @@ import { user } from "../resolvers/user.resolver";
 import {
   IAssignRoleAndScopeToUserParams,
   IUserRoleAndScope
-} from "./assignRolesAndScopesToUser.types";
+} from "../types/assignRolesAndScopesToUser.type";
 
 /**
  * Assign role and scope to user

@@ -4,8 +4,9 @@ import { role } from "../resolvers/role.resolver";
 import {
   ICreateUserWithScopeAndRoleParams,
   IUserWithScopeAndRoleIds
-} from "./createUserWithScopeAndRole.types";
+} from "../types/createUserWithScopeAndRole.type";
 import { UserWithNameExistsError } from "../errors/UserWithNameExists.error";
+import { WRITE_SELF } from "../constants/roles.constants";
 
 /**
  * Create a user with a scope and role
@@ -33,7 +34,7 @@ async function createUserWithScopeAndRole(
     });
 
     const { id: writeSelfRoleId } = await role.create({
-      name: "WRITE:SELF",
+      name: WRITE_SELF,
       isMeta: true
     });
 

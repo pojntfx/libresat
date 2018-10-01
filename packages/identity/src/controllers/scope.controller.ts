@@ -1,11 +1,12 @@
 import { GraphQLMongoDBController as Controller } from "@libresat/service";
 import { user } from "../resolvers/user.resolver";
 import { role } from "../resolvers/role.resolver";
-import { assign } from "../utils/assign";
+import { assign } from "../utils/assign.util";
 import { AccessToScopeNotConfiguredOrIncorrectCredentialsError } from "../errors/AccessToScopeNotConfiguredOrIncorrectCredentials.error";
-import { deleteNested } from "../utils/deleteNested";
 import { ScopeIsMetaScopeError } from "../errors/ScopeIsMetaScope.error";
 import { ScopeNotFoundError } from "../errors/ScopeNotFound.error";
+import { WRITE_SELF, WRITE_SCOPE } from "../constants/roles.constants";
+import { deleteNested } from "../utils/deleteNested.util";
 
 class ScopeController extends Controller {
   async assignUser(params: any) {
@@ -52,7 +53,7 @@ class ScopeController extends Controller {
       await user.auth({
         ...params,
         scopeId: params.scopeId,
-        validRolesNames: ["WRITE:SELF"]
+        validRolesNames: [WRITE_SELF]
       });
       const scope = await this.get(params.scopeId);
       if (!scope) {
@@ -77,7 +78,7 @@ class ScopeController extends Controller {
       await user.auth({
         ...params,
         scopeId,
-        validRolesNames: ["WRITE:SCOPE"]
+        validRolesNames: [WRITE_SCOPE]
       });
       const scope = await this.get(scopeId);
       if (!scope) {

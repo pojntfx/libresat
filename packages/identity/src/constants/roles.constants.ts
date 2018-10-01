@@ -1,3 +1,5 @@
-const writeSelf = "WRITE:SELF";
+const WRITE_SELF = "WRITE:SELF";
+const WRITE_ROLE = "WRITE:ROLE";
+const WRITE_SCOPE = "WRITE:SCOPE";
 
-export { writeSelf };
+export { WRITE_SELF, WRITE_ROLE, WRITE_SCOPE };
