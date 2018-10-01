@@ -46,3 +46,5 @@ it("Should create user with scopes and roles", async () => {
     writeSelfRoleId: "5bb0dad75d697e3b5c8c9bd6"
   });
 });
+
+export { fakeUserCreator, fakeScopeCreator, fakeRoleCreator };
