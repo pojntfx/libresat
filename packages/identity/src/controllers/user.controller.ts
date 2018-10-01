@@ -71,10 +71,10 @@ class UserController extends Controller implements IUserController {
       .then(({ id }) =>
         // Update the user with the new parameters
         updateUserById(
-          (id, properties) => super.update(id, properties),
           id,
           params.newName,
-          params.newPassword
+          params.newPassword,
+          (id, properties) => super.update(id, properties)
         )
       )
       .catch(e => new CouldNotUpdateUserError(e));

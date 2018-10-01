@@ -4,16 +4,16 @@ import { IUpdateUserByIdParams } from "../types/updateUserById.type";
 
 /**
  * Update a user by their ID
- * @param updater User controller update action
  * @param userId Id of the user to update
  * @param name New name of the user to update
  * @param password New password of the user to update
+ * @param updater User controller update action
  */
 async function updateUserById(
-  updater: IUpdateUserByIdParams["updater"],
   userId: IUpdateUserByIdParams["userId"],
   name: IUpdateUserByIdParams["name"],
-  password: IUpdateUserByIdParams["password"]
+  password: IUpdateUserByIdParams["password"],
+  updater: IUpdateUserByIdParams["updater"]
 ): Promise<IUser> {
   const user = await updater(userId, {
     name,
