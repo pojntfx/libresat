@@ -1,12 +1,6 @@
 import { IScope } from "../types/scope.type";
 import { WRITE_SELF } from "../constants/roles.constants";
-import { IUser } from "../types/user.type";
-import { UserController } from "../controllers/user.controller";
-
-interface IGetUserRoleParams {
-  userId: IUser["id"];
-  userWithRolesGetter: UserController["getWithRoles"];
-}
+import { IGetUserRoleParams } from "../types/getUserRole.type";
 
 /**
  * Get a user's user role (to see whether they can change themselves)

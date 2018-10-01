@@ -8,8 +8,7 @@ import {
   IUserController,
   IUserCreateParams,
   IUserUpdateParams,
-  IUserDeleteParams,
-  IUser
+  IUserDeleteParams
 } from "../types/user.type";
 import { parseCredentials } from "../utils/parseCredentials.util";
 import { createUserWithScopeAndRole } from "../utils/createUserWithScopeAndRole.util";
@@ -20,7 +19,7 @@ import { updateUserById } from "../utils/updateUserById.util";
 import { hashPassword } from "../utils/hashPassword.util";
 import { CouldNotUpdateUserError } from "../errors/CouldNotUpdateUser.error";
 import { CouldNotCreateUserError } from "../errors/CouldNotCreateUser.error";
-import { deleteUserScopeAndRole } from "../utils/deleteUserScopeAndRole.util";
+import { deleteUserWithScopeAndRole } from "../utils/deleteUserWithScopeAndRole.util";
 import { getUserRole } from "../utils/getUserRole.util";
 import { CouldNotDeleteUserError } from "../errors/CouldNotDeleteUser.error";
 
@@ -114,16 +113,15 @@ class UserController extends Controller implements IUserController {
         userRoleId: (await getUserRole(userId, id => this.getWithRoles(id))).id
       }))
       // Delete user, it's role and scope
-      .then(
-        async ({ userId, userRoleId, userScopeId }) =>
-          (await deleteUserScopeAndRole(
-            userId,
-            userScopeId,
-            userRoleId,
-            id => role.delete(id),
-            id => scope.delete(id),
-            id => this.delete(id)
-          )) as IUser
+      .then(({ userId, userRoleId, userScopeId }) =>
+        deleteUserWithScopeAndRole(
+          userId,
+          userScopeId,
+          userRoleId,
+          id => role.delete(id),
+          id => scope.delete(id),
+          id => this.delete(id)
+        )
       )
       .catch(e => new CouldNotDeleteUserError(e));
 
