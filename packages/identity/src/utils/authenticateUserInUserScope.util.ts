@@ -4,7 +4,7 @@ import { IAuthenticateUserInUserScopeParams } from "../types/authenticateUserInU
 
 /**
  * Authenticate a user in it's own userScope (to see whether the user is allowed to change themselves)
- * @param authenticator Function that authenticates the user
+ * @param authenticator Function that authenticates and returns the user
  * @param userScopeId I of the user's scope
  * @param params Parameters containing the user's authentication credentials
  */
