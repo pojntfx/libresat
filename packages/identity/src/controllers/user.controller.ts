@@ -58,7 +58,7 @@ class UserController extends Controller implements IUserController {
     parseCredentials(params)
       .then(({ userId }) =>
         // Get user's scope
-        getUserScope(id => this.get(id), id => this.getWithScopes(id), userId)
+        getUserScope(userId, id => this.get(id), id => this.getWithScopes(id))
       )
       .then(({ id }) =>
         // Check if the user is authenticated in it's scope

@@ -60,7 +60,7 @@ it("Should assign scope to user", async () =>
       roleAndUser => fakeRoleToUserAssigner(roleAndUser),
       roleAndScope => fakeRoleToScopeAssigner(roleAndScope)
     )).scopeOfUser.id
-  ).toEqual((await fakeScope).id));
+  ).toEqual((await fakeScope).id)); // Check if fakeScope has been assigned to user
 
 it("Should assign role to user", async () =>
   expect(
@@ -72,9 +72,9 @@ it("Should assign role to user", async () =>
       roleAndUser => fakeRoleToUserAssigner(roleAndUser),
       roleAndScope => fakeRoleToScopeAssigner(roleAndScope)
     )).roleOfUser.users[0].id
-  ).toEqual((await fakeUser).id));
+  ).toEqual((await fakeUser).id)); // Check if fakeRole has been assigned to user
 
-it("Should assign role to user", async () =>
+it("Should assign scope to user", async () =>
   expect(
     (await assignRoleAndScopeToUser(
       "5bb0dad75d697e3b5c8c9bd5",
@@ -84,4 +84,4 @@ it("Should assign role to user", async () =>
       roleAndUser => fakeRoleToUserAssigner(roleAndUser),
       roleAndScope => fakeRoleToScopeAssigner(roleAndScope)
     )).roleOfUser.scopes[0].id
-  ).toEqual((await fakeScope).id));
+  ).toEqual((await fakeScope).id)); // Check if fakeScope has been assigned to user
