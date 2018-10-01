@@ -1,23 +1,27 @@
 import { IUser } from "../types/user.type";
-import { scope } from "../resolvers/scope.resolver";
-import { role } from "../resolvers/role.resolver";
 import {
   ICreateUserWithScopeAndRoleParams,
   IUserWithScopeAndRoleIds
 } from "../types/createUserWithScopeAndRole.type";
 import { UserWithNameExistsError } from "../errors/UserWithNameExists.error";
 import { WRITE_SELF } from "../constants/roles.constants";
+import { ScopeController } from "../controllers/scope.controller";
+import { RoleController } from "../controllers/role.controller";
 
 /**
  * Create a user with a scope and role
- * @param creator Function that creates a new user
  * @param name Name of the new user
  * @param password Hashed password of the new user
+ * @param creator Function that creates a new user
+ * @param scopeCreator Function that creates a new scope
+ * @param roleCreator Function that create a new role
  */
 async function createUserWithScopeAndRole(
-  creator: ICreateUserWithScopeAndRoleParams["creator"],
   name: ICreateUserWithScopeAndRoleParams["name"],
-  password: ICreateUserWithScopeAndRoleParams["password"]
+  password: ICreateUserWithScopeAndRoleParams["password"],
+  creator: ICreateUserWithScopeAndRoleParams["creator"],
+  scopeCreator: ScopeController["create"],
+  roleCreator: RoleController["create"]
 ): Promise<IUserWithScopeAndRoleIds> {
   try {
     const user = (await creator({
@@ -28,12 +32,12 @@ async function createUserWithScopeAndRole(
     const { id: userId } = user;
 
     // Create a scope for each user so that they can edit themselves
-    const { id: userScopeId } = await scope.create({
+    const { id: userScopeId } = await scopeCreator({
       name: userId,
       isMeta: true
     });
 
-    const { id: writeSelfRoleId } = await role.create({
+    const { id: writeSelfRoleId } = await roleCreator({
       name: WRITE_SELF,
       isMeta: true
     });

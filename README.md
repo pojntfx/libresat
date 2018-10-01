@@ -29,6 +29,8 @@ The Free/Libre and Open Source Satellite Development and Control Platform, since
 ```bash
 # Install dependencies
 npm install
+# Start development version of inidividual package
+npm run dev -- --scope @libresat/identity
 # Start development version of and debugger for inidividual package
 npm run dev:debug -- --scope @libresat/identity
 # Now, connect using the "Attach" configuration in the VSCode Debugger (press "F5")!

@@ -28,9 +28,11 @@ class UserController extends Controller implements IUserController {
     hashPassword(params.password)
       .then(hashedPassword =>
         createUserWithScopeAndRole(
-          properties => super.create(properties),
           params.name,
-          hashedPassword
+          hashedPassword,
+          properties => super.create(properties),
+          properties => scope.create(properties),
+          properties => role.create(properties),
         )
       )
       .then(({ user, userId, writeSelfRoleId, userScopeId }) => {
