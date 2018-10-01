@@ -1,9 +1,15 @@
-import { UserController } from "../controllers/user.controller";
 import { compare } from "bcryptjs";
 import { AuthenticationFailedError } from "../errors/AuthenticationFailed.error";
+import { IUserController } from "../types/user.type";
 
+/**
+ * Authenticate a user
+ * @param user User controller
+ * @param userId Id of the user to authenticate
+ * @param password Password of the user to authenticate
+ */
 async function authenticate(
-  user: UserController,
+  user: IUserController,
   userId: string,
   password: string
 ) {

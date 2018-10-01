@@ -2,7 +2,7 @@ import { UserController } from "../controllers/user.controller";
 import { UserModel } from "../models/user.model";
 import { IRole } from "../types/role.type";
 import { IScope } from "../types/scope.type";
-import { IUser } from "../types/user.type";
+import { IUser, IUserCreateParams } from "../types/user.type";
 
 const user = new UserController(UserModel);
 
@@ -19,12 +19,12 @@ export default {
       await user.get(params.id)
   },
   Mutation: {
+    createUser: async (_: any, params: IUserCreateParams) =>
+      await user.create(params),
+    updateUser: async (_: any, params: any, context: any) =>
+      await user.update(_, { ...params, context }),
     assignRoleToUser: async (_: any, params: any): Promise<IUser> =>
       await user.assignRole(params),
-    createUser: async (_: any, params: any): Promise<IUser> =>
-      await user.create(params),
-    updateUser: async (_: any, params: any, context: any): Promise<IUser> =>
-      await user.update({ ...params, context }),
     auth: async (_: any, params: any, context: any): Promise<IUser> =>
       await user.auth({ ...params, context }),
     deleteUser: async (_: any, params: any, context: any): Promise<IUser> =>

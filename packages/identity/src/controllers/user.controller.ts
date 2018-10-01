@@ -1,56 +1,56 @@
 import { GraphQLMongoDBController as Controller } from "@libresat/service";
-import { hash } from "bcryptjs";
 import { assign } from "../utils/assign.util";
 import { role } from "../resolvers/role.resolver";
 import { authenticate } from "../utils/authenticate.util";
 import { authorize } from "../utils/authorize.util";
 import { scope } from "../resolvers/scope.resolver";
-import { IUserController, IUserCreateParams } from "../types/user.type";
+import {
+  IUserController,
+  IUserCreateParams,
+  IUserUpdateParams
+} from "../types/user.type";
 import { WRITE_SELF } from "../constants/roles.constants";
 import { parseCredentials } from "../utils/parseCredentials.util";
 import { createUserWithScopeAndRole } from "../utils/createUserWithScopeAndRole.util";
 import { assignRoleAndScopeToUser } from "../utils/assignRolesAndScopesToUser.util";
+import { getUserScope } from "../utils/getUserScope.util";
+import { authenticateUserInUserScope } from "../utils/authenticateUserInUserScope.util";
+import { updateUserById } from "../utils/updateUserById.util";
+import { hashPassword } from "../utils/hashPassword.util";
 
 class UserController extends Controller implements IUserController {
+  /**
+   * Create a user
+   */
   create = async (params: IUserCreateParams) =>
-    await hash(params.password, 10)
-      .then(encryptedPassword =>
+    hashPassword(params.password)
+      .then(hashedPassword =>
         createUserWithScopeAndRole(
-          params => super.create(params),
+          properties => super.create(properties),
           params.name,
-          encryptedPassword
+          hashedPassword
         )
       )
-      .then(documents => {
-        assignRoleAndScopeToUser(
-          documents.userId,
-          documents.writeSelfRoleId,
-          documents.userScopeId
-        );
-        return documents.user;
+      .then(({ user, userId, writeSelfRoleId, userScopeId }) => {
+        assignRoleAndScopeToUser(userId, writeSelfRoleId, userScopeId);
+        return user;
       });
 
-  async update(params: any) {
-    // TODO: Decompose and "de-variable-lize"
-    const { userId } = await parseCredentials(params);
-    const user = await this.get(userId);
-    const userScope = (await this.getWithScopes(userId)).scopes.find(
-      (scope: any) => scope.name === user.id
-    );
-
-    // Check if user is a) authenticated and b) authorized to change himself
-    await this.auth({
-      ...params,
-      scopeId: userScope.id,
-      validRolesNames: [WRITE_SELF]
-    });
-    // TODO: Throw error (duplicate user name)
-    // Update user itself
-    return await super.update(userId, {
-      name: params.newName,
-      password: await hash(params.newPassword, 10)
-    });
-  }
+  /**
+   * Update a user
+   */
+  update = async (_: any, params: IUserUpdateParams) =>
+    parseCredentials(params)
+      .then(({ userId }) => getUserScope(this, userId))
+      .then(({ id }) => authenticateUserInUserScope(this, id, params))
+      .then(({ id }) =>
+        updateUserById(
+          (id, properties) => super.update(id, properties),
+          id,
+          params.newName,
+          params.newPassword
+        )
+      );
 
   async assignRole(params: any) {
     const { userId, roleId } = params;
@@ -122,7 +122,7 @@ class UserController extends Controller implements IUserController {
     return await this.get(userId);
   }
 
-  private getWithScopes = async (id: string) =>
+  getWithScopes = async (id: string) =>
     this.model.findById(id).populate("scopes");
 
   private getWithRoles = async (id: string) =>
