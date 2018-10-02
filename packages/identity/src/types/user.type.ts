@@ -44,7 +44,7 @@ interface IUserDeleteParams
 interface IUserAuthParams
   extends IGraphQLMongoDBControllerParamsWithAuthorizationHeader {
   scopeId: IScope["id"];
-  validRolesNames: [string];
+  validRolesNames: [IRole["name"]];
 }
 
 interface IUserAssignRoleParams extends IGraphQLMongoDBControllerParams {
