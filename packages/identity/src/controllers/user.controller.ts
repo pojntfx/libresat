@@ -10,7 +10,8 @@ import {
   IUserUpdateParams,
   IUserDeleteParams,
   IUserAuthParams,
-  IUserAssignRoleParams
+  IUserAssignRoleParams,
+  IUser
 } from "../types/user.type";
 import { parseCredentials } from "../utils/parseCredentials.util";
 import { createUserWithScopeAndRole } from "../utils/createUserWithScopeAndRole.util";
@@ -26,6 +27,8 @@ import { getUserRole } from "../utils/getUserRole.util";
 import { CouldNotDeleteUserError } from "../errors/CouldNotDeleteUser.error";
 import { CouldNotAuthUserError } from "../errors/CouldNotAuthUser.error";
 import { CouldNotAssignRoleToUserError } from "../errors/CouldNotAssignRoleToUser.error";
+import { IScope } from "../types/scope.type";
+import { IRole } from "../types/role.type";
 
 class UserController extends Controller implements IUserController {
   /**
@@ -147,39 +150,40 @@ class UserController extends Controller implements IUserController {
    * Assign role to a user
    */
   assignRole = async (params: IUserAssignRoleParams) =>
+    // TODO: Make this it's own testable function
     assign(this, params.userId, "roles", role, params.roleId, "users").catch(
       e => new CouldNotAssignRoleToUserError(e)
     );
 
-  getAllRoles = async (parent: any) =>
+  getAllRoles = async (parent: IUser) =>
     (await this.model.findById(parent.id).populate("roles")).roles;
 
-  getAllScopes = async (parent: any) =>
+  getAllScopes = async (parent: IUser) =>
     (await this.model.findById(parent.id).populate("scopes")).scopes;
 
-  async updateScopes(id: string, scopes: any) {
+  async updateScopes(id: IUser["id"], scopes: IScope[]) {
     const userToUpdate = await this.model.findById(id);
     userToUpdate.scopes = scopes;
     userToUpdate.save();
   }
 
-  private async authenticate(userId: string, password: string) {
+  private async authenticate(userId: IUser["id"], password: IUser["password"]) {
     return await authenticate(this, userId, password);
   }
 
   private async authorize(
-    userId: string,
-    scopeId: string,
-    validRolesNames: string[]
+    userId: IUser["id"],
+    scopeId: IScope["id"],
+    validRolesNames: IRole["name"][]
   ) {
     await authorize(userId, scope, scopeId, validRolesNames);
     return await this.get(userId);
   }
 
-  getWithScopes = async (id: string) =>
+  getWithScopes = async (id: IUser["id"]) =>
     this.model.findById(id).populate("scopes");
 
-  private getWithRoles = async (id: string) =>
+  private getWithRoles = async (id: IUser["id"]) =>
     this.model.findById(id).populate("roles");
 }
 
