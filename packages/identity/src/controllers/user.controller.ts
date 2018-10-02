@@ -8,7 +8,8 @@ import {
   IUserController,
   IUserCreateParams,
   IUserUpdateParams,
-  IUserDeleteParams
+  IUserDeleteParams,
+  IUserAuthParams
 } from "../types/user.type";
 import { parseCredentials } from "../utils/parseCredentials.util";
 import { createUserWithScopeAndRole } from "../utils/createUserWithScopeAndRole.util";
@@ -22,6 +23,7 @@ import { CouldNotCreateUserError } from "../errors/CouldNotCreateUser.error";
 import { deleteUserWithScopeAndRole } from "../utils/deleteUserWithScopeAndRole.util";
 import { getUserRole } from "../utils/getUserRole.util";
 import { CouldNotDeleteUserError } from "../errors/CouldNotDeleteUser.error";
+import { CouldNotAuthUserError } from "../errors/CouldNotAuthUser.error";
 
 class UserController extends Controller implements IUserController {
   /**
@@ -125,6 +127,20 @@ class UserController extends Controller implements IUserController {
       )
       .catch(e => new CouldNotDeleteUserError(e));
 
+  /**
+   * Authenticate and authorize a user
+   */
+  auth = async (params: IUserAuthParams) =>
+    parseCredentials(params)
+      .then(async ({ userId, password }) => {
+        await this.authenticate(userId, password);
+        return { userId };
+      })
+      .then(({ userId }) =>
+        this.authorize(userId, params.scopeId, params.validRolesNames)
+      )
+      .catch(e => new CouldNotAuthUserError(e));
+
   async assignRole(params: any) {
     const { userId, roleId } = params;
 
@@ -138,13 +154,6 @@ class UserController extends Controller implements IUserController {
     );
 
     return userToAssignRoleTo;
-  }
-
-  async auth(params: any) {
-    const { userId, password } = await parseCredentials(params);
-    const { scopeId, validRolesNames } = params;
-    await this.authenticate(userId, password);
-    return await this.authorize(userId, scopeId, validRolesNames);
   }
 
   getAllRoles = async (parent: any) =>
