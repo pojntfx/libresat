@@ -1,10 +1,14 @@
 import { IRole } from "./role.type";
 import { IScope } from "./scope.type";
-import { GraphQLMongoDBController } from "@libresat/service";
+import {
+  GraphQLMongoDBController,
+  IGraphQLMongoDBControllerParams
+} from "@libresat/service";
 import { CouldNotUpdateUserError } from "../errors/CouldNotUpdateUser.error";
 import { CouldNotDeleteUserError } from "../errors/CouldNotDeleteUser.error";
 import { CouldNotCreateUserError } from "../errors/CouldNotCreateUser.error";
 import { CouldNotAuthUserError } from "../errors/CouldNotAuthUser.error";
+import { CouldNotAssignRoleToUserError } from "../errors/CouldNotAssignRoleToUser.error";
 
 interface IUser {
   id: string;
@@ -23,8 +27,7 @@ interface IGraphQLMongoDBControllerParamsWithAuthorizationHeader {
   };
 }
 
-interface IUserCreateParams
-  extends IGraphQLMongoDBControllerParamsWithAuthorizationHeader {
+interface IUserCreateParams extends IGraphQLMongoDBControllerParams {
   name: IUser["name"];
   password: IUser["password"];
 }
@@ -44,6 +47,11 @@ interface IUserAuthParams
   validRolesNames: [string];
 }
 
+interface IUserAssignRoleParams extends IGraphQLMongoDBControllerParams {
+  userId: IUser["id"];
+  roleId: IRole["id"];
+}
+
 interface IUserController extends GraphQLMongoDBController {
   create(params: IUserCreateParams): Promise<IUser | CouldNotCreateUserError>;
   updateWithCredentials(
@@ -53,6 +61,9 @@ interface IUserController extends GraphQLMongoDBController {
     params: IUserDeleteParams
   ): Promise<IUser | CouldNotDeleteUserError>;
   auth(params: IUserAuthParams): Promise<IUser | CouldNotAuthUserError>;
+  assignRole(
+    params: IUserAssignRoleParams
+  ): Promise<IUser | CouldNotAssignRoleToUserError>;
 }
 
 export {
@@ -61,6 +72,7 @@ export {
   IUserUpdateParams,
   IUserDeleteParams,
   IUserAuthParams,
+  IUserAssignRoleParams,
   IUserController,
   IGraphQLMongoDBControllerParamsWithAuthorizationHeader
 };
