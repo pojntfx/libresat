@@ -1,4 +1,4 @@
-# LibreSat Identity
+# LibreSat Identity Backend
 
 Simple and secure role-based authentication, authorization & identity provider implemented as a GraphQL microservice for [LibreSat](https://libresat.space/).
 
