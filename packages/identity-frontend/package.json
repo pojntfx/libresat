@@ -1,0 +1,33 @@
+{
+  "name": "@libresat/identity-frontend",
+  "version": "0.0.1-0",
+  "description": "Frontend for @libresat/identity-backend, a simple and secure role-based authentication, authorization & identity provider implemented as a GraphQL microservice for [LibreSat](https://libresat.space/)",
+  "main": "src/index.tsx",
+  "scripts": {
+    "dev": "parcel src/index.html",
+    "build": "parcel build src/index.html",
+    "start": "serve -s dist/",
+    "prepare": "npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Felix Pojtinger <felix@pojtinger.com>",
+  "license": "AGPL-3.0",
+  "dependencies": {
+    "@types/react": "^16.4.15",
+    "@types/react-dom": "^16.0.8",
+    "@types/styled-components": "^3.0.1",
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2",
+    "semantic-ui-css": "^2.4.0",
+    "semantic-ui-react": "^0.82.5",
+    "serve": "^10.0.2",
+    "styled-components": "^3.4.9"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "parcel-bundler": "^1.10.2"
+  }
+}
