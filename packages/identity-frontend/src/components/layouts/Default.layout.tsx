@@ -1,13 +1,18 @@
 import * as React from "react";
 import { Container } from "semantic-ui-react";
 import "semantic-ui-css/semantic.min.css";
+import { Navbar } from "../global";
+import { INavbarProps } from "../global/Navbar";
 
-interface IDefaultLayoutProps {
+interface IDefaultLayoutProps extends INavbarProps {
   children: JSX.Element;
 }
 
 const DefaultLayout = ({ children, ...otherProps }: IDefaultLayoutProps) => (
-  <Container {...otherProps}>{children}</Container>
+  <>
+    <Navbar {...otherProps} />
+    <Container>{children}</Container>
+  </>
 );
 
 export { DefaultLayout };
