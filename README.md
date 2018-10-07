@@ -30,9 +30,9 @@ The Free/Libre and Open Source Satellite Development and Control Platform, since
 # Install dependencies
 npm install
 # Start development version of inidividual package
-npm run dev -- --scope @libresat/identity
+npm run dev -- --scope @libresat/identity-backend
 # Start development version of and debugger for inidividual package
-npm run dev:debug -- --scope @libresat/identity
+npm run dev:debug -- --scope @libresat/identity-backend
 # Now, connect using the "Attach" configuration in the VSCode Debugger (press "F5")!
 # Start development versions of all packages
 npm run dev
@@ -42,11 +42,11 @@ npm run dev
 
 ```bash
 # Build production version of inidividual package
-npm run build -- --scope @libresat/identity
+npm run build -- --scope @libresat/identity-backend
 # Build production versions of all packages
 npm run build
 # Start production version of inidividual package
-npm run start -- --scope @libresat/identity
+npm run start -- --scope @libresat/identity-backend
 # Start production versions of all packages
 npm run start
 # Publish packages to npm

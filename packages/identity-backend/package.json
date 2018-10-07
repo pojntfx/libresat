@@ -1,5 +1,5 @@
 {
-  "name": "@libresat/identity",
+  "name": "@libresat/identity-backend",
   "description": "Simple and secure role-based authentication, authorization & identity provider implemented as a GraphQL microservice for [LibreSat](https://libresat.space/)",
   "version": "0.0.1-20",
   "main": "dist/index.js",

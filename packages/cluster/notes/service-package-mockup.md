@@ -76,7 +76,7 @@ $ echo \
 import { flag } from "@libresat/service";
 
 const description = `LibreSat Identity
-@libresat/identity#0.0.1-10
+@libresat/identity-backend#0.0.1-10
 
 Usage: identity [OPTION...]
 
