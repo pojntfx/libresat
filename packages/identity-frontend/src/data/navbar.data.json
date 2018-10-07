@@ -1,0 +1,13 @@
+{
+  "title": "LibreSat",
+  "subtitle": "Identity",
+  "homeLink": "/",
+  "startItems": [
+    {
+      "title": "Home",
+      "icon": "home",
+      "link": "/",
+      "disabled": false
+    }
+  ]
+}
