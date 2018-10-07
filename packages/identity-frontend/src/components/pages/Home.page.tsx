@@ -9,10 +9,10 @@ interface IHomePage {
 
 const HomePage = (props: IHomePage) => (
   <DefaultLayout
-    title={navbarData.title}
-    subtitle={navbarData.subtitle}
-    homeLink={navbarData.homeLink}
+    firstItems={navbarData.firstItems}
     startItems={navbarData.startItems}
+    endItems={navbarData.endItems}
+    lastItems={navbarData.lastItems}
     {...props}
   >
     <Button>Hello, world!</Button>
