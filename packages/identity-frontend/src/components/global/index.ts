@@ -1,2 +1,2 @@
-export { Navbar, INavbarProps } from "./Navbar/Navbar";
+export { Navbar } from "./Navbar/Navbar";
 export { Container } from "./Container";

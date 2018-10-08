@@ -11,3 +11,11 @@ export {
   ISocialsProps,
   ISocialButton
 } from "./footer.type";
+
+export { INavbarProps, IBrand, IItem } from "./navbar.type";
+
+export { IDefaultLayoutProps } from "./default.layout.type";
+
+export { IHomePage } from "./home.page.type";
+
+export { IRoutesRouteProps } from "./routes.route.type";

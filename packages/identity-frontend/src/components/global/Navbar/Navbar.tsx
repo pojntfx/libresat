@@ -2,32 +2,11 @@ import * as React from "react";
 import { MainMenu } from "./MainMenu";
 import { NavLink } from "react-router-dom";
 import { CenterMenu } from "./CenterMenu";
-import { SemanticICONS, Menu, Icon } from "semantic-ui-react";
+import { Menu, Icon } from "semantic-ui-react";
 import { EdgeMenu } from "./EdgeMenu";
 import { Logo } from "./Logo";
 import { EdgeItem } from "./EdgeItem";
-
-interface INavbarProps {
-  brand: IBrand;
-  firstItems: IItem[];
-  startItems: IItem[];
-  endItems: IItem[];
-  lastItems: IItem[];
-}
-
-interface IBrand {
-  title: string;
-  img: string;
-  link: string;
-  disabled: boolean;
-}
-
-interface IItem {
-  title: string;
-  icon?: SemanticICONS;
-  link: string;
-  disabled?: boolean;
-}
+import { INavbarProps } from "../../../types";
 
 const Navbar = ({
   brand,
@@ -101,4 +80,4 @@ const Navbar = ({
   </MainMenu>
 );
 
-export { Navbar, INavbarProps };
+export { Navbar };

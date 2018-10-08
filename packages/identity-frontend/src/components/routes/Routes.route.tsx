@@ -1,10 +1,7 @@
 import * as React from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 import { HomeRoute } from "./Home.route";
-
-interface IRoutesRouteProps {
-  props?: any;
-}
+import { IRoutesRouteProps } from "../../types";
 
 const RoutesRoute = (props: IRoutesRouteProps) => (
   <BrowserRouter {...props}>
