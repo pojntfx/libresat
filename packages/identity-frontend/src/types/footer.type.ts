@@ -12,6 +12,7 @@ interface ILegal {
 
 interface ILegalGlobal {
   product: string;
+  type: string;
   timeSpan: string;
   holder: string;
 }
