@@ -70,7 +70,8 @@ const footerData = {
     },
     licenses: [
       {
-        product: "Media",
+        product: "LibreSat Identity",
+        type: "Media",
         icon: "images",
         timeSpan: "2014-2018",
         holder: "Felicitas Pojtinger",
@@ -87,7 +88,8 @@ const footerData = {
         }
       },
       {
-        product: "Code",
+        product: "LibreSat Identity",
+        type: "Code",
         icon: "code",
         timeSpan: "2014-2018",
         holder: "Felicitas Pojtinger",

@@ -6,6 +6,7 @@ import { ILegalInfoProps } from "../../../../types";
 
 const LegalInfo = ({
   product,
+  type,
   timeSpan,
   holder,
   spdxLicenseIdentifier,
@@ -16,7 +17,7 @@ const LegalInfo = ({
   <Modal.Content>
     <LegalBadge src={badge.img} alt={badge.title} href={more.link} />
     <p>
-      {product} &copy; {timeSpan} {holder}
+      {product} {type} &copy; {timeSpan} {holder}
     </p>
     <span>SPDX-License-Identifier: {spdxLicenseIdentifier}</span>
     <br />
@@ -28,4 +29,4 @@ const LegalInfo = ({
   </Modal.Content>
 );
 
-export { LegalInfo}
+export { LegalInfo };

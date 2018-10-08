@@ -23,6 +23,7 @@ const Footer = ({ socialLinks, legal: { global, licenses } }: IFooterProps) => (
             (
               {
                 product,
+                type,
                 icon,
                 timeSpan,
                 holder,
@@ -41,15 +42,16 @@ const Footer = ({ socialLinks, legal: { global, licenses } }: IFooterProps) => (
                   trigger={
                     <LegalModalTriggerButton
                       icon={icon}
-                      content={`${product} License`}
+                      content={`${type} License`}
                       fluid
                     />
                   }
                   closeIcon
                 >
-                  <Modal.Header>{product} License</Modal.Header>
+                  <Modal.Header>{type} License</Modal.Header>
                   <LegalInfo
                     product={product}
+                    type={type}
                     timeSpan={timeSpan}
                     icon={icon}
                     holder={holder}
