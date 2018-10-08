@@ -4,12 +4,22 @@ import { NavLink } from "react-router-dom";
 import { CenterMenu } from "./CenterMenu";
 import { SemanticICONS, Menu, Icon } from "semantic-ui-react";
 import { EdgeMenu } from "./EdgeMenu";
+import { Logo } from "./Logo";
+import { EdgeItem } from "./EdgeItem";
 
 interface INavbarProps {
+  brand: IBrand;
   firstItems: IItem[];
   startItems: IItem[];
   endItems: IItem[];
   lastItems: IItem[];
+}
+
+interface IBrand {
+  title: string;
+  img: string;
+  link: string;
+  disabled: boolean;
 }
 
 interface IItem {
@@ -20,6 +30,7 @@ interface IItem {
 }
 
 const Navbar = ({
+  brand,
   firstItems,
   startItems,
   endItems,
@@ -27,9 +38,17 @@ const Navbar = ({
   ...otherProps
 }: INavbarProps) => (
   <MainMenu borderless fixed="top" {...otherProps}>
+    <EdgeItem
+      to={brand.link}
+      disabled={brand.disabled}
+      as={NavLink}
+      activeClassName="active--first-item"
+    >
+      <Logo src={brand.img} alt={brand.title} />
+    </EdgeItem>
     <EdgeMenu>
+      {/* If something custom is needed here, just add the component directly */}
       {firstItems.map(({ title, icon, link, disabled }, index) => (
-        // If something custom is needed here, just add the component directly
         <Menu.Item
           to={link}
           disabled={disabled}
@@ -67,8 +86,8 @@ const Navbar = ({
       </Menu.Menu>
     </CenterMenu>
     <EdgeMenu>
+      {/* If something custom is needed here, just add the component directly */}
       {lastItems.map(({ title, icon, link, disabled }, index) => (
-        // If something custom is needed here, just add the component directly
         <Menu.Item
           name={title}
           icon={icon}
