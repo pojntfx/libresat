@@ -1,11 +1,6 @@
 import * as React from "react";
 import styled from "styled-components";
-
-interface ISocialButton {
-  img: string;
-  title: string;
-  link: string;
-}
+import { ISocialButton } from "../../../../types";
 
 const SocialButtonTemplate = (
   { img, title, link, ...otherProps }: ISocialButton,

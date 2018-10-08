@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
-const Code = styled.code`
+const LegalCode = styled.code`
   overflow-x: auto;
 `;
 
-export { Code };
+export { LegalCode };

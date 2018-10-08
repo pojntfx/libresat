@@ -1,16 +1,7 @@
 import * as React from "react";
 import { SocialsWrapper } from "./SocialsWrapper";
-import { SocialButton } from "./SocialButton";
-
-interface ISocialsProps {
-  links: ILinkProps[];
-}
-
-interface ILinkProps {
-  title: string;
-  img: string;
-  link: string;
-}
+import { SocialButton } from "./SocialsButton";
+import { ISocialsProps } from "../../../../types";
 
 const Socials = ({ links, ...otherProps }: ISocialsProps) => (
   <SocialsWrapper {...otherProps}>
@@ -20,4 +11,4 @@ const Socials = ({ links, ...otherProps }: ISocialsProps) => (
   </SocialsWrapper>
 );
 
-export { Socials, ILinkProps };
+export { Socials };
