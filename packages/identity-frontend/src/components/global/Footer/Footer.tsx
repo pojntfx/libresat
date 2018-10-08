@@ -70,4 +70,4 @@ const Footer = ({ socialLinks, legal: { global, licenses } }: IFooterProps) => (
   </Wrapper>
 );
 
-export { Footer, IFooterProps };
+export { Footer };
