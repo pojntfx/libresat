@@ -1,7 +1,9 @@
 import * as React from "react";
 import { Button } from "semantic-ui-react";
 import { DefaultLayout } from "../layouts";
-import { navbarData } from "../../data";
+import { navbarData, footerData } from "../../data";
+import { INavbarProps } from "../global";
+import { IFooterContentProps } from "../global/Footer/Content";
 
 interface IHomePage {
   props?: any;
@@ -9,10 +11,8 @@ interface IHomePage {
 
 const HomePage = (props: IHomePage) => (
   <DefaultLayout
-    firstItems={navbarData.firstItems}
-    startItems={navbarData.startItems}
-    endItems={navbarData.endItems}
-    lastItems={navbarData.lastItems}
+    navbar={navbarData as INavbarProps}
+    footer={footerData as IFooterContentProps}
     {...props}
   >
     <Button>Hello, world!</Button>
