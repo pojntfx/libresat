@@ -1,7 +1,8 @@
 import styled from "styled-components";
 import { Menu } from "semantic-ui-react";
+import { EDGE_ITEM_WIDTH } from "./EdgeItem";
 
-const EDGE_MENU_WIDTH = "230px";
+const EDGE_MENU_WIDTH = "260px";
 const CENTER_MENU_WIDTH = "1676px";
 
 const EdgeMenu = styled(Menu.Menu)`
@@ -10,12 +11,16 @@ const EdgeMenu = styled(Menu.Menu)`
   align-items: center;
   padding: 0 !important;
   width: ${EDGE_MENU_WIDTH};
+  /* First menu should adapt to the brand */
+  &:nth-child(2) {
+    width: calc(${EDGE_MENU_WIDTH} - ${EDGE_ITEM_WIDTH}) !important;
+  }
+  &:last-child {
+    justify-content: end !important;
+  }
   @media (max-width: ${CENTER_MENU_WIDTH}) {
-    &:first-child {
-      margin-right: 0.8em !important;
-    }
     &:last-child {
-      margin-left: 2em !important;
+      margin-left: 2.5em !important;
     }
   }
 `;
