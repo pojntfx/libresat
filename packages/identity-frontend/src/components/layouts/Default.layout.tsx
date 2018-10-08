@@ -1,7 +1,6 @@
 import * as React from "react";
-import { Container } from "semantic-ui-react";
 import "semantic-ui-css/semantic.min.css";
-import { Navbar, INavbarProps } from "../global";
+import { Navbar, INavbarProps, Container } from "../global";
 
 interface IDefaultLayoutProps extends INavbarProps {
   children: JSX.Element;

@@ -29,6 +29,7 @@ const Navbar = ({
   <MainMenu borderless fixed="top" {...otherProps}>
     <EdgeMenu>
       {firstItems.map(({ title, icon, link, disabled }, index) => (
+        // If something custom is needed here, just add the component directly
         <Menu.Item
           to={link}
           disabled={disabled}
@@ -67,6 +68,7 @@ const Navbar = ({
     </CenterMenu>
     <EdgeMenu>
       {lastItems.map(({ title, icon, link, disabled }, index) => (
+        // If something custom is needed here, just add the component directly
         <Menu.Item
           name={title}
           icon={icon}
