@@ -9,5 +9,5 @@ if (dev) {
   require("ts-node").register({ project });
 }
 
-const { Main } = require(`../${dev ? "src" : "lib"}`);
+const { Main } = require("../dist");
 Main.run().catch(require("@oclif/errors/handle"));

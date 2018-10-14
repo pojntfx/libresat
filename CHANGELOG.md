@@ -1,5 +1,6 @@
 ## <small>0.0.1-26-monorepo (2018-10-14)</small>
 
+* refactor(identity-backend): Use better scripts ([5dc9cc7](https://gitlab.com/libresat/libresat/commit/5dc9cc7))
 * chore: Centralize dev dependencies and update dependencies ([b9459d4](https://gitlab.com/libresat/libresat/commit/b9459d4))
 * chore: Use lerna conventions for monorepo version ([e7feb58](https://gitlab.com/libresat/libresat/commit/e7feb58))
 

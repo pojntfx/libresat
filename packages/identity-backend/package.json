@@ -1,10 +1,10 @@
 {
   "name": "@libresat/identity-backend",
+  "version": "0.0.1-25",
   "description": "A simple authorization microservice",
   "author": "Felicitas Pojtinger <felicitas@pojtinger.com>",
   "license": "AGPL-3.0",
-  "version": "0.0.1-25",
-  "homepage": "https://gitlab.com/libresat/libresat/tree/master/packages/identity#README",
+  "homepage": "https://gitlab.com/libresat/libresat/tree/master/packages/identity-backend#README",
   "scripts": {
     "dev": "run-p dev:watch",
     "build": "tsc -p tsconfig.json && cp -r src/typeDefs dist/",
