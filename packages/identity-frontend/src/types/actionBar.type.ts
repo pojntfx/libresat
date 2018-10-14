@@ -6,6 +6,7 @@ interface IActionBarProps {
     icon: string;
     onCreate(): any;
     help: IHelp;
+    disabled: boolean;
   };
   search: {
     text: string;
@@ -13,6 +14,7 @@ interface IActionBarProps {
     value: string;
     onSearch(): any;
     help: IHelp;
+    disabled: boolean;
   };
 }
 

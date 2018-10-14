@@ -12,7 +12,7 @@ const navbarData = {
       title: "Identity",
       link: "/",
       icon: "id card",
-      disabled: false
+      disabled: true
     }
   ],
   startItems: [
