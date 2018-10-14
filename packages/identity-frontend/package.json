@@ -1,6 +1,6 @@
 {
   "name": "@libresat/identity-frontend",
-  "version": "0.0.1-22",
+  "version": "0.0.1-23",
   "description": "Frontend for @libresat/identity-backend, a simple authorization microservice",
   "main": "src/index.ts",
   "scripts": {
