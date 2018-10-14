@@ -16,8 +16,10 @@ const HomePage = (props: IHomePage) => (
         title: "Create",
         onCreate: () => console.log("Creating model ..."),
         popover: {
-          title: "Create Model",
-          text: "Create a model."
+          title: "Create a Model",
+          text: "Add a new model to the database.",
+          command: "$ satctl apply -f <path>",
+          docsLink: "https://libresat.space/docs/create"
         }
       }}
       search={{
