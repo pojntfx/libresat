@@ -44,8 +44,8 @@
   "author": "Felix Pojtinger <felix@pojtinger.com>",
   "license": "AGPL-3.0",
   "dependencies": {
-    "@libresat/service": "^0.0.1-25",
-    "@types/bcryptjs": "^2.4.1",
+    "@libresat/service": "0.0.1-25",
+    "@types/bcryptjs": "^2.4.2",
     "bcryptjs": "^2.4.3"
   },
   "bugs": {
@@ -54,10 +54,5 @@
   "homepage": "https://gitlab.com/libresat/libresat/tree/master/packages/identity#README",
   "publishConfig": {
     "access": "public"
-  },
-  "devDependencies": {
-    "@types/jest": "^23.3.2",
-    "jest": "^23.6.0",
-    "ts-jest": "^23.10.3"
   }
 }

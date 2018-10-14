@@ -28,11 +28,11 @@
   "author": "Felix Pojtinger <felix@pojtinger.com>",
   "license": "AGPL-3.0",
   "dependencies": {
-    "@types/mongoose": "^5.2.9",
+    "@types/mongoose": "^5.2.19",
     "@types/ws": "^6.0.1",
     "graphql-yoga": "^1.16.2",
-    "merge-graphql-schemas": "^1.5.3",
-    "mongoose": "^5.2.13"
+    "merge-graphql-schemas": "^1.5.7",
+    "mongoose": "^5.3.3"
   },
   "bugs": {
     "url": "https://gitlab.com/libresat/libresat/issues"

@@ -25,8 +25,8 @@
   },
   "homepage": "https://gitlab.com/libresat/libresat#README",
   "dependencies": {
-    "semantic-ui-css": "^2.3.3",
-    "workbox-cli": "^3.4.1"
+    "semantic-ui-css": "^2.4.1",
+    "workbox-cli": "^3.6.2"
   },
   "publishConfig": {
     "access": "public"
