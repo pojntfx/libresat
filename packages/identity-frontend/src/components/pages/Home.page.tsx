@@ -2,7 +2,7 @@ import * as React from "react";
 import { DefaultLayout } from "../layouts";
 import { navbarData, footerData } from "../../data";
 import { IFooterProps, IHomePage, INavbarProps } from "../../types";
-import { ModelModifierBar, Button } from "../global";
+import { ActionBar, Button } from "../global";
 
 const HomePage = (props: IHomePage) => (
   <DefaultLayout
@@ -10,12 +10,12 @@ const HomePage = (props: IHomePage) => (
     footer={footerData as IFooterProps}
     {...props}
   >
-    <ModelModifierBar
+    <ActionBar
       create={{
         icon: "add",
         title: "Create",
         onCreate: () => console.log("Creating model ..."),
-        popover: {
+        help: {
           title: "Create a Model",
           text: "Add a new model to the database.",
           command: "$ satctl apply -f <path>",
@@ -27,7 +27,7 @@ const HomePage = (props: IHomePage) => (
         text: "Search",
         onSearch: () => console.log("Filtering models ..."),
         value: "",
-        popover: {
+        help: {
           title: "Search for a Model",
           text: "Filter all models by a query.",
           command: "$ satctl get models | grep <query>",
