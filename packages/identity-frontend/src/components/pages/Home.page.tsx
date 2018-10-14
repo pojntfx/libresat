@@ -1,8 +1,8 @@
 import * as React from "react";
 import { DefaultLayout } from "../layouts";
-import { navbarData, footerData } from "../../data";
+import { navbarData, footerData, homeData } from "../../data";
 import { IFooterProps, IHomePage, INavbarProps } from "../../types";
-import { ActionBar, Button } from "../global";
+import { ActionBar } from "../global";
 
 const HomePage = (props: IHomePage) => (
   <DefaultLayout
@@ -12,27 +12,12 @@ const HomePage = (props: IHomePage) => (
   >
     <ActionBar
       create={{
-        icon: "add",
-        title: "Create",
         onCreate: () => console.log("Creating model ..."),
-        help: {
-          title: "Create a Model",
-          text: "Add a new model to the database.",
-          command: "$ satctl apply -f <path>",
-          docsLink: "https://libresat.space/docs/create"
-        }
+        ...homeData.create
       }}
       search={{
-        icon: "search",
-        text: "Search",
         onSearch: () => console.log("Filtering models ..."),
-        value: "",
-        help: {
-          title: "Search for a Model",
-          text: "Filter all models by a query.",
-          command: "$ satctl get models | grep <query>",
-          docsLink: "https://libresat.space/docs/search"
-        }
+        ...homeData.search
       }}
     />
   </DefaultLayout>

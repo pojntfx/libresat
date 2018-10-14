@@ -55,6 +55,8 @@ npm run publish
 
 ## Screenshots
 
+<!-- TODO: Update screenshots -->
+
 ![Site](packages/site/screenshots/home.png)
 
 ![Wiki](packages/wiki/screenshots/home.png)

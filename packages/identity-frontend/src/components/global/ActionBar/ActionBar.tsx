@@ -14,6 +14,7 @@ const ActionBar = ({ create, search, ...otherProps }: IActionBarProps) => (
           icon={create.icon}
           content={create.title}
           onClick={create.onCreate}
+          disabled={create.disabled}
         />
       }
     />
@@ -21,10 +22,15 @@ const ActionBar = ({ create, search, ...otherProps }: IActionBarProps) => (
       {...search.help}
       trigger={
         <ActionBarInput
-          icon={search.icon}
+          action={{
+            icon: search.icon,
+            onClick: search.onSearch,
+            disabled: search.disabled
+          }}
           placeholder={search.text}
           onChange={search.onSearch}
           value={search.value}
+          disabled={search.disabled}
         />
       }
     />

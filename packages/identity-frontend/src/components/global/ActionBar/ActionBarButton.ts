@@ -1,4 +1,4 @@
-import { Button } from "semantic-ui-react";
+import { Button } from "../Button";
 import styled from "styled-components";
 
 const ActionBarButton = styled(Button)`
