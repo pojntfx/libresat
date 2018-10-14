@@ -23,7 +23,7 @@
     "test": "lerna run test",
     "link": "lerna link",
     "clean": "lerna clean",
-    "commit": "git add . & git-cz",
+    "commit": "git add . && git-cz",
     "commit:staged": "git-cz",
     "publish": "lerna publish"
   },
