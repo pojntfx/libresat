@@ -1,6 +1,6 @@
 {
   "name": "@libresat/host-agent-core",
-  "version": "0.0.1-22",
+  "version": "0.0.1-23",
   "description": "Library for managing bare-metal hosts",
   "main": "dist/index.js",
   "scripts": {

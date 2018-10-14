@@ -1,6 +1,6 @@
 {
   "name": "@libresat/backups",
-  "version": "0.0.1-22",
+  "version": "0.0.1-23",
   "description": "The LibreSat distribution of Stash",
   "main": "src/chart/Chart.yaml",
   "scripts": {
