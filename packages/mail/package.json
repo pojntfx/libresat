@@ -1,12 +1,15 @@
 {
   "name": "@libresat/mail",
   "version": "0.0.1-22",
-  "description": "The [LibreSat](https://libresat.space/) distribution of [Rainloop](https://www.rainloop.net/)",
+  "description": "The LibreSat distribution of Rainloop",
   "main": "src/chart/Chart.yaml",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": "https://gitlab.com/libresat/libresat/tree/master/packages/mail",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@gitlab.com/libresat/libresat.git"
+  },
   "keywords": [
     "mail",
     "rainloop",

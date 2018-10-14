@@ -1,12 +1,15 @@
 {
   "name": "@libresat/cluster",
   "version": "0.0.1-22",
-  "description": "The [LibreSat](https://libresat.space/) distribution of [Kubernetes](https://kubernetes.io/)",
+  "description": "The LibreSat distribution of Kubernetes",
   "main": "src/provision-kubernetes.sh",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": "https://gitlab.com/libresat/libresat/tree/master/packages/cluster",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@gitlab.com/libresat/libresat.git"
+  },
   "keywords": [
     "kubernetes",
     "cluster",

@@ -1,6 +1,6 @@
 {
   "name": "@libresat/identity-backend",
-  "description": "Simple and secure role-based authentication, authorization & identity provider implemented as a GraphQL microservice for [LibreSat](https://libresat.space/)",
+  "description": "A simple authorization microservice",
   "version": "0.0.1-22",
   "main": "dist/index.js",
   "bin": "dist/start.js",
@@ -31,7 +31,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://gitlab.com/libresat/libresat/tree/master/packages/identity"
+    "url": "git+ssh://git@gitlab.com/libresat/libresat.git"
   },
   "keywords": [
     "identity",

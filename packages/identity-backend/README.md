@@ -2,23 +2,11 @@
 
 Simple and secure role-based authentication, authorization & identity provider implemented as a GraphQL microservice for [LibreSat](https://libresat.space/).
 
-[![Demo Site](https://img.shields.io/badge/Demo%20Site-Not%20Available-red.svg)](https://libresat.space)
-[![Code License AGPL-3.0](https://img.shields.io/badge/Code%20License-AGPL--3.0-brightgreen.svg)](https://www.gnu.org/licenses/agpl-3.0.en.html)
-[![Media License CC-BY-SA-4.0](https://img.shields.io/badge/Media%20License-CC--BY--SA--4.0-brightgreen.svg)](https://creativecommons.org/licenses/by-sa/4.0/)
-[![Part of LibreSat](https://img.shields.io/badge/Part%20Of-LibreSat-blue.svg)](https://gitlab.com/libresat/libresat)
-[![Infrastructure Overview](https://img.shields.io/badge/Support-Infrastructure%20Overview-blue.svg)](https://libresat.space/docs/infrastructure)
+[![Part of LibreSat](https://img.shields.io/badge/Part%20Of-LibreSat-blue.svg)](https://libresat.space)
 
 ## Usage
 
-```bash
-# Install dependencies
-npm install
-# Build and serve development version on http://localhost:3000
-npm run dev
-# Build and serve production version on http://localhost:3000
-npm run build
-npm start
-```
+See [global README](../../README.md).
 
 ## Documentation
 

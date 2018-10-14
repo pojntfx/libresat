@@ -1,5 +1,7 @@
 # LibreSat
 
+> Develop and Control Satellites, the Libre Way.
+
 ![LibreSat Logo](https://gitlab.com/libresat/design/raw/master/packages/logos/logo--no-padding--no-lines.png)
 
 The Free/Libre and Open Source Satellite Development and Control Platform, since 2014.
@@ -12,21 +14,21 @@ The Free/Libre and Open Source Satellite Development and Control Platform, since
 
 ```bash
 # Install dependencies
-npm install
+$ npm install
 ```
 
 ```bash
 # Start development versions of all packages
-npm run dev
+$ npm run dev
 # Start development versions of and debugger for all packages (connect by pressing F5 in VSCode)
-npm run dev:debug
+$ npm run dev:debug
 ```
 
 ```bash
 # Start development version of inidividual package
-npm run dev -- --scope @libresat/identity-frontend
+$ npm run dev -- --scope @libresat/identity-frontend
 # Start development version of and debugger for individual package (connect by pressing F5 in VSCode)
-npm run dev:debug -- --scope @libresat/identity-frontend
+$ npm run dev:debug -- --scope @libresat/identity-frontend
 ```
 
 ## Deployment
@@ -37,21 +39,21 @@ npm run dev:debug -- --scope @libresat/identity-frontend
 
 ```bash
 # Build production versions of all packages
-npm run build
+$ npm run build
 # Start production versions of all packages
-npm run start
+$ npm run start
 ```
 
 ```bash
 # Build production version of inidividual package
-npm run build -- --scope @libresat/identity-frontend
+$ npm run build -- --scope @libresat/identity-frontend
 # Start production version of inidividual package
-npm run start -- --scope @libresat/identity-frontend
+$ npm run start -- --scope @libresat/identity-frontend
 ```
 
 ```bash
 # Publish all packages to npm
-npm run publish
+$ npm run publish
 ```
 
 ## Contributing
@@ -65,9 +67,9 @@ We develop in a [Lerna](https://lernajs.io/) monorepo using [Commitizen](http://
 
 ```bash
 # Don't do this!
-git add . && git commit -m "Added new features"
+$ git add . && git commit -m "Added new features"
 # Instead, commit using Commitizen
-npm run commit
+$ npm run commit
 ```
 
 ## Community

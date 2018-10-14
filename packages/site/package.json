@@ -1,7 +1,7 @@
 {
   "name": "@libresat/site",
   "version": "0.0.1-22",
-  "description": "The [LibreSat](https://libresat.space/) website",
+  "description": "The LibreSat website",
   "main": "src/chart/Chart.yaml",
   "scripts": {
     "dev": "gatsby develop",
@@ -9,7 +9,10 @@
     "start": "gatsby serve",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": "https://gitlab.com/libresat/libresat/tree/master/packages/site",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@gitlab.com/libresat/libresat.git"
+  },
   "keywords": [
     "site",
     "jekyll",
