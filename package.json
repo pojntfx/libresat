@@ -1,7 +1,7 @@
 {
   "name": "libresat",
   "description": "The Free/Libre and Open Source Satellite Development and Control Platform, since 2014",
-  "version": "0.0.1-0",
+  "version": "0.0.1-23",
   "main": "lerna.json",
   "scripts": {
     "dev": "lerna run dev --parallel",
@@ -25,7 +25,8 @@
     "clean": "lerna clean",
     "commit": "git add . && git-cz",
     "commit:staged": "git-cz",
-    "publish": "lerna publish"
+    "version": "conventional-changelog -i CHANGELOG.md -s -r 0",
+    "publish": "lerna publish --skip-git && npm run version && git push"
   },
   "repository": {
     "type": "git",
@@ -47,6 +48,7 @@
     "babel-eslint": "^9.0.0",
     "babel-preset-env": "^1.7.0",
     "commitizen": "^3.0.2",
+    "conventional-changelog-cli": "^2.0.5",
     "cz-conventional-changelog": "^2.1.0",
     "lerna": "^2.11.0",
     "nodemon": "^1.18.4",
