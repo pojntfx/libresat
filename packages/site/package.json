@@ -1,6 +1,6 @@
 {
   "name": "@libresat/site",
-  "version": "0.0.1-23",
+  "version": "0.0.1-24",
   "description": "The LibreSat website",
   "main": "src/chart/Chart.yaml",
   "scripts": {

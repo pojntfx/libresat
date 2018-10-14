@@ -25,8 +25,8 @@
     "clean": "lerna clean",
     "commit": "git add . && git-cz",
     "commit:staged": "git-cz",
-    "version": "conventional-changelog -i CHANGELOG.md -s -r 0",
-    "publish": "lerna publish --skip-git && npm run version && git push"
+    "postversion": "conventional-changelog -i CHANGELOG.md -s -r 0",
+    "publish": "lerna publish"
   },
   "repository": {
     "type": "git",
