@@ -77,7 +77,7 @@ const footerData = {
         holder: "Felicitas Pojtinger",
         spdxLicenseIdentifier: "CC-BY-SA-4.0",
         text:
-          "This work is licensed under a Creative Commons Attribution 4.0 International License.",
+          "This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.",
         badge: {
           img: "https://licensebuttons.net/l/by-sa/4.0/88x31.png",
           title: "CC-BY-SA-4.0 license badge"

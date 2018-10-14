@@ -5,8 +5,8 @@ import { LegalInfo } from "./Legal/LegalInfo";
 import { Wrapper } from "./Wrapper";
 import { Section } from "./Section";
 import { LegalGrid } from "./Legal/LegalGrid";
-import { LegalModalTriggerButton } from "./Legal/MetaButton";
 import { IFooterProps } from "../../../types";
+import { Button } from "../Button";
 
 const Footer = ({ socialLinks, legal: { global, licenses } }: IFooterProps) => (
   <Wrapper>
@@ -40,11 +40,7 @@ const Footer = ({ socialLinks, legal: { global, licenses } }: IFooterProps) => (
               >
                 <Modal
                   trigger={
-                    <LegalModalTriggerButton
-                      icon={icon}
-                      content={`${type} License`}
-                      fluid
-                    />
+                    <Button icon={icon} content={`${type} License`} fluid />
                   }
                   closeIcon
                 >
