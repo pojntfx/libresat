@@ -21,11 +21,11 @@
     "prod:watch": "nodemon -x 'run-s build start'",
     "prod:build:watch": "nodemon -x 'run-p build'",
     "prod:start:watch": "nodemon -x 'run-p start'",
-    "binary:build": "pkg package.json -t node10-linux-x64 -o dist/libresat-identity",
-    "binary:start": "run-p binary:prepare binary:execute",
-    "binary:install": "sudo install dist/libresat-identity /usr/bin",
-    "binary:prepare": "chmod +x dist/libresat-identity",
-    "binary:execute": "dist/libresat-identity -p 3000 -db mongodb://localhost:27017 -hds true",
+    "binary:build": "pkg package.json -t node10-linux-x64 -o bin/libresat-identity-backend",
+    "binary:start": "run-s binary:prepare binary:execute",
+    "binary:install": "sudo install bin/libresat-identity-backend /usr/bin",
+    "binary:prepare": "chmod +x bin/libresat-identity-backend",
+    "binary:execute": "bin/libresat-identity-backend -p 3000 -db mongodb://localhost:27017 -hds true",
     "prepare": "run-p build"
   },
   "dependencies": {

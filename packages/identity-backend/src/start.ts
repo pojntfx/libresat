@@ -8,10 +8,10 @@ const {
   homepage
 } = require("../package.json");
 
-const description = `LibreSat Identity
+const description = `LibreSat Identity Backend
 ${pkgDescription}
 
-  Usage: libresat-identity [OPTION...]
+  Usage: libresat-identity-backend [OPTION...]
 
   -p,     --port            Port to run the GraphQL server on
   -db,    --database-url    MongoDB server to connect to

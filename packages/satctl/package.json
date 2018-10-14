@@ -22,7 +22,7 @@
     "prod:build:watch": "nodemon -x 'run-p build'",
     "prod:start:watch": "nodemon -x 'run-p start'",
     "binary:build": "pkg package.json -t node10-linux-x64 -o dist/libresat-satctl",
-    "binary:start": "run-p binary:prepare binary:execute",
+    "binary:start": "run-s binary:prepare binary:execute",
     "binary:install": "sudo install dist/libresat-satctl /usr/bin",
     "binary:prepare": "chmod +x dist/libresat-satctl",
     "binary:execute": "dist/libresat-satctl",
