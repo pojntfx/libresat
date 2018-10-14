@@ -1,6 +1,6 @@
 {
   "name": "@libresat/identity-frontend",
-  "version": "0.0.1-21",
+  "version": "0.0.1-22",
   "description": "Frontend for @libresat/identity-backend, a simple and secure role-based authentication, authorization & identity provider implemented as a GraphQL microservice for [LibreSat](https://libresat.space/)",
   "main": "src/index.ts",
   "scripts": {
