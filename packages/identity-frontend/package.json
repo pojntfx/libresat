@@ -1,6 +1,6 @@
 {
   "name": "@libresat/identity-frontend",
-  "version": "0.0.1-25",
+  "version": "0.0.1-26",
   "description": "Frontend for @libresat/identity-backend, a simple authorization microservice",
   "author": "Felix Pojtinger <felix@pojtinger.com>",
   "license": "AGPL-3.0",
@@ -49,12 +49,12 @@
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
-    "parcel-bundler": "^1.10.3",
-    "typescript": "^3.1.3",
     "nodemon": "^1.18.4",
     "npm-run-all": "^4.1.3",
+    "parcel-bundler": "^1.10.3",
     "pkg": "^4.3.4",
-    "ts-node": "^7.0.1"
+    "ts-node": "^7.0.1",
+    "typescript": "^3.1.3"
   },
   "main": "src/index.tsx",
   "source": "src/index.tsx",
