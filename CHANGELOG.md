@@ -1,3 +1,18 @@
+## <small>0.0.1-26-monorepo (2018-10-14)</small>
+
+* chore: Use lerna conventions for monorepo version ([e7feb58](https://gitlab.com/libresat/libresat/commit/e7feb58))
+
+
+
+## <small>0.0.1-25 (2018-10-14)</small>
+
+* v0.0.1-25 ([5d1cf4f](https://gitlab.com/libresat/libresat/commit/5d1cf4f))
+* chore: Add changelog ([56a699c](https://gitlab.com/libresat/libresat/commit/56a699c))
+* chore: Add pre-push hook ([0cda185](https://gitlab.com/libresat/libresat/commit/0cda185))
+* docs: Add contributing guide ([fb5b32e](https://gitlab.com/libresat/libresat/commit/fb5b32e))
+
+
+
 ## <small>0.0.1-23 (2018-10-14)</small>
 
 * v0.0.1-23 ([6dc286e](https://gitlab.com/libresat/libresat/commit/6dc286e))
