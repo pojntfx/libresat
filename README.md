@@ -10,7 +10,7 @@ The Free/Libre and Open Source Satellite Development and Control Platform, since
 
 [![Website](https://img.shields.io/badge/Website-libresat.space-black.svg)](https://libresat.space)
 [![Demo Site](https://img.shields.io/badge/Demo-demo.libresat.space-black.svg)](https://demo.libresat.space)
-[![Built for GNU/Linux](https://img.shields.io/badge/built%20for-GNU/Linux%20and%20BSD-D2AA30.svg?logo=linux)](https://getfedora.org/)
+[![Coded on GNU/Linux](https://img.shields.io/badge/coded%20on-GNU/Linux%20and%20BSD-D2AA30.svg?logo=linux)](https://getfedora.org/)
 
 ```bash
 # Install dependencies

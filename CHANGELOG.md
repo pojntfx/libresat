@@ -1,5 +1,6 @@
 ## <small>0.0.1-26-monorepo (2018-10-14)</small>
 
+* chore: Centralize dev dependencies and update dependencies ([b9459d4](https://gitlab.com/libresat/libresat/commit/b9459d4))
 * chore: Use lerna conventions for monorepo version ([e7feb58](https://gitlab.com/libresat/libresat/commit/e7feb58))
 
 
