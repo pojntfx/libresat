@@ -1,12 +1,12 @@
 import * as React from "react";
 import {
   Segment as SegmentTemplate,
-  Input,
+  Input as InputTemplate,
   Popup,
   Accordion as AccordionTemplate
 } from "semantic-ui-react";
 import styled from "styled-components";
-import { Button } from "../Button";
+import { Button as ButtonTemplate } from "../Button";
 
 interface IModelModifierBarPopoverProps {
   title: string;
@@ -33,9 +33,13 @@ interface IModelModifierBarProps {
 
 const Segment = styled(SegmentTemplate)`
   display: flex;
-  justify-content: space-between;
   align-items: center;
   overflow-x: auto;
+  padding-right: 0 !important;
+  &::after {
+    content: "";
+    padding: 0.5em;
+  }
 `;
 
 const PopupHeader = styled(Popup.Header)`
@@ -56,6 +60,14 @@ interface IHelpProps extends IModelModifierBarPopoverProps {
 
 const Link = styled.a`
   margin-left: 1em;
+`;
+
+const Button = styled(ButtonTemplate)`
+  margin-right: 1em !important;
+`;
+
+const Input = styled(InputTemplate)`
+  margin-left: auto;
 `;
 
 const Help = ({ title, text, docsLink, command, trigger }: IHelpProps) => (
