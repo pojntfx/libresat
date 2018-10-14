@@ -8,21 +8,26 @@ import {
 import styled from "styled-components";
 import { Button } from "../Button";
 
+interface IModelModifierBarPopoverProps {
+  title: string;
+  text: string;
+  command: string;
+  docsLink: string;
+}
+
 interface IModelModifierBarProps {
   create: {
     title: string;
     icon: string;
     onCreate(): any;
-    popover: {
-      title: string;
-      text: string;
-      command: string;
-      docsLink: string;
-    };
+    popover: IModelModifierBarPopoverProps;
   };
   search: {
     text: string;
     icon: string;
+    value: string;
+    onSearch(): any;
+    popover: IModelModifierBarPopoverProps;
   };
 }
 
@@ -45,47 +50,69 @@ const Accordion = styled(AccordionTemplate)`
   }
 `;
 
+interface IHelpProps extends IModelModifierBarPopoverProps {
+  trigger: JSX.Element;
+}
+
+const Link = styled.a`
+  margin-left: 1em;
+`;
+
+const Help = ({ title, text, docsLink, command, trigger }: IHelpProps) => (
+  <Popup hoverable flowing trigger={trigger}>
+    <PopupHeader>
+      {title} <Link href={docsLink}>Docs</Link>
+    </PopupHeader>
+    <Popup.Content>
+      {text}
+      <br />
+      <Accordion
+        panels={[
+          {
+            title: "Terminal",
+            key: 1,
+            content: {
+              content: (
+                <Input
+                  label={command[0]} // $ or #
+                  value={command.substring(2)}
+                />
+              )
+            }
+          }
+        ]}
+      />
+    </Popup.Content>
+  </Popup>
+);
+
 const ModelModifierBar = ({
   create,
   search,
   ...otherProps
 }: IModelModifierBarProps) => (
   <Segment {...otherProps}>
-    <Popup
-      hoverable
+    <Help
       trigger={
         <Button
-          content={create.title}
           icon={create.icon}
+          content={create.title}
           onClick={create.onCreate}
         />
       }
-    >
-      <PopupHeader>
-        {create.popover.title} <a href={create.popover.docsLink}>Docs</a>
-      </PopupHeader>
-      <Popup.Content>
-        {create.popover.text}
-        <br />
-        <Accordion
-          panels={[
-            {
-              title: "Terminal",
-              key: 1,
-              content: {
-                content: (
-                  <Input
-                    label={create.popover.command[0]}
-                    value={create.popover.command.substring(2)}
-                  />
-                )
-              }
-            }
-          ]}
+      {...create.popover}
+    />
+    <Help
+      trigger={
+        <Input
+          icon={search.icon}
+          placeholder={search.text}
+          onChange={search.onSearch}
+          value={search.value}
         />
-      </Popup.Content>
-    </Popup>
-    <Input {...search} icon={search.icon} placeholder={search.text} />
+      }
+      {...search.popover}
+    />
   </Segment>
 );
 

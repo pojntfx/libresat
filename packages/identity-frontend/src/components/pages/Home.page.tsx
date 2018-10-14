@@ -24,7 +24,15 @@ const HomePage = (props: IHomePage) => (
       }}
       search={{
         icon: "search",
-        text: "Search"
+        text: "Search",
+        onSearch: () => console.log("Filtering models ..."),
+        value: "",
+        popover: {
+          title: "Search for a Model",
+          text: "Filter all models by a query.",
+          command: "$ satctl get models | grep <query>",
+          docsLink: "https://libresat.space/docs/search"
+        }
       }}
     />
   </DefaultLayout>
