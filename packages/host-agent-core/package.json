@@ -1,7 +1,7 @@
 {
   "name": "@libresat/host-agent-core",
   "version": "0.0.1-22",
-  "description": "Core functionality of the host agent, a utility for managing bare-metal hosts in the [LibreSat Platform](https://libresat.space/)",
+  "description": "Library for managing bare-metal hosts",
   "main": "dist/index.js",
   "scripts": {
     "dev": "nodemon --ext ts --watch src/ --exec npm run build",
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://gitlab.com/libresat/libresat/tree/master/packages/host-manager-core"
+    "url": "git+ssh://git@gitlab.com/libresat/libresat.git"
   },
   "keywords": [
     "agent",

@@ -1,12 +1,15 @@
 {
   "name": "@libresat/ingress-controller",
   "version": "0.0.1-22",
-  "description": "The [LibreSat](https://libresat.space/) distribution of [Traefik](https://traefik.io/)",
+  "description": "The LibreSat distribution of Traefik",
   "main": "src/chart/Chart.yaml",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": "https://gitlab.com/libresat/libresat/tree/master/packages/ingress-controller",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@gitlab.com/libresat/libresat.git"
+  },
   "keywords": [
     "kubernetes",
     "ingress",

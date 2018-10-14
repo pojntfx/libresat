@@ -1,12 +1,15 @@
 {
   "name": "@libresat/forum",
   "version": "0.0.1-22",
-  "description": "The [LibreSat](https://libresat.space/) distribution of [GNU Mailman](http://www.list.org/)",
+  "description": "The LibreSat distribution of GNU Mailman",
   "main": "src/chart/Chart.yaml",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": "https://gitlab.com/libresat/libresat/tree/master/packages/forum",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@gitlab.com/libresat/libresat.git"
+  },
   "keywords": [
     "mailing-list",
     "mail",

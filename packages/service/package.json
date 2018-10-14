@@ -1,6 +1,6 @@
 {
   "name": "@libresat/service",
-  "description": "A minimal, modular and optionally opinionated library for building [microservices](https://en.wikipedia.org/wiki/Microservices) for [microplatforms](https://jaxenter.com/microservices-monorepo-microplatform-137920.html) based on [GraphQL](https://graphql.org/) via [Apollo Server](https://www.apollographql.com/docs/apollo-server/) and [MongoDB](https://www.mongodb.com/) via [Mongoose](https://mongoosejs.com/)",
+  "description": "A minimal, modular and optionally opinionated library for building microservices",
   "version": "0.0.1-22",
   "main": "dist/index.js",
   "scripts": {
@@ -16,7 +16,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://gitlab.com/libresat/libresat/tree/master/packages/service"
+    "url": "git+ssh://git@gitlab.com/libresat/libresat.git"
   },
   "keywords": [
     "microservice",
