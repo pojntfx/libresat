@@ -1,24 +1,9 @@
 import * as React from "react";
 import { HorizontalScrollSegment } from "../HorizontalScrollSegment";
-import { Help, IHelp } from "../Help/Help";
+import { Help } from "../Help/Help";
 import { ActionBarButton } from "./ActionBarButton";
 import { ActionBarInput } from "./ActionBarInput";
-
-interface IActionBarProps {
-  create: {
-    title: string;
-    icon: string;
-    onCreate(): any;
-    help: IHelp;
-  };
-  search: {
-    text: string;
-    icon: string;
-    value: string;
-    onSearch(): any;
-    help: IHelp;
-  };
-}
+import { IActionBarProps } from "../../../types";
 
 const ActionBar = ({ create, search, ...otherProps }: IActionBarProps) => (
   <HorizontalScrollSegment {...otherProps}>

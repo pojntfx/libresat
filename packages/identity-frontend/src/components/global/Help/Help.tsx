@@ -1,20 +1,9 @@
 import * as React from "react";
-
 import { Popup, Input } from "semantic-ui-react";
 import { HelpPopupHeader } from "./HelpPopupHeader";
 import { HelpDocsLink } from "./HelpDocsLink";
 import { HelpAccordion } from "./HelpAccordion";
-
-interface IHelp {
-  title: string;
-  text: string;
-  command: string;
-  docsLink: string;
-}
-
-interface IHelpProps extends IHelp {
-  trigger: JSX.Element;
-}
+import { IHelpProps } from "../../../types";
 
 const Help = ({ title, text, docsLink, command, trigger }: IHelpProps) => (
   <Popup hoverable flowing trigger={trigger}>
@@ -44,4 +33,4 @@ const Help = ({ title, text, docsLink, command, trigger }: IHelpProps) => (
   </Popup>
 );
 
-export { Help, IHelp };
+export { Help };
