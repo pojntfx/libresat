@@ -21,6 +21,7 @@ The Free/Libre and Open Source Satellite Development and Control Platform, since
 
 [![Code License AGPL-3.0](https://img.shields.io/badge/Code%20License-AGPL--3.0-brightgreen.svg)](https://www.gnu.org/licenses/agpl-3.0.en.html)
 [![Media License CC-BY-SA-4.0](https://img.shields.io/badge/Media%20License-CC--BY--SA--4.0-brightgreen.svg)](https://creativecommons.org/licenses/by-sa/4.0/)
+[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 
 ---
 
@@ -51,6 +52,15 @@ npm run start -- --scope @libresat/identity-backend
 npm run start
 # Publish packages to npm
 npm run publish
+```
+
+## Contributing
+
+We use [Commitizen](http://commitizen.github.io/cz-cli/), [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0-beta.2/) and [Lerna](https://lernajs.io/) to collaborate efficiently. Please don't just `git commit -m "Add new feature"`, but rather do as follows:
+
+```bash
+# Commit using Commitizen
+npm run commit
 ```
 
 ## Screenshots
@@ -86,11 +96,11 @@ You should have received a copy of the GNU Affero General Public License along w
 
 ### Media
 
-[![CC-BY-4.0 License](https://licensebuttons.net/l/by-sa/4.0/88x31.png)](https://creativecommons.org/licenses/by-sa/4.0/)
+[![CC-BY-SA-4.0 License](https://licensebuttons.net/l/by-sa/4.0/88x31.png)](https://creativecommons.org/licenses/by-sa/4.0/)
 
 Media of LibreSat
 Copyright (C) 2018 Felix Pojtinger
 
 SPDX-License-Identifier: CC-BY-SA-4.0
 
-This work is licensed under a [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by-sa/4.0/).
+This work is licensed under a [Creative Commons Attribution-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-sa/4.0/).
