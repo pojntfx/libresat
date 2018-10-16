@@ -1,26 +1,69 @@
 {
   "name": "libresat",
+  "version": "0.0.1-28-monorepo",
   "description": "The Free/Libre and Open Source Satellite Development and Control Platform, since 2014",
-  "version": "0.0.1-26-monorepo",
-  "main": "lerna.json",
+  "author": "Felicitas Pojtinger <felicitas@pojtinger.com>",
+  "license": "AGPL-3.0",
+  "homepage": "https://gitlab.com/libresat/libresat#README",
   "scripts": {
     "dev": "lerna run dev --parallel",
-    "dev:debug": "lerna run dev:debug --parallel",
     "build": "lerna run build --parallel",
-    "build:dev": "lerna run build:dev --parallel",
-    "build:binary": "lerna run build:binary --parallel",
     "start": "lerna run start --parallel",
-    "start:dev": "lerna run start:dev --parallel",
-    "start:binary": "lerna run start:binary --parallel",
-    "install:binary": "lerna run install:binary --parallel",
-    "watch": "lerna run watch --parallel",
-    "watch:dev": "lerna run watch:dev --parallel",
-    "watch:build": "lerna run watch:build --parallel",
-    "watch:build:dev": "lerna run watch:build:dev --parallel",
-    "watch:start": "lerna run watch:start --parallel",
-    "watch:start:dev": "lerna run watch:start:dev --parallel",
+    "install--binary": "lerna run install--binary --parallel",
+    "test": "lerna run test --parallel",
+    "dev--watch": "lerna run dev--watch --parallel",
+    "build--watch": "lerna run build--watch --parallel",
+    "start--watch": "lerna run start--watch --parallel",
+    "test--watch": "lerna run test--watch --parallel",
+    "app.prod": "lerna run app.prod --parallel",
+    "app.prod::build": "lerna run app.prod::build --parallel",
+    "app.prod::start": "lerna run app.prod::start --parallel",
+    "app.prod::test": "lerna run app.prod::test --parallel",
+    "app.prod::build--watch": "lerna run app.prod::build--watch --parallel",
+    "app.prod::start--watch": "lerna run app.prod::start--watch --parallel",
+    "app.prod::test--watch": "lerna run app.prod::test--watch --parallel",
+    "app.dev": "lerna run app.dev --parallel",
+    "app.dev::build": "lerna run app.dev::build --parallel",
+    "app.dev::start": "lerna run app.dev::start --parallel",
+    "app.dev::test": "lerna run app.dev::test --parallel",
+    "app.dev--watch": "lerna run app.dev--watch --parallel",
+    "app.dev::build--watch": "lerna run app.dev::build--watch --parallel",
+    "app.dev::start--watch": "lerna run app.dev::start--watch --parallel",
+    "app.dev::test--watch": "lerna run app.dev::test--watch --parallel",
+    "web.prod": "lerna run web.prod --parallel",
+    "web.prod::build": "lerna run web.prod::build --parallel",
+    "web.prod::start": "lerna run web.prod::start --parallel",
+    "web.prod::test": "lerna run web.prod::test --parallel",
+    "web.prod--watch": "lerna run web.prod--watch --parallel",
+    "web.prod::build--watch": "lerna run web.prod::build--watch --parallel",
+    "web.prod::start--watch": "lerna run web.prod::start--watch --parallel",
+    "web.prod::test--watch": "lerna run web.prod::test--watch --parallel",
+    "web.prod--binary": "lerna run web.prod--binary --parallel",
+    "web.prod::build--binary": "lerna run web.prod::build--binary --parallel",
+    "web.prod::start--binary": "lerna run web.prod::start--binary --parallel",
+    "web.prod::build--watch--binary": "lerna run web.prod::build--watch--binary --parallel",
+    "web.prod::start--watch--binary": "lerna run web.prod::start--watch--binary --parallel",
+    "web.dev": "lerna run web.dev --parallel",
+    "web.dev::build": "lerna run web.dev::build --parallel",
+    "web.dev::start": "lerna run web.dev::start --parallel",
+    "web.dev::test": "lerna run web.dev::test --parallel",
+    "web.dev--watch": "lerna run web.dev--watch --parallel",
+    "web.dev::build--watch": "lerna run web.dev::build--watch --parallel",
+    "web.dev::start--watch": "lerna run web.dev::start--watch --parallel",
+    "web.dev::test--watch": "lerna run web.dev::test--watch --parallel",
+    "lib.prod": "lerna run lib.prod --parallel",
+    "lib.prod::build": "lerna run lib.prod::build --parallel",
+    "lib.prod::test": "lerna run lib.prod::test --parallel",
+    "lib.prod--watch": "lerna run lib.prod--watch --parallel",
+    "lib.prod::build--watch": "lerna run lib.prod::build--watch --parallel",
+    "lib.prod::test--watch": "lerna run lib.prod::test--watch --parallel",
+    "lib.dev": "lerna run lib.dev --parallel",
+    "lib.dev::build": "lerna run lib.dev::build --parallel",
+    "lib.dev::test": "lerna run lib.dev::test --parallel",
+    "lib.dev--watch": "lerna run lib.dev--watch --parallel",
+    "lib.dev::build--watch": "lerna run lib.dev::build--watch --parallel",
+    "lib.dev::test--watch": "lerna run lib.dev::test--watch --parallel",
     "prepare": "lerna bootstrap",
-    "test": "lerna run test",
     "link": "lerna link",
     "clean": "lerna clean",
     "commit": "git add . && git-cz",
@@ -29,21 +72,6 @@
     "update": "lerna exec npm update",
     "publish": "lerna publish"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+ssh://git@gitlab.com/libresat/libresat.git"
-  },
-  "keywords": [
-    "satellites",
-    "space",
-    "kubernetes",
-    "cloud",
-    "docker",
-    "containers",
-    "linux"
-  ],
-  "author": "Felicitas Pojtinger <felicitas@pojtinger.com>",
-  "license": "AGPL-3.0",
   "devDependencies": {
     "@types/jest": "^23.3.2",
     "@types/node": "^10.9.4",
@@ -65,16 +93,20 @@
     "typedoc": "^0.12.0",
     "typescript": "^3.1.3"
   },
+  "main": "lerna.json",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@gitlab.com/libresat/libresat.git"
+  },
   "bugs": {
     "url": "https://gitlab.com/libresat/libresat/issues"
-  },
-  "homepage": "https://gitlab.com/libresat/libresat#README",
-  "publishConfig": {
-    "access": "public"
   },
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
