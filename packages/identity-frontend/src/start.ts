@@ -1,3 +1,4 @@
+#!/usr/bin/node
 import * as express from "express";
 import * as path from "path";
 

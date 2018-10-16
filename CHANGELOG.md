@@ -1,5 +1,6 @@
 ## <small>0.0.1-28-monorepo (2018-10-16)</small>
 
+* build: Add scripts to master package.json ([643ca23](https://gitlab.com/libresat/libresat/commit/643ca23))
 
 
 
