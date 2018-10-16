@@ -1,6 +1,6 @@
 {
   "name": "@libresat/service",
-  "version": "0.0.1-29",
+  "version": "0.0.1-30",
   "description": "A minimal, modular and optionally opinionated library for building microservices",
   "author": "Felix Pojtinger <felix@pojtinger.com>",
   "license": "AGPL-3.0",
