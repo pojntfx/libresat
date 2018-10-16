@@ -1,5 +1,6 @@
 ## <small>0.0.1-26-monorepo (2018-10-16)</small>
 
+* build(identity-frontend): Use new script conventions ([30cba46](https://gitlab.com/libresat/libresat/commit/30cba46))
 
 
 
