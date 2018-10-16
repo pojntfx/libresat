@@ -5,6 +5,7 @@
     "module": "commonjs",
     "outDir": "dist/",
     "declaration": true,
-    "declarationDir": "dist/"
+    "declarationDir": "dist/",
+    "lib": ["esnext"]
   }
 }
