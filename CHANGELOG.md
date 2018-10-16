@@ -1,5 +1,6 @@
 ## <small>0.0.1-26-monorepo (2018-10-16)</small>
 
+* build(identity-backend): Use new build scripts ([a08f683](https://gitlab.com/libresat/libresat/commit/a08f683))
 * build(identity-frontend): Use new script conventions ([30cba46](https://gitlab.com/libresat/libresat/commit/30cba46))
 
 
