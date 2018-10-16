@@ -1,5 +1,12 @@
-## <small>0.0.1-26-monorepo (2018-10-16)</small>
+## <small>0.0.1-28-monorepo (2018-10-16)</small>
 
+
+
+
+## <small>0.0.1-28 (2018-10-16)</small>
+
+* v0.0.1-28 ([f30c5cf](https://gitlab.com/libresat/libresat/commit/f30c5cf))
+* refactor(site): Update and fix dependencies, add new scripts ([fe02011](https://gitlab.com/libresat/libresat/commit/fe02011))
 
 
 
