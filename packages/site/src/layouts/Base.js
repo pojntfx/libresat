@@ -3,7 +3,7 @@ import "semantic-ui-css/semantic.min.css";
 import { Container } from "semantic-ui-react";
 import { Navbar } from "../components/Navbar";
 import { Footer } from "../components/Footer";
-import { injectGlobal } from "styled-components";
+import { createGlobalStyle } from "styled-components";
 import { withPrefix } from "gatsby-link";
 import { MDXProvider } from "@mdx-js/tag";
 import { Link } from "../components/Link";
@@ -11,7 +11,7 @@ import { Image } from "../components/Blog/Image";
 import { NoScript } from "../components/NoScript";
 import { Paper } from "../components/Paper";
 
-injectGlobal`
+const GlobalStyles = createGlobalStyle`
   body {
     background: url("${withPrefix(
       "/img/bg.jpg"
@@ -35,6 +35,7 @@ export const Base = ({ children, noContainer, ...otherProps }) => (
     }}
   >
     <>
+      <GlobalStyles />
       <NoScript />
       <Navbar />
       {noContainer ? (

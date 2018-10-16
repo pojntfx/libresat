@@ -4,7 +4,11 @@ import { Broadcast } from "./Broadcast";
 
 const BroadcastView = ({
   data: {
-    mdx: { relativePath, headings, frontmatter },
+    mdx: {
+      parent: { relativePath },
+      headings,
+      frontmatter
+    },
     broadcastYaml: { postsLink, ...broadcastYaml }
   },
   ...otherProps
@@ -26,7 +30,11 @@ export const BroadcastSection = props => (
           frontmatter {
             excerpt
           }
-          relativePath
+          parent {
+            ... on File {
+              relativePath
+            }
+          }
           headings {
             value
             depth

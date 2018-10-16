@@ -21,7 +21,7 @@ const Search = ({
           frontmatter: { author, title, imgSrc, date },
           headings,
           excerpt,
-          fileNode: { name }
+          parent: { name }
         }
       }) => {
         return {
@@ -64,8 +64,10 @@ export const SearchSection = props => (
           edges {
             node {
               rawBody
-              fileNode {
-                name
+              parent {
+                ... on File {
+                  name
+                }
               }
               headings {
                 value

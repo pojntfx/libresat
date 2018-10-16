@@ -2,43 +2,71 @@
   "name": "@libresat/site",
   "version": "0.0.1-27",
   "description": "The LibreSat website",
-  "main": "src/chart/Chart.yaml",
-  "scripts": {
-    "dev": "gatsby develop",
-    "build": "gatsby build",
-    "start": "gatsby serve",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+ssh://git@gitlab.com/libresat/libresat.git"
-  },
-  "keywords": [
-    "site",
-    "jekyll",
-    "static",
-    "jamstack"
-  ],
   "author": "Felix Pojtinger <felix@pojtinger.com>",
   "license": "AGPL-3.0",
-  "bugs": {
-    "url": "https://gitlab.com/libresat/libresat/issues"
-  },
   "homepage": "https://gitlab.com/libresat/libresat#README",
+  "scripts": {
+    "dev": "run-p app.dev--watch web.dev--watch",
+    "build": "run-p app.prod::build web.prod::build",
+    "start": "run-p web.prod::start",
+    "install--binary": "sudo install bin/libresat-site /usr/bin",
+    "test": "run-p app.prod::test web.prod::test",
+    "dev--watch": "run-p dev",
+    "build--watch": "run-p app.prod::build--watch web.prod::build--watch",
+    "start--watch": "run-p app.prod::start--watch web.prod::start--watch",
+    "test--watch": "run-p app.prod::test--watch web.prod::test--watch",
+    "app.prod": "run-p app.prod::build app.prod::start",
+    "app.prod::build": "gatsby build",
+    "app.prod::start": "gatsby serve",
+    "app.prod::test": "echo \"Error: no test specified\" && exit 1",
+    "app.prod::build--watch": "nodemon -x 'run-s app.prod::build'",
+    "app.prod::start--watch": "run-s app.prod::start",
+    "app.prod::test--watch": "run-s app.prod::test",
+    "app.dev": "run-p app.dev::start",
+    "app.dev::build": "run-s app.prod::build",
+    "app.dev::start": "gatsby develop",
+    "app.dev::test": "run-s app.prod::test",
+    "app.dev--watch": "run-p app.dev::start--watch",
+    "app.dev::build--watch": "run-s app.prod::build--watch",
+    "app.dev::start--watch": "run-s app.dev::start",
+    "app.dev::test--watch": "run-s app.prod::test--watch",
+    "web.prod": "run-p web.prod::build web.prod::start",
+    "web.prod::build": "mkdir -p public/ && cp src/start.js public/start.js",
+    "web.prod::start": "node public/start.js",
+    "web.prod::test": "echo \"Error: no test specified\" && exit 1",
+    "web.prod--watch": "run-s web.prod::build--watch web.prod::start--watch",
+    "web.prod::build--watch": "nodemon -x 'run-s web.prod::build'",
+    "web.prod::start--watch": "nodemon -x 'run-s web.prod::start'",
+    "web.prod::test--watch": "nodemon -x 'run-s web.prod::test'",
+    "web.prod--binary": "run-s web.prod::build--binary web.prod::start--binary",
+    "web.prod::build--binary": "mkdir -p bin/ && pkg package.json -t node10-linux-x64 -o bin/libresat-site",
+    "web.prod::start--binary": "chmod +x bin/libresat-site && bin/libresat-site",
+    "web.prod::build--watch--binary": "nodemon -x 'run-s web.prod::build--binary'",
+    "web.prod::start--watch--binary": "nodemon -x 'run-s web.prod::start--binary'",
+    "web.dev": "run-p web.dev::build web.dev::start",
+    "web.dev::build": "run-s web.prod::build",
+    "web.dev::start": "node src/start.js",
+    "web.dev::test": "run-s web.prod::test",
+    "web.dev--watch": "run-p web.dev::build--watch web.dev::start--watch",
+    "web.dev::build--watch": "run-s web.prod::build--watch",
+    "web.dev::start--watch": "nodemon -x 'run-s web.dev::start'",
+    "web.dev::test--watch": "run-s web.prod::test--watch"
+  },
   "dependencies": {
     "@mdx-js/mdx": "^0.15.5",
     "@mdx-js/tag": "^0.15.0",
     "babel-plugin-styled-components": "^1.8.0",
     "copy-webpack-plugin": "^4.5.3",
-    "gatsby": "^2.0.22",
+    "express": "^4.16.4",
+    "gatsby": "^2.0.24",
     "gatsby-link": "^2.0.4",
-    "gatsby-mdx": "0.0.11",
+    "gatsby-mdx": "0.2.0",
     "gatsby-plugin-manifest": "^2.0.5",
     "gatsby-plugin-offline": "^2.0.6",
-    "gatsby-plugin-react-helmet": "^2.0.11",
+    "gatsby-plugin-react-helmet": "^3.0.0",
     "gatsby-plugin-styled-components": "^3.0.0",
-    "gatsby-source-filesystem": "^2.0.3",
-    "gatsby-transformer-yaml": "^1.5.18",
+    "gatsby-source-filesystem": "^2.0.4",
+    "gatsby-transformer-yaml": "^2.1.3",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
     "react-helmet": "^5.2.0",
@@ -46,7 +74,28 @@
     "reactjs-coverflow": "^2.1.3",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^0.82.5",
-    "styled-components": "^3.4.10"
+    "styled-components": "^4.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.4",
+    "npm-run-all": "^4.1.3",
+    "pkg": "^4.3.4"
+  },
+  "main": "public/start.js",
+  "source": "src/start.js",
+  "bin": "public/start.js",
+  "pkg": {
+    "assets": [
+      "public/**/*"
+    ],
+    "scripts": "public/start.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@gitlab.com/libresat/libresat.git"
+  },
+  "bugs": {
+    "url": "https://gitlab.com/libresat/libresat/issues"
   },
   "publishConfig": {
     "access": "public"
