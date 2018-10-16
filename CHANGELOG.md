@@ -1,5 +1,12 @@
 ## <small>0.0.1-26-monorepo (2018-10-16)</small>
 
+
+
+
+## <small>0.0.1-27 (2018-10-16)</small>
+
+* build(satctl, service, host-agent-core, identity-frontend, identity-backend): Add install--binary sc ([a24b7e6](https://gitlab.com/libresat/libresat/commit/a24b7e6))
+* v0.0.1-27 ([d9adde3](https://gitlab.com/libresat/libresat/commit/d9adde3))
 * build(identity-backend): Use new build scripts ([a08f683](https://gitlab.com/libresat/libresat/commit/a08f683))
 * build(identity-frontend): Use new script conventions ([30cba46](https://gitlab.com/libresat/libresat/commit/30cba46))
 

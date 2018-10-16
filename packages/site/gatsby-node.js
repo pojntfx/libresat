@@ -9,9 +9,11 @@ createPosts = async (graphql, createPage) => {
         allMdx {
           edges {
             node {
-              fileAbsolutePath
-              fileNode {
-                name
+              parent {
+                ... on File {
+                  name
+                  absolutePath
+                }
               }
               frontmatter {
                 title
@@ -34,19 +36,10 @@ createPosts = async (graphql, createPage) => {
       }
     `);
     data.allMdx.edges.forEach(
-      ({
-        node: {
-          fileNode,
-          fileAbsolutePath,
-          timeToRead,
-          frontmatter,
-          headings,
-          excerpt
-        }
-      }) => {
+      ({ node: { parent, timeToRead, frontmatter, headings, excerpt } }) => {
         createPage({
-          path: `/blog/${fileNode.name}`,
-          component: fileAbsolutePath,
+          path: `/blog/${parent.name}`,
+          component: parent.absolutePath,
           context: {
             ...frontmatter,
             title:
@@ -55,7 +48,7 @@ createPosts = async (graphql, createPage) => {
                 : headings.filter(({ depth }) => depth === 1)[0].value,
             date: frontmatter.date
               ? frontmatter.date
-              : fileNode.name
+              : parent.name
                   .split("-")
                   .filter((element, index) => (index < 3 ? element : null)) // Get the date from the post's filename, like with Jekyll
                   .join("-"),

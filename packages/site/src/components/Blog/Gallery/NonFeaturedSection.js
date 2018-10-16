@@ -8,8 +8,10 @@ export const NonFeaturedSection = props => (
       fragment extendedPosts on MdxConnection {
         edges {
           node {
-            fileNode {
-              name
+            parent {
+              ... on File {
+                name
+              }
             }
             frontmatter {
               author

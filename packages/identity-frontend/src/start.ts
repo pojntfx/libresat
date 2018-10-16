@@ -25,7 +25,7 @@ const {
 const description = `LibreSat Identity Frontend
 ${pkgDescription}
 
-Started successfully on port 5000!
+    Started successfully on port 5000!
 
 Version: ${name}#${version} by ${author}
 License: ${license}

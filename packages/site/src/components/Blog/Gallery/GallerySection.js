@@ -16,7 +16,7 @@ export const GallerySectionView = (
     posts={edges.map(
       ({
         node: {
-          fileNode,
+          parent,
           frontmatter: { author, imgSrc, lastEdit },
           headings,
           timeToRead,
@@ -25,10 +25,10 @@ export const GallerySectionView = (
       }) => {
         return {
           imgSrc: withPrefix(imgSrc),
-          link: `/blog/${fileNode.name}`,
+          link: `/blog/${parent.name}`,
           header: headings.filter(({ depth }) => depth === 1)[0].value,
           meta: `${new Date(
-            fileNode.name
+            parent.name
               .split("-")
               .filter((element, index) => (index < 3 ? element : null)) // Get the date from the post's filename, like with Jekyll
               .join("-")
