@@ -9,6 +9,7 @@
     "dev": "run-s app.dev--watch",
     "build": "run-s app.prod::build",
     "start": "run-s app.prod::start",
+    "install--binary": "sudo install bin/libresat-identity-backend /usr/bin",
     "test": "run-s app.prod::test",
     "dev--watch": "run-p dev",
     "build--watch": "run-s app.prod::build--watch",
