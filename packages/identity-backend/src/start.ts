@@ -1,3 +1,4 @@
+#!/usr/bin/node
 import { service } from "./index";
 const {
   name,
