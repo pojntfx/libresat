@@ -1,5 +1,12 @@
 ## <small>0.0.1-28-monorepo (2018-10-16)</small>
 
+
+
+
+## <small>0.0.1-29 (2018-10-16)</small>
+
+* v0.0.1-29 ([c2118f5](https://gitlab.com/libresat/libresat/commit/c2118f5))
+* feat: Enable installation with npm i -g ([aac87f3](https://gitlab.com/libresat/libresat/commit/aac87f3))
 * build: Add scripts to master package.json ([643ca23](https://gitlab.com/libresat/libresat/commit/643ca23))
 
 
