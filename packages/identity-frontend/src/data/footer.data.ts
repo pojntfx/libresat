@@ -3,63 +3,128 @@ const footerData = {
     {
       title: "Website",
       img: "https://img.shields.io/badge/Website-libresat.space-blue.svg",
-      link: "https://libresat.space"
+      link: "https://libresat.space",
+      help: {
+        title: "Website",
+        text: "The central place for all things LibreSat.",
+        docsLink: "https://libresat.space/docs/socials"
+      }
+    },
+    {
+      title: "Blog",
+      img: "https://img.shields.io/badge/Blog-libresat.space%2Fblog-blue.svg",
+      link: "https://libresat.space/blog",
+      help: {
+        title: "Blog",
+        text: "Posts on all things LibreSat.",
+        docsLink: "https://libresat.space/docs/socials"
+      }
     },
     {
       title: "Wiki",
       img: "https://img.shields.io/badge/Wiki-wiki.libresat.space-blue.svg",
-      link: "https://wiki.libresat.space"
+      link: "https://wiki.libresat.space",
+      help: {
+        title: "Wiki",
+        text: "Open and easy community-driven documentation.",
+        docsLink: "https://libresat.space/docs/socials"
+      }
     },
     {
       title: "Forum",
       img: "https://img.shields.io/badge/Forum-forum.libresat.space-blue.svg",
-      link: "https://forum.libresat.space/forum"
+      link: "https://forum.libresat.space/forum",
+      help: {
+        title: "Forum",
+        text: "A place for public and persistent discussion.",
+        docsLink: "https://libresat.space/docs/socials"
+      }
     },
     {
       title: "Chat",
       img: "https://img.shields.io/badge/Chat-chat.libresat.space-blue.svg",
-      link: "https://chat.libresat.space"
+      link: "https://chat.libresat.space",
+      help: {
+        title: "Chat",
+        text: "Quick and easy support and general chat.",
+        docsLink: "https://libresat.space/docs/socials"
+      }
     },
     {
       title: "Mastodon",
       img:
         "https://img.shields.io/badge/Mastodon-%40libresat-3088D4.svg?logo=mastodon&style=social",
-      link: "https://mastodon.cloud/@libresat"
+      link: "https://mastodon.cloud/@libresat",
+      help: {
+        title: "Mastodon",
+        text: "Offical announcements and more.",
+        docsLink: "https://libresat.space/docs/socials"
+      }
     },
     {
       title: "Twitter",
       img:
         "https://img.shields.io/badge/Twitter-%40libresat-1DA1F2.svg?logo=twitter&style=social",
-      link: "https://twitter.com/libresat"
+      link: "https://twitter.com/libresat",
+      help: {
+        title: "Twitter",
+        text: "Posts from Mastodon get mirrored over to here.",
+        docsLink: "https://libresat.space/docs/socials"
+      }
     },
     {
       title: "Reddit",
       img:
         "https://img.shields.io/badge/reddit-r%2Flibresat-FF4500.svg?logo=reddit&style=social",
-      link: "https://www.reddit.com/r/libresat/"
+      link: "https://www.reddit.com/r/libresat/",
+      help: {
+        title: "Reddit",
+        text: "An alternative to the forum for general discussion.",
+        docsLink: "https://libresat.space/docs/socials"
+      }
     },
     {
       title: "Instagram",
       img:
         "https://img.shields.io/badge/Instagram-%40libresat-E4405F.svg?logo=instagram&style=social",
-      link: "https://www.instagram.com/libresat/"
+      link: "https://www.instagram.com/libresat/",
+      help: {
+        title: "Instagram",
+        text: "Quick and simple, multimedia-driven posts.",
+        docsLink: "https://libresat.space/docs/socials"
+      }
     },
     {
       title: "GitLab",
       img:
         "https://img.shields.io/badge/GitLab-%40libresat-fc6d26.svg?logo=gitlab",
-      link: "https://gitlab.com/libresat"
+      link: "https://gitlab.com/libresat",
+      help: {
+        title: "GitLab",
+        text: "The central place for LibreSat's development.",
+        docsLink: "https://libresat.space/docs/socials"
+      }
     },
     {
       title: "GitHub",
       img:
         "https://img.shields.io/badge/GitHub-%40libresat-181717.svg?logo=github&logoColor=ffffff",
-      link: "https://github.com/libresat"
+      link: "https://github.com/libresat",
+      help: {
+        title: "GitHub",
+        text: "A mirror of the LibreSat project.",
+        docsLink: "https://libresat.space/docs/socials"
+      }
     },
     {
       title: "NPM",
       img: "https://img.shields.io/badge/npm-%7elibresat-CB3837.svg?logo=npm",
-      link: "https://www.npmjs.com/~libresat"
+      link: "https://www.npmjs.com/~libresat",
+      help: {
+        title: "NPM",
+        text: "LibreSat as NodeJS packages.",
+        docsLink: "https://libresat.space/docs/socials"
+      }
     }
   ],
   legal: {
