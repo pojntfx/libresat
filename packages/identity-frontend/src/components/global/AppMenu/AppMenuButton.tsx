@@ -12,23 +12,20 @@ const AppMenuButton = ({
   link,
   ...otherProps
 }: IAppButtonProps) => (
-  <Help
-    {...help}
-    trigger={
-      <Link to={link}>
-        <Button
-          active={link === "/identity" ? true : false}
-          fluid
-          {...otherProps}
-        >
-          <AppMenuButtonHeader icon as="h5">
-            <Icon name={icon} />
-            {title}
-          </AppMenuButtonHeader>
-        </Button>
-      </Link>
-    }
-  />
+  <Help {...help}>
+    <Link to={link}>
+      <Button
+        active={link === "/identity" ? true : false}
+        fluid
+        {...otherProps}
+      >
+        <AppMenuButtonHeader icon as="h5">
+          <Icon name={icon} />
+          {title}
+        </AppMenuButtonHeader>
+      </Button>
+    </Link>
+  </Help>
 );
 
 export { AppMenuButton, IAppButtonProps };
