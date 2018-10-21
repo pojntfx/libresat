@@ -23,3 +23,5 @@ export { IRoutesRouteProps } from "./routes.route.type";
 export { IHelp, IHelpProps } from "./help.type";
 
 export { IActionBarProps } from "./actionBar.type";
+
+export { IAppMenuProps, IAppButtonProps } from "./appMenu.type";

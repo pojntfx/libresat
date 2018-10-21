@@ -55,6 +55,12 @@ const navbarData = {
       disabled: true
     },
     {
+      title: "Settings",
+      icon: "settings",
+      link: "/settings",
+      disabled: true
+    },
+    {
       title: "Search",
       icon: "search",
       link: "/search",
