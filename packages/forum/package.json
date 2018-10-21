@@ -1,6 +1,6 @@
 {
   "name": "@libresat/forum",
-  "version": "0.0.1-34",
+  "version": "0.0.1-35",
   "description": "The LibreSat distribution of GNU Mailman",
   "main": "src/chart/Chart.yaml",
   "scripts": {
