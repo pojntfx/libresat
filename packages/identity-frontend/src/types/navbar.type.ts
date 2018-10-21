@@ -1,4 +1,5 @@
 import { SemanticICONS } from "semantic-ui-react";
+import { IHelp } from "./help.type";
 
 interface INavbarProps {
   brand: IBrand;
@@ -13,6 +14,7 @@ interface IBrand {
   img: string;
   link: string;
   disabled: boolean;
+  help: IHelp;
 }
 
 interface IItem {
@@ -20,6 +22,7 @@ interface IItem {
   icon?: SemanticICONS;
   link: string;
   disabled?: boolean;
+  help: IHelp;
 }
 
 export { INavbarProps, IBrand, IItem };

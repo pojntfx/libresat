@@ -5,16 +5,16 @@ interface IActionBarProps {
     title: string;
     icon: string;
     onCreate(): any;
-    help: IHelp;
     disabled: boolean;
+    help: IHelp;
   };
   search: {
     text: string;
     icon: string;
     value: string;
     onSearch(): any;
-    help: IHelp;
     disabled: boolean;
+    help: IHelp;
   };
 }
 
