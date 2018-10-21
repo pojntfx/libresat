@@ -61,7 +61,9 @@ interface ISocialsProps {
 
 interface ISocialLinkProps extends ISocialLink {}
 
-interface ISocialButton extends ISocialLink {}
+interface ISocialButton extends ISocialLink {
+  help: IHelp;
+}
 
 export {
   IFooterProps,

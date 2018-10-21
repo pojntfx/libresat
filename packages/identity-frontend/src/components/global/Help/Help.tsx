@@ -25,23 +25,25 @@ const Help = ({
     <Popup.Content>
       {text}
       <br />
-      <HelpAccordion
-        panels={[
-          {
-            title: "Terminal",
-            key: 1,
-            content: {
-              content: (
-                <Input
-                  fluid
-                  label={command[0]} // $ or #
-                  value={command.substring(2)}
-                />
-              )
+      {command ? (
+        <HelpAccordion
+          panels={[
+            {
+              title: "Terminal",
+              key: 1,
+              content: {
+                content: (
+                  <Input
+                    fluid
+                    label={command[0]} // $ or #
+                    value={command.substring(2)}
+                  />
+                )
+              }
             }
-          }
-        ]}
-      />
+          ]}
+        />
+      ) : null}
     </Popup.Content>
   </Popup>
 );
