@@ -14,14 +14,11 @@ const Footer = ({ socialLinks, legal: { global, licenses } }: IFooterProps) => (
     <Socials links={socialLinks} />
     <Grid stackable columns={2}>
       <Section width={4}>
-        <Help
-          {...global.help}
-          trigger={
-            <span>
-              &copy; {global.timeSpan} {global.holder}
-            </span>
-          }
-        />
+        <Help {...global.help}>
+          <span>
+            &copy; {global.timeSpan} {global.holder}
+          </span>
+        </Help>
       </Section>
       <Section width={12}>
         <LegalGrid stackable columns={16 / licenses.length}>
@@ -47,12 +44,9 @@ const Footer = ({ socialLinks, legal: { global, licenses } }: IFooterProps) => (
               >
                 <Modal
                   trigger={
-                    <Help
-                      {...help}
-                      trigger={
-                        <Button icon={icon} content={`${type} License`} fluid />
-                      }
-                    />
+                    <Help {...help}>
+                      <Button icon={icon} content={`${type} License`} fluid />
+                    </Help>
                   }
                   closeIcon
                 >

@@ -16,24 +16,21 @@ const LegalInfo = ({
   help,
   more
 }: ILegalInfoProps) => (
-  <Help
-    {...help}
-    trigger={
-      <Modal.Content>
-        <LegalBadge src={badge.img} alt={badge.title} href={more.link} />
-        <p>
-          {product} {type} &copy; {timeSpan} {holder}
-        </p>
-        <span>SPDX-License-Identifier: {spdxLicenseIdentifier}</span>
-        <br />
-        <LegalText>{text}</LegalText>
-        <p>
-          Find out more about this license over at{" "}
-          <a href={more.link}>{more.title}</a>.
-        </p>
-      </Modal.Content>
-    }
-  />
+  <Help {...help}>
+    <Modal.Content>
+      <LegalBadge src={badge.img} alt={badge.title} href={more.link} />
+      <p>
+        {product} {type} &copy; {timeSpan} {holder}
+      </p>
+      <span>SPDX-License-Identifier: {spdxLicenseIdentifier}</span>
+      <br />
+      <LegalText>{text}</LegalText>
+      <p>
+        Find out more about this license over at{" "}
+        <a href={more.link}>{more.title}</a>.
+      </p>
+    </Modal.Content>
+  </Help>
 );
 
 export { LegalInfo };

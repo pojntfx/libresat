@@ -10,13 +10,13 @@ const Help = ({
   text,
   docsLink,
   command,
-  trigger,
+  children,
   ...otherProps
 }: IHelpProps) => (
   <Popup
     hoverable
     flowing
-    trigger={React.cloneElement(trigger, otherProps)} // Enable passing props such as onClick to triggers
+    trigger={React.cloneElement(children, otherProps)} // Enable passing props such as onClick to triggers
     {...otherProps}
   >
     <HelpPopupHeader>

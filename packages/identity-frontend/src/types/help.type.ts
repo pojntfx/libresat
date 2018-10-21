@@ -6,7 +6,7 @@ interface IHelp {
 }
 
 interface IHelpProps extends IHelp {
-  trigger: JSX.Element;
+  children: JSX.Element;
 }
 
 export { IHelp, IHelpProps };
