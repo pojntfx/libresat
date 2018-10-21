@@ -66,7 +66,14 @@ const footerData = {
     global: {
       product: "LibreSat Identity",
       timeSpan: "2014-2018",
-      holder: "Felicitas Pojtinger"
+      holder: "Felicitas Pojtinger",
+      help: {
+        title: "Copyright Holder",
+        text:
+          "This is the individual or organization that holds the copyright of this product.",
+        command: "$ satctl",
+        docsLink: "https://libresat.space/source-code"
+      }
     },
     licenses: [
       {
@@ -85,6 +92,12 @@ const footerData = {
         more: {
           link: "https://creativecommons.org/licenses/by-sa/4.0/",
           title: "the Creative Commons"
+        },
+        help: {
+          title: "Media License",
+          text: "This is the license that applies to this product's media.",
+          command: "$ satctl",
+          docsLink: "https://libresat.space/source-code"
         }
       },
       {
@@ -103,6 +116,13 @@ const footerData = {
         more: {
           link: "https://www.gnu.org/licenses/agpl.html",
           title: "the Free Software Foundation"
+        },
+        help: {
+          title: "Code License",
+          text:
+            "This is the license that applies to this product's source code.",
+          command: "$ satctl",
+          docsLink: "https://libresat.space/source-code"
         }
       }
     ]
