@@ -33,6 +33,7 @@ const Help = ({
             content: {
               content: (
                 <Input
+                  fluid
                   label={command[0]} // $ or #
                   value={command.substring(2)}
                 />

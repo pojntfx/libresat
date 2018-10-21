@@ -10,9 +10,9 @@ interface IAppMenuProps {
 interface IAppButtonProps {
   title: string;
   icon: SemanticICONS;
-  help: IHelp;
   link: string;
   disabled?: boolean;
+  help: IHelp;
 }
 
 export { IAppButtonProps, IAppMenuProps };
