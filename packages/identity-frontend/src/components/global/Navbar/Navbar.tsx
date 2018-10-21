@@ -21,7 +21,7 @@ const Navbar = ({
       to={brand.link}
       disabled={brand.disabled}
       as={NavLink}
-      activeClassName="active--first-item"
+      activeClassName="active--edge-item"
     >
       <Logo src={brand.img} alt={brand.title} />
     </EdgeItem>
@@ -32,7 +32,7 @@ const Navbar = ({
           to={link}
           disabled={disabled}
           as={NavLink}
-          activeClassName="active--first-item"
+          activeClassName="active active--first-item"
           key={index}
         >
           {icon ? <Icon name={icon} /> : null}
@@ -49,6 +49,7 @@ const Navbar = ({
           disabled={disabled}
           exact={link === "/" ? true : undefined}
           as={NavLink}
+          activeClassName="active active--center-item"
           key={index}
         />
       ))}
@@ -60,6 +61,7 @@ const Navbar = ({
             to={link}
             disabled={disabled}
             as={NavLink}
+            activeClassName="active active--end-item"
             key={index}
           />
         ))}
@@ -74,6 +76,7 @@ const Navbar = ({
           to={link}
           disabled={disabled}
           as={NavLink}
+          activeClassName="active active--last-item"
           key={index}
         />
       ))}
