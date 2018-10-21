@@ -47,6 +47,7 @@ const Navbar = ({
           icon={icon}
           to={link}
           disabled={disabled}
+          exact={link === "/" ? true : undefined}
           as={NavLink}
           key={index}
         />

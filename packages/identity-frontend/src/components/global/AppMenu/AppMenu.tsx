@@ -27,8 +27,8 @@ const AppMenu = ({ search, apps, ...otherProps }: IAppMenuProps) => (
     <Grid columns={5} doubling stackable {...otherProps}>
       <Grid.Row>
         {apps.map((app, index) => (
-          <Grid.Column>
-            <AppMenuButton {...app} key={index} />
+          <Grid.Column key={index}>
+            <AppMenuButton {...app} />
           </Grid.Column>
         ))}
       </Grid.Row>

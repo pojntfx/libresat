@@ -2,12 +2,12 @@ import styled from "styled-components";
 import { Menu } from "semantic-ui-react";
 import { EDGE_ITEM_WIDTH } from "./EdgeItem";
 
-const EDGE_MENU_WIDTH = "260px";
+const EDGE_MENU_WIDTH = "350px";
 const CENTER_MENU_WIDTH = "1676px";
 
 const EdgeMenu = styled(Menu.Menu)`
   display: flex !important;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
   padding: 0 !important;
   width: ${EDGE_MENU_WIDTH};
