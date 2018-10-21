@@ -5,6 +5,7 @@ import { Footer } from "../global/Footer/Footer";
 import { IDefaultLayoutProps } from "../../types";
 import { injectGlobal } from "styled-components";
 import bg from "../../assets/bg.jpg";
+import { Segment } from "semantic-ui-react";
 
 injectGlobal`
   body {
@@ -17,12 +18,13 @@ const DefaultLayout = ({
   navbar,
   children,
   footer,
+  segment,
   ...otherProps
 }: IDefaultLayoutProps) => (
   <>
     <Navbar {...navbar} />
     <Container {...otherProps}>
-      {children}
+      {segment ? <Segment>{children}</Segment> : children}
       <Footer {...footer} />
     </Container>
   </>
