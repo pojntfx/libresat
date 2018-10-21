@@ -16,7 +16,11 @@ const AppMenuButton = ({
     {...help}
     trigger={
       <Link to={link}>
-        <Button fluid {...otherProps}>
+        <Button
+          active={link === "/identity" ? true : false}
+          fluid
+          {...otherProps}
+        >
           <AppMenuButtonHeader icon as="h5">
             <Icon name={icon} />
             {title}
