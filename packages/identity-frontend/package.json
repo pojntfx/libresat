@@ -6,7 +6,7 @@
   "license": "AGPL-3.0",
   "homepage": "https://gitlab.com/libresat/libresat/tree/master/packages/identity-frontend#README",
   "scripts": {
-    "dev": "run-p app.dev--watch web.dev--watch",
+    "dev": "run-p app.dev--watch",
     "build": "run-p app.prod::build web.prod::build",
     "start": "run-p web.prod::start",
     "install--binary": "sudo install bin/libresat-identity-frontend /usr/bin",

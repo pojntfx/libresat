@@ -3,7 +3,7 @@ import { IFooterProps } from "./footer.type";
 
 interface IDefaultLayoutProps {
   navbar: INavbarProps;
-  children: JSX.Element;
+  children: JSX.Element | JSX.Element[];
   footer: IFooterProps;
 }
 
