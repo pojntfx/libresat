@@ -1,6 +1,6 @@
 {
   "name": "@libresat/mail",
-  "version": "0.0.1-30",
+  "version": "0.0.1-31",
   "description": "The LibreSat distribution of Rainloop",
   "main": "src/chart/Chart.yaml",
   "scripts": {
