@@ -3,7 +3,6 @@ import { DefaultLayout } from "../layouts";
 import { navbarData, footerData, homeData } from "../../data";
 import { IFooterProps, IHomePage, INavbarProps } from "../../types";
 import { ActionBar } from "../global";
-import { AppMenu, IAppMenuProps } from "../global/AppMenu/AppMenu";
 
 const HomePage = (props: IHomePage) => (
   <DefaultLayout
@@ -19,13 +18,6 @@ const HomePage = (props: IHomePage) => (
       search={{
         onSearch: () => console.log("Filtering models ..."),
         ...homeData.actionBar.search
-      }}
-    />
-    <AppMenu
-      apps={homeData.appMenu.apps as IAppMenuProps["apps"]}
-      search={{
-        onSearch: () => console.log("Searching for app ..."),
-        ...homeData.appMenu.search
       }}
     />
   </DefaultLayout>

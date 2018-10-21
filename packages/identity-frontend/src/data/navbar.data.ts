@@ -10,7 +10,7 @@ const navbarData = {
   firstItems: [
     {
       title: "Identity",
-      link: "/",
+      link: "/about",
       icon: "id card",
       disabled: true
     }
@@ -68,6 +68,12 @@ const navbarData = {
     }
   ],
   lastItems: [
+    {
+      title: "Apps",
+      icon: "grid layout",
+      link: "/apps",
+      disabled: false
+    },
     {
       title: "Notifications",
       icon: "bell",

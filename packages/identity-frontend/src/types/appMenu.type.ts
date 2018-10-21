@@ -12,6 +12,7 @@ interface IAppButtonProps {
   icon: SemanticICONS;
   help: IHelp;
   link: string;
+  disabled?: boolean;
 }
 
 export { IAppButtonProps, IAppMenuProps };
