@@ -7,15 +7,21 @@ import { Section } from "./Section";
 import { LegalGrid } from "./Legal/LegalGrid";
 import { IFooterProps } from "../../../types";
 import { Button } from "../Button";
+import { Help } from "../Help/Help";
 
 const Footer = ({ socialLinks, legal: { global, licenses } }: IFooterProps) => (
   <Wrapper>
     <Socials links={socialLinks} />
     <Grid stackable columns={2}>
       <Section width={4}>
-        <span>
-          &copy; {global.timeSpan} {global.holder}
-        </span>
+        <Help
+          {...global.help}
+          trigger={
+            <span>
+              &copy; {global.timeSpan} {global.holder}
+            </span>
+          }
+        />
       </Section>
       <Section width={12}>
         <LegalGrid stackable columns={16 / licenses.length}>
@@ -30,7 +36,8 @@ const Footer = ({ socialLinks, legal: { global, licenses } }: IFooterProps) => (
                 spdxLicenseIdentifier,
                 text,
                 badge,
-                more
+                more,
+                help
               },
               index
             ) => (
@@ -40,7 +47,12 @@ const Footer = ({ socialLinks, legal: { global, licenses } }: IFooterProps) => (
               >
                 <Modal
                   trigger={
-                    <Button icon={icon} content={`${type} License`} fluid />
+                    <Help
+                      {...help}
+                      trigger={
+                        <Button icon={icon} content={`${type} License`} fluid />
+                      }
+                    />
                   }
                   closeIcon
                 >
@@ -55,6 +67,7 @@ const Footer = ({ socialLinks, legal: { global, licenses } }: IFooterProps) => (
                     text={text}
                     badge={badge}
                     more={more}
+                    help={help}
                   />
                 </Modal>
               </Grid.Column>

@@ -5,8 +5,20 @@ import { HelpDocsLink } from "./HelpDocsLink";
 import { HelpAccordion } from "./HelpAccordion";
 import { IHelpProps } from "../../../types";
 
-const Help = ({ title, text, docsLink, command, trigger }: IHelpProps) => (
-  <Popup hoverable flowing trigger={trigger}>
+const Help = ({
+  title,
+  text,
+  docsLink,
+  command,
+  trigger,
+  ...otherProps
+}: IHelpProps) => (
+  <Popup
+    hoverable
+    flowing
+    trigger={React.cloneElement(trigger, otherProps)} // Enable passing props such as onClick to triggers
+    {...otherProps}
+  >
     <HelpPopupHeader>
       {title} <HelpDocsLink href={docsLink}>Docs</HelpDocsLink>
     </HelpPopupHeader>

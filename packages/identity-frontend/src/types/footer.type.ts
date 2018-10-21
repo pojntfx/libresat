@@ -1,4 +1,5 @@
 import { SemanticICONS } from "semantic-ui-react";
+import { IHelp } from "./help.type";
 
 interface IFooterProps {
   socialLinks: ISocialLinkProps[];
@@ -15,6 +16,7 @@ interface ILegalGlobal {
   type: string;
   timeSpan: string;
   holder: string;
+  help: IHelp;
 }
 
 interface ILegalBadge {
