@@ -1,6 +1,10 @@
 export { IActionBarProps } from "./actionBar.type";
 export { IHelp, IHelpProps } from "./help.type";
-export { IAppButtonProps, IAppMenuProps } from "./appMenu.type";
+export {
+  IAppButtonProps,
+  IAppMenuProps,
+  IAppButtonContentProps
+} from "./appMenu.type";
 export {
   IFooterProps,
   ILegal,
