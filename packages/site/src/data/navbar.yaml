@@ -93,6 +93,13 @@
         title: Site Search
         text: Search for anything on this site.
   lastItems:
+    - title: Imprint
+      link: /imprint
+      icon: legal
+      disabled: false
+      help:
+        title: Imprint
+        text: Legal information about this page.
     - title: Source Code
       link: /source-code
       icon: fork

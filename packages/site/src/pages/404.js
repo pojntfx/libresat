@@ -1,6 +1,6 @@
 import React from "react";
 import { Button, Image, Card, Icon } from "semantic-ui-react";
-import styled from "styled-components";
+import styled from "react-emotion";
 import { withPrefix } from "gatsby-link";
 import { Link } from "../components/Link";
 import { Head } from "../components/Head.js";

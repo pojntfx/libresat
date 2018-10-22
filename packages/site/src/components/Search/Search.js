@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Input as InputTemplate, Transition } from "semantic-ui-react";
 import { search } from "../../utils/search";
-import styled from "styled-components";
+import styled from "react-emotion";
 import { Post } from "../Blog/Coverflow/Coverflow";
 import { Link } from "../Link";
 

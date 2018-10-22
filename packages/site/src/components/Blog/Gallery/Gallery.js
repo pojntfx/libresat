@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled from "react-emotion";
 import MasonryTemplate from "react-masonry-component";
 import { Card } from "semantic-ui-react";
 import { withPrefix } from "gatsby-link";
@@ -26,7 +26,7 @@ const Post = styled(PostTemplate)`
 `;
 
 export const Gallery = ({ posts, ...otherProps }) => (
-  <PostsGallery options={{ gutter: 30 }} {...otherProps}>
+  <PostsGallery options={{ gutter: 30 }}>
     {posts.map(({ link, ...props }, index) => (
       <Post {...props} as={Link} to={link} key={index} />
     ))}

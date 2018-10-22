@@ -1,31 +1,32 @@
 import React from "react";
-import styled from "styled-components";
+import styled from "react-emotion";
 import { Image as ImageTemplate } from "semantic-ui-react";
 
 const maxWidth = "600px";
 
-const ImageInternal = styled(ImageTemplate).attrs({
-  centered: true,
-  rounded: true
-})`
+const ImageInternalTemplate = styled(ImageTemplate)`
   display: block !important;
   max-width: ${maxWidth} !important;
   margin-top: 4em;
 `;
 
-const Caption = styled.figcaption`
-  margin-left: auto;
-  margin-right: auto;
+const ImageInternal = props => (
+  <ImageInternalTemplate centered rounded {...props} />
+);
+
+const Caption = styled("span")`
   margin-top: 1em;
-  max-width: ${maxWidth} !important;
+  width: 100%;
   margin-bottom: 4em;
   font-style: italic;
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const Image = ({ src, as, to, alt, ...otherProps }) => (
-  <figure {...otherProps}>
-    <ImageInternal alt="alt" as={as} to={to} src={src} />
+  <>
+    <ImageInternal alt="alt" as={as} to={to} src={src} {...otherProps} />
     <Caption>{alt}</Caption>
-  </figure>
+  </>
 );
