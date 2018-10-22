@@ -1,6 +1,6 @@
 {
   "name": "@libresat/identity-frontend",
-  "version": "0.0.1-35",
+  "version": "0.0.1-36",
   "description": "Frontend for @libresat/identity-backend, a simple authorization microservice",
   "author": "Felix Pojtinger <felix@pojtinger.com>",
   "license": "AGPL-3.0",
