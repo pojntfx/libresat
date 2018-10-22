@@ -7,7 +7,8 @@ export {
   HorizontalScrollSegment,
   Help,
   Footer,
-  AppMenu
+  AppMenu,
+  DefaultLayout
 } from "./components";
 
 export {

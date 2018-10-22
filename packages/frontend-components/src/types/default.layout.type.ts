@@ -6,6 +6,7 @@ interface IDefaultLayoutProps {
   children: JSX.Element | JSX.Element[];
   footer: IFooterProps;
   segment?: boolean;
+  bg: string;
 }
 
 export { IDefaultLayoutProps };

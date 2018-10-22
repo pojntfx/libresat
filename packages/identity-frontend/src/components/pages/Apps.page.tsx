@@ -1,19 +1,21 @@
 import * as React from "react";
-import { DefaultLayout } from "../layouts";
 import { navbarData, footerData, appsData } from "../../data";
 import {
   AppMenu,
   INavbarProps,
   IFooterProps,
-  IAppMenuProps
+  IAppMenuProps,
+  DefaultLayout
 } from "@libresat/frontend-components";
 import { IPage } from "../../types";
 import { NavLink } from "react-router-dom";
+import bg from "../../assets/bg.jpg";
 
 const AppsPage = (props: IPage) => (
   <DefaultLayout
     navbar={navbarData as INavbarProps}
     footer={footerData as IFooterProps}
+    bg={bg}
     {...props}
   >
     <AppMenu
