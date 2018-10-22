@@ -13,6 +13,13 @@ interface IAppButtonProps {
   link: string;
   disabled?: boolean;
   help: IHelp;
+  linkComponent?: JSX.Element;
 }
 
-export { IAppButtonProps, IAppMenuProps };
+interface IAppButtonContentProps {
+  title: IAppButtonProps["title"];
+  icon: IAppButtonProps["icon"];
+  link: IAppButtonProps["link"];
+}
+
+export { IAppButtonProps, IAppMenuProps, IAppButtonContentProps };

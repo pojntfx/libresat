@@ -15,6 +15,7 @@ const Navbar = ({
   startItems,
   endItems,
   lastItems,
+  linkComponent,
   ...otherProps
 }: INavbarProps) => (
   <MainMenu borderless fixed="top" {...otherProps}>
@@ -22,7 +23,7 @@ const Navbar = ({
       <EdgeItem
         to={brand.link}
         disabled={brand.disabled}
-        as={NavLink}
+        as={linkComponent || NavLink}
         activeClassName="active--edge-item"
       >
         <Logo src={brand.img} alt={brand.title} />
@@ -35,7 +36,7 @@ const Navbar = ({
           <Menu.Item
             to={link}
             disabled={disabled}
-            as={NavLink}
+            as={linkComponent || NavLink}
             activeClassName="active active--first-item"
           >
             {icon ? <Icon name={icon} /> : null}
@@ -53,7 +54,7 @@ const Navbar = ({
             to={link}
             disabled={disabled}
             exact={link === "/" ? true : undefined}
-            as={NavLink}
+            as={linkComponent || NavLink}
             activeClassName="active active--center-item"
             key={index}
           />
@@ -67,7 +68,7 @@ const Navbar = ({
               icon={icon}
               to={link}
               disabled={disabled}
-              as={NavLink}
+              as={linkComponent || NavLink}
               activeClassName="active active--end-item"
               key={index}
             />
@@ -84,7 +85,7 @@ const Navbar = ({
             icon={icon}
             to={link}
             disabled={disabled}
-            as={NavLink}
+            as={linkComponent || NavLink}
             activeClassName="active active--last-item"
             key={index}
           />
