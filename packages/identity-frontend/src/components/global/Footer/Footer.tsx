@@ -6,7 +6,7 @@ import { Wrapper } from "./Wrapper";
 import { Section } from "./Section";
 import { LegalGrid } from "./Legal/LegalGrid";
 import { IFooterProps } from "../../../types";
-import { Button } from "../Button";
+import { Button } from "@libresat/frontend-components";
 import { Help } from "../Help/Help";
 
 const Footer = ({ socialLinks, legal: { global, licenses } }: IFooterProps) => (

@@ -3,11 +3,11 @@ import "semantic-ui-css/semantic.min.css";
 import { Navbar, Container } from "../global";
 import { Footer } from "../global/Footer/Footer";
 import { IDefaultLayoutProps } from "../../types";
-import { injectGlobal } from "styled-components";
+import { createGlobalStyle } from "styled-components";
 import bg from "../../assets/bg.jpg";
 import { Segment } from "semantic-ui-react";
 
-injectGlobal`
+const DefaultLayoutStyles = createGlobalStyle`
   body {
     background: url(${bg}) no-repeat center center fixed;
     background-size: cover;
@@ -22,6 +22,7 @@ const DefaultLayout = ({
   ...otherProps
 }: IDefaultLayoutProps) => (
   <>
+    <DefaultLayoutStyles />
     <Navbar {...navbar} />
     <Container {...otherProps}>
       {segment ? <Segment>{children}</Segment> : children}
