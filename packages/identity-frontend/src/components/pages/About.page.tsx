@@ -8,12 +8,14 @@ import {
   DefaultLayout
 } from "@libresat/frontend-components";
 import bg from "../../assets/bg.jpg";
+import { NavLink } from "react-router-dom";
 
 const AboutPage = (props: IPage) => (
   <DefaultLayout
     navbar={navbarData as INavbarProps}
     footer={footerData as IFooterProps}
     bg={bg}
+    linkComponent={(NavLink as unknown) as JSX.Element}
     segment
     {...props}
   >

@@ -7,6 +7,7 @@ import {
   DefaultLayout
 } from "@libresat/frontend-components";
 import { IPage } from "../../types";
+import { NavLink } from "react-router-dom";
 import bg from "../../assets/bg.jpg";
 
 const HomePage = (props: IPage) => (
@@ -14,6 +15,7 @@ const HomePage = (props: IPage) => (
     navbar={navbarData as INavbarProps}
     footer={footerData as IFooterProps}
     bg={bg}
+    linkComponent={(NavLink as unknown) as JSX.Element}
     {...props}
   >
     <ActionBar

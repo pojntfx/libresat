@@ -16,6 +16,7 @@ const AppsPage = (props: IPage) => (
     navbar={navbarData as INavbarProps}
     footer={footerData as IFooterProps}
     bg={bg}
+    linkComponent={(NavLink as unknown) as JSX.Element}
     {...props}
   >
     <AppMenu

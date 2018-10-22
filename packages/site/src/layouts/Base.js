@@ -1,26 +1,13 @@
 import React from "react";
-import "semantic-ui-css/semantic.min.css";
-import { Container } from "semantic-ui-react";
-import { Navbar } from "../components/Navbar";
-import { Footer } from "../components/Footer";
-import { createGlobalStyle } from "styled-components";
 import { withPrefix } from "gatsby-link";
 import { MDXProvider } from "@mdx-js/tag";
 import { Link } from "../components/Link";
 import { Image } from "../components/Blog/Image";
-import { NoScript } from "../components/NoScript";
 import { Paper } from "../components/Paper";
+import { DefaultLayout } from "@libresat/frontend-components";
+import { StaticQuery, graphql } from "gatsby";
 
-const GlobalStyles = createGlobalStyle`
-  body {
-    background: url("${withPrefix(
-      "/img/bg.jpg"
-    )}") no-repeat center center fixed;
-    background-size: cover;
-  }
-`;
-
-export const Base = ({ children, noContainer, ...otherProps }) => (
+const BaseView = ({ data, children, ...otherProps }) => (
   <MDXProvider
     components={{
       a: ({ href, ...otherProps }) => <Link to={href} {...otherProps} />,
@@ -34,23 +21,129 @@ export const Base = ({ children, noContainer, ...otherProps }) => (
       )
     }}
   >
-    <>
-      <GlobalStyles />
-      <NoScript />
-      <Navbar />
-      {noContainer ? (
-        <>
-          {children}
-          <Container>
-            <Footer />
-          </Container>
-        </>
-      ) : (
-        <Container {...otherProps}>
-          {children}
-          <Footer />
-        </Container>
-      )}
-    </>
+    <DefaultLayout
+      linkComponent={Link}
+      navbar={data.navbarYaml}
+      footer={{
+        socialLinks: data.siteYaml.socialLinks,
+        legal: data.siteYaml.legal
+      }}
+      bg={withPrefix("/img/bg.jpg")}
+      {...otherProps}
+    >
+      {children}
+    </DefaultLayout>
   </MDXProvider>
+);
+
+export const Base = props => (
+  <StaticQuery
+    query={graphql`
+      query BaseLayoutQuery {
+        navbarYaml {
+          brand {
+            title
+            img
+            link
+            disabled
+            help {
+              title
+              text
+              command
+              docsLink
+            }
+          }
+          firstItems {
+            title
+            link
+            icon
+            disabled
+            help {
+              title
+              text
+            }
+          }
+          startItems {
+            title
+            link
+            icon
+            disabled
+            help {
+              title
+              text
+            }
+          }
+          endItems {
+            title
+            link
+            icon
+            disabled
+            help {
+              title
+              text
+            }
+          }
+          lastItems {
+            title
+            link
+            icon
+            disabled
+            help {
+              title
+              text
+            }
+          }
+        }
+        siteYaml {
+          socialLinks {
+            title
+            img
+            link
+            help {
+              title
+              text
+              docsLink
+            }
+          }
+          legal {
+            global {
+              product
+              timeSpan
+              holder
+              help {
+                title
+                text
+                docsLink
+                command
+              }
+            }
+            licenses {
+              product
+              type
+              icon
+              timeSpan
+              holder
+              spdxLicenseIdentifier
+              text
+              badge {
+                img
+                title
+              }
+              more {
+                link
+                title
+              }
+              help {
+                title
+                text
+                command
+                docsLink
+              }
+            }
+          }
+        }
+      }
+    `}
+    render={data => <BaseView data={data} {...props} />}
+  />
 );

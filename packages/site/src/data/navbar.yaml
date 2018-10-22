@@ -12,7 +12,7 @@
     - title: Site
       link: /about
       icon: globe
-      disabled: false
+      disabled: true
       help:
         title: Website
         text: The central place for all things LibreSat.
