@@ -7,3 +7,4 @@ export { HorizontalScrollSegment } from "./HorizontalScrollSegment";
 export { Help } from "./Help/Help";
 export { Footer } from "./Footer/Footer";
 export { AppMenu } from "./AppMenu/AppMenu";
+export { DefaultLayout } from "./DefaultLayout";
