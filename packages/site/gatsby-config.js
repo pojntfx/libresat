@@ -31,7 +31,7 @@ module.exports = {
         path: `${__dirname}/src/pages/`
       }
     },
-    "gatsby-plugin-styled-components",
+    "gatsby-plugin-emotion",
     "gatsby-plugin-react-helmet",
     {
       resolve: "gatsby-plugin-manifest",

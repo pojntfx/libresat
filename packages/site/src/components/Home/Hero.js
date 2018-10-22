@@ -1,9 +1,9 @@
 import React from "react";
-import styled from "styled-components";
+import styled from "react-emotion";
 import { Link } from "../Link";
 import { Modal, Button } from "semantic-ui-react";
 
-const Wrapper = styled.div`
+const Wrapper = styled("div")`
   padding-top: 10em;
   padding-bottom: 10em;
   width: 100%;
@@ -14,15 +14,15 @@ const Wrapper = styled.div`
   color: white;
 `;
 
-const SubHeader = styled.h5`
+const SubHeader = styled("h5")`
   margin-top: 0;
 `;
 
-const Actions = styled.div`
+const Actions = styled("div")`
   margin-top: 0.5em;
 `;
 
-const Video = styled.video`
+const Video = styled("video")`
   width: 100%;
 `;
 

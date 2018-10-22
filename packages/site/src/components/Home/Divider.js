@@ -3,7 +3,7 @@ import {
   Divider as DividerTemplate,
   Icon as IconTemplate
 } from "semantic-ui-react";
-import styled from "styled-components";
+import styled from "react-emotion";
 
 const Wrapper = styled(DividerTemplate)`
   margin-${props => {

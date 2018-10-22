@@ -1,7 +1,7 @@
 import React from "react";
 import { StaticQuery, graphql } from "gatsby";
 import { Message as MessageTemplate, Container } from "semantic-ui-react";
-import styled from "styled-components";
+import styled from "react-emotion";
 
 const Message = styled(MessageTemplate)`
   margin-top: 1em !important;

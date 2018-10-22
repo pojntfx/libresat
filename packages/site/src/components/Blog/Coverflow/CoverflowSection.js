@@ -21,20 +21,18 @@ export const CoverflowView = (
           headings,
           excerpt
         }
-      }) => {
-        return {
-          imgSrc: withPrefix(imgSrc),
-          link: `/blog/${parent.name}`,
-          header: headings.filter(({ depth }) => depth === 1)[0].value,
-          meta: `${new Date(
-            parent.name
-              .split("-")
-              .filter((element, index) => (index < 3 ? element : null)) // Get the date from the post's filename, like with Jekyll
-              .join("-")
-          ).toLocaleDateString()} by ${author}`,
-          description: excerpt
-        };
-      }
+      }) => ({
+        imgSrc: withPrefix(imgSrc),
+        link: `/blog/${parent.name}`,
+        header: headings.filter(({ depth }) => depth === 1)[0].value,
+        meta: `${new Date(
+          parent.name
+            .split("-")
+            .filter((element, index) => (index < 3 ? element : null)) // Get the date from the post's filename, like with Jekyll
+            .join("-")
+        ).toLocaleDateString()} by ${author}`,
+        description: excerpt
+      })
     )}
     {...otherProps}
   />

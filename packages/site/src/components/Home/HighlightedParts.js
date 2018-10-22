@@ -1,6 +1,6 @@
 import React from "react";
 import { Card, Header, Icon } from "semantic-ui-react";
-import styled from "styled-components";
+import styled from "react-emotion";
 import { Link } from "../Link";
 
 const HighlightedPart = styled(Card)`
@@ -11,7 +11,7 @@ const HighlightedPart = styled(Card)`
   }
 `;
 
-const Description = styled(HighlightedPart.Description)`
+const Description = styled(Card.Description)`
   margin-bottom: 2em;
 `;
 

@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from "react-emotion";
 import { Divider, Icon } from "semantic-ui-react";
 
 export const ProjectDivider = styled(Divider)`

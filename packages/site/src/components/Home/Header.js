@@ -1,33 +1,33 @@
 import React from "react";
-import styled from "styled-components";
+import styled from "react-emotion";
 import { Button, Grid, Header as HeaderTemplate } from "semantic-ui-react";
 import { Link } from "../Link";
 
-const Action = styled(Button).attrs({
-  labelPosition: "left"
-})`
+const ActionTemplate = styled(Button)`
   white-space: nowrap;
   /* This is necessary to prevent glitches if the row get's to high */
   max-height: 3em;
 `;
 
-const Actions = styled(Grid.Column).attrs({
-  width: 10
-})`
+const Action = props => <ActionTemplate labelPosition="left" {...props} />;
+
+const ActionsTemplate = styled(Grid.Column)`
   display: flex !important;
   overflow-x: auto;
-  & > ${Action}:first-child {
+  & > .button:first-child {
     margin-left: auto;
     @media (max-width: 767px) {
       margin-left: auto;
     }
   }
-  & > ${Action}:last-child {
+  & > .button:last-child {
     @media (max-width: 767px) {
       margin-right: auto;
     }
   }
 `;
+
+const Actions = props => <ActionsTemplate width={10} {...props} />;
 
 export const Header = ({
   title,

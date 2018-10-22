@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled from "react-emotion";
 import CoverflowTemplate from "reactjs-coverflow";
 import { Card } from "semantic-ui-react";
 import { withPrefix } from "gatsby-link";

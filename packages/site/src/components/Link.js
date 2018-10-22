@@ -4,7 +4,7 @@ import LinkTemplate, { withPrefix } from "gatsby-link";
 const isExternalLink = link => /(http|https):\/\/(.*)/.test(link);
 const isImageLink = link => /(.*)(\.jpg|\.png|\.webp)/.test(link);
 
-export const Link = ({ to, children, ...otherProps }) =>
+export const Link = ({ to, children, exact, ...otherProps }) =>
   isExternalLink(to) ? (
     <a {...otherProps} href={to}>
       {children ? children : null}
