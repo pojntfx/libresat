@@ -22,44 +22,106 @@
   author: Felix Pojtinger
   favicon: /img/favicon.png
   socialLinks:
-    - label: Mastodon
-      imgSrc: https://img.shields.io/badge/Mastodon-%40libresat-3088D4.svg?logo=mastodon&style=social
-      to: https://mastodon.cloud/@libresat
-    - label: Twitter
-      imgSrc: https://img.shields.io/badge/Twitter-%40libresat-1DA1F2.svg?logo=twitter&style=social
-      to: https://twitter.com/libresat
-    - label: Reddit
-      imgSrc: https://img.shields.io/badge/reddit-r%2Flibresat-FF4500.svg?logo=reddit&style=social
-      to: https://www.reddit.com/r/libresat/
-    - label: Instagram
-      imgSrc: https://img.shields.io/badge/Instagram-%40libresat-E4405F.svg?logo=instagram&style=social
-      to: https://www.instagram.com/libresat/
-  licenses:
-    media:
-      spdxLicenseIdentifier: CC-BY-SA-4.0
-      product: Media of LibreSat Website
-      copyrightHolder: Felix Pojtinger
-      licenseText: >
-        This work is licensed under a Creative Commons Attribution 4.0 International License.
-      timeSpan: 2018-2014
-      badge:
-        alt: CC-BY-SA-4.0 license badge
-        src: https://licensebuttons.net/l/by-sa/4.0/88x31.png
-      moreInfo:
-        text: the Creative Commons
-        link: https://creativecommons.org/licenses/by-sa/4.0/
-    code:
-      spdxLicenseIdentifier: AGPL-3.0
+    - title: Mastodon
+      img: https://img.shields.io/badge/Mastodon-%40libresat-3088D4.svg?logo=mastodon&style=social
+      link: https://mastodon.cloud/@libresat
+      help:
+        title: Mastodon
+        text: Offical announcements and more.
+        docsLink: https://libresat.space/docs/socials
+    - title: Twitter
+      img: https://img.shields.io/badge/Twitter-%40libresat-1DA1F2.svg?logo=twitter&style=social
+      link: https://twitter.com/libresat
+      help:
+        title: Twitter
+        text: Posts from Mastodon get mirrored over to here.
+        docsLink: https://libresat.space/docs/socials
+    - title: Reddit
+      img: https://img.shields.io/badge/reddit-r%2Flibresat-FF4500.svg?logo=reddit&style=social
+      link: https://www.reddit.com/r/libresat/
+      help:
+        title: Reddit
+        text: An alternative to the forum for general discussion.
+        docsLink: https://libresat.space/docs/socials
+    - title: Instagram
+      img: https://img.shields.io/badge/Instagram-%40libresat-E4405F.svg?logo=instagram&style=social
+      link: https://www.instagram.com/libresat/
+      help:
+        title: Instagram
+        text: Quick and simple, multimedia-driven posts.
+        docsLink: https://libresat.space/docs/socials
+    - title: GitLab
+      img: https://img.shields.io/badge/GitLab-%40libresat-fc6d26.svg?logo=gitlab
+      link: https://gitlab.com/libresat
+      help:
+        title: GitLab
+        text: The central place for LibreSat's development.
+        docsLink: https://libresat.space/docs/socials
+    - title: GitHub
+      img: https://img.shields.io/badge/GitHub-%40libresat-181717.svg?logo=github&logoColor=ffffff
+      link: https://github.com/libresat
+      help:
+        title: GitHub
+        text: A mirror of the LibreSat project.
+        docsLink: https://libresat.space/docs/socials
+    - title: NPM
+      img: https://img.shields.io/badge/npm-%7elibresat-CB3837.svg?logo=npm
+      link: https://www.npmjs.com/~libresat
+      help:
+        title: NPM
+        text: LibreSat as NodeJS packages.
+        docsLink: https://libresat.space/docs/socials
+  legal:
+    global:
       product: LibreSat Website
-      copyrightHolder: Felix Pojtinger
-      licenseText: >
-        This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
-        This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
-        You should have received a copy of the GNU Affero General Public License along with this program. If not, see https://www.gnu.org/licenses/.
-      timeSpan: 2018-2014
-      badge:
-        alt: AGPL-3.0 license badge
-        src: https://www.gnu.org/graphics/agplv3-155x51.png
-      moreInfo:
-        text: the Free Software Foundation
-        link: https://www.gnu.org/licenses/agpl.html
+      timeSpan: 2014-2018
+      holder: Felix Pojtinger
+      help:
+        title: Copyright Holder
+        text:
+          This is the individual or organization that holds the copyright of this
+          product.
+        command: "$ satctl"
+        docsLink: https://libresat.space/source-code
+    licenses:
+      - product: LibreSat Website
+        type: Media
+        icon: images
+        timeSpan: 2014-2018
+        holder: Felix Pojtinger
+        spdxLicenseIdentifier: CC-BY-SA-4.0
+        text:
+          This work is licensed under a Creative Commons Attribution-ShareAlike 4.0
+          International License.
+        badge:
+          img: https://licensebuttons.net/l/by-sa/4.0/88x31.png
+          title: CC-BY-SA-4.0 license badge
+        more:
+          link: https://creativecommons.org/licenses/by-sa/4.0/
+          title: the Creative Commons
+        help:
+          title: Media License
+          text: This is the license that applies to this product's media.
+          command: "$ satctl"
+          docsLink: https://libresat.space/source-code
+      - product: LibreSat Website
+        type: Code
+        icon: code
+        timeSpan: 2014-2018
+        holder: Felix Pojtinger
+        spdxLicenseIdentifier: AGPL-3.0
+        text: |-
+          This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+          This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
+          You should have received a copy of the GNU Affero General Public License along with this program. If not, see https://www.gnu.org/licenses/.
+        badge:
+          img: https://www.gnu.org/graphics/agplv3-155x51.png
+          title: AGPL-3.0 license badge
+        more:
+          link: https://www.gnu.org/licenses/agpl.html
+          title: the Free Software Foundation
+        help:
+          title: Code License
+          text: This is the license that applies to this product's source code.
+          command: "$ satctl"
+          docsLink: https://libresat.space/source-code
