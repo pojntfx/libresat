@@ -7,6 +7,7 @@ interface IDefaultLayoutProps {
   footer: IFooterProps;
   segment?: boolean;
   bg: string;
+  linkComponent: JSX.Element;
 }
 
 export { IDefaultLayoutProps };

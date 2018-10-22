@@ -1,7 +1,6 @@
 import * as React from "react";
 import "semantic-ui-css/semantic.min.css";
 import { Segment } from "semantic-ui-react";
-import { NavLink } from "react-router-dom";
 import { injectGlobal } from "emotion";
 import { Navbar } from "./Navbar/Navbar";
 import { Container } from "./Container";
@@ -14,6 +13,7 @@ const DefaultLayout = ({
   footer,
   segment,
   bg,
+  linkComponent,
   ...otherProps
 }: IDefaultLayoutProps) => (
   <>
@@ -23,7 +23,7 @@ const DefaultLayout = ({
         background-size: cover;
       }
     `}
-    <Navbar linkComponent={NavLink} {...navbar} />
+    <Navbar linkComponent={linkComponent} {...navbar} />
     <Container {...otherProps}>
       {segment ? <Segment>{children}</Segment> : children}
       <Footer {...footer} />

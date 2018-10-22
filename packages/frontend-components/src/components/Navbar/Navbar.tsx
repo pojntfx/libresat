@@ -1,6 +1,5 @@
 import * as React from "react";
 import { MainMenu } from "./MainMenu";
-import { NavLink } from "react-router-dom";
 import { CenterMenu } from "./CenterMenu";
 import { Menu, Icon } from "semantic-ui-react";
 import { EdgeMenu } from "./EdgeMenu";
