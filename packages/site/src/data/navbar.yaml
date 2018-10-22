@@ -1,49 +1,102 @@
-- logoUrl: /img/logo.png
-  startItems:
-    - label: Home
-      icon: home
-      link: /
-    - label: Software
-      icon: code
-      link: /software
-      disabled: true
-    - label: Hardware
-      icon: microchip
-      link: /hardware
-      disabled: true
-    - label: Network
-      icon: globe
-      link: /network
-      disabled: true
-    - label: Docs
-      icon: book
-      link: /docs
-      disabled: true
-  endItems:
-    - label: Blog
-      icon: rss
-      link: /blog
-    - label: Demo
-      icon: eye
-      link: /demo
-      disabled: true
-    - label: Wiki
-      icon: slideshare
-      link: /wiki
-      disabled: true
-    - label: Forum
-      icon: users
-      link: /forum
-      disabled: true
-    - label: Chat
-      icon: conversation
-      link: /chat
-      disabled: true
-    - label: Search
-      icon: search
-      link: /search
-  endItem:
-    label: Source Code
-    icon: fork
-    link: /source-code
+- brand:
+    title: LibreSat
+    img: /img/logo.png
+    link: "/"
     disabled: false
+    help:
+      title: LibreSat
+      text: The Free/Libre and Open Source Satellite Development and Control Platform.
+      command: "$ satctl"
+      docsLink: https://libresat.space
+  firstItems:
+    - title: Site
+      link: /
+      icon: home
+      disabled: false
+      help:
+        title: Website
+        text: The central place for all things LibreSat.
+  startItems:
+    - title: Home
+      link: /
+      icon: home
+      help:
+        title: Home Page
+        text: Get an overview of the project.
+    - title: Software
+      link: /software
+      icon: code
+      disabled: true
+      help:
+        title: Software
+        text: Free/Libre and Open Source Software for your Satellite.
+    - title: Hardware
+      link: /hardware
+      icon: microchip
+      disabled: true
+      help:
+        title: Hardware
+        text: Free/Libre and Open Source Hardware for your Satellite.
+    - title: Network
+      link: /network
+      icon: globe
+      disabled: true
+      help:
+        title: Network
+        text: Federalize your LibreSat.
+    - title: Docs
+      link: /docs
+      icon: book
+      disabled: true
+      help:
+        title: Documentation
+        text: Learn how to use LibreSat.
+  endItems:
+    - title: Blog
+      link: /blog
+      icon: rss
+      help:
+        title: Blog
+        text: Posts on all things LibreSat.
+    - title: Demo
+      link: /demo
+      icon: eye
+      disabled: true
+      help:
+        title: Demo
+        text: Try out a public demo of LibreSat.
+    - title: Wiki
+      link: /wiki
+      icon: slideshare
+      disabled: true
+      help:
+        title: Wiki
+        text: Open and easy community-driven documentation.
+    - title: Forum
+      link: /forum
+      icon: users
+      disabled: true
+      help:
+        title: Forum
+        text: A place for public and persistent discussion.
+    - title: Chat
+      link: /chat
+      icon: conversation
+      disabled: true
+      help:
+        title: Chat
+        text: Quick and easy support and general chat.
+    - title: Search
+      link: /search
+      icon: search
+      help:
+        title: Site Search
+        text: Search for anything on this site.
+  lastItems:
+    - title: Source Code
+      link: /source-code
+      icon: fork
+      disabled: false
+      help:
+        title: Source Code
+        text: Contribute to or get the LibreSat project.

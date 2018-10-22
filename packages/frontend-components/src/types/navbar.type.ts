@@ -7,7 +7,7 @@ interface INavbarProps {
   startItems: IItem[];
   endItems: IItem[];
   lastItems: IItem[];
-  linkComponent?: JSX.Element;
+  linkComponent: JSX.Element;
 }
 
 interface IBrand {

@@ -9,6 +9,7 @@ import {
   Footer,
   IDefaultLayoutProps
 } from "@libresat/frontend-components";
+import { NavLink } from "react-router-dom";
 
 const DefaultLayoutStyles = createGlobalStyle`
   body {
@@ -26,7 +27,7 @@ const DefaultLayout = ({
 }: IDefaultLayoutProps) => (
   <>
     <DefaultLayoutStyles />
-    <Navbar {...navbar} />
+    <Navbar linkComponent={NavLink} {...navbar} />
     <Container {...otherProps}>
       {segment ? <Segment>{children}</Segment> : children}
       <Footer {...footer} />
