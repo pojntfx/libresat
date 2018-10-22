@@ -1,11 +1,14 @@
 import * as React from "react";
 import "semantic-ui-css/semantic.min.css";
-import { Navbar, Container } from "../global";
-import { Footer } from "../global/Footer/Footer";
-import { IDefaultLayoutProps } from "../../types";
 import { createGlobalStyle } from "styled-components";
 import bg from "../../assets/bg.jpg";
 import { Segment } from "semantic-ui-react";
+import {
+  Navbar,
+  Container,
+  Footer,
+  IDefaultLayoutProps
+} from "@libresat/frontend-components";
 
 const DefaultLayoutStyles = createGlobalStyle`
   body {

@@ -1,10 +1,14 @@
 import * as React from "react";
 import { DefaultLayout } from "../layouts";
 import { navbarData, footerData, homeData } from "../../data";
-import { IFooterProps, IHomePage, INavbarProps } from "../../types";
-import { ActionBar } from "../global";
+import {
+  ActionBar,
+  INavbarProps,
+  IFooterProps
+} from "@libresat/frontend-components";
+import { IPage } from "../../types";
 
-const HomePage = (props: IHomePage) => (
+const HomePage = (props: IPage) => (
   <DefaultLayout
     navbar={navbarData as INavbarProps}
     footer={footerData as IFooterProps}
