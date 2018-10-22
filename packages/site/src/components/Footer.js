@@ -1,180 +1,11 @@
 import React from "react";
-import { Segment, Grid, Modal, Button } from "semantic-ui-react";
 import { StaticQuery, graphql } from "gatsby";
-import styled from "styled-components";
-import { Link } from "../components/Link";
-
-const FooterWrapper = styled(Segment)`
-  margin-top: 1em !important;
-  margin-bottom: 1em !important;
-`;
-
-const FooterSection = styled(Grid.Column)`
-  display: flex !important;
-  align-items: center;
-  justify-content: start;
-  &:last-child {
-    justify-content: end;
-  }
-  @media (max-width: 767px) {
-    justify-content: center !important;
-  }
-`;
-
-const FooterLegalGrid = styled(Grid)`
-  margin-left: auto !important;
-`;
-
-const MetaButton = styled(Button).attrs({ fluid: true })`
-  white-space: nowrap;
-`;
-
-const LicenseBadgeImg = styled.img`
-  padding-bottom: 1em;
-`;
-
-const LicenseBadge = ({ src, alt, href, ...otherProps }) => (
-  <a href={href}>
-    <LicenseBadgeImg src={src} alt={alt} {...otherProps} />
-  </a>
-);
-
-const LicenseTextCodeWrapper = styled.div`
-  padding-top: 1em;
-  padding-bottom: 1em;
-`;
-
-const LicenseTextCode = styled.code`
-  overflow-x: auto;
-`;
-
-const LicenseText = ({ children, ...otherProps }) => (
-  <LicenseTextCodeWrapper {...otherProps}>
-    <LicenseTextCode>{children}</LicenseTextCode>
-  </LicenseTextCodeWrapper>
-);
-
-const LicenseInfo = ({
-  spdxLicenseIdentifier,
-  product,
-  copyrightHolder,
-  licenseText,
-  timeSpan,
-  badge,
-  moreInfo
-}) => (
-  <Modal.Content>
-    <LicenseBadge src={badge.src} alt={badge.alt} href={moreInfo.link} />
-    <p>
-      {product} &copy; {timeSpan} {copyrightHolder}
-    </p>
-    <span>SPDX-License-Identifier: {spdxLicenseIdentifier}</span>
-    <br />
-    <LicenseText>{licenseText}</LicenseText>
-    <p>
-      Find out more about this license over at{" "}
-      <a href={moreInfo.link}>{moreInfo.text}</a>.
-    </p>
-  </Modal.Content>
-);
-
-const SocialButtonTemplate = ({ src, alt, to, ...otherProps }, index) => (
-  <Link to={to} key={index} {...otherProps}>
-    <img src={src} alt={alt} />
-  </Link>
-);
-
-const SocialButton = styled(SocialButtonTemplate)`
-  display: block;
-  margin-right: 1em;
-  &:first-child {
-    margin-left: auto;
-  }
-  &:last-child {
-    margin-right: auto;
-  }
-`;
-
-const SocialsWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  overflow-x: auto;
-  margin-top: 1em;
-  margin-bottom: 1.75em;
-`;
-
-const Socials = ({ links, ...otherProps }) => (
-  <SocialsWrapper {...otherProps}>
-    {links.map(({ imgSrc: src, label: alt, ...rest }, index) => (
-      <SocialButton src={src} alt={alt} key={index} {...rest} />
-    ))}
-  </SocialsWrapper>
-);
-
-const FooterContent = ({ socialLinks, licenses: { media, code } }) => (
-  <FooterWrapper>
-    <Socials links={socialLinks} />
-    <Grid stackable columns={2}>
-      <FooterSection width={4}>
-        <span>
-          &copy; {media.timeSpan} {media.copyrightHolder}
-        </span>
-      </FooterSection>
-      <FooterSection width={12}>
-        <FooterLegalGrid stackable columns={3}>
-          <Grid.Column>
-            <Modal
-              trigger={<MetaButton icon="images" content="Media License" />}
-              closeIcon
-            >
-              <Modal.Header>Media License</Modal.Header>
-              <LicenseInfo
-                spdxLicenseIdentifier={media.spdxLicenseIdentifier}
-                product={media.product}
-                copyrightHolder={media.copyrightHolder}
-                licenseText={media.licenseText}
-                timeSpan={media.timeSpan}
-                badge={media.badge}
-                moreInfo={media.moreInfo}
-              />
-            </Modal>
-          </Grid.Column>
-          <Grid.Column>
-            <Modal
-              trigger={<MetaButton icon="code" content="Code License" />}
-              closeIcon
-            >
-              <Modal.Header>Code License</Modal.Header>
-              <LicenseInfo
-                spdxLicenseIdentifier={code.spdxLicenseIdentifier}
-                product={code.product}
-                copyrightHolder={code.copyrightHolder}
-                licenseText={code.licenseText}
-                timeSpan={code.timeSpan}
-                badge={code.badge}
-                moreInfo={code.moreInfo}
-              />
-            </Modal>
-          </Grid.Column>
-          <Grid.Column>
-            <MetaButton
-              icon="legal"
-              content="Imprint"
-              as={Link}
-              to="/imprint"
-              activeClassName="active"
-            />
-          </Grid.Column>
-        </FooterLegalGrid>
-      </FooterSection>
-    </Grid>
-  </FooterWrapper>
-);
+import { Footer as FooterTemplate } from "@libresat/frontend-components";
 
 export const FooterView = ({ data, ...otherProps }) => (
-  <FooterContent
+  <FooterTemplate
     socialLinks={data.siteYaml.socialLinks}
-    licenses={data.siteYaml.licenses}
+    legal={data.siteYaml.legal}
     {...otherProps}
   />
 );
@@ -185,39 +16,48 @@ export const Footer = () => (
       query FooterQuery {
         siteYaml {
           socialLinks {
-            label
-            imgSrc
-            to
+            title
+            img
+            link
+            help {
+              title
+              text
+              docsLink
+            }
           }
-          licenses {
-            media {
-              spdxLicenseIdentifier
+          legal {
+            global {
               product
-              copyrightHolder
-              licenseText
               timeSpan
-              badge {
-                alt
-                src
-              }
-              moreInfo {
+              holder
+              help {
+                title
                 text
-                link
+                docsLink
+                command
               }
             }
-            code {
-              spdxLicenseIdentifier
+            licenses {
               product
-              copyrightHolder
-              licenseText
+              type
+              icon
               timeSpan
+              holder
+              spdxLicenseIdentifier
+              text
               badge {
-                alt
-                src
+                img
+                title
               }
-              moreInfo {
-                text
+              more {
                 link
+                title
+              }
+              help {
+                title
+                text
+                command
+                docsLink
               }
             }
           }

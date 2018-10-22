@@ -10,8 +10,8 @@
       docsLink: https://libresat.space
   firstItems:
     - title: Site
-      link: /
-      icon: home
+      link: /about
+      icon: globe
       disabled: false
       help:
         title: Website
