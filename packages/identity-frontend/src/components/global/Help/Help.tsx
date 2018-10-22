@@ -1,9 +1,12 @@
 import * as React from "react";
-import { Popup, Input } from "semantic-ui-react";
+import { Popup } from "semantic-ui-react";
 import { HelpPopupHeader } from "./HelpPopupHeader";
 import { HelpDocsLink } from "./HelpDocsLink";
 import { HelpAccordion } from "./HelpAccordion";
 import { IHelpProps } from "../../../types";
+import { Button } from "../Button";
+import { CopyToClipboard } from "react-copy-to-clipboard";
+import { HelpInput } from "./HelpInput";
 
 const Help = ({
   title,
@@ -16,6 +19,8 @@ const Help = ({
   <Popup
     hoverable
     flowing
+    keepInViewPort
+    wide="very"
     trigger={React.cloneElement(children, otherProps)} // Enable passing props such as onClick to triggers
     {...otherProps}
   >
@@ -33,10 +38,21 @@ const Help = ({
               key: 1,
               content: {
                 content: (
-                  <Input
+                  <HelpInput
                     fluid
                     label={command[0]} // $ or #
                     value={command.substring(2)}
+                    action={
+                      <CopyToClipboard
+                        text={
+                          command[0] === "$"
+                            ? command.substring(2)
+                            : `sudo ${command.substring(2)}`
+                        }
+                      >
+                        <Button icon="copy" content="Copy" />
+                      </CopyToClipboard>
+                    }
                   />
                 )
               }
