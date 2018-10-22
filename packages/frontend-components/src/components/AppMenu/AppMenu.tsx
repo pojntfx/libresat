@@ -5,7 +5,12 @@ import { AppMenuSearchInput } from "./AppMenuSearchInput";
 import { Help } from "../Help/Help";
 import { IAppMenuProps } from "../../types";
 
-const AppMenu = ({ search, apps, ...otherProps }: IAppMenuProps) => (
+const AppMenu = ({
+  search,
+  apps,
+  linkComponent,
+  ...otherProps
+}: IAppMenuProps) => (
   <>
     <Help {...search.help}>
       <AppMenuSearchInput
@@ -25,7 +30,7 @@ const AppMenu = ({ search, apps, ...otherProps }: IAppMenuProps) => (
       <Grid.Row>
         {apps.map((app, index) => (
           <Grid.Column key={index}>
-            <AppMenuButton {...app} />
+            <AppMenuButton linkComponent={linkComponent} {...app} />
           </Grid.Column>
         ))}
       </Grid.Row>

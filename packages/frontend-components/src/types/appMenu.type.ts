@@ -5,6 +5,10 @@ import { IActionBarProps } from "./actionBar.type";
 interface IAppMenuProps {
   apps: IAppButtonProps[];
   search: IActionBarProps["search"];
+  linkComponent(
+    to: IAppButtonProps["link"],
+    children: JSX.Element
+  ): JSX.Element;
 }
 
 interface IAppButtonProps {
@@ -13,7 +17,7 @@ interface IAppButtonProps {
   link: string;
   disabled?: boolean;
   help: IHelp;
-  linkComponent?: JSX.Element;
+  linkComponent: IAppMenuProps["linkComponent"];
 }
 
 interface IAppButtonContentProps {

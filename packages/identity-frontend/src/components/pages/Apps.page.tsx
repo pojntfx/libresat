@@ -8,6 +8,7 @@ import {
   IAppMenuProps
 } from "@libresat/frontend-components";
 import { IPage } from "../../types";
+import { NavLink } from "react-router-dom";
 
 const AppsPage = (props: IPage) => (
   <DefaultLayout
@@ -21,6 +22,7 @@ const AppsPage = (props: IPage) => (
         onSearch: () => console.log("Searching for app ..."),
         ...appsData.appMenu.search
       }}
+      linkComponent={(to, children) => <NavLink to={to}>{children}</NavLink>}
     />
   </DefaultLayout>
 );
