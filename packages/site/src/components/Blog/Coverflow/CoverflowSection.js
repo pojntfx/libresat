@@ -1,8 +1,9 @@
 import React from "react";
 import { withPrefix } from "gatsby";
-import { Coverflow } from "./Coverflow";
 import { NonFeaturedSection } from "./NonFeaturedSection";
 import { FeaturedSection } from "./FeaturedSection";
+import { Coverflow } from "@libresat/frontend-components";
+import { Link } from "../../Link";
 
 export const CoverflowView = (
   {
@@ -13,7 +14,8 @@ export const CoverflowView = (
   ...otherProps
 ) => (
   <Coverflow
-    posts={edges.map(
+    linkComponent={Link}
+    items={edges.map(
       ({
         node: {
           parent,
@@ -22,7 +24,7 @@ export const CoverflowView = (
           excerpt
         }
       }) => ({
-        imgSrc: withPrefix(imgSrc),
+        image: withPrefix(imgSrc),
         link: `/blog/${parent.name}`,
         header: headings.filter(({ depth }) => depth === 1)[0].value,
         meta: `${new Date(

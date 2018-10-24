@@ -8,3 +8,5 @@ export { Help } from "./Help/Help";
 export { Footer } from "./Footer/Footer";
 export { AppMenu } from "./AppMenu/AppMenu";
 export { DefaultLayout } from "./DefaultLayout";
+export { Coverflow } from "./Coverflow/Coverflow";
+export { CoverflowItem } from "./Coverflow/CoverflowItem";

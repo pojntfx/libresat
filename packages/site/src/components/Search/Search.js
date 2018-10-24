@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import { Input as InputTemplate, Transition } from "semantic-ui-react";
 import { search } from "../../utils/search";
 import styled from "react-emotion";
-import { Post } from "../Blog/Coverflow/Coverflow";
 import { Link } from "../Link";
+import { CoverflowItem } from "@libresat/frontend-components";
 
 const InputView = styled(InputTemplate)`
   ${props =>
@@ -42,13 +42,13 @@ export class SearchFilter extends Component {
         />
         <Transition.Group animation="scale">
           {this.state.results.map(({ link, imgSrc, ...props }, index) => (
-            <Post
+            <CoverflowItem
               fluid
               {...props}
               as={Link}
               to={link}
               key={index}
-              imgSrc={imgSrc}
+              image={imgSrc}
             />
           ))}
         </Transition.Group>
