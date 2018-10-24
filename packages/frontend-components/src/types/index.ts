@@ -20,3 +20,4 @@ export {
 } from "./footer.type";
 export { INavbarProps, IBrand, IItem } from "./navbar.type";
 export { IDefaultLayoutProps } from "./default.layout.type";
+export { ICoverflowProps, ICoverflowItemProps } from "./coverFlow.type";

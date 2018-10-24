@@ -8,7 +8,9 @@ export {
   Help,
   Footer,
   AppMenu,
-  DefaultLayout
+  DefaultLayout,
+  Coverflow,
+  CoverflowItem
 } from "./components";
 
 export {
@@ -21,5 +23,7 @@ export {
   ILegalTextProps,
   ISocialsProps,
   INavbarProps,
-  IDefaultLayoutProps
+  IDefaultLayoutProps,
+  ICoverflowProps,
+  ICoverflowItemProps
 } from "./types";
