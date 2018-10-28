@@ -1,6 +1,6 @@
 {
   "name": "@libresat/site",
-  "version": "0.0.1-49",
+  "version": "0.0.1-50",
   "description": "The LibreSat website",
   "author": "Felix Pojtinger <felix@pojtinger.com>",
   "license": "AGPL-3.0",
@@ -53,7 +53,7 @@
     "web.dev::test--watch": "run-s web.prod::test--watch"
   },
   "dependencies": {
-    "@libresat/frontend-components": "^0.0.1-49",
+    "@libresat/frontend-components": "^0.0.1-50",
     "@mdx-js/mdx": "^0.15.5",
     "@mdx-js/tag": "^0.15.0",
     "copy-webpack-plugin": "^4.5.4",
