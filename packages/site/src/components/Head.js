@@ -1,7 +1,7 @@
 import React from "react";
 import { StaticQuery, graphql } from "gatsby";
-import { Helmet } from "react-helmet";
 import { withPrefix } from "gatsby-link";
+import { Head as HeadTemplate } from "@libresat/frontend-components";
 
 const Title = ({
   data: {
@@ -24,36 +24,17 @@ const Title = ({
   lang: pageLang,
   ...otherProps
 }) => (
-  <Helmet {...otherProps}>
-    <html lang={pageLang ? pageLang : siteLang} />
-    <meta charSet="utf-8" />
-    <meta httpEquiv="x-ua-compatible" content="ie=edge" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
-    <meta
-      name="theme-color"
-      content={pageThemeColor ? pageThemeColor : siteThemeColor}
-    />
-    <meta
-      name="description"
-      content={pageDescription ? pageDescription : siteDescription}
-    />
-    <meta
-      name="keywords"
-      content={pageKeywords ? pageKeywords.join(", ") : siteKeywords.join(", ")}
-    />
-    <meta name="author" content={pageAuthor ? pageAuthor : siteAuthor} />
-    <link
-      rel="icon"
-      href={pageFavicon ? pageFavicon : withPrefix(siteFavicon)}
-    />
-    {/* TODO: Add icon and manifest */}
-    <title>
-      {siteTitle} | {pageTitle}
-    </title>
-  </Helmet>
+  <HeadTemplate
+    title={pageTitle}
+    description={pageDescription ? pageDescription : siteDescription}
+    author={pageAuthor ? pageAuthor : siteAuthor}
+    keywords={pageKeywords ? pageKeywords : siteKeywords}
+    favion={pageFavicon ? withPrefix(pageFavicon) : withPrefix(siteFavicon)}
+    siteTitle={siteTitle}
+    themeColor={pageThemeColor ? pageThemeColor : siteThemeColor}
+    lang={pageLang ? pageLang : siteLang}
+    {...otherProps}
+  />
 );
 
 export const Head = props => (

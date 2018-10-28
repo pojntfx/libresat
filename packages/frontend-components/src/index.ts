@@ -13,7 +13,8 @@ export {
   CoverflowItem,
   Gallery,
   GalleryItem,
-  Header
+  Header,
+  Head
 } from "./components";
 
 export {
@@ -30,5 +31,6 @@ export {
   ICoverflowProps,
   ICoverflowItemProps,
   IGalleryProps,
-  IGalleryItemProps
+  IGalleryItemProps,
+  IHeadProps
 } from "./types";
