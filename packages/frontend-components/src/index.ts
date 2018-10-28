@@ -23,7 +23,8 @@ export {
   Broadcast,
   VideoModal,
   Hero,
-  Divider
+  Divider,
+  Statistics
 } from "./components";
 
 export {
@@ -51,5 +52,6 @@ export {
   IVideoModalProps,
   IHeroProps,
   IDividerProps,
-  IDividerWrapperProps
+  IDividerWrapperProps,
+  IStatisticsProps
 } from "./types";
