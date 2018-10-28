@@ -18,3 +18,5 @@ export { Search } from "./Search/Search";
 export { Paper } from "./Paper";
 export { Loader } from "./Loader";
 export { Broadcast } from "./Broadcast";
+export { VideoModal } from "./VideoModal/VideoModal";
+export { Hero } from "./Hero/Hero";
