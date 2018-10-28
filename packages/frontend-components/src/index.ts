@@ -15,7 +15,8 @@ export {
   GalleryItem,
   Header,
   Head,
-  PageNotFound
+  PageNotFound,
+  NoScript
 } from "./components";
 
 export {
@@ -34,5 +35,6 @@ export {
   IGalleryProps,
   IGalleryItemProps,
   IHeadProps,
-  IPageNotFoundProps
+  IPageNotFoundProps,
+  INoScriptProps
 } from "./types";

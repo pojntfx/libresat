@@ -6,6 +6,7 @@ import { Image } from "../components/Blog/Image";
 import { Paper } from "../components/Paper";
 import { DefaultLayout } from "@libresat/frontend-components";
 import { StaticQuery, graphql } from "gatsby";
+import { NoScript } from "../components/NoScript";
 
 const BaseView = ({ data, children, ...otherProps }) => (
   <MDXProvider
@@ -21,6 +22,7 @@ const BaseView = ({ data, children, ...otherProps }) => (
       )
     }}
   >
+    <NoScript />
     <DefaultLayout
       linkComponent={Link}
       navbar={data.navbarYaml}

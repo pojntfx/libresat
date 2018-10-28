@@ -1,12 +1,6 @@
 import React from "react";
 import { StaticQuery, graphql } from "gatsby";
-import { Message as MessageTemplate, Container } from "semantic-ui-react";
-import styled from "react-emotion";
-
-const Message = styled(MessageTemplate)`
-  margin-top: 1em !important;
-  margin-bottom: 1em !important;
-`;
+import { NoScript as NoScriptTemplate } from "@libresat/frontend-components";
 
 const NoScriptView = ({
   data: {
@@ -14,16 +8,11 @@ const NoScriptView = ({
   },
   ...otherProps
 }) => (
-  <noscript {...otherProps}>
-    <Container>
-      <Message
-        warning
-        icon="js"
-        header={noscriptHeader}
-        content={noscriptBody}
-      />
-    </Container>
-  </noscript>
+  <NoScriptTemplate
+    title={noscriptHeader}
+    text={noscriptBody}
+    {...otherProps}
+  />
 );
 
 export const NoScript = props => (

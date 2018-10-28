@@ -19,8 +19,8 @@ const DefaultLayout = ({
   <>
     {injectGlobal`
       body {
-        background: url(${bg}) no-repeat center center fixed;
-        background-size: cover;
+        background: url(${bg}) no-repeat center center fixed !important;
+        background-size: cover !important;
       }
     `}
     <Navbar linkComponent={linkComponent} {...navbar} />

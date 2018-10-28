@@ -13,3 +13,4 @@ export { Gallery, GalleryItem } from "./Gallery/Gallery";
 export { Header } from "./Header/Header";
 export { Head } from "./Head";
 export { PageNotFound } from "./PageNotFound/PageNotFound";
+export { NoScript } from "./NoScript/NoScript";
