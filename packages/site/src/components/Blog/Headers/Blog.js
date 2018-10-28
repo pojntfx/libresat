@@ -1,13 +1,13 @@
 import React from "react";
 import { StaticQuery, graphql } from "gatsby";
-import { PageHeader } from "./PageHeader";
+import { Header } from "@libresat/frontend-components";
 
 const BlogHeaderView = ({
   data: {
     allBlogHeadersYaml: { edges }
   },
   ...otherProps
-}) => <PageHeader as="h1" {...edges[0].node} {...otherProps} />;
+}) => <Header as="h1" {...edges[0].node} {...otherProps} />;
 
 export const BlogHeader = props => (
   <StaticQuery

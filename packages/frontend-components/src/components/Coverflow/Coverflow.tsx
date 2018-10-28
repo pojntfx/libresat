@@ -15,4 +15,4 @@ const Coverflow = ({
   </CoverflowWrapper>
 );
 
-export { Coverflow };
+export { Coverflow, CoverflowItem };
