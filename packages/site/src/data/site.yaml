@@ -10,7 +10,12 @@
   keywords:
     - LibreSat
     - OpenSDCP
+    - LibreSDCP
     - Satellite
+    - LibreSatellite
+    - FreeSatellite
+    - OpenSatellite
+    - OpenSourceSatellite
     - Spacecraft
     - OpenHardware
     - OpenSourceHardware
@@ -18,8 +23,12 @@
     - FreeSoftware
     - OpenSourceSoftware
     - Libre
+    - LibreSoftware
+    - LibreHardware
+    - GNU
+    - Linux
     - SatNOGS
-  author: Felix Pojtinger
+  author: Felix Pojtinger <felix@pojtinger.com> @pojntfx
   favicon: /img/favicon.png
   socialLinks:
     - title: Mastodon

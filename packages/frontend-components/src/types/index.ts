@@ -22,3 +22,4 @@ export { INavbarProps, IBrand, IItem } from "./navbar.type";
 export { IDefaultLayoutProps } from "./default.layout.type";
 export { ICoverflowProps, ICoverflowItemProps } from "./coverFlow.type";
 export { IGalleryProps, IGalleryItemProps } from "./gallery.type";
+export { IHeadProps } from "./head.type";
