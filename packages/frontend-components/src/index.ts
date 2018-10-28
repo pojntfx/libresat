@@ -12,7 +12,8 @@ export {
   Coverflow,
   CoverflowItem,
   Gallery,
-  GalleryItem
+  GalleryItem,
+  Header
 } from "./components";
 
 export {

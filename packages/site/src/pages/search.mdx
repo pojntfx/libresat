@@ -7,12 +7,12 @@ date: 2018-08-27
 ---
 
 import { Base } from "../layouts/Base";
-import { PageHeader } from "../components/Blog/Headers/PageHeader";
+import { Header } from "@libresat/frontend-components";
 import { SearchSection } from "../components/Search/SearchSection";
 import { Head } from "../components/Head"
 
 export default ({children}) => <Base>{children}</Base>
 
 <Head title="Search" />
-<PageHeader as="h1" content="Search" subheader="Filter the universe" />
+<Header as="h1" content="Search" subheader="Filter the universe" />
 <SearchSection />

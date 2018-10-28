@@ -11,4 +11,4 @@ const Gallery = ({ items, linkComponent, ...otherProps }: IGalleryProps) => (
   </GalleryWrapper>
 );
 
-export { Gallery };
+export { Gallery, GalleryItem };
