@@ -1,19 +1,16 @@
 import React from "react";
-import { withPrefix } from "gatsby";
-import { Gallery } from "./Gallery";
+import { Gallery } from "@libresat/frontend-components";
 import { NonFeaturedSection } from "./NonFeaturedSection";
 import { FeaturedSection } from "./FeaturedSection";
+import { Link } from "../../Link";
 
-export const GallerySectionView = (
-  {
-    data: {
-      allMdx: { edges }
-    }
-  },
-  ...otherProps
-) => (
+export const GallerySectionView = ({
+  data: {
+    allMdx: { edges }
+  }
+}) => (
   <Gallery
-    posts={edges.map(
+    items={edges.map(
       ({
         node: {
           parent,
@@ -24,7 +21,7 @@ export const GallerySectionView = (
         }
       }) => {
         return {
-          imgSrc: withPrefix(imgSrc),
+          image: imgSrc,
           link: `/blog/${parent.name}`,
           header: headings.filter(({ depth }) => depth === 1)[0].value,
           meta: `${new Date(
@@ -41,9 +38,9 @@ export const GallerySectionView = (
         };
       }
     )}
-    {...otherProps}
+    linkComponent={Link}
   />
 );
 
-export const GallerySection = ({ featured, ...otherProps }) =>
+export const GallerySection = ({ featured }) =>
   featured ? <FeaturedSection /> : <NonFeaturedSection />;

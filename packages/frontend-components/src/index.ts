@@ -10,7 +10,9 @@ export {
   AppMenu,
   DefaultLayout,
   Coverflow,
-  CoverflowItem
+  CoverflowItem,
+  Gallery,
+  GalleryItem
 } from "./components";
 
 export {
@@ -25,5 +27,7 @@ export {
   INavbarProps,
   IDefaultLayoutProps,
   ICoverflowProps,
-  ICoverflowItemProps
+  ICoverflowItemProps,
+  IGalleryProps,
+  IGalleryItemProps
 } from "./types";

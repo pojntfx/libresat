@@ -24,7 +24,7 @@ export const CoverflowView = (
           excerpt
         }
       }) => ({
-        image: withPrefix(imgSrc),
+        image: imgSrc,
         link: `/blog/${parent.name}`,
         header: headings.filter(({ depth }) => depth === 1)[0].value,
         meta: `${new Date(

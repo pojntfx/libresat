@@ -6,3 +6,5 @@ lerna-debug.log
 dist/
 # Generated docs
 docs-dist/
+# macOS
+.DS_STORE

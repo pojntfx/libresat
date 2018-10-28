@@ -10,3 +10,5 @@ export { AppMenu } from "./AppMenu/AppMenu";
 export { DefaultLayout } from "./DefaultLayout";
 export { Coverflow } from "./Coverflow/Coverflow";
 export { CoverflowItem } from "./Coverflow/CoverflowItem";
+export { Gallery } from "./Gallery/Gallery";
+export { GalleryItem } from "./Gallery/GalleryItem";
