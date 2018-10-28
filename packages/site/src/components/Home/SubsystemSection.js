@@ -16,6 +16,7 @@ const SubsystemView = ({
           header: { docsLink, forumLink, ...header },
           overviewDivider,
           trendingProjectsDivider,
+          statistics,
           ...subsystemYaml
         }
       },
@@ -34,6 +35,10 @@ const SubsystemView = ({
           title: trendingProjectsDivider.label,
           ...trendingProjectsDivider
         }}
+        statistics={statistics.map(({ label, ...rest }) => ({
+          title: label,
+          ...rest
+        }))}
         {...subsystemYaml}
         {...otherProps}
       />
