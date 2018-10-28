@@ -22,7 +22,8 @@ export {
   Loader,
   Broadcast,
   VideoModal,
-  Hero
+  Hero,
+  Divider
 } from "./components";
 
 export {
@@ -48,5 +49,7 @@ export {
   ILoaderProps,
   IBroadcastProps,
   IVideoModalProps,
-  IHeroProps
+  IHeroProps,
+  IDividerProps,
+  IDividerWrapperProps
 } from "./types";

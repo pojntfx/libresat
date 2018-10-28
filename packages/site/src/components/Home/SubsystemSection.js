@@ -14,6 +14,8 @@ const SubsystemView = ({
         node: {
           imgSrc,
           header: { docsLink, forumLink, ...header },
+          overviewDivider,
+          trendingProjectsDivider,
           ...subsystemYaml
         }
       },
@@ -27,6 +29,11 @@ const SubsystemView = ({
           ...header
         }}
         key={key}
+        overviewDivider={{ title: overviewDivider.label, ...overviewDivider }}
+        trendingProjectsDivider={{
+          title: trendingProjectsDivider.label,
+          ...trendingProjectsDivider
+        }}
         {...subsystemYaml}
         {...otherProps}
       />
