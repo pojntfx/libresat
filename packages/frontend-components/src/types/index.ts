@@ -28,3 +28,5 @@ export { INoScriptProps } from "./noScript.type";
 export { ISearchProps, ISearchResult } from "./search.type";
 export { ILoaderProps } from "./loader.type";
 export { IBroadcastProps } from "./broadcast.type";
+export { IVideoModalProps } from "./videoModal.type";
+export { IHeroProps } from "./hero.type";

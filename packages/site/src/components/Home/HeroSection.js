@@ -1,15 +1,26 @@
 import React from "react";
 import { withPrefix, StaticQuery, graphql } from "gatsby";
-import { Hero } from "./Hero";
+import { Hero } from "@libresat/frontend-components";
+import { Link } from "../Link";
 
 const HeroView = ({
   data: {
-    heroYaml: { primaryAction, ...heroYaml }
+    heroYaml: { primaryAction, secondaryAction, ...heroYaml }
   },
   ...otherProps
 }) => (
   <Hero
-    primaryAction={{ link: withPrefix(primaryAction.link), ...primaryAction }}
+    primaryAction={{
+      title: primaryAction.label,
+      link: withPrefix(primaryAction.link),
+      ...primaryAction
+    }}
+    secondaryAction={{
+      title: secondaryAction.label,
+      video: secondaryAction.videoSrc,
+      ...secondaryAction
+    }}
+    linkComponent={Link}
     {...heroYaml}
     {...otherProps}
   />

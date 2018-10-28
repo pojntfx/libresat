@@ -20,7 +20,9 @@ export {
   Search,
   Paper,
   Loader,
-  Broadcast
+  Broadcast,
+  VideoModal,
+  Hero
 } from "./components";
 
 export {
@@ -44,5 +46,7 @@ export {
   ISearchProps,
   ISearchResult,
   ILoaderProps,
-  IBroadcastProps
+  IBroadcastProps,
+  IVideoModalProps,
+  IHeroProps
 } from "./types";
