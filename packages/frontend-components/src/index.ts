@@ -19,7 +19,8 @@ export {
   NoScript,
   Search,
   Paper,
-  Loader
+  Loader,
+  Broadcast
 } from "./components";
 
 export {
@@ -42,5 +43,6 @@ export {
   INoScriptProps,
   ISearchProps,
   ISearchResult,
-  ILoaderProps
+  ILoaderProps,
+  IBroadcastProps
 } from "./types";

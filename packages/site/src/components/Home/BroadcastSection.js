@@ -1,23 +1,26 @@
 import React from "react";
 import { withPrefix, StaticQuery, graphql } from "gatsby";
-import { Broadcast } from "./Broadcast";
+import { Broadcast } from "@libresat/frontend-components";
+import { Link } from "../Link";
 
 const BroadcastView = ({
   data: {
     mdx: {
       parent: { relativePath },
       headings,
-      frontmatter
+      frontmatter: { excerpt }
     },
-    broadcastYaml: { postsLink, ...broadcastYaml }
+    broadcastYaml: { postsLink, readMore, icon }
   },
   ...otherProps
 }) => (
   <Broadcast
-    link={withPrefix(`${postsLink}/${relativePath.split(".")[0]}`)}
     title={headings.filter(({ depth }) => depth === 1)[0].value}
-    {...frontmatter}
-    {...broadcastYaml}
+    text={excerpt}
+    icon={icon}
+    readMoreLink={withPrefix(`${postsLink}/${relativePath.split(".")[0]}`)}
+    readMoreText={readMore}
+    linkComponent={(to, children) => <Link to={to}>{children}</Link>}
     {...otherProps}
   />
 );

@@ -22,19 +22,21 @@ const BaseView = ({ data, children, ...otherProps }) => (
       )
     }}
   >
-    <NoScript />
-    <DefaultLayout
-      linkComponent={Link}
-      navbar={data.navbarYaml}
-      footer={{
-        socialLinks: data.siteYaml.socialLinks,
-        legal: data.siteYaml.legal
-      }}
-      bg={withPrefix("/img/bg.jpg")}
-      {...otherProps}
-    >
-      {children}
-    </DefaultLayout>
+    <>
+      <NoScript />
+      <DefaultLayout
+        linkComponent={Link}
+        navbar={data.navbarYaml}
+        footer={{
+          socialLinks: data.siteYaml.socialLinks,
+          legal: data.siteYaml.legal
+        }}
+        bg={withPrefix("/img/bg.jpg")}
+        {...otherProps}
+      >
+        {children}
+      </DefaultLayout>
+    </>
   </MDXProvider>
 );
 
