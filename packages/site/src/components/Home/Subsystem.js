@@ -4,7 +4,7 @@ import { Card, Image } from "semantic-ui-react";
 import { Overview } from "./Overview";
 import { Description } from "./Description";
 import { Header } from "./Header";
-import { Divider } from "./Divider";
+import { Divider } from "@libresat/frontend-components";
 import { TrendingProjects } from "./TrendingProjects";
 
 export const Subsystem = ({

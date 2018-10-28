@@ -20,3 +20,4 @@ export { Loader } from "./Loader";
 export { Broadcast } from "./Broadcast";
 export { VideoModal } from "./VideoModal/VideoModal";
 export { Hero } from "./Hero/Hero";
+export { Divider } from "./Divider/Divider";
