@@ -12,3 +12,4 @@ export { Coverflow, CoverflowItem } from "./Coverflow/Coverflow";
 export { Gallery, GalleryItem } from "./Gallery/Gallery";
 export { Header } from "./Header/Header";
 export { Head } from "./Head";
+export { PageNotFound } from "./PageNotFound/PageNotFound";

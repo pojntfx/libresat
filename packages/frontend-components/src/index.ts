@@ -14,7 +14,8 @@ export {
   Gallery,
   GalleryItem,
   Header,
-  Head
+  Head,
+  PageNotFound
 } from "./components";
 
 export {
@@ -32,5 +33,6 @@ export {
   ICoverflowItemProps,
   IGalleryProps,
   IGalleryItemProps,
-  IHeadProps
+  IHeadProps,
+  IPageNotFoundProps
 } from "./types";
