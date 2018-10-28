@@ -1,6 +1,6 @@
 {
   "name": "@libresat/satctl",
-  "version": "0.0.1-45",
+  "version": "0.0.1-46",
   "description": "`kubectl`-like CLI to develop and/or control satellites",
   "author": "Felix Pojtinger <felix@pojtinger.com>",
   "license": "AGPL-3.0",
@@ -41,7 +41,7 @@
     "prepare": "run-s build"
   },
   "dependencies": {
-    "@libresat/host-agent-core": "^0.0.1-45",
+    "@libresat/host-agent-core": "^0.0.1-46",
     "@oclif/command": "^1.5.4",
     "@oclif/config": "^1.8.8",
     "@oclif/plugin-help": "^2.1.3",
