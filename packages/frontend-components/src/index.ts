@@ -17,7 +17,9 @@ export {
   Head,
   PageNotFound,
   NoScript,
-  Search
+  Search,
+  Paper,
+  Loader
 } from "./components";
 
 export {
@@ -39,5 +41,6 @@ export {
   IPageNotFoundProps,
   INoScriptProps,
   ISearchProps,
-  ISearchResult
+  ISearchResult,
+  ILoaderProps
 } from "./types";

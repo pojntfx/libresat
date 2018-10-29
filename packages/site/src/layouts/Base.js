@@ -3,7 +3,7 @@ import { withPrefix } from "gatsby-link";
 import { MDXProvider } from "@mdx-js/tag";
 import { Link } from "../components/Link";
 import { Image } from "../components/Blog/Image";
-import { Paper } from "../components/Paper";
+import { Paper } from "@libresat/frontend-components";
 import { DefaultLayout } from "@libresat/frontend-components";
 import { StaticQuery, graphql } from "gatsby";
 import { NoScript } from "../components/NoScript";

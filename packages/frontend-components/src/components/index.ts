@@ -15,3 +15,5 @@ export { Head } from "./Head";
 export { PageNotFound } from "./PageNotFound/PageNotFound";
 export { NoScript } from "./NoScript/NoScript";
 export { Search } from "./Search/Search";
+export { Paper } from "./Paper";
+export { Loader } from "./Loader";

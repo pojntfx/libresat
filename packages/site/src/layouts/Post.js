@@ -1,7 +1,7 @@
 import React from "react";
 import { Base } from "./Base";
 import styled from "react-emotion";
-import { Paper } from "../components/Paper";
+import { Paper } from "@libresat/frontend-components";
 import { BlogHeader } from "../components/Blog/Headers/Blog";
 import { Card, Image } from "semantic-ui-react";
 import { CoverflowSection } from "../components/Blog/Coverflow/CoverflowSection";
