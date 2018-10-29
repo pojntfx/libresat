@@ -1,6 +1,6 @@
 {
   "name": "@libresat/ingress-controller",
-  "version": "0.0.1-52",
+  "version": "0.0.1-53",
   "description": "The LibreSat distribution of Traefik",
   "main": "src/chart/Chart.yaml",
   "scripts": {
