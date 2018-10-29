@@ -32,3 +32,13 @@ export { IVideoModalProps } from "./videoModal.type";
 export { IHeroProps } from "./hero.type";
 export { IDividerProps, IDividerWrapperProps } from "./divider.type";
 export { IStatisticsProps } from "./statistics.type";
+export {
+  IProjectListProps,
+  IProjectProps,
+  IProjectProviderProps,
+  IProjectProviderState,
+  IProjectProviderPackageJSON,
+  IProjectListProviderProps,
+  IProjectListProviderState,
+  IProjectListProviderResponseProjects
+} from "./projectList.type";

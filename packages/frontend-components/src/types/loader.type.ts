@@ -1,5 +1,5 @@
 interface ILoaderProps {
-  small: boolean;
+  small?: boolean;
 }
 
 export { ILoaderProps };

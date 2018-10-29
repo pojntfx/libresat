@@ -1,6 +1,6 @@
 import styled from "react-emotion";
 
-export const ProjectList = styled("div")`
+const ProjectListWrapper = styled("div")`
   display: flex;
   align-items: center;
   overflow-x: auto;
@@ -9,3 +9,5 @@ export const ProjectList = styled("div")`
     padding: 0.1em;
   }
 `;
+
+export { ProjectListWrapper };

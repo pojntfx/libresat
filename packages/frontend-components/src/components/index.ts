@@ -22,3 +22,4 @@ export { VideoModal } from "./VideoModal/VideoModal";
 export { Hero } from "./Hero/Hero";
 export { Divider } from "./Divider/Divider";
 export { Statistics } from "./Statistics";
+export { ProjectList } from "./ProjectList/ProjectList";

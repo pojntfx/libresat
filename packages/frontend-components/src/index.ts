@@ -24,7 +24,8 @@ export {
   VideoModal,
   Hero,
   Divider,
-  Statistics
+  Statistics,
+  ProjectList
 } from "./components";
 
 export {
@@ -53,5 +54,6 @@ export {
   IHeroProps,
   IDividerProps,
   IDividerWrapperProps,
-  IStatisticsProps
+  IStatisticsProps,
+  IProjectProps
 } from "./types";
