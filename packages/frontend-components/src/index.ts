@@ -26,7 +26,8 @@ export {
   Divider,
   Statistics,
   ProjectList,
-  Subsystem
+  Subsystem,
+  ActionCards
 } from "./components";
 
 export {
@@ -57,5 +58,6 @@ export {
   IDividerWrapperProps,
   IStatisticsProps,
   IProjectListProps,
-  ISubsystemProps
+  ISubsystemProps,
+  IActionCardsProps
 } from "./types";

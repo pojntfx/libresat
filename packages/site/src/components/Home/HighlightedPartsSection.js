@@ -1,20 +1,23 @@
 import React from "react";
 import { withPrefix, StaticQuery, graphql } from "gatsby";
-import { HighlightedParts } from "./HighlightedParts";
+import { ActionCards } from "@libresat/frontend-components";
+import { Link } from "../Link";
 
 const HighlightedPartsView = ({
   data: {
-    highlightedPartsYaml: { links, ...highlightedPartsYaml }
+    highlightedPartsYaml: { links, description, ...highlightedPartsYaml }
   },
   ...otherProps
 }) => (
-  <HighlightedParts
-    links={links.map(({ link, ...rest }) => {
-      return {
-        link: withPrefix(link),
-        ...rest
-      };
-    })}
+  <ActionCards
+    links={links.map(({ link, label, description, ...rest }) => ({
+      link: withPrefix(link),
+      title: label,
+      text: description,
+      ...rest
+    }))}
+    text={description}
+    linkComponent={Link}
     {...highlightedPartsYaml}
     {...otherProps}
   />
