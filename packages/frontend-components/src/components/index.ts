@@ -25,3 +25,4 @@ export { Statistics } from "./Statistics";
 export { ProjectList } from "./ProjectList/ProjectList";
 export { Subsystem } from "./Subsystem/Subsystem";
 export { ActionCards } from "./ActionCards/ActionCards";
+export { ImageWithCaption } from "./ImageWithCaption/ImageWithCaption";

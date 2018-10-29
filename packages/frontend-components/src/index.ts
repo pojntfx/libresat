@@ -27,7 +27,8 @@ export {
   Statistics,
   ProjectList,
   Subsystem,
-  ActionCards
+  ActionCards,
+  ImageWithCaption
 } from "./components";
 
 export {
