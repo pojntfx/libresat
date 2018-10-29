@@ -3,7 +3,7 @@ import { ProjectProvider } from "./Projects/ProjectProvider";
 import { ProjectsProvider } from "./Projects/ProjectsProvider";
 import { ProjectList } from "./Projects/ProjectList";
 import { Project } from "./Projects/Project";
-import { Loader } from "../Loader";
+import { Loader } from "@libresat/frontend-components";
 
 export const TrendingProjects = ({
   endpoint,

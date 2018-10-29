@@ -26,3 +26,4 @@ export { IHeadProps } from "./head.type";
 export { IPageNotFoundProps } from "./pageNotFound.type";
 export { INoScriptProps } from "./noScript.type";
 export { ISearchProps, ISearchResult } from "./search.type";
+export { ILoaderProps } from "./loader.type";
