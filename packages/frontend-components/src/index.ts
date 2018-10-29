@@ -25,7 +25,8 @@ export {
   Hero,
   Divider,
   Statistics,
-  ProjectList
+  ProjectList,
+  Subsystem
 } from "./components";
 
 export {
@@ -55,5 +56,6 @@ export {
   IDividerProps,
   IDividerWrapperProps,
   IStatisticsProps,
-  IProjectProps
+  IProjectListProps,
+  ISubsystemProps
 } from "./types";
