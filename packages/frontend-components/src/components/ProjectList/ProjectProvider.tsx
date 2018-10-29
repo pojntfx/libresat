@@ -1,22 +1,23 @@
 import { Component } from "react";
+import {
+  IProjectProviderProps,
+  IProjectProviderPackageJSON,
+  IProjectProviderState
+} from "../../types";
 
-export class ProjectProvider extends Component {
-  state = {
+class ProjectProvider extends Component<IProjectProviderProps> {
+  state: IProjectProviderState = {
     loading: true,
-    lastUpdateDate: {},
-    description: ""
+    lastUpdateDate: new Date(),
+    text: ""
   };
 
   componentDidMount = async () => {
-    await this.getLastCommitDate({
-      path: this.props.path
-    });
-    this.getDescription({
-      path: this.props.path
-    });
+    await this.getLastCommitDate(this.props.path);
+    this.getDescription(this.props.path);
   };
 
-  getLastCommitDate = async ({ path }) => {
+  getLastCommitDate = async (path: IProjectProviderProps["path"]) => {
     const response = await fetch(
       `${this.props.endpoint}/api/v4/projects/${
         this.props.projectID
@@ -28,14 +29,16 @@ export class ProjectProvider extends Component {
     });
   };
 
-  getDescription = async ({ path }) => {
+  getDescription = async (path: IProjectProviderProps["path"]) => {
     const response = await fetch(
       `${this.props.endpoint}/api/v4/projects/${
         this.props.projectID
       }/repository/tree/?path=${path}`
     );
     const json = await response.json();
-    const packageJsonFile = json.filter(({ name }) => name === "package.json");
+    const packageJsonFile = json.filter(
+      ({ name }: IProjectProviderPackageJSON) => name === "package.json"
+    );
     const packageJsonBlobSHA = packageJsonFile[0].id;
     const packageJsonContentResponse = await fetch(
       `${this.props.endpoint}/api/v4/projects/${
@@ -44,14 +47,12 @@ export class ProjectProvider extends Component {
     );
     const { description } = await packageJsonContentResponse.json();
     this.setState({
-      description,
+      text: description,
       loading: false
     });
   };
 
-  render = () =>
-    this.props.children({
-      ...this.props,
-      ...this.state
-    });
+  render = () => this.props.children(this.state);
 }
+
+export { ProjectProvider };

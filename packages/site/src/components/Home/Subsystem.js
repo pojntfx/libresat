@@ -4,8 +4,7 @@ import { Card, Image } from "semantic-ui-react";
 import { Statistics } from "@libresat/frontend-components";
 import { Description } from "./Description";
 import { Header } from "./Header";
-import { Divider } from "@libresat/frontend-components";
-import { TrendingProjects } from "./TrendingProjects";
+import { Divider, ProjectList } from "@libresat/frontend-components";
 
 export const Subsystem = ({
   color,
@@ -32,7 +31,7 @@ export const Subsystem = ({
       <Divider offset="bottom" {...overviewDivider} />
       <Statistics statistics={statistics} />
       <Divider offset="top" {...trendingProjectsDivider} />
-      <TrendingProjects {...trendingProjects} />
+      <ProjectList {...trendingProjects} />
     </Card.Content>
   </Card>
 );
