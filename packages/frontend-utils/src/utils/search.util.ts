@@ -1,8 +1,10 @@
+import { ISearch } from "../types";
+
 /**
  * Filter an (optionally nested) array using a full-text search
  * @param {SearchParams} param0 source and query to perform on it
  */
-export const search = ({ source, query: rawQuery }) => {
+const search = ({ source, query: rawQuery }: ISearch) => {
   // We don't care about case
   const query = rawQuery.toLowerCase();
 
@@ -11,9 +13,9 @@ export const search = ({ source, query: rawQuery }) => {
     /**
      * Create a flat index of all possible search fields
      */
-    const getKeywords = source => {
+    const getKeywords = (source: ISearch["source"]) => {
       // Add all fields to a (nested) array
-      const fields = source.map(item => Object.keys(item));
+      const fields = source.map((item: ISearch["source"]) => Object.keys(item));
       // Get all getKeywordsed fields
       const keywords = flattenKeywords(fields);
       // Remove duplicates
@@ -25,14 +27,18 @@ export const search = ({ source, query: rawQuery }) => {
     /**
      * Flatten nested search fields (Object.keys)
      */
-    const flattenKeywords = fields => {
-      let flattenedFields = [];
+    const flattenKeywords = (fields: string[][]) => {
+      let flattenedFields: string[] = [];
       fields.map(field => field.map(field => flattenedFields.push(field)));
       return flattenedFields;
     };
 
-    const searchByKeywordAndQuery = (source, keywords, query) => {
-      const results = [];
+    const searchByKeywordAndQuery = (
+      source: ISearch["source"],
+      keywords: string[],
+      query: ISearch["query"]
+    ) => {
+      const results: any = []; // add types
 
       // Filter the source by it's nested property
       for (let sourceItem of source) {
@@ -49,7 +55,7 @@ export const search = ({ source, query: rawQuery }) => {
                       .includes(query)
                   : sourceItem[item]
                       .map(
-                        item =>
+                        (item: any) =>
                           typeof item === "object" || Array.isArray(item) // If it's and object or array, append it to the result
                             ? results.push(
                                 ...searchByKeywordAndQuery(
@@ -57,7 +63,7 @@ export const search = ({ source, query: rawQuery }) => {
                                   getKeywords([item]),
                                   query
                                 ).filter(
-                                  (field, index, self) =>
+                                  (field: string, index: number, self: any) =>
                                     index === self.indexOf(field)
                                 )
                               )
@@ -78,7 +84,9 @@ export const search = ({ source, query: rawQuery }) => {
     };
     // De-duplicate the results
     return searchByKeywordAndQuery(source, getKeywords(source), query).filter(
-      (field, index, self) => index === self.indexOf(field)
+      (field: any, index: number, self: any) => index === self.indexOf(field)
     );
   }
 };
+
+export { search };
