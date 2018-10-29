@@ -2,8 +2,7 @@ import React from "react";
 import { withPrefix } from "gatsby-link";
 import { MDXProvider } from "@mdx-js/tag";
 import { Link } from "../components/Link";
-import { Image } from "../components/Blog/Image";
-import { Paper } from "@libresat/frontend-components";
+import { Paper, ImageWithCaption } from "@libresat/frontend-components";
 import { DefaultLayout } from "@libresat/frontend-components";
 import { StaticQuery, graphql } from "gatsby";
 import { NoScript } from "../components/NoScript";
@@ -13,7 +12,7 @@ const BaseView = ({ data, children, ...otherProps }) => (
     components={{
       a: ({ href, ...otherProps }) => <Link to={href} {...otherProps} />,
       img: ({ src, ...otherProps }) => (
-        <Image as={Link} to={src} src={src} {...otherProps} />
+        <ImageWithCaption as={Link} to={src} src={src} {...otherProps} />
       ),
       blockquote: ({ children, ...otherProps }) => (
         <Paper {...otherProps}>
