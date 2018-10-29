@@ -1,16 +1,16 @@
 import React from "react";
 import { StaticQuery, graphql } from "gatsby";
-import { SearchFilter } from "./Search";
+import { Search } from "@libresat/frontend-components";
 import { withPrefix } from "gatsby-link";
 
-const Search = ({
+const SearchView = ({
   data: {
     allMdx: { edges },
     allSitePage: { totalCount }
   },
   ...otherProps
 }) => (
-  <SearchFilter
+  <Search
     placeholder={`Search ${totalCount} ${
       totalCount === 1 ? "page" : "pages"
     } ...`}
@@ -88,6 +88,6 @@ export const SearchSection = props => (
         }
       }
     `}
-    render={data => <Search data={data} {...props} />}
+    render={data => <SearchView data={data} {...props} />}
   />
 );

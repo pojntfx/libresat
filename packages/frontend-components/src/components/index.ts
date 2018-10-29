@@ -14,3 +14,4 @@ export { Header } from "./Header/Header";
 export { Head } from "./Head";
 export { PageNotFound } from "./PageNotFound/PageNotFound";
 export { NoScript } from "./NoScript/NoScript";
+export { Search } from "./Search/Search";

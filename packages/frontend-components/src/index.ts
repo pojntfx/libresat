@@ -16,7 +16,8 @@ export {
   Header,
   Head,
   PageNotFound,
-  NoScript
+  NoScript,
+  Search
 } from "./components";
 
 export {
@@ -36,5 +37,7 @@ export {
   IGalleryItemProps,
   IHeadProps,
   IPageNotFoundProps,
-  INoScriptProps
+  INoScriptProps,
+  ISearchProps,
+  ISearchResult
 } from "./types";
