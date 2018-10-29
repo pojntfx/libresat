@@ -1,6 +1,6 @@
 import React from "react";
 import { withPrefix, StaticQuery, graphql } from "gatsby";
-import { Subsystem } from "./Subsystem";
+import { Subsystem } from "@libresat/frontend-components";
 
 const SubsystemView = ({
   data: {
@@ -17,13 +17,14 @@ const SubsystemView = ({
           overviewDivider,
           trendingProjectsDivider,
           statistics,
+          description,
           ...subsystemYaml
         }
       },
       key
     ) => (
       <Subsystem
-        imgSrc={withPrefix(imgSrc)}
+        image={withPrefix(imgSrc)}
         header={{
           docsLink: withPrefix(docsLink),
           forumLink: withPrefix(forumLink),
@@ -39,6 +40,7 @@ const SubsystemView = ({
           title: label,
           ...rest
         }))}
+        text={description}
         {...subsystemYaml}
         {...otherProps}
       />

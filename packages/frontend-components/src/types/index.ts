@@ -42,3 +42,4 @@ export {
   IProjectListProviderState,
   IProjectListProviderResponseProjects
 } from "./projectList.type";
+export { ISubsystemHeaderProps, ISubsystemProps } from "./subsystem.type";
