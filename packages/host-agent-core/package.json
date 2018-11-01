@@ -1,6 +1,6 @@
 {
   "name": "@libresat/host-agent-core",
-  "version": "0.0.1-56",
+  "version": "0.0.1-57",
   "description": "Library for managing bare-metal hosts",
   "author": "Felicitas Pojtinger <felicitas@pojtinger.com>",
   "license": "AGPL-3.0",
