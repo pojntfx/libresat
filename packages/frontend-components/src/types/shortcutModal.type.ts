@@ -1,8 +1,11 @@
+import { ModalProps } from "semantic-ui-react";
+
 interface IShortcutModalViewProps {
   title: string;
   shortcuts: IShortcutGroup[];
-  modalIsOpen: boolean;
-  toggleModal(event: any): any;
+  modalIsOpen?: boolean;
+  toggleModal?(event: any): any;
+  trigger?: ModalProps["trigger"];
 }
 
 interface IShortcutModalProviderProps {
@@ -11,8 +14,8 @@ interface IShortcutModalProviderProps {
 }
 
 interface IShortcutModalShortcutProviderChildrenProps {
-  modalIsOpen: IShortcutModalViewProps["modalIsOpen"];
-  toggleModal(event: any): any;
+  modalIsOpen?: IShortcutModalViewProps["modalIsOpen"];
+  toggleModal?(event: any): any;
 }
 
 interface IShortcutModalProps {

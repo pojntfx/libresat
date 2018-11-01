@@ -4,7 +4,7 @@ interface IHelpProps extends IHelp {
 interface IHelp {
   title: string;
   text: string;
-  command: string;
+  command?: string;
   docsLink: string;
 }
 

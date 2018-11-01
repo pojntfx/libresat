@@ -1,9 +1,23 @@
 import { SemanticICONS } from "semantic-ui-react";
 import { IHelp } from "./help.type";
+import { IShortcutModalViewProps } from "./shortcutModal.type";
 
 interface IFooterProps {
   socialLinks: ISocialLinkProps[];
   legal: ILegal;
+  shortcuts?: IShortcutsWithHelp;
+}
+
+interface IShortcutsWithHelp {
+  title: string;
+  shortcutTrigger: IShortcutsTrigger;
+  shortcuts: IShortcutModalViewProps;
+}
+
+interface IShortcutsTrigger {
+  title: string;
+  icon: SemanticICONS;
+  help: IHelp;
 }
 
 interface ILegal {

@@ -1,5 +1,5 @@
 import * as React from "react";
-import { IShellProps } from "../types";
+import { IShellProps, IFooterProps } from "../types";
 import { ShortcutModal } from "./ShortcutModal/ShortcutModal";
 import { Head } from "./Head";
 import { Navbar } from "./Navbar/Navbar";
@@ -32,12 +32,30 @@ const Shell = ({
       {noContainer ? (
         <>
           {segment ? <Segment>{children}</Segment> : children}
-          <Footer {...footer} />
+          <Footer
+            {...footer}
+            shortcuts={
+              footer.shortcutTrigger &&
+              ((Object.assign(
+                { shortcutTrigger: footer.shortcutTrigger },
+                shortcuts
+              ) as unknown) as IFooterProps["shortcuts"])
+            }
+          />
         </>
       ) : (
         <Container>
           {segment ? <Segment>{children}</Segment> : children}
-          <Footer {...footer} />
+          <Footer
+            {...footer}
+            shortcuts={
+              footer.shortcutTrigger &&
+              ((Object.assign(
+                { shortcutTrigger: footer.shortcutTrigger },
+                shortcuts
+              ) as unknown) as IFooterProps["shortcuts"])
+            }
+          />
         </Container>
       )}
     </>
