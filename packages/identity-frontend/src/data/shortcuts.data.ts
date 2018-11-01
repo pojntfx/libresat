@@ -53,7 +53,12 @@ const shortcutsData = {
         }
       ]
     }
-  ]
+  ],
+  help: {
+    title: "Keyboard Shortcuts",
+    text: "Shortcuts which you can use to quickly navigate the app.",
+    docsLink: "https://libresat.space/apps/identity/shortcuts"
+  }
 };
 
 export { shortcutsData };

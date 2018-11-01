@@ -1,5 +1,6 @@
 ## <small>0.0.1-28-monorepo (2018-11-01)</small>
 
+* feat(frontend-components, identity-frontend): Add button to show shortcuts ([8cc84ca](https://gitlab.com/libresat/libresat/commit/8cc84ca))
 
 
 

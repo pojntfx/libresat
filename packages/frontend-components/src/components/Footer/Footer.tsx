@@ -38,7 +38,7 @@ const Footer = ({
           {shortcuts && (
             <Grid.Column>
               <ShortcutModalView
-                {...shortcuts}
+                {...shortcuts.shortcuts}
                 trigger={
                   <Help {...shortcuts.shortcutTrigger.help}>
                     <Button
@@ -49,7 +49,7 @@ const Footer = ({
                   </Help>
                 }
                 shortcuts={
-                  (shortcuts.shortcuts as unknown) as IShortcutModalViewProps["shortcuts"]
+                  (shortcuts.shortcuts.shortcuts as unknown) as IShortcutModalViewProps["shortcuts"]
                 }
               />
             </Grid.Column>
