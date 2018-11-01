@@ -1,20 +1,18 @@
 import * as React from "react";
-import { navbarData, footerData, homeData } from "../../data";
-import {
-  ActionBar,
-  INavbarProps,
-  IFooterProps,
-  DefaultLayout
-} from "@libresat/frontend-components";
+import { navbarData, footerData, homeData, shortcutsData } from "../../data";
+import { ActionBar } from "@libresat/frontend-components";
 import { IPage } from "../../types";
 import { NavLink } from "react-router-dom";
-import bg from "../../assets/bg.jpg";
+import { Shell } from "@libresat/frontend-components/dist/components";
+import { IShellProps } from "@libresat/frontend-components/dist/types";
 
 const HomePage = (props: IPage) => (
-  <DefaultLayout
-    navbar={navbarData as INavbarProps}
-    footer={footerData as IFooterProps}
-    bg={bg}
+  <Shell
+    head={homeData.head}
+    navbar={navbarData as IShellProps["navbar"]}
+    footer={footerData as IShellProps["footer"]}
+    shortcuts={shortcutsData}
+    background={homeData.background}
     linkComponent={(NavLink as unknown) as JSX.Element}
     {...props}
   >
@@ -28,7 +26,7 @@ const HomePage = (props: IPage) => (
         ...homeData.actionBar.search
       }}
     />
-  </DefaultLayout>
+  </Shell>
 );
 
 export { HomePage };

@@ -1,3 +1,6 @@
+import favicon from "../assets/icon.png";
+import background from "../assets/bg.jpg";
+
 const appsData = {
   appMenu: {
     apps: [
@@ -74,7 +77,18 @@ const appsData = {
         docsLink: "https://libresat.space/docs/search"
       }
     }
-  }
+  },
+  head: {
+    title: "Apps",
+    description: "Switch between the LibreSat Apps",
+    author: "Felix Pojtinger",
+    keywords: ["apps", "switcher", "index"],
+    favicon,
+    siteTitle: "LibreSat Identity",
+    themeColor: "#000000",
+    lang: "en"
+  },
+  background
 };
 
 export { appsData };

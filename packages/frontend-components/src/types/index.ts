@@ -49,3 +49,4 @@ export {
   IShortcutModalViewProps,
   IShortcutModalProviderProps
 } from "./shortcutModal.type";
+export { IShellProps } from "./shell.type";

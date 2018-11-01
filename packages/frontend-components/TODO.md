@@ -53,6 +53,7 @@
 - [x] Head
 - [x] Statistics
 - [x] Paper
+- [x] Shell
 
 ### Layouts
 

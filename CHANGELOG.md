@@ -3,6 +3,13 @@
 
 
 
+## <small>0.0.1-57 (2018-11-01)</small>
+
+* feat(frontend-components, identity-frontend): Toggle shortcut modal with question mark key ([a7797e8](https://gitlab.com/libresat/libresat/commit/a7797e8))
+* v0.0.1-57 ([c90328b](https://gitlab.com/libresat/libresat/commit/c90328b))
+
+
+
 ## <small>0.0.1-56 (2018-11-01)</small>
 
 * feat(frontend-components, identity-frontend): Add WIP keyboard shortcut help modal ([d730e9a](https://gitlab.com/libresat/libresat/commit/d730e9a))
