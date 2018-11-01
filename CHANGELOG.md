@@ -1,9 +1,16 @@
 ## <small>0.0.1-28-monorepo (2018-11-01)</small>
 
-* fix(frontend-components): Use correct naming syntax for pageNotFound type ([7fd64bf](https://gitlab.com/libresat/libresat/commit/7fd64bf))
+
+
+
+## <small>0.0.1-55 (2018-11-01)</small>
+
 * refactor(frontend-components, site): Extract ImageWithCaption to frontend-components ([cddd289](https://gitlab.com/libresat/libresat/commit/cddd289))
 * v0.0.1-53 ([d883d12](https://gitlab.com/libresat/libresat/commit/d883d12))
 * v0.0.1-54 ([24a0027](https://gitlab.com/libresat/libresat/commit/24a0027))
+* v0.0.1-55 ([84a6a44](https://gitlab.com/libresat/libresat/commit/84a6a44))
+* docs(frontend-components): Add TODO list ([5dd8259](https://gitlab.com/libresat/libresat/commit/5dd8259))
+* fix(frontend-components): Use correct naming syntax for pageNotFound type ([7fd64bf](https://gitlab.com/libresat/libresat/commit/7fd64bf))
 
 
 

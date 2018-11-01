@@ -28,7 +28,8 @@ export {
   ProjectList,
   Subsystem,
   ActionCards,
-  ImageWithCaption
+  ImageWithCaption,
+  ShortcutModal
 } from "./components";
 
 export {
@@ -60,5 +61,6 @@ export {
   IStatisticsProps,
   IProjectListProps,
   ISubsystemProps,
-  IActionCardsProps
+  IActionCardsProps,
+  IShortcutModalProps
 } from "./types";

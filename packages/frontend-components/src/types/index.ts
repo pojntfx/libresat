@@ -44,3 +44,4 @@ export {
 } from "./projectList.type";
 export { ISubsystemHeaderProps, ISubsystemProps } from "./subsystem.type";
 export { IActionCardsLinks, IActionCardsProps } from "./actionCards.type";
+export { IShortcutModalProps } from "./shortcutModal.type";
