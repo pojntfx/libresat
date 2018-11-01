@@ -29,7 +29,9 @@ export {
   Subsystem,
   ActionCards,
   ImageWithCaption,
-  ShortcutModal
+  ShortcutModal,
+  ShortcutModalView,
+  ShortcutModalProvider
 } from "./components";
 
 export {
@@ -62,5 +64,7 @@ export {
   IProjectListProps,
   ISubsystemProps,
   IActionCardsProps,
-  IShortcutModalProps
+  IShortcutModalProps,
+  IShortcutModalViewProps,
+  IShortcutModalProviderProps
 } from "./types";

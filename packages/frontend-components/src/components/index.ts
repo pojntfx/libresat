@@ -28,3 +28,5 @@ export { Subsystem } from "./Subsystem/Subsystem";
 export { ActionCards } from "./ActionCards/ActionCards";
 export { ImageWithCaption } from "./ImageWithCaption/ImageWithCaption";
 export { ShortcutModal } from "./ShortcutModal/ShortcutModal";
+export { ShortcutModalView } from "./ShortcutModal/ShortcutModalView";
+export { ShortcutModalProvider } from "./ShortcutModal/ShortcutModalProvider";
