@@ -3,19 +3,19 @@ import {
   IShortcutModalProviderProps,
   IShortcutModalViewProps
 } from "./shortcutModal.type";
-import { IDefaultLayoutProps } from "./default.layout.type";
 import { SemanticICONS } from "semantic-ui-react";
 import { IHelp } from "./help.type";
 import { IFooterProps } from "./footer.type";
+import { INavbarProps } from "./navbar.type";
 
 interface IShellProps {
-  head: IHeadProps;
-  navbar: IDefaultLayoutProps["navbar"];
+  head?: IHeadProps;
+  navbar: INavbarProps;
   footer: IShellFooterProps;
-  shortcuts: IShellShortcutModalProps;
-  background: IDefaultLayoutProps["bg"];
-  children: IDefaultLayoutProps["children"];
-  linkComponent: IDefaultLayoutProps["linkComponent"];
+  shortcuts?: IShellShortcutModalProps;
+  background: string;
+  children: JSX.Element | JSX.Element[];
+  linkComponent: JSX.Element;
   segment?: boolean;
   noContainer?: boolean;
 }
@@ -30,7 +30,7 @@ interface IShellShortcutModalProps {
 interface IShellFooterProps {
   socialLinks: IFooterProps["socialLinks"];
   legal: IFooterProps["legal"];
-  shortcutTrigger: IShellShortcutsTrigger;
+  shortcutTrigger?: IShellShortcutsTrigger;
 }
 
 // We don't need to have the shortcuts here again

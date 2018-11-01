@@ -8,7 +8,6 @@ export { HorizontalScrollWrapper } from "./HorizontalScrollWrapper";
 export { Help } from "./Help/Help";
 export { Footer } from "./Footer/Footer";
 export { AppMenu } from "./AppMenu/AppMenu";
-export { DefaultLayout } from "./DefaultLayout";
 export { Coverflow, CoverflowItem } from "./Coverflow/Coverflow";
 export { Gallery, GalleryItem } from "./Gallery/Gallery";
 export { Header } from "./Header/Header";

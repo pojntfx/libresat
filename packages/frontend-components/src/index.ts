@@ -8,7 +8,6 @@ export {
   Help,
   Footer,
   AppMenu,
-  DefaultLayout,
   Coverflow,
   CoverflowItem,
   Gallery,
@@ -31,7 +30,8 @@ export {
   ImageWithCaption,
   ShortcutModal,
   ShortcutModalView,
-  ShortcutModalProvider
+  ShortcutModalProvider,
+  Shell
 } from "./components";
 
 export {
@@ -44,7 +44,6 @@ export {
   ILegalTextProps,
   ISocialsProps,
   INavbarProps,
-  IDefaultLayoutProps,
   ICoverflowProps,
   ICoverflowItemProps,
   IGalleryProps,
@@ -66,5 +65,6 @@ export {
   IActionCardsProps,
   IShortcutModalProps,
   IShortcutModalViewProps,
-  IShortcutModalProviderProps
+  IShortcutModalProviderProps,
+  IShellProps
 } from "./types";
