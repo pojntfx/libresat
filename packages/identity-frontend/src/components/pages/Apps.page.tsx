@@ -1,21 +1,18 @@
 import * as React from "react";
-import { navbarData, footerData, appsData } from "../../data";
-import {
-  AppMenu,
-  INavbarProps,
-  IFooterProps,
-  IAppMenuProps,
-  DefaultLayout
-} from "@libresat/frontend-components";
+import { navbarData, footerData, appsData, shortcutsData } from "../../data";
+import { AppMenu, IAppMenuProps } from "@libresat/frontend-components";
 import { IPage } from "../../types";
 import { NavLink } from "react-router-dom";
-import bg from "../../assets/bg.jpg";
+import { Shell } from "@libresat/frontend-components/dist/components";
+import { IShellProps } from "@libresat/frontend-components/dist/types";
 
 const AppsPage = (props: IPage) => (
-  <DefaultLayout
-    navbar={navbarData as INavbarProps}
-    footer={footerData as IFooterProps}
-    bg={bg}
+  <Shell
+    head={appsData.head}
+    navbar={navbarData as IShellProps["navbar"]}
+    footer={footerData as IShellProps["footer"]}
+    shortcuts={shortcutsData}
+    background={appsData.background}
     linkComponent={(NavLink as unknown) as JSX.Element}
     {...props}
   >
@@ -27,7 +24,7 @@ const AppsPage = (props: IPage) => (
       }}
       linkComponent={(to, children) => <NavLink to={to}>{children}</NavLink>}
     />
-  </DefaultLayout>
+  </Shell>
 );
 
 export { AppsPage };

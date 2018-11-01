@@ -1,3 +1,6 @@
+import favicon from "../assets/icon.png";
+import background from "../assets/bg.jpg";
+
 const homeData = {
   actionBar: {
     create: {
@@ -23,7 +26,18 @@ const homeData = {
         docsLink: "https://libresat.space/docs/search"
       }
     }
-  }
+  },
+  head: {
+    title: "Home",
+    description: "The Home Page",
+    author: "Felicitas Pojtinger",
+    keywords: ["home", "overview"],
+    favicon,
+    siteTitle: "LibreSat Identity",
+    themeColor: "#000000",
+    lang: "en"
+  },
+  background
 };
 
 export { homeData };

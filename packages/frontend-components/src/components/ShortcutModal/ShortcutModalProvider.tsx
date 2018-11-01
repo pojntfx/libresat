@@ -23,7 +23,7 @@ class ShortcutModalProvider extends Component<IShortcutModalProviderProps> {
     };
 
     return (
-      <HotKeys keyMap={keyMap} handlers={handlers} {...this.props}>
+      <HotKeys keyMap={keyMap} handlers={handlers}>
         {this.props.children({
           modalIsOpen: this.state.modalIsOpen,
           toggleModal: this.toggleModal

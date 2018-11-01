@@ -16,7 +16,7 @@ interface IShortcutModalShortcutProviderChildrenProps {
 }
 
 interface IShortcutModalProps {
-  children: IShortcutModalProviderProps["children"];
+  children: JSX.Element;
   triggerKey: IShortcutModalProviderProps["triggerKey"];
   title: IShortcutModalViewProps["title"];
   shortcuts: IShortcutModalViewProps["shortcuts"];
