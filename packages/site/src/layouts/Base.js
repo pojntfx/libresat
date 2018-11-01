@@ -5,7 +5,6 @@ import { Link } from "../components/Link";
 import { Paper, ImageWithCaption } from "@libresat/frontend-components";
 import { Shell } from "@libresat/frontend-components";
 import { StaticQuery, graphql } from "gatsby";
-import { NoScript } from "../components/NoScript";
 
 const BaseView = ({ data, children, ...otherProps }) => (
   <MDXProvider
@@ -22,13 +21,16 @@ const BaseView = ({ data, children, ...otherProps }) => (
     }}
   >
     <>
-      <NoScript />
       <Shell
         linkComponent={Link}
         navbar={data.navbarYaml}
         footer={{
           socialLinks: data.siteYaml.socialLinks,
           legal: data.siteYaml.legal
+        }}
+        noScript={{
+          title: data.siteYaml.noscriptHeader,
+          body: data.siteYaml.noScriptBody
         }}
         background={withPrefix("/img/bg.jpg")}
         {...otherProps}
@@ -108,6 +110,8 @@ export const Base = props => (
               docsLink
             }
           }
+          noscriptHeader
+          noscriptBody
           legal {
             global {
               product

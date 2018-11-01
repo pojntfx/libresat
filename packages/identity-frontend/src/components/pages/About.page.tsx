@@ -1,5 +1,11 @@
 import * as React from "react";
-import { navbarData, footerData, aboutData, shortcutsData } from "../../data";
+import {
+  navbarData,
+  footerData,
+  aboutData,
+  shortcutsData,
+  noscriptData
+} from "../../data";
 import Readme from "../../../README.md";
 import { IPage } from "../../types";
 import { NavLink } from "react-router-dom";
@@ -10,6 +16,7 @@ const AboutPage = (props: IPage) => (
     head={aboutData.head}
     navbar={navbarData as IShellProps["navbar"]}
     footer={footerData as IShellProps["footer"]}
+    noScript={noscriptData}
     shortcuts={shortcutsData}
     background={aboutData.background}
     linkComponent={(NavLink as unknown) as JSX.Element}

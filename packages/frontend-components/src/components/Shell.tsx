@@ -1,4 +1,5 @@
 import * as React from "react";
+import "semantic-ui-css/semantic.min.css";
 import { IShellProps, IFooterProps } from "../types";
 import { ShortcutModal } from "./ShortcutModal/ShortcutModal";
 import { Head } from "./Head";
@@ -7,7 +8,7 @@ import { Container } from "./Container";
 import { Footer } from "./Footer/Footer";
 import { injectGlobal } from "emotion";
 import { Segment } from "semantic-ui-react";
-import "semantic-ui-css/semantic.min.css";
+import { NoScript } from "./NoScript/NoScript";
 
 const Shell = ({ shortcuts, ...otherProps }: IShellProps) =>
   shortcuts ? (
@@ -27,6 +28,7 @@ const InnerShell = ({
   head,
   navbar,
   footer,
+  noScript,
   shortcuts
 }: IShellProps) => (
   <>
@@ -36,6 +38,7 @@ const InnerShell = ({
     background-size: cover !important;
   }
 `}
+    <NoScript {...noScript} />
     {head && <Head {...head} />}
     <Navbar linkComponent={linkComponent} {...navbar} />
     {noContainer ? (

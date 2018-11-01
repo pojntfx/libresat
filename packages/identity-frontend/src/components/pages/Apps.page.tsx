@@ -1,5 +1,11 @@
 import * as React from "react";
-import { navbarData, footerData, appsData, shortcutsData } from "../../data";
+import {
+  navbarData,
+  footerData,
+  appsData,
+  shortcutsData,
+  noscriptData
+} from "../../data";
 import { AppMenu, IAppMenuProps } from "@libresat/frontend-components";
 import { IPage } from "../../types";
 import { NavLink } from "react-router-dom";
@@ -10,6 +16,7 @@ const AppsPage = (props: IPage) => (
     head={appsData.head}
     navbar={navbarData as IShellProps["navbar"]}
     footer={footerData as IShellProps["footer"]}
+    noScript={noscriptData}
     shortcuts={shortcutsData}
     background={appsData.background}
     linkComponent={(NavLink as unknown) as JSX.Element}

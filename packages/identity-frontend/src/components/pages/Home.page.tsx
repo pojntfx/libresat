@@ -1,5 +1,11 @@
 import * as React from "react";
-import { navbarData, footerData, homeData, shortcutsData } from "../../data";
+import {
+  navbarData,
+  footerData,
+  homeData,
+  shortcutsData,
+  noscriptData
+} from "../../data";
 import { ActionBar } from "@libresat/frontend-components";
 import { IPage } from "../../types";
 import { NavLink } from "react-router-dom";
@@ -10,6 +16,7 @@ const HomePage = (props: IPage) => (
     head={homeData.head}
     navbar={navbarData as IShellProps["navbar"]}
     footer={footerData as IShellProps["footer"]}
+    noScript={noscriptData}
     shortcuts={shortcutsData}
     background={homeData.background}
     linkComponent={(NavLink as unknown) as JSX.Element}

@@ -7,11 +7,13 @@ import { SemanticICONS } from "semantic-ui-react";
 import { IHelp } from "./help.type";
 import { IFooterProps } from "./footer.type";
 import { INavbarProps } from "./navbar.type";
+import { INoScriptProps } from "./noScript.type";
 
 interface IShellProps {
   head?: IHeadProps;
   navbar: INavbarProps;
   footer: IShellFooterProps;
+  noScript: INoScriptProps;
   shortcuts?: IShellShortcutModalProps;
   background: string;
   children: JSX.Element | JSX.Element[];
