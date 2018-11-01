@@ -24,6 +24,7 @@ interface IShellShortcutModalProps {
   triggerKey: IShortcutModalProviderProps["triggerKey"];
   title: IShortcutModalViewProps["title"];
   shortcuts: IShortcutModalViewProps["shortcuts"];
+  help: IShortcutModalViewProps["help"];
 }
 
 interface IShellFooterProps {

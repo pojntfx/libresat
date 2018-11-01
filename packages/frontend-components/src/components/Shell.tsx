@@ -52,7 +52,7 @@ const Shell = ({
               footer.shortcutTrigger &&
               ((Object.assign(
                 { shortcutTrigger: footer.shortcutTrigger },
-                shortcuts
+                { shortcuts }
               ) as unknown) as IFooterProps["shortcuts"])
             }
           />

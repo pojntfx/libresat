@@ -1,4 +1,5 @@
 import { ModalProps } from "semantic-ui-react";
+import { IHelp } from "./help.type";
 
 interface IShortcutModalViewProps {
   title: string;
@@ -6,6 +7,7 @@ interface IShortcutModalViewProps {
   modalIsOpen?: boolean;
   toggleModal?(event: any): any;
   trigger?: ModalProps["trigger"];
+  help: IHelp;
 }
 
 interface IShortcutModalProviderProps {
@@ -23,6 +25,7 @@ interface IShortcutModalProps {
   triggerKey: IShortcutModalProviderProps["triggerKey"];
   title: IShortcutModalViewProps["title"];
   shortcuts: IShortcutModalViewProps["shortcuts"];
+  help: IShortcutModalViewProps["help"];
 }
 
 interface IShortcutGroup {
