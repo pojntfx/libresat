@@ -3,8 +3,7 @@ import { navbarData, footerData, aboutData, shortcutsData } from "../../data";
 import Readme from "../../../README.md";
 import { IPage } from "../../types";
 import { NavLink } from "react-router-dom";
-import { Shell } from "@libresat/frontend-components/dist/components";
-import { IShellProps } from "@libresat/frontend-components/dist/types";
+import { Shell, IShellProps } from "@libresat/frontend-components";
 
 const AboutPage = (props: IPage) => (
   <Shell

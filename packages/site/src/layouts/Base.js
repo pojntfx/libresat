@@ -3,7 +3,7 @@ import { withPrefix } from "gatsby-link";
 import { MDXProvider } from "@mdx-js/tag";
 import { Link } from "../components/Link";
 import { Paper, ImageWithCaption } from "@libresat/frontend-components";
-import { DefaultLayout } from "@libresat/frontend-components";
+import { Shell } from "@libresat/frontend-components";
 import { StaticQuery, graphql } from "gatsby";
 import { NoScript } from "../components/NoScript";
 
@@ -23,18 +23,18 @@ const BaseView = ({ data, children, ...otherProps }) => (
   >
     <>
       <NoScript />
-      <DefaultLayout
+      <Shell
         linkComponent={Link}
         navbar={data.navbarYaml}
         footer={{
           socialLinks: data.siteYaml.socialLinks,
           legal: data.siteYaml.legal
         }}
-        bg={withPrefix("/img/bg.jpg")}
+        background={withPrefix("/img/bg.jpg")}
         {...otherProps}
       >
         {children}
-      </DefaultLayout>
+      </Shell>
     </>
   </MDXProvider>
 );

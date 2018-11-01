@@ -1,6 +1,13 @@
 ## <small>0.0.1-28-monorepo (2018-11-01)</small>
 
+
+
+
+## <small>0.0.1-59 (2018-11-01)</small>
+
 * feat(frontend-components, identity-frontend): Add button to show shortcuts ([8cc84ca](https://gitlab.com/libresat/libresat/commit/8cc84ca))
+* refactor(frontend-components, identity-frontend): Add help to keyboard shortcut dialog ([a44ddb2](https://gitlab.com/libresat/libresat/commit/a44ddb2))
+* v0.0.1-59 ([78310d9](https://gitlab.com/libresat/libresat/commit/78310d9))
 
 
 
