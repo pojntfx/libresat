@@ -2,6 +2,7 @@ import React from "react";
 import { StaticQuery, graphql } from "gatsby";
 import { Search } from "@libresat/frontend-components";
 import { withPrefix } from "gatsby-link";
+import { Link } from "../Link";
 
 const SearchView = ({
   data: {
@@ -52,6 +53,7 @@ const SearchView = ({
         };
       }
     )}
+    linkComponent={Link}
     {...otherProps}
   />
 );

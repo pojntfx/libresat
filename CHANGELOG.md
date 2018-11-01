@@ -1,5 +1,6 @@
 ## <small>0.0.1-28-monorepo (2018-11-01)</small>
 
+* refactor(frontend-components, site): Use shell component instead of DefaultLayout, enable usage with ([bf9baed](https://gitlab.com/libresat/libresat/commit/bf9baed))
 
 
 
