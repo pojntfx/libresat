@@ -1,5 +1,6 @@
 ## <small>0.0.1-28-monorepo (2018-11-01)</small>
 
+* fix(site): Fix missing linkComponent in search ([3ed1e2f](https://gitlab.com/libresat/libresat/commit/3ed1e2f))
 * refactor(frontend-components, site): Use shell component instead of DefaultLayout, enable usage with ([bf9baed](https://gitlab.com/libresat/libresat/commit/bf9baed))
 
 
