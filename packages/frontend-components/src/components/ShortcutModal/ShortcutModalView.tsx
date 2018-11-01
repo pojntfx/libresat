@@ -12,14 +12,14 @@ const ShortcutModalView = ({
   shortcuts,
   modalIsOpen,
   toggleModal,
-  ...otherProps
+  trigger
 }: IShortcutModalViewProps) => (
   <Modal
     centered
     closeIcon
     open={modalIsOpen}
     onClose={toggleModal}
-    {...otherProps}
+    trigger={trigger}
   >
     <Modal.Header>{title}</Modal.Header>
     <Modal.Content>

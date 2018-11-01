@@ -8,8 +8,14 @@ import { LegalGrid } from "./Legal/LegalGrid";
 import { Help } from "../Help/Help";
 import { Button } from "../Button";
 import { IFooterProps } from "../../types/footer.type";
+import { ShortcutModalView } from "../ShortcutModal/ShortcutModalView";
+import { IShortcutModalViewProps } from "../../types";
 
-const Footer = ({ socialLinks, legal: { global, licenses } }: IFooterProps) => (
+const Footer = ({
+  socialLinks,
+  legal: { global, licenses },
+  shortcuts
+}: IFooterProps) => (
   <Wrapper>
     <Socials links={socialLinks} />
     <Grid stackable columns={2}>
@@ -23,8 +29,31 @@ const Footer = ({ socialLinks, legal: { global, licenses } }: IFooterProps) => (
       <Section width={12}>
         <LegalGrid
           stackable
-          columns={(16 / licenses.length) as GridProps["columns"]}
+          columns={
+            (shortcuts
+              ? licenses.length + 1
+              : licenses.length) as SemanticWIDTHS
+          }
         >
+          {shortcuts && (
+            <Grid.Column>
+              <ShortcutModalView
+                {...shortcuts}
+                trigger={
+                  <Help {...shortcuts.shortcutTrigger.help}>
+                    <Button
+                      fluid
+                      icon={shortcuts.shortcutTrigger.icon}
+                      content={shortcuts.shortcutTrigger.title}
+                    />
+                  </Help>
+                }
+                shortcuts={
+                  (shortcuts.shortcuts as unknown) as IShortcutModalViewProps["shortcuts"]
+                }
+              />
+            </Grid.Column>
+          )}
           {licenses.map(
             (
               {
@@ -41,10 +70,7 @@ const Footer = ({ socialLinks, legal: { global, licenses } }: IFooterProps) => (
               },
               index
             ) => (
-              <Grid.Column
-                width={(16 / licenses.length) as SemanticWIDTHS}
-                key={index}
-              >
+              <Grid.Column key={index}>
                 <Modal
                   trigger={
                     <Help {...help}>

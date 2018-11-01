@@ -3,6 +3,13 @@
 
 
 
+## <small>0.0.1-58 (2018-11-01)</small>
+
+* refactor(frontend-components, identity-frontend): Add and use Shell component ([fba1a55](https://gitlab.com/libresat/libresat/commit/fba1a55))
+* v0.0.1-58 ([ecc5524](https://gitlab.com/libresat/libresat/commit/ecc5524))
+
+
+
 ## <small>0.0.1-57 (2018-11-01)</small>
 
 * feat(frontend-components, identity-frontend): Toggle shortcut modal with question mark key ([a7797e8](https://gitlab.com/libresat/libresat/commit/a7797e8))

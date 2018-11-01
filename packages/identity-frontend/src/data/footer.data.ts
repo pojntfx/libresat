@@ -191,6 +191,15 @@ const footerData = {
         }
       }
     ]
+  },
+  shortcutTrigger: {
+    title: "Shortcuts",
+    icon: "keyboard",
+    help: {
+      title: "Keyboard Shortcuts",
+      text: "Get information on the available keyboard shortcuts in this app.",
+      docsLink: "https://libresat.space/apps/identity/shortcuts"
+    }
   }
 };
 
