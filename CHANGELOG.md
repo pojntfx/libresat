@@ -3,6 +3,13 @@
 
 
 
+## <small>0.0.1-56 (2018-11-01)</small>
+
+* feat(frontend-components, identity-frontend): Add WIP keyboard shortcut help modal ([d730e9a](https://gitlab.com/libresat/libresat/commit/d730e9a))
+* v0.0.1-56 ([77cb4f8](https://gitlab.com/libresat/libresat/commit/77cb4f8))
+
+
+
 ## <small>0.0.1-55 (2018-11-01)</small>
 
 * refactor(frontend-components, site): Extract ImageWithCaption to frontend-components ([cddd289](https://gitlab.com/libresat/libresat/commit/cddd289))

@@ -26,7 +26,7 @@
 - [x] Help popover
 - [ ] Success, error and warning modals
 - [ ] Popconfirm
-- [-] Shortcut modal
+- [x] Shortcut modal
 - [-] Loading component
 - [ ] Welcome component
 - [x] Navbar component
