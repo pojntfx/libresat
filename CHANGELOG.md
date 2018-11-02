@@ -1,7 +1,14 @@
-## <small>0.0.1-28-monorepo (2018-11-01)</small>
+## <small>0.0.1-28-monorepo (2018-11-02)</small>
 
-* fix(site): Fix missing linkComponent in search ([3ed1e2f](https://gitlab.com/libresat/libresat/commit/3ed1e2f))
+
+
+
+## <small>0.0.1-60 (2018-11-01)</small>
+
+* feat(frontend-components, identity-frontend, site): Embed NoScript component in Base ([29372e9](https://gitlab.com/libresat/libresat/commit/29372e9))
 * refactor(frontend-components, site): Use shell component instead of DefaultLayout, enable usage with ([bf9baed](https://gitlab.com/libresat/libresat/commit/bf9baed))
+* v0.0.1-60 ([9404ee4](https://gitlab.com/libresat/libresat/commit/9404ee4))
+* fix(site): Fix missing linkComponent in search ([3ed1e2f](https://gitlab.com/libresat/libresat/commit/3ed1e2f))
 
 
 
