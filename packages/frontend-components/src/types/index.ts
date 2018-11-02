@@ -49,3 +49,7 @@ export {
   IShortcutModalProviderProps
 } from "./shortcutModal.type";
 export { IShellProps } from "./shell.type";
+export {
+  IDraggableGridLayoutViewProps,
+  IDraggableGridLayoutProps
+} from "./draggableGridLayout.type";

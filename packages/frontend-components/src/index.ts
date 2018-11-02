@@ -31,7 +31,9 @@ export {
   ShortcutModal,
   ShortcutModalView,
   ShortcutModalProvider,
-  Shell
+  Shell,
+  DraggableGridLayoutView,
+  DraggableGridLayout
 } from "./components";
 
 export {
@@ -66,5 +68,7 @@ export {
   IShortcutModalProps,
   IShortcutModalViewProps,
   IShortcutModalProviderProps,
-  IShellProps
+  IShellProps,
+  IDraggableGridLayoutViewProps,
+  IDraggableGridLayoutProps
 } from "./types";

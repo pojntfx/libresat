@@ -1,5 +1,6 @@
 ## <small>0.0.1-28-monorepo (2018-11-02)</small>
 
+* refactor(frontend-components, identity-frontend): Improve responsiveness of the sortcut modal ([8e97d85](https://gitlab.com/libresat/libresat/commit/8e97d85))
 
 
 
