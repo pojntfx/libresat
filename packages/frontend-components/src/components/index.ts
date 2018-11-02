@@ -30,3 +30,7 @@ export { ShortcutModal } from "./ShortcutModal/ShortcutModal";
 export { ShortcutModalView } from "./ShortcutModal/ShortcutModalView";
 export { ShortcutModalProvider } from "./ShortcutModal/ShortcutModalProvider";
 export { Shell } from "./Shell";
+export {
+  DraggableGridLayoutView
+} from "./DraggableGridLayout/DraggableGridLayoutView";
+export { DraggableGridLayout } from "./DraggableGridLayout/DraggableGridLayout";

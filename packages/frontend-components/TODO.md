@@ -54,6 +54,9 @@
 - [x] Statistics
 - [x] Paper
 - [x] Shell
+- [x] DraggableGridLayout
+- [ ] Expand
+- [ ] Charts (Pie, Bar, Map, Partition, ...)
 
 ### Layouts
 

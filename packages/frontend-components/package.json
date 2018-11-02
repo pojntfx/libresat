@@ -29,13 +29,13 @@
   "dependencies": {
     "@antv/data-set": "^0.10.0",
     "@libresat/frontend-utils": "^0.0.1-60",
-    "@types/react-helmet": "^5.0.7",
     "bizcharts": "^3.2.5-beta.4",
     "emotion": "^9.2.12",
     "react": "^16.5.2",
     "react-copy-to-clipboard": "^5.0.1",
     "react-dom": "^16.5.2",
     "react-emotion": "^9.2.12",
+    "react-grid-layout": "^0.16.6",
     "react-helmet": "^5.2.0",
     "react-hotkeys": "^1.1.4",
     "react-masonry-component": "^6.2.1",
@@ -44,6 +44,8 @@
     "semantic-ui-react": "^0.83.0"
   },
   "devDependencies": {
+    "@types/react-grid-layout": "^0.16.5",
+    "@types/react-helmet": "^5.0.7",
     "@types/react": "^16.4.16",
     "@types/react-copy-to-clipboard": "^4.2.6",
     "@types/react-dom": "^16.0.9",
