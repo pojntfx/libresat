@@ -53,3 +53,4 @@ export {
   IDraggableGridLayoutViewProps,
   IDraggableGridLayoutProps
 } from "./draggableGridLayout.type";
+export { IExpandProps, IExpandViewProps } from "./expandView.type";

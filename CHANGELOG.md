@@ -1,6 +1,13 @@
 ## <small>0.0.1-28-monorepo (2018-11-02)</small>
 
+
+
+
+## <small>0.0.1-61 (2018-11-02)</small>
+
 * refactor(frontend-components, identity-frontend): Improve responsiveness of the sortcut modal ([8e97d85](https://gitlab.com/libresat/libresat/commit/8e97d85))
+* v0.0.1-61 ([3397334](https://gitlab.com/libresat/libresat/commit/3397334))
+* feat(frontend-components): Add draggable grid layout ([7f7b4d6](https://gitlab.com/libresat/libresat/commit/7f7b4d6))
 
 
 
