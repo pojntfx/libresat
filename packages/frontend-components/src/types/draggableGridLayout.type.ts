@@ -6,6 +6,7 @@ interface IDraggableGridLayoutViewProps extends ResponsiveProps {
 
 interface IDraggableGridLayoutProps extends IDraggableGridLayoutViewProps {
   storageId: string;
+  disabled?: boolean;
 }
 
 export { IDraggableGridLayoutViewProps, IDraggableGridLayoutProps };

@@ -50,8 +50,8 @@
 - [x] Shell
 - [x] DraggableGridLayout
 - [x] Expand
+- [x] Overview card
 - [-] Loading component
-- [ ] Overview card
 - [ ] Welcome component
 - [ ] Card list
 - [ ] Success, error and warning modals

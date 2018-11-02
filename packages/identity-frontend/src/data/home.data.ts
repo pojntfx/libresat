@@ -37,7 +37,13 @@ const homeData = {
     themeColor: "#000000",
     lang: "en"
   },
-  background
+  background,
+  overview: {
+    title: "Overview",
+    storageId: "libresat-identity-frontend-overview",
+    disabled: true,
+    initiallyClosed: true
+  }
 };
 
 export { homeData };

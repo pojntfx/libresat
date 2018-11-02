@@ -7,11 +7,13 @@ const ExpandView = ({
   open,
   onToggle,
   children,
+  disabled,
+  initiallyClosed: _,
   ...otherProps
 }: IExpandViewProps) => (
-  <Accordion fluid styled {...otherProps}>
+  <Accordion fluid {...otherProps}>
     <Accordion.Title active={open} onClick={onToggle}>
-      <Icon name="dropdown" />
+      {!disabled && <Icon name="dropdown" />}
       {title}
     </Accordion.Title>
     <Accordion.Content active={open}>{children}</Accordion.Content>

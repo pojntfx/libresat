@@ -4,6 +4,7 @@ import { DraggableGridLayoutView } from "./DraggableGridLayoutView";
 
 const DraggableGridLayout = ({
   storageId,
+  disabled,
   ...otherProps
 }: IDraggableGridLayoutProps) => (
   <DraggableGridLayoutView
@@ -11,9 +12,14 @@ const DraggableGridLayout = ({
       JSON.parse((window &&
         window.localStorage.getItem(storageId)) as string) || {}
     }
-    onLayoutChange={(_, layouts) =>
-      window && window.localStorage.setItem(storageId, JSON.stringify(layouts))
-    }
+    onLayoutChange={(_, layouts) => {
+      !disabled &&
+        window &&
+        window.localStorage.setItem(storageId, JSON.stringify(layouts));
+    }}
+    isDraggable={!disabled}
+    isRearrangeable={!disabled}
+    isResizable={!disabled}
     {...otherProps}
   />
 );
