@@ -16,6 +16,7 @@ interface IShortcutsWithHelp {
 
 interface IShortcutsTrigger {
   title: string;
+  disabled: boolean;
   icon: SemanticICONS;
   help: IHelp;
 }

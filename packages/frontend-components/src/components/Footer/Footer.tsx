@@ -45,11 +45,13 @@ const Footer = ({
                       fluid
                       icon={shortcuts.shortcutTrigger.icon}
                       content={shortcuts.shortcutTrigger.title}
+                      disabled={shortcuts.shortcutTrigger.disabled}
                     />
                   </Help>
                 }
                 shortcuts={
-                  (shortcuts.shortcuts.shortcuts as unknown) as IShortcutModalViewProps["shortcuts"]
+                  (shortcuts.shortcuts
+                    .shortcuts as unknown) as IShortcutModalViewProps["shortcuts"]
                 }
               />
             </Grid.Column>

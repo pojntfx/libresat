@@ -195,6 +195,7 @@ const footerData = {
   shortcutTrigger: {
     title: "Shortcuts",
     icon: "keyboard",
+    disabled: false,
     help: {
       title: "Keyboard Shortcuts",
       text: "Get information on the available keyboard shortcuts in this app.",

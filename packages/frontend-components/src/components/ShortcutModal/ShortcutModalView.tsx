@@ -26,7 +26,7 @@ const ShortcutModalView = ({
     <Modal.Header>{title}</Modal.Header>
     <Help {...help}>
       <Modal.Content>
-        <Grid columns={2} doubling stackable>
+        <Grid columns={shortcuts.length === 1 ? "equal" : 2} doubling stackable>
           <Grid.Row stretched>
             {shortcuts.map((shortcutGroup, index) => (
               <ShortcutModalGroupWrapper key={index}>
