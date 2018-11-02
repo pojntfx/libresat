@@ -5,13 +5,15 @@ import { IExpandProps } from "../../types";
 
 class Expand extends Component<IExpandProps> {
   state = {
-    isOpen: false
+    isOpen: !this.props.initiallyClosed
   };
 
-  handleToggle = () =>
-    this.setState({
-      isOpen: !this.state.isOpen
-    });
+  handleToggle = () => {
+    !this.props.disabled &&
+      this.setState({
+        isOpen: !this.state.isOpen
+      });
+  };
 
   render() {
     return (

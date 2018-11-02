@@ -4,6 +4,8 @@ interface IExpandProps {
   title: string;
   children: JSX.Element | JSX.Element[];
   disabled?: boolean;
+  styled?: boolean;
+  initiallyClosed?: boolean;
 }
 
 interface IExpandViewProps extends IExpandProps {

@@ -1,5 +1,6 @@
 ## <small>0.0.1-28-monorepo (2018-11-02)</small>
 
+* feat(frontend-components): Add Expand component ([fe18e78](https://gitlab.com/libresat/libresat/commit/fe18e78))
 
 
 

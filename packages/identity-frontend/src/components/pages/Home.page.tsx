@@ -6,7 +6,7 @@ import {
   shortcutsData,
   noscriptData
 } from "../../data";
-import { ActionBar } from "@libresat/frontend-components";
+import { ActionBar, OverviewCard, Paper } from "@libresat/frontend-components";
 import { IPage } from "../../types";
 import { NavLink } from "react-router-dom";
 import { Shell, IShellProps } from "@libresat/frontend-components";
@@ -32,6 +32,17 @@ const HomePage = (props: IPage) => (
         ...homeData.actionBar.search
       }}
     />
+    <OverviewCard {...homeData.overview}>
+      <Paper data-grid={{ x: 0, y: 0, w: 7, h: 3 }}>
+        <p>3 Scopes</p>
+      </Paper>
+      <Paper data-grid={{ x: 8, y: 0, w: 3, h: 3 }}>
+        <p>2 Users</p>
+      </Paper>
+      <Paper data-grid={{ x: 0, y: 4, w: 12, h: 3 }}>
+        <p>2 Roles</p>
+      </Paper>
+    </OverviewCard>
   </Shell>
 );
 
