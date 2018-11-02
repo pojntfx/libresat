@@ -13,28 +13,22 @@
 ### Pages
 
 - [x] Apps
+- [x] 404
+- [x] About
 - [ ] Context
 - [ ] Notifications
 - [ ] Search
 - [ ] Settings
 - [ ] Users
-- [x] 404
-- [x] About
 
 ### Components
 
 - [x] Help popover
-- [ ] Success, error and warning modals
-- [ ] Popconfirm
 - [x] Shortcut modal
-- [-] Loading component
-- [ ] Welcome component
 - [x] Navbar component
 - [x] Footer component
 - [x] Action bar
 - [x] Action cards
-- [ ] Overview card
-- [ ] Card list
 - [x] NoScript
 - [x] Coverflow
 - [x] Divider
@@ -55,7 +49,13 @@
 - [x] Paper
 - [x] Shell
 - [x] DraggableGridLayout
-- [ ] Expand
+- [x] Expand
+- [-] Loading component
+- [ ] Overview card
+- [ ] Welcome component
+- [ ] Card list
+- [ ] Success, error and warning modals
+- [ ] Popconfirm
 - [ ] Charts (Pie, Bar, Map, Partition, ...)
 
 ### Layouts

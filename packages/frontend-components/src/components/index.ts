@@ -34,3 +34,5 @@ export {
   DraggableGridLayoutView
 } from "./DraggableGridLayout/DraggableGridLayoutView";
 export { DraggableGridLayout } from "./DraggableGridLayout/DraggableGridLayout";
+export { ExpandView } from "./Expand/ExpandView";
+export { Expand } from "./Expand/Expand";
