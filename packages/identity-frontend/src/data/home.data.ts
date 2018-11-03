@@ -46,7 +46,6 @@ const homeData = {
   },
   relationships: {
     title: "Relationships",
-    storageId: "libresat-identity-frontend-relationships",
     disabled: true,
     initiallyClosed: true
   }

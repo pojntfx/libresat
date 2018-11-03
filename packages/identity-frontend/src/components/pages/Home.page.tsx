@@ -8,8 +8,9 @@ import {
 } from "../../data";
 import {
   ActionBar,
-  ExpandablePaper,
-  Paper
+  ExpandablePaperWithDraggableGridLayout,
+  Paper,
+  ExpandablePaper
 } from "@libresat/frontend-components";
 import { IPage } from "../../types";
 import { NavLink } from "react-router-dom";
@@ -36,7 +37,7 @@ const HomePage = (props: IPage) => (
         ...homeData.actionBar.search
       }}
     />
-    <ExpandablePaper {...homeData.overview}>
+    <ExpandablePaperWithDraggableGridLayout {...homeData.overview}>
       <Paper data-grid={{ x: 0, y: 0, w: 7, h: 3 }}>
         <p>3 Scopes</p>
       </Paper>
@@ -46,15 +47,15 @@ const HomePage = (props: IPage) => (
       <Paper data-grid={{ x: 0, y: 4, w: 12, h: 3 }}>
         <p>2 Roles</p>
       </Paper>
-    </ExpandablePaper>
+    </ExpandablePaperWithDraggableGridLayout>
     <ExpandablePaper {...homeData.relationships}>
-      <Paper data-grid={{ x: 0, y: 0, w: 12, h: 3 }}>
+      <Paper>
         <p>scope-1 -> user-1 -> role-1</p>
       </Paper>
-      <Paper data-grid={{ x: 0, y: 4, w: 12, h: 3 }}>
+      <Paper>
         <p>scope-2 -> user-2 -> role-2</p>
       </Paper>
-      <Paper data-grid={{ x: 0, y: 8, w: 12, h: 3 }}>
+      <Paper>
         <p>scope-3 -> user-3 -> role-3</p>
       </Paper>
     </ExpandablePaper>
