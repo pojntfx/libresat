@@ -51,7 +51,7 @@
 - [x] DraggableGridLayout
 - [x] Expand
 - [x] Overview card
-- [-] Loading component
+- [x] Loading component
 - [ ] Welcome component
 - [ ] Card list
 - [ ] Success, error and warning modals
