@@ -1,6 +1,6 @@
 {
   "name": "@libresat/identity-frontend",
-  "version": "0.0.1-62",
+  "version": "0.0.1-63",
   "description": "Frontend for @libresat/identity-backend, a simple authorization microservice",
   "author": "Felix Pojtinger <felix@pojtinger.com>",
   "license": "AGPL-3.0",
@@ -54,7 +54,7 @@
     "prepare": "run-p build"
   },
   "dependencies": {
-    "@libresat/frontend-components": "^0.0.1-62",
+    "@libresat/frontend-components": "^0.0.1-63",
     "@mdx-js/tag": "^0.15.0",
     "express": "^4.16.4",
     "react": "^16.5.2",
