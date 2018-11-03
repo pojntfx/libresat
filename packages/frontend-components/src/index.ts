@@ -36,7 +36,8 @@ export {
   DraggableGridLayoutView,
   Expand,
   ExpandView,
-  ExpandablePaper
+  ExpandablePaper,
+  ExpandablePaperWithDraggableGridLayout
 } from "./components";
 
 export {

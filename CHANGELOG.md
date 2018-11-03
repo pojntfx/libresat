@@ -1,5 +1,6 @@
 ## <small>0.0.1-28-monorepo (2018-11-03)</small>
 
+* refactor(frontend-components, identity-frontend): Make OverviewCard a universal ExpandablePaper ([493156d](https://gitlab.com/libresat/libresat/commit/493156d))
 
 
 
