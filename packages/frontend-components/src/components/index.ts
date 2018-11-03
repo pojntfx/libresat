@@ -36,4 +36,4 @@ export {
 export { DraggableGridLayout } from "./DraggableGridLayout/DraggableGridLayout";
 export { ExpandView } from "./Expand/ExpandView";
 export { Expand } from "./Expand/Expand";
-export { OverviewCard } from "./OverviewCard";
+export { ExpandablePaper } from "./ExpandablePaper";

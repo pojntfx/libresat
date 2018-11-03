@@ -1,7 +1,14 @@
 ## <small>0.0.1-28-monorepo (2018-11-03)</small>
 
+
+
+
+## <small>0.0.1-63 (2018-11-03)</small>
+
 * fix(frontend-components, site): Render list of placeholders if inital loading process for projects h ([ecec7c5](https://gitlab.com/libresat/libresat/commit/ecec7c5))
 * refactor(frontend-components, site): Add placeholder component for project list ([241ed10](https://gitlab.com/libresat/libresat/commit/241ed10))
+* refactor(frontend-components, site): Remove dependency on ProjectProvider for ProjectListProvider ([86a3a53](https://gitlab.com/libresat/libresat/commit/86a3a53))
+* v0.0.1-63 ([918765f](https://gitlab.com/libresat/libresat/commit/918765f))
 
 
 

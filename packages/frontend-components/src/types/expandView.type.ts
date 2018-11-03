@@ -13,4 +13,9 @@ interface IExpandViewProps extends IExpandProps {
   onToggle: AccordionTitleProps["onClick"];
 }
 
-export { IExpandProps, IExpandViewProps };
+interface IExpandViewWrapperProps {
+  disabled: IExpandProps["disabled"];
+  initiallyClosed: IExpandProps["initiallyClosed"];
+}
+
+export { IExpandProps, IExpandViewProps, IExpandViewWrapperProps };
