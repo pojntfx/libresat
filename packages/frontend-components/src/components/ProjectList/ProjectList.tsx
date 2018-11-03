@@ -1,10 +1,10 @@
 import * as React from "react";
 import { ProjectListWrapper } from "./ProjectListWrapper";
 import { ProjectListProvider } from "./ProjectListProvider";
-import { Loader } from "../Loader";
 import { ProjectProvider } from "./ProjectProvider";
 import { Project } from "./Project";
 import { IProjectListProps } from "../../types";
+import { ProjectPlaceholder } from "./ProjectPlaceholder";
 
 export const ProjectList = ({
   endpoint,
@@ -15,31 +15,29 @@ export const ProjectList = ({
   <ProjectListWrapper>
     <ProjectListProvider endpoint={endpoint} projectID={projectID}>
       {({ loading, projects }) =>
-        loading ? (
-          <Loader />
-        ) : (
-          projects.map(({ title, path }, index) => (
-            <ProjectProvider
-              endpoint={endpoint}
-              projectID={projectID}
-              path={path}
-              key={index}
-            >
-              {({ loading, lastUpdateDate, text }) =>
-                loading ? (
-                  <Loader small />
-                ) : (
-                  <Project
-                    title={title}
-                    text={text}
-                    lastUpdateDate={lastUpdateDate}
-                    link={`${endpoint}/${groupName}/${projectName}/tree/master/${path}`}
-                  />
-                )
-              }
-            </ProjectProvider>
-          ))
-        )
+        loading
+          ? new Array(5).map(_ => <ProjectPlaceholder />)
+          : projects.map(({ title, path }, index) => (
+              <ProjectProvider
+                endpoint={endpoint}
+                projectID={projectID}
+                path={path}
+                key={index}
+              >
+                {({ loading, lastUpdateDate, text }) =>
+                  loading ? (
+                    <ProjectPlaceholder />
+                  ) : (
+                    <Project
+                      title={title}
+                      text={text}
+                      lastUpdateDate={lastUpdateDate}
+                      link={`${endpoint}/${groupName}/${projectName}/tree/master/${path}`}
+                    />
+                  )
+                }
+              </ProjectProvider>
+            ))
       }
     </ProjectListProvider>
   </ProjectListWrapper>
