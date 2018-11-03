@@ -1,5 +1,6 @@
 ## <small>0.0.1-28-monorepo (2018-11-03)</small>
 
+* refactor(frontend-components, site): Add placeholder component for project list ([241ed10](https://gitlab.com/libresat/libresat/commit/241ed10))
 
 
 

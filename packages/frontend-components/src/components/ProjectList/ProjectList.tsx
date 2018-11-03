@@ -16,7 +16,9 @@ export const ProjectList = ({
     <ProjectListProvider endpoint={endpoint} projectID={projectID}>
       {({ loading, projects }) =>
         loading
-          ? new Array(5).map(_ => <ProjectPlaceholder />)
+          ? new Array(5)
+              .fill(0)
+              .map((_, index) => <ProjectPlaceholder key={index} />)
           : projects.map(({ title, path }, index) => (
               <ProjectProvider
                 endpoint={endpoint}
