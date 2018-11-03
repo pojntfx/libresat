@@ -52,8 +52,9 @@
 - [x] Expand
 - [x] Overview card
 - [x] Loading component
+- [x] Card list
+- [ ] Notification (with Unstated for calls to showNotification)
 - [ ] Welcome component
-- [ ] Card list
 - [ ] Success, error and warning modals
 - [ ] Popconfirm
 - [ ] Charts (Pie, Bar, Map, Partition, ...)
@@ -61,6 +62,10 @@
 ### Layouts
 
 - [-] Default (`segment` and `title` prop)
+
+### Utilities
+
+- [ ] showNotification
 
 ### Helpers
 

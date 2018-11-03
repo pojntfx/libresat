@@ -8,6 +8,8 @@ const DraggableGridLayoutWrapper = styled(ResponsiveReactGridLayout)`
   & > .react-grid-placeholder {
     background: #2185d0 !important;
   }
+  margin-bottom: 1em;
+  margin-top: -1em;
 `;
 
 export { DraggableGridLayoutWrapper };
