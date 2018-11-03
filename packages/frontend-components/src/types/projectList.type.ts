@@ -47,6 +47,8 @@ interface IProjectListProviderChildrenProps {
   loading: IProjectProviderState["loading"];
   projects: {
     title: IProjectProps["title"];
+    lastUpdateDate: IProjectProps["lastUpdateDate"];
+    text: IProjectProps["text"];
     path: IProjectProviderProps["path"];
   }[];
 }
@@ -58,6 +60,7 @@ interface IProjectListProviderState {
 
 interface IProjectListProviderResponseProjects {
   name: IProjectProps["title"];
+  path: IProjectProviderProps["path"];
 }
 
 export {

@@ -2,7 +2,9 @@ import { Component } from "react";
 import {
   IProjectListProviderProps,
   IProjectListProviderState,
-  IProjectListProviderResponseProjects
+  IProjectListProviderResponseProjects,
+  IProjectProviderPackageJSON,
+  IProjectProviderProps
 } from "../../types";
 
 class ProjectListProvider extends Component<IProjectListProviderProps> {
@@ -19,20 +21,56 @@ class ProjectListProvider extends Component<IProjectListProviderProps> {
     );
     const json = await response.json();
     this.setState({
-      projects: json.map(
-        ({ name, ...rest }: IProjectListProviderResponseProjects) => ({
-          title: name,
-          ...rest
-        })
+      projects: await Promise.all(
+        json.map(
+          async ({
+            name,
+            path,
+            ...rest
+          }: IProjectListProviderResponseProjects) => ({
+            title: name,
+            lastUpdateDate: await this.getLastCommitDate(path),
+            text: await this.getDescription(path),
+            path,
+            ...rest
+          })
+        )
       ),
       loading: false
     });
   };
 
-  render = () =>
-    this.props.children({
-      ...this.state
-    });
+  getLastCommitDate = async (path: IProjectProviderProps["path"]) => {
+    const response = await fetch(
+      `${this.props.endpoint}/api/v4/projects/${
+        this.props.projectID
+      }/repository/commits?path=${path}`
+    );
+    const json = await response.json();
+    return new Date(json[0].committed_date);
+  };
+
+  getDescription = async (path: IProjectProviderProps["path"]) => {
+    const response = await fetch(
+      `${this.props.endpoint}/api/v4/projects/${
+        this.props.projectID
+      }/repository/tree/?path=${path}`
+    );
+    const json = await response.json();
+    const packageJsonFile = json.filter(
+      ({ name }: IProjectProviderPackageJSON) => name === "package.json"
+    );
+    const packageJsonBlobSHA = packageJsonFile[0].id;
+    const packageJsonContentResponse = await fetch(
+      `${this.props.endpoint}/api/v4/projects/${
+        this.props.projectID
+      }/repository/blobs/${packageJsonBlobSHA}/raw`
+    );
+    const { description } = await packageJsonContentResponse.json();
+    return description;
+  };
+
+  render = () => this.props.children(this.state);
 }
 
 export { ProjectListProvider };
