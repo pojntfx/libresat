@@ -1,6 +1,13 @@
-## <small>0.0.1-28-monorepo (2018-11-03)</small>
+## <small>0.0.1-28-monorepo (2018-11-16)</small>
 
+
+
+
+## <small>0.0.1-64 (2018-11-03)</small>
+
+* feat(frontend-components, identity-frontend): Add pure ExpandableCard component ([fea86fd](https://gitlab.com/libresat/libresat/commit/fea86fd))
 * refactor(frontend-components, identity-frontend): Make OverviewCard a universal ExpandablePaper ([493156d](https://gitlab.com/libresat/libresat/commit/493156d))
+* v0.0.1-64 ([a1b849b](https://gitlab.com/libresat/libresat/commit/a1b849b))
 
 
 
@@ -222,14 +229,9 @@
 
 ## <small>0.0.1-30 (2018-10-16)</small>
 
+* v0.0.1-29 ([c2118f5](https://gitlab.com/libresat/libresat/commit/c2118f5))
 * v0.0.1-30 ([f36d516](https://gitlab.com/libresat/libresat/commit/f36d516))
 * fix(service): Fix missing lib for AsyncIterators ([256cbf7](https://gitlab.com/libresat/libresat/commit/256cbf7))
-
-
-
-## <small>0.0.1-29 (2018-10-16)</small>
-
-* v0.0.1-29 ([c2118f5](https://gitlab.com/libresat/libresat/commit/c2118f5))
 * feat: Enable installation with npm i -g ([aac87f3](https://gitlab.com/libresat/libresat/commit/aac87f3))
 * build: Add scripts to master package.json ([643ca23](https://gitlab.com/libresat/libresat/commit/643ca23))
 
@@ -237,26 +239,16 @@
 
 ## <small>0.0.1-28 (2018-10-16)</small>
 
-* v0.0.1-28 ([f30c5cf](https://gitlab.com/libresat/libresat/commit/f30c5cf))
-* refactor(site): Update and fix dependencies, add new scripts ([fe02011](https://gitlab.com/libresat/libresat/commit/fe02011))
-
-
-
-## <small>0.0.1-27 (2018-10-16)</small>
-
 * build(satctl, service, host-agent-core, identity-frontend, identity-backend): Add install--binary sc ([a24b7e6](https://gitlab.com/libresat/libresat/commit/a24b7e6))
-* v0.0.1-27 ([d9adde3](https://gitlab.com/libresat/libresat/commit/d9adde3))
-* build(identity-backend): Use new build scripts ([a08f683](https://gitlab.com/libresat/libresat/commit/a08f683))
-* build(identity-frontend): Use new script conventions ([30cba46](https://gitlab.com/libresat/libresat/commit/30cba46))
-
-
-
-## <small>0.0.1-26 (2018-10-14)</small>
-
 * refactor(host-agent-core, identity-backend, identity-frontend, satctl, service): Standardize package ([10b54a1](https://gitlab.com/libresat/libresat/commit/10b54a1))
 * v0.0.1-26 ([b568881](https://gitlab.com/libresat/libresat/commit/b568881))
-* feat(identity-frontend): Add single-binary version of identity-frontend ([bb3d1aa](https://gitlab.com/libresat/libresat/commit/bb3d1aa))
+* v0.0.1-27 ([d9adde3](https://gitlab.com/libresat/libresat/commit/d9adde3))
+* v0.0.1-28 ([f30c5cf](https://gitlab.com/libresat/libresat/commit/f30c5cf))
 * refactor(identity-backend): Use better scripts ([5dc9cc7](https://gitlab.com/libresat/libresat/commit/5dc9cc7))
+* refactor(site): Update and fix dependencies, add new scripts ([fe02011](https://gitlab.com/libresat/libresat/commit/fe02011))
+* build(identity-backend): Use new build scripts ([a08f683](https://gitlab.com/libresat/libresat/commit/a08f683))
+* build(identity-frontend): Use new script conventions ([30cba46](https://gitlab.com/libresat/libresat/commit/30cba46))
+* feat(identity-frontend): Add single-binary version of identity-frontend ([bb3d1aa](https://gitlab.com/libresat/libresat/commit/bb3d1aa))
 * chore: Centralize dev dependencies and update dependencies ([b9459d4](https://gitlab.com/libresat/libresat/commit/b9459d4))
 * chore: Use lerna conventions for monorepo version ([e7feb58](https://gitlab.com/libresat/libresat/commit/e7feb58))
 
