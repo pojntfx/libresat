@@ -1,6 +1,6 @@
 {
   "name": "@libresat/identity-backend",
-  "version": "0.0.1-64",
+  "version": "0.0.1-65",
   "description": "A simple authorization microservice",
   "author": "Felix Pojtinger <felix@pojtinger.com>",
   "license": "AGPL-3.0",
@@ -41,7 +41,7 @@
     "prepare": "run-s build"
   },
   "dependencies": {
-    "@libresat/service": "^0.0.1-64",
+    "@libresat/service": "^0.0.1-65",
     "bcryptjs": "^2.4.3"
   },
   "devDependencies": {
