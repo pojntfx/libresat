@@ -1,6 +1,6 @@
 {
   "name": "@libresat/frontend-utils",
-  "version": "0.0.1-64",
+  "version": "0.0.1-65",
   "description": "Utilities to be used in the frontends",
   "author": "Felicitas Pojtinger <felicitas@pojtinger.com>",
   "license": "AGPL-3.0",
