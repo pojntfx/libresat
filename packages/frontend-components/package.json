@@ -1,6 +1,6 @@
 {
   "name": "@libresat/frontend-components",
-  "version": "0.0.1-65",
+  "version": "0.0.1-66",
   "description": "A simple and opinionated UI library",
   "author": "Felix Pojtinger <felix@pojtinger.com>",
   "license": "AGPL-3.0",
@@ -28,7 +28,7 @@
   },
   "dependencies": {
     "@antv/data-set": "^0.10.0",
-    "@libresat/frontend-utils": "^0.0.1-65",
+    "@libresat/frontend-utils": "^0.0.1-66",
     "bizcharts": "^3.2.5-beta.4",
     "emotion": "^9.2.12",
     "react": "^16.5.2",
