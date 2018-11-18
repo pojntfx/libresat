@@ -1,5 +1,7 @@
-## <small>0.0.1-28-monorepo (2018-11-16)</small>
+## <small>0.0.1-28-monorepo (2018-11-18)</small>
 
+* v0.0.1-65 ([566a762](https://gitlab.com/libresat/libresat/commit/566a762))
+* feat: Add service and platform definitions ([f517267](https://gitlab.com/libresat/libresat/commit/f517267))
 
 
 
