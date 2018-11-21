@@ -1,5 +1,12 @@
 ## <small>0.0.1-28-monorepo (2018-11-21)</small>
 
+
+
+
+## <small>0.0.1-68 (2018-11-21)</small>
+
+* v0.0.1-68 ([b33aa09](https://gitlab.com/libresat/libresat/commit/b33aa09))
+* test(example-backend-core): Add tests for assignments ([45f5494](https://gitlab.com/libresat/libresat/commit/45f5494))
 * test(example-backend-core): Add tests for getters ([31b5862](https://gitlab.com/libresat/libresat/commit/31b5862))
 
 
