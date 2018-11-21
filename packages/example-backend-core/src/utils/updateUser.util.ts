@@ -3,7 +3,7 @@ import { IUser } from "../@types";
 interface IUpdateUserParams {
   id: IUser["id"];
   newUser: IUser;
-  userUpdater(id: IUser["id"], newUser: IUser): IUser;
+  userUpdater(id: IUser["id"], newUser: IUser): Promise<IUser>;
 }
 
 /**

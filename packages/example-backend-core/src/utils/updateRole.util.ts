@@ -3,7 +3,7 @@ import { IRole } from "../@types";
 interface IUpdateRoleParams {
   id: IRole["id"];
   newRole: IRole;
-  roleUpdater(id: IRole["id"], newRole: IRole): IRole;
+  roleUpdater(id: IRole["id"], newRole: IRole): Promise<IRole>;
 }
 
 /**

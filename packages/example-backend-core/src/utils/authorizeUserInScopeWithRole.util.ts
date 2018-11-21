@@ -1,12 +1,16 @@
 import { IUser, IScope, IRole } from "../@types";
+import {
+  RoleDoesNotExistError,
+  UserDoesNotHaveRoleErrorInThisScopeError
+} from "../errors";
 
 interface IAuthenticateUserInScopeWithRoleParams {
   userId: IUser["id"];
   scopeId: IScope["id"];
   roleName: IRole["name"];
-  userGetter(id: IUser["id"]): IUser;
-  scopeGetter(id: IScope["id"]): IScope;
-  roleGetter(id: IRole["id"]): IRole;
+  userGetter(id: IUser["id"]): Promise<IUser>;
+  scopeGetter(id: IScope["id"]): Promise<IScope>;
+  roleGetter(id: IRole["id"]): Promise<IRole>;
 }
 
 /**
@@ -25,9 +29,9 @@ const authorizeUserInScopeWithRole = async (
   scopeGetter: IAuthenticateUserInScopeWithRoleParams["scopeGetter"]
 ): Promise<boolean> => {
   // Get user to authorize
-  const user = userGetter(userId);
+  const user = await userGetter(userId);
   // Get scope to authorize user in
-  const scope = scopeGetter(scopeId);
+  const scope = await scopeGetter(scopeId);
   // Check if user has the scope they should be authorized in
   let userHasScope = false;
   for (let userScope of user.scopes) {
@@ -56,19 +60,13 @@ const authorizeUserInScopeWithRole = async (
       if (userHasRoleOfScope) {
         return true;
       } else {
-        throw new Error(
-          "The user does not have the role in the scope they should be authorized in!"
-        );
+        throw new UserDoesNotHaveRoleErrorInThisScopeError();
       }
     } else {
-      throw new Error(
-        "The role you're trying to authorize the user in does not exist!"
-      );
+      throw new RoleDoesNotExistError();
     }
   } else {
-    throw new Error(
-      "User does not have the scope they should be authorized in!"
-    );
+    throw new UserDoesNotHaveRoleErrorInThisScopeError();
   }
 };
 

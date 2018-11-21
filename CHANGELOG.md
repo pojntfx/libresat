@@ -1,5 +1,6 @@
 ## <small>0.0.1-28-monorepo (2018-11-21)</small>
 
+* test(example-backend-core): Add test for authentication ([a92e312](https://gitlab.com/libresat/libresat/commit/a92e312))
 
 
 
