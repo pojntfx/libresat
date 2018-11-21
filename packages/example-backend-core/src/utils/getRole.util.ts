@@ -2,7 +2,7 @@ import { IRole } from "../@types";
 
 interface IGetRoleParams {
   id: IRole["id"];
-  roleGetter(id: IRole["id"]): IRole;
+  roleGetter(id: IRole["id"]): Promise<IRole>;
 }
 
 /**
@@ -13,6 +13,6 @@ interface IGetRoleParams {
 const getRole = async (
   id: IGetRoleParams["id"],
   roleGetter: IGetRoleParams["roleGetter"]
-): Promise<IRole> => roleGetter(id);
+): Promise<IRole> => await roleGetter(id);
 
 export { getRole };
