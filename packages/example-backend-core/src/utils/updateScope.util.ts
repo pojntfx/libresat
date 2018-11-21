@@ -3,7 +3,7 @@ import { IScope } from "../@types";
 interface IUpdateScopeParams {
   id: IScope["id"];
   newScope: IScope;
-  scopeUpdater(id: IScope["id"], newScope: IScope): IScope;
+  scopeUpdater(id: IScope["id"], newScope: IScope): Promise<IScope>;
 }
 
 /**

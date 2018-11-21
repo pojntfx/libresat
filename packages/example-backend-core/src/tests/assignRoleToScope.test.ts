@@ -1,5 +1,11 @@
 import { RoleController, ScopeController } from "../mocks";
-import { assignRoleToScope } from "../utils";
+import {
+  assignRoleToScope,
+  getRole,
+  getScope,
+  updateScope,
+  updateRole
+} from "../utils";
 
 it("Should assign a role to a scope", async () => {
   const role = new RoleController("role1");
@@ -7,10 +13,12 @@ it("Should assign a role to a scope", async () => {
   const roleWithScope = await assignRoleToScope(
     "role1234",
     "scope1234",
-    id => role.get(id),
-    id => scope.get(id),
-    (id, newRole) => role.update(id, newRole),
-    (id, newScope) => scope.update(id, newScope)
+    id => getRole(id, id => role.get(id)),
+    id => getScope(id, id => scope.get(id)),
+    (id, newRole) =>
+      updateRole(id, newRole, (id, newRole) => role.update(id, newRole)),
+    (id, newScope) =>
+      updateScope(id, newScope, (id, newScope) => scope.update(id, newScope))
   );
   expect((await roleWithScope).scopes[0]).toMatchObject({
     name: "scope1",
