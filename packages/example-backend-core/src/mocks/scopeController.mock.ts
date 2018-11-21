@@ -1,4 +1,5 @@
 import { IScope, IUser, IRole } from "../@types";
+import { ScopeDoesNotExistError } from "../errors";
 
 class ScopeController implements IScope {
   users: IUser[] = [];
@@ -15,6 +16,14 @@ class ScopeController implements IScope {
     this.roles = newScope.roles || this.roles;
     this.users = newScope.users || this.users;
     return this;
+  };
+
+  get = async (id: IScope["id"]): Promise<IScope> => {
+    if (id === this.id) {
+      return this;
+    } else {
+      throw new ScopeDoesNotExistError();
+    }
   };
 }
 

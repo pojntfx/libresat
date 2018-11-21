@@ -2,7 +2,7 @@ import { IScope } from "../@types";
 
 interface IGetScopeParams {
   id: IScope["id"];
-  scopeGetter(id: IScope["id"]): IScope;
+  scopeGetter(id: IScope["id"]): Promise<IScope>;
 }
 
 /**

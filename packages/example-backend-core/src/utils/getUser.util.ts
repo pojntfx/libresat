@@ -2,7 +2,7 @@ import { IUser } from "../@types";
 
 interface IGetUserParams {
   id: IUser["id"];
-  userGetter(id: IUser["id"]): IUser;
+  userGetter(id: IUser["id"]): Promise<IUser>;
 }
 
 /**

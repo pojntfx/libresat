@@ -1,7 +1,20 @@
-## <small>0.0.1-28-monorepo (2018-11-18)</small>
+## <small>0.0.1-28-monorepo (2018-11-21)</small>
+
+
+
+
+## <small>0.0.1-67 (2018-11-18)</small>
+
+* v0.0.1-67 ([e4b0589](https://gitlab.com/libresat/libresat/commit/e4b0589))
+
+
+
+## <small>0.0.1-66 (2018-11-18)</small>
 
 * v0.0.1-65 ([566a762](https://gitlab.com/libresat/libresat/commit/566a762))
+* v0.0.1-66 ([4ab2cb1](https://gitlab.com/libresat/libresat/commit/4ab2cb1))
 * feat: Add service and platform definitions ([f517267](https://gitlab.com/libresat/libresat/commit/f517267))
+* feat(example-backend-core): Add WIP core backend library example ([b815906](https://gitlab.com/libresat/libresat/commit/b815906))
 
 
 
