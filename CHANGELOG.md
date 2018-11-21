@@ -1,6 +1,13 @@
 ## <small>0.0.1-28-monorepo (2018-11-21)</small>
 
+
+
+
+## <small>0.0.1-69 (2018-11-21)</small>
+
+* v0.0.1-69 ([e66ef23](https://gitlab.com/libresat/libresat/commit/e66ef23))
 * test(example-backend-core): Add test for authentication ([a92e312](https://gitlab.com/libresat/libresat/commit/a92e312))
+* test(example-backend-core): Add tests for the rest of the utils ([a3c7cd0](https://gitlab.com/libresat/libresat/commit/a3c7cd0))
 
 
 

@@ -34,6 +34,10 @@ service-backend-core/
             deleteScope.test.ts
             assignUserToScope.test.ts
             removeUserFromScope.test.ts
+        # Mocks for the controllers
+        tests/
+            userController.mock.ts
+            scopeController.mock.ts
             index.ts
         # Errors which can occur on the functions
         errors/
