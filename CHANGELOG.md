@@ -1,5 +1,6 @@
 ## <small>0.0.1-28-monorepo (2018-11-21)</small>
 
+* test(example-backend-core): Add tests for getters ([31b5862](https://gitlab.com/libresat/libresat/commit/31b5862))
 
 
 
