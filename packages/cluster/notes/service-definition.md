@@ -87,7 +87,7 @@ service-backend-web/
             assignUserToScope.resolver.ts
             removeUserFromScope.resolver.ts
             index.ts
-        # Connect validators, mappers and controllers
+        # Connect validators, mappers, auth and controllers
         connectors/
             createUser.connector.ts
             getUser.connector.ts
@@ -102,16 +102,16 @@ service-backend-web/
             index.ts
         # Check the provided parameters against the core's types
         validators/
-            createUser.validators.ts
-            getUser.validators.ts
-            updateUser.validators.ts
-            deleteUser.validators.ts
-            createScope.validators.ts
-            getScope.validators.ts
-            updateScope.validators.ts
-            deleteScope.validators.ts
-            assignUserToScope.validators.ts
-            removeUserFromScope.validators.ts
+            createUser.validator.ts
+            getUser.validator.ts
+            updateUser.validator.ts
+            deleteUser.validator.ts
+            createScope.validator.ts
+            getScope.validator.ts
+            updateScope.validator.ts
+            deleteScope.validator.ts
+            assignUserToScope.validator.ts
+            removeUserFromScope.validator.ts
             index.ts
         # Map the parameters into the internally used structure
         mappers/
@@ -125,6 +125,19 @@ service-backend-web/
             deleteScope.mapper.ts
             assignUserToScope.mapper.ts
             removeUserFromScope.mapper.ts
+            index.ts
+        # Check if the actor has the correct permissions to perform the action
+        auth/
+            createUser.auth.ts
+            getUser.auth.ts
+            updateUser.auth.ts
+            deleteUser.auth.ts
+            createScope.auth.ts
+            getScope.auth.ts
+            updateScope.auth.ts
+            deleteScope.auth.ts
+            assignUserToScope.auth.ts
+            removeUserFromScope.auth.ts
             index.ts
         # Connect actions the models
         controllers/

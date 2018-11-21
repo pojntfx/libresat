@@ -3,6 +3,13 @@
 
 
 
+## <small>0.0.1-70 (2018-11-21)</small>
+
+* v0.0.1-70 ([2c8f0b7](https://gitlab.com/libresat/libresat/commit/2c8f0b7))
+* test(example-backend-core): Add create utils for role and scope ([fb1a71b](https://gitlab.com/libresat/libresat/commit/fb1a71b))
+
+
+
 ## <small>0.0.1-69 (2018-11-21)</small>
 
 * v0.0.1-69 ([e66ef23](https://gitlab.com/libresat/libresat/commit/e66ef23))
