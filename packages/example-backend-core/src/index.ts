@@ -1,9 +1,12 @@
+export { IRole, IScope, IUser } from "./@types";
 export {
   assignRoleToScope,
   assignRoleToUser,
   assignScopeToUser,
   authenticateUserWithIdAndPassword,
   authorizeUserInScopeWithRole,
+  createRole,
+  createScope,
   createUser,
   getRole,
   getScope,
@@ -12,5 +15,3 @@ export {
   updateScope,
   updateUser
 } from "./utils";
-
-export { IRole, IScope, IUser } from "./@types";

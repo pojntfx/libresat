@@ -14,3 +14,5 @@ export { getUser } from "./getUser.util";
 export { updateRole } from "./updateRole.util";
 export { updateScope } from "./updateScope.util";
 export { updateUser } from "./updateUser.util";
+export { createRole } from "./createRole.util";
+export { createScope } from "./createScope.util";
