@@ -1,9 +1,10 @@
 import { IUser } from "../@types";
+import { UserDoesNotExistError, WrongPasswordError } from "../errors";
 
 interface IAuthenticateUserWithIdAndPasswordParams {
   id: IUser["id"];
   password: IUser["password"];
-  userGetter(id: IUser["id"]): IUser;
+  userGetter(id: IUser["id"]): Promise<IUser>;
 }
 
 /**
@@ -17,15 +18,15 @@ const authenticateUserWithIdAndPassword = async (
   password: IAuthenticateUserWithIdAndPasswordParams["password"],
   userGetter: IAuthenticateUserWithIdAndPasswordParams["userGetter"]
 ): Promise<boolean> => {
-  const user = userGetter(id);
+  const user = await userGetter(id);
   if (user) {
     if (user.password === password) {
       return true;
     } else {
-      throw new Error("Wrong password!");
+      throw new WrongPasswordError();
     }
   } else {
-    throw new Error("A user with this ID does not exist!");
+    throw new UserDoesNotExistError();
   }
 };
 
