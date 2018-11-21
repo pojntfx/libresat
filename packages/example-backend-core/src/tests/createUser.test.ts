@@ -3,6 +3,7 @@ import { UserController, ScopeController, RoleController } from "../mocks";
 import { IUser, IScope, IRole } from "../@types";
 
 it("Should create a user", async () => {
+  // This needs to be refactored. See ../../TODO.md for more details.
   let user: UserController;
   let scope: ScopeController;
   let role: RoleController;
@@ -35,6 +36,7 @@ it("Should create a user", async () => {
 });
 
 it("Should create a management scope for a user", async () => {
+  // This needs to be refactored. See ../../TODO.md for more details.
   let user: UserController;
   let scope: ScopeController;
   let role: RoleController;
@@ -66,6 +68,7 @@ it("Should create a management scope for a user", async () => {
 });
 
 it("Should create a management role for a user", async () => {
+  // This needs to be refactored. See ../../TODO.md for more details.
   let user: UserController;
   let scope: ScopeController;
   let role: RoleController;
