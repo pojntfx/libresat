@@ -1,5 +1,12 @@
-## <small>0.0.1-28-monorepo (2018-11-21)</small>
+## <small>0.0.1-28-monorepo (2018-11-22)</small>
 
+
+
+
+## <small>0.0.1-71 (2018-11-21)</small>
+
+* v0.0.1-71 ([6682b3e](https://gitlab.com/libresat/libresat/commit/6682b3e))
+* feat(example-backend-core): Add delete actions for user, scope and role ([ce87bb0](https://gitlab.com/libresat/libresat/commit/ce87bb0))
 
 
 
