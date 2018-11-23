@@ -1,6 +1,6 @@
 {
   "name": "@libresat/example-backend-web",
-  "version": "0.0.1-72",
+  "version": "0.0.1-73",
   "description": "A simple example API backend for the web.",
   "author": "Felix Pojtinger <felix@pojtinger.com>",
   "license": "AGPL-3.0",
@@ -41,9 +41,9 @@
     "prepare": "run-s build"
   },
   "dependencies": {
-    "@libresat/example-backend-core": "^0.0.1-72",
-    "@libresat/host-agent-core": "^0.0.1-72",
-    "@libresat/service": "^0.0.1-72"
+    "@libresat/example-backend-core": "^0.0.1-73",
+    "@libresat/host-agent-core": "^0.0.1-73",
+    "@libresat/service": "^0.0.1-73"
   },
   "devDependencies": {
     "nodemon": "^1.18.4",

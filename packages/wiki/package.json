@@ -1,6 +1,6 @@
 {
   "name": "@libresat/wiki",
-  "version": "0.0.1-72",
+  "version": "0.0.1-73",
   "description": "The LibreSat distribution of Gitit",
   "main": "src/chart/Chart.yaml",
   "scripts": {
