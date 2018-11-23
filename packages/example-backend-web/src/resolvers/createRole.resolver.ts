@@ -15,9 +15,6 @@ const createRoleResolver = {
       params: ICreateRoleResolverParams["params"],
       context: ICreateRoleResolverParams["context"]
     ): Promise<IRole> => connectCreateRole(params, context)
-  },
-  Query: {
-    hello: async () => "hello"
   }
 };
 

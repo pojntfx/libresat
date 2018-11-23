@@ -1,5 +1,12 @@
-## <small>0.0.1-28-monorepo (2018-11-22)</small>
+## <small>0.0.1-28-monorepo (2018-11-23)</small>
 
+
+
+
+## <small>0.0.1-72 (2018-11-22)</small>
+
+* v0.0.1-72 ([9f6e8dc](https://gitlab.com/libresat/libresat/commit/9f6e8dc))
+* feat(example-backend-web): Add simple backend API for example-backend-core ([f594807](https://gitlab.com/libresat/libresat/commit/f594807))
 
 
 

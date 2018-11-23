@@ -1,7 +1,3 @@
 type Mutation {
   createRole(name: String!): Role!
 }
-
-type Query {
-  hello: String!
-}
