@@ -3,6 +3,13 @@
 
 
 
+## <small>0.0.1-73 (2018-11-23)</small>
+
+* v0.0.1-73 ([8166f47](https://gitlab.com/libresat/libresat/commit/8166f47))
+* feat(example-backend-web): Add getRole query ([838ea43](https://gitlab.com/libresat/libresat/commit/838ea43))
+
+
+
 ## <small>0.0.1-72 (2018-11-22)</small>
 
 * v0.0.1-72 ([9f6e8dc](https://gitlab.com/libresat/libresat/commit/9f6e8dc))

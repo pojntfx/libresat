@@ -1,4 +1,4 @@
-import { composeGetRole } from "../connectors";
+import { composeGetRole } from "../composers";
 import { IRole } from "@libresat/example-backend-core";
 import { IContext } from "../@types";
 
