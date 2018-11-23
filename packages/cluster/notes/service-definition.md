@@ -74,7 +74,7 @@ service-backend-web/
         typeDefs/
             user.typeDef.graphql
             scope.typeDef.graphql
-        # What connectors the actions should correspond to
+        # What composers the actions should correspond to
         resolvers/
             createUser.resolver.ts
             getUser.resolver.ts
@@ -88,7 +88,7 @@ service-backend-web/
             removeUserFromScope.resolver.ts
             index.ts
         # Connect validators, mappers, auth and controllers
-        connectors/
+        composers/
             createUser.connector.ts
             getUser.connector.ts
             updateUser.connector.ts

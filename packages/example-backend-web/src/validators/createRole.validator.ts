@@ -1,7 +1,11 @@
-import { IProvidedRole, IValidatedRole } from "../@types";
+import { IRole } from "@libresat/example-backend-core";
+
+interface IValidateCreateRoleParams {
+  id: IRole["id"];
+}
 
 const validateCreateRole = async (
-  providedRole: IProvidedRole
-): Promise<IValidatedRole> => providedRole as IValidatedRole;
+  id: IValidateCreateRoleParams["id"]
+): Promise<boolean> => true;
 
 export { validateCreateRole };

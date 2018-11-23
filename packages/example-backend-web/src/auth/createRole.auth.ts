@@ -1,8 +1,13 @@
-import { IContext } from "../@types/context.type";
+import { IContext } from "../@types";
+
+interface IAuthCreateRoleParams {
+  userid: IContext["headers"]["userid"];
+  password: IContext["headers"]["password"];
+}
 
 const authCreateRole = async (
-  userid: IContext["headers"]["userid"],
-  password: IContext["headers"]["password"]
+  userid: IAuthCreateRoleParams["userid"],
+  password: IAuthCreateRoleParams["password"]
 ): Promise<boolean> => true;
 
 export { authCreateRole };

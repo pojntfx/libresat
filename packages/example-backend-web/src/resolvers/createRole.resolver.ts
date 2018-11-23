@@ -1,21 +1,23 @@
-import { IContext } from "../@types/context.type";
-import { IProvidedRole } from "../@types";
+import { composeCreateRole } from "../composers";
 import { IRole } from "@libresat/example-backend-core";
-import { connectCreateRole } from "../connectors/createRole.connector";
+import { IContext } from "../@types";
 
-interface ICreateRoleResolverParams {
+interface IResolveCreateRoleParams {
+  params: {
+    name: IRole["name"];
+  };
   context: IContext;
-  params: IProvidedRole;
 }
 
-const createRoleResolver = {
+const resolveCreateRole = {
   Mutation: {
     createRole: async (
       _: any,
-      params: ICreateRoleResolverParams["params"],
-      context: ICreateRoleResolverParams["context"]
-    ): Promise<IRole> => connectCreateRole(params, context)
+      params: IResolveCreateRoleParams["params"],
+      context: IResolveCreateRoleParams["context"]
+    ) => composeCreateRole(params, context)
   }
 };
 
-export default createRoleResolver;
+export { IResolveCreateRoleParams };
+export default resolveCreateRole;
