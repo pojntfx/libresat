@@ -1,5 +1,12 @@
-## <small>0.0.1-28-monorepo (2018-11-23)</small>
+## <small>0.0.1-28-monorepo (2018-11-24)</small>
 
+
+
+
+## <small>0.0.1-74 (2018-11-24)</small>
+
+* v0.0.1-74 ([f64c96b](https://gitlab.com/libresat/libresat/commit/f64c96b))
+* refactor(example-backend-web): Use new terminology, standardize createRole mutation ([aef4bf8](https://gitlab.com/libresat/libresat/commit/aef4bf8))
 
 
 
